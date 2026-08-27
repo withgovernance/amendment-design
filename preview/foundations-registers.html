@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Foundations" name="Registers — five rooms, four registers" subtitle="Live · Reading · Writing · Issued — the token sets behind the five rooms" viewport="1000x460" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Registers</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>.card { padding: 18px 24px 22px; }
+  .grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; margin-top: 14px; }
+  .reg { border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-raised); display: flex; flex-direction: column; }
+  .reg .top { padding: 14px 15px 13px; min-height: 122px; }
+  .reg .rn { font-family: var(--font-serif); font-variation-settings: var(--serif-display); font-weight: 800; font-size: 19px; line-height: 1.1; margin: 0; }
+  .reg .rooms { font-family: var(--font-serif); font-variation-settings: var(--serif-quote); font-style: italic; font-size: 13px; margin-top: 5px; }
+  .reg .samp { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 13px; line-height: 1.5; margin-top: 9px; }
+  /* Use the shipped role class .material-regular for the token strip rather than
+     inventing a --surface-* name; the system has no such family. */
+  .reg .toks { padding: 11px 15px 13px; display: grid; gap: 2px; font-family: var(--font-mono); font-size: 12px; line-height: 1.55; color: var(--text-secondary); border-top: 1px solid var(--border-hairline); }
+  /* Live sits on the aurora — glass, no canvas */
+  /* Glass comes from the .material-thin role class on the element itself —
+     the material tiers ship as classes, not custom properties. */
+  .live .rn, .live .samp { color: var(--text-primary); }
+  .live .rooms { color: var(--text-secondary); }
+  /* paper registers */
+  .reading .top { background: var(--paper-cream); }
+  .writing .top { background: var(--paper-parchment); }
+  .issued .top { background: var(--paper-cream); text-align: center; }
+  .reading .rn, .writing .rn, .issued .rn { color: rgb(0 0 0 / 87%); }
+  .reading .rooms, .writing .rooms, .issued .rooms { color: rgb(0 0 0 / 55%); }
+  .reading .samp, .writing .samp, .issued .samp { color: rgb(0 0 0 / 62%); }
+  /* Green INK is a report, per the fill rule. Measured by RASTERISING, not by
+     parsing oklch() — trap #3 in HANDOFF-2026-08.md, and my first fix here fell
+     into it: --color-action-active is L .60, not .56, and measures 3.44 on this
+     glass, not 5.1. Rasterised ratios as ink on material-thin over the canvas:
+       --color-action / --color-momentum  L .66  2.76   fails
+       --color-action-active             L .60  3.44   fails
+       --color-success  #047857                 5.21   passes
+     So the count is --color-success. It is also the semantically right pick:
+     action and success are one hue with fill carrying the difference, and a
+     co-signer count is a report that is already true.
+     LIMIT: 5.21 is over the page canvas. Over a saturated blue-hour lobe the
+     same ink drops to ~3.4, which is why "no bare text inside the curtain band"
+     already exists as a rule — this count lives below the band, not in it. */
+  .count { font-family: var(--font-mono); font-weight: 500; color: var(--color-success); }
+  .emb { width: 44px; height: 44px; border-radius: 9999px; margin: 9px auto 0; box-shadow: -0.5px -0.5px 0.5px rgb(255 255 255 / 80%), 1.5px 2px 3px oklch(0.62 0.045 60 / 0.4), inset 1px 1.5px 2px oklch(0.62 0.045 60 / 0.45), inset -1px -1px 1.5px rgb(255 255 255 / 70%); }
+  .foot { margin-top: 16px; padding-top: 13px; border-top: 1px solid var(--border-hairline); display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .foot h4 { font-family: var(--font-serif); font-variation-settings: var(--serif-display); font-weight: 800; font-size: 15px; margin: 0 0 5px; }
+  .foot p { font-family: var(--font-serif); font-variation-settings: 'opsz' 16, 'wght' 420; font-size: 12.5px; line-height: 1.5; color: var(--text-secondary); margin: 0; }
+  .foot p b { font-variation-settings: 'opsz' 16, 'wght' 600; color: var(--text-primary); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="voice-eyebrow">Foundations · registers · audit §3.5</div>
+  <div class="grid">
+    <div class="reg live">
+      <div class="top material-thin">
+        <p class="rn">Live</p>
+        <div class="rooms">Reading Room · Commons</div>
+        <p class="samp">Cap rent increases in Colorado cities — <span class="count">2,301</span> co-signers</p>
+      </div>
+      <div class="toks material-regular"><span>material-thin</span><span>canvas: none</span><span>48rem</span><span>motion: accrual</span></div>
+    </div>
+    <div class="reg reading">
+      <div class="top">
+        <p class="rn">Reading</p>
+        <div class="rooms">Archive</div>
+        <p class="samp">Concerning local authority to enact rent stabilization — § 38-12-204.3</p>
+      </div>
+      <div class="toks material-regular"><span>material-regular</span><span>paper-cream</span><span>28rem · 69 chars</span><span>motion: none</span></div>
+    </div>
+    <div class="reg writing">
+      <div class="top">
+        <p class="rn">Writing</p>
+        <div class="rooms">Writing Desk</div>
+        <p class="samp"><i>Dear Representative Bensky,</i> I am writing as your constituent in Boulder…</p>
+      </div>
+      <div class="toks material-regular"><span>material-regular</span><span>paper-parchment</span><span>28rem portrait</span><span>editable, unsent</span></div>
+    </div>
+    <div class="reg issued">
+      <div class="top">
+        <p class="rn">Issued</p>
+        <div class="rooms">Receipt</div>
+        <p class="samp">Letter delivered to Rep. Bensky</p>
+        <div class="emb"></div>
+      </div>
+      <div class="toks material-regular"><span>paper-cream</span><span>34rem portrait</span><span>+ 3 raster ratios</span><span>frozen, keepable</span></div>
+    </div>
+  </div>
+  <div class="foot">
+    <div><h4>Streaming is not motion</h4><p>Text arriving token by token, a typing indicator, a skeleton resolving — content <i>arriving</i>, permitted anywhere, costing nothing from the two-surface motion budget. <b>The test: is the element already on screen and already correct?</b> Then it is motion and needs a sanctioned surface.</p></div>
+    <div><h4>Green where a crowd is counted</h4><p>Momentum green was scoped to the Commons surface; that lookup no longer resolves now the two rooms share a register. <b>A dialogue counts no crowd, so conversation views stay green-free.</b> Green in Live is a report, never an affordance — per the fill rule.</p></div>
+  </div>
+</div>
+</body>
+</html>

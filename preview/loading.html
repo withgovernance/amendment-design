@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Foundations" name="Foundations — Loading" subtitle="Promises shape, never quantity · under-reserve so the settle is downward" viewport="860x820" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amendment specimen</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<style>
+h1{font-family:var(--font-serif);font-variation-settings:var(--serif-display);font-weight:800;font-size:20px;margin:0 0 4px}
+.sub{font-family:var(--font-serif);font-variation-settings:var(--serif-text);font-size:14px;line-height:1.5;color:var(--text-secondary);margin:0 0 16px;max-width: min(24.5rem, 100% - 2rem)}
+.cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;align-items:start}
+.cn{font-variation-settings:var(--sans-chrome);text-transform:uppercase;font-size:12px;letter-spacing:.07em;color:var(--text-secondary);font-weight:var(--sans-semibold);margin-bottom:8px;display:block}
+/* No saturated ink on the aurora at 12px. --color-danger on the composited
+   canvas measures 4.07 — the same failure the "no bare text inside the curtain
+   band" rule exists for. The verdict is carried by the bolded lead of each
+   note instead, which sits inside a box. */
+.box{background:rgb(255 255 255/.5);box-shadow:inset 0 0 0 1px var(--border-subtle);border-radius:8px;overflow:hidden}
+.hd{padding:10px 13px;font-size:14px;font-weight:var(--sans-semibold)}
+.dv{height:1px;background:var(--border-subtle)}
+.fix{min-height:120px;display:flex;align-items:center;justify-content:center}
+.rows{padding:10px 13px 12px;display:flex;flex-direction:column;gap:10px}
+.note{font-family:var(--font-mono);font-size:12px;color:var(--text-secondary);margin-top:8px;line-height:1.5}
+.note b{font-family:var(--font-sans);color:var(--text-primary);font-weight:600}
+.rules{margin:20px 0 0;display:grid;grid-template-columns:auto 1fr;gap:8px 14px;align-items:baseline}
+dt{font-variation-settings:var(--sans-chrome);text-transform:uppercase;font-size:12px;letter-spacing:.06em;color:var(--text-secondary);font-weight:var(--sans-semibold);white-space:nowrap}
+dd{margin:0;font-size:13px;line-height:1.5;color:var(--text-primary)}
+dd b{font-weight:600}
+dd code{font-family:var(--font-mono);font-size:12px;color:var(--text-secondary)}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>Loading</h1>
+<p class="sub">A loading state promises the <b>shape</b> of what is coming, never <b>how much</b> of it. The shape of a row is fixed by the component; the count is a load-time fact the front end does not have. Design as if it never will.</p>
+
+<div class="cols">
+<div>
+<span class="cn">Spinner in a fixed box</span>
+<div class="box"><div class="hd">Tracked bills</div><div class="dv"></div><div class="fix"><i class="ph ph-circle-notch spinner-inline" style="font-size:22px"></i></div></div>
+<p class="note"><b>Over-reserves.</b> <code>min-h-48</code> is a 192px guess made without a count — the same guess a skeleton makes, carrying no information. Usually settles by <b>shrinking</b>.</p>
+</div>
+<div>
+<span class="cn">Five rows</span>
+<div class="box"><div class="hd">Tracked bills</div><div class="dv"></div><div class="rows">
+<div class="skeleton-row"><div class="skeleton-block skeleton-block--title"></div><div class="skeleton-block skeleton-block--meta"></div></div>
+<div class="skeleton-row"><div class="skeleton-block skeleton-block--title"></div><div class="skeleton-block skeleton-block--meta"></div></div>
+<div class="skeleton-row"><div class="skeleton-block skeleton-block--title"></div><div class="skeleton-block skeleton-block--meta"></div></div>
+<div class="skeleton-row"><div class="skeleton-block skeleton-block--title"></div><div class="skeleton-block skeleton-block--meta"></div></div>
+<div class="skeleton-row"><div class="skeleton-block skeleton-block--title"></div><div class="skeleton-block skeleton-block--meta"></div></div>
+</div></div>
+<p class="note"><b>Claims a count.</b> Right only when five arrive. A lie when one does, and it settles by shrinking too.</p>
+</div>
+<div>
+<span class="cn">One row, no fixed height</span>
+<div class="box"><div class="hd">Tracked bills</div><div class="dv"></div><div class="rows">
+<div class="skeleton-row"><div class="skeleton-block skeleton-block--title"></div><div class="skeleton-block skeleton-block--meta"></div></div>
+</div></div>
+<p class="note"><b>Under-reserves.</b> One row is the floor of what can arrive, so the card can only <b>grow</b> — and growth pushes the page down, which is what a page does as it loads.</p>
+</div>
+</div>
+
+<dl class="rules">
+<dt>Shape</dt><dd>One skeleton row, the <b>shortest plausible item</b>. Header renders immediately — it is static and known, so only the body is skeletal and the moving region stays small.</dd>
+<dt>Direction</dt><dd><b>Under-reserve, so the settle is always downward.</b> A shrink pulls content up under a reader's eyes and a thumb already moving; that is the failure people notice.</dd>
+<dt>Never</dt><dd>A <code>min-height</code> on a loading container. A count, a cached count, or a guess at one — resolving cardinality early is an architectural question and the design must be right without it.</dd>
+<dt>Spinner</dt><dd>One job: an <b>in-place indeterminate wait</b> with no shape to promise — a button mid-submit, a control resolving. Never a route-level content fallback. One ink value in both modes.</dd>
+<dt>Zero</dt><dd>Not a loading problem. No treatment fixes it and the spinner is worst — the user waits in an empty box and is handed an empty box. That is <code>card-empty</code>.</dd>
+<dt>Motion</dt><dd>The pulse is <b>arrival, not motion</b> — sanctioned anywhere by <code>motion.rules</code>, costing nothing from the two-surface budget.</dd>
+</dl>
+</div>
+</body>
+</html>

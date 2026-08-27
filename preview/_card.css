@@ -1,0 +1,72 @@
+/* ------------------------------------------------------------------------
+   preview/_card.css — the shared chrome of a specimen card.
+
+   Recommended in sessions 1, 2, 3 and 4; built in session 5. It is not a
+   tidiness measure. Every rule below had been hand-copied into up to 54
+   files, which is the mechanism behind two standing traps: a token change
+   has to be applied 54 times (trap 1), and the card that states a rule is
+   the card most likely to break it, because its chrome is retyped from
+   memory each time (traps 6 and 9).
+
+   THIS FILE IS CHROME ONLY. It holds the frame a specimen is shown in —
+   canvas, aurora, the card box, and the four text roles every card needs
+   to caption a specimen. It holds NO specimen styling: nothing here should
+   ever be the thing a card is demonstrating, or the card stops being
+   evidence and starts quoting this file.
+
+   It is also not a token file and not system guidance. `.caption` is not a
+   shipping role class; `.role-*` in colors_and_type.css are. A card may
+   override anything here in its own <style>, and several do — usually
+   .card padding.
+
+   Load order in every card:
+     <link rel="stylesheet" href="../colors_and_type.css">
+     <link rel="stylesheet" href="_card.css">
+     <style> …card-specific only… </style>
+   ------------------------------------------------------------------------ */
+
+/* --- the frame ---------------------------------------------------------- */
+html, body { margin: 0; padding: 0; background: var(--canvas); color: var(--text-primary); }
+body { font-family: var(--font-sans); font-variation-settings: var(--sans-body); }
+/* The aurora sits under the card, fixed, so a card taller than its declared
+   viewport does not tile it. z-index 0 against the card's 1. */
+body::before { content: ""; position: fixed; inset: 0; background: var(--aurora); pointer-events: none; z-index: 0; }
+.card { position: relative; z-index: 1; padding: 20px 24px; box-sizing: border-box; min-height: auto; }
+
+/* --- the four text roles a card captions with ---------------------------- */
+
+/* Chrome label. Sans, wdth 125 so it holds up wide-tracked and small.
+   12px is the chrome floor (DESIGN.md a11y / audit §3.4) and this is it —
+   nothing in a card may set a smaller size. */
+.lbl { font-family: var(--font-sans); font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: var(--track-chrome); color: var(--text-secondary); font-weight: var(--sans-semibold); }
+
+/* Section eyebrow. The label with more air and a step back in value, used
+   where a card has named parts rather than named swatches. */
+.voice-eyebrow { font-family: var(--font-sans); font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; color: var(--text-tertiary); font-weight: var(--sans-semibold); margin-bottom: 6px; }
+
+/* Explanatory caption under a specimen. Serif roman at 420 — metadata is
+   serif roman, never small italic (HANDOFF-2026-08 §2). */
+.caption { font-family: var(--font-serif); font-variation-settings: 'opsz' 16, 'wght' 420; font-size: 12px; color: var(--text-secondary); line-height: 1.4; }
+
+/* Machine facts — token names, measured ratios, pixel values. Mono earns
+   its place only for things that are literally code or literally measured. */
+.note { font-family: var(--font-mono); font-size: 12px; line-height: 1.5; color: var(--text-secondary); }
+.note b { font-family: var(--font-sans); font-weight: 600; color: var(--text-primary); }
+
+/* --- the card's own titling --------------------------------------------- */
+/* .sub was max-width: 80ch until 2026-08-04. `ch` is the advance width of the
+   zero glyph of the element carrying the rule, so a count written in it is not
+   the count that renders — 80ch of 14px Newsreader is 101 characters. Stated
+   now as a counted line in rem: 69 characters, the target from
+   DESIGN.md -> spacing.measure. See explorations/What 65ch Measures.html. */
+h1 { font-family: var(--font-serif); font-variation-settings: var(--serif-display); font-weight: 800; font-size: 20px; line-height: 1.2; margin: 0 0 4px; }
+.sub { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 14px; line-height: 1.5; color: var(--text-secondary); margin: 0 0 16px; max-width: min(24.5rem, 100% - 2rem); text-wrap: pretty; }
+.sub b { font-weight: 600; }
+
+/* --- links -------------------------------------------------------------- */
+/* Ink, underlined, in both modes. No accent colour: a link inside a card is
+   chrome, and every green that reads as ink on glass is a measured value
+   (--color-success, 5.21) that would then need re-measuring per card
+   background. Weight carries the hover instead of hue. */
+a { color: var(--text-primary); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }

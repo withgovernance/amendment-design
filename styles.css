@@ -1,0 +1,15 @@
+/* =========================================================================
+   Amendment — Living Document
+   styles.css — canonical entry point
+
+   Link this single file and you get the whole token + role layer:
+   color, type, spacing, radii, shadows, materials, paper canvases, focus,
+   and the accessibility hard-lines. It simply re-exports colors_and_type.css.
+
+   Kit-specific component styles live in ui_kits/web/app.css, and a
+   paste-into-Next.js reference lives in
+   proposed/design-system/tokens/globals.example.css — neither is a
+   consumer entry point, so they are intentionally NOT imported here.
+   ========================================================================= */
+
+@import url('colors_and_type.css');

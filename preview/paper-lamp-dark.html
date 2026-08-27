@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Handoff targets — source-derived" name="Paper lamp in dark mode (scroll me)" subtitle="Refactor target · background-attachment: fixed · values read from voyager@e440076210f2" viewport="1280x860" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amendment — paper in dark mode</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+body::before{display:none}
+html,body{background-color:#080c17;background-image:radial-gradient(ellipse 72% 58% at 15% 6% in oklab,oklch(0.5 0.13 255/0.62),transparent),radial-gradient(ellipse 60% 48% at 88% 16% in oklab,oklch(0.42 0.1 285/0.5),transparent),radial-gradient(ellipse 62% 55% at 50% 94% in oklab,oklch(0.48 0.05 55/0.26),transparent);background-attachment:fixed;color:rgb(255 255 255/87%)}
+.card{padding:0;min-height:auto}
+.hdr{padding:20px 26px 16px;position:sticky;top:0;z-index:5;background:rgb(255 255 255/12%);backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);box-shadow:0 0 0 1px rgb(255 255 255/12%),0 10px 30px -10px rgb(0 0 0/.55),inset 0 1px 0 0 rgb(255 255 255/.06)}
+.hdr h1{color:rgb(255 255 255/87%)}
+.hdr .sub{color:rgb(255 255 255/55%);max-width:62rem}
+.hdr .note{color:rgb(255 255 255/55%)}
+.hdr .note b{color:rgb(255 255 255/87%)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;padding:26px}
+.colhd{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
+.eyeb{font-family:var(--font-sans);font-variation-settings:var(--sans-chrome);text-transform:uppercase;font-size:12px;letter-spacing:.08em;font-weight:var(--sans-semibold)}
+.ok{color:oklch(0.82 0.13 150)}
+.bad{color:oklch(0.72 0.15 25)}
+.colnote{font-family:var(--font-mono);font-size:12px;color:rgb(255 255 255/55%)}
+/* --- the sheet ------------------------------------------------------- */
+.sheet{border-radius:4px;padding:44px 52px 56px;box-shadow:0 36px 60px -16px rgb(0 0 0/.7),0 18px 32px -10px rgb(0 0 0/.5),0 6px 12px -6px rgb(0 0 0/.4),inset 0 0 0 1px oklch(0.5 0.05 55/0.5)}
+/* correct: the lamp is anchored to the viewport */
+.lamp-fixed{background-color:oklch(0.78 0.058 68);background-image:radial-gradient(ellipse 60% 38% at 50% 32% in oklab,oklch(1 0.055 80/0.55),transparent 78%),radial-gradient(ellipse 110% 80% at 50% 30% in oklab,oklch(0.97 0.06 78/0.35),transparent 80%);background-attachment:fixed,fixed;background-repeat:no-repeat,no-repeat}
+/* the regression: identical values, attachment left at its default */
+.lamp-scroll{background-color:oklch(0.78 0.058 68);background-image:radial-gradient(ellipse 60% 38% at 50% 32% in oklab,oklch(1 0.055 80/0.55),transparent 78%),radial-gradient(ellipse 110% 80% at 50% 30% in oklab,oklch(0.97 0.06 78/0.35),transparent 80%);background-repeat:no-repeat,no-repeat}
+/* --- ink on paper stays dark in both modes (paper is a light island) --- */
+.sheet{color:rgb(0 0 0/87%)}
+.bill-h{font-family:var(--font-serif);font-variation-settings:var(--serif-display);font-weight:800;font-size:26px;line-height:1.15;margin:0 0 6px;color:rgb(0 0 0/87%)}
+.bill-m{font-family:var(--font-sans);font-variation-settings:var(--sans-chrome);text-transform:uppercase;font-size:12px;letter-spacing:var(--track-chrome);font-weight:var(--sans-semibold);color:rgb(0 0 0/55%)}
+.rule{height:1px;background:rgb(0 0 0/12%);margin:18px 0 20px}
+.sec{font-family:var(--font-sans);font-variation-settings:var(--sans-chrome);text-transform:uppercase;font-size:12px;letter-spacing:var(--track-chrome);font-weight:var(--sans-semibold);color:rgb(0 0 0/55%);margin:24px 0 6px}
+.p{font-family:var(--font-serif);font-variation-settings:var(--serif-text);font-size:15px;line-height:1.62;color:rgb(0 0 0/87%);margin:0 0 12px;max-width:64ch;text-wrap:pretty}
+.p em{font-style:italic}
+.ln{font-family:var(--font-mono);font-size:12px;color:rgb(0 0 0/38%)}
+.foot{padding:0 26px 40px}
+.foot .caption{color:rgb(255 255 255/55%)}
+.foot .note{color:rgb(255 255 255/55%)}
+.foot .note b{color:rgb(255 255 255/87%)}
+.tall{height:520px}
+</style>
+</head>
+<body>
+<div class="card">
+<div class="hdr">
+<h1>Paper in dark mode is a desk lamp</h1>
+<p class="sub">The refactor target for <b>RECONCILIATION §4</b>. Both sheets below carry byte-identical colours and light pools, read from <b>voyager@e440076210f2</b>. The only difference is <code>background-attachment</code>. <b>Scroll the page</b> — that is the entire specimen; nothing about it is visible standing still.</p>
+<div class="note"><b>Scroll to compare.</b> Left holds its light. Right drags the pool up and out of frame, and the page below it goes dim.</div>
+</div>
+
+<div class="cols">
+  <div>
+    <div class="colhd"><span class="eyeb ok">Correct — production</span><span class="colnote">background-attachment: fixed, fixed</span></div>
+    <div class="sheet lamp-fixed">
+      <div class="bill-m">Texas · 89th Legislature</div>
+      <h2 class="bill-h">HB 21 — Relating to public access to legislative records</h2>
+      <div class="bill-m">Introduced version · as filed</div>
+      <div class="rule"></div>
+      <div class="sec">Section 1 · Short title</div>
+      <p class="p">This Act may be cited as the Legislative Records Access Act. The provisions of this Act apply to every record produced in the course of a committee proceeding, including records held by a subcommittee acting under delegated authority.</p>
+      <div class="sec">Section 2 · Definitions</div>
+      <p class="p">In this Act, <em>record</em> means any document, recording, or data set created, received, or maintained by a legislative body, without regard to the medium in which it is fixed. <em>Proceeding</em> means a hearing, markup, or vote noticed under the rules of either chamber.</p>
+      <p class="p">A record does not lose its character as a record because it is held by a contractor, a vendor, or an agent acting on behalf of a legislative body.</p>
+      <div class="sec">Section 3 · Publication</div>
+      <p class="p">Not later than the seventh day after a proceeding concludes, the presiding officer shall cause each record of that proceeding to be published in a machine-readable format at no charge. Publication under this section does not require a request.</p>
+      <p class="p">The presiding officer may withhold a record only on a ground enumerated in Section 5, and shall publish, with the remaining records, a written statement of the ground relied on.</p>
+      <div class="sec">Section 4 · Format</div>
+      <p class="p">A record published under Section 3 must be published in a format that permits automated extraction of its text. A scanned image of a printed page does not satisfy this requirement unless it is accompanied by an accurate text layer.</p>
+      <p class="p">Where a record is a recording of a proceeding, the presiding officer shall publish a transcript not later than the thirtieth day after the proceeding concludes.</p>
+      <div class="sec">Section 5 · Grounds for withholding</div>
+      <p class="p">A record may be withheld if its publication would disclose the identity of a person who has requested confidentiality under a program established by statute, or if publication is prohibited by an order of a court of competent jurisdiction.</p>
+      <p class="p">The grounds in this section are exclusive. A ground not enumerated here may not be relied on, and the burden of establishing a ground rests with the officer asserting it.</p>
+      <div class="sec">Section 6 · Effective date</div>
+      <p class="p">This Act takes effect September 1 of the year in which it is enacted, except that Section 4 takes effect January 1 of the following year.</p>
+      <div class="rule"></div>
+      <div class="ln">002140 · engrossed 2026-04-02 · 6 sections</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="colhd"><span class="eyeb bad">The regression</span><span class="colnote">attachment omitted → defaults to scroll</span></div>
+    <div class="sheet lamp-scroll">
+      <div class="bill-m">Texas · 89th Legislature</div>
+      <h2 class="bill-h">HB 21 — Relating to public access to legislative records</h2>
+      <div class="bill-m">Introduced version · as filed</div>
+      <div class="rule"></div>
+      <div class="sec">Section 1 · Short title</div>
+      <p class="p">This Act may be cited as the Legislative Records Access Act. The provisions of this Act apply to every record produced in the course of a committee proceeding, including records held by a subcommittee acting under delegated authority.</p>
+      <div class="sec">Section 2 · Definitions</div>
+      <p class="p">In this Act, <em>record</em> means any document, recording, or data set created, received, or maintained by a legislative body, without regard to the medium in which it is fixed. <em>Proceeding</em> means a hearing, markup, or vote noticed under the rules of either chamber.</p>
+      <p class="p">A record does not lose its character as a record because it is held by a contractor, a vendor, or an agent acting on behalf of a legislative body.</p>
+      <div class="sec">Section 3 · Publication</div>
+      <p class="p">Not later than the seventh day after a proceeding concludes, the presiding officer shall cause each record of that proceeding to be published in a machine-readable format at no charge. Publication under this section does not require a request.</p>
+      <p class="p">The presiding officer may withhold a record only on a ground enumerated in Section 5, and shall publish, with the remaining records, a written statement of the ground relied on.</p>
+      <div class="sec">Section 4 · Format</div>
+      <p class="p">A record published under Section 3 must be published in a format that permits automated extraction of its text. A scanned image of a printed page does not satisfy this requirement unless it is accompanied by an accurate text layer.</p>
+      <p class="p">Where a record is a recording of a proceeding, the presiding officer shall publish a transcript not later than the thirtieth day after the proceeding concludes.</p>
+      <div class="sec">Section 5 · Grounds for withholding</div>
+      <p class="p">A record may be withheld if its publication would disclose the identity of a person who has requested confidentiality under a program established by statute, or if publication is prohibited by an order of a court of competent jurisdiction.</p>
+      <p class="p">The grounds in this section are exclusive. A ground not enumerated here may not be relied on, and the burden of establishing a ground rests with the officer asserting it.</p>
+      <div class="sec">Section 6 · Effective date</div>
+      <p class="p">This Act takes effect September 1 of the year in which it is enacted, except that Section 4 takes effect January 1 of the following year.</p>
+      <div class="rule"></div>
+      <div class="ln">002140 · engrossed 2026-04-02 · 6 sections</div>
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+<div class="note"><b>Why this is the target and not a swatch.</b></div>
+<div class="caption" style="margin-top:6px">The two sheets differ by one declaration. A specimen card renders them identically, a screenshot diff passes, and the regression ships. <code>background-attachment</code> is the kind of property that gets dropped by a well-meaning refactor — it looks redundant next to <code>no-repeat</code>, and Tailwind has no arbitrary utility for a per-layer list, so it has to survive as raw CSS in the <code>.dark .paper-cream</code> block.</div>
+<div class="caption" style="margin-top:6px"><b>Also load-bearing here:</b> the <code>@custom-variant dark</code> at the top of globals.css excludes <code>.paper-cream</code>, <code>.paper-parchment</code> and their descendants, which is why ink on both sheets is <code>rgb(0 0 0/87%)</code> in a dark room. Paper is a light island. A refactor that "simplifies" that variant back to plain <code>&amp;:is(.dark *)</code> inverts every glyph on the page — and fails <i>silently</i>, since nothing errors. This design system deliberately does not copy that mechanism: it marks the canvas <code>[data-paper]</code> so the opt-out is explicit. That is a spec-ahead improvement, not a divergence to reconcile backwards.</div>
+<div class="caption" style="margin-top:6px"><b>Parchment differs only in temperature</b> — <code>oklch(0.77 0.067 64)</code> against cream's <code>oklch(0.78 0.058 68)</code>, pools at hue 76/74 instead of 80/78, inset ring at 0.55 alpha instead of 0.5. Letterhead stock is warmer than archive parchment. Same lamp geometry, so the same target applies.</div>
+<div class="note" style="margin-top:14px">Status in this project: already landed. <code>colors_and_type.css</code> carries these values as <code>--paper-cream</code> / <code>--paper-parchment</code> plus <code>--paper-*-lamp</code>, and the near-black <code>oklch(.20 .010 70)</code> RECONCILIATION §4 flagged is gone. The remaining work is in the repo, not here.</div>
+</div>
+</div>
+</body>
+</html>

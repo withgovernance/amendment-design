@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Receipt — the three export ratios" subtitle="Kept artifact is portrait HTML; shared artifact is a raster in tall, square and wide" viewport="980x420" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Receipt export ratios</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>/* SCALE-MODEL EXCEPTION to the 12px chrome floor. The type inside .sheet
+   (.kick 7px, .att 8.5px, .led 8px) is not chrome: each sheet is a miniature of
+   a raster authored at 1080px and rendered at 2x, shown here at ~14% so the
+   three ratios can be compared side by side. A scale model may render below the
+   floor; it must say so, and nothing outside .sheet may. Card chrome in this
+   file is at or above 12px. */
+  .card { padding: 18px 24px 22px; }
+  .row { display: grid; grid-template-columns: 150px 150px 288px 1fr; gap: 18px; align-items: start; margin-top: 16px; }
+  .slot .lb { font-family: var(--font-sans); font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: 0.06em; color: var(--text-tertiary); font-weight: var(--sans-semibold); margin-bottom: 7px; }
+  .slot .px { font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary); margin-top: 6px; }
+  .sheet { background: var(--paper-cream); box-shadow: inset 0 0 0 1px rgb(0 0 0 / 8%), var(--shadow-raised); border-radius: 3px; overflow: hidden; display: flex; flex-direction: column; }
+  .tall { aspect-ratio: 9/16; }
+  .square { aspect-ratio: 1/1; }
+  .wide { aspect-ratio: 16/9; }
+  .guil { height: 6px; flex: none; background: repeating-linear-gradient(90deg, transparent 0 2px, oklch(0.45 0.03 60 / 0.28) 2px 3px), radial-gradient(ellipse 100% 240% at 50% 50%, oklch(0.55 0.04 60 / 0.18), transparent 70%); }
+  .body { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 10px 12px; gap: 6px; }
+  .kick { font-family: var(--font-sans); font-variation-settings: var(--sans-ceremonial); font-weight: var(--sans-semibold); font-size: 7px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(0 0 0 / 45%); line-height: 1.5; }
+  .ttl { font-family: var(--font-serif); font-variation-settings: var(--serif-display); font-weight: 800; font-size: 15px; line-height: 1.14; color: rgb(0 0 0 / 87%); margin: 0; text-wrap: balance; }
+  .att { font-family: var(--font-serif); font-variation-settings: var(--serif-quote); font-style: italic; font-size: 8.5px; color: rgb(0 0 0 / 55%); }
+  .led { font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.06em; color: rgb(0 0 0 / 55%); }
+  .emb { width: 26px; height: 26px; border-radius: 9999px; box-shadow: -0.5px -0.5px 0.5px rgb(255 255 255 / 80%), 1.5px 2px 3px oklch(0.62 0.045 60 / 0.4), inset 1px 1.5px 2px oklch(0.62 0.045 60 / 0.45), inset -1px -1px 1.5px rgb(255 255 255 / 70%); }
+  dl.rules { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 5px 12px; align-content: start; }
+  dl.rules dt { font-family: var(--font-sans); font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: 0.06em; color: var(--text-tertiary); font-weight: var(--sans-semibold); white-space: nowrap; }
+  dl.rules dd { margin: 0; font-family: var(--font-serif); font-variation-settings: 'opsz' 16, 'wght' 420; font-size: 12.5px; line-height: 1.45; color: var(--text-secondary); }
+  dl.rules dd code { font-family: var(--font-mono); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="voice-eyebrow">The Receipt · shared artifact · audit §3.7</div>
+  <div class="row">
+    <div class="slot">
+      <div class="lb">Tall</div>
+      <div class="sheet tall"><div class="guil"></div><div class="body">
+        <div class="kick" style="font-size:6.5px">Boulder, Colorado<br>28 May 2026</div>
+        <p class="ttl">Letter delivered to Rep. Bensky</p>
+        <div class="att">Issued to Jordan Hale</div>
+        <div class="led">LETTER NO. 14,508</div>
+        <div class="emb"></div>
+      </div><div class="guil"></div></div>
+      <div class="px">1080 × 1920 · stories</div>
+    </div>
+    <div class="slot">
+      <div class="lb">Square</div>
+      <div class="sheet square"><div class="guil"></div><div class="body">
+        <div class="kick" style="font-size:6.5px">Boulder, Colorado<br>28 May 2026</div>
+        <p class="ttl" style="font-size:13px">Letter delivered to Rep. Bensky</p>
+        <div class="att">Issued to Jordan Hale</div>
+        <div class="led">LETTER NO. 14,508</div>
+        <div class="emb" style="width:22px;height:22px"></div>
+      </div><div class="guil"></div></div>
+      <div class="px">1080 × 1080 · feeds</div>
+    </div>
+    <div class="slot">
+      <div class="lb">Wide</div>
+      <div class="sheet wide"><div class="guil"></div><div class="body">
+        <div class="kick">Boulder, Colorado · 28 May 2026</div>
+        <p class="ttl" style="font-size:17px">Letter delivered to Rep. Bensky</p>
+        <div class="led">LETTER NO. 14,508</div>
+        <div class="emb" style="width:22px;height:22px"></div>
+      </div><div class="guil"></div></div>
+      <div class="px">1200 × 675 · link previews · attribution dropped</div>
+    </div>
+    <dl class="rules">
+      <dt>Kept</dt><dd>Portrait <b>HTML</b>, single column at 34rem, bloom at issuance. The 56rem landscape column is retired from the screen.</dd>
+      <dt>Shared</dt><dd>Rasterised image. Each ratio is authored at its own pixel size and rendered at 2× — <b>never scaled from another</b>, which is how the ledger number reached 5px on a phone.</dd>
+      <dt>Always</dt><dd>Caption · title · ledger number · emboss · guilloche top and bottom. Only <b>wide</b> may drop the attribution line.</dd>
+      <dt>Never</dt><dd>Glass, <code>backdrop-filter</code>, aurora, or motion. Paper is full-bleed — an emboss has nothing to press into otherwise.</dd>
+      <dt>Emboss</dt><dd>44px floor at 1×, inline with the signature rule. A notary presses over the signature, not beside it.</dd>
+    </dl>
+  </div>
+</div>
+</body>
+</html>

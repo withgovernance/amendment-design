@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Foundations" name="Foundations — Touch targets" subtitle="44px floor, measured per control — 40px is arithmetic, not a decision" viewport="980x1412" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amendment specimen</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+.card{padding:22px 26px 28px}
+.card *,.card *::before,.card *::after{box-sizing:border-box}
+.grid{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.slot{background:rgb(255 255 255/.55);box-shadow:inset 0 0 0 1px var(--border-subtle);border-radius:8px;padding:13px 15px 15px}
+.slot .hd{display:flex;align-items:baseline;gap:9px;margin-bottom:11px}
+.slot .m{font-family:var(--font-mono);font-size:12px;margin-left:auto;color:var(--text-secondary)}
+.slot .m b{font-family:var(--font-sans);font-weight:600}
+.slot.under{box-shadow:inset 0 0 0 1px var(--border-subtle),inset 3px 0 0 0 var(--color-danger)}
+.slot.ok{box-shadow:inset 0 0 0 1px var(--border-subtle),inset 3px 0 0 0 var(--color-success)}
+.under .m b{color:var(--color-danger)}.ok .m b{color:var(--color-success)}
+.stage{position:relative;display:flex;align-items:center;gap:14px;min-height:56px}
+/* the floor, drawn — a 44px band the control either fills or does not */
+.floor{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:44px;border-radius:4px;background:repeating-linear-gradient(45deg,rgb(0 0 0/.05) 0 4px,transparent 4px 8px);box-shadow:inset 0 0 0 1px rgb(0 0 0/.12);pointer-events:none}
+.ctl{position:relative;z-index:1}
+.btn{font-family:var(--font-sans);font-variation-settings:var(--sans-body);font-size:16px;font-weight:var(--sans-semibold);line-height:1.5;padding:.5rem 1rem;border:0;border-radius:.5rem;color:#fff;background:linear-gradient(160deg,var(--color-primary-light),var(--color-primary));box-shadow:var(--shadow-flat),inset 0 0 0 1px rgb(0 0 0/5%)}
+.btn--tall{min-height:44px}
+.btn--cta{background:var(--color-action);color:var(--color-action-label)}
+.btn--cta.btn--tall{min-height:48px}
+.inp{font-family:var(--font-sans);font-size:16px;line-height:1.5;padding:8px;width:200px;border:0;border-radius:.25rem;background:rgb(0 0 0/5%);box-shadow:inset 0 2px 4px rgb(0 0 0/.05),inset 0 0 0 1px rgb(0 0 0/10%);color:var(--text-primary)}
+.inp--tall{min-height:44px}
+.tgl{width:44px;height:24px;border-radius:999px;background:rgb(0 0 0/5%);box-shadow:inset 0 0 0 1px rgb(0 0 0/8%);display:flex;align-items:center;padding:4px}
+.tgl i{width:16px;height:16px;border-radius:999px;background:rgb(0 0 0/87%);display:block}
+.tgl-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center}
+.tgl-wrap.expand::before{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;transform:translate(-50%,-50%);border-radius:8px;box-shadow:inset 0 0 0 1px var(--color-success)}
+.crumbs{font-family:var(--font-sans);font-variation-settings:var(--sans-chrome);font-size:12px;font-weight:var(--sans-semibold);text-transform:uppercase;letter-spacing:.06em;line-height:1;display:flex;align-items:center;gap:8px;color:var(--text-secondary)}
+.crumbs a{color:var(--text-secondary);text-decoration:none;position:relative;display:inline-flex;align-items:center}
+.crumbs .sep{color:var(--text-tertiary)}
+.crumbs.expand a::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:calc(100% + 12px);height:44px;border-radius:6px;box-shadow:inset 0 0 0 1px var(--color-success)}
+.icb{width:44px;height:44px;border-radius:.75rem;background:transparent;border:0;display:flex;align-items:center;justify-content:center;color:var(--text-primary)}
+.icb span{width:18px;height:18px;border-radius:3px;background:currentColor;opacity:.55;display:block}
+.fab{width:48px;height:48px;border-radius:.75rem;background:var(--color-action);border:0;box-shadow:var(--shadow-floating)}
+.rules{margin:22px 0 0;display:grid;grid-template-columns:auto 1fr;gap:8px 14px;align-items:baseline}
+dt{font-variation-settings:var(--sans-chrome);text-transform:uppercase;font-size:12px;letter-spacing:.06em;color:var(--text-secondary);font-weight:var(--sans-semibold);white-space:nowrap}
+dd{margin:0;font-size:13px;line-height:1.5;color:var(--text-primary);max-width:min(28rem,100% - 2rem)}
+dd b{font-weight:600}dd code,.tok{font-family:var(--font-mono);font-size:12px}
+dd code{color:var(--text-secondary)}
+.note{margin-top:16px}
+.legend{font-family:var(--font-mono);font-size:12px;color:var(--text-tertiary);margin-top:9px}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>Touch targets</h1>
+<p class="sub">The floor is <b>44&thinsp;&times;&thinsp;44&thinsp;px</b> and <b>a component with a target declares its own minimum</b>. The hatched band is 44px. Every number below is measured in this card, not asserted.</p>
+
+<div class="grid">
+  <div class="slot under" id="s1">
+    <div class="hd"><span class="lbl">button, as specified</span><span class="m"><b id="m1">…</b>px</span></div>
+    <div class="stage"><div class="floor"></div><button class="btn ctl" id="b1">Track this bill</button></div>
+    <div class="legend">0.5rem 1rem + 16px&thinsp;&times;&thinsp;1.5 &mdash; nobody chose 40</div>
+  </div>
+  <div class="slot ok">
+    <div class="hd"><span class="lbl">+ min-height: 44px</span><span class="m"><b id="m2">…</b>px</span></div>
+    <div class="stage"><div class="floor"></div><button class="btn btn--tall ctl" id="b2">Track this bill</button></div>
+    <div class="legend">padding untouched &mdash; the plate grows, the label stays centred</div>
+  </div>
+
+  <div class="slot under">
+    <div class="hd"><span class="lbl">input, as specified</span><span class="m"><b id="m3">…</b>px</span></div>
+    <div class="stage"><div class="floor"></div><input class="inp ctl" id="b3" value="Boulder, CO 80302"></div>
+    <div class="legend">same arithmetic, same 4px short</div>
+  </div>
+  <div class="slot ok">
+    <div class="hd"><span class="lbl">+ min-height: 44px</span><span class="m"><b id="m4">…</b>px</span></div>
+    <div class="stage"><div class="floor"></div><input class="inp inp--tall ctl" id="b4" value="Boulder, CO 80302"></div>
+    <div class="legend">the recess is unaffected &mdash; height goes to the box</div>
+  </div>
+
+  <div class="slot under">
+    <div class="hd"><span class="lbl">toggle, as specified</span><span class="m"><b id="m5">…</b>px tall</span></div>
+    <div class="stage"><div class="floor"></div><span class="tgl-wrap ctl"><span class="tgl" id="b5"><i></i></span></span></div>
+    <div class="legend">the 44 in the spec is the track's <b>width</b> &mdash; which is how this hid</div>
+  </div>
+  <div class="slot ok">
+    <div class="hd"><span class="lbl">target expanded, track unchanged</span><span class="m"><b>44</b>px</span></div>
+    <div class="stage"><div class="floor"></div><span class="tgl-wrap expand ctl"><span class="tgl"><i></i></span></span></div>
+    <div class="legend">a 44px track stops reading as a switch &mdash; grow the target, not the box</div>
+  </div>
+
+  <div class="slot under">
+    <div class="hd"><span class="lbl">breadcrumb, as specified</span><span class="m"><b id="m6">…</b>px tall</span></div>
+    <div class="stage"><div class="floor"></div><nav class="crumbs ctl"><a href="#" id="b6">Colorado</a><span class="sep">&rsaquo;</span><a href="#">HB24&#8209;1098</a></nav></div>
+    <div class="legend">27% of the floor &mdash; the worst in the system</div>
+  </div>
+  <div class="slot ok">
+    <div class="hd"><span class="lbl">target expanded around 12px type</span><span class="m"><b>44</b>px</span></div>
+    <div class="stage"><div class="floor"></div><nav class="crumbs expand ctl"><a href="#">Colorado</a><span class="sep">&rsaquo;</span><a href="#">HB24&#8209;1098</a></nav></div>
+    <div class="legend">the caret is decoration, not a target &mdash; it takes no hit area</div>
+  </div>
+
+  <div class="slot ok">
+    <div class="hd"><span class="lbl">icon button &mdash; already complied</span><span class="m"><b id="m7">…</b>px</span></div>
+    <div class="stage"><div class="floor"></div><button class="icb ctl" id="b7"><span></span></button></div>
+    <div class="legend">states a size, so it has one. The glyph is 18px; the target is not.</div>
+  </div>
+  <div class="slot ok">
+    <div class="hd"><span class="lbl">CTA and FAB &mdash; 48, not 44</span><span class="m"><b id="m8">…</b>px</span></div>
+    <div class="stage"><div class="floor"></div><button class="btn btn--cta btn--tall ctl" id="b8">Send</button><button class="fab ctl"></button></div>
+    <div class="legend">consequential and thumb-reached &mdash; Android's 48 is the right floor here</div>
+  </div>
+</div>
+
+<dl class="rules">
+  <dt>The number</dt><dd><b>44 is the floor of three authorities, not a target.</b> Apple HIG 44pt, WCAG&nbsp;2.5.5 (AAA) 44&nbsp;CSS&nbsp;px, Android 48dp. Two authorities and two unit systems arriving at one number is the argument for holding it. WCAG&nbsp;2.2's newer 2.5.8 says 24px at AA &mdash; <b>that is not an update to this</b>, it is the number someone will cite to shrink a control.</dd>
+  <dt>Why declare it</dt><dd><b>40px is not a decision anybody made.</b> It is <code>padding + line-height</code>, and it is what four controls here arrive at &mdash; the same way the tab bar shipped 40. The two that comply are the two that <i>state a size</i>.</dd>
+  <dt>How</dt><dd><b><code>min-height</code>, not more padding.</b> Padding changes the plate's proportions and the label's optical centring; a minimum leaves a compliant control alone and grows only what falls short.</dd>
+  <dt>When the control<br>must stay small</dt><dd><b>Expand the target, not the box.</b> A transparent hit area at the minimum, centred &mdash; the appearance and the target are two different geometries, and this rule governs only the second. A 44px-tall toggle track stops reading as a switch.</dd>
+  <dt>Where 48</dt><dd>Dense, consequential, or thumb-reached: <b>Send, Co-sign, the FAB, the tab bar.</b></dd>
+</dl>
+
+<p class="note" id="probe">measuring&hellip;</p>
+</div>
+<script>
+(async () => {
+  await document.fonts.ready;
+  const h = id => Math.round(document.getElementById(id).getBoundingClientRect().height * 10) / 10;
+  const vals = {m1:'b1',m2:'b2',m3:'b3',m4:'b4',m5:'b5',m6:'b6',m7:'b7',m8:'b8'};
+  const out = {};
+  for (const [slot, ctl] of Object.entries(vals)) { out[slot] = h(ctl); document.getElementById(slot).textContent = out[slot]; }
+  const short = Object.entries(out).filter(([k, v]) => v < 44).length;
+  document.getElementById('probe').innerHTML =
+    'Measured live: button <b>' + out.m1 + '</b> \u2192 ' + out.m2 + ' &middot; input <b>' + out.m3 + '</b> \u2192 ' + out.m4 +
+    ' &middot; toggle <b>' + out.m5 + '</b> &middot; breadcrumb <b>' + out.m6 + '</b> &middot; icon button ' + out.m7 +
+    ' &middot; CTA ' + out.m8 + '. <b>' + short + ' of the as-specified controls fall under the floor</b>, none of them by intent. ' +
+    'DESIGN.md \u2192 a11y.targetSize, cited per component 2026-08-11.';
+})();
+</script>
+</body>
+</html>

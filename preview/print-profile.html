@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Foundations" name="Foundations — Print profile" viewport="1000x1857" subtitle="Paper is the register's home — the one transport where the ink layer is literally true" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amendment specimen</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+.card{padding:22px 26px 28px}
+.card *,.card *::before,.card *::after{box-sizing:border-box}
+.pair{margin-top:18px;display:grid;grid-template-columns:repeat(2,456px);gap:16px;justify-content:start}
+.slot{width:456px}
+.slot .hd{display:flex;align-items:baseline;gap:9px;margin-bottom:9px}
+.slot .st{font-family:var(--font-mono);font-size:12px;margin-left:auto}
+.st.bad{color:var(--color-danger)}.st.good{color:var(--color-success)}
+/* THE TWO SHEETS ARE MINIATURES, and this is the stated exception to the 12px
+   floor: each is drawn at TRUE US LETTER GEOMETRY — 816x1056 at 96px/in — and
+   shown at 53% so both can be compared side by side. Type inside a sheet is
+   11.5pt on paper and renders ~8px here. Everything the CARD says about the
+   sheets — labels, legends, the ink scale, the rules — is authored at card size
+   and holds the floor. Authoring at true geometry is the point: every length in
+   this card is a real inch, and scaling is this system's recurring bug. */
+.frame{background:rgb(0 0 0/8%);padding:12px;border-radius:6px;overflow:hidden;width:456px;height:584px}
+.sheet{width:816px;height:1056px;transform-origin:top left;transform:scale(.53);background:#fff;box-shadow:0 2px 10px rgb(0 0 0/.2);position:relative;font-family:var(--font-serif);font-variation-settings:'opsz' 16,'wght' 450;font-size:15.3px;line-height:1.435}
+.pad{padding:96px}
+.sheet p{margin:0 0 11px}
+.mono{font-family:var(--font-mono);font-size:12.5px}
+.sans{font-family:var(--font-sans);font-variation-settings:'wdth' 100,'wght' 600;font-size:19px}
+/* left sheet: the unowned default — flat black, no postal block, and the REAL
+   seal rendered on it (there was a hand-drawn `.mud` sphere here until
+   2026-08-12; it was wrong about the outcome and the hue, and a depiction in a
+   specimen is trap #15) */
+.flat,.flat *{color:#000 !important}
+.embnote{font-family:var(--font-mono);font-size:12px;color:#555;margin-top:5px}
+/* The left sheet renders the REAL component, not a picture of one. A browser on
+   a white sheet with no paper beneath it IS the printer's situation, so the
+   defect is demonstrated rather than illustrated — and if it reads subtly, that
+   is the finding and the legend follows the render. */
+/* right sheet: the profile — ink re-based 100/45/none */
+.ink2{color:rgb(0 0 0/45%)}
+.blk{font-family:var(--font-sans);font-variation-settings:var(--sans-chrome),'wght' 600;font-size:12px;letter-spacing:var(--track-chrome);line-height:1.5}
+.dot{border-bottom:1.5px dotted rgb(0 0 0/55%)}
+.fold{position:absolute;left:0;right:0;height:0;border-top:1px dashed var(--color-primary);opacity:.5}
+.foldlbl{position:absolute;right:26px;font-family:var(--font-mono);font-size:12px;color:var(--color-primary);transform:translateY(-15px)}
+.sig{margin-top:38.4px}   /* 0.4in at 96px/in */
+.rules{margin:22px 0 0;display:grid;grid-template-columns:auto 1fr;gap:8px 14px;align-items:baseline}
+dt{font-variation-settings:var(--sans-chrome);text-transform:uppercase;font-size:12px;letter-spacing:.06em;color:var(--text-secondary);font-weight:var(--sans-semibold);white-space:nowrap}
+dd{margin:0;font-size:13px;line-height:1.5;color:var(--text-primary);max-width:min(28rem,100% - 2rem)}
+dd b{font-weight:600}dd code{font-family:var(--font-mono);font-size:12px;color:var(--text-secondary)}
+.scale{margin:20px 0 0;display:flex;gap:0;box-shadow:inset 0 0 0 1px var(--border-subtle);border-radius:6px;overflow:hidden}
+.scale div{flex:1;padding:10px 12px;font-family:var(--font-mono);font-size:12px;background:#fff;color:#000}
+.scale div+div{box-shadow:inset 1px 0 0 var(--border-subtle)}
+.scale b{display:block;font-family:var(--font-sans);font-variation-settings:var(--sans-chrome);font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;color:rgb(0 0 0/45%)}
+.note{margin-top:16px}
+.legend{font-family:var(--font-mono);font-size:12px;color:var(--text-tertiary);margin-top:8px;line-height:1.45}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>Print &mdash; the mailed letter</h1>
+<p class="sub"><b>Paper is not a degraded screen. It is this register's home.</b> <code>paper-cream</code>, the emboss, the guilloche, the ledger number and a Scotch roman are all imitations of paper, so print is the one transport where the ink layer is literally true &mdash; and the only one where the aurora cannot exist, which costs nothing, because the aurora never carried meaning.</p>
+
+<div class="pair">
+  <div class="slot">
+    <div class="hd"><span class="lbl">the unowned default</span><span class="st bad">not mailable</span></div>
+    <div class="frame"><div class="sheet flat"><div class="pad">
+      <div class="sans">Cap rent increases at 5% a year</div>
+      <div class="mono" style="margin:12px 0 16px">Jordan Hale &middot; Boulder, Colorado &middot; 28 May 2026 &middot; LETTER NO. 14,508</div>
+      <p>Dear Representative Bensky,</p>
+      <p>I rent in your district and my lease went up eleven percent this spring, which is the third increase in four years and more than my pay has moved in that time. I am asking you to vote yes on HB&nbsp;24-1098, which caps annual rent increases at five percent plus inflation.</p>
+      <p>I am not asking for rent to be free. I am asking for it to be predictable enough that I can plan a year ahead.</p>
+      <p style="margin-top:20px">Sincerely,</p>
+      <div style="height:8px"></div>
+      <div class="dot" style="width:250px"></div>
+      <div class="blk">Jordan Hale</div>
+      <span class="seal-emboss seal-emboss--sm" style="margin-top:14px"><span>A</span></span>
+      <div class="embnote">the real <code>.seal-emboss</code> on a sheet &mdash; all shadow, no relief</div>
+    </div></div></div>
+    <p class="legend"><code>* { color: #000 }</code> flattens 87/55/38, so the metadata shouts as loud as the ask &middot; <b>the real <code>.seal-emboss</code>, rendered here and not illustrated, comes out a pale grey ring &mdash; the relief is gone and what is left is a picture of a deformation, carrying no authority at all</b> &middot; no return or postal block &middot; 8px above the signature rule &middot; <code>break-inside: avoid</code> is a rule a two-page letter cannot obey.</p>
+  </div>
+
+  <div class="slot">
+    <div class="hd"><span class="lbl">profilesPrint</span><span class="st good">mailable</span></div>
+    <div class="frame"><div class="sheet"><div class="pad">
+      <div class="blk">Jordan Hale<br>1180 Pine Street, Apt 4<br>Boulder, Colorado 80302</div>
+      <div style="margin-top:26px">28 May 2026</div>
+      <div style="margin-top:26px;font-variation-settings:'opsz' 16,'wght' 500">Representative Ana Bensky<br>Colorado House of Representatives, District 10<br>200 East Colfax Avenue<br>Denver, Colorado 80203</div>
+      <div style="margin-top:30px">
+        <p>Dear Representative Bensky,</p>
+        <p>I rent in your district and my lease went up eleven percent this spring, which is the third increase in four years and more than my pay has moved in that time. I am asking you to vote yes on HB&nbsp;24-1098, which caps annual rent increases at five percent plus inflation.</p>
+        <p>I am not asking for rent to be free. I am asking for it to be predictable enough that I can plan a year ahead.</p>
+        <p style="margin-top:22px">Sincerely,</p>
+      </div>
+      <div class="sig"></div>
+      <div class="dot" style="width:300px"></div>
+      <div class="blk" style="margin-top:5px">Jordan Hale &middot; Boulder, Colorado</div>
+      <div class="mono ink2" style="margin-top:30px">LETTER NO. 14,508 &middot; sent via Amendment &middot; 28 May 2026</div>
+      </div>
+      <div class="fold" style="top:352px"><span class="foldlbl">fold &middot; 3&#8532;in</span></div>
+      <div class="fold" style="top:704px"><span class="foldlbl">fold &middot; 7&#8531;in</span></div>
+    </div></div>
+    <p class="legend">1in margins all four sides, measure <b>6.5in</b> &middot; 11.5pt Newsreader on 16.5pt &middot; return block <b>printed</b>, not ruled &middot; <b>0.4in</b> clear above the printed name &middot; nothing consequential on a fold line.</p>
+  </div>
+</div>
+
+<div class="scale">
+  <div><b>primary &mdash; 100%</b>the ask, the argument, the name</div>
+  <div style="color:rgb(0 0 0/45%)"><b>secondary &mdash; 45%</b>ledger number, dateline, provenance</div>
+  <div style="color:rgb(0 0 0/45%)"><b>tertiary &mdash; does not print</b>promotes to secondary, or is dropped</div>
+</div>
+<p class="legend"><b>Ink is re-based, not flattened.</b> The 87/55/38 scale is how ink sits on a page, not a screen affordance &mdash; so print re-bases it rather than deleting it.</p>
+
+<dl class="rules">
+  <dt>It is a profile</dt><dd>No new tokens &mdash; the same ink layer rendered by poorer machinery. With <b>one addition no profile has needed before, a <code>requires:</code> list</b>, because paper has content requirements the screen has no equivalent for: the user's postal address and the office's.</dd>
+  <dt>The sheet is<br>the canvas</dt><dd><b>Cream does not print.</b> A cream fill is an ink wash across a whole page, it bands on consumer printers, and the stock already has a colour. The canvas token was always standing in for this.</dd>
+  <dt>The emboss<br>cannot print</dt><dd>It is a <b>deformation of a sheet</b>; a printer can only print a picture of one. <b>Rendered here rather than predicted:</b> it comes out a <b>pale grey ring</b> — all shadow, no relief — on the very artifact whose authority it was carrying. A faint ring is worse than a smudge, because a smudge at least looks like an accident. <b>The ledger number carries the proof instead</b> &mdash; <code>registers.issued.proof-rule</code> load-bearing in a third transport.</dd>
+  <dt>The measure</dt><dd><b>6.5in, set by the margin.</b> Paper takes its measure from the margin, not from a character count &mdash; and <code>ch</code> does not travel here for the same reason it was retired everywhere else.</dd>
+  <dt>Signature</dt><dd><b>Canonical here, not proposed.</b> On screen the dotted rule anticipates an act; on paper the act happens. 0.4in of clear space, and the <b>printed name is mandatory</b> &mdash; a hand-signed name is not always legible and the recipient has to know who wrote.</dd>
+  <dt>Ledger number</dt><dd>Printed as one line in the closing, and <b>the one place a user may suppress it</b>: on a mailed letter it also discloses that the letter came through a platform.</dd>
+  <dt>Past one sheet</dt><dd><code>break-inside: avoid</code> is unobeyable. A <b>continuation header</b> on every sheet after the first &mdash; surname, subject, ledger number, page n of m. Never strand a line; never break between the closing and the signature.</dd>
+</dl>
+
+<p class="note" id="probe">measuring&hellip;</p>
+<p class="legend"><b>The sheets are scale models, not chrome.</b> Each is authored at true US&nbsp;Letter geometry &mdash; 816&thinsp;&times;&thinsp;1056px at 96px/in &mdash; and shown at 53%, so type set at 11.5pt renders about 8px here. That is the one licensed way a specimen may render below the 12px floor, and it is stated in the file rather than assumed.</p>
+</div>
+<script>
+(async () => {
+  await document.fonts.ready;
+  const sh = document.querySelectorAll('.sheet')[1];
+  const pad = parseFloat(getComputedStyle(sh.querySelector('.pad')).paddingLeft);
+  const w = sh.getBoundingClientRect().width / 0.53;
+  const measure = (w - pad * 2) / 96;
+  const sig = parseFloat(getComputedStyle(sh.querySelector('.sig')).marginTop) / 96;
+  document.getElementById('probe').innerHTML =
+    'Drawn at true US Letter geometry &mdash; ' + Math.round(w) + '&thinsp;&times;&thinsp;1056px at 96px/in &mdash; so these are real inches, not eyeballed: ' +
+    'margin <b>' + (pad / 96).toFixed(2) + 'in</b>, measure <b>' + measure.toFixed(2) + 'in</b>, clear space above the printed name <b>' + sig.toFixed(2) + 'in</b>, ' +
+    'folds at <b>3.67</b> and <b>7.33in</b>. DESIGN.md \u2192 profilesPrint; the CSS it can own is in colors_and_type.css.';
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-label="Blue Hour aurora — static rendering">
+  <defs>
+    <radialGradient id="lobe-indigo" cx="15%" cy="8%" r="55%">
+      <stop offset="0%" stop-color="oklch(0.88 0.05 250 / 0.7)"></stop>
+      <stop offset="100%" stop-color="oklch(0.88 0.05 250 / 0)"></stop>
+    </radialGradient>
+    <radialGradient id="lobe-slate" cx="85%" cy="20%" r="46%">
+      <stop offset="0%" stop-color="oklch(0.90 0.04 270 / 0.55)"></stop>
+      <stop offset="100%" stop-color="oklch(0.90 0.04 270 / 0)"></stop>
+    </radialGradient>
+    <radialGradient id="lobe-parchment" cx="50%" cy="90%" r="50%">
+      <stop offset="0%" stop-color="oklch(0.94 0.03 60 / 0.5)"></stop>
+      <stop offset="100%" stop-color="oklch(0.94 0.03 60 / 0)"></stop>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="480" fill="#f4f4f5"></rect>
+  <rect width="800" height="480" fill="url(#lobe-indigo)"></rect>
+  <rect width="800" height="480" fill="url(#lobe-slate)"></rect>
+  <rect width="800" height="480" fill="url(#lobe-parchment)"></rect>
+</svg>

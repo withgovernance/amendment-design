@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Type" name="Type — The newcomer's lede (Archive)" subtitle="One sentence, three facts, one action — plain words in the Archive's own type" viewport="700x720" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amendment type specimen</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>.card { padding: 18px 26px 22px; }.voice-eyebrow { margin-bottom: 12px; }
+  .billno { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; color: var(--text-secondary); }
+  .title { font-family: var(--font-serif); font-variation-settings: var(--serif-display); font-weight: 800; font-size: 30px; line-height: 1.14; letter-spacing: -0.015em; color: var(--text-primary); margin: 6px 0 0; max-width: min(17rem, 100% - 2rem); text-wrap: balance; }
+  .lede { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 20px; font-weight: 450; line-height: 1.55; max-width: min(24rem, 100% - 2rem); color: var(--text-primary); margin: 14px 0 0; text-wrap: pretty; }
+  .facts { display: grid; gap: 4px; margin-top: 14px; font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 14px; line-height: 1.5; color: var(--text-secondary); max-width: min(20.5rem, 100% - 2rem); }
+  .act { margin-top: 16px; display: flex; gap: 10px; align-items: center; }
+  .plate { background: var(--color-action); color: var(--color-action-label); font-family: var(--font-sans); font-weight: var(--sans-semibold); font-size: 14px; border: 0; border-radius: var(--radius-md); padding: 11px 18px; cursor: pointer; box-shadow: var(--shadow-raised); }
+  .dest { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 14px; color: var(--text-secondary); }
+  .anno { display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--border-hairline); }
+  .anno dt { font-family: var(--font-sans); font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: 0.06em; color: var(--text-tertiary); font-weight: var(--sans-semibold); white-space: nowrap; }
+  .anno dd { margin: 0; font-family: var(--font-serif); font-variation-settings: 'opsz' 16, 'wght' 420; font-size: 12.5px; line-height: 1.45; color: var(--text-secondary); }
+  .anno dd code { font-family: var(--font-mono); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="voice-eyebrow">The newcomer's lede · Archive · audit §3.1</div>
+  <div class="billno">HB 21 · Colorado · 2026</div>
+  <h1 class="title">Concerning local authority to enact rent stabilization</h1>
+  <p class="lede">If you rent in Colorado, this bill would let your city cap how much your rent can rise each year — something cities are barred from doing today.</p>
+  <div class="facts">
+    <div>Affects renters in home-rule municipalities — about 1 in 3 Colorado households.</div>
+    <div>It is in committee. A small group of legislators decides on May 28 whether it goes to a full vote.</div>
+    <div>Rep. Bensky represents you. She has not said how she will vote.</div>
+  </div>
+  <div class="act"><button class="plate">Write Rep. Bensky</button><span class="dest">or read the bill as written →</span></div>
+  <dl class="anno">
+    <dt>Lede</dt><dd><code>.role-lede</code> — Newsreader at <code>--serif-text</code>, 1.25rem / 1.55, <code>measure.lede</code> — 47 characters at 24rem. One scale step, not a new register: the newcomer is served by plainer words and stronger hierarchy, not a second voice.</dd>
+    <dt>Jargon</dt><dd>Never left alone. “In committee” is followed by what a committee does, in the same sentence. A tooltip is not a gloss.</dd>
+    <dt>Action</dt><dd>Exactly one filled green plate. The statute is a destination, not the landing state — paper begins where the statutory text begins.</dd>
+  </dl>
+</div>
+</body>
+</html>

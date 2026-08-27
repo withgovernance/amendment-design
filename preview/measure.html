@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Foundations" name="Foundations — The measure" subtitle="69 characters, stated in rem — never in ch" viewport="900x988" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amendment specimen</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+.card{padding:22px 26px 26px}
+.spec{margin-top:18px;display:flex;flex-direction:column;gap:14px}
+.row{background:rgb(255 255 255/.55);box-shadow:inset 0 0 0 1px var(--border-subtle);border-radius:8px;padding:13px 16px 15px}
+.row .hd{display:flex;align-items:baseline;gap:10px;margin-bottom:7px}
+.row .ct{font-family:var(--font-mono);font-size:12px;color:var(--text-secondary);margin-left:auto}
+.row .ct b{font-family:var(--font-sans);font-weight:600;color:var(--text-primary)}
+.samp{font-family:var(--font-serif);font-variation-settings:var(--serif-text);font-size:16px;font-weight:450;line-height:1.68;color:var(--text-primary);margin:0}
+.row.over{box-shadow:inset 0 0 0 1px var(--border-subtle),inset 3px 0 0 0 var(--color-warning)}
+.row.on{box-shadow:inset 0 0 0 1px var(--border-subtle),inset 3px 0 0 0 var(--color-success)}
+.rules{margin:20px 0 0;display:grid;grid-template-columns:auto 1fr;gap:8px 14px;align-items:baseline}
+dt{font-variation-settings:var(--sans-chrome);text-transform:uppercase;font-size:12px;letter-spacing:.06em;color:var(--text-secondary);font-weight:var(--sans-semibold);white-space:nowrap}
+dd{margin:0;font-size:13px;line-height:1.5;color:var(--text-primary);max-width:min(26rem,100% - 2rem)}
+dd b{font-weight:600}
+dd code,.tok code{font-family:var(--font-mono);font-size:12px;color:var(--text-secondary)}
+.probe{margin-top:16px}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>The measure</h1>
+<p class="sub">A measure caps the element that <b>holds the text</b>, and it is stated in <code>rem</code> derived from a counted line. The count is the intent; the rem is the value.</p>
+
+<div class="spec">
+  <div class="row over" style="max-width:none">
+    <div class="hd"><span class="lbl">was: 65ch on the page shell</span><span class="ct">636px &middot; <b id="c1">…</b> characters</span></div>
+    <p class="samp" id="p1" style="max-width:636px">I rent in your district and my lease went up eleven percent this spring, which is the third increase in four years and more than my pay has moved in that time.</p>
+  </div>
+  <div class="row on">
+    <div class="hd"><span class="lbl">measure.body &middot; 28rem</span><span class="ct">448px &middot; <b id="c2">…</b> characters</span></div>
+    <p class="samp" id="p2" style="max-width:min(28rem,100% - 2rem)">I rent in your district and my lease went up eleven percent this spring, which is the third increase in four years and more than my pay has moved in that time.</p>
+  </div>
+  <div class="row on">
+    <div class="hd"><span class="lbl">measure.lede &middot; 24rem</span><span class="ct">384px &middot; <b id="c3">…</b> characters</span></div>
+    <p class="samp" id="p3" style="max-width:min(24rem,100% - 2rem);font-size:20px">Your landlord could raise the rent by any amount, with sixty days&rsquo; notice.</p>
+  </div>
+</div>
+
+<dl class="rules">
+  <dt>The unit</dt><dd><b><code>ch</code> is banned from length tokens.</b> It is the advance width of the zero glyph <i>of the element carrying the rule</i> &mdash; so <code>65ch</code> on a shell that inherits the body <b>sans</b>, wrapping <b>serif</b> prose, rendered 97 characters. Nobody chose 97.</dd>
+  <dt>Two ambiguities</dt><dd>Zero vs average glyph <i>within</i> a face is 42% in Newsreader; measuring face vs rendered face <i>between</i> two is 50%. Self-consistency fixes only the second: <code>65ch</code> set on the serif itself is still 92 characters.</dd>
+  <dt>Where it goes</dt><dd>On the text, not the shell. A page may be wide; the paragraph is capped. <code>container.*</code> are shells, <code>measure.*</code> are measures.</dd>
+  <dt>The counts</dt><dd><b>Target 69, ceiling 75.</b> <code>measure.body</code> <code>min(28rem, 100% - 2rem)</code>; <code>measure.lede</code> <code>min(24rem, 100% - 2rem)</code>. The <code>min()</code> is why neither needs a breakpoint. Metadata grids, rolls and tallies are not copy and may run wider.</dd>
+  <dt>On paper</dt><dd><b>6.5in</b>, set by the 1in margin &mdash; paper takes its measure from the margin, not from a count. See <code>profilesPrint</code>.</dd>
+</dl>
+
+<p class="note probe" id="probe">measuring&hellip;</p>
+</div>
+<script>
+(async () => {
+  await document.fonts.ready;
+  const face = getComputedStyle(document.getElementById('p1'));
+  function avg(fs){
+    const s = document.createElement('span');
+    s.style.cssText = 'position:absolute;left:-9999px;white-space:pre;font-family:'+face.fontFamily+';font-variation-settings:'+face.fontVariationSettings+';font-weight:450;font-size:'+fs+'px';
+    s.textContent = 'the quick brown fox jumps over the lazy dog and asks the legislature to reconsider a rent stabilization bill this session ';
+    document.body.appendChild(s);
+    const w = s.getBoundingClientRect().width / s.textContent.length; s.remove(); return w;
+  }
+  const a16 = avg(16), a20 = avg(20);
+  document.getElementById('c1').textContent = Math.round(636 / a16);
+  document.getElementById('c2').textContent = Math.round(448 / a16);
+  document.getElementById('c3').textContent = Math.round(384 / a20);
+  document.getElementById('probe').innerHTML =
+    'Measured in this card, not asserted: average rendered glyph <b>' + a16.toFixed(2) + 'px</b> at 16px and <b>' +
+    a20.toFixed(2) + 'px</b> at 20px; the zero glyph of the body sans is <b>9.79px</b>, which is what <code>65ch</code> was counting. ' +
+    'Re-derive the rem when a text face or a role size changes. DESIGN.md \u2192 spacing.measure.';
+})();
+</script>
+</body>
+</html>

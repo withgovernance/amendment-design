@@ -1,0 +1,850 @@
+/* =========================================================================
+   Amendment — Living Document
+   colors_and_type.css
+
+   Canonical tokens + semantic roles. Drop this in your <head> and lean on
+   the CSS variables and role classes. The token names mirror DESIGN.md.
+
+   Two layers:
+     - Ink layer  → Midnight Indigo, Momentum green, Newsreader, IBM Plex Mono
+     - Aurora     → low-chroma oklch radial-gradient lobes (Blue Hour)
+   ========================================================================= */
+
+/* -------- Fonts ---------------------------------------------------------- */
+/* Archivo carries a real wdth axis (62–125) AND a true italic at every weight —
+   the two things Readex Pro could not do. Replaced Readex 2026-08-13: Readex was
+   excellent chrome and wrong as a body face (wide, soft, evenly weighted, so
+   word silhouettes flatten at paragraph length) and had no italic at all, which
+   is why every italic in the system had to be serif. Newsreader (variable, with
+   a real opsz axis) + IBM Plex Mono complete the trio. */
+/* Archivo is self-hosted above. Newsreader (variable, with a real opsz axis) +
+   IBM Plex Mono still come from Google Fonts — neither has a local cut and
+   neither carries a width axis to lose, so CDN delivery is fine. */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
+
+/* Archivo is SELF-HOSTED — uploaded 2026-08-13, so it is no longer fetched from
+   Google Fonts and the chrome register survives a blocked or offline CDN. Both
+   cuts are the variable files with wdth AND wght intact (62–125, 100–900), which
+   is the thing that matters: a cut without wdth loads cleanly and silently
+   collapses chrome to normal width. Only IBM Plex Mono and Newsreader still come
+   from the CDN. */
+@font-face {
+  font-family: 'Archivo';
+  src: url('fonts/Archivo-VariableFont_wdth_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Archivo';
+  src: url('fonts/Archivo-Italic-VariableFont_wdth_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Amerika Signature — SIGNATURES ONLY. Loaded locally; there is no web-font
+   fallback that resembles it, and a constituent's name is not a place to let
+   the browser improvise. */
+@font-face {
+  font-family: 'Amerika Signature';
+  src: url('fonts/AmerikaSignature.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* =========================================================================
+   TOKENS
+   ========================================================================= */
+
+:root {
+  /* --------------------------- COLOR -------------------------------- */
+
+  /* Primary — Midnight Indigo (institutional ink) */
+  --color-primary-light: #334155;        /* slate-700 */
+  --color-primary:       #1e293b;        /* slate-800 — default */
+  --color-primary-dark:  #0f172a;        /* slate-900 — active */
+
+  /* Action — Momentum green. ONE accent for action, success, and the crowd.
+     Sampled from the shipped --aurora-curtain (lobe 2, oklch .72 .19 160)
+     brought down to button lightness — the product's own light, not a new hue.
+     Authored in oklch; no Tailwind alias. Replaces Oxblood, retired 2026-08.
+
+     The label is INK, not white. At this lightness white measures 2.90:1 and
+     ink 6.42:1; the reverse is true below about L .55, and between roughly
+     L .55–.60 NEITHER clears 4.5:1. Do not move --color-action's lightness
+     without re-measuring the label. */
+  --color-action:        oklch(.66 .148 160);
+  --color-action-hover:  oklch(.72 .150 161);
+  --color-action-active: oklch(.60 .145 160);  /* ~6 points of headroom before
+                                                  the ink label fails — see
+                                                  DESIGN.md "Pressed states" */
+  --color-action-label:  rgb(0 0 0 / 87%);
+  /* Same value in both modes: a bright fill needs no dark-mode variant, and on
+     the dark canvas it is the one control that behaves like the aurora. */
+
+  /* Seal — NOT A COLOUR. A registrar's seal, a notary's seal, a corporate seal:
+     none of them are printed, they are PRESSED. The mark is a deformation of
+     the paper, not pigment applied to it. So the seal is a blind emboss —
+     highlight up-left, warm shadow down-right, no ink at all. Oxblood was
+     retired from the system entirely in 2026-08; these are shadow values on
+     paper, not a brand accent. Use the .seal-emboss role below. */
+  --seal-highlight: rgb(255 255 255 / 90%);   /* @kind color */
+  --seal-shadow:    rgb(96 62 28 / 30%);      /* @kind color */
+  --seal-bite:      rgb(96 62 28 / 10%);      /* @kind color */
+
+  /* Functional — Slate Blue (attention without alarm) */
+  --color-functional-light: #94a3b8;     /* slate-400 */
+  --color-functional:       #64748b;     /* slate-500 — default focus */
+  --color-functional-dark:  #475569;     /* slate-600 */
+
+  /* Momentum — Emerald (the crowd: co-signs, endorsements, counts climbing).
+     Sanctioned as a BRAND accent ONLY on the Commons surface; elsewhere
+     emerald stays strictly semantic. Shares emerald with semantic success
+     on purpose — "a demand advancing" and "a bill enacted" are one meaning. */
+  --color-momentum-soft: #10b981;        /* alias of --color-success-soft (emerald-500) */
+  --color-momentum:      var(--color-action);  /* the crowd and your intent are one
+                                                  colour: co-signing IS joining */
+  /* Retired 2026-08: a bright accent needs no dark-mode substitute. Kept as an
+     alias of --color-action so existing references do not break. */
+  --color-momentum-on-dark: var(--color-action);
+
+  /* Semantic — conventional only, never brand decoration */
+  --color-success:       #047857;        /* emerald-700 */
+  --color-success-soft:  #10b981;        /* emerald-500 */
+  --color-warning:       #b45309;        /* amber-700 */
+  --color-warning-soft:  #f59e0b;        /* amber-500 */
+  --color-danger:        #dc2626;        /* red-600 */
+  --color-danger-soft:   #ef4444;        /* red-500 */
+
+  /* Neutral — warm-gray zinc */
+  --color-white:   #ffffff;
+  --color-zinc-50:  #fafafa;
+  --color-zinc-100: #f4f4f5;
+  --color-zinc-200: #e4e4e7;
+  --color-zinc-400: #a1a1aa;
+  --color-zinc-500: #71717a;
+  --color-zinc-700: #3f3f46;
+  --color-zinc-800: #27272a;
+  --color-zinc-900: #18181b;
+  --color-black:   #000000;
+
+  /* Text — opacity on black (HIG three-rung) */
+  --text-primary:   rgb(0 0 0 / 87%);
+  --text-secondary: rgb(0 0 0 / 55%);
+  --text-tertiary:  rgb(0 0 0 / 38%);
+
+  /* Borders */
+  --border-hairline: rgb(0 0 0 / 5%);
+  --border-subtle:   rgb(0 0 0 / 10%);
+  --border-dashed-empty: rgb(0 0 0 / 30%);
+
+  /* Loading. ONE block value, replacing bg-black/5|8|10 invented per component.
+     The spinner ink is ONE value in both modes: the shipped 20% light / 55%
+     dark split is not an optical adjustment, it is two people guessing. */
+  --skeleton-block: rgb(0 0 0 / 8%);
+  --spinner-ink:    rgb(0 0 0 / 38%);
+
+  /* Background canvas */
+  --canvas: var(--color-zinc-100);
+
+  /* Paper canvases (opaque) */
+  --paper-cream:     oklch(0.965 0.012 85);   /* Archive bill text */
+  --paper-parchment: oklch(0.955 0.018 80);   /* Writing Desk letter */
+
+  /* Aurora — three-stop Blue Hour, oklch, low chroma */
+  --aurora: radial-gradient(ellipse 72% 55% at 15% 8%, oklch(0.88 0.05 250 / 0.40), transparent), radial-gradient(ellipse 58% 46% at 85% 20%, oklch(0.90 0.04 270 / 0.32), transparent), radial-gradient(ellipse 60% 50% at 50% 90%, oklch(0.94 0.03 60 / 0.28), transparent); /* @kind color */
+
+  /* --------------------------- TYPE --------------------------------- */
+  --font-sans:  'Archivo', ui-sans-serif, system-ui, sans-serif;
+  /* Newsreader — a Scotch roman. Replaced Merriweather 2026-08 (audit §3.9):
+     Merriweather was drawn in 2011, sits in the Google Fonts top twenty, and
+     reads blog rather than printed record. The deciding factor was structural,
+     not stylistic: Merriweather is variable on WEIGHT but has no OPTICAL SIZE
+     axis, so one drawing had to serve both a 38px bill title and 15px statute.
+     Newsreader has opsz 6-72 and serves both properly.
+
+     ALWAYS set an opsz stop. The axis defaults high, and a Scotch roman at the
+     display end has hairlines far too fine for body text — use the two stops
+     below and never one value for both. */
+  --font-serif: 'Newsreader', ui-serif, Georgia, serif;
+  /* The two optical stops. Display sits just off the 72 extreme so the
+     hairlines keep authority without thinning to a wire; text sits at roughly
+     its own rendered size, which is what the axis is for. Text weight is 450,
+     a half-step above regular — it reads sturdy rather than heavy, and it
+     matters most on lamplit dark-room paper, where a fine stroke loses
+     contrast against the warm tan. */
+  --serif-display: 'opsz' 60, 'wght' 800;  /* @kind font */
+  --serif-text:    'opsz' 16, 'wght' 450;  /* @kind font */
+  --serif-quote:   'opsz' 24, 'wght' 400;  /* @kind font */
+  --font-mono:  'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* SIGNATURES ONLY — a co-sign, an endorsement, a pledge, a sent letter.
+     Never a heading, never UI, never a display face: the ban on script as
+     system typography stands. An uploaded signature image wins where one
+     exists. Production binds this to Amerika Signature. */
+  --font-signature: 'Amerika Signature', 'Snell Roundhand', 'Apple Chancery', 'Segoe Script', 'Brush Script MT', cursive;
+  /* Script faces sit small on the body: the x-height is a fraction of the em
+     and the capital swash carries the weight. 1.7 makes a signature read at
+     the same visual size as the type around it. */
+  --signature-optical-scale: 1.7; /* @kind other */
+
+  /* Width presets (font-variation-settings on --font-sans).
+     Chrome now sits at Archivo's ceiling (125), so WIDTH can no longer separate
+     four registers — ceremonial is distinguished by tracking and size, not by
+     going wider. Archivo at wdth 125 measures ~4% narrower than Readex did at
+     HEXP 60 (322px vs 334px for ARCHIVE COMMONS WRITING DESK at 12px); that is
+     recovered in tracking below, not in size.
+
+     NOTE the presets are NOT monotonic in width: chrome (125) is wider than
+     display (120). Width is not a single escalating ladder — it distinguishes
+     the CLERICAL register from the EDITORIAL one. Display escalates by size and
+     weight; ceremonial, by tracking. Do not "fix" this into 100/110/120/125. */
+  /* BODY IS 104, NOT THE AXIS DEFAULT — do not "tidy" this to 100. Widening a
+     face LOWERS its character count. Measured in a 28rem column at 16px:
+     Readex at HEXP 2 (what the system was calibrated on) = 56 chars; Archivo at
+     wdth 100 = 63; at 104 = 60; at 106 = 59; at 110 = 57. The axis default is
+     seven characters a line tighter than the face the measure was built on —
+     body copy narrowed silently when the family changed, and nobody chose that.
+     104 is also where Archivo's O is a circle (pixel ink ratio 1.014 at 104,
+     1.028 at 106, true 1.000 at ~102). Full parity with Readex needs ~110,
+     which is where lowercase stops reading as a text register. 104 is the
+     deliberate compromise between parity and rest state, not a rounding.
+     `ch` remains banned: these are counted characters of the rendered face. */
+  --sans-body:       "wdth" 104;   /* @kind font */  /* paragraphs, UI text */
+  --sans-chrome:     "wdth" 125;   /* @kind font */  /* institutional chrome */
+  --sans-display:    "wdth" 120;   /* @kind font */  /* display register */
+  --sans-ceremonial: "wdth" 125;   /* @kind font */  /* ceremonial, once per page */
+
+  /* Tracking that carries the registers width no longer can. */
+  --track-chrome:     0.12em;      /* @kind other */
+  --track-ceremonial: 0.20em;      /* @kind other */
+
+  /* DEPRECATED — HEXP aliases onto the width presets, kept so shipped component
+     code and the adherence lint keep resolving mid-migration. Do not use in new
+     code; migrate to --sans-body / --sans-chrome / --sans-display /
+     --sans-ceremonial. */
+  --hexp-2:   var(--sans-body);        /* @kind font */
+  --hexp-10:  var(--sans-body);        /* @kind font */
+  --hexp-40:  var(--sans-body);        /* @kind font */
+  --hexp-60:  var(--sans-chrome);      /* @kind font */
+  --hexp-80:  var(--sans-display);     /* @kind font */
+  --hexp-100: var(--sans-ceremonial);  /* @kind font */
+
+  /* Sans weight scale — ONE scale, both modes. The former parallel dark
+     scale was retired 2026-08: it doubled every weight decision and the
+     delta was imperceptible below display sizes. Dark-mode optical bloom
+     is corrected once, on the display roles only, at the bottom of the
+     .dark block. See DESIGN.md → typography.notes.weightCalibration.
+
+     RECALIBRATED to canonical 2026-08-13. The old ladder (160/227/295/362/430/
+     497/565/632/700) interpolated Readex's 160–700 range and existed to
+     compensate for Readex reading optically heavy. Archivo does not, and its
+     named instances at 100…900 are the type designer's own drawn stops —
+     interpolating between them second-guessed the designer for a reason that no
+     longer applies. MEASURED (scratch/weight-measure.html, ink coverage of a
+     fixed pangram at 16px): the old upper ladder was one to two steps under its
+     own name — "semibold" 497 had the ink of Archivo's MEDIUM (297,388 vs
+     298,483 at 500), "bold" 565 was lighter than its SemiBold, and "black" 700
+     was exactly its BOLD. 800 and 900 were unreachable. Canonical values fix the
+     names, recover the top of the range, and make third-party `font-weight: 600`
+     agree with the token.
+
+     THE COST: --sans-semibold moves 497 → 600, +13% ink. That is the CTA label,
+     the chrome label, the ceremonial register and the seal — all get visibly
+     heavier. Correct (they were rendering as Medium under a SemiBold name), but
+     it is the change you will see. Body moves 362 → 400, +5%. */
+  --sans-thin:       100;      /* @kind font */
+  --sans-extralight: 200;      /* @kind font */
+  --sans-light:      300;      /* @kind font */
+  --sans-normal:     400;      /* @kind font */
+  --sans-medium:     500;      /* @kind font */
+  --sans-semibold:   600;      /* @kind font */
+  --sans-bold:       700;      /* @kind font */
+  --sans-extrabold:  800;      /* @kind font */
+  --sans-black:      900;      /* @kind font */
+
+  /* --------------------------- SPACING ------------------------------ */
+  --space-unit: 4px;
+  --space-1: 4px;
+  --space-2: 8px;     /* inset-sm */
+  --space-3: 12px;
+  --space-4: 16px;    /* inset-md */
+  --space-5: 20px;
+  --space-6: 24px;    /* inset-lg */
+  --space-8: 32px;    /* inset-xl */
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;   /* section-y mobile */
+  --space-32: 128px;  /* section-y desktop */
+
+  --container-tight:  48rem;   /* prose, conversation columns */
+  --container-normal: 65ch;    /* body prose */
+  --container-wide:   80rem;   /* navbar, footer */
+
+  /* --------------------------- RADII -------------------------------- */
+  --radius-sm:   0.25rem;   /* inputs, status pills */
+  --radius-md:   0.5rem;    /* buttons, cards */
+  --radius-lg:   0.75rem;   /* modals, FAB, floating overlays */
+  --radius-full: 9999px;
+
+  /* --------------------------- SHADOWS ------------------------------ */
+  /* Slate-900 ink across the system. Two-layer per tier. */
+  --shadow-flat:    none;
+  --shadow-whisper:  0 1px 2px 0 rgb(15 23 42 / 0.04),
+                     0 1px 1px -1px rgb(15 23 42 / 0.04);
+  --shadow-raised:   0 4px 6px -1px rgb(15 23 42 / 0.12),
+                     0 2px 4px -2px rgb(15 23 42 / 0.12);
+  --shadow-floating: 0 20px 25px -5px rgb(15 23 42 / 0.18),
+                     0 8px 10px -6px rgb(15 23 42 / 0.18);
+  --shadow-chrome:   0 8px 16px -4px rgb(15 23 42 / 0.12),
+                     0 3px 6px -3px rgb(15 23 42 / 0.12);
+
+  /* --------------------------- MOTION ------------------------------- */
+  --duration-instant: 100ms;   /* @kind other */
+  --duration-fast:    150ms;   /* @kind other */
+  --duration-base:    200ms;   /* @kind other */
+  --duration-slow:    300ms;   /* @kind other */
+  --duration-hero-fade: 1s;    /* @kind other */
+  --ease-standard:   cubic-bezier(0.4, 0, 0.2, 1);  /* @kind other */
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);    /* @kind other */
+
+  /* --------------------------- FOCUS -------------------------------- */
+  --focus-color: var(--color-functional);
+  --focus-width: 2px;
+  --focus-offset: 4px;
+}
+
+/* Dark mode is applied either by .dark on a parent or by prefers-color-scheme */
+.dark, :root[data-theme="dark"] {
+  --text-primary:   rgb(255 255 255 / 87%);
+  --text-secondary: rgb(255 255 255 / 55%);
+  --text-tertiary:  rgb(255 255 255 / 38%);
+  --border-hairline: rgb(255 255 255 / 20%);
+  --border-subtle:   rgb(255 255 255 / 10%);
+  --border-dashed-empty: rgb(255 255 255 / 30%);
+  --skeleton-block: rgb(255 255 255 / 8%);
+  --spinner-ink:    rgb(255 255 255 / 38%);
+  --canvas: var(--color-zinc-900);
+  /* Momentum follows action in both modes — no dark-mode substitute needed now
+     that the accent is bright rather than deep. */
+  --color-momentum: var(--color-action);
+  /* Paper in dark mode is LIT, not swapped. Verbatim from voyager globals.css:
+     the sheet stays light and warms to lamp temperature, with two radial pools
+     at background-attachment:fixed so scrolling passes the page under a
+     stationary desk lamp rather than dragging the light along with it.
+     Consumers wanting the full effect should use --paper-*-lamp below.
+     Replaces the near-black values shipped here until 2026-08, which matched
+     neither the spec nor the product. */
+  --paper-cream:     oklch(0.78 0.058 68);
+  --paper-parchment: oklch(0.77 0.067 64);
+  --paper-cream-lamp: radial-gradient(ellipse 60% 38% at 50% 32% in oklab, oklch(1 0.055 80 / 0.55), transparent 78%), radial-gradient(ellipse 110% 80% at 50% 30% in oklab, oklch(0.97 0.06 78 / 0.35), transparent 80%); /* @kind color */
+  --paper-parchment-lamp: radial-gradient(ellipse 60% 38% at 50% 32% in oklab, oklch(1 0.06 76 / 0.55), transparent 78%), radial-gradient(ellipse 110% 80% at 50% 30% in oklab, oklch(0.97 0.065 74 / 0.35), transparent 80%); /* @kind color */
+  --aurora: radial-gradient(ellipse 72% 55% at 15% 8%, oklch(0.30 0.08 250 / 0.45), transparent), radial-gradient(ellipse 58% 46% at 85% 20%, oklch(0.25 0.06 270 / 0.35), transparent), radial-gradient(ellipse 60% 50% at 50% 90%, oklch(0.40 0.03 60 / 0.20), transparent); /* @kind color */
+  --focus-color: var(--color-functional-light);
+}
+
+/* Dark-mode optical bloom correction. The sans gains apparent weight on a
+   dark canvas, but only visibly at display sizes — so it is corrected here,
+   on the display roles, and nowhere in component code. Everything else uses
+   the single scale above.
+   FIXED 2026-08-13: these three selectors said `.role-display-stat`, which does
+   not exist — the role is `.role-stat-display`. The system's one dark-mode
+   weight correction had never fired. The literal moves 520 → 650 to stay ~8%
+   under the recalibrated --sans-bold (700), which is what 520 was to 565. */
+.dark .role-stat-display, :root[data-theme="dark"] .role-stat-display { font-weight: 650 }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .role-stat-display { font-weight: 650 }
+}
+
+/* NO auto dark mode via OS preference — deliberately.
+   DESIGN.md: "Dark mode is class-based, not system-preference-based. A .dark
+   class on an ancestor (set by the theme toggle, persisted to local storage)
+   switches the entire tree. This is deliberate — the operator chooses the
+   room's lighting; we do not flip on them mid-session because the OS changed."
+
+   A prefers-color-scheme block used to live here and flipped :root's text and
+   canvas tokens. It broke that rule and, worse, it half-applied: consumers
+   whose component surfaces are light-only got white ink on white plates on any
+   dark-OS machine. Removed 2026-08. The ONLY switches are .dark and
+   [data-theme="dark"], plus [data-paper] for the paper islands. */
+
+/* =========================================================================
+   SEMANTIC ROLES
+   ========================================================================= */
+
+/* Base body — sets the ink colour, Aurora layer, and default sans body. */
+.amendment-app {
+  background: var(--canvas);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-variation-settings: var(--sans-body);
+  font-weight: var(--sans-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.amendment-app::before {
+  /* The Aurora — sits behind everything on the canvas */
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--aurora);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---- Typography roles ---- */
+.role-display-hero {
+  font-family: var(--font-serif);
+  font-variation-settings: var(--serif-display);
+  font-size: clamp(2rem, 4.5vw, 3.75rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+.role-display-section {
+  font-family: var(--font-serif);
+  font-variation-settings: var(--serif-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+.role-body-lead {
+  font-family: var(--font-sans);
+  font-variation-settings: var(--sans-body);
+  font-size: 1.125rem;
+  /* Was a raw 200 — below --sans-thin and off the scale entirely. Archivo at
+     extralight is finer than Readex was at the same number, so this sits at the
+     token and no lower. */
+  font-weight: var(--sans-extralight);  line-height: 1.5;
+  color: var(--text-secondary);
+}
+.role-body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: var(--sans-normal);
+  font-variation-settings: var(--sans-body);
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+.role-body-serif {
+  font-family: var(--font-serif);
+  font-variation-settings: var(--serif-text);
+  font-size: 1rem;
+  font-weight: 450;
+  line-height: 1.625;
+  color: var(--text-primary);
+}
+/* ---- The newcomer's lede ----
+   Audit §3.1, resolved 2026-08-01. NOT a new register: same family, same
+   optical stop as body serif, one step up the scale. The newcomer is served by
+   plainer WORDS and stronger HIERARCHY, not by a second typographic voice — a
+   sans "plain" role was built and rejected (explorations/The Newcomer.html):
+   at one family and one weight the lede, the facts and the action all landed
+   at the same value and nothing told the eye where to start.
+   One sentence. Second person. Directly beneath the bill title, above
+   provenance. Measure is `measure.lede` — 47 characters at 20px, which is
+   visibly shorter than the body measure's 69. It used to be written `52ch`,
+   and because a larger face has a wider zero that bought back nearly all the
+   width it was meant to give up: 600px against the body column's 636px, one
+   character of difference to the eye. See DESIGN.md → spacing.measure. */
+.role-lede {
+  font-family: var(--font-serif);
+  font-variation-settings: var(--serif-text);
+  font-size: 1.25rem;
+  font-weight: 450;
+  line-height: 1.55;
+  max-width: min(24rem, 100% - 2rem);   /* measure.lede — 47 chars @20px */
+  color: var(--text-primary);
+  text-wrap: pretty;
+}
+.role-label-caps {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: var(--sans-semibold);
+  line-height: 1;
+  letter-spacing: var(--track-chrome);
+  text-transform: uppercase;
+  font-variation-settings: var(--sans-chrome);
+  color: var(--text-secondary);
+}
+/* Metadata is serif ROMAN, not italic. Newsreader's italic is a true
+   calligraphic italic — single-storey a, real entry strokes — which is lovely
+   at 20px and genuinely hard at 14. That is not a fault in the face; it is the
+   old rule asking small italic to do too much, and it would recur with any
+   real serif. Merriweather's italic was just flat enough to hide it.
+   Changed 2026-08. .role-metadata-italic is kept as a deprecated alias. */
+.role-metadata, .role-metadata-italic {
+  font-family: var(--font-serif);
+  font-variation-settings: 'opsz' 16, 'wght' 420;
+  font-size: 0.875rem;
+  font-weight: 420;
+  color: var(--text-secondary);
+}
+/* ITALIC POLICY. Serif italic stays the italic of RECORD — quoted human voice:
+   a constituent's words, a pull quote, an epigraph — at 18px and up, where it is
+   legible and where its warmth is the point. Never below 1.125rem, never for
+   metadata.
+
+   What changed with Archivo is not that rule but its enforcement. Readex had no
+   italic, so an <em> inside sans body copy got a browser-SYNTHESIZED oblique:
+   a mechanical slant, wrong joins, no true italic letterforms. The old "all
+   italics are serif" line was partly a description of that constraint. Archivo
+   ships a real italic at every weight, so inline emphasis inside sans copy is
+   now a drawn italic and needs no role of its own — just <em>. Do NOT read this
+   as a licence for sans italic display or sans pull quotes: quoted voice is
+   still serif. */
+em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader italic in serif */
+.role-quote {
+  font-family: var(--font-serif);
+  font-variation-settings: var(--serif-quote);
+  font-style: italic;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-primary);
+  text-wrap: pretty;
+}
+.role-caption {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: var(--sans-normal);
+  line-height: 1.25;
+  color: var(--text-secondary);
+}
+.role-code {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.role-stat-display {
+  /* Hero stat numerals — display width */
+  font-family: var(--font-sans);
+  font-variation-settings: var(--sans-display);
+  font-weight: var(--sans-bold);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+.role-ceremonial {
+  /* Receipt place-of-issue caption, wax-seal monogram */
+  font-family: var(--font-sans);
+  font-variation-settings: var(--sans-ceremonial);
+  font-weight: var(--sans-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--track-ceremonial);
+}
+
+/* ---- Material tiers ---- */
+.material-ultrathin {
+  background: rgb(255 255 255 / 10%);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 5%);
+}
+.dark .material-ultrathin, [data-theme="dark"] .material-ultrathin {
+  background: rgb(0 0 0 / 2%);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 5%);
+}
+.material-thin {
+  background: rgb(255 255 255 / 45%);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 5%);
+}
+.dark .material-thin, [data-theme="dark"] .material-thin {
+  background: rgb(0 0 0 / 26%);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 8%);
+}
+.material-regular {
+  background: rgb(255 255 255 / 85%);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 10%);
+}
+.dark .material-regular, [data-theme="dark"] .material-regular {
+  background: rgb(0 0 0 / 41%);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 10%);
+}
+.material-thick {
+  background: rgb(255 255 255 / 95%);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 15%);
+}
+.dark .material-thick, [data-theme="dark"] .material-thick {
+  background: rgb(0 0 0 / 60%);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 12%);
+}
+.material-chrome {
+  background: rgb(255 255 255 / 75%);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow: inset 0 -1px 0 0 rgb(0 0 0 / 10%);
+}
+.dark .material-chrome, [data-theme="dark"] .material-chrome {
+  background: rgb(24 24 27 / 90%);
+  box-shadow: inset 0 -1px 0 0 rgb(255 255 255 / 10%);
+}
+
+/* ---- Paper canvases (opaque) ---- */
+.paper-cream {
+  background: var(--paper-cream);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 8%);
+  border-radius: var(--radius-sm);
+}
+.paper-parchment {
+  background: var(--paper-parchment);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 10%);
+  border-radius: var(--radius-sm);
+}
+
+/* ---- Shadow tiers ---- */
+.shadow-flat     { box-shadow: var(--shadow-flat); }
+.shadow-whisper  { box-shadow: var(--shadow-whisper); }
+.shadow-raised   { box-shadow: var(--shadow-raised); }
+.shadow-floating { box-shadow: var(--shadow-floating); }
+.shadow-chrome   { box-shadow: var(--shadow-chrome); }
+
+/* ---- Loading -------------------------------------------------------------
+   A loading state promises the SHAPE of what is coming, never HOW MUCH of it.
+   The count is a load-time fact the front end does not have; design as if it
+   never will.
+
+   UNDER-RESERVE, SO THE SETTLE IS ALWAYS DOWNWARD. One row — the shortest
+   plausible item — in a container sized by its content. No min-height. One
+   row is the floor of what can arrive, so the card can only grow, and growth
+   pushes the page down, which is what a page does as it loads. A shrink pulls
+   content up under a reader's eyes and a thumb already moving.
+
+   The pulse is sanctioned by motion.rules: a skeleton resolving is CONTENT
+   ARRIVING, not the interface moving, and costs nothing from the two-surface
+   motion budget. */
+.skeleton-block {
+  background: var(--skeleton-block);
+  border-radius: 3px;
+  height: 0.75rem;
+  animation: skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.skeleton-block--title { height: 0.875rem; width: 62%; }
+.skeleton-block--meta  { width: 38%; }
+.skeleton-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+@keyframes skeleton-pulse { 50% { opacity: 0.5; } }
+
+/* The spinner keeps ONE job: an in-place indeterminate wait where there is no
+   shape to promise — a button mid-submit, a control resolving. Never a
+   route-level content fallback, which is a place with a shape. */
+.spinner-inline {
+  color: var(--spinner-ink);
+  animation: spinner-rotate 1s linear infinite;
+}
+@keyframes spinner-rotate { to { transform: rotate(360deg); } }
+
+/* ---- Focus ---- */
+:where(button, a, input, textarea, select, [tabindex]):focus-visible {
+  outline: var(--focus-width) solid var(--focus-color);
+  outline-offset: var(--focus-offset);
+}
+:where(a):focus-visible {
+  outline-offset: 8px;
+}
+:where(input, textarea, select):focus-visible {
+  outline-offset: -2px;
+}
+
+/* ---- Reduced-motion / reduced-transparency / contrast hard lines ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .material-ultrathin, .material-thin, .material-regular, .material-thick, .material-chrome {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .material-ultrathin, .material-thin { background: var(--color-zinc-50); }
+  .material-regular { background: var(--color-zinc-100); }
+  .material-thick, .material-chrome { background: var(--color-zinc-100); }
+  .dark .material-ultrathin, .dark .material-thin { background: var(--color-zinc-800); }
+  .dark .material-regular { background: var(--color-zinc-800); }
+  .dark .material-thick, .dark .material-chrome { background: var(--color-zinc-900); }
+}
+@media (prefers-contrast: more) {
+  :root { --text-secondary: rgb(0 0 0 / 75%); }
+  .dark { --text-secondary: rgb(255 255 255 / 75%); }
+}
+
+/* ---- Paper islands in the dark room: a desk lamp, not a light switch ----
+   The sheet stays light and warms to lamp temperature. The two light pools are
+   viewport-anchored (background-attachment: fixed) so scrolling passes the page
+   under a stationary lamp instead of dragging a cone of light down with it.
+   Ink stays dark on warm paper: paper-island descendants do NOT invert.
+   Source: voyager globals.css. See RECONCILIATION-2026-08.md §4. */
+.dark .paper-cream, :root[data-theme="dark"] .paper-cream {
+  background-color: var(--paper-cream);
+  background-image: var(--paper-cream-lamp);
+  background-attachment: fixed, fixed;
+  background-repeat: no-repeat, no-repeat;
+  box-shadow: 0 36px 60px -16px rgb(0 0 0 / 0.7), 0 18px 32px -10px rgb(0 0 0 / 0.5),
+              0 6px 12px -6px rgb(0 0 0 / 0.4), inset 0 0 0 1px oklch(0.5 0.05 55 / 0.5);
+}
+.dark .paper-parchment, :root[data-theme="dark"] .paper-parchment {
+  background-color: var(--paper-parchment);
+  background-image: var(--paper-parchment-lamp);
+  background-attachment: fixed, fixed;
+  background-repeat: no-repeat, no-repeat;
+  box-shadow: 0 36px 60px -16px rgb(0 0 0 / 0.7), 0 18px 32px -10px rgb(0 0 0 / 0.5),
+              0 6px 12px -6px rgb(0 0 0 / 0.4), inset 0 0 0 1px oklch(0.5 0.05 55 / 0.55);
+}
+/* Paper islands keep light-mode ink in the dark room. Mark the canvas with
+   data-paper so the opt-out is EXPLICIT rather than a silently-inert variant —
+   the old `@custom-variant dark (…):not(.paper-cream *)` trick worked but
+   failed invisibly, which is the worst way for a rule to fail.
+
+       <article class="paper-cream" data-paper> … </article>
+
+   The attribute is a theme scope, so tokens declared here register properly. */
+[data-paper], [data-paper] * {
+  --text-primary: rgb(0 0 0 / 87%);
+  --text-secondary: rgb(0 0 0 / 55%);
+  --text-tertiary: rgb(0 0 0 / 38%);
+  --border-hairline: rgb(0 0 0 / 5%);
+  --border-subtle: rgb(0 0 0 / 10%);
+}
+[data-paper] { color: var(--text-primary); }
+
+/* ---- Action ----
+   The CTA carries an INK label, not white. See --color-action for why, and do
+   not change the fill's lightness without re-measuring. */
+.role-action {
+  background: var(--color-action);
+  color: var(--color-action-label);
+  font-family: var(--font-sans);
+  font-weight: var(--sans-semibold);
+  border: 0;
+  border-radius: var(--radius-md);
+  padding: 13px 22px;
+  box-shadow: var(--shadow-raised), inset 0 0 0 1px rgb(0 0 0 / 10%);
+  cursor: pointer;
+  transition: background var(--duration-base) var(--ease-standard),
+              box-shadow var(--duration-base) var(--ease-standard);
+}
+.role-action:hover { background: var(--color-action-hover); }
+.role-action:active { background: var(--color-action-active); }
+.role-action:focus-visible {
+  outline: var(--focus-width) solid var(--focus-color);
+  outline-offset: var(--focus-offset);
+}
+
+/* ---- The seal — a blind emboss, never ink ----------------------------------
+   Only on ISSUED artifacts: the post-send confirmation, the Receipt, an
+   envelope's postage corner. Never a button, never an avatar, never chrome.
+   Sits on paper and needs paper under it — the emboss is a deformation of the
+   sheet, so it has nothing to press into on glass or on the aurora.
+   Reads better in the dark room, not worse: lamplit paper is warmer, so the
+   shadow deepens. Markup:  <span class="seal-emboss"><span>A</span></span>  */
+/* The MONOGRAM owns its own proportions — it does not inherit the ceremonial
+   TEXT register. It used to, and that was the bug: a die is drawn to fill a
+   circle, so its glyph size is a function of the die, not of whatever the body
+   copy's widest preset happens to be. MEASURED at the old settings (26px,
+   wdth 125): the A spanned 24.9px inside a 63.8px inner die — 39%, a monogram
+   rattling around in its own seal. Under Readex's HEXP 100 it filled far more,
+   which is why the spec art looked wider than the render. Now sized to ~54% of
+   the inner die at every size, and the 0.06em letter-spacing is GONE: on a
+   single glyph, tracking is pure trailing space, so it shoved the letter left
+   of the die's centre. */
+.seal-emboss {
+  width: 84px; height: 84px; border-radius: var(--radius-full);
+  display: grid; place-items: center; flex: none;
+  font-family: var(--font-sans);
+  font-variation-settings: "wdth" 125;
+  font-weight: var(--sans-semibold);
+  font-size: 36px; letter-spacing: 0;
+  background: transparent;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  box-shadow:
+    -1px -1px 1px var(--seal-highlight),
+    2px 2px 3px var(--seal-shadow),
+    inset 0 0 0 1.5px var(--seal-bite);
+  text-shadow:
+    -0.5px -0.5px 0 var(--seal-highlight),
+    1px 1px 1.5px var(--seal-shadow);
+}
+/* inner ring — the die's raised border */
+.seal-emboss > span {
+  display: grid; place-items: center;
+  width: 76%; height: 76%; border-radius: var(--radius-full);
+  box-shadow: -1px -1px 1px rgb(255 255 255 / 70%), 1.5px 1.5px 2px var(--seal-shadow);
+}
+.seal-emboss--sm { width: 56px; height: 56px; font-size: 24px; }
+.seal-emboss--lg { width: 104px; height: 104px; font-size: 44px; }
+
+/* ---- Signature — the name at the moment it is put to something ---------- */
+.role-signature {
+  font-family: var(--font-signature);
+  font-size: calc(1.25rem * var(--signature-optical-scale));
+  line-height: 1.1;
+  color: var(--text-primary);
+  /* Script glyphs overhang their box — swash lead-ins and end flourishes
+     carry negative side bearings — so never clip this element. */
+  overflow: visible;
+  padding: 0 0.25em;
+}
+
+/* ---- The measure ----------------------------------------------------------
+   Decided 2026-08-04 (explorations/What 65ch Measures.html). A MEASURE CAPS
+   THE ELEMENT THAT HOLDS THE TEXT, and it is stated in rem derived from a
+   counted line, never in `ch`: `ch` is the advance width of the zero glyph
+   OF THE ELEMENT CARRYING THE RULE, so 65ch written on a sans page shell and
+   filled with serif prose measured 636px = 97 characters, which nobody chose.
+   The count is the intent; the rem is the value; re-derive when a face or a
+   role size changes. Target 69 characters, ceiling 75.
+   Mobile-first: the min() means these never need a breakpoint. */
+.measure      { max-width: min(28rem, 100% - 2rem); }  /* 69 chars of role-body-serif @16px */
+.measure-lede { max-width: min(24rem, 100% - 2rem); }  /* 47 chars of role-lede @20px */
+
+/* ---- Print: the mailed letter ---------------------------------------------
+   DESIGN.md -> profilesPrint, decided 2026-08-04. Paper is not a degraded
+   screen, it is this register's home — the one transport where the ink layer
+   is literally true and the aurora cannot exist, which costs nothing because
+   the aurora never carried meaning. Supersedes
+   proposed/design-system/patterns/print.md.
+   What CSS can own is here; folds, continuation headers and postal blocks are
+   content requirements and live in the spec, not in this file. */
+@page { size: letter; margin: 1in; }
+@media print {
+  /* The aurora cannot print, and never carried meaning. */
+  .amendment-app::before { display: none; }
+  .material-ultrathin, .material-thin, .material-regular, .material-thick, .material-chrome {
+    background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; box-shadow: none;
+  }
+  /* The sheet IS the paper canvas: a cream fill is an ink wash across a whole
+     page, it bands on consumer printers, and the stock already has a colour. */
+  .paper-cream, .paper-parchment { background: none; box-shadow: none; }
+  /* Ink is RE-BASED, not flattened. The 87/55/38 scale is how ink sits on a
+     page; * { color: #000 } deletes it. Tertiary does not print. */
+  :root {
+    --text-primary: rgb(0 0 0 / 100%);
+    --text-secondary: rgb(0 0 0 / 45%);
+    --text-tertiary: rgb(0 0 0 / 45%);   /* promotes to secondary — never 38% */
+  }
+  /* Paper takes its measure from the margin, not from a count. */
+  .measure, .measure-lede, .page--prose, .role-lede { max-width: 6.5in; }
+  /* An emboss is a deformation of a sheet; printed it is grey mud on the very
+     artifact whose authority it was carrying. The ledger number is the proof. */
+  .seal-emboss { display: none; }
+  nav, .fab, .toaster, .tabbar { display: none; }
+  /* The dotted signature rule is CANONICAL on paper: 0.4in of clear space
+     above the printed name, because a pen needs room. */
+  .sig-line { margin-top: 0.4in; }
+}

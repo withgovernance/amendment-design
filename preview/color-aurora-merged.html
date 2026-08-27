@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Colors" name="Color — The Blue Hour aurora" subtitle="Three oklch lobes painted behind every surface" viewport="700x260" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amendment color specimen</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>.card { padding: 16px 22px; min-height: 240px; }.caption { font-variation-settings: 'opsz' 16, 'wght' 420; }
+  .swatch-label { font-family: var(--font-sans); font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: var(--track-chrome); color: var(--text-secondary); font-weight: var(--sans-semibold); }
+  .hex { font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary); }
+  
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="voice-eyebrow">The breath layer · Blue Hour aurora</div>
+  <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; margin-top: 6px;">
+    <div style="position: relative; height: 160px; border-radius: 6px; overflow: hidden; background: var(--canvas); box-shadow: inset 0 0 0 1px rgb(0 0 0 / 10%);">
+      <div style="position: absolute; inset: 0; background:
+        radial-gradient(ellipse 72% 55% at 15% 8%,  oklch(0.88 0.05 250 / 0.55), transparent),
+        radial-gradient(ellipse 58% 46% at 85% 20%, oklch(0.90 0.04 270 / 0.45), transparent),
+        radial-gradient(ellipse 60% 50% at 50% 90%, oklch(0.94 0.03 60 / 0.40), transparent);"></div>
+    </div>
+    <div style="display: grid; gap: 8px; align-content: center;">
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <div style="width: 36px; height: 36px; border-radius: 6px; background: oklch(0.88 0.05 250); box-shadow: inset 0 0 0 1px rgb(0 0 0 / 8%);"></div>
+        <div>
+          <div class="swatch-label">Indigo · top-left</div>
+          <div class="hex">oklch(0.88 0.05 250)</div>
+        </div>
+      </div>
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <div style="width: 36px; height: 36px; border-radius: 6px; background: oklch(0.90 0.04 270); box-shadow: inset 0 0 0 1px rgb(0 0 0 / 8%);"></div>
+        <div>
+          <div class="swatch-label">Slate · top-right</div>
+          <div class="hex">oklch(0.90 0.04 270)</div>
+        </div>
+      </div>
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <div style="width: 36px; height: 36px; border-radius: 6px; background: oklch(0.94 0.03 60); box-shadow: inset 0 0 0 1px rgb(0 0 0 / 8%);"></div>
+        <div>
+          <div class="swatch-label">Parchment · bottom</div>
+          <div class="hex">oklch(0.94 0.03 60)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="caption" style="margin-top: 10px;">Three radial-gradient lobes in oklch — low chroma, monochromatic. Painted behind every surface; glass cards sit on it and let some through. No fourth lobe.</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Components — Postmark" subtitle="Clean text rendering — no grunge layer yet" viewport="700x276" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Components — Postmark</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>.card { padding: 14px 24px; }
+  .row {
+    background: var(--paper-cream);
+    border-radius: 4px;
+    padding: 22px 28px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 8%);
+  }
+  .stamp {
+    transform: rotate(-5deg);
+    flex-shrink: 0;
+  }
+  .stamp svg { display: block; }
+  .meta-title { font-family: var(--font-serif); font-variation-settings: var(--serif-display); font-weight: 700; font-size: 15px; color: var(--text-primary); }
+  .meta-sub { font-family: var(--font-serif); font-variation-settings: 'opsz' 16, 'wght' 420; font-size: 13px; color: var(--text-secondary); margin-top: 4px; line-height: 1.45; max-width: min(14.5rem, 100% - 2rem); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="row">
+    <div class="stamp" role="img" aria-label="Postmark: Colorado State General Assembly, HB 21, May 23 2026">
+      <svg viewBox="0 0 200 200" width="190" height="190" xmlns="http://www.w3.org/2000/svg">
+        <!--
+          GEOMETRY
+          ─────────
+          Outer rule:   r = 92  stroke 2.4
+          Hairline:     r = 86  stroke 0.8
+          Inner ring:   r = 56  stroke 1.6
+          Text band:    r 56 → r 86 (30px wide); centerline ≈ r 71
+          Text paths:   font-size 14, cap-height ≈ 10. To center the type radially
+                         on the band midline (r=71), each baseline sits 5 units off
+                         the midline so the caps land on the OTHER side, 5 off.
+                         • Top arc baseline   r = 66 → caps grow outward to r ≈ 76
+                         • Bottom arc baseline r = 76 → caps grow inward  to r ≈ 66
+                         Both legends now occupy the same r 66 → 76 band — 10 units
+                         clear of the inner ring AND 10 units clear of the hairline.
+
+          ORIENTATION (matches the South Pole reference, top stamp in the user's mood board):
+          ────────────────────────────────────────────────────────────────────────────────
+          • Top arc:    path runs LEFT → RIGHT through 12 o'clock.
+                        Tangent at 12 = right; glyph tops sit on the LEFT side of travel
+                        direction = UP (outward). Reading: left-to-right, upright. ✓
+          • Bottom arc: path runs LEFT → RIGHT through 6 o'clock.
+                        Tangent at 6 = right; glyph tops on LEFT side of travel direction
+                        = UP (inward — toward center). Reading: left-to-right, with letter
+                        tops curving toward the stamp center. Matches "UNITED STATES
+                        ANTARCTIC PROGRAM" on the South Pole stamp. ✓
+        -->
+        <defs>
+          <!-- Ink grunge: light fractal-noise displacement + subtle alpha mottling,
+               matched to the rubber-stamp treatment. Displacement scaled up slightly
+               (0.8) because the postmark renders larger (190px). Alpha mottling stays
+               at 0.45/0.62 so the lightest specks only thin the ink, never punch holes. -->
+          <filter id="pm-grunge" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="13" result="noise"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.8" xChannelSelector="R" yChannelSelector="G" result="warped"/>
+            <feTurbulence type="fractalNoise" baseFrequency="0.5 0.8" numOctaves="2" seed="29" result="ink"/>
+            <feColorMatrix in="ink" type="matrix"
+              values="0 0 0 0 0
+                      0 0 0 0 0
+                      0 0 0 0 0
+                      0 0 0 0.45 0.62" result="inkA"/>
+            <feComposite in="warped" in2="inkA" operator="in"/>
+          </filter>
+
+          <!-- Top arc:    r = 66. Baseline sits 5 below band midline so caps reach midline+5. -->
+          <path id="pm-top"    d="M 34,100 A 66,66 0 0 1 166,100" />
+          <!-- Bottom arc: r = 76. Baseline sits 5 above band midline so caps reach midline-5. -->
+          <path id="pm-bottom" d="M 24,100 A 76,76 0 0 0 176,100" />
+        </defs>
+
+        <g fill="#1e293b" stroke="#1e293b" filter="url(#pm-grunge)">
+
+          <!-- Outer double rule -->
+          <circle cx="100" cy="100" r="92" fill="none" stroke-width="2.4"/>
+          <circle cx="100" cy="100" r="86" fill="none" stroke-width="0.8"/>
+
+          <!-- Inner ring -->
+          <circle cx="100" cy="100" r="56" fill="none" stroke-width="1.6"/>
+
+          <!-- TOP ARC TEXT — "COLORADO · STATE" -->
+          <text font-family="'Archivo', sans-serif" font-size="14" font-weight="700"
+                fill="#1e293b" stroke="none" letter-spacing="1.6">
+            <textPath href="#pm-top" startOffset="50%" text-anchor="middle">COLORADO · STATE</textPath>
+          </text>
+
+          <!-- BOTTOM ARC TEXT — "GENERAL ASSEMBLY"
+               Same path-direction convention as top: left→right reading. Because the
+               path now bulges DOWN, the textPath default places glyph tops on the LEFT
+               side of travel, which at 6 o'clock is UP (toward center) — the South Pole
+               convention. -->
+          <text font-family="'Archivo', sans-serif" font-size="14" font-weight="700"
+                fill="#1e293b" stroke="none" letter-spacing="1.6">
+            <textPath href="#pm-bottom" startOffset="50%" text-anchor="middle">GENERAL ASSEMBLY</textPath>
+          </text>
+
+          <!-- Side stars at 9 + 3 o'clock, centered on band midline (r ≈ 71). -->
+          <g transform="translate(29 100)">
+            <path d="M 0,-11 L 2.59,-3.4 L 10.46,-3.4 L 4.1,1.3 L 6.46,8.9 L 0,4.4 L -6.46,8.9 L -4.1,1.3 L -10.46,-3.4 L -2.59,-3.4 Z" stroke="none"/>
+          </g>
+          <g transform="translate(171 100)">
+            <path d="M 0,-11 L 2.59,-3.4 L 10.46,-3.4 L 4.1,1.3 L 6.46,8.9 L 0,4.4 L -6.46,8.9 L -4.1,1.3 L -10.46,-3.4 L -2.59,-3.4 Z" stroke="none"/>
+          </g>
+
+          <!-- INNER CONTENT — date stack -->
+          <line x1="54" y1="86" x2="146" y2="86" stroke-width="1.2"/>
+
+          <text x="100" y="106" text-anchor="middle"
+                font-family="'Archivo', sans-serif" font-size="18" font-weight="700"
+                fill="#1e293b" stroke="none" letter-spacing="1.5">MAY 23</text>
+
+          <line x1="54" y1="116" x2="146" y2="116" stroke-width="1.2"/>
+
+          <text x="100" y="132" text-anchor="middle"
+                font-family="'Archivo', sans-serif" font-size="12" font-weight="600"
+                fill="#1e293b" stroke="none" letter-spacing="2">2026</text>
+
+        </g>
+      </svg>
+    </div>
+
+    <div>
+      <div class="meta-title">HB 21 · Introduction date</div>
+      <div class="meta-sub">Postmark date stamp for a bill's introduction. Type on path runs left-to-right on both arcs; bottom legend's cap-tops resolve toward center (South Pole convention). Light fractal-noise displacement + subtle alpha mottling give it a pressed-ink feel without sacrificing legibility — matched to the rubber-stamp treatment.</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Foundations" name="Email — the fallback profile" subtitle="A viewport, not a canvas: reduced transparency, a no-webfont stack, and the marks that cannot invert" viewport="1000x925" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Email profile</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>.card { padding:18px 24px 22px; }
+.eyebrow{font-variation-settings:var(--sans-chrome);text-transform:uppercase;font-size:12px;letter-spacing:.08em;color:var(--text-tertiary);font-weight:var(--sans-semibold)}
+h1{font-family:var(--font-serif);font-variation-settings:var(--serif-display);font-weight:800;font-size:24px;line-height:1.15;margin:8px 0 0}
+.sub{font-family:var(--font-serif);font-variation-settings:var(--serif-text);font-size:14.5px;line-height:1.5;color:var(--text-secondary);margin-top:7px;max-width: min(25.5rem, 100% - 2rem)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;align-items:start}
+.panel{border-radius:var(--radius-md);padding:14px 16px 15px;box-shadow:var(--shadow-raised);border:1px solid var(--border-hairline)}
+.panel .h{font-variation-settings:var(--sans-chrome);text-transform:uppercase;font-size:12px;letter-spacing:.09em;color:var(--text-tertiary);font-weight:var(--sans-semibold)}
+/* The two email modes, painted with the profile's OWN derived values. These are
+   deliberately literal hexes and NOT tokens — see DESIGN.md profiles.email:
+   a hex in the token file is a hex someone will use on the aurora. */
+.vp-light{background:#e7edf4}
+.vp-dark{background:#0f172a}
+.obj{border-radius:8px;padding:12px 13px;margin-top:9px}
+.obj.card-light{background:#fafafa;border:1px solid #d5dce4}
+.obj.card-dark{background:#27272a;border:1px solid #3f3f46}
+.obj.paper{background:#f7f3eb;border:1px solid #e3e0d9}
+.ttl{font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:21px;font-weight:bold}
+.chr{font-family:Verdana,Geneva,sans-serif;font-size:12px;line-height:18px;letter-spacing:.12em;text-transform:uppercase}
+.mono{font-family:ui-monospace,Menlo,Consolas,'Courier New',monospace;font-size:13px;letter-spacing:.09em}
+.count{font-family:'Segoe UI',-apple-system,sans-serif;font-size:22px;font-weight:bold;line-height:1.1}
+.plate{display:inline-block;background:#08ad72;color:#01160f;border-radius:8px;padding:9px 15px;font-family:'Segoe UI',-apple-system,sans-serif;font-size:13px;font-weight:bold;margin-top:9px}.lbl { font-family:var(--font-mono); font-size:12px; margin-top:6px; }
+table.t{border-collapse:collapse;width:100%;margin-top:9px}
+table.t td{font-size:12.5px;line-height:1.45;color:var(--text-secondary);padding:5px 8px 5px 0;border-bottom:1px solid var(--border-hairline);vertical-align:top}
+table.t td:first-child{color:var(--text-primary);width:34%;font-weight:var(--sans-medium)}
+table.t td code{font-family:var(--font-mono);font-size:12px}
+.rule{height:1px;background:var(--border-subtle);margin:16px 0 0}
+.note{font-size:12.5px;line-height:1.55;color:var(--text-secondary);margin-top:10px;max-width: min(25rem, 100% - 2rem)}
+b{font-weight:var(--sans-semibold);color:var(--text-primary)}
+a{color:var(--color-primary)}a:hover{color:var(--color-primary-light)}
+</style>
+</head>
+<body>
+<div class="card">
+<div class="eyebrow">Foundations · profiles.email · audit §3.8</div>
+<h1>Email is a viewport, not a canvas</h1>
+<div class="sub">The same role the browser window plays on the web: objects are placed into it. So paper is not email&rsquo;s background &mdash; paper appears only where a paper <em>artifact</em> appears, and one message can hold two registers. A profile is an existing register plus a substitution table; it is not a fifth register.</div>
+
+<div class="grid">
+<div>
+<div class="panel vp-light">
+<div class="h" style="color:#5c6a7a">Light &mdash; viewport #e7edf4</div>
+<div class="obj card-light">
+<div class="chr" style="color:#5c6a7a">Colorado &middot; HB 21</div>
+<div class="ttl" style="color:#1e293b;padding-top:4px">&ldquo;Cap rent increases at 5% a year.&rdquo;</div>
+<div class="count" style="color:#047857;padding-top:6px">319 <span style="font-size:12px;font-weight:normal;color:#707070">co-signs</span></div>
+<span class="plate">Ask two neighbors</span>
+</div>
+<div class="obj paper">
+<div class="chr" style="color:#6f6d6a;font-size:12px;letter-spacing:.2em">Record of co-signature</div>
+<div class="mono" style="color:#1e293b;border-top:3px double #b6ac97;margin-top:7px;padding-top:7px">SIGNER NO.&nbsp;319</div>
+</div>
+</div>
+<div class="lbl">A live object on a card; an issued object on paper. Same message.</div>
+</div>
+<div>
+<div class="panel vp-dark">
+<div class="h" style="color:#a1a1aa">Dark &mdash; viewport #0f172a</div>
+<div class="obj card-dark">
+<div class="chr" style="color:#a1a1aa">Colorado &middot; HB 21</div>
+<div class="ttl" style="color:#f4f4f5;padding-top:4px">&ldquo;Cap rent increases at 5% a year.&rdquo;</div>
+<div class="count" style="color:#08ad72;padding-top:6px">319 <span style="font-size:12px;font-weight:normal;color:#a1a1aa">co-signs</span></div>
+<span class="plate">Ask two neighbors</span>
+</div>
+<div class="obj paper">
+<div class="chr" style="color:#6f6d6a;font-size:12px;letter-spacing:.2em">Record of co-signature</div>
+<div class="mono" style="color:#1e293b;border-top:3px double #b6ac97;margin-top:7px;padding-top:7px">SIGNER NO.&nbsp;319</div>
+</div>
+</div>
+<div class="lbl">The frame inverts; the artifact does not &mdash; paper is lit, not swapped.</div>
+</div>
+</div>
+
+<div class="rule"></div>
+<div class="grid">
+<div>
+<div class="eyebrow">The type stack &mdash; no web fonts</div>
+<table class="t">
+<tr><td>Newsreader</td><td><code>Georgia, 'Times New Roman', serif</code></td></tr>
+<tr><td>Archivo body</td><td><code>'Segoe UI', -apple-system, &hellip;</code></td></tr>
+<tr><td>Chrome (wdth 125)</td><td><code>Verdana, Geneva</code> + caps + <code>.12&ndash;.24em</code>, <b>12px floor</b></td></tr>
+<tr><td>IBM Plex Mono</td><td><code>ui-monospace, Menlo, Consolas, 'Courier New'</code></td></tr>
+</table>
+<div class="note">A webfont reaches a minority of clients while blocking render in the rest. Verdana is the widest email-safe sans, so the chrome register stays <em>wide</em> &mdash; and with no axis to expand the face, shrinking it is the one move that has nothing left to give.</div>
+</div>
+<div>
+<div class="eyebrow">Three marks that cannot invert</div>
+<table class="t">
+<tr><td>Indigo plate</td><td>1.02:1 on zinc-800 &rarr; light plate, ink numerals (11.53:1)</td></tr>
+<tr><td>Green ink</td><td><code>--color-success</code> 2.72:1 &rarr; bright action green (5.13:1)</td></tr>
+<tr><td>Every link</td><td>A class on a paragraph does not reach its anchors &mdash; an inline link in inverted copy measures 1.02:1 and vanishes silently</td></tr>
+</table>
+<div class="note"><b>Email is the system&rsquo;s reduced-transparency mode, permanently</b> &mdash; glass drops its blur and becomes solid zinc, layout unchanged, exactly as <code>colors_and_type.css</code> already specifies. Only the aurora needed inventing: <code>#e7edf4</code>, its three lobes composited over the canvas. These hexes are <b>not tokens</b> &mdash; a hex in the token file is a hex someone will use on the aurora. All ratios rasterised, not parsed.</div>
+</div>
+</div>
+</div>
+</body>
+</html>

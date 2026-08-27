@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Brand" name="Brand — Wordmark" subtitle="AMENDMENT — no terminal mark in chrome; caret lockup where there is room" viewport="760x449" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Brand — Wordmark</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>.card { padding:24px; display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+/* Plates are explicitly coloured — never inheriting --canvas, which flips under
+   prefers-color-scheme and would paint slate-900 ink on a zinc-900 ground. */
+/* align-items:flex-start is load-bearing: as a column flex container the default
+   `stretch` blows each <img> box out to the full content width, and an SVG <img>
+   letterboxes centred inside it (preserveAspectRatio xMidYMid), so the artwork
+   drifts right of its own caption. flex-start lets width:auto resolve intrinsic. */
+.pane{border-radius:6px;padding:20px 22px;display:flex;flex-direction:column;align-items:flex-start;gap:14px;justify-content:center}
+.pane.light{background:#f4f4f5;box-shadow:inset 0 0 0 1px rgb(0 0 0/.06)}
+.pane.dark{background:#0f172a}
+.pane img{width:auto;height:26px;display:block}
+.pane img.big{height:30px}
+.lab{font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-variation-settings:var(--sans-chrome);line-height:1.5}
+.pane.light .lab{color:rgb(0 0 0/.55)}
+.pane.dark .lab{color:rgb(255 255 255/.62)}
+.lab b{display:block;font-size:13px;letter-spacing:.04em;text-transform:none;font-variation-settings:var(--sans-body)}
+.pane.light .lab b{color:var(--color-primary-dark)}
+.pane.dark .lab b{color:#f7f3e8}
+.foot{grid-column:1 / -1;font-family:var(--font-serif);font-variation-settings:'opsz' 16,'wght' 420;font-size:13px;line-height:1.5;color:var(--text-secondary);margin-top:2px}
+.foot b{font-style:normal;font-weight:var(--sans-semibold);color:var(--text-primary)}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="pane light"><img src="../assets/wordmark.svg" alt="Amendment"><div class="lab"><b>wordmark.svg</b>Chrome · wdth 125 · 430 · tracked 0.05em · no terminal mark</div></div>
+  <div class="pane dark"><img src="../assets/wordmark-cutout.svg" alt="Amendment"><div class="lab"><b>wordmark-cutout.svg</b>Knockout · dark chrome, photography</div></div>
+  <div class="pane light"><img class="big" src="../assets/wordmark-caret.svg" alt="Amendment"><div class="lab"><b>wordmark-caret.svg</b>Display lockup · the caret means <i>insert here</i></div></div>
+  <div class="pane dark"><img class="big" src="../assets/wordmark-caret-cutout.svg" alt="Amendment"><div class="lab"><b>wordmark-caret-cutout.svg</b>Display lockup, knockout</div></div>
+  <div class="foot"><b>Chrome gets the clean mark.</b> The caret closes the wordmark only where there is room and nothing competes with it — marketing lockups, launch marks, the Receipt's issuing device. Beside dropdowns and sort headers it reads as an affordance before it reads as punctuation. The Oxblood full stop was dropped in August 2026: a full stop says the sentence is finished, and the document is not.</div>
+</div>
+</body>
+</html>

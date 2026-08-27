@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Handoff targets — source-derived" name="Material tiers in situ" subtitle="Refactor target · both modes · values read from voyager@e440076210f2 app/globals.css" viewport="1280x820" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amendment — material tiers in situ</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+body::before{display:none}
+.card{padding:0;min-height:820px}
+.hdr{padding:18px 24px 14px;position:relative;z-index:3;background:var(--canvas)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+/* --- the two rooms ---------------------------------------------------- */
+/* clip-path, not overflow:hidden — overflow makes the room a scrollport, and
+   since the room never scrolls the navbar's `sticky` silently never engages.
+   Chrome is the one tier whose documented job is persistence, so it has to
+   actually hold. clip-path clips the aurora and popup without a scrollport. */
+.room{position:relative;min-height:700px;clip-path:inset(0);padding:0 0 24px}
+.room-light{background-color:#f1f5f9;background-image:radial-gradient(ellipse 72% 55% at 15% 8% in oklab,oklch(0.84 0.09 250/0.48),transparent),radial-gradient(ellipse 58% 46% at 85% 20% in oklab,oklch(0.86 0.07 270/0.4),transparent),radial-gradient(ellipse 60% 50% at 50% 90% in oklab,oklch(0.92 0.05 60/0.4),transparent)}
+.room-dark{background-color:#080c17;background-image:radial-gradient(ellipse 72% 58% at 15% 6% in oklab,oklch(0.5 0.13 255/0.62),transparent),radial-gradient(ellipse 60% 48% at 88% 16% in oklab,oklch(0.42 0.1 285/0.5),transparent),radial-gradient(ellipse 62% 55% at 50% 94% in oklab,oklch(0.48 0.05 55/0.26),transparent)}
+/* --- ink -------------------------------------------------------------
+   _card.css captions with .lbl/.caption/.note, which read --text-* from
+   colors_and_type.css :root — light-mode ink. Remapping only a private
+   --ink set leaves those three resolving light inside the dark room, i.e.
+   near-black on near-black. Declare the real tokens per room. */
+.room-light{--ink:rgb(0 0 0/87%);--ink-2:rgb(0 0 0/55%);--ink-3:rgb(0 0 0/38%);--text-primary:rgb(0 0 0/87%);--text-secondary:rgb(0 0 0/55%);--text-tertiary:rgb(0 0 0/38%)}
+.room-dark{--ink:rgb(255 255 255/87%);--ink-2:rgb(255 255 255/55%);--ink-3:rgb(255 255 255/38%);--text-primary:rgb(255 255 255/87%);--text-secondary:rgb(255 255 255/55%);--text-tertiary:rgb(255 255 255/38%)}
+.room{color:var(--ink)}
+/* --- the five tiers, exact ------------------------------------------- */
+.m{backdrop-filter:blur(50px);-webkit-backdrop-filter:blur(50px);border-radius:6px}
+.room-light .ultrathin{background:rgb(255 255 255/10%);box-shadow:0 0 0 1px rgb(0 0 0/5%)}
+.room-light .thin{background:rgb(255 255 255/30%);box-shadow:0 0 0 1px rgb(0 0 0/5%),0 1px 2px 0 rgb(15 23 42/.04),0 1px 1px -1px rgb(15 23 42/.04)}
+.room-light .regular{background:rgb(255 255 255/55%);box-shadow:0 0 0 1px rgb(0 0 0/10%),0 4px 6px -1px rgb(15 23 42/.12),0 2px 4px -2px rgb(15 23 42/.12)}
+.room-light .thick{background:rgb(255 255 255/75%);box-shadow:0 0 0 1px rgb(0 0 0/15%),0 20px 25px -5px rgb(15 23 42/.18),0 8px 10px -6px rgb(15 23 42/.18)}
+.room-light .chrome{background:rgb(255 255 255/55%);backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);box-shadow:0 0 0 1px rgb(0 0 0/10%),0 8px 16px -4px rgb(15 23 42/.12),0 3px 6px -3px rgb(15 23 42/.12)}
+.room-dark .ultrathin{background:rgb(255 255 255/2%);box-shadow:0 0 0 1px rgb(255 255 255/5%)}
+.room-dark .thin{background:rgb(255 255 255/4%);box-shadow:inset 0 0 0 1px rgb(255 255 255/12%),0 2px 6px -2px rgb(0 0 0/.18),inset 0 1px 0 0 rgb(255 255 255/.06)}
+.room-dark .regular{background:rgb(255 255 255/8%);box-shadow:inset 0 0 0 1px rgb(255 255 255/14%),0 6px 14px -4px rgb(0 0 0/.5),0 2px 6px -3px rgb(0 0 0/.45),inset 0 1px 0 0 rgb(255 255 255/.1)}
+.room-dark .thick{background:rgb(255 255 255/12%);box-shadow:inset 0 0 0 1px rgb(255 255 255/16%),0 18px 34px -10px rgb(0 0 0/.6),0 6px 12px -6px rgb(0 0 0/.5),inset 0 1px 0 0 rgb(255 255 255/.16)}
+.room-dark .chrome{background:rgb(255 255 255/12%);backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);box-shadow:0 0 0 1px rgb(255 255 255/12%),0 10px 30px -10px rgb(0 0 0/.55),inset 0 1px 0 0 rgb(255 255 255/.06)}
+/* --- composed furniture ---------------------------------------------- */
+.nav{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:18px;padding:0 18px;height:52px;border-radius:0;margin-bottom:20px}
+.brand{font-family:var(--font-serif);font-variation-settings:var(--serif-display);font-weight:800;font-size:15px}
+.navlinks{display:flex;gap:14px;margin-left:auto}
+.navlink{font-family:var(--font-sans);font-variation-settings:var(--sans-chrome);text-transform:uppercase;font-size:12px;letter-spacing:var(--track-chrome);font-weight:var(--sans-semibold);color:var(--ink-2)}
+.body{padding:0 20px;display:flex;flex-direction:column;gap:14px}
+.eyeb{font-family:var(--font-sans);font-variation-settings:var(--sans-chrome);text-transform:uppercase;font-size:12px;letter-spacing:.08em;color:var(--ink-3);font-weight:var(--sans-semibold)}
+.cardrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{padding:14px 14px 16px;display:flex;flex-direction:column;gap:5px;min-height:132px}
+.tile-t{font-family:var(--font-serif);font-variation-settings:var(--serif-display);font-weight:700;font-size:14px;line-height:1.25}
+.tile-m{font-family:var(--font-mono);font-size:12px;color:var(--ink-2)}
+.tile-s{font-family:var(--font-serif);font-variation-settings:'opsz' 16,'wght' 420;font-size:12px;color:var(--ink-2);line-height:1.4}
+.wide{padding:16px 16px 18px;display:flex;flex-direction:column;gap:6px}
+/* Row heights are reserved, not derived from copy — the two rooms carry
+   different annotation text and must still line up tier-for-tier. */
+.wide.ultrathin{min-height:150px}
+.wide.regular{min-height:142px}
+.pop{min-height:0}
+.seg{display:inline-flex;gap:4px;padding:4px;border-radius:8px;align-self:flex-start}
+.segb{font-family:var(--font-sans);font-variation-settings:var(--sans-chrome);text-transform:uppercase;font-size:12px;letter-spacing:var(--track-chrome);font-weight:var(--sans-semibold);padding:6px 12px;border-radius:5px;color:var(--ink-2)}
+.room-light .segb.on{background:rgb(255 255 255/55%);color:rgb(0 0 0/87%);box-shadow:0 1px 2px 0 rgb(15 23 42/.06)}
+.room-dark .segb.on{background:rgb(255 255 255/8%);color:rgb(255 255 255/87%)}
+.pop{position:relative;margin:2px 0 0 auto;width:270px;padding:8px;border-radius:8px;display:flex;flex-direction:column}
+.popi{font-family:var(--font-sans);font-size:13px;padding:8px 10px;border-radius:5px;color:var(--ink)}
+.room-light .popi.hov{background:rgb(0 0 0/5%)}
+.room-dark .popi.hov{background:rgb(255 255 255/6%)}
+.tag{font-family:var(--font-mono);font-size:12px;color:var(--ink-3);margin-left:auto}
+.lblrow{display:flex;align-items:baseline;gap:8px}
+.modeflag{font-family:var(--font-sans);font-variation-settings:var(--sans-chrome);text-transform:uppercase;font-size:12px;letter-spacing:var(--track-chrome);font-weight:var(--sans-semibold);padding:3px 8px;border-radius:3px}
+.room-light .modeflag{background:rgb(0 0 0/8%);color:rgb(0 0 0/55%)}
+.room-dark .modeflag{background:rgb(255 255 255/12%);color:rgb(255 255 255/70%)}
+.divider{width:1px;background:rgb(0 0 0/8%)}
+</style>
+</head>
+<body>
+<div class="card">
+<div class="hdr">
+<h1>Material tiers, in situ</h1>
+<p class="sub">The refactor target for <b>RECONCILIATION §3</b>. Every value below is read from <b>voyager@e440076210f2</b> <code>app/globals.css</code> — the five <code>@utility</code> definitions, the four shadow utilities, and the <code>body</code> aurora. Tiers only read against each other, so they are shown stacked on the real canvas rather than as swatches.</p>
+<div class="note">Uniform <b>blur(50px)</b> on the four tiers · <b>blur(25px)</b> on chrome · hierarchy is opacity, not blur. <b>Scroll</b> — chrome is the one tier with a behavioural claim ("persistent window chrome"), so both navbars hold while content passes under them.</div>
+</div>
+<div class="grid">
+
+<div class="room room-light">
+  <div class="m chrome nav">
+    <span class="brand">Amendment</span>
+    <div class="navlinks"><span class="navlink">Bills</span><span class="navlink">Elections</span><span class="navlink">Tracked</span></div>
+  </div>
+  <div class="body">
+    <div class="lblrow"><span class="eyeb">Light</span><span class="modeflag">white overlays</span><span class="tag">navbar = chrome · 55%</span></div>
+
+    <div class="m ultrathin wide">
+      <span class="lbl">ultrathin · 10% white · ring black/5 · no shadow</span>      <div class="seg"><span class="segb on">Summary</span><span class="segb">Full text</span><span class="segb">History</span></div>
+      <span class="tile-s">Toggles, hover states, progress bars, form inputs. The only tier with <code>shadow-none</code>.</span>
+    </div>
+
+    <div class="cardrow">
+      <div class="m thin tile"><span class="lbl">thin · 30%</span><span class="tile-t">HB 21</span><span class="tile-s">Cards, ghost buttons, secondary containers.</span><span class="tile-m">shadow-whisper</span></div>
+      <div class="m thin tile"><span class="lbl">thin · 30%</span><span class="tile-t">SB 447</span><span class="tile-s">Hovers up to <code>regular</code> on the real card.</span><span class="tile-m">ring black/5</span></div>
+    </div>
+
+    <div class="m regular wide">
+      <span class="lbl">regular · 55% · ring black/10 · shadow-raised</span>
+      <span class="tile-t">Primary surfaces — forms, search, content cards</span>
+      <span class="tile-s">This is the tier the spec had at 85%. At 55% the aurora still reads through; at 85% it does not, which is the whole reason the number matters.</span>
+    </div>
+
+    <div class="m thick pop">
+      <span class="popi hov">Introduced version</span>
+      <span class="popi">Engrossed</span>
+      <span class="popi">Enrolled</span>
+      <span class="popi" style="color:var(--ink-3)">thick · 75% · shadow-floating</span>
+    </div>
+  </div>
+</div>
+
+<div class="room room-dark">
+  <div class="m chrome nav">
+    <span class="brand">Amendment</span>
+    <div class="navlinks"><span class="navlink">Bills</span><span class="navlink">Elections</span><span class="navlink">Tracked</span></div>
+  </div>
+  <div class="body">
+    <div class="lblrow"><span class="eyeb">Dark</span><span class="modeflag">also white overlays</span><span class="tag">not black · §3</span></div>
+
+    <div class="m ultrathin wide">
+      <span class="lbl">ultrathin · 2% white · ring white/5</span>
+      <div class="seg"><span class="segb on">Summary</span><span class="segb">Full text</span><span class="segb">History</span></div>
+      <span class="tile-s">The spec's "2% black" produces a hole in the aurora. 2% white produces a lift. Same number, opposite direction.</span>
+    </div>
+
+    <div class="cardrow">
+      <div class="m thin tile"><span class="lbl">thin · 4%</span><span class="tile-t">HB 21</span><span class="tile-s">Spec said 26% black. Real is 4% white.</span><span class="tile-m">ring inset white/12</span></div>
+      <div class="m thin tile"><span class="lbl">thin · 4%</span><span class="tile-t">SB 447</span><span class="tile-s">Dark rings go <code>inset</code>; light rings do not.</span><span class="tile-m">+ inset highlight</span></div>
+    </div>
+
+    <div class="m regular wide">
+      <span class="lbl">regular · 8% · ring inset white/14 · shadow-raised</span>
+      <span class="tile-t">Primary surfaces — forms, search, content cards</span>
+      <span class="tile-s">Dark shadows switch ink from slate-900 to pure black and add a top inset highlight — a lit edge, not a veil. Three layers, not two.</span>
+    </div>
+
+    <div class="m thick pop">
+      <span class="popi hov">Introduced version</span>
+      <span class="popi">Engrossed</span>
+      <span class="popi">Enrolled</span>
+      <span class="popi" style="color:var(--ink-3)">thick · 12% · shadow-floating</span>
+    </div>
+  </div>
+</div>
+
+</div>
+<div class="hdr" style="padding-top:16px">
+<div class="note"><b>Three findings from this read, not yet in the spec.</b></div>
+<div class="caption" style="margin-top:6px">1 — <b>Chrome ships two different light values.</b> <code>--material-chrome-bg</code> is <code>75%</code> and feeds the <code>navbar-materialize</code> keyframe; <code>@utility material-chrome</code> is <code>bg-white/55</code>. A navbar that animates in lands at 75% and any static chrome sits at 55%. RECONCILIATION recorded 55, DESIGN.md recorded 75 — both are in the code, which is the actual defect.</div>
+<div class="caption" style="margin-top:5px">2 — <b>globals.css's own doc comment is the source of the spec's wrong numbers.</b> The comment block above the utilities still reads <i>thin ~45%, regular ~85%, thick ~100%, chrome 75%</i> and <i>"DARK MODE (black overlays)"</i>. The utilities directly beneath it say 30/55/75 and white. So §3 is not spec drift — the spec faithfully transcribed a stale comment. Fix the comment in the same PR or the next reader regenerates the same error.</div>
+<div class="caption" style="margin-top:5px">3 — <b>The tiers are not evenly spaced and the usage table is stale.</b> Light steps 10 → 30 → 55 → 75; the comment claims thick is "~100% effective" but it is 75%, i.e. still translucent. Anything relying on <code>thick</code> to fully occlude is relying on a value that does not exist — which is exactly why <code>.popover-surface</code> had to be added as a solid fill.</div>
+</div>
+</div>
+</body>
+</html>

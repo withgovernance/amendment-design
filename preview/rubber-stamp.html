@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Components — Rubber stamp" subtitle="Ink grunge via SVG turbulence filter" viewport="700x140" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amendment specimen</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>.card { padding: 14px 24px; }
+
+  /* Stamp base — typography & ring */
+  .stamp {
+    display: inline-block;
+    padding: 5px 14px;
+    font-family: var(--font-sans);
+    font-variation-settings: var(--sans-chrome);
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    font-weight: var(--sans-bold);
+    box-shadow: inset 0 0 0 2px currentColor;
+    border-radius: 2px;
+    position: relative;
+    /* Ink grunge: feTurbulence-driven displacement + alpha mottling.
+       Result is the ink looking unevenly pressed onto the paper. */
+    filter: url(#stamp-grunge);
+    /* A touch of ink bleed — color edges feather outward like wet ink. */
+    text-shadow: 0 0 0.4px currentColor;
+  }
+  /* Per-stamp seed variants so each one has a distinct grunge pattern. */
+  .stamp.s2 { filter: url(#stamp-grunge-2); }
+  .stamp.s3 { filter: url(#stamp-grunge-3); }
+  .stamp.s4 { filter: url(#stamp-grunge-4); }
+
+  .ink-enacted   { color: var(--color-action); transform: rotate(-2.5deg); }
+  .ink-committee { color: #334155; transform: rotate(3deg); }
+  .ink-vetoed    { color: #b45309; transform: rotate(-2deg); }
+  .ink-failed    { color: #dc2626; transform: rotate(1.5deg); }
+</style>
+</head>
+<body>
+
+<!-- SVG filter defs. Each filter:
+     1. feTurbulence generates fractal noise.
+     2. feDisplacementMap warps the rendered stamp by that noise — broken, jittery edges.
+     3. A second turbulence layer is composited into the alpha channel to drop out
+        random specks of ink — the "missing pressure" look of a real rubber stamp.
+     Different baseFrequency + seed per filter so the four stamps don't look cloned. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="stamp-grunge" x="-10%" y="-30%" width="120%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.4" xChannelSelector="R" yChannelSelector="G" result="warped"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.45 0.85" numOctaves="2" seed="7" result="ink"/>
+      <feColorMatrix in="ink" type="matrix"
+        values="0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0.45 0.62" result="inkA"/>
+      <feComposite in="warped" in2="inkA" operator="in" result="stamped"/>
+      <feMerge>
+        <feMergeNode in="stamped"/>
+      </feMerge>
+    </filter>
+
+    <filter id="stamp-grunge-2" x="-10%" y="-30%" width="120%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="1.05" numOctaves="2" seed="11" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.4" xChannelSelector="R" yChannelSelector="G" result="warped"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.55 0.95" numOctaves="2" seed="2" result="ink"/>
+      <feColorMatrix in="ink" type="matrix"
+        values="0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0.45 0.62" result="inkA"/>
+      <feComposite in="warped" in2="inkA" operator="in"/>
+    </filter>
+
+    <filter id="stamp-grunge-3" x="-10%" y="-30%" width="120%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75 1.1" numOctaves="3" seed="19" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.5" xChannelSelector="R" yChannelSelector="G" result="warped"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.5 0.7" numOctaves="2" seed="23" result="ink"/>
+      <feColorMatrix in="ink" type="matrix"
+        values="0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0.45 0.62" result="inkA"/>
+      <feComposite in="warped" in2="inkA" operator="in"/>
+    </filter>
+
+    <filter id="stamp-grunge-4" x="-10%" y="-30%" width="120%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.95" numOctaves="2" seed="31" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.4" xChannelSelector="R" yChannelSelector="G" result="warped"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.6 1.0" numOctaves="2" seed="41" result="ink"/>
+      <feColorMatrix in="ink" type="matrix"
+        values="0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0.45 0.62" result="inkA"/>
+      <feComposite in="warped" in2="inkA" operator="in"/>
+    </filter>
+  </defs>
+</svg>
+
+<div class="card">
+  <div style="background: var(--paper-cream); border-radius: 4px; padding: 22px 28px; display:flex; align-items:center; gap: 26px; box-shadow: inset 0 0 0 1px var(--border-subtle);">
+    <span class="stamp ink-enacted">Enacted</span>
+    <span class="stamp s2 ink-committee">In Committee</span>
+    <span class="stamp s3 ink-vetoed">Vetoed</span>
+    <span class="stamp s4 ink-failed">Failed</span>
+  </div>
+  <div style="margin-top: 10px; font-family: var(--font-serif); font-variation-settings: 'opsz' 16, 'wght' 420; font-size: 12px; color: var(--text-secondary);">2px ring · chrome-width 0.12em tracking · 2–4° rotation · light fractal-noise displacement + subtle alpha mottling per stamp</div>
+</div>
+
+</body>
+</html>

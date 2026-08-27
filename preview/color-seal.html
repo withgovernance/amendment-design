@@ -1,0 +1,34 @@
+<!-- @dsCard group="Brand" name="Brand — The seal" subtitle="A blind emboss — pressed into the paper, no ink at all" viewport="760x311" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Brand — The seal</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>.card { padding:24px; display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.pane{border-radius:6px;padding:24px;display:flex;align-items:center;gap:22px}
+/* Explicit paper values — the emboss needs paper, and these must not follow
+   --canvas, which the theme can flip. */
+.pane.day{background:oklch(.965 .012 85);box-shadow:inset 0 0 0 1px rgb(0 0 0/.07)}
+.pane.lamp{background-color:oklch(.78 .058 68);background-image:radial-gradient(ellipse 70% 52% at 50% 34% in oklab,oklch(1 .055 80/.5),transparent 78%);box-shadow:inset 0 0 0 1px oklch(.5 .05 55/.4)}
+.lab{font-size:12px;letter-spacing:.07em;text-transform:uppercase;font-variation-settings:var(--sans-chrome);line-height:1.5;color:rgb(0 0 0/.5)}
+.lab b{display:block;font-size:13px;letter-spacing:.04em;text-transform:none;font-variation-settings:var(--sans-body);color:rgb(0 0 0/.82)}
+.foot{grid-column:1 / -1;font-family:var(--font-serif);font-variation-settings:'opsz' 16,'wght' 420;font-size:13px;line-height:1.55;color:var(--text-secondary)}
+.foot b{font-style:normal;font-weight:var(--sans-semibold);color:var(--text-primary)}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="pane day">
+    <span class="seal-emboss"><span>A</span></span>
+    <div class="lab"><b>Daylight paper</b>paper-cream · issued artifacts only</div>
+  </div>
+  <div class="pane lamp">
+    <span class="seal-emboss"><span>A</span></span>
+    <div class="lab"><b>Lamplit paper</b>dark room · the shadow deepens</div>
+  </div>
+  <div class="foot"><b>The seal is pressed, not printed.</b> A registrar's seal, a notary's seal, a corporate seal — none of them carry ink; the mark is a deformation of the sheet. It needs paper beneath it, so it never appears on glass, on the aurora, or in chrome, and it is reserved for issued artifacts: the post-send confirmation, the Receipt, an envelope's postage corner. Oxblood was retired from the seal in August 2026 along with the rest of the system — a mark that appears once, on something already earned, should not be the heaviest object on the page.</div>
+</div>
+</body>
+</html>

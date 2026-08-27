@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Type" name="Type — Three families" subtitle="Newsreader · Archivo (wdth + true italic) · IBM Plex Mono" viewport="700x196" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amendment type specimen</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>.caption { font-variation-settings: 'opsz' 16, 'wght' 420; }
+/* Nine children flow COLUMN-first through three shared rows, so the eyebrow /
+   specimen / description bands align across all three families regardless of how
+   long any one family's name is. "Mono · IBM Plex Mono" needs 267px in a 204px
+   column, so it wraps — which used to push its Aa 13px below the other two. */
+.fams { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto auto; grid-auto-flow: column; column-gap: 20px; row-gap: 6px; }
+.spec { line-height: 1.0; align-self: end; }
+.note { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-weight: 450; font-size: 13px; line-height: 1.35; }
+/* The words "true italic" must be SET in the italic they claim, in Archivo — not
+   inherited from .note's Newsreader. That also keeps it out of the serif register,
+   where italic has an 18px floor this 13px note would violate. */
+.note em.sans-ital { font-family: var(--font-sans); font-variation-settings: 'wdth' 104; font-weight: var(--sans-medium); font-style: italic; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="fams">
+    <div class="voice-eyebrow">Serif · Newsreader</div>
+    <div class="spec" style="font-family: var(--font-serif); font-variation-settings: var(--serif-display); font-weight: 800; font-size: 32px; letter-spacing: -0.01em;">Aa</div>
+    <div class="note">Ink on archival paper. Every heading, AI prose, statutes, letters.</div>
+    <div class="voice-eyebrow">Sans · Archivo</div>
+    <div class="spec" style="font-family: var(--font-sans); font-variation-settings: 'wdth' 104; font-weight: var(--sans-bold); font-size: 32px;">Aa</div>
+    <div class="note">UI chrome and body. <span style="font-family: var(--font-sans); font-variation-settings: 'wdth' 104;">wdth</span> separates registers — body 104, display 120, chrome 125 — and it has a <em class="sans-ital">true italic</em> at every weight.</div>
+    <div class="voice-eyebrow">Mono · IBM Plex Mono</div>
+    <div class="spec" style="font-family: var(--font-mono); font-weight: 500; font-size: 32px;">Aa</div>
+    <div class="note">Machine identifiers in body prose. <span style="font-family: var(--font-mono); font-size: 12px;">§ 791.02(1)</span> · line numbers · ledger nos.</div>
+  </div>
+</div>
+</body>
+</html>

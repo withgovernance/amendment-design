@@ -50,6 +50,13 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
+### Uppercase at display size: hard rule 5, or the ceremonial register?
+- **kind:** two readings
+- **found:** stage 8, sweeping the remaining sans-stack headings. Hard rule 5 reads absolute — "uppercase belongs to chrome only: 12px, wdth 125, 0.12em" — but `role-ceremonial` and `--sans-ceremonial` both exist, and the ceremonial register is distinguished precisely by being tracked uppercase at a size chrome never reaches. I applied the exception-grep procedure and found the exception is a whole role, not a clause.
+- **evidence:** `BillDetailHeader`'s `h1` is `sans-ceremonial` uppercase at `text-2xl → md:text-4xl`, carrying the bill IDENTIFIER (the title is the serif `<p>` below it), and it carries an inline comment from the 1c sweep saying "Stays sans: this is the chrome register, not a heading voice. Do not sweep to serif." That one is deliberate and right, and `typography` assigns bill *titles* to `--serif-display` — which this is not. But **four other sites reach display size using the CHROME width preset rather than the ceremonial one**: `oversight/bills/page.tsx:76` (`sans-chrome text-2xl`), `dispatches/page.tsx:309` and `dispatches/health/page.tsx:305` (`sans-chrome text-xl`), `NotFoundContent.tsx:11` (`sans-chrome text-2xl`). Under the literal rule all five are violations; under the ceremonial reading, one is correct and four are citing the wrong preset.
+- **proposes:** state hard rule 5 as governing the CHROME register specifically, and say that ceremonial is the sanctioned uppercase-at-size register with `--sans-ceremonial` as its preset. Then the four sites are a one-line conformance fix rather than a judgement call, and the rule stops reading as a blanket ban on something the type system deliberately provides.
+- **blocks:** the four sites, left as shipped. I did not sweep them, because "uppercase heading" is the rule most likely to be applied literally by the next session and I would rather it be stated than guessed.
+
 *(nothing queued for ratification)*
 
 ## Needs a person — cannot close from inside the toolchain
@@ -71,6 +78,20 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.7)** — the stage 8 queue, emptied.
+  `uppercase-has-two-homes`: uppercase is legal in `role-label-caps` (chrome)
+  and `role-ceremonial` (display, once per page) and nowhere else — hard rule
+  5's exception was a **whole role**, the fourth instance of that pattern and
+  the first surfaced by the grep procedure. The test is **designation or
+  sentence**: a bill identifier is ceremonial, "Browse bills by state" is a
+  heading. `tracking-is-half-the-register` **escalated from the breadcrumb** —
+  the 08-27 ruling that width-without-tracking is a different register was fixed
+  at one site and never swept; five more use `tracking-wide` (0.025em) where
+  0.12/0.20em belongs, including the ceremonial site, which is therefore missing
+  the property that defines it. All five **hand-assembled a register instead of
+  taking the role class** — a width preset is not a register. Plus: the
+  copy-pasted "do not sweep to serif" comment is an instruction not to fix,
+  correct at one site and false at four.
 - **2026-08-28 (v2026.08.28.6)** — `canvas-two-names`, scheduled rather than
   carried a fourth pass. `--canvas` is the **opaque ground** (value unchanged,
   nothing consuming it moves); `--canvas-live` is the **Blue Hour base** under

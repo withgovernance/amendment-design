@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.6
+# spec-version:   v2026.08.28.7
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -688,6 +688,49 @@ typography:
   tracking:
     track-chrome:     "0.12em"
     track-ceremonial: "0.20em"
+  uppercase-has-two-homes: >-
+    RATIFIED 2026-08-28. UPPERCASE IS LEGAL IN EXACTLY TWO REGISTERS, and
+    the hard rule naming only one is the fourth instance of a general rule
+    whose exception lives somewhere else — here the exception is a WHOLE
+    ROLE rather than a clause, which is why it read as absolute for so long.
+      CHROME     role-label-caps — 12px, sans-chrome, track-chrome.
+      CEREMONIAL role-ceremonial — display size, sans-ceremonial,
+                 track-ceremonial, semibold, ONCE PER PAGE.
+    Chrome and ceremonial share a width preset, so what separates them is
+    TRACKING AND SIZE — this file already says so under widthPresets. A
+    ceremonial element that is not tracked to 0.20em is not ceremonial; it
+    is a chrome label that has been made big.
+    THE TEST, because "display-size uppercase" is not self-evidently one or
+    the other: IS THE TEXT A DESIGNATION OR A SENTENCE? A designation is a
+    name assigned to a thing and carried on the artifact — a bill
+    identifier, a place of issue, a seal monogram. It is ceremonial. A
+    sentence is something a person wrote — "Browse bills by state",
+    "Message Dispatches", "This page was vetoed." Those are HEADINGS, and
+    the hard rule's main clause governs them: serif, mixed case, not
+    tracked out. Setting a sentence in tracked uppercase does not make it
+    ceremonial; it makes it hard to read at the size that was supposed to
+    make it grand.
+    SO a bill detail page is correct with the identifier ceremonial and the
+    title in serif beneath it — the designation is set, the human sentence
+    is read.
+  tracking-is-half-the-register: >-
+    ESCALATED 2026-08-28 from the breadcrumb to the general case. The
+    breadcrumb entry ratified 2026-08-27 that shipping chrome's width
+    WITHOUT chrome's tracking "is a different register", because the
+    tracking is what recovers Archivo's narrower ceiling. That was fixed at
+    one site and never swept, and it is now found at five more — every one
+    reaching for the Tailwind `tracking-wide` step (0.025em) where
+    track-chrome (0.12em) or track-ceremonial (0.20em) belongs. Five to
+    eight times under.
+    THE FAILURE IS SPECIFIC AND WORTH NAMING: each site hand-assembled a
+    register out of a width preset plus uppercase plus an arbitrary tracking
+    literal, INSTEAD OF TAKING THE ROLE CLASS THAT ALREADY COMPOSES ALL
+    THREE CORRECTLY. role-label-caps and role-ceremonial exist, are correct,
+    and were bypassed. A width preset is not a register — the role is.
+    This is trap 2 in its second form: the first was a role named in the
+    spec and implemented nowhere, so every call site improvised one. This is
+    a role implemented correctly and improvised around anyway, which is
+    worse, because the improvisation looks like specificity.
   # DEPRECATED — hexp-* survive as aliases onto the width presets so shipped
   # component code and the adherence lint keep resolving mid-migration.
   hexpAxisDeprecated:

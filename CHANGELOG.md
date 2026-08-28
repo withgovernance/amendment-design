@@ -8,6 +8,69 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.7) — Uppercase has two homes, and five sites rebuilt a register instead of taking it
+
+Stage 8 queued one question and it was the right one to queue: **hard rule 5's
+exception is a whole role, not a clause.** Fourth instance of that pattern, and
+the first where applying the new grep procedure is what surfaced it.
+
+### `uppercase-has-two-homes`
+
+Uppercase is legal in exactly two registers: **`role-label-caps`** (chrome —
+12px, `--track-chrome`) and **`role-ceremonial`** (display size,
+`--track-ceremonial`, once per page). The hard rule named only the first, so it
+read as forbidding the second — while `role-ceremonial` sat in the stylesheet
+being *defined* by display-size uppercase.
+
+**The test, because "display-size uppercase" is not self-evidently one or the
+other: is the text a designation or a sentence?** A designation is a name
+assigned to a thing and carried on the artifact — a bill identifier, a place of
+issue, a seal monogram. That is ceremonial. A sentence is something a person
+wrote — *"Browse bills by state"*, *"Message Dispatches"*, *"This page was
+vetoed."* Those are headings, and the rule's main clause governs them: serif,
+mixed case, not tracked out. **Setting a sentence in tracked uppercase does not
+make it ceremonial; it makes it hard to read at the size that was supposed to
+make it grand.**
+
+So the bill detail page is right — identifier ceremonial, title in serif beneath.
+The designation is *set*; the human sentence is *read*. The other four sites are
+headings wearing chrome and should go serif mixed-case.
+
+### `tracking-is-half-the-register` — escalated from the breadcrumb
+
+The breadcrumb entry ratified **2026-08-27** that shipping chrome's width without
+chrome's tracking *"is a different register"*, because the tracking is what
+recovers Archivo's narrower ceiling. **That was fixed at one site and never
+swept.** It is now found at five more — every one reaching for Tailwind's
+`tracking-wide` (0.025em) where `--track-chrome` (0.12em) or `--track-ceremonial`
+(0.20em) belongs. **Five to eight times under**, including the ceremonial site,
+which is therefore missing the one property that makes it ceremonial.
+
+The failure is specific and worth naming: each site **hand-assembled a register**
+out of a width preset plus `uppercase` plus an arbitrary tracking literal,
+*instead of taking the role class that already composes all three correctly.*
+`role-label-caps` and `role-ceremonial` exist, are correct, and were bypassed.
+**A width preset is not a register — the role is.**
+
+This is trap 2 in its second form. The first was a role named in the spec and
+implemented nowhere, so every call site improvised one. **This is a role
+implemented correctly and improvised around anyway** — which is worse, because
+the improvisation looks like specificity.
+
+### The comment that told four sites not to fix themselves
+
+All five carry the same copy-pasted comment: *"Stays sans: this is the chrome
+register (uppercase, tracked), not a heading voice. The tag is for document
+outline. Do not sweep to serif."* It is true at the bill identifier and false at
+the other four, where it is an **instruction not to fix a violation**, propagated
+by copy-paste and pre-empting exactly the correction those sites need.
+
+Trap 4 in comment form, and the sharper version of it: a doc that restates the
+system is a competing copy, but a comment that restates it *at a call site* is a
+competing copy with standing — the next reader trusts it precisely because it is
+local. Delete it from the four; keep it at the identifier, where it should cite
+`uppercase-has-two-homes` rather than assert.
+
 ## 2026-08-28 (v2026.08.28.6) — Two canvases, one blue, and a test no agent can run
 
 ### `canvas-two-names` — the last consequence of having had two homes

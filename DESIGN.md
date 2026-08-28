@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.9
+# spec-version:   v2026.08.28.10
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -31,6 +31,9 @@
 #
 # VERSION SCHEME, ratified 2026-08-28: `vYYYY.MM.DD`, dated in UTC, with a
 # `.N` serial appended from the SECOND ratification onward on the same UTC
+# day. NOTE from 2026-08-28, which reached .10: THESE TAGS SORT
+# LEXICOGRAPHICALLY, NOT NUMERICALLY — `git tag` lists v2026.08.28.10 before
+# v2026.08.28.2. Sort with `sort -V` or read the CHANGELOG, which is ordered.
 # day (v2026.08.28, then v2026.08.28.2). The scheme was silent on this and
 # the second pass of 2026-08-28 hit it immediately: the date was taken and
 # the only alternatives were overwriting a published tag or inventing a
@@ -761,6 +764,37 @@ typography:
     resolves to something reasonable is found when someone greps for it,
     which is to say maybe never. This is why the hexp-* aliases were deleted
     rather than kept (see hexpAxisRetired).
+  composed-register-fails-silently: >-
+    RATIFIED 2026-08-28, contributed by the implementation session as a
+    generalisation of retired-axis-fails-silently, and it is the more useful
+    half. THE SAME SILENCE APPLIES ONE LAYER UP, TO A REGISTER.
+    `sans-chrome` + `uppercase` + `tracking-wide` COMPILES, RENDERS, AND
+    LOOKS APPROXIMATELY RIGHT. Nothing at any level says "this is five times
+    under chrome's tracking" — not a compiler, not a type checker, not a
+    story snapshot, which will happily photograph the wrong tracking and
+    call it the baseline. Only reading the computed style catches it, and
+    nobody reads a computed style they have no reason to doubt.
+    A RETIRED AXIS AND A HAND-ASSEMBLED REGISTER ARE ONE FAILURE: a
+    declaration that is syntactically valid, semantically wrong, and
+    indistinguishable from correct at every checkpoint except the rendered
+    pixel. The axis version does nothing; the register version does
+    something close enough to look deliberate. THE SECOND IS HARDER TO FIND,
+    because "nothing happened" eventually gets noticed and "slightly wrong"
+    does not.
+    SO THIS IS WHAT THE ROLE LAYER IS FOR, and the spec has never said it
+    plainly: a role is not a convenience or a shorthand. IT IS THE ONLY FORM
+    IN WHICH A REGISTER IS CHECKABLE. A hand-assembled register has no name,
+    so nothing can assert about it — no lint rule, no test, no review. Give
+    it a name and one grep decides it. That is why the rule that catches
+    this is `sans-chrome adjacent to uppercase without role-label-caps`
+    rather than any measurement of tracking: THE ASSEMBLY IS GREPPABLE AND
+    THE VALUE IS NOT.
+    EVIDENCE, and it is the argument for the rule over the sweep: the lint
+    rule caught two sites a call-site sweep could not have — a Navbar story,
+    and the `input-label` UTILITY, which had itself been hand-assembled at
+    `tracking-wide`. One line put every labelled field in the product five
+    times under chrome tracking, and no call site was wrong. A sweep looks
+    where things are used; only a rule looks where they are defined.
   tracking-is-half-the-register: >-
     ESCALATED 2026-08-28 from the breadcrumb to the general case. The
     breadcrumb entry ratified 2026-08-27 that shipping chrome's width

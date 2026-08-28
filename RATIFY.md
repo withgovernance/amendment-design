@@ -51,18 +51,11 @@ Anything still open after a pass stays here with a note on what it's waiting for
 ## Open
 
 ### The consumer's `.claude/skills/` copy of the stylesheet must become a symlink
-- **kind:** conformance, in the consumer's repo — recorded here because the fix is not mine to make
-- **found:** the 2026-08-28.9 pass, grepping for HEXP in a path nobody was watching. `.claude/skills/amendment-design/colors_and_type.css` is a REGULAR FILE, not the symlink `design/` uses, and carries its own `SKILL.md` differing from the canonical one.
-- **evidence:** eight ratifications stale in a single day — `--color-danger` at the red-600 value that fails AA on the opaque ground, no `--canvas-live`, `--hexp-*` aliases present after their deletion. It is the file an agent LOADS AS ITS SKILL in that repo, so the staleness is actively taught rather than merely sitting there.
-- **proposes:** symlink both files to the canonical repo, exactly as `design/` already is. A copy that must be remembered will be forgotten.
-- **blocks:** nothing shipping, and everything downstream of it — any session working in the consumer repo is reading an eight-version-old system and will produce work that looks like it is ignoring the design system while faithfully obeying a copy of it.
-
-### `tracking-is-half-the-register` is outstanding at 43 sites
-- **kind:** conformance, in the consumer's repo
-- **found:** verifying the stage 8 close-out, which reported the sweep complete.
-- **evidence:** 36 non-story sites still compose `sans-chrome` + `uppercase` + a literal Tailwind tracking step (0.025 / 0.05 / 0.1em) where `--track-chrome` is 0.12em; 7 more carry no tracking at all. Ten were fixed.
-- **proposes:** a lint rule rather than another sweep — `sans-chrome` + `uppercase` without `role-label-caps` is greppable in a way "did someone rebuild a register here" is not.
-- **blocks:** nothing, but it is the largest remaining known divergence and it will regrow without the rule.
+- **kind:** conformance, in the consumer's repo — **and it is agent configuration, so it waits on a person, not on either agent**
+- **found:** the 2026-08-28.9 pass, grepping for HEXP in a path nobody was watching. `.claude/skills/amendment-design/colors_and_type.css` is a REGULAR FILE, not the symlink `design/` uses, with its own `SKILL.md` differing from canonical.
+- **evidence:** carries `--color-danger: #dc2626` — the red-600 that measures 4.39:1 and moved to red-700 on 2026-08-28 — plus no `--canvas-live` and six HEXP mentions. It is the file an agent LOADS AS ITS SKILL in that repo, so the staleness is taught rather than stored. A sweep for a fourth copy found none.
+- **proposes:** symlink both files to the canonical repo, as `design/` already is. A copy that must be remembered will be forgotten.
+- **status:** with Jason, with the two `ln -s` commands and the diff. The implementation session declined to make the change on a peer's say-so — correctly, and on the same boundary that had it decline Chromatic and the branch landing. **Neither agent should action this.**
 
 ## Needs a person — cannot close from inside the toolchain
 
@@ -83,6 +76,19 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.10)** — `composed-register-fails-silently`,
+  contributed by the implementation session and the more useful half of the
+  silent-failure pair: `sans-chrome` + `uppercase` + `tracking-wide` compiles,
+  renders, and looks approximately right, and only a computed style says
+  otherwise. A retired axis does nothing; a hand-assembled register does
+  something close enough to look deliberate, which is **harder** to find.
+  **So this is what the role layer is for, stated plainly for the first time: a
+  role is the only form in which a register is CHECKABLE.** Nothing can assert
+  about an assembly with no name. That is why the rule greps the assembly rather
+  than measuring the value — and it caught the `input-label` UTILITY, where one
+  line put every labelled field five times under and no call site was wrong. A
+  sweep looks where things are used; a rule looks where they are defined.
+  Tracking divergence 44 of 46 closed, verified by running the grep.
 - **2026-08-28 (v2026.08.28.9)** — `retired-axis-fails-silently`: HexStateMap
   was setting `'HEXP' 100` **in live code** on a face with no such axis; CSS
   ignores an unknown variation axis, so the line ran, warned nothing, did

@@ -8,6 +8,65 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.10) — What the role layer is actually for
+
+### `composed-register-fails-silently`
+
+Contributed by the implementation session as a generalisation of
+`retired-axis-fails-silently`, and it is the more useful half. **The same silence
+applies one layer up, to a register.**
+
+`sans-chrome` + `uppercase` + `tracking-wide` **compiles, renders, and looks
+approximately right.** Nothing at any level says *this is five times under
+chrome's tracking* — not a compiler, not a type checker, not a story snapshot,
+which will happily photograph the wrong tracking and call it the baseline. Only
+reading the computed style catches it, and nobody reads a computed style they
+have no reason to doubt.
+
+A retired axis and a hand-assembled register are **one failure**: a declaration
+that is syntactically valid, semantically wrong, and indistinguishable from
+correct at every checkpoint except the rendered pixel. The axis version does
+nothing; the register version does something *close enough to look deliberate*.
+**The second is harder to find, because "nothing happened" eventually gets
+noticed and "slightly wrong" does not.**
+
+### So this is what the role layer is for, and the spec has never said it plainly
+
+**A role is not a convenience or a shorthand. It is the only form in which a
+register is checkable.** A hand-assembled register has no name, so nothing can
+assert about it — no lint rule, no test, no review. Give it a name and one grep
+decides it.
+
+That is why the rule that catches this is *`sans-chrome` adjacent to `uppercase`
+without `role-label-caps`* rather than any measurement of tracking: **the assembly
+is greppable and the value is not.**
+
+The evidence is the argument for the rule over the sweep. The lint rule caught two
+sites a call-site sweep could not have: a Navbar story, and the **`input-label`
+utility, which had itself been hand-assembled** at `tracking-wide`. One line put
+every labelled field in the product five times under chrome tracking, and **no call
+site was wrong.** A sweep looks where things are used; only a rule looks where they
+are defined.
+
+### Closing state
+
+The tracking divergence is 44 of 46 closed, verified by running the reported grep
+rather than accepting the count: 2 remain, both in `BillSummaryContent.tsx`, both
+on the held list. 67 `role-label-caps` elements now compute 0.12em at 12px where
+they were at 0.05em.
+
+Outstanding and correctly not ours: the `.claude/skills/` third copy (agent
+configuration — the implementation session declined it on the same boundary as
+Chromatic and the branch landing, which is the right read), and the real-client
+email test.
+
+### Note on the version scheme
+
+This day reached `.10`, which surfaces a wart in the scheme ratified at
+`v2026.08.28.2`: **these tags sort lexicographically, not numerically** — `git tag`
+lists `v2026.08.28.10` before `v2026.08.28.2`. Recorded in the provenance header;
+sort with `sort -V` or read this file, which is ordered.
+
 ## 2026-08-28 (v2026.08.28.9) — A retired axis in live code, and a third home nobody was watching
 
 ### `retired-axis-fails-silently` — the grep set is a correctness tool

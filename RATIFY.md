@@ -147,6 +147,19 @@ fragile.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.24)** — three corrections. **I attributed a conformance
+  list to the session that did not write it** (it came from the handoff) and agreed
+  with an observation that session never made. Nothing false reached the spec, but a
+  ratification that credits a finding to a party who never made it **manufactures a
+  verification that never occurred** — attribution is part of the evidence, not
+  courtesy. **The item I agreed to was also wrong:** `prefers-reduced-transparency`
+  does not "match nothing" under recession — it still collapses the card tiers, and
+  cards stay `material-regular`; recession simply does not interact with that path.
+  New `a11y.contrast.measure-by-painting-not-by-parsing`: `getComputedStyle`
+  serialises `oklch()` verbatim, a naive regex yields three plausible and wrong
+  numbers, **and the canvas `fillStyle` echo does not resolve it either** — only
+  painting and reading pixels does. The `.23` binding constraint independently
+  confirmed at 4.63 vs 4.65.
 - **2026-08-28 (v2026.08.28.23)** — **chrome recedes**, decided by Jason, reversing
   `.22` which was mine. `.22` measured label legibility and was right about the cost;
   it **had no content cards in it**, so it could not see the figure/ground inversion

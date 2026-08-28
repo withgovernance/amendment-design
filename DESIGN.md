@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.23
+# spec-version:   v2026.08.28.24
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1703,6 +1703,21 @@ components:
       ROUTE REMOVES THAT EDGE AND THERE IS NO HAIRLINE TO FALL BACK ON —
       check the bill and elections routes before calling this done.
     background: "none — the aurora is the ground"
+    reduced-transparency-is-a-non-event: >-
+      CORRECTED 2026-08-28, because the first statement of it was wrong. It
+      was claimed that with chrome receded the prefers-reduced-transparency
+      block "matches nothing". IT MATCHES PLENTY. That block collapses
+      material-ultrathin, -thin, -regular and -thick as well as chrome, and
+      CONTENT CARDS REMAIN material-regular UNDER RECESSION — so the block's
+      main job is entirely untouched. Only chrome's own entry goes unused,
+      and not even that while the mobile tab bar may keep material-chrome.
+      THE CORRECT STATEMENT IS THAT RECESSION DOES NOT INTERACT WITH THAT
+      PATH AT ALL. A surface with no fill is not matched by a rule that
+      collapses fills; there is nothing to collapse and nothing to declare.
+      It stays receded because it was never translucent. No rule is needed,
+      which is the opposite of the "state it rather than leave a media query
+      matching nothing" that was asked for — the media query is not matching
+      nothing.
     height: "56px"
     padding: "8px"
     layout: "max-width 80rem, three-column flex (leading / middle / trailing)"
@@ -3116,6 +3131,31 @@ a11y:
       fallen back to the plain three-lobe Blue Hour. Inside the band it is
       not safe at any rung, in either room — in the dark room even 87% ink
       drops to 3.53:1. The band is light, not a text surface.
+    measure-by-painting-not-by-parsing: >-
+      RATIFIED 2026-08-28, and it is about THE INSTRUMENT rather than the
+      system — which matters because almost every number in this file now
+      comes from an in-browser measurement.
+      getComputedStyle SERIALISES oklch() VERBATIM. Chrome returns
+      "oklch(0.66 0.148 160)" for a colour authored that way, so a regex
+      that expects rgb() and pulls the numbers out yields [0.66, 0.148, 160]
+      — which, read as RGB, is a near-black blue. NO ERROR, NO WARNING, AND
+      THREE PLAUSIBLE NUMBERS. Since this system authors in oklch by rule,
+      every token in the colour layer is exposed to it.
+      THE OBVIOUS WORKAROUND ALSO FAILS. Assigning the string to a canvas
+      context's fillStyle and reading fillStyle back returns the SAME oklch
+      string; the echo normalises nothing. A measurement built on that reads
+      as if it resolved the colour and did not.
+      WHAT ACTUALLY RESOLVES IT: paint and read the pixels back —
+      fillRect() then getImageData() — or sample a screenshot. VERIFIED:
+      oklch(.66 .148 160) paints to rgb(8,173,114), which is --color-action,
+      and --canvas paints to rgb(244,244,245). Both match values derived
+      independently, which is the check that the method is sound.
+      SO: MEASURE BY PAINTING, NEVER BY PARSING. This is the silent-failure
+      family pointed at the tool — a number that is wrong, confident, and
+      shaped exactly like a right answer. It is worth stating here because
+      a contrast figure taken this way would pass every review in this
+      file's history: it has a ground, a position, and a scheme, and it is
+      simply false.
     band-is-bounded: >-
       REPLACES the no-bare-text rule below, 2026-08-28, as the consequence of
       recession-ratified. The old rule protected the ink scale BY FORBIDDING

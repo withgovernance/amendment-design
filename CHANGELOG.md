@@ -8,6 +8,76 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.24) — Three corrections, one of them about who said what
+
+### I attributed a conformance list to the party that did not write it
+
+In relaying the `.23` ruling I wrote *"YOUR CONFORMANCE LIST, confirmed"* to the
+implementation session and ruled on six items. **That list came from the handoff, not
+from that session, which had queued the chrome question with four questions and
+deliberately no proposed code changes** — because guessing there cost a revert. On
+one item I went further and wrote *"you're right that it now matches nothing"* about
+a `prefers-reduced-transparency` observation **that session never made.**
+
+The spec record is clean — `.23` names no one, so nothing false got written down. The
+near-miss is the finding, and the session that caught it framed it correctly: had it
+implemented six items I had ratified *on its supposed analysis*, I would have thought
+it verified them and it would have thought I had, **and the record would show a
+consumer-side finding that never happened.** That is a lint rule reporting files clean
+without reading them, one level up.
+
+**A ratification that credits a finding to a party who never made it manufactures a
+verification that never occurred.** Attribution is not courtesy in a system whose
+whole discipline is that claims carry their evidence; it is part of the evidence.
+
+### And the item I agreed to was wrong on its merits
+
+*"With chrome receded, `prefers-reduced-transparency` matches nothing."* **It matches
+plenty.** That block collapses `material-ultrathin`, `-thin`, `-regular` and `-thick`
+as well as chrome — and **content cards remain `material-regular` under recession**, so
+the block's main job is untouched. Only chrome's own entry goes unused, and not even
+that while the tab bar may keep the material.
+
+The correct statement is that **recession does not interact with that path at all**: a
+surface with no fill is not matched by a rule that collapses fills. Nothing to
+collapse, nothing to declare — the opposite of the "state it rather than leave a media
+query matching nothing" the handoff asked for.
+
+I asserted it inside a sentence agreeing with someone, which is the cheapest place in
+a conversation to put an unchecked claim and the hardest place to notice one.
+
+### `a11y.contrast.measure-by-painting-not-by-parsing`
+
+Raised by the implementation session and verified here, with a layer it had not hit.
+
+**`getComputedStyle` serialises `oklch()` verbatim.** A regex expecting `rgb()` pulls
+`[0.66, 0.148, 160]` out of `oklch(0.66 0.148 160)` — which read as RGB is a near-black
+blue. No error, no warning, three plausible numbers. Since this system **authors in
+oklch by rule**, every colour token is exposed to it.
+
+**The obvious workaround also fails**: assigning to a canvas `fillStyle` and reading it
+back returns the same oklch string. The echo normalises nothing, so a measurement built
+on it reads as though it resolved the colour and did not.
+
+**What resolves it:** paint and read the pixels — `fillRect()` then `getImageData()` —
+or sample a screenshot. Verified: `oklch(.66 .148 160)` paints to `rgb(8,173,114)`,
+which is `--color-action`; `--canvas` paints to `rgb(244,244,245)`. Both match values
+derived independently, which is what makes the method trustworthy rather than merely
+different.
+
+**Measure by painting, never by parsing.** This is the silent-failure family pointed at
+the instrument, and it is the worst member: a contrast figure taken this way **would
+pass every review in this file's history** — it has a ground, a position and a scheme,
+and it is simply false.
+
+### Independently confirmed
+
+The binding constraint from `.23`: `--canvas` light resolves to `rgb(244,244,245)`,
+and 55% black on it measures **4.63:1** against my 4.65 — same result by two methods,
+against a 4.50 bar. **The light-mode budget for secondary ink is ~0.13–0.15 of
+contrast before it breaches, on a bare canvas with no band at all.** That number is
+independent of which aurora wins, and it stands.
+
 ## 2026-08-28 (v2026.08.28.23) — Chrome recedes; my ruling one version ago was wrong about the question
 
 **Decided by Jason.** Desktop chrome takes no material: the navbar and sidebar rail

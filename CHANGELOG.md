@@ -8,6 +8,41 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.31) — The header stops being sticky
+
+**Decided by Jason.** The navbar is no longer sticky, which is how this surface
+satisfies `recession-requires-nothing-scrolls-beneath`. That rule has two available
+means — **contain the scroll beneath the chrome, or do not overlay the scroll at all.**
+The second is cheaper and was chosen: **one class on one component, no structural
+change.**
+
+**What the header was carrying, and why losing it is affordable.** Verified: the middle
+slot is `SpotlightTrigger` — bill search — on default routes, and `<Title />` on the
+conversation route. Search is no longer first-class and can live in the rail if wanted.
+The title was already accepted as a cost of the chosen composition, carried by the tab
+title and, on bill routes, the breadcrumb.
+
+### The cost that is not obvious, named so it is a decision rather than a discovery
+
+**The rail is `md:flex`; the header is not.** On desktop the wordmark, the destinations
+and the account menu all persist in the fixed rail, so a header that scrolls away costs
+nothing. **On mobile there is no rail.** The wordmark, search and the auth control
+scroll away together, and the only persistent chrome is the bottom tab bar — which
+carries destinations, not account. **A signed-out mobile user's sign-in affordance
+becomes above-the-fold only.**
+
+That is a normal mobile pattern and it is a real cost. It is not a reason not to do
+this; it is a thing that should be chosen rather than found later.
+
+### It scopes the structural fix rather than foreclosing it
+
+If the conversation view later proves it needs a persistent title, **that one route**
+takes an inner scroll container beginning below its chrome. Localised, instead of the
+whole product paying up front for one route's requirement. The `.30` rule stands
+unchanged and is satisfied either way.
+
+---
+
 ## 2026-08-28 (v2026.08.28.30) — Receded chrome requires that nothing scrolls beneath it
 
 A live collision on the conversation route: body text scrolling **under** the receded

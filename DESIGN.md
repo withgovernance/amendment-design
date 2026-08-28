@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.30
+# spec-version:   v2026.08.28.31
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1718,7 +1718,32 @@ components:
     typography: "sans semibold"
   navbar:
     description: >-
-      Sticky top chrome. GROUND: NONE, as of 2026-08-28 — no fill, no blur,
+      NOT STICKY, as of 2026-08-28 — DECIDED BY JASON, and it is how this
+      surface satisfies recession-requires-nothing-scrolls-beneath. That rule
+      has two available means: contain the scroll beneath the chrome, or do
+      not overlay the scroll at all. THE SECOND IS CHEAPER AND WAS CHOSEN —
+      one class on one component, no structural change.
+      WHAT THE HEADER WAS CARRYING, and why losing it is affordable: the
+      middle slot is BILL SEARCH on default routes and the conversation TITLE
+      on one route. Search is no longer a first-class item and can live in the
+      rail if it is wanted; the title was already accepted as a cost of the
+      chosen composition, carried by the tab title and, on bill routes, the
+      breadcrumb.
+      THE RAIL IS md:flex AND THE HEADER IS NOT — SO MOBILE HAS NOTHING TO
+      INHERIT IT. On desktop the wordmark, the destinations and the account
+      menu all persist in the fixed rail, so the header scrolling away costs
+      nothing. ON MOBILE THERE IS NO RAIL: the wordmark, search and the auth
+      control scroll away together, and the only persistent chrome is the
+      bottom tab bar, which carries destinations and not account. A
+      signed-out mobile user's sign-in affordance is therefore above the
+      fold only. That is a normal pattern and it is a REAL COST — named here
+      so it is a decision rather than a discovery.
+      AND IT SCOPES THE STRUCTURAL FIX RATHER THAN FORECLOSING IT. If the
+      conversation view later proves it needs a persistent title, THAT ONE
+      ROUTE takes an inner scroll container beginning below its chrome —
+      a localised change, instead of the whole product paying for one
+      route's requirement up front.
+      GROUND: NONE, as of 2026-08-28 — no fill, no blur,
       no hairline, no shadow. Ink sits directly on the aurora. It still does
       not fade in, blur in, or otherwise animate on scroll: recession is a
       static state, not a transition, and the scroll-driven variant remains

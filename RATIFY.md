@@ -145,6 +145,14 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.31)** — **the header stops being sticky**, decided by
+  Jason. Satisfies `.30` by the cheaper of its two means — don't overlay the scroll,
+  rather than contain it — **one class on one component, no structural change.**
+  Verified what it carried: bill search on default routes, the conversation title on
+  one. Named cost: **the rail is `md:flex` and the header is not, so mobile has nothing
+  to inherit it** — wordmark, search and auth scroll away together and only the bottom
+  tab bar persists, putting a signed-out user's sign-in affordance above the fold only.
+  **Conformance:** remove `sticky top-0 z-10` from `Navbar/index.tsx`.
 - **2026-08-28 (v2026.08.28.30)** — **receded chrome requires that nothing scrolls
   beneath it.** Found live: body text scrolling under the receded navbar and rendering
   *through* the conversation title — text on text, not a contrast failure. The

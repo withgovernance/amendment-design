@@ -8,6 +8,77 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.28) — The dependency was inverted, and my correction was wrong the other way
+
+Three findings from the 9b implementation, all correcting something written here, and
+all verified before landing.
+
+### The full-bleed dependency pointed at the wrong route
+
+`.23` carried, from the handoff and unchecked by me: *the centred content column gives
+the rail an implicit edge, and a full-bleed route removes it — check the bill and
+elections routes.* **Measured at 1440 dark, sampling either side of the rail's right
+edge at three heights:**
+
+- **Full-bleed neighbour:** `material-regular` at `rgba(0,0,0,.41)`, flush, **at all
+  three heights.** A continuous boundary down the whole viewport.
+- **Inset/centred column:** `rgba(0,0,0,0)` at **every** height. The card sits ~440px
+  away and occupies only the top band, so below it **the rail has no edge at all.**
+
+**Exactly backwards.** The full-bleed route *supplies* an edge; the inset column has
+none — and the inset case is the **shipping** state, since the app's routes are cards
+with gaps on bare aurora. **The check as prescribed would have passed the failing case
+and flagged the safe one.**
+
+**And the inset case needs no edge.** Rendered, it reads correctly: below the nav there
+is nothing on either side of the boundary, so it is not a seam, it is open canvas. The
+concern was about a join that does not exist.
+
+What is worth looking at is the other one: **a receded rail flush against a full-height
+glass panel can read as a cut-out** rather than as recession — the rail becomes the
+absence of the panel instead of a surface. That is the case to check on a full-bleed
+route, the exact opposite of what was asked for. **Not by drawing a rail edge** — that
+is the material decision recession just removed.
+
+### The active row was never a fill, and my correction made it worse
+
+`.23` said the active state *"loses its fill."* `.27` corrected that to *"the shipped
+neutral tint stays."* **Neither had opened the file.** The shipped state is
+`text-slate-800 / dark:text-slate-300` with `weight="fill"` on the glyph — **ink plus
+weight plus filled glyph already.** The only `bg-black/5` in that component is a
+**hover** state.
+
+So `.23` described removing a fill that was never there and was accidentally right
+about the destination; `.27` described keeping a tint that does not exist. **The
+correction was wrong in the opposite direction and in the same way** — an unverified
+claim answered with another unverified claim.
+
+That is the part worth keeping. `.27` had the **form** of diligence: it owned an error,
+softened an over-firm rule, and told the consumer to put something back. It did every
+correct-looking thing except open the file. **A correction is not self-verifying; it is
+just a claim pointing the other way**, and it arrives wearing the credibility of having
+admitted a mistake.
+
+The measurement that drove all of it does not apply here either: dark active is
+`slate-300`, light ink on dark ground, nowhere near the 1.22:1 that foreclosed an
+indigo mark. Nothing to render, nothing to change. What survives is the indigo finding
+itself.
+
+### Two items on the relayed list were already done
+
+The navbar's `border-b` and `dark:bg-[#080c17]/50` do not exist — stage 3 removed them
+and its own comment says so. I relayed a conformance list without checking whether its
+items were still true, which is the third thing in this entry with the same shape.
+
+### Also
+
+Retiring Chromatic had one real consequence beyond cleanup: `MediaAttribution.stories.tsx`
+guarded a tooltip assertion behind `isChromatic()`. With the runner gone that branch is
+permanently false, so the guard was removed and the assertion now runs — and passes.
+**A conditional that can no longer be true is a test that silently stopped testing.**
+
+---
+
 ## 2026-08-28 (v2026.08.28.27) — The active row was ratified from a recommendation that asked to be measured
 
 `.23` states that the active nav row *"loses its fill and carries ink, weight and the

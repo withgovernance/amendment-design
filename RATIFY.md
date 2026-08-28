@@ -108,6 +108,17 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **what makes a story count**, because 563 stories nobody opens is not coverage either: it renders (a story that renders nothing is worse than none — one was deleted this migration for exactly that), it carries the a11y assertion, and it covers a **canonical state** rather than duplicating one. That is the definition of done already written down: every visual component has a story covering its canonical states, checked at both widths and both schemes.
 - **owed by voyager, cleanup:** `.github/workflows/chromatic.yml`, the `chromatic` script in `package.json`, the `@chromatic-com/storybook` addon and the two references in `deploy-links.yml`. A workflow that cannot run is the same class of thing as a lint rule that reports files clean without reading them.
 
+### The full-bleed dependency is backwards — the inset route is the one with no edge
+- **kind:** two readings, settled by rendering both
+- **found:** stage 9b, running the check the recession ruling asked for before calling it done.
+- **evidence:** the receded `<aside>` computes to `background: rgba(0,0,0,0)`, `backdrop-filter: none`, `box-shadow: none` — it owns nothing, so its edge is whatever its neighbour supplies. Rendered both neighbours at 1440 dark, sampling the composited page either side of the rail's right edge:
+  - **full-bleed neighbour** — `material-regular` resolves to `rgba(0,0,0,0.41)` + `blur(50px)`, running the full height flush to the rail. **A continuous, high-contrast boundary down the whole viewport.**
+  - **inset/centred column** — scanning 700px right of the edge at mid-height finds **no plate at all**: `rgba(0,0,0,0)` on both sides. The card sits ~440px away and occupies only the top band, so **below the last card the rail has no edge whatsoever** and the nav labels float on open aurora.
+- **so:** the ruling states *"the rail's edge is implied by the content column's inset — any full-bleed route removes that edge and there is no hairline to fall back on."* Measured, **it is the other way round.** A full-bleed neighbour is the case that *supplies* an edge; the inset column is the case that has none, and it has none over most of the viewport's height rather than in a corner. The premise named the wrong route, so the check it prescribed would have passed the failing case and flagged the safe one.
+- **proposes:** nothing yet — this changes *where* a hairline would be needed, not whether. Queued rather than fixed because adding a rail edge is precisely the material decision recession just removed, and I am not re-introducing one on my own reading. The renders are the two `Sidebar` stories (`WithContentColumn`, `FullBleedNeighbour`), both schemes, added for this.
+- **note:** the app's real routes resemble the inset case — cards with gaps, bare aurora between and below them — so this is the shipping state, not an edge case.
+- **blocks:** nothing landed. Worth settling before 9b is called done.
+
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by
@@ -122,6 +133,21 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.28)** — three corrections from 9b, all verified.
+  **The full-bleed dependency was inverted:** measured, the full-bleed neighbour
+  supplies a flush `material-regular` edge at all heights and the inset column has
+  **none at any** — and the inset case is the shipping state, so the prescribed check
+  would have passed the failing case and flagged the safe one. The inset case needs no
+  edge (open canvas, not a seam); the case to watch is a receded rail flush against
+  full-height glass reading as a **cut-out**. **The active row was never a fill** —
+  shipped state is already ink + weight + filled glyph, the only `bg-black/5` being a
+  hover. So `.23` removed a fill that never existed and `.27` preserved a tint that
+  never existed: **a correction is not self-verifying; it is a claim pointing the other
+  way, wearing the credibility of having admitted a mistake.** Two items on the relayed
+  conformance list were already done by stage 3.
+- **2026-08-28 (v2026.08.28.27)** — the active nav row **unsettled** after being
+  ratified from a recommendation that had explicitly asked to be measured. Superseded
+  the same day by `.28`, which established there was no fill in the first place.
 - **2026-08-28 (v2026.08.28.26)** — **Chromatic retired**, decided by Jason;
   Storybook local is the visual instrument. The standing "nobody walked the diffs"
   item closes with it — build 3761 took no snapshots, so nothing was ever canonised.

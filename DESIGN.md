@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.27
+# spec-version:   v2026.08.28.28
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1369,8 +1369,27 @@ materials:
       IT ALSO RETURNS THE PRIMARY ACTION. With chrome plated, the CTA is one
       of three bright objects along the top-left. Receded, it is the only
       one.
-      THE COST IS PAID, NOT DENIED — BUT THE ACTIVE ROW IS NOT SETTLED, AND
-      THIS ENTRY OVERSTATED IT WHEN FIRST WRITTEN. What is measured: MIDNIGHT
+      THE ACTIVE ROW WAS NEVER A FILL — RESOLVED 2026-08-28 BY READING THE
+      CODE, WHICH NEITHER THIS ENTRY NOR ITS CORRECTION HAD DONE. The shipped
+      sidebar active state is INK PLUS WEIGHT PLUS A FILLED GLYPH already:
+      text-slate-800 / dark:text-slate-300, with weight="fill" on the icon.
+      The only bg-black/5 in that component is a HOVER state.
+      SO BOTH PREVIOUS SENTENCES DESCRIBED A FILL THAT DOES NOT EXIST. This
+      entry said the active state "loses its fill" — there was none to lose,
+      and it was accidentally right about the destination. The correction
+      that followed said "the shipped neutral tint stays" — there is no tint
+      to keep. THE CORRECTION WAS WRONG IN THE OPPOSITE DIRECTION AND IN THE
+      SAME WAY: an unverified claim answered with another unverified claim,
+      which had the FORM of diligence — owning an error, softening a rule —
+      without the substance, which was to open the file.
+      AND THE MEASUREMENT THAT DROVE ALL OF IT DOES NOT APPLY HERE. Dark
+      active is slate-300, light ink on a dark ground; it never approaches
+      the 1.22:1 that foreclosed an indigo mark. Nothing to render, nothing
+      to change.
+      WHAT SURVIVES: MIDNIGHT INDIGO AS A MARK dies on the aurora, 1.22:1 and
+      1.34:1 in dark, which forecloses an indigo mark and is why
+      primary.plate-not-mark has a second consequence — primary has no role
+      in chrome once no plate does. What is measured: MIDNIGHT
       INDIGO AS A MARK dies on the aurora, 1.22:1 and 1.34:1 in dark. That
       forecloses an indigo mark and it is why primary.plate-not-mark has a
       second consequence — primary has no role in chrome once no plate does.
@@ -1706,11 +1725,33 @@ components:
       removed because on app routes that scroll inside an inner container it
       never advanced past blur(0). See recession-ratified-2026-08-28 and
       motion.rules.
-      THE RAIL'S EDGE IS IMPLICIT AND THAT IS A DEPENDENCY. Recession reads
-      correctly partly because the content column is centred with its own
-      padding, so the rail has an edge without drawing one. A FULL-BLEED
-      ROUTE REMOVES THAT EDGE AND THERE IS NO HAIRLINE TO FALL BACK ON —
-      check the bill and elections routes before calling this done.
+      THE RAIL'S EDGE IS SUPPLIED ENTIRELY BY ITS NEIGHBOUR — INVERTED
+      2026-08-28 FROM THE OPPOSITE CLAIM, which this entry carried and which
+      was wrong. The original sentence said the centred content column gives
+      the rail an implicit edge and a full-bleed route removes it. MEASURED
+      ON BOTH, at 1440 dark, sampling either side of the rail's right edge at
+      three heights:
+        FULL-BLEED neighbour — material-regular at rgba(0,0,0,.41), flush and
+          FULL HEIGHT. A continuous boundary down the whole viewport.
+        INSET/CENTRED column — rgba(0,0,0,0) at every height. The card sits
+          ~440px away and occupies only the top band, so BELOW IT THE RAIL
+          HAS NO EDGE AT ALL.
+      SO THE FULL-BLEED ROUTE IS THE ONE THAT SUPPLIES AN EDGE AND THE INSET
+      COLUMN IS THE ONE WITH NONE — and the inset case is the SHIPPING state,
+      since the app's routes are cards with gaps on bare aurora. The check as
+      originally prescribed would have passed the failing case and flagged
+      the safe one.
+      AND THE INSET CASE NEEDS NO EDGE. Rendered, it reads correctly: below
+      the nav there is nothing on either side of the boundary, so it is not a
+      seam, it is open canvas. The original concern was about a join that
+      does not exist.
+      WHAT IS WORTH LOOKING AT IS THE OTHER ONE. A receded rail flush against
+      a full-height glass panel can read as a CUT-OUT rather than as
+      recession — the rail becomes the absence of the panel instead of a
+      surface in its own right. That is the case to check on a full-bleed
+      route, which is the exact opposite of what this entry asked for.
+      DO NOT ADD A RAIL EDGE TO FIX EITHER. Drawing one is the material
+      decision recession just removed.
     background: "none — the aurora is the ground"
     reduced-transparency-is-a-non-event: >-
       CORRECTED 2026-08-28, because the first statement of it was wrong. It

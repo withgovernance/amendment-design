@@ -50,27 +50,13 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
-### A duration token exists for a motion the rules forbid
-- **kind:** two readings
-- **found:** stage 5, auditing every animation against `motion.rules`. `animate-marquee` runs on two marketing surfaces — `marketing-sections.tsx` and `recent-bill-cards.tsx` — scrolling elements that are already on screen and already correct, forever. Under the arrival test that is motion, and motion is permitted on exactly two surfaces, neither of which is marketing.
-- **evidence:** `motion.durations.marquee: 240s` is a declared token. The system carries a duration for a motion its own rules leave nowhere legal to use. Either the token is a leftover or marketing is an unstated third surface; the two files have been running it in production either way. Same shape, separately: `animate-aurora-shimmer` on `MarketingHome`, where the system's own `description` says "the aurora layer is alive: a soft blue-hour gradient that breathes beneath frosted glass" — the thesis statement describes continuous motion the rules forbid.
-- **proposes:** say which. If marketing and the aurora are sanctioned, name them in `motion.rules` and say what bounds them; if not, delete `durations.marquee` and rewrite the description's "breathes", because a token and a thesis are both stronger signals than a rule nobody applied. Stage 5 deleted the unambiguous decoration and left these two alone.
-- **blocks:** stage 5 cannot claim "exactly two surfaces animate" — it is currently four, and two of them are cited by the spec itself.
-
-### Does a control's own state transition count as motion?
-- **kind:** spec silent
-- **found:** stage 5, `components/ui/toggle.tsx`. `motion.rules` opens with "never transition transform", unconditional, and the arrival test asks whether the element is already on screen and already correct. A switch thumb is both. So the rule says the thumb snaps, and stage 5 made it snap.
-- **evidence:** the rule's own wording is about decoration — the examples are hover, scroll-driven chrome, and compositing jank from `scale()`. A thumb crossing its track is neither decoration nor arrival: it is the control drawing the state change the user just made, which is the one thing `no motion without meaning` says motion is FOR. Applied literally the rule also removed the disclosure caret's rotation transition (`chevron-open`, and the same pattern in `dispatches`), which is the same category. Four sites now change transform instantly.
-- **proposes:** either carve out "a control animating its own committed state change" — with transform allowed there and nowhere else — or confirm that controls snap, in which case say so, because the rule currently reads as being about decoration and four reviewers will restore these transitions.
-- **blocks:** nothing shipped; it is reversible either way. But it is a visible behaviour change to a switch and a caret, and it was made on a literal reading rather than a stated one.
-
 ### Name the Blue Hour canvas separately from the opaque ground
 - **kind:** unowned default
 - **found:** the 2026-08-28.3 pass. `--canvas` resolves to neutral-100/900 and is painted by this spec's `.amendment-app`; the shipped body paints `slate-100` / a hardcoded `#080c17` plus the aurora. The rendered value is the shipped one.
 - **evidence:** not the same role, which is why this is a naming bug. `#080c17` + aurora is the Live register's ground; the neutral pair is the opaque ground `color.ink-needs-an-opaque-ground` requires — measured, `action` is 6.10:1 on it versus 2.87:1 on glass at the same position. One token cannot be both.
 - **proposes:** a named Blue Hour token for the Live base, leaving `--canvas` as the opaque reading/writing ground.
-- **blocks:** nothing shipping. It blocks `ink-needs-an-opaque-ground` from citing a token rather than a description.
-- **waiting on:** the register table, which the naming should move with — not a measurement. Deferred deliberately for the second pass running; if it is still here at the end of stage 5 it should be scheduled rather than carried.
+- **blocks:** nothing shipping. It blocks `ink-needs-an-opaque-ground` from citing a token rather than a description — a literal waiting to happen, per trap 2.
+- **waiting on:** nothing external any more. **Carried three passes; scheduled rather than carried again** — this is the next spec task, ahead of the stage 6 queue, per the note made at v2026.08.28.4.
 
 ---
 

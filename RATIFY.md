@@ -57,6 +57,20 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** symlink both files to the canonical repo, as `design/` already is. A copy that must be remembered will be forgotten.
 - **status:** with Jason, with the two `ln -s` commands and the diff. The implementation session declined to make the change on a peer's say-so — correctly, and on the same boundary that had it decline Chromatic and the branch landing. **Neither agent should action this.**
 
+### `lede` carries two character counts, and both exceed the line's physical ceiling
+- **kind:** unowned default
+- **found:** the audit `measure.body`'s ratification asked for.
+- **evidence:** `role-lede` at `--measure-lede` (24rem), first visual line counted: **42** statutory, **43** newcomer, **35** general, **40** lipsum, **45** short. The spec gives this one role two different numbers — **47** at the token (`avg glyph 8.17px`) and **52ch** in both the surface profile and the prose section. Neither is reachable: the **physical ceiling**, the most characters that can sit on that line before any wrap is possible, measures **~44**. The same ceiling for `role-body-serif` at 28rem is **64**, against its stated 69.
+- **proposes:** the same treatment 28rem just received, plus the generalisation that makes it findable: **a count derived by dividing a width by an average glyph can land somewhere no prose can reach**, because the division has no term for the word boundary that actually ends the line. It is not an imprecise measurement — it is not a measurement. Both spec counts failed the same way, and the ceiling is the cheap check: if the claimed count exceeds the unbreakable-string maximum, no sample will ever produce it.
+- **blocks:** nothing.
+
+### Retraction — the `opsz 18` mechanism ratified at v2026.08.28.20 is false
+- **kind:** conformance, against the spec's own new sentence
+- **found:** testing my own claim while sizing a lint rule for it.
+- **evidence:** one string at 15px — shipped state (`wdth 104` inherited, no opsz stop) **394.04px**; pinned `opsz 15` **394.04px**, identical; pinned `opsz 18` **366.84px**; `font-optical-sizing: none` **366.84px**. The statutory body was rendering at **opsz 15**, correctly optically sized, not at a display drawing. Separately at 48px, a `wdth`-only fvs and `normal` are byte-identical (660.76) while `optical-sizing: none` is 622.4 — **a `wdth`-only `font-variation-settings` does not disable `font-optical-sizing: auto`.** Only an `opsz` in fvs, or `optical-sizing: none`, does.
+- **proposes:** delete the third direction added to `axis-must-be-declared-and-measured`. It was asserted from a computed fvs string showing a sans axis, without measuring whether that axis had the claimed effect — the failure the rule itself names, committed while writing the rule. What survives is only that a role beats an unstated inheritance. The `globals.css` comment explaining why there is deliberately no blanket serif fvs default — so `auto` stays live as the fallback — is correct and load-bearing: a sweep of **89** bare `font-serif` sites found the design cleared all 89.
+- **blocks:** the sentence is in the spec now, so this one is worth doing before the next pass reads it as settled.
+
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by
@@ -88,6 +102,17 @@ fragile.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.21)** — **retraction.** The `opsz 18` mechanism
+  ratified at `.20` is false and was tested so: a `wdth`-only
+  `font-variation-settings` does **not** disable optical sizing, and the shipped
+  body was at `opsz` = font-size throughout. `role-body-serif` at 16px still
+  stands, on the plain ground that a role beats an unstated inheritance. **The
+  replacement claim was also wrong** — "the counts exceed what the line can hold at
+  any prose" measured false: 47 is reachable at 384px on ordinary prose, 69 at
+  448px on narrow prose. The numbers sit at the top of the band *for statutory
+  prose*, which decides the fix: **top-of-band is an annotation problem, unreachable
+  would have been a width problem.** `lede` fixed on three counts at once — two
+  different numbers for one role, two sites using the banned `ch`, neither measured.
 - **2026-08-28 (v2026.08.28.20)** — the statutory queue, emptied.
   `a-measure-is-a-property-of-the-line`: a measure and horizontal padding may not
   share a box — the framework sizes `max-width` against the border box, so a 448px

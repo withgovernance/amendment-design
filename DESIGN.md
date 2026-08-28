@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.20
+# spec-version:   v2026.08.28.21
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1146,7 +1146,30 @@ spacing:
       that holds the line. The border-box default belongs to the framework
       and not to this system, which is exactly why the rule has to be stated
       here rather than assumed.
-    lede:  "max-width: min(24rem, 100% - 2rem)"   # 47 chars of role-lede @20px (avg glyph 8.17px)
+    lede:  "max-width: min(24rem, 100% - 2rem)"   # see lede-count-is-a-band
+    lede-count-is-a-band: >-
+      CORRECTED 2026-08-28, and this one had THREE defects at once.
+      (1) THE SPEC CARRIED TWO DIFFERENT NUMBERS FOR ONE ROLE: 47 here,
+          "52ch" at surfaces.bill-page.newcomer-lede and again in the
+          role-lede prose. Same role, same width, two counts, neither
+          measured.
+      (2) BOTH OF THOSE SITES USED `ch`, WHICH THIS SYSTEM BANS as a length
+          unit. The ban was written for tokens and the prose slipped past it.
+      (3) NEITHER NUMBER WAS MEASURED. 47 came from dividing 384 by an
+          assumed average glyph.
+      MEASURED at 384px with role-lede: statutory 44, general 47, narrow
+      prose 63. So 47 is REACHABLE — it is the top of the ordinary-prose
+      band, not a fiction — and the honest annotation is the band, as it is
+      for measure.body.
+      NOT A PHYSICAL CEILING. A stronger claim was proposed and tested false:
+      that these counts exceed what the line can hold at any prose. They do
+      not. At 384px narrow prose reaches 63 and the narrowest glyphs 70; at
+      448px, 87 and 98. The spec numbers sit at the TOP OF THE BAND FOR THE
+      PROSE THIS PRODUCT RENDERS, which is statutory text, and statutory
+      text has the longest words in English. That distinction decides the
+      fix: a number at the top of a realistic band is an ANNOTATION problem;
+      an unreachable number would have been a WIDTH problem. The width is
+      fine, here and at 28rem.
     print: "6.5in"                                # paper takes its measure from the margin, not a count
     # OPEN — SANS BODY COPY HAS NO COUNTED MEASURE. `body` above (69 characters,
     # 28rem) was counted in NEWSREADER. Grading sans copy against a serif count
@@ -2037,7 +2060,7 @@ surfaces:
       - "italic serif metadata for provenance ('started by X', 'representing Y')"
     newcomer-lede:                # audit §3.1, resolved 2026-08-01
       required: true              # every bill page has one; not optional chrome
-      role: role-lede             # serif, --serif-text, 1.25rem/1.55, 52ch
+      role: role-lede             # serif, --serif-text, 1.25rem/1.55, measure-lede
       position: "Directly beneath the bill title, ABOVE provenance metadata and above the progress ribbon."
       content: "One sentence, second person, present tense: what the bill would do to the reader. Then three facts — who it affects, where it stands, who represents them — then exactly one action."
       register: >-
@@ -3774,7 +3797,7 @@ So the register is a writing rule and a hierarchy rule, in the Archive's own
 type:
 
 **One sentence.** Second person, present tense, what it would do to the reader.
-`.role-lede` — Newsreader at `--serif-text`, 1.25rem / 1.55, measure 52ch. It sits
+`.role-lede` — Newsreader at `--serif-text`, 1.25rem / 1.55, `measure-lede`. It sits
 directly beneath the title, above provenance. *"If you rent and you get an
 eviction notice, this bill gives you 30 days to respond instead of 10."*
 

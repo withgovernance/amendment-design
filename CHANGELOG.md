@@ -8,6 +8,64 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.21) — Retraction, and a stronger claim that was also wrong
+
+### Retracted: the `opsz 18` mechanism
+
+v2026.08.28.20 recorded that the statutory body carried `wdth 104`, that this
+switched off optical sizing, and that Newsreader therefore fell back to its `fvar`
+default of `opsz 18` — a display drawing at text size. **It is false**, the
+implementation session tested it, and I reproduced the test before retracting.
+
+At 15px, one string, same face: shipped state (`wdth 104`, no `opsz` stop) and
+`fvs: normal` and pinned `opsz 15` are **byte-identical**; `opsz 18` and
+`font-optical-sizing: none` are identical to each other and different from all
+three. Same pattern at 48px. **A `wdth`-only `font-variation-settings` does not
+disable `font-optical-sizing: auto`** — only an `opsz` inside `fvs`, or
+`optical-sizing: none`, does. The `opsz 18` is real as Newsreader's `fvar` default;
+it is simply what you get when sizing is *off*, which it was not.
+
+The conclusion survives its explanation: `role-body-serif` at 16px is still right,
+**because a role beats an unstated inheritance** — which was always the better
+reason. The `globals.css` comment explaining why there is deliberately no blanket
+serif `fvs` default, so `auto` stays live, is correct and load-bearing. A hunt for
+89 bare `font-serif` sites to indict cleared all 89.
+
+### And the replacement claim was also wrong
+
+The same message proposed something sharper: that the spec's counts **exceed what
+the line can physically hold at any prose** — a ceiling of ~44 for `lede` and 64 for
+body. Measured, they do not. At 384px: statutory 44, general **47**, narrow prose
+63, narrowest glyphs 70. At 448px: 62, 63, 87, 98.
+
+**47 is reachable — I measured exactly 47 on ordinary prose.** So is 69, on prose
+narrower than statute. The spec's numbers sit at the **top of the band for the prose
+this product renders**, and statutory text has the longest words in English.
+
+That distinction decides the fix, which is why it was worth checking rather than
+accepting: **a number at the top of a realistic band is an annotation problem; an
+unreachable number would have been a width problem.** The widths are fine. Only the
+annotations were wrong.
+
+### The pattern worth keeping
+
+In one exchange, a false mechanism was corrected by measurement — and the correction
+arrived carrying a second unmeasured claim, which I would have ratified had I not
+measured it. **Retracting one claim does not inoculate the next one.**
+
+That is not a criticism of the session that raised it; the retraction was
+unprompted, precise, and cost it something to send. It is the same shape as my own
+three errors today, and the lesson is symmetrical: the instinct that catches an
+error is not the same faculty as the discipline that verifies its replacement.
+
+### `lede` had three defects at once
+
+The audit found: the spec carried **two different numbers for one role** — 47 in the
+token table, `52ch` in the bill-page surface and again in the `role-lede` prose;
+**both of those sites used `ch`, which this system bans** as a length unit and which
+the ban's own wording had scoped to tokens, letting prose slip past; and **neither
+number was measured.** All three fixed. The width stays at 24rem.
+
 ## 2026-08-28 (v2026.08.28.20) — A character count is a measurement of prose, not a property of a width
 
 ### Correction: my "the measure is already correct" was measuring the wrong thing
@@ -60,6 +118,13 @@ only in the computed result. The gutter goes on an outer wrapper; the measure on
 box that holds the line.
 
 ### The reserved question, answered — and it was hiding a worse thing
+
+> **RETRACTED 2026-08-28 — see v2026.08.28.21.** The `opsz 18` mechanism below is
+> false and was tested so. A `wdth`-only `font-variation-settings` does **not**
+> disable `font-optical-sizing: auto`; the shipped body was rendering at
+> `opsz` = font-size the whole time. The 15px→16px conclusion stands; the
+> explanation does not. Struck in place rather than edited, because the record
+> should show the claim was made.
 
 `role-body-serif` at 16px is right and costs nothing. But the shipped 15px was
 setting 68 characters only because **the element carried `wdth 104` — the sans width

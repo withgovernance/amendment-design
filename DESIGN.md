@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.17
+# spec-version:   v2026.08.28.18
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1239,7 +1239,28 @@ materials:
     # value in the code is the value the system means. Dark stays 90%,
     # because translucent chrome over a dark canvas reads as smoke.
     bg-light: "rgb(255 255 255 / 55%)"
-    bg-dark:  "rgb(24 24 27 / 90%)"
+    bg-dark:  "color-mix(in srgb, var(--canvas-live) 90%, transparent)"
+    bg-dark-was: >-
+      rgb(24 24 27 / 90%) until 2026-08-28. CHANGED BECAUSE CHROME DID NOT
+      BELONG TO ITS OWN PAGE. zinc-900 is a WARM NEUTRAL and the canvas it
+      sits on is COOL: composited, the rail rendered #16171b beside content
+      at #1c2a4c, so the navigation read as a different surface from the
+      page it frames — chrome that looks like it predates the system.
+      THE OPACITY DID NOT CHANGE, and that is the point. 90% is what makes
+      chrome immune to what scrolls beneath it. MEASURED: a green CTA
+      passing under moves the new value by 25 in summed RGB — IDENTICAL to
+      the zinc it replaces, against 222 for the white wash retired earlier
+      the same day. The temperature changed; the immunity did not.
+      HONEST NOTE ON SEQUENCE: this file REAFFIRMED the zinc value earlier
+      on 2026-08-28, when the question in front of it was whether chrome
+      takes on a green cast from a CTA. That reaffirmation was right about
+      the question it was asked and blind to the one it was not: whether
+      chrome belongs to the canvas at all. Both are properties of the same
+      value, and only one had a render behind it. A material has to be
+      judged against its ground and against what passes under it, in the
+      same pass.
+      Written as a mix of --canvas-live rather than a literal so chrome
+      follows the canvas if the Blue Hour value ever moves.
     dark-is-a-dark-wash-and-that-is-load-bearing: >-
       REAFFIRMED 2026-08-28 against a render that appeared to argue the
       opposite. Stage 3 reported that material-chrome "is a white wash

@@ -88,6 +88,17 @@ fragile.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.18)** — **chrome did not belong to its own page.**
+  `material-chrome` dark was zinc-900 at 90% — a *warm* neutral on a *cool* canvas,
+  compositing to #16171b beside content at #1c2a4c. Now the canvas's own hue at the
+  **same opacity**, as a `color-mix` of `--canvas-live`. Immunity unchanged and
+  measured: a green CTA underneath moves it by 25, identical to the zinc, against
+  222 for the retired white wash. **The sequence is the finding** — this value was
+  *reaffirmed the same morning* against the question "does chrome take a green
+  cast", and was blind to "does chrome belong to the canvas". A material must be
+  judged against its ground *and* what passes under it, in one pass. The
+  `prefers-reduced-transparency` path had it worse — opaque warm slabs on a live
+  aurora, never rendered — and is now the canvas family separated by luminance.
 - **2026-08-28 (v2026.08.28.17)** — `axis-must-be-declared-and-measured`. The old
   self-hosting rule's stated reason ("survives a blocked CDN") was **false** and is
   deleted — Newsreader and Plex Mono come from Google in the line above, so chrome

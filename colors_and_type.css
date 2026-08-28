@@ -663,7 +663,19 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   box-shadow: inset 0 -1px 0 0 rgb(0 0 0 / 10%);
 }
 .dark .material-chrome, [data-theme="dark"] .material-chrome {
-  background: rgb(24 24 27 / 90%);
+  /* CHANGED 2026-08-28 from rgb(24 24 27 / 90%) — zinc-900, a WARM NEUTRAL, at
+     90% over a COOL Blue Hour canvas. It composited to #16171b beside content at
+     #1c2a4c, so the rail read as a different surface from the page it framed:
+     chrome that looks like it predates the system.
+     Now the canvas's OWN HUE at the same opacity, so chrome belongs to the page.
+     Written as a mix of --canvas-live rather than a literal, so if the Blue Hour
+     value moves, chrome follows it instead of drifting away from it.
+     THE OPACITY IS UNCHANGED ON PURPOSE. 90% is what makes chrome immune to what
+     scrolls beneath it — measured, a green CTA passing under moves this by 25 in
+     summed RGB, identical to the zinc it replaces, against 222 for the white wash
+     that was retired this morning. The temperature changed; the immunity did
+     not. */
+  background: color-mix(in srgb, var(--canvas-live) 90%, transparent);
   box-shadow: inset 0 -1px 0 0 rgb(255 255 255 / 10%);
 }
 
@@ -748,9 +760,19 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   .material-ultrathin, .material-thin { background: var(--color-zinc-50); }
   .material-regular { background: var(--color-zinc-100); }
   .material-thick, .material-chrome { background: var(--color-zinc-100); }
-  .dark .material-ultrathin, .dark .material-thin { background: var(--color-zinc-800); }
-  .dark .material-regular { background: var(--color-zinc-800); }
-  .dark .material-thick, .dark .material-chrome { background: var(--color-zinc-900); }
+  /* CHANGED 2026-08-28, same reason as .material-chrome above and worse here.
+     These were warm zincs, and THE AURORA IS NOT SUPPRESSED ON THIS PATH — so a
+     viewer who asks for reduced transparency got opaque warm slabs sitting on a
+     live blue gradient, with none of the blend that softens it elsewhere. The
+     accessibility path had the defect in its strongest form and had never been
+     rendered.
+     Now the canvas's own family, separated from it by LUMINANCE rather than by
+     hue, thicker being darker as it is on the translucent path. Measured against
+     the Blue Hour base: 1.44:1 for the card tiers, 1.19:1 for chrome — a
+     separation, not a contrast pair, which is what a material is. */
+  .dark .material-ultrathin, .dark .material-thin { background: color-mix(in srgb, var(--canvas-live) 86%, white); }
+  .dark .material-regular { background: color-mix(in srgb, var(--canvas-live) 86%, white); }
+  .dark .material-thick, .dark .material-chrome { background: color-mix(in srgb, var(--canvas-live) 92%, white); }
 }
 @media (prefers-contrast: more) {
   :root { --text-secondary: rgb(0 0 0 / 75%); }

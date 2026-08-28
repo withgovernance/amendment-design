@@ -8,6 +8,66 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.18) — Chrome did not belong to its own page
+
+Jason looked at the dark dashboard and asked whether the chrome was obsolete
+against the system. It was, and **it was obsolete against a value this file
+reaffirmed the same morning.**
+
+### What was wrong
+
+`material-chrome` dark was `rgb(24 24 27 / 90%)` — **zinc-900, a warm neutral, at
+90% over a cool Blue Hour canvas.** Composited, the rail renders **#16171b** beside
+content at **#1c2a4c**. That is the seam visible in the screenshot: the navigation
+reads as a different surface from the page it frames, which is exactly what "looks
+like it predates the design system" means.
+
+Verified as *the spec, not drift* — both `Sidebar` and `Navbar` correctly take
+`material-chrome`. The component was obeying; the value was wrong.
+
+### The fix, and what it deliberately does not change
+
+Chrome is now the canvas's own hue at **the same opacity**, written as
+`color-mix(in srgb, var(--canvas-live) 90%, transparent)` so it follows the Blue
+Hour value rather than drifting from it.
+
+**The opacity did not change, and that is the point.** 90% is what makes chrome
+immune to what scrolls beneath it. Measured: a green CTA passing under moves the
+new value by **25** in summed RGB — *identical to the zinc it replaces* — against
+**222** for the white wash retired earlier the same day. **The temperature changed;
+the immunity did not.**
+
+### The sequence is the finding
+
+This file **reaffirmed the zinc value earlier on 2026-08-28**, when the question in
+front of it was whether chrome takes on a green cast from a CTA underneath. That
+reaffirmation was right about the question it was asked and **blind to the one it
+was not**: whether chrome belongs to the canvas at all.
+
+Both are properties of the same value. Only one had a render behind it — the
+comparison built that morning showed chrome over a CTA, and nothing showed chrome
+beside the page. **A material has to be judged against its ground and against what
+passes under it, in the same pass.** Checking one and calling the value settled is
+how a correct measurement produces a wrong conclusion, which is the third time this
+week that shape has appeared.
+
+### And the accessibility path had it worse
+
+Under `prefers-reduced-transparency` the materials go opaque — **but the aurora is
+not suppressed.** So a viewer who asks for reduced transparency got opaque *warm*
+slabs sitting on a live blue gradient, with none of the blend that softens it
+everywhere else. The path with the defect in its strongest form was the one nobody
+had rendered. Now the canvas's own family, separated by **luminance** rather than
+hue, thicker being darker as on the translucent path: measured 1.44:1 against the
+base for the card tiers and 1.19:1 for chrome — a separation, not a contrast pair,
+which is what a material is.
+
+**Left open:** whether the aurora itself should be suppressed under reduced
+transparency. It is a background-image rather than a transparency, so it is not
+strictly in scope — but a large low-contrast gradient behind everything is arguably
+against the spirit of the request, and nobody has ever looked at that path. Not
+decided here.
+
 ## 2026-08-28 (v2026.08.28.17) — The axis is a property of the file or of the URL
 
 ### The old rule's stated reason was false, and the implementation session was right to say so

@@ -98,23 +98,15 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **note on the rule this tests:** the single-line assumption is invisible at every width where the label fits, which is most of them — the same shape as the padded-measure and the average-glyph findings. A default that is correct in the common case and silently wrong in the uncommon one is not caught by looking at the common case.
 - **blocks:** nothing. Stage 9a shipped with the one regression I introduced repaired and the pre-existing one queued rather than guessed at.
 
-### The Chromatic diffs cannot be walked — the account is out of snapshots
-- **kind:** conformance, blocked on billing rather than on a decision
-- **found:** stage 9a, attempting the walk this queue has been asking for.
-- **evidence:** build **3761** published from `design-pass-type` (140 components, 563 stories) and returned `Snapshot quota reached — this build is limited because your account is out of snapshots for the month.` **No snapshots were taken, so no diffs exist to review.** The built Storybook is browsable at `https://666359b2911b895a5f60cf9e-zdbpsgvaif.chromatic.com/`, which allows looking at stories but not comparing them against a baseline. No baselines were accepted, so nothing has been canonised.
-- **proposes:** nothing in the spec. Recorded so the standing "nobody is known to have walked the diffs" entry stops reading as neglect: it is now a known blocker with a cause and an owner. Until the quota resets or the plan changes, the migration's visual review is the story-by-story reads in each stage handoff, which is a weaker instrument and should be named as such rather than treated as equivalent.
-- **blocks:** the visual-diff review of the whole migration, and therefore any confidence claim that rests on it.
-
-### The aurora divergence, measured from the consumer side — and the hard rule cannot see it
-- **kind:** two readings
-- **found:** confirming the divergence recorded alongside `color.recession-declined`, from inside voyager rather than from the specimen.
-- **evidence:** counted and read out of the two stylesheets:
-  - **voyager** (`app/globals.css`): 5 lobes per scheme, chroma **0.15–0.21**.
-  - **the spec** (`design/colors_and_type.css`): chroma **0.03–0.08**.
-  - **the hard rule**: *"chroma ≤ 0.22, ≤ 5 lobes."*
-  **Both grounds pass.** Voyager is inside the limit on every axis — 5 lobes, 0.21 against a 0.22 ceiling — while carrying **2.6–7× the spec's chroma**. So the rule as written cannot distinguish a low-chroma wash from a saturated one, and the ruling's own numbers show the difference is not cosmetic: it is what moves the section title from **14.03:1 to 6.22:1**.
-- **proposes:** whichever way the divergence is closed, the ceiling is the part that failed here, not the consumer. A limit that both a 0.08 and a 0.21 ground satisfy is not measuring the property that decides contrast. Same shape as `ink-ground-is-a-placement`: **a chroma ceiling without a lobe-overlap or a resulting-contrast term is a bound on the wrong quantity** — two grounds can sit under one number and hand a label a 2× different result. Not proposing a value; proposing that the rule state what it is protecting.
-- **blocks:** nothing. Recorded so the deferred aurora decision has the consumer-side numbers already attached when someone picks it up.
+### Chromatic retired — Storybook local is the visual instrument
+- **kind:** decided by Jason 2026-08-28
+- **decision:** the account is not renewed. **Storybook runs locally and is the surface for visual iteration.** The standing "nobody has walked the diffs" item closes with it: there are no diffs, and there will not be. Build 3761 took no snapshots, so nothing was ever canonised — there is no baseline to lose.
+- **what this costs, named rather than assumed:** there is now **no automated visual regression detection**. Nothing will tell you a token change moved pixels on a surface nobody opened. The `.18` chrome change and the `.23` recession would each have lit up every route; neither would be caught automatically today.
+- **what actually catches things now**, and it is a real set rather than a gap: the person iterating in Storybook; the designer's independent review pass on story renders at both widths and both schemes; `design:lint`; and the a11y assertions in stories, which have already caught two real failures this migration (the error toast at 4.41:1 and a sub-floor label). **These are human-paced and story-scoped.** That is adequate at this size and should be described that way rather than as equivalent to a diff on every route.
+- **available at zero new dependency cost if a regression ever bites:** `@vitest/browser` 4.1.9 already ships `toMatchScreenshot`, and the browser-mode runner is already how the 556 tests execute. **The precondition if it is ever turned on: baselines must be generated in the same environment that checks them** — macOS-generated baselines will not match Linux CI, and that mismatch is the usual reason self-hosted visual regression gets abandoned. Note also that self-hosting Archivo helps determinism here and moving it to a CDN would hurt it, which is a live interaction with the still-open font question.
+- **stories are cheap and are now the instrument (Jason, 2026-08-28):** create and manage them liberally to make sure everything looks right. That turns this from a loss into a method — **trap 3 says nothing unrendered stays true, and liberal story coverage is the direct answer to it.** It also reaches the tier-2 blind spot: `HexStateMap` styles imperatively and `design:lint` cannot read it, but a story with a rendered-output assertion can.
+- **what makes a story count**, because 563 stories nobody opens is not coverage either: it renders (a story that renders nothing is worse than none — one was deleted this migration for exactly that), it carries the a11y assertion, and it covers a **canonical state** rather than duplicating one. That is the definition of done already written down: every visual component has a story covering its canonical states, checked at both widths and both schemes.
+- **owed by voyager, cleanup:** `.github/workflows/chromatic.yml`, the `chromatic` script in `package.json`, the `@chromatic-com/storybook` addon and the two references in `deploy-links.yml`. A workflow that cannot run is the same class of thing as a lint rule that reports files clean without reading them.
 
 ## Needs a person — cannot close from inside the toolchain
 
@@ -122,24 +114,7 @@ Not a ratification queue. These do not resolve by deciding; they resolve by
 someone doing something an agent should not do unprompted. Listed separately so
 they stop reading as actionable to the next session that opens this file.
 
-### Nobody is known to have reviewed the Chromatic diffs
-- **why it is here:** it is a human looking at pictures, and no agent can do it or attest to it.
-- **the situation:** the implementation session reported the migration's visual diffs "reviewed clean" and has since corrected that — it inferred review from the build being run and the URL being shared. **The accurate statement is that the baseline was taken on `main` and the branch built against it, so review is possible; whether anyone performed it is unknown.** The designer session never had access and never reviewed them either.
-- **why it matters now:** the branch is unlanded. This is the one moment when walking the diffs is cheap and reverting is free. After landing, a visual regression is found by a user.
-- **what to do:** open the Chromatic build for `design-pass-type`, step through the diffs, approve or reject. The migration touched colour, radius, type registers, targets and motion across the product, so the expected diff count is large — that is not a reason to accept in bulk.
-- **who:** Jason, or anyone with access to the Chromatic project.
-
-### CLOSED 2026-08-28 — real-client dark-mode email rendering
-Jason authorised it directly and supplied the address; the implementation session
-sent all three templates through the app's own `react:` render path — the same one
-`inngest/services/email.ts` uses, so it exercised production's output — and he
-checked them in-client. The CTA's ink label, the step badges switching under
-inversion, and **the issuance block including the double rule** all held. The
-double rule was the specific thing this file predicted Gmail Android would take
-first; the prediction was wrong in the good direction. Result written into
-`profiles.email.real-client-tested` rather than deleted, so the next person to
-touch the issuance block knows it has been tested rather than assuming it is
-fragile.
+*(the Chromatic review item closed 2026-08-28 — the account is retired and no baselines were ever accepted; see the Open queue)*
 
 ---
 
@@ -147,6 +122,15 @@ fragile.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.26)** — **Chromatic retired**, decided by Jason;
+  Storybook local is the visual instrument. The standing "nobody walked the diffs"
+  item closes with it — build 3761 took no snapshots, so nothing was ever canonised.
+  **Named rather than assumed: there is now no automated visual regression
+  detection.** What catches things is the person iterating, the designer's review
+  pass, `design:lint`, and story a11y assertions — human-paced and story-scoped, which
+  is adequate at this size and is not equivalent to a diff on every route.
+  `toMatchScreenshot` is already in the tree if that ever changes, with the precondition
+  that baselines come from the environment that checks them.
 - **2026-08-28 (v2026.08.28.25)** — `measure-by-painting-not-by-parsing` sharpened:
   **the canvas is only an instrument when you paint with it.** Three of the four ways
   to ask a colour question return the string (`getComputedStyle`, a regex over it, the

@@ -8,6 +8,43 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.8) — The aliases are deleted; the axis is not gone
+
+Stage 8 moved 77 `hexp-*` call sites across 37 files onto the width presets and
+reported the grep-set item cleared. The **class references** are cleared. The
+aliases are now deleted from `colors_and_type.css` and from this file, so a
+reference to `--hexp-*` **fails loudly** instead of silently resolving — which is
+the point, because a working fallback is exactly what lets a retired name survive
+a grep.
+
+**But the item is not cleared.** `HEXP` still appears in **seven comments across
+six consumer files**, describing live components in terms of an axis that no
+longer exists: a bill identifier as "HEXP 100 ceremonial", a stamp as "HEXP-60
+… tracked-0.1em per spec", a deadline tile as "HEXP 60 clerical month, HEXP 80
+display numeral", a progress bar as "HEXP-60 uppercase 10px label."
+
+Three of those teach something additionally wrong. The stamp comment cites a
+tracking value that was already the wrong one when it was flagged at
+v2026.08.28.2 and calls it *"per spec"*. The progress-bar comment specifies
+**10px**, under a floor with no chrome exception. So the comments are not merely
+stale — **they are instructions, and they are teaching the retired system to
+whoever reads the file next.**
+
+This is the same shape as the *"do not sweep to serif"* comment ratified one
+version ago, and the two together settle the general point: **a comment at a call
+site is a competing copy of the system with standing**, because the next reader
+trusts it precisely for being local. The `hexp` migration deleted every line the
+compiler reads and left every line a person reads.
+
+**So the rule the lint job needs:** the permanent grep set must be enforced over
+**comments, not just code**. The stage 8 lint rule already catches retired values
+in comments — it found two on its first run, one written an hour earlier by the
+session that wrote the rule — so the mechanism exists; `HEXP` and the retired
+weight ladder simply have to be in it verbatim.
+
+That the rule's own author tripped it within the hour is the best evidence in
+this changelog for why enforcement beats knowing the rule.
+
 ## 2026-08-28 (v2026.08.28.7) — Uppercase has two homes, and five sites rebuilt a register instead of taking it
 
 Stage 8 queued one question and it was the right one to queue: **hard rule 5's

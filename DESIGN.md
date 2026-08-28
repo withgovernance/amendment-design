@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.7
+# spec-version:   v2026.08.28.8
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -731,15 +731,24 @@ typography:
     spec and implemented nowhere, so every call site improvised one. This is
     a role implemented correctly and improvised around anyway, which is
     worse, because the improvisation looks like specificity.
-  # DEPRECATED — hexp-* survive as aliases onto the width presets so shipped
-  # component code and the adherence lint keep resolving mid-migration.
-  hexpAxisDeprecated:
-    hexp-2:   "alias → sans-body"
-    hexp-10:  "alias → sans-body"
-    hexp-40:  "alias → sans-body"
-    hexp-60:  "alias → sans-chrome"
-    hexp-80:  "alias → sans-display"
-    hexp-100: "alias → sans-ceremonial"
+  hexpAxisRetired: >-
+    DELETED 2026-08-28. The hexp-* aliases existed only so shipped code kept
+    resolving mid-migration. The migration is complete — 77 call sites across
+    37 files moved to the width presets — so the aliases are gone from
+    colors_and_type.css and a reference to one now FAILS LOUDLY rather than
+    silently resolving. That is deliberate: HEXP is on the permanent grep set,
+    and a working fallback is what lets a retired name survive a grep.
+    MAPPING, for anyone reading old code or an old comment:
+      hexp-2 / -10 / -40 → sans-body     hexp-60  → sans-chrome
+      hexp-80            → sans-display  hexp-100 → sans-ceremonial
+    NOT YET CLEAR, and the reason this entry says "retired" rather than
+    "cleared": the CLASS references are gone; the TEACHING copies are not.
+    HEXP still appears in seven code comments across six consumer files,
+    describing components in terms of an axis that no longer exists — and one
+    of them compounds it by citing a tracking value that was already wrong
+    and calling it "per spec". Comments are where a retired name goes to
+    survive, because no compiler reads them and no class-based lint rule
+    catches them. THE GREP SET MUST BE ENFORCED OVER COMMENTS, NOT JUST CODE.
   # OPEN — THIS LIST IS NOT THE ROLE LAYER'S FULL INVENTORY. The roles below
   # are the type scale's rungs; colors_and_type.css implements those plus
   # lede, quote, metadata, stat-display, ceremonial, signature, and action.

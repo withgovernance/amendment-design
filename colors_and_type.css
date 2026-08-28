@@ -251,12 +251,15 @@
      code and the adherence lint keep resolving mid-migration. Do not use in new
      code; migrate to --sans-body / --sans-chrome / --sans-display /
      --sans-ceremonial. */
-  --hexp-2:   var(--sans-body);        /* @kind font */
-  --hexp-10:  var(--sans-body);        /* @kind font */
-  --hexp-40:  var(--sans-body);        /* @kind font */
-  --hexp-60:  var(--sans-chrome);      /* @kind font */
-  --hexp-80:  var(--sans-display);     /* @kind font */
-  --hexp-100: var(--sans-ceremonial);  /* @kind font */
+  /* The --hexp-* aliases were DELETED 2026-08-28. They existed only to keep
+     shipped code resolving mid-migration; the migration is complete (77 call
+     sites moved to the width presets) and an alias kept past its migration is
+     a second name for a token, which is the drift this system spends most of
+     its time undoing. A reference to --hexp-* now fails loudly, which is the
+     point: HEXP is on the permanent grep set and a silent fallback would
+     defeat it. Mapping, for anyone reading old code:
+       hexp-2/10/40 -> --sans-body   hexp-60 -> --sans-chrome
+       hexp-80 -> --sans-display     hexp-100 -> --sans-ceremonial */
 
   /* Sans weight scale — ONE scale, both modes. The former parallel dark
      scale was retired 2026-08: it doubled every weight decision and the

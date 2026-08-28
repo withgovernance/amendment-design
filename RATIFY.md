@@ -78,6 +78,16 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.8)** — `hexp-*` aliases **deleted** from the token
+  layer and the spec; a reference now fails loudly rather than resolving,
+  because a working fallback is what lets a retired name survive a grep.
+  Mapping kept inline for anyone reading old code. **The grep-set item is NOT
+  cleared:** `HEXP` survives in seven comments across six consumer files, three
+  of which teach something additionally wrong (a tracking value flagged as wrong
+  at v2026.08.28.2 and still called "per spec"; a 10px label under a floor with
+  no chrome exception). **The grep set must be enforced over comments, not just
+  code** — the stage 8 lint rule already scans comments, so `HEXP` and the
+  retired weight ladder just need to be in it verbatim.
 - **2026-08-28 (v2026.08.28.7)** — the stage 8 queue, emptied.
   `uppercase-has-two-homes`: uppercase is legal in `role-label-caps` (chrome)
   and `role-ceremonial` (display, once per page) and nowhere else — hard rule

@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.26
+# spec-version:   v2026.08.28.27
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1369,12 +1369,21 @@ materials:
       IT ALSO RETURNS THE PRIMARY ACTION. With chrome plated, the CTA is one
       of three bright objects along the top-left. Receded, it is the only
       one.
-      THE COST IS PAID, NOT DENIED. The active nav mark does die on the
-      aurora — measured 1.22:1 and 1.34:1 in dark — so THE ACTIVE STATE
-      LOSES ITS FILL AND CARRIES INK, WEIGHT AND THE FILLED GLYPH INSTEAD.
-      That is a real answer to the measurement rather than a dismissal of it,
-      and it is why primary.plate-not-mark now has a second consequence: with
-      no plate anywhere in chrome, primary has no role in chrome at all.
+      THE COST IS PAID, NOT DENIED — BUT THE ACTIVE ROW IS NOT SETTLED, AND
+      THIS ENTRY OVERSTATED IT WHEN FIRST WRITTEN. What is measured: MIDNIGHT
+      INDIGO AS A MARK dies on the aurora, 1.22:1 and 1.34:1 in dark. That
+      forecloses an indigo mark and it is why primary.plate-not-mark has a
+      second consequence — primary has no role in chrome once no plate does.
+      WHAT IS NOT MEASURED, and was ratified anyway from a recommendation
+      that explicitly asked to be measured rather than assumed: whether the
+      active row drops its fill entirely for ink, weight and the filled
+      glyph, or keeps a NEUTRAL tint, which is a different thing from indigo
+      ink and is not covered by the number above. The recommended 3c
+      composition shows a neutral fill, in light only.
+      PENDING: render the active row in DARK four ways — neutral tint, ink
+      and weight, filled glyph, and 3c's treatment — and measure. UNTIL THEN
+      THE SHIPPED NEUTRAL TINT STAYS; do not conform it away on the strength
+      of the sentence this one replaces.
       NOT A SCROLL EFFECT. Recession is a STATIC STATE. It is not the
       navbar-materialize apparatus stage 3 deleted. "Chrome is still"
       survives unchanged and now has less to animate, not more.

@@ -88,6 +88,19 @@ fragile.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.20)** — the statutory queue, emptied.
+  `a-measure-is-a-property-of-the-line`: a measure and horizontal padding may not
+  share a box — the framework sizes `max-width` against the border box, so a 448px
+  token with `lg:px-12` set a **352px line**, and *the failure looks like a
+  decision*. `body-count-is-a-band`: `measure.body` does **not** set 69 characters;
+  measured 58–64 across two sessions and three prose samples. **A character count
+  is a measurement of a line of specific prose, not a property of a width** — the
+  same shape as `ink-ground-is-a-placement`. Width unchanged; the annotation was
+  the wrong part. Paper islands gained its code-side consequence: `dark:` is
+  **inert** inside a paper canvas, so those 58 classes are dead code that reads as
+  intent. **And a correction of mine:** the handoff's "the measure is already
+  correct, do not touch" measured the old `72ch` column and asserted an identity
+  with a token whose value I never checked.
 - **2026-08-28 (v2026.08.28.19)** — **three tiers of reach**, contributed by the
   implementation session and better than the rule it sharpens. Tier 1 the class
   layer, a grep decides it. Tier 2 imperative styling — a grep cannot read it but a

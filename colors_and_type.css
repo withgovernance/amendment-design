@@ -906,7 +906,15 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
    The count is the intent; the rem is the value; re-derive when a face or a
    role size changes. Target 69 characters, ceiling 75.
    Mobile-first: the min() means these never need a breakpoint. */
-.measure      { max-width: min(28rem, 100% - 2rem); }  /* 69 chars of role-body-serif @16px */
+.measure      { max-width: min(28rem, 100% - 2rem); }
+/* CORRECTED 2026-08-28: this said "69 chars of role-body-serif @16px". Measured,
+   it sets a BAND of roughly 58-64 — statutory prose lowest, because it has the
+   longest words. A character count is a measurement of a line of specific prose,
+   not a property of a width. ~490-500px would earn a reliable 69.
+   AND: a measure may not share a box with horizontal padding. max-width sizes the
+   border box, so px-* is subtracted FROM the measure rather than sitting outside
+   it — measured, a 448px token with lg:px-12 set a 352px line. Gutter outside,
+   measure on the box that holds the line. See typography.measure. */
 .measure-lede { max-width: min(24rem, 100% - 2rem); }  /* 47 chars of role-lede @20px */
 
 /* ---- Print: the mailed letter ---------------------------------------------

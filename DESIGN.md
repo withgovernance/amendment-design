@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.19
+# spec-version:   v2026.08.28.20
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1112,7 +1112,40 @@ spacing:
     # The count is the intent; the rem is the value; re-derive the rem when a
     # text face or a role size changes.
     # -------------------------------------------------------------------
-    body:  "max-width: min(28rem, 100% - 2rem)"   # 69 chars of role-body-serif @16px (avg glyph 6.53px)
+    body:  "max-width: min(28rem, 100% - 2rem)"   # see body-count-is-a-band
+    body-count-is-a-band: >-
+      CORRECTED 2026-08-28. This token was annotated "69 chars", and it does
+      not set 69. MEASURED at 448px with role-body-serif, counting the first
+      visual line: two sessions on different prose got 58/62/63 and 62/63/64.
+      THE REAL FIGURE IS A BAND OF ROUGHLY 58-64, and which end you land on
+      depends on the prose — statutory text has the longest words and sits
+      lowest. About 490-500px would earn a reliable 69; 533 overshoots to
+      72-78.
+      A CHARACTER COUNT IS A MEASUREMENT OF A LINE OF SPECIFIC PROSE, NOT A
+      PROPERTY OF A WIDTH. That is the correction worth keeping, and it is
+      the same shape as ink-ground-is-a-placement: a number quoted without
+      the conditions it was taken under reads as a constant and is not one.
+      Contrast needs its ground and its position; a character count needs
+      its prose.
+      THE WIDTH IS NOT CHANGING. 28rem is a good measure; the number
+      attached to it was the wrong part. The same audit is owed to `lede`
+      below, whose 47 has never been measured either.
+    a-measure-is-a-property-of-the-line: >-
+      RATIFIED 2026-08-28. A MEASURE AND HORIZONTAL PADDING MAY NOT SHARE A
+      BOX. The framework sizes max-width against the BORDER box, so a
+      container carrying both a measure token and px-* subtracts the padding
+      FROM the measure instead of placing it outside. MEASURED: a 448px
+      token on an element also carrying px-6 sm:px-8 lg:px-12 produced a
+      352px line at 1440 — 96px narrower than the token says, and nothing
+      errored.
+      THE FAILURE LOOKS LIKE A DECISION. A column that sets narrow reads as
+      a considered choice rather than a bug, which is why it survived in a
+      file read closely twice. It is composed-register-fails-silently with a
+      box model on it: two correct parts, wrong only in the computed result.
+      SO: the gutter goes on an outer wrapper, the measure on the inner box
+      that holds the line. The border-box default belongs to the framework
+      and not to this system, which is exactly why the rule has to be stated
+      here rather than assumed.
     lede:  "max-width: min(24rem, 100% - 2rem)"   # 47 chars of role-lede @20px (avg glyph 8.17px)
     print: "6.5in"                                # paper takes its measure from the margin, not a count
     # OPEN — SANS BODY COPY HAS NO COUNTED MEASURE. `body` above (69 characters,
@@ -3388,6 +3421,20 @@ light tier's bg with a dark tier's ring.
 
 - ✅ Glass/material backgrounds, rings, text opacity ramps, default borders, semantic state colors
 - ❌ Anything inside a paper canvas (the paper-islands rule above)
+
+**The code-side consequence, stated 2026-08-28.** This rule is written as a
+*rendering* guarantee, and it has a second effect nobody had written down: inside
+a paper canvas every `dark:` utility is **inert**. It does not lose — it never
+runs. Counted on the statutory surface alone: **39 in `BillFullText`, 13 in
+`BillSummaryContent`, 6 in `BillSection`**, with more under `BillContentSection`
+and `ReceiptCertificate`. They render correctly, because the light value was always
+going to win, so nothing looks wrong.
+
+**An inert utility is dead code, and dead code that reads as intent is worse than
+none.** The next person to adjust a dark ink colour on a paper surface will change
+it, see no difference, and have no way to know why. When a paper surface is
+touched, strip the `dark:` classes inside it — that is a grep, and it is the only
+part of this rule a reader can act on.
 - ❌ Brand colors — Midnight Indigo, Momentum green, and the oxblood seal have no dark variants. They are *the ink* and *the light* in both modes, and they hold regardless of room lighting.
 
 ## Surfaces: Five Rooms of the Same Building

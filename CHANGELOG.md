@@ -8,6 +8,84 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.20) — A character count is a measurement of prose, not a property of a width
+
+### Correction: my "the measure is already correct" was measuring the wrong thing
+
+The statutory handoff opened with *"What is already correct — do not touch: the
+measure. At 1440 the serif body sets 69 characters in 605px, which is
+`measure.body` exactly."*
+
+**605px is not 28rem.** I measured the rendered column — which was the old
+`max-w-[72ch]` — and asserted an identity with a token whose value I never checked.
+`measure.body` is 448px. The two numbers had nothing to do with each other, and the
+69 was a coincidence of the width I happened to be looking at.
+
+It had a cost: it put **"do not touch"** on the one thing in the file that most
+needed measuring. Had the implementation session taken the instruction as written,
+a wrong column would have been frozen by the handoff meant to fix the file. Third
+measurement error of mine today, and the worst of them — the previous two were a
+stale number and a mislabelled caption; this was a claimed identity between two
+values I never compared.
+
+### `measure.body` does not set 69 characters
+
+Measured at 448px with `role-body-serif`, counting the first visual line, on two
+different prose samples in two sessions: **58 / 62 / 63** and **62 / 63 / 64**. The
+real figure is a **band of roughly 58–64**, and which end you land on depends on the
+prose — statutory text has the longest words and sits lowest. About 490–500px would
+earn a reliable 69; 533 overshoots to 72–78.
+
+**The width is not changing.** 28rem is a good measure; the number attached to it
+was the wrong part. The annotation is now the band.
+
+The generalisation is the keeper, and it is the same shape as
+`ink-ground-is-a-placement`: **a character count is a measurement of a line of
+specific prose, not a property of a width.** Contrast needs its ground and its
+position; a count needs its prose. Both were written down as constants and neither
+is one. `lede`'s unmeasured "47 chars" is owed the same audit.
+
+### `a-measure-is-a-property-of-the-line`
+
+A measure and horizontal padding **may not share a box**. The framework sizes
+`max-width` against the *border* box, so a container carrying both a measure token
+and `px-*` subtracts the padding **from** the measure instead of placing it outside.
+Measured: a 448px token on an element also carrying `px-6 sm:px-8 lg:px-12` produced
+a **352px line** at 1440. Nothing errored.
+
+**The failure looks like a decision** — a column that sets narrow reads as considered
+rather than broken, which is why it survived a file read closely twice. It is
+`composed-register-fails-silently` with a box model on it: two correct parts, wrong
+only in the computed result. The gutter goes on an outer wrapper; the measure on the
+box that holds the line.
+
+### The reserved question, answered — and it was hiding a worse thing
+
+`role-body-serif` at 16px is right and costs nothing. But the shipped 15px was
+setting 68 characters only because **the element carried `wdth 104` — the sans width
+axis, inert on Newsreader** — so the serif fell back to its own `fvar` default of
+`opsz 18`: **a display drawing at text size.** Body copy had been set in a display
+optical size, silently, for as long as that line existed. `role-body-serif` computes
+`opsz 16`.
+
+That is `axis-must-be-declared-and-measured` from a third direction — not an axis
+retired, not an axis unrequested, but **an axis applied to a face that does not have
+it**. Same silence every time.
+
+### Paper islands: the code-side consequence
+
+The rule is written as a *rendering* guarantee and had a second effect nobody had
+written down: inside a paper canvas every `dark:` utility is **inert**. Counted on
+the statutory surface alone — **39 / 13 / 6** across the three files, with more under
+`BillContentSection` and `ReceiptCertificate`. They render correctly, so nothing
+looks wrong.
+
+**An inert utility is dead code, and dead code that reads as intent is worse than
+none.** The next person to adjust a dark ink colour there will change it, see no
+difference, and have no way to know why. Correctly not swept in a pass about type
+registers and one gutter; now stated in the rule, where it is greppable on the next
+paper surface.
+
 ## 2026-08-28 (v2026.08.28.19) — Three tiers of reach
 
 `enforcement-has-a-blind-spot` said a clean lint run is a statement about the class

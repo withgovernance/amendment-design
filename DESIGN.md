@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.33
+# spec-version:   v2026.08.28.34
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3413,8 +3413,26 @@ a11y:
           moves the worst point from 4.53:1 to 5.40:1 and the bare canvas from
           4.65:1 to 5.59:1, which gives the band real room. Dark needs no
           change: 55% white is 5.96:1 on the token band's worst point.
-      THE INVARIANT IS ONLY TRUE ONCE BOTH LAND. Recession ships on the token
-      band with a darkened light secondary, and not before.
+      CORRECTED 2026-08-28 — THIS ENTRY OVERSTATED THE SECOND ITEM AS A GATE.
+      It said the invariant is only true once both land. IT IS TRUE WITH THE
+      BAND CHANGE ALONE: on the three-lobe token band the worst point with
+      --text-secondary AT ITS CURRENT 55% measures 4.53:1, which CLEARS the
+      4.50 bar. The invariant holds.
+      SO THERE IS ONE GATE, NOT TWO, and it is not a decision: the five-lobe
+      curtain cannot be tuned into compliance at any alpha and the three-lobe
+      token band already passes, so the band change is FORCED BY MEASUREMENT.
+      THE 55% -> 60% MOVE IS HARDENING, NOT COMPLIANCE. It buys margin — 4.53
+      becomes 5.40 at the worst point, 4.65 becomes 5.59 on the bare canvas —
+      and margin is worth having when the pass is by 0.03, because the next
+      lobe adjustment breaks it silently. But it is OPTIONAL, it is a one-line
+      token change, and IT NEEDS NO VISUAL REVIEW: slightly darker secondary
+      ink is not a composition question, and the existing story a11y
+      assertions verify it.
+      CONFLATING "COMPLIANT" WITH "HAS HEADROOM" AND PRESENTING BOTH AS
+      BLOCKING is the error here, and it is worth naming because it spends
+      someone else's attention. A gate stops a ship; a hardening is a
+      backlog item. Calling the second one the first makes every real gate
+      cheaper to ignore.
     rule-superseded: >-
       SUPERSEDED by band-is-bounded above. Kept because the grid below is the
       measurement that justified it, and it is still correct about the

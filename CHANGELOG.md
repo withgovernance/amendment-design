@@ -8,6 +8,38 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.34) — One gate, not two: I called a hardening a blocker
+
+`band-is-bounded` said *"the invariant is only true once both land"* — the three-lobe
+band **and** `--text-secondary` moving 55% → 60%. **That is wrong about the second one.**
+
+**The invariant holds with the band change alone.** On the three-lobe token band the
+worst point, with secondary ink **at its current 55%**, measures **4.53:1** against a
+4.50 bar. It clears.
+
+So there is **one** gate, and it isn't a decision: the five-lobe curtain cannot be tuned
+into compliance at any alpha, the three-lobe token band already passes, and the swap is
+**forced by measurement**.
+
+**55% → 60% is hardening, not compliance.** It buys margin — 4.53 → 5.40 at the worst
+point — and margin is genuinely worth having when the pass is by 0.03, because the next
+lobe adjustment breaks it silently. But it is optional, it is a one-line token change,
+and **it needs no visual review**: slightly darker secondary ink is not a composition
+question, and the story a11y assertions already verify it.
+
+### The error is worth naming because it spends someone else's attention
+
+I conflated **compliant** with **has headroom** and presented both as blocking, then put
+the bundle in front of the owner as a decision to make. It isn't one. **A gate stops a
+ship; a hardening is a backlog item.** Calling the second the first is not a harmless
+excess of rigour — it makes every real gate cheaper to ignore, and it invites exactly
+the response it got: *you want me to litigate a 5% difference?*
+
+The rest of this file spends its length on numbers that carry their conditions. A
+number's *consequence* is one of its conditions.
+
+---
+
 ## 2026-08-28 (v2026.08.28.33) — The tab bar's glass, measured: 35% light, 45% dark
 
 **Set from a render, then verified against it.** `material-chrome` moves from

@@ -82,7 +82,7 @@ Anything still open after a pass stays here with a note on what it's waiting for
 ### Two decisions gate shipping recession — both are Jason's
 - **kind:** decided in part; the remainder needs a person
 - **(a) THE MOBILE TAB BAR — CLOSED 2026-08-28.** It keeps `material-chrome`, as glass rather than a slab; see `v2026.08.28.32`. What remains from it is a measurement, not a decision: the fill level at which the bar's labels clear 4.5:1 over arbitrary content beneath. Superseded text follows for one cycle — Does it recede with the navbar, or keep `material-chrome`? It is the one chrome that overlaps SCROLLING CONTENT rather than a canvas, which is the strongest case for keeping a plate — and it has a second, independent reason: bottom edge, thumb-reached, and a target zone without a boundary is worse than one with. **If it recedes, `material-chrome` retires entirely.** Until this lands, the material has one consumer and an open question over it, and nothing new should be built on it.
-- **(b) `--text-secondary` DARKENS IN LIGHT, 55% → 60%.** Not a preference — the measurement below makes it the precondition for the band invariant, and it touches every secondary-ink surface in the product, so it is a visible change that wants a person's eye before it lands.
+- **(b) `--text-secondary` 55% → 60% in light — NOT A GATE, corrected 2026-08-28.** The invariant holds at the current 55%: on the three-lobe band the worst point is **4.53:1** against a 4.50 bar. This is **hardening**, buying margin from 4.53 to 5.40, and it is a one-line token change needing no visual review. Backlog, not blocking. Superseded text follows — Not a preference — the measurement below makes it the precondition for the band invariant, and it touches every secondary-ink surface in the product, so it is a visible change that wants a person's eye before it lands.
 - **the measurement, run 2026-08-28 as commissioned:** worst point of each band, 1440 frame, both schemes. **Spec token band: 4.53 light / 5.96 dark — passes. Shipped five-lobe curtain: 4.02 / 1.95 — fails, and cannot be tuned into compliance** (at ×0.3 alpha it is still 4.48 in light, approaching the bar asymptotically). **And the binding constraint is not the aurora at all:** on the light canvas with NO aurora, 55% black is 4.65:1 against a 4.50 bar, so the entire band budget in light is 0.15 of contrast. At 60% the worst point is 5.40:1.
 - **what this settles without a decision:** the aurora divergence closes in favour of the **three-lobe token band**; the five-lobe curtain retires. That is forced by the measurement rather than chosen.
 - **blocks:** shipping recession. Stage 9b can land the ground; the band and the ink ramp have to follow it before the invariant is true.
@@ -145,6 +145,13 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.34)** — **one gate, not two.** `band-is-bounded` said the
+  invariant needed both the three-lobe band and `--text-secondary` 55%→60%. **It holds
+  with the band alone** — worst point 4.53:1 at the current 55%, against a 4.50 bar. The
+  ink move is **hardening, not compliance**: margin from 4.53 to 5.40, a one-line token
+  change, no visual review. I conflated *compliant* with *has headroom* and presented
+  both as blocking. **A gate stops a ship; a hardening is a backlog item** — and calling
+  the second the first makes every real gate cheaper to ignore.
 - **2026-08-28 (v2026.08.28.33)** — **tab bar glass measured and set: 35% light, 45%
   dark**, blur unchanged. Replaces desktop-derived 55%/90%, whose job was immunity
   rather than legibility. Sampled off the composited render with a full-strength action

@@ -29,7 +29,7 @@ Source of truth: `DESIGN.md`. This file is the short list every visual change is
 10. **Script face on anything but the user's own affirmed name, on their own artifact?** Never other names, never decoration. No name → serif "A constituent".
 11. **Emboss without paper under it, or below 44px?** The emboss needs a paper canvas. It can't print or survive email — the ledger number, always present as text, is the proof.
 12. **Both colour schemes checked?** Light and dark are both first-class. Glass collapses to solid zinc under `prefers-reduced-transparency`; email lives there permanently (no webfonts — Georgia / Segoe stack / Verdana chrome ≥12px). Honour `prefers-reduced-motion` and `prefers-contrast`.
-13. **Wrong icons or imagery?** Phosphor only, never Lucide. No flags, eagles, or partisan marks; no stock photography, no photographic textures, no faux-3D. No 🎉 register — the Receipt is *issued*, not cheered.
+13. **Wrong icons or imagery?** *(These bind the system's own voice, not user-authored content — see `color.rules-bind-the-system-not-the-user`. A rule that cannot tell a model's output from a user's keystroke is being applied at the wrong layer.)* Phosphor only, never Lucide. No flags, eagles, or partisan marks; no stock photography, no photographic textures, no faux-3D. No 🎉 register — the Receipt is *issued*, not cheered.
 14. **A `ch` unit, or a hand-typed value a token already owns?** Widths in rem (`measure.body` = min(28rem, 100% − 2rem)). Colours, shadows, materials, weights from tokens. **Cite the token, never the number** — a literal is how every drift in this system started, and a specific number survives edits a token name wouldn't, because it looks deliberate.
 
 ## The four registers (pick the register, not the room)

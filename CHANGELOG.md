@@ -8,6 +8,42 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.35) — Design rules bind the system's voice, not the user's
+
+**Decided by Jason**, reverting a `cleanTitle()` that stripped leading emoji from
+conversation titles on save. He is right and the reasoning generalises.
+
+**The design system governs what the product renders by its own choice. User-authored
+content is not a design surface.**
+
+**The diagnostic, which is the keeper: a rule that cannot distinguish a model's output
+from a user's keystroke is being applied at the wrong layer.** A conversation title is
+something a person types and edits. At the save handler, a model's `🏛` and a user's are
+the same bytes — so the strip cannot be aimed, and it takes a character the user
+deliberately put there. Not an imprecise instrument; **the wrong instrument.**
+
+### My own wording invited it
+
+`enforcement-has-a-blind-spot`'s tier 3 said such a rule *"can only be moved upstream,
+to wherever the content is generated."* That is true of a **model prompt** and false of
+a **save handler**, and it did not say which. **The correct upstream is the generator
+that composes the text, never the path a human types through.**
+
+So this scopes every editorial rule in the file — the no-🎉 register, the icon set, the
+imagery bans, the type registers. All of them bind **the system's own voice**. They do
+not bind what a constituent writes, names, or titles. *The system may choose how to set
+a user's words; it may not choose the words.*
+
+### The clue was already in the file
+
+**The script face renders the user's own affirmed name and nothing else.** That rule has
+always treated user content as something the system *presents* rather than *authors*. The
+principle existed in one place and was never generalised, which is the same shape as the
+tab bar's "one chrome that overlaps scrolling content" — a correct criterion stated about
+a single instance and never enumerated.
+
+---
+
 ## 2026-08-28 (v2026.08.28.34) — One gate, not two: I called a hardening a blocker
 
 `band-is-bounded` said *"the invariant is only true once both land"* — the three-lobe

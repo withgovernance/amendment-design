@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.34
+# spec-version:   v2026.08.28.35
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -857,6 +857,34 @@ typography:
     CATCHES rather than by what it guards. Tier 1 does not verify the tokens
     match the spec; it verifies nobody moved the pin without regenerating.
     Saying more than that would make the tier itself the thing that lies.
+  rules-bind-the-system-not-the-user: >-
+    RATIFIED 2026-08-28, after a rule in this file was applied to a person's
+    keystrokes. THE DESIGN SYSTEM GOVERNS WHAT THE PRODUCT RENDERS BY ITS OWN
+    CHOICE. USER-AUTHORED CONTENT IS NOT A DESIGN SURFACE.
+    WHAT HAPPENED: conversation titles carried leading emoji, which read as a
+    violation of the no-decoration rules. enforcement-has-a-blind-spot's
+    tier 3 said such a rule "can only be moved UPSTREAM, to wherever the
+    content is generated" — and a cleanTitle() strip was built, removing a
+    leading emoji on save. IT IS BEING REVERTED, and it should be.
+    THE DIAGNOSTIC IS SHARP AND WORTH KEEPING: A RULE THAT CANNOT DISTINGUISH
+    A MODEL'S OUTPUT FROM A USER'S KEYSTROKE IS BEING APPLIED AT THE WRONG
+    LAYER. A conversation title is something a person can type and edit. At
+    the save handler a model's emoji and a user's are the same bytes, so the
+    strip cannot be aimed — it takes a character the user deliberately put
+    there. That is not an imprecise instrument, it is the wrong instrument.
+    MY OWN WORDING INVITED IT. "Move it upstream to wherever the content is
+    generated" is true of a model prompt and false of a save handler, and it
+    did not say which. THE CORRECT UPSTREAM IS THE GENERATOR THAT COMPOSES
+    THE TEXT, NEVER THE PATH A HUMAN TYPES THROUGH.
+    SO, AND THIS SCOPES EVERY EDITORIAL RULE IN THIS FILE: the no-emoji
+    register, the icon set, the imagery bans, the type registers — all of
+    them bind THE SYSTEM'S OWN VOICE. They do not bind what a constituent
+    writes, names, or titles. The system may choose how to SET a user's
+    words; it may not choose the words.
+    THE ONE PLACE THIS ALREADY HELD, and it should have been the clue: the
+    script face renders the user's own affirmed name and nothing else. That
+    rule has always treated user content as something the system presents
+    rather than authors.
   enforcement-has-a-blind-spot: >-
     RATIFIED 2026-08-28, and it completes the silent-failure family. The
     first two describe values that fail without complaining. THIS ONE

@@ -145,6 +145,15 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.35)** — **design rules bind the system's voice, not the
+  user's.** Decided by Jason, reverting a `cleanTitle()` emoji strip. **A rule that
+  cannot distinguish a model's output from a user's keystroke is being applied at the
+  wrong layer** — at the save handler both are the same bytes, so the strip takes a
+  character the user deliberately typed. **My tier-3 wording invited it:** "move it
+  upstream to wherever the content is generated" is true of a model prompt and false of
+  a save handler. Scopes every editorial rule in the file to the system's own voice. The
+  clue was already there — the script face renders the user's affirmed name and nothing
+  else.
 - **2026-08-28 (v2026.08.28.34)** — **one gate, not two.** `band-is-bounded` said the
   invariant needed both the three-lobe band and `--text-secondary` 55%→60%. **It holds
   with the band alone** — worst point 4.53:1 at the current 55%, against a 4.50 bar. The

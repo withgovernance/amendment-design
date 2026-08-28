@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.12
+# spec-version:   v2026.08.28.13
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -764,6 +764,33 @@ typography:
     resolves to something reasonable is found when someone greps for it,
     which is to say maybe never. This is why the hexp-* aliases were deleted
     rather than kept (see hexpAxisRetired).
+  enforcement-has-a-blind-spot: >-
+    RATIFIED 2026-08-28, and it completes the silent-failure family. The
+    first two describe values that fail without complaining. THIS ONE
+    DESCRIBES A PLACE WHERE NOBODY IS LOOKING AT ALL.
+    Every enforcement mechanism this system has — the adherence config, the
+    consumer's design:lint, a grep for a role class — reads THE CLASS LAYER.
+    STYLING THAT NEVER PASSES THROUGH A CLASS IS INVISIBLE TO ALL OF IT:
+    d3 and other imperative renderers set presentation with
+    .attr("font-size", n) and .style(...), canvas draws with no DOM at all,
+    and a third-party API that takes a literal (a map pin colour) cannot
+    take a token. None of it is greppable as a class and none of it is
+    lintable.
+    THE EVIDENCE IS WHERE THE PREVIOUS TWO RULES WERE HIDING. HexStateMap
+    styles through d3 attributes, and it is exactly where the dead HEXP axis
+    survived every sweep of the migration — retired-axis-fails-silently was
+    FOUND in the one file the enforcement layer cannot see, which is not a
+    coincidence. It also currently carries, in plain literals, a font-size
+    clamped at 8 and tile geometry that never reaches the target floor:
+    two hard-rule violations sitting in production, past a lint run that
+    reports clean.
+    SO: A CLEAN LINT RUN IS A STATEMENT ABOUT THE CLASS LAYER, NOT ABOUT THE
+    PRODUCT. Any surface that draws imperatively is outside the guarantee
+    and needs its own check — an assertion on the rendered output, or a
+    review that knows to go there. The blind spot should be NAMED AND
+    INVENTORIED rather than discovered again: a rule cannot be enforced on a
+    surface the enforcer cannot read, and the honest response is to list
+    those surfaces, not to trust the green check.
   composed-register-fails-silently: >-
     RATIFIED 2026-08-28, contributed by the implementation session as a
     generalisation of retired-axis-fails-silently, and it is the more useful

@@ -8,6 +8,46 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.13) — A clean lint run is a statement about the class layer
+
+### `enforcement-has-a-blind-spot`
+
+The first two members of the silent-failure family describe **values that fail
+without complaining**. This one describes **a place where nobody is looking at
+all**, and it was contributed by the implementation session as the finding it most
+wanted to survive.
+
+Every enforcement mechanism this system has — the adherence config, the consumer's
+`design:lint`, a grep for a role class — reads **the class layer**. Styling that
+never passes through a class is invisible to all of it: d3 and other imperative
+renderers set presentation with `.attr("font-size", n)`, canvas draws with no DOM
+at all, and a third-party API taking a literal cannot take a token.
+
+**The evidence is that this is exactly where the previous two rules were hiding.**
+`HexStateMap` styles through d3 attributes, and it is where the dead `HEXP` axis
+survived every sweep of the migration — `retired-axis-fails-silently` was *found in
+the one file the enforcement layer cannot read*, which is not a coincidence.
+Verified in that file today: `fontSize = Math.max(hexSize * 0.4, 8)` — an explicit
+**8px** clamp against a 12px floor with no chrome exception — and hex sizes of
+18–35 that never reach the 44px target floor. **Two hard-rule violations in
+production, past a lint run that reports clean.**
+
+So: **a clean lint run is a statement about the class layer, not about the
+product.** Any surface that draws imperatively is outside the guarantee and needs
+its own check. The blind spot should be *named and inventoried* rather than
+discovered a fourth time — a rule cannot be enforced on a surface the enforcer
+cannot read, and the honest response is to list those surfaces, not to trust the
+green check. Added to `DESIGN-HARD-RULES.md` as a standing caution above the
+checklist, because it governs how much the checklist is worth.
+
+### Note on the branch
+
+The migration was built against **v2026.08.28.10**. The three versions since
+changed **no rule and no token** — `.11` swept the entry points to match rules
+already ratified, `.12` added specimens and fixed the specimen frame's canvas, and
+`.13` is this entry. `DESIGN.md` differs from `.10` by two lines, both the
+`spec-version` header. **The branch requires no re-conformance.**
+
 ## 2026-08-28 (v2026.08.28.12) — Three specimens, and the card frame was painting the wrong canvas
 
 Trap 3 says nothing unrendered stays true: a rule with no specimen is violated

@@ -2,6 +2,8 @@
 
 Source of truth: `DESIGN.md`. This file is the short list every visual change is checked against — by `/design-iterate` against screenshots, by `/review-pr` against the diff, by `designer` against story renders. If a rule here contradicts `DESIGN.md`, `DESIGN.md` wins; fix this file in the same pass.
 
+> **Before trusting a clean lint run:** enforcement reads the *class layer*. A surface that draws imperatively — d3 `.attr("font-size", …)`, canvas, a third-party API taking a literal — is invisible to every check this system has, and is where the last three violations hid. Go look at those by hand.
+
 ## Look at the render and ask
 
 1. **Coloured ink inside the aurora band?** Text sits on glass or paper, never directly on the gradient. But **glass does not rescue a coloured hue** — measured, every material lands 2.6–3.0:1 in the band, and `material-thick`/`material-chrome` are among the worst, because translucency passes the aurora through and `blur(50px)` averages neighbouring bright lobes *in*. **Anything carrying a semantic hue as text needs an OPAQUE ground** (`--canvas` measured 6.10:1 where glass measured 2.87:1). Glass stays legal for primary/secondary text, which is luminance against its own material. → violation

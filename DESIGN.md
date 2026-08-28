@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.13
+# spec-version:   v2026.08.28.14
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1792,10 +1792,28 @@ profiles:
       inbox cannot be re-issued, cannot be exported to the three share ratios,
       and dies with the mailbox. Issued mail is the NOTICE of issuance —
       typeset like the thing it reports — and always links to the artifact.
+    real-client-tested: >-
+      CLOSED 2026-08-28 — the one item in this system that could not close from
+      inside the toolchain, and it did not: a person authorised it, a person
+      sent it, and a person looked at it in the client. All three templates
+      went to a real inbox through the app's own `react:` render path — the
+      same path inngest/services/email.ts uses in production, so what was
+      checked is production's output rather than a parallel render.
+      WHAT HELD, and each of these had a specific failure mode behind it:
+        - the CTA's INK label on the Momentum plate, one value in both schemes
+        - the indigo step badges SWITCHING under inversion rather than
+          darkening — the one with real teeth, since navy on the inverted
+          sheet measures 1.43:1
+        - THE ISSUANCE BLOCK INCLUDING THE DOUBLE RULE, which this note used
+          to predict would be the first thing Gmail Android took. It survived.
+      The prediction was the reason to test and it was wrong in the good
+      direction. Recorded as a result rather than deleted, because "we
+      expected this to break and it did not" is the finding — the next person
+      to touch the issuance block should know it has been tested in-client,
+      not assume it is fragile and design around a hazard that is not there.
     open: >-
-      Real-client testing (dark mode in Gmail Android darkens the sheet and the
-      double rule is first to disappear); tables, forms, loading states and
-      Spanish are still unaddressed under §3.8.
+      Tables, forms, loading states and Spanish are still unaddressed under
+      §3.8.
 
 # --------------------------------------------------------------------------
 # SURFACES — the five rooms of the same civic building, mapped to the four

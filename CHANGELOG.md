@@ -8,6 +8,36 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.14) — The one thing that could not close from inside the toolchain, closed
+
+`profiles.email.open` had carried real-client testing as an open item for the life
+of the profile, and one pass ago it was moved out of the ratification queue into a
+**Needs a person** section on the grounds that no agent should send mail to live
+inboxes unprompted. It closed the way it had to: **a person authorised it, a
+person sent it, and a person looked at it in the client.**
+
+All three templates went through the app's own `react:` render path — the same one
+`inngest/services/email.ts` uses — so what was checked is **production's output,
+not a parallel render.** That detail is the difference between a test and a
+rehearsal.
+
+**What held**, each with a specific failure mode behind it: the CTA's **ink** label
+on the Momentum plate, one value in both schemes; the indigo step badges
+**switching** under inversion rather than darkening, which is the one with teeth
+since navy on the inverted sheet measures 1.43:1; and **the issuance block
+including the double rule.**
+
+That last one is why this entry is worth writing. **This file predicted the double
+rule would be the first thing Gmail Android took**, and it was the stated reason to
+run the test at all. It survived. The result is recorded as
+`real-client-tested` rather than the note being deleted, because *"we expected this
+to break and it did not"* is itself the finding — the next person to touch the
+issuance block should know it has been tested in-client, rather than assume it is
+fragile and design around a hazard that is not there.
+
+A prediction that fails in the safe direction still earns its keep: it is what
+caused the only end-to-end check this profile has ever had.
+
 ## 2026-08-28 (v2026.08.28.13) — A clean lint run is a statement about the class layer
 
 ### `enforcement-has-a-blind-spot`

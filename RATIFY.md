@@ -63,12 +63,19 @@ Not a ratification queue. These do not resolve by deciding; they resolve by
 someone doing something an agent should not do unprompted. Listed separately so
 they stop reading as actionable to the next session that opens this file.
 
-### Real-client dark-mode email rendering has never been tested
-- **why it is here:** it means sending mail to live Gmail / Outlook / Apple Mail inboxes. That is outward-facing and no agent should do it unprompted. The stage 7 session correctly declined.
-- **what is already verified, so nobody re-does it:** dark mode is confirmed end to end in the rendered templates — `zinc-900` sheet, both `color-scheme` metas present, links at ~7:1 inverted, no webfonts, no glass, no oklch, no custom properties, no motion, no gap. The templates are correct. What is untested is what CLIENTS DO TO THEM.
-- **the specific thing to look for**, from `profiles.email.dark-mode`'s own open note: **Gmail on Android darkens the sheet itself, and the double rule is the first thing to go.** The issuance block is where to look — ledger number, double rule `#b6ac97`, signature line.
-- **protocol:** send one issuance email and one CTA email to a Gmail address opened on Android, an Outlook.com address opened in the Windows app, and an iCloud address opened in Apple Mail, each with the device in dark mode. Screenshot the issuance block. The pass condition is that the double rule is still visible and the ledger number is still legible as text.
-- **who:** Jason, or anyone with those three inboxes. Report back as a queue entry only if something fails.
+*(empty — the real-client email test, the only entry, closed 2026-08-28)*
+
+### CLOSED 2026-08-28 — real-client dark-mode email rendering
+Jason authorised it directly and supplied the address; the implementation session
+sent all three templates through the app's own `react:` render path — the same one
+`inngest/services/email.ts` uses, so it exercised production's output — and he
+checked them in-client. The CTA's ink label, the step badges switching under
+inversion, and **the issuance block including the double rule** all held. The
+double rule was the specific thing this file predicted Gmail Android would take
+first; the prediction was wrong in the good direction. Result written into
+`profiles.email.real-client-tested` rather than deleted, so the next person to
+touch the issuance block knows it has been tested rather than assuming it is
+fragile.
 
 ---
 
@@ -76,6 +83,33 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.14)** — real-client email testing **closed**, the only
+  item that could not close from inside the toolchain. Sent through production's
+  own render path and checked in-client; the CTA ink label, the inverting step
+  badges, and **the issuance block including the double rule** all held — the
+  double rule being the specific thing the profile predicted Gmail Android would
+  take first. Recorded as a result, not deleted.
+- **2026-08-28 (v2026.08.28.13)** — `enforcement-has-a-blind-spot`: every check
+  here reads the class layer, so d3 / canvas / third-party-literal styling is
+  invisible to all of it — **and that is where the previous two silent-failure
+  rules were hiding.** `HexStateMap` verified carrying an explicit 8px clamp
+  against the 12px floor and 18–35px tiles against the 44px target floor, past a
+  clean lint run. **A clean lint run is a statement about the class layer, not
+  about the product.** Filed as a ticket request; also recorded that the branch
+  was built against `.10` and nothing since changed a rule or a token, so it
+  needs no re-conformance.
+- **2026-08-28 (v2026.08.28.12)** — three specimens (`ink-and-ground`,
+  `uppercase-two-homes`, `tint-is-not-a-plate`) closing trap 3 for the day's
+  rules, and `_card.css` corrected: it painted `--canvas` and drew the aurora
+  over it, so all 52 cards had been demonstrating rules on a ground that
+  contradicts one of them. A `.pane.dark` convention added — the frame had no
+  dark mode at all.
+- **2026-08-28 (v2026.08.28.11)** — the **entry points**, swept. `SKILL.md` was
+  wrong or incomplete on eleven counts after ten same-day ratifications never
+  touched it, including `red-600` as the danger value and no mention of the
+  which-green switch at all. `_adherence.oxlintrc.json` sanctioned twelve
+  `--hexp-*` entries three versions after their deletion. No new rules — the
+  sweep those ten passes owed.
 - **2026-08-28 (v2026.08.28.10)** — `composed-register-fails-silently`,
   contributed by the implementation session and the more useful half of the
   silent-failure pair: `sans-chrome` + `uppercase` + `tracking-wide` compiles,

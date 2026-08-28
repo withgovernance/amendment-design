@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.22
+# spec-version:   v2026.08.28.23
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1306,7 +1306,15 @@ materials:
     ring-light: "1px solid rgb(0 0 0 / 15%)"
     ring-dark:  "1px solid rgb(255 255 255 / 12%)"
   material-chrome:
-    description: Persistent window chrome (navigation bar, mobile tab bar)
+    description: >-
+      SCOPE NARROWED 2026-08-28 by recession-ratified-2026-08-28. Both
+      DESKTOP consumers are gone — the navbar and the sidebar rail now take
+      no material. What remains is the MOBILE TAB BAR, and only pending its
+      own decision: it is the one chrome that overlaps SCROLLING CONTENT
+      rather than a canvas, which is the strongest case for keeping a plate.
+      IF THE TAB BAR ALSO RECEDES, THIS MATERIAL RETIRES ENTIRELY. Do not
+      reach for it on a new surface in the meantime; a material with one
+      consumer and an open question over it is not a material to build on.
     # RESOLVED 2026-08-27. Two light values had been shipping side by side:
     # 75% on a --animate-navbar default with no call site, and 55% on the
     # material-scroll utility that every rendered navbar actually takes.
@@ -1337,6 +1345,42 @@ materials:
       same pass.
       Written as a mix of --canvas-live rather than a literal so chrome
       follows the canvas if the Blue Hour value ever moves.
+    recession-ratified-2026-08-28: >-
+      DECIDED BY JASON 2026-08-28, superseding recession-declined below,
+      which is kept because a reversed ruling is evidence about how the
+      question was reached and deleting it would hide the reversal.
+      DESKTOP CHROME TAKES NO MATERIAL. The navbar and the sidebar rail
+      render with no fill, no blur, no hairline, no shadow. Ink and icons sit
+      directly on the aurora. Content cards remain material-regular, and the
+      aurora runs unbroken behind everything.
+      WHY THE EARLIER RULING WAS WRONG, stated plainly because it was mine.
+      It measured LABEL LEGIBILITY at the two treatments and found recession
+      costs the title 56% of its headroom and kills the active mark. Those
+      measurements stand. What it never rendered was FIGURE AND GROUND AT
+      THE FULL FRAME WITH CONTENT PRESENT — and that is where the decision
+      actually lives. Two chrome plates meeting at the top-left corner form
+      an L BRIGHTER THAN THE CARDS IT FRAMES, which inverts the system: the
+      furniture becomes the object and the content becomes the hole it left.
+      The same L cuts the aurora into three disconnected pieces — behind the
+      rail, behind the bar, and in the well — so nothing reads as a
+      continuous ground. My specimen had no cards in it, so it could not see
+      any of that. A card that omits the thing being framed cannot answer a
+      question about framing.
+      IT ALSO RETURNS THE PRIMARY ACTION. With chrome plated, the CTA is one
+      of three bright objects along the top-left. Receded, it is the only
+      one.
+      THE COST IS PAID, NOT DENIED. The active nav mark does die on the
+      aurora — measured 1.22:1 and 1.34:1 in dark — so THE ACTIVE STATE
+      LOSES ITS FILL AND CARRIES INK, WEIGHT AND THE FILLED GLYPH INSTEAD.
+      That is a real answer to the measurement rather than a dismissal of it,
+      and it is why primary.plate-not-mark now has a second consequence: with
+      no plate anywhere in chrome, primary has no role in chrome at all.
+      NOT A SCROLL EFFECT. Recession is a STATIC STATE. It is not the
+      navbar-materialize apparatus stage 3 deleted. "Chrome is still"
+      survives unchanged and now has less to animate, not more.
+      GATED ON THE BAND. See a11y.contrast.band-is-bounded — recession is
+      only shippable once the ground under it is bounded, and the
+      measurement that gates it is recorded there.
     recession-declined: >-
       RATIFIED 2026-08-28 from a specimen built for it —
       preview/chrome-recession.html, navbar and sidebar at 390 and 1440,
@@ -1492,7 +1536,7 @@ motion:
     - "Respect prefers-reduced-motion — all animations clamp to 0.01ms."
     - "Motion is permitted on exactly two surfaces: the Receipt (one-shot bloom at issuance) and the Commons (accruing momentum under real collective action). Both obey 'no motion without meaning' — motion reflects real state a person changed, never decoration. Hover states never move, on any surface."
     - "STREAMING IS NOT MOTION (stated 2026-08-02, audit §3.5). Text arriving token by token, a typing indicator, a skeleton resolving into content — these are CONTENT ARRIVING, not the interface moving, and they are permitted anywhere without spending the two-surface budget. The test: does it animate an element that is already on screen and already correct? Then it is motion and needs a sanctioned surface. Does it put content on screen for the first time? Then it is arrival. This carve-out is why the Reading Room's old 'generous' posture was a contradiction and not a third sanctioned surface."
-    - "Chrome is still — and stillness requires a ground of one's own. A surface with no material shows whatever moves under it, so a receding chrome inherits the aurora's breathing and cannot be still. See color.recession-declined. The navbar is always chrome (material-chrome) and does not animate on scroll — the earlier scroll-timeline fade-in was removed because it broke on app routes whose content scrolls inside an inner container rather than the document root."
+    - "Chrome is still. RECESSION IS A STATIC STATE, NEVER A SCROLL TRANSITION (2026-08-28) — desktop chrome takes no material at any scroll position, which is less to animate rather than more. The earlier reading here, that a surface without a material cannot be still because it shows what moves under it, was an argument against recession and did not survive the decision; what survives is that chrome never animates. The navbar does not animate on scroll — the earlier scroll-timeline fade-in was removed because it broke on app routes whose content scrolls inside an inner container rather than the document root."
 
 focus:
   color-light: "#64748b"   # slate-500
@@ -1646,12 +1690,19 @@ components:
     typography: "sans semibold"
   navbar:
     description: >-
-      Sticky top chrome. ALWAYS material-chrome — it does not fade in,
-      blur in, or otherwise animate on scroll. See motion.rules and
-      "Elevation Without Motion". A scroll-driven variant was removed:
-      on app routes that scroll inside an inner container it never
-      advanced past blur(0), leaving unblurred chrome over content.
-    background: "material-chrome at every scroll position"
+      Sticky top chrome. GROUND: NONE, as of 2026-08-28 — no fill, no blur,
+      no hairline, no shadow. Ink sits directly on the aurora. It still does
+      not fade in, blur in, or otherwise animate on scroll: recession is a
+      static state, not a transition, and the scroll-driven variant remains
+      removed because on app routes that scroll inside an inner container it
+      never advanced past blur(0). See recession-ratified-2026-08-28 and
+      motion.rules.
+      THE RAIL'S EDGE IS IMPLICIT AND THAT IS A DEPENDENCY. Recession reads
+      correctly partly because the content column is centred with its own
+      padding, so the rail has an edge without drawing one. A FULL-BLEED
+      ROUTE REMOVES THAT EDGE AND THERE IS NO HAIRLINE TO FALL BACK ON —
+      check the bill and elections routes before calling this done.
+    background: "none — the aurora is the ground"
     height: "56px"
     padding: "8px"
     layout: "max-width 80rem, three-column flex (leading / middle / trailing)"
@@ -3065,7 +3116,53 @@ a11y:
       fallen back to the plain three-lobe Blue Hour. Inside the band it is
       not safe at any rung, in either room — in the dark room even 87% ink
       drops to 3.53:1. The band is light, not a text surface.
-    rule: >-
+    band-is-bounded: >-
+      REPLACES the no-bare-text rule below, 2026-08-28, as the consequence of
+      recession-ratified. The old rule protected the ink scale BY FORBIDDING
+      OVERLAP — placement, not monochrome, was the mechanism. Recession makes
+      overlap the norm, so the protection moves from PLACEMENT to THE GROUND.
+      THE NEW RULE: the aurora is authored, not photographic, so its lightness
+      range is knowable and must be BOUNDED such that --text-secondary clears
+      4.5:1 over EVERY POINT of the band, in both schemes. Text on the aurora
+      is then safe by construction rather than by placement. Existing limits
+      stay and become load-bearing rather than advisory: chroma <= 0.22, at
+      most five lobes.
+      AND: text that carries meaning keeps the 4.5:1 floor. BLENDING IS
+      ACHIEVED BY REMOVING THE PLATE, NEVER BY LOWERING INK — a label at 38%
+      over a gradient is not an aesthetic, it is an unmeasured contrast
+      failure. A decorative text register, if one is ever wanted, needs its
+      own entry and its own floor.
+      THE MEASUREMENT THIS WAS GATED ON, run 2026-08-28 on a 1440 frame,
+      sampling every point of both bands and taking the worst:
+        SPEC TOKEN BAND (three lobes)   light 4.53:1   dark 5.96:1   PASSES
+        SHIPPED CURTAIN (five lobes)    light 4.02:1   dark 1.95:1   FAILS
+        shipped, lobe alphas x0.5       light 4.36:1   dark 3.76:1   fails
+        shipped, lobe alphas x0.3       light 4.48:1   dark 4.99:1   light still fails
+      TWO RESULTS, AND THE SECOND IS NOT THE ONE THE TASK EXPECTED.
+      (1) THE FIVE-LOBE CURTAIN CANNOT BE TUNED INTO COMPLIANCE. In light it
+          fails at every alpha tested and approaches, never reaches, the bar
+          as alpha goes to zero. The three-lobe token band already passes.
+          So the bound is not a new alpha — IT IS THE TOKEN BAND, and the
+          divergence between the two auroras closes in its favour. This is
+          the same shape as the --canvas divergence closed at v2026.08.28.6.
+      (2) THE BINDING CONSTRAINT IS NOT THE AURORA. IT IS --text-secondary.
+          Measured on the LIGHT canvas WITH NO AURORA AT ALL, 55% black is
+          4.65:1 against a 4.50 bar. The entire band budget in light mode is
+          0.15 OF CONTRAST. The token band spends 0.12 of it and passes by
+          0.03, which is not a bound anyone can rely on — the next lobe tweak
+          breaks it silently, which is precisely the failure this invariant
+          exists to prevent.
+          SO --text-secondary MUST DARKEN IN LIGHT, 55% -> 60%. Measured, that
+          moves the worst point from 4.53:1 to 5.40:1 and the bare canvas from
+          4.65:1 to 5.59:1, which gives the band real room. Dark needs no
+          change: 55% white is 5.96:1 on the token band's worst point.
+      THE INVARIANT IS ONLY TRUE ONCE BOTH LAND. Recession ships on the token
+      band with a darkened light secondary, and not before.
+    rule-superseded: >-
+      SUPERSEDED by band-is-bounded above. Kept because the grid below is the
+      measurement that justified it, and it is still correct about the
+      five-lobe curtain — which is why that curtain is the thing being
+      retired rather than the rule being simply repealed.
       NO BARE TEXT INSIDE THE CURTAIN BAND. Headlines, prose, captions, form
       labels and metadata all sit below it. This ratifies how the home page is
       already composed — the hero headline and both buttons clear the band —

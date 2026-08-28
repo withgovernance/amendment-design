@@ -198,7 +198,7 @@ The **Blue Hour aurora** is the default backdrop on every page. Three radial-gra
 - Slate lobe at 85% 20%
 - Warm parchment lowlight at 50% 90%
 
-Hard limits, measured 2026-08 (`a11y.contrast`): chroma ≤ 0.22, at most five lobes, and **never bare text inside the band** — placement, not monochrome, is what protects the ink scale. No full-bleed photography. No repeating patterns. The aurora *breathes* (very slow, ≥120s) but never animates aggressively. Where opaque paper is needed, the room provides a `paper-cream` (Archive) or `paper-parchment` (Writing Desk) canvas — opaque, not glass. *Glass is for chrome, cards, modals, navigation. Paper is for prolonged reading or writing.*
+Hard limits, measured 2026-08 (`a11y.contrast`): chroma ≤ 0.22, at most five lobes, and **the band is bounded so `--text-secondary` clears 4.5:1 at every point, both schemes** — as of 2026-08-28 desktop chrome takes no material and its ink sits on the band, so **the ground, not placement, is what protects the ink scale**. Blend by removing the plate, never by lowering ink. No full-bleed photography. No repeating patterns. The aurora *breathes* (very slow, ≥120s) but never animates aggressively. Where opaque paper is needed, the room provides a `paper-cream` (Archive) or `paper-parchment` (Writing Desk) canvas — opaque, not glass. *Glass is for chrome, cards, modals, navigation. Paper is for prolonged reading or writing.*
 
 ### Spacing, radii
 

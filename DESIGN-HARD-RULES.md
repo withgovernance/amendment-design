@@ -6,7 +6,7 @@ Source of truth: `DESIGN.md`. This file is the short list every visual change is
 
 ## Look at the render and ask
 
-1. **Coloured ink inside the aurora band?** *(Measured 2026-08-28: the neutral text ramp does survive the bare band — nav labels 4.57 light / 6.12 dark. This rule is about **coloured** ink and about the marks that need a plate, not about all text. Chrome still carries a ground: see `color.recession-declined`.)* Text sits on glass or paper, never directly on the gradient. But **glass does not rescue a coloured hue** — measured, every material lands 2.6–3.0:1 in the band, and `material-thick`/`material-chrome` are among the worst, because translucency passes the aurora through and `blur(50px)` averages neighbouring bright lobes *in*. **Anything carrying a semantic hue as text needs an OPAQUE ground** (`--canvas` measured 6.10:1 where glass measured 2.87:1). Glass stays legal for primary/secondary text, which is luminance against its own material. → violation
+1. **Text on the aurora?** Permitted as of 2026-08-28 — desktop chrome takes no material and its ink sits on the band. **The protection moved from placement to the ground:** the band must be bounded so `--text-secondary` clears 4.5:1 at every point, both schemes (`a11y.contrast.band-is-bounded`). **Blend by removing the plate, never by lowering ink** — a label at 38% over a gradient is an unmeasured contrast failure, not an aesthetic. **Coloured ink is the exception and still needs an OPAQUE ground** — measured, every material lands 2.6–3.0:1 in the band and the thicker ones are worse, because translucency passes the gradient through and `blur(50px)` averages neighbouring bright lobes *in* (`--canvas` 6.10:1 where glass was 2.87:1). **Not yet true:** the shipped five-lobe curtain fails the bound at every alpha in light; the three-lobe token band passes. Until that lands, this rule describes the target, not the product. → violation
    - **Check a material against `colors_and_type.css`, not the app's own utility.** The consumer hand-reimplements the materials and `material-chrome` dark has drifted to the opposite treatment (90% zinc in the system, 12% white in the app). A specimen must name which value it renders.
    - **Corollary: a contrast number without a position is not a measurement.** The canvas is a gradient; the same token swings ~3× top-to-bottom of the page. Quote where you sampled or don't quote the number.
 2. **Is the green obeying the fill rule?** Three separate questions, and they are the most-violated rules in the system:
@@ -40,7 +40,7 @@ Source of truth: `DESIGN.md`. This file is the short list every visual change is
 | Writing | Writing Desk | paper-parchment | material-regular | 28rem portrait | minimal |
 | Issued | Receipt | paper-cream | paper | 34rem portrait | bloom once, then static |
 
-Aurora limits: chroma ≤ 0.22, ≤ 5 lobes, never bare text in the band. No full-bleed photography, no repeating patterns.
+Aurora limits, now load-bearing rather than advisory: chroma ≤ 0.22, ≤ 5 lobes, and **the band is bounded so `--text-secondary` clears 4.5:1 at every point** — text on the band is safe by construction, not by placement. No full-bleed photography, no repeating patterns.
 
 ## Where findings go
 

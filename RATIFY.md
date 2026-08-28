@@ -79,12 +79,13 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **also:** the two bad `lede` numbers both used `ch`, which this system bans — the ban's wording scopes it to *tokens*, so prose slipped past. That gap exists for every unit banned that way, and it is the greppable part.
 - **blocks:** nothing.
 
-### The spec's aurora and the shipped aurora are two different grounds under one name
-- **kind:** unowned default
-- **found:** building `preview/chrome-recession.html`, which had to render both to answer the ruling honestly.
-- **evidence:** `--aurora` in `colors_and_type.css` is **three broad, low-chroma lobes** (72%×55% at 15% 8%, and two more). The consumer's `globals.css` ships **five narrow, far more saturated ones** (`oklch(0.86 0.21 150 / .66)` at 30% 12%, and four more). Measured in the specimen, the difference decides a number: the section title over the brightest lobe holds 14.03:1 on the token aurora with chrome and **6.22:1** on the shipped one without it.
-- **proposes:** nothing yet. `ink-ground-is-a-placement` says the ground that decides a question is the one that renders, so the shipped aurora is currently the real one and the token is decorative — which is the same shape as the `--canvas` divergence closed at `.6`, and it should probably be closed the same way.
-- **blocks:** nothing today. It blocks any future contrast claim about the band from being checkable, because there is no single band.
+### Two decisions gate shipping recession — both are Jason's
+- **kind:** decided in part; the remainder needs a person
+- **(a) THE MOBILE TAB BAR.** Does it recede with the navbar, or keep `material-chrome`? It is the one chrome that overlaps SCROLLING CONTENT rather than a canvas, which is the strongest case for keeping a plate — and it has a second, independent reason: bottom edge, thumb-reached, and a target zone without a boundary is worse than one with. **If it recedes, `material-chrome` retires entirely.** Until this lands, the material has one consumer and an open question over it, and nothing new should be built on it.
+- **(b) `--text-secondary` DARKENS IN LIGHT, 55% → 60%.** Not a preference — the measurement below makes it the precondition for the band invariant, and it touches every secondary-ink surface in the product, so it is a visible change that wants a person's eye before it lands.
+- **the measurement, run 2026-08-28 as commissioned:** worst point of each band, 1440 frame, both schemes. **Spec token band: 4.53 light / 5.96 dark — passes. Shipped five-lobe curtain: 4.02 / 1.95 — fails, and cannot be tuned into compliance** (at ×0.3 alpha it is still 4.48 in light, approaching the bar asymptotically). **And the binding constraint is not the aurora at all:** on the light canvas with NO aurora, 55% black is 4.65:1 against a 4.50 bar, so the entire band budget in light is 0.15 of contrast. At 60% the worst point is 5.40:1.
+- **what this settles without a decision:** the aurora divergence closes in favour of the **three-lobe token band**; the five-lobe curtain retires. That is forced by the measurement rather than chosen.
+- **blocks:** shipping recession. Stage 9b can land the ground; the band and the ink ramp have to follow it before the invariant is true.
 
 ### `role-label-caps` sets `line-height: 1`, and nothing says whether a chrome label may wrap
 - **kind:** spec silent
@@ -103,6 +104,17 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **evidence:** build **3761** published from `design-pass-type` (140 components, 563 stories) and returned `Snapshot quota reached — this build is limited because your account is out of snapshots for the month.` **No snapshots were taken, so no diffs exist to review.** The built Storybook is browsable at `https://666359b2911b895a5f60cf9e-zdbpsgvaif.chromatic.com/`, which allows looking at stories but not comparing them against a baseline. No baselines were accepted, so nothing has been canonised.
 - **proposes:** nothing in the spec. Recorded so the standing "nobody is known to have walked the diffs" entry stops reading as neglect: it is now a known blocker with a cause and an owner. Until the quota resets or the plan changes, the migration's visual review is the story-by-story reads in each stage handoff, which is a weaker instrument and should be named as such rather than treated as equivalent.
 - **blocks:** the visual-diff review of the whole migration, and therefore any confidence claim that rests on it.
+
+### The aurora divergence, measured from the consumer side — and the hard rule cannot see it
+- **kind:** two readings
+- **found:** confirming the divergence recorded alongside `color.recession-declined`, from inside voyager rather than from the specimen.
+- **evidence:** counted and read out of the two stylesheets:
+  - **voyager** (`app/globals.css`): 5 lobes per scheme, chroma **0.15–0.21**.
+  - **the spec** (`design/colors_and_type.css`): chroma **0.03–0.08**.
+  - **the hard rule**: *"chroma ≤ 0.22, ≤ 5 lobes."*
+  **Both grounds pass.** Voyager is inside the limit on every axis — 5 lobes, 0.21 against a 0.22 ceiling — while carrying **2.6–7× the spec's chroma**. So the rule as written cannot distinguish a low-chroma wash from a saturated one, and the ruling's own numbers show the difference is not cosmetic: it is what moves the section title from **14.03:1 to 6.22:1**.
+- **proposes:** whichever way the divergence is closed, the ceiling is the part that failed here, not the consumer. A limit that both a 0.08 and a 0.21 ground satisfy is not measuring the property that decides contrast. Same shape as `ink-ground-is-a-placement`: **a chroma ceiling without a lobe-overlap or a resulting-contrast term is a bound on the wrong quantity** — two grounds can sit under one number and hand a label a 2× different result. Not proposing a value; proposing that the rule state what it is protecting.
+- **blocks:** nothing. Recorded so the deferred aurora decision has the consumer-side numbers already attached when someone picks it up.
 
 ## Needs a person — cannot close from inside the toolchain
 
@@ -135,6 +147,17 @@ fragile.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.23)** — **chrome recedes**, decided by Jason, reversing
+  `.22` which was mine. `.22` measured label legibility and was right about the cost;
+  it **had no content cards in it**, so it could not see the figure/ground inversion
+  that decided the question — two chrome plates form an L brighter than the cards
+  they frame. Both entries landed, the six spec edits landed, the *never bare text*
+  phrase is gone from all three entry points, and three specimens are marked. **The
+  commissioned band measurement did not land where the task expected:** the five-lobe
+  curtain cannot be tuned into compliance at any alpha in light, the three-lobe token
+  band already passes, and **the binding constraint is `--text-secondary`, not the
+  aurora** — 55% black is 4.65:1 on a bare light canvas against a 4.50 bar, so the
+  whole band budget is 0.15. Both remaining gates are queued above.
 - **2026-08-28 (v2026.08.28.22)** — **chrome does not recede.** Ruled from a
   specimen built for it (`preview/chrome-recession.html`), both widths, both
   schemes, both auroras, ground sampled beneath each label. The collision resolved

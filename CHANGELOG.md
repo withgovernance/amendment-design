@@ -8,6 +8,90 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.23) — Chrome recedes; my ruling one version ago was wrong about the question
+
+**Decided by Jason.** Desktop chrome takes no material: the navbar and sidebar rail
+keep their ink and lose their plate. Content cards become the only glass. This
+reverses `v2026.08.28.22`, which was mine.
+
+### Why the reversal is right, stated because the ruling it overturns was mine
+
+`.22` measured **label legibility** at both treatments and found recession costs the
+section title 56% of its headroom and kills the active mark. **Those measurements
+stand.** What that specimen never rendered is where the decision actually lives:
+**figure and ground at the full frame, with content present.**
+
+Two chrome plates meeting at the top-left corner form an **L brighter than the cards
+it frames**, which inverts the system — the furniture becomes the object and the
+content becomes the hole it left. The same L cuts the aurora into three disconnected
+pieces, so nothing reads as a continuous ground. Recession also returns the primary
+action: plated, the CTA is one of three bright objects along the top-left; receded,
+it is the only one.
+
+**My specimen had no cards in it.** A card that omits the thing being framed cannot
+answer a question about framing — which is a sharper version of the lesson this
+changelog keeps recording, because the omission was not a mismeasurement. Every
+number in `.22` is still correct. The card was answering a narrower question than the
+one being asked, and nothing in the numbers said so.
+
+`recession-declined` is kept in the spec beneath its replacement. A reversed ruling
+is evidence about how the question was reached, and deleting it hides the reversal.
+
+**The cost is paid, not denied:** the active nav state loses its fill and carries
+**ink, weight and the filled glyph**. With no plate anywhere in chrome, `primary` now
+has no role in chrome at all — a second consequence of `plate-not-mark`.
+
+### The gating measurement, and it did not land where the task expected
+
+The task commissioned: *bound the lobe alphas until `--text-secondary` clears 4.5:1
+over every point of the band.* Measured on a 1440 frame, sampling every point of both
+bands and taking the worst:
+
+| band | light | dark | |
+|---|---|---|---|
+| **spec token** (three lobes) | **4.53** | **5.96** | passes |
+| **shipped curtain** (five lobes) | 4.02 | 1.95 | fails |
+| shipped, alphas ×0.5 | 4.36 | 3.76 | fails |
+| shipped, alphas ×0.3 | 4.48 | 4.99 | light still fails |
+
+**Two results, and the second is not the one that was asked for.**
+
+**(1) The five-lobe curtain cannot be tuned into compliance.** In light it fails at
+every alpha and *approaches* the bar asymptotically without reaching it. The
+three-lobe token band already passes. So the bound is not a new alpha — **it is the
+token band**, and the aurora divergence closes in its favour, the same way the
+`--canvas` divergence closed at `.6`.
+
+**(2) The binding constraint is not the aurora. It is `--text-secondary`.** Measured
+on the light canvas **with no aurora at all**, 55% black is **4.65:1** against a 4.50
+bar. **The entire band budget in light is 0.15 of contrast.** The token band spends
+0.12 and passes by 0.03 — which is not a bound anyone can rely on, since the next
+lobe tweak breaks it silently, exactly the failure the invariant exists to prevent.
+
+**So `--text-secondary` must darken in light, 55% → 60%**: the worst point moves
+4.53 → **5.40**, the bare canvas 4.65 → 5.59. Dark needs no change. **The invariant
+is only true once both land, and recession ships on the token band with a darkened
+light secondary — not before.**
+
+The spec's existing `a11y.contrast` grid, measured against the five-lobe curtain,
+turns out to agree: 55% ink inside that band was already recorded at 4.10 light and
+2.32 dark. The old rule was right about the curtain. **That is why the curtain is
+what retires, rather than the rule being simply repealed.**
+
+### Swept
+
+`material-chrome` scope narrowed to the mobile tab bar, pending its own decision,
+with a note not to build on it. `components.navbar` ground set to none, carrying the
+**full-bleed dependency**: recession reads well partly because the centred content
+column gives the rail an implicit edge, and a full-bleed route removes it with no
+hairline to fall back on. `motion` keeps *"Chrome is still"* and gains that recession
+is a static state, never a scroll transition — the argument in `.22` that a
+material-less surface cannot be still did not survive the decision. The phrase *never
+bare text* is gone from `SKILL.md`, `README.md` and `DESIGN-HARD-RULES.md`.
+`preview/material-tiers-in-situ.html` and `preview/tabbar.html` are marked superseded;
+`preview/chrome-recession.html` is marked **outcome reversed** and kept as the cost
+side of the ledger.
+
 ## 2026-08-28 (v2026.08.28.22) — Chrome does not recede, and the reason is not the one the rule gave
 
 The blocking queue entry: a chrome-recession ruling that existed in a conversation

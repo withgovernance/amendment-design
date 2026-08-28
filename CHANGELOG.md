@@ -8,6 +8,76 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.5) — Three things were never on the motion budget
+
+Stage 5 audited every animation against the arrival test and deleted five
+decorative pulses, which is the rule working. Then it queued two questions
+rather than acting on them, and **both were right to be queued** — one is a
+conformance revert against a behaviour the spec specifies, and the other is the
+prose and the rules pointing in opposite directions since they were written.
+
+### `committed-state-is-not-motion` — and a specified behaviour was removed
+
+**A control drawing the state the user just changed is not motion.** A toggle
+thumb crossing its track, a disclosure caret turning — these draw the change the
+person just made, at the moment they made it, on the control they touched. That
+is what *no motion without meaning* says motion is **for**; refusing it spends
+the rule against its own purpose.
+
+The prohibition is about hover and decoration: `scale()` and `brightness()` on
+hover, sub-pixel wobble, compositing jank on an element nobody touched. Stage 5
+read "never transition transform" as unconditional and made four controls snap —
+**including the toggle, whose own entry specifies `transition-transform
+duration-200` and has since it was written.** Revert those four; the general rule
+now carries the exception.
+
+The test, stated so it does not need re-deriving: *did the user just act on this
+element, and is the animation drawing the result of that act?* Then it is
+feedback. Does it animate on its own, on hover, or on an element nobody touched?
+Then it is motion and needs a sanctioned surface.
+
+### The aurora is a layer, not a surface
+
+This document's thesis says so twice — *"the aurora layer is alive… never
+static"* and *"It breathes; it is the reason the page does not feel printed."*
+The budget governs what **surfaces** do; the aurora is the light the surfaces sit
+on. The ink layer is still, surfaces get the two sanctioned motions, and the
+aurora breathes. **That three-layer statement is what the prose always said and
+`motion.rules` never encoded**, which is exactly why stage 5 found a thesis and a
+rule pointing opposite ways and correctly refused to resolve it by deleting one.
+
+### Marketing is outside the register table
+
+The two-surface budget governs the **five product rooms**. Marketing surfaces are
+not rooms — they persuade rather than keep a record, so the restraint that makes
+the product trustworthy is not the right rule for them. But the bounds are the
+substance, not a formality: marketing motion must be **pausable on hover,
+viewport-gated, motion-safe, and never on a surface carrying record state** — a
+bill, a count, a receipt, a signature.
+
+The 240s marquee at 6% opacity behind the campaigns card and the MarketingHome
+shimmer already satisfy every bound. **The rule ratifies what shipped rather than
+issuing a licence.** `motion.durations.marquee` stays declared; it now has a rule
+explaining why it exists.
+
+So the honest count is still **two**, correctly scoped — not four. Three things
+were never on the budget: feedback, the aurora, and marketing.
+
+### The profile-hiding corollary is now a procedure
+
+Third instance, so it stops being a lesson. (1) `which-green` sat in the email
+profile and cost a full re-derivation. (2) The ENACTED example outranked its own
+rule in four more places nobody swept. (3) `motion.rules` said "never transition
+transform" while `components.toggle` specified a thumb slide — and a session
+applying the general rule literally removed a specified behaviour without ever
+reading the component entry.
+
+**The procedure: before declaring a general rule absolute, grep the component and
+profile entries for its exceptions, and hoist any you find in the same pass.** A
+general rule whose exception lives in a component is not a rule with an
+exception — it reads as absolute to everyone who does not happen to open that
+component, which is everyone.
+
 ## 2026-08-28 (v2026.08.28.4) — The rule that fixed dark broke light, and the guard caught its author
 
 Four entries from stage 4. Two of them are the previous ratification's own bill

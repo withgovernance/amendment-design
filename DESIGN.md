@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.4
+# spec-version:   v2026.08.28.5
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -380,6 +380,19 @@ color:
       while writing a profile, hoist it to the section it actually governs
       and let the profile cite it — profiles are where general rules go to
       hide, because everyone reads them as being about email.
+      ESCALATED 2026-08-28 — THIRD INSTANCE, SO IT IS NOW A PROCEDURE, NOT A
+      LESSON. (1) which-green sat in the email profile and cost a full
+      re-derivation. (2) The ENACTED example outranked its own rule in four
+      more places nobody swept. (3) motion.rules said "never transition
+      transform" while components.toggle specified a thumb slide — and a
+      session applying the general rule literally removed a specified
+      behaviour without ever reading the component entry.
+      THE PROCEDURE: BEFORE DECLARING A GENERAL RULE ABSOLUTE, GREP THE
+      COMPONENT AND PROFILE ENTRIES FOR ITS EXCEPTIONS. If one exists, hoist
+      it into the general rule in the same pass. A general rule whose
+      exception lives in a component is not a rule with an exception — it
+      reads as absolute to everyone who does not happen to open that
+      component, which is everyone.
     fill-rule-ink-ground: >-
       RATIFIED 2026-08-28. GENERALISED THE SAME DAY — the placement half of
       this entry is now color.ink-ground-is-a-placement, which governs the
@@ -1021,7 +1034,10 @@ motion:
     emphasized: "cubic-bezier(0.2, 0, 0, 1)"
     linear:     "linear"
   rules:
-    - "Transition only background, box-shadow, color, opacity, and ring. Never transition transform."
+    - "Transition only background, box-shadow, color, opacity, and ring. Never transition transform — EXCEPT a control drawing a state the user just committed. See committed-state-is-not-motion."
+    - "committed-state-is-not-motion (RATIFIED 2026-08-28). A CONTROL DRAWING THE STATE THE USER JUST CHANGED IS NOT MOTION, and it is not on the two-surface budget. A toggle thumb crossing its track, a disclosure caret turning — these draw the change the person just made, at the moment they made it, on the control they touched. That is what 'no motion without meaning' says motion is FOR; refusing it spends the rule against its own purpose. THE PROHIBITION IS ABOUT HOVER AND DECORATION: scale() and brightness() on hover, sub-pixel wobble, compositing jank on an element nobody touched. Stage 5 read 'never transition transform' as unconditional and made four controls snap — including the toggle, whose OWN ENTRY specifies `transition-transform duration-200` and has since it was written. The general rule read absolute because its exception lived in a component. TEST: did the user just act on this element, and is the animation drawing the result of that act? Then it is feedback and it is permitted. Does it animate on its own, on hover, or on an element nobody touched? Then it is motion and needs a sanctioned surface."
+    - "THE AURORA IS A LAYER, NOT A SURFACE, and its breathing is not on the budget (RATIFIED 2026-08-28). This document's own thesis says so twice — 'the aurora layer is alive… never static' and 'It breathes; it is the reason the page does not feel printed.' The budget governs what SURFACES do; the aurora is the light the surfaces sit on. The ink layer is still, surfaces get the two sanctioned motions, and the aurora breathes: that is the three-layer statement the prose always made and motion.rules never encoded, which is why stage 5 found a thesis and a rule pointing opposite ways."
+    - "MARKETING IS OUTSIDE THE REGISTER TABLE, and so is its motion (RATIFIED 2026-08-28). The two-surface budget governs the FIVE PRODUCT ROOMS. Marketing surfaces are not rooms — they persuade rather than keep a record, which is why the restraint that makes the product trustworthy is not the right rule for them. Marketing motion is AMBIENT AND BOUNDED, and the bounds are the point, not a formality: it must be pausable on hover, gated to viewports where it is not competing for a small screen, motion-safe, and NEVER on a surface carrying record state — a bill, a count, a receipt, a signature. The 240s marquee at 6% opacity behind the campaigns card and the MarketingHome shimmer both already satisfy this; the rule ratifies what shipped rather than inventing a licence. motion.durations.marquee is theirs and stays declared."
     - "Never use scale() or filter:brightness() on hover — they cause compositing jank and sub-pixel icon wobble."
     - "Respect prefers-reduced-motion — all animations clamp to 0.01ms."
     - "Motion is permitted on exactly two surfaces: the Receipt (one-shot bloom at issuance) and the Commons (accruing momentum under real collective action). Both obey 'no motion without meaning' — motion reflects real state a person changed, never decoration. Hover states never move, on any surface."
@@ -1327,6 +1343,12 @@ components:
       thumb scale — `scale()` on the press state caused compositing-
       layer jank and contradicted the system's no-transform-transitions
       rule (motion.rules).
+      HOISTED 2026-08-28: the slide is not an exception this entry was
+      keeping to itself — it is motion.rules.committed-state-is-not-motion,
+      which now states the principle in the general case. It is recorded
+      here because THIS ENTRY WAS THE ONLY PLACE THE PRINCIPLE EXISTED, and
+      a session applying motion.rules literally removed the slide without
+      ever reading this line.
   separator:
     height: "1px"
     background: "rgb(0 0 0 / 10%) / rgb(255 255 255 / 10%)"

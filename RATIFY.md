@@ -50,6 +50,20 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
+### A duration token exists for a motion the rules forbid
+- **kind:** two readings
+- **found:** stage 5, auditing every animation against `motion.rules`. `animate-marquee` runs on two marketing surfaces — `marketing-sections.tsx` and `recent-bill-cards.tsx` — scrolling elements that are already on screen and already correct, forever. Under the arrival test that is motion, and motion is permitted on exactly two surfaces, neither of which is marketing.
+- **evidence:** `motion.durations.marquee: 240s` is a declared token. The system carries a duration for a motion its own rules leave nowhere legal to use. Either the token is a leftover or marketing is an unstated third surface; the two files have been running it in production either way. Same shape, separately: `animate-aurora-shimmer` on `MarketingHome`, where the system's own `description` says "the aurora layer is alive: a soft blue-hour gradient that breathes beneath frosted glass" — the thesis statement describes continuous motion the rules forbid.
+- **proposes:** say which. If marketing and the aurora are sanctioned, name them in `motion.rules` and say what bounds them; if not, delete `durations.marquee` and rewrite the description's "breathes", because a token and a thesis are both stronger signals than a rule nobody applied. Stage 5 deleted the unambiguous decoration and left these two alone.
+- **blocks:** stage 5 cannot claim "exactly two surfaces animate" — it is currently four, and two of them are cited by the spec itself.
+
+### Does a control's own state transition count as motion?
+- **kind:** spec silent
+- **found:** stage 5, `components/ui/toggle.tsx`. `motion.rules` opens with "never transition transform", unconditional, and the arrival test asks whether the element is already on screen and already correct. A switch thumb is both. So the rule says the thumb snaps, and stage 5 made it snap.
+- **evidence:** the rule's own wording is about decoration — the examples are hover, scroll-driven chrome, and compositing jank from `scale()`. A thumb crossing its track is neither decoration nor arrival: it is the control drawing the state change the user just made, which is the one thing `no motion without meaning` says motion is FOR. Applied literally the rule also removed the disclosure caret's rotation transition (`chevron-open`, and the same pattern in `dispatches`), which is the same category. Four sites now change transform instantly.
+- **proposes:** either carve out "a control animating its own committed state change" — with transform allowed there and nowhere else — or confirm that controls snap, in which case say so, because the rule currently reads as being about decoration and four reviewers will restore these transitions.
+- **blocks:** nothing shipped; it is reversible either way. But it is a visible behaviour change to a switch and a caret, and it was made on a literal reading rather than a stated one.
+
 ### Name the Blue Hour canvas separately from the opaque ground
 - **kind:** unowned default
 - **found:** the 2026-08-28.3 pass. `--canvas` resolves to neutral-100/900 and is painted by this spec's `.amendment-app`; the shipped body paints `slate-100` / a hardcoded `#080c17` plus the aurora. The rendered value is the shipped one.
@@ -64,6 +78,19 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.5)** — the stage 5 queue, emptied. **Three things
+  were never on the motion budget**, so the honest count is still two, not four.
+  `committed-state-is-not-motion`: a control drawing a state the user just
+  committed is feedback, not motion — stage 5 read "never transition transform"
+  as unconditional and made four controls snap, including the toggle, **whose
+  own entry specifies the slide**. Revert those four. The aurora is a **layer,
+  not a surface** — it breathes, per the document's own thesis, stated twice in
+  prose and never encoded in `motion.rules`. **Marketing is outside the register
+  table**, with its motion bounded (pausable, viewport-gated, motion-safe, never
+  on record state) — the marquee and shimmer already satisfy every bound, so the
+  rule ratifies what shipped. The profile-hiding corollary **escalated from a
+  lesson to a procedure** on its third instance: grep component entries for
+  exceptions before declaring a general rule absolute.
 - **2026-08-28 (v2026.08.28.4)** — the stage 4 queue, emptied. **`danger` moved
   to red-700**: 4.39:1 as ink on the light opaque ground, under AA, and the only
   semantic base not at the -700 step — the odd one out and the only failure were

@@ -145,6 +145,15 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.33)** — **tab bar glass measured and set: 35% light, 45%
+  dark**, blur unchanged. Replaces desktop-derived 55%/90%, whose job was immunity
+  rather than legibility. Sampled off the composited render with a full-strength action
+  CTA behind the bar: **labels 9.88:1 light, 6.64:1 dark.** New: **a transmitted tint is
+  not a painted plate** — the fill rule governs what you paint, not what glass
+  transmits, so a bar tinted by a CTA beneath it is not a green plate. Residual, not
+  measured: a high-contrast **image** beneath moves the ground further than a flat plate
+  and is untested. **Conformance:** none — `TabBar.tsx` takes `material-chrome` and the
+  token changed beneath it.
 - **2026-08-28 (v2026.08.28.32)** — **the tab bar keeps `material-chrome`, and it is
   glass.** Decided by Jason: a mobile menu on the iOS model sits above content by
   definition. The material survives with **exactly one consumer, deliberately** — stated

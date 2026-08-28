@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.32
+# spec-version:   v2026.08.28.33
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1340,10 +1340,28 @@ materials:
       beneath, and content is arbitrary — a green CTA, a danger badge, an
       image. Blur alone does not floor that; the FILL does, because blur
       spreads a colour rather than removing it.
-      NEEDS A MEASUREMENT, and it is the one that decides the value: the
-      label ramp over the worst realistic content beneath, at candidate fill
-      levels, both schemes. Do not pick a number from the desktop value or
-      from the platform's; measure this bar over this product's content.
+      MEASURED AND SET 2026-08-28: LIGHT 35%, DARK 45%, blur unchanged at
+      25px. Rendered at 390 with a full-strength action-green CTA passing
+      directly behind the bar — the hardest case named — and sampled off the
+      composited render: LABELS 9.88:1 LIGHT, 6.64:1 DARK. Both clear 4.5
+      with room. The values replace 55%/90%, which were desktop-chrome
+      numbers whose job was immunity to what scrolled beneath; here the job
+      is legibility, and glass is the point.
+      A TRANSMITTED TINT IS NOT A PAINTED PLATE, and this is the part worth
+      keeping. At these fills the bar visibly takes on the green of a CTA
+      passing under it, and the first reading was that this breaks the fill
+      rule — a green plate that cannot be pressed. IT DOES NOT. THE FILL RULE
+      GOVERNS WHAT YOU PAINT, NOT WHAT GLASS TRANSMITS. A glass bar over a
+      green CTA is no more a green plate than a window over grass is a green
+      window. The plate is neutral; the colour belongs to the page showing
+      through, which is the entire point of the iOS model this bar is built
+      on. Recorded because the objection is a natural one and will be raised
+      again — it was raised here, by this file.
+      RESIDUAL, NOT MEASURED: the green CTA is the hardest COLOUR case but
+      not the hardest case outright. A high-contrast IMAGE beneath the bar —
+      dark under light mode, bright under dark — moves the ground further
+      than a flat plate can. Untested. If images ever sit under this bar,
+      measure that case before assuming these values carry.
       Neutral labels are what is being protected, so ink-needs-an-opaque-
       ground's exemption applies — this is luminance against its own
       material, not hue separation — which is why glass is legal here at all.

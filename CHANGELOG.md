@@ -8,6 +8,54 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.33) — The tab bar's glass, measured: 35% light, 45% dark
+
+**Set from a render, then verified against it.** `material-chrome` moves from
+**55% → 35%** in light and **90% → 45%** in dark, blur unchanged at 25px. Those were
+desktop-chrome numbers whose job was immunity to what scrolled beneath; here the job is
+legibility, and glass is the point.
+
+**Measured on the composited render** at 390, with a full-strength action-green CTA
+passing directly behind the bar — the hardest colour case named in the brief:
+
+| | labels over the green | bar |
+|---|---|---|
+| light 35% | **9.88:1** | pass |
+| dark 45% | **6.64:1** | pass |
+
+### A transmitted tint is not a painted plate
+
+At these fills the bar visibly takes on the green of the CTA beneath it, and **this
+file's first reading was that it breaks the fill rule** — a green plate that cannot be
+pressed. **It does not.**
+
+**The fill rule governs what you paint, not what glass transmits.** A glass bar over a
+green CTA is no more a green plate than a window over grass is a green window. The plate
+is neutral; the colour belongs to the page showing through, which is the entire point of
+the iOS model this bar is built on.
+
+Recorded because the objection is a natural one and will be raised again — it was
+raised here, by me, against a render that was correct.
+
+### What the near-miss was worth
+
+The renders arrived and the bar looked green, and green in this system means *press me*.
+Sampling it gave hue 154° light and 167° dark at 0.25 saturation — unmistakably
+`--color-action`. That was worth checking and the check was right to run; **the reading
+of it was wrong**, because the measurement identified the colour and not its cause. A
+correct measurement pointed at the wrong conclusion, which is a different failure from
+the ones this file has been collecting all day and worth naming as its own: *knowing
+what a number is does not tell you what it means.*
+
+### Residual, not measured
+
+The green CTA is the hardest **colour** case but not the hardest case outright. A
+**high-contrast image** beneath the bar — dark under light mode, bright under dark —
+moves the ground further than a flat plate can. Untested. If images ever sit under this
+bar, measure that before assuming these values carry.
+
+---
+
 ## 2026-08-28 (v2026.08.28.32) — The tab bar keeps its material, and it is glass
 
 **Decided by Jason**, closing the last material question recession left open.

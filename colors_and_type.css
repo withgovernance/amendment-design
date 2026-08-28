@@ -657,7 +657,12 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
      in that pass but survived here for a day — caught 2026-08-28 by the
      consumer's regenerate-and-diff guard, not by either ratification pass
      that read both files. */
-  background: rgb(255 255 255 / 55%);
+  /* 35%, set 2026-08-28 for the tab bar, which is now this material's only
+     consumer. The 55% it replaces was a desktop-chrome value and its job was
+     immunity to what scrolled beneath; over content the job is legibility,
+     and glass is the point. Measured on the rendered bar with a full-strength
+     action-green CTA passing behind it: labels 9.88:1. */
+  background: rgb(255 255 255 / 35%);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   box-shadow: inset 0 -1px 0 0 rgb(0 0 0 / 10%);
@@ -675,7 +680,9 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
      summed RGB, identical to the zinc it replaces, against 222 for the white wash
      that was retired this morning. The temperature changed; the immunity did
      not. */
-  background: color-mix(in srgb, var(--canvas-live) 90%, transparent);
+  /* 45%, set 2026-08-28 — see the light value above. Measured with the same
+     green CTA behind it: labels 6.64:1. */
+  background: color-mix(in srgb, var(--canvas-live) 45%, transparent);
   box-shadow: inset 0 -1px 0 0 rgb(255 255 255 / 10%);
 }
 

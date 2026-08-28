@@ -8,6 +8,62 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.29) — "The navbar is chrome" is a claim about a surface, not its content
+
+Every navigation label in the product shipped in **tracked uppercase**. Jason called
+it and he is right. **Nav labels take `role-body` — sentence case, sans, no tracking —
+in the sidebar and the tab bar alike.**
+
+### How it happened, which is the reusable part
+
+*"The navbar is chrome"* is a claim about a **surface**. It was read as a claim about
+its **content**. Chrome-the-material and chrome-the-type-register are different things,
+and nothing in this file said so.
+
+Then it spread by analogy: the **tab bar's** typography was specified as
+`sans-chrome 12px uppercase` — and **the sidebar copied it.** There is no sidebar entry
+in this file at all. A specified value for one component became an unexamined default
+for the navigation of the entire product.
+
+### Three reasons, and the second isn't taste
+
+**(1) A nav label is a destination name, not a field label.** "SELECT JURISDICTION"
+labels a control; "Dashboard" *is* the place. The chrome register names things *about*
+the interface; navigation names places *in* it.
+
+**(2) Measured, it does not fit.** The rail's label slot is **161px**. "CONVERSATIONS"
+at chrome caps sets **153.1px — 95% of its slot** — and the component carries
+`truncate`. **The system was already compensating for the fit by clipping rather than
+by changing register.** That is `widthDiscipline-measured` exactly: a small label in a
+fixed narrow plate cannot be chrome unless the plate widens, and a rail cannot widen.
+At `role-body` the same label is 100.8px — 63%.
+
+**(3) Navigation is scanned, not read.** Caps removes the ascender/descender pattern
+that makes a repeatedly-scanned list fast to recognise. This is the most-repeated text
+in the product, and `sans-chrome`'s own note says the register is for institutional
+labels used **sparingly**. Seven rail items plus a tab bar is not sparingly.
+
+### It also settles the two-identity problem in the right direction
+
+The recession ruling established that the tab bar and the navbar are one navigation at
+two widths and take the same treatment. Until now they took the same *wrong* one.
+
+**No fit risk:** sentence case is narrower than tracked caps at every label in the set,
+so every measurement that passed before passes by more.
+
+**The wordmark is unaffected** — a designation, one per page, staying in the chrome
+family. The open question of whether it is chrome or ceremonial is untouched.
+
+### The tell was in the code
+
+`truncate` on a label that fills 95% of its container is not a defensive utility, it is
+**a fit failure with a lid on it**. The register was wrong and the symptom was visible
+in the class list the whole time — one more instance of a default that is correct in
+the common case and silently wrong in the uncommon one, except here the uncommon case
+was the longest item in a seven-item list.
+
+---
+
 ## 2026-08-28 (v2026.08.28.28) — The dependency was inverted, and my correction was wrong the other way
 
 Three findings from the 9b implementation, all correcting something written here, and

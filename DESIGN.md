@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.28
+# spec-version:   v2026.08.28.29
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1771,6 +1771,44 @@ components:
     height: "56px"
     padding: "8px"
     layout: "max-width 80rem, three-column flex (leading / middle / trailing)"
+  nav-labels-are-not-chrome: >-
+    RATIFIED 2026-08-28. Every navigation label in the product shipped in
+    TRACKED UPPERCASE, and it is wrong. NAV LABELS TAKE role-body — sentence
+    case, sans, no tracking — in the sidebar and the tab bar alike.
+    HOW IT HAPPENED, because the category error is the reusable part:
+    "THE NAVBAR IS CHROME" IS A CLAIM ABOUT A SURFACE, AND IT WAS READ AS A
+    CLAIM ABOUT ITS CONTENT. Chrome-the-material and chrome-the-type-register
+    are different things. The tab bar's typography was specified as chrome
+    and the SIDEBAR COPIED IT BY ANALOGY — there is no sidebar entry in this
+    file at all — so a specified value for one component became an unexamined
+    default for the navigation of the whole product.
+    THREE INDEPENDENT REASONS, and the second is not a matter of taste:
+      (1) A NAV LABEL IS A DESTINATION NAME, NOT A FIELD LABEL. "SELECT
+          JURISDICTION" labels a control; "Dashboard" IS the place. The
+          chrome register names things about the interface; navigation names
+          places in it.
+      (2) MEASURED, IT DOES NOT FIT. In the 240px rail the label slot is
+          161px. "CONVERSATIONS" at chrome caps sets 153.1px — 95% OF ITS
+          SLOT — and the component carries `truncate`, so the system was
+          already compensating for the fit by CLIPPING rather than by
+          changing register. That is widthDiscipline-measured exactly: a
+          small label in a fixed narrow plate cannot be chrome unless the
+          plate widens, and a rail cannot widen. At role-body the same label
+          is 100.8px, 63% of the slot.
+      (3) NAVIGATION IS SCANNED, NOT READ. Caps removes the ascender and
+          descender pattern that makes a repeatedly-scanned list fast to
+          recognise. This is the most-repeated text in the product, and
+          sans-chrome's own note says the register is for institutional
+          labels used SPARINGLY.
+    AND IT SETTLES THE TWO-IDENTITY PROBLEM IN THE RIGHT DIRECTION. The
+    recession ruling established that the tab bar and the navbar are one
+    navigation at two widths and take the same treatment. They now do.
+    NO FIT RISK IN THE CHANGE: sentence case is narrower than tracked caps at
+    every label in the set, so every measurement that passed before passes by
+    more.
+    THE WORDMARK IS NOT AFFECTED. It is a designation, it is one per page,
+    and it stays in the chrome family — see the open question on whether it is
+    chrome or ceremonial, which this does not answer.
   tabbar:
     # Specified 2026-08-02 against components/global/TabBar.tsx and
     # Sidebar/nav-items.ts, measured at 390pt. Audit §3.7 asked for heights,
@@ -1782,7 +1820,12 @@ components:
     visibility: "< sm breakpoint only; signed-in users only"
     activeColor: "slate-800 (light) / slate-300 (dark) — Midnight Indigo trail"
     activeTreatment: "Phosphor icon switches regular → fill, plus the active colour on icon and label. No motion: chrome is still."
-    labelTypography: "sans-chrome 12px uppercase tracking-wider — text-xs is the floor, no exception for chrome"
+    labelTypography: >-
+      CHANGED 2026-08-28. Was "sans-chrome 12px uppercase tracking-wider". NAV
+      LABELS ARE NOT THE CHROME REGISTER — see components.nav-labels-are-not-chrome.
+      They take role-body, sentence case, no tracking. The 12px floor still
+      applies and is no longer the binding constraint, because sentence case
+      is narrower than tracked caps at every label in the set.
     labelFit: >-
       MEASURED, not assumed. At 390pt the five slots are 74.8px each. At 12px
       the widest short label ("Races") measures 53.8px — 72% of its slot, with

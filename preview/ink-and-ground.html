@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Foundations" name="Foundations — Ink and ground" subtitle="No token clears 4.5:1 in both schemes · the aurora moves the ground · glass does not rescue a hue" viewport="1120x1180" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amendment specimen — ink and ground</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+.card { padding: 22px 26px; }
+h1 { font-family: var(--font-serif); font-variation-settings: var(--serif-display); font-weight: 800; font-size: 21px; margin: 0 0 4px; }
+.sub { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 14px; line-height: 1.5; color: var(--text-secondary); margin: 0 0 18px; max-width: min(30rem, 100% - 2rem); }
+h2 { font-family: var(--font-serif); font-variation-settings: var(--serif-display); font-weight: 800; font-size: 15px; margin: 22px 0 2px; }
+.note { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 13px; line-height: 1.55; color: var(--text-secondary); margin: 0 0 12px; max-width: min(34rem, 100% - 2rem); }
+.note b { color: var(--text-primary); font-weight: 600; }
+
+/* --- the switch table: ink swatches on their own scheme's opaque ground --- */
+.sw { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.tok { padding: 7px 9px; border-radius: 4px; background: var(--canvas); box-shadow: inset 0 0 0 1px var(--border-subtle); }
+.tok .n { display: block; font-size: 12px; font-weight: var(--sans-semibold); line-height: 1.35; }
+.tok .m { display: block; font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); }
+.pass { color: var(--color-success); } .dark .pass { color: var(--color-action); }
+.fail { color: var(--color-danger); }
+
+/* Each swatch renders its token AS INK, which is the thing being judged. */
+.i-success  { color: var(--color-success); }
+.i-successS { color: var(--color-success-soft); }
+.i-warning  { color: var(--color-warning); }
+.i-warningS { color: var(--color-warning-soft); }
+.i-danger   { color: var(--color-danger); }
+.i-dangerS  { color: var(--color-danger-soft); }
+.i-func     { color: var(--color-functional); }
+.i-funcL    { color: var(--color-functional-light); }
+.i-action   { color: var(--color-action); }
+
+/* --- the ground comparison: same ink, three grounds, inside the band ----- */
+.band { position: relative; border-radius: 8px; overflow: hidden; padding: 14px; background: var(--canvas-live); }
+.band::before { content: ""; position: absolute; inset: 0; background: var(--aurora); pointer-events: none; }
+.grounds { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.g { padding: 12px; border-radius: 6px; }
+.g .gl { display: block; font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: var(--track-chrome); font-weight: var(--sans-semibold); margin-bottom: 8px; color: var(--text-secondary); }
+.g .ink { display: block; font-size: 15px; font-weight: var(--sans-semibold); }
+.g .ratio { display: block; font-family: var(--font-mono); font-size: 12px; margin-top: 4px; }
+.g-opaque { background: var(--canvas); }
+.strip { position: relative; border-radius: 8px; overflow: hidden; padding: 0; background: var(--canvas-live); }
+.strip::before { content: ""; position: absolute; inset: 0; background: var(--aurora); pointer-events: none; }
+.rung { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 16px; }
+.rung .ri { font-size: 15px; font-weight: var(--sans-semibold); color: var(--color-action); }
+.rung .rm { font-family: var(--font-mono); font-size: 12px; }
+.foot { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 13px; line-height: 1.55; color: var(--text-secondary); margin: 18px 0 0; max-width: min(36rem, 100% - 2rem); }
+.foot b { color: var(--text-primary); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="card">
+
+<h1>Ink and ground</h1>
+<p class="sub">Three rules that compose. The pair is necessary, the ground is necessary, and neither alone is sufficient. Every number here was measured on a rendered surface, and each names where it was taken.</p>
+
+<h2>1 — The switch is a property of the palette, not of green</h2>
+<p class="note">Each token below is rendered <b>as ink, on its own scheme's opaque ground</b>. The base token holds on light and fails inverted; the <span class="i-successS" style="font-weight:600">-soft</span> counterpart does the reverse. <b>Not one token in the palette clears 4.5:1 in both schemes</b> — which is why there is no such thing as "the" colour for a semantic meaning. There is a pair, and the scheme picks.</p>
+
+<div class="panes">
+  <div class="pane">
+    <span class="pane-label">Light — base tokens hold</span>
+    <div class="sw">
+      <div class="tok"><span class="n i-success">success</span><span class="m pass">5.0:1 ✓</span></div>
+      <div class="tok"><span class="n i-warning">warning</span><span class="m pass">4.6:1 ✓</span></div>
+      <div class="tok"><span class="n i-danger">danger</span><span class="m pass">5.9:1 ✓</span></div>
+      <div class="tok"><span class="n i-successS">success-soft</span><span class="m fail">2.5:1 ✗</span></div>
+      <div class="tok"><span class="n i-warningS">warning-soft</span><span class="m fail">2.1:1 ✗</span></div>
+      <div class="tok"><span class="n i-dangerS">danger-soft</span><span class="m fail">3.7:1 ✗</span></div>
+      <div class="tok"><span class="n i-func">functional</span><span class="m">4.3:1 · non-text</span></div>
+      <div class="tok"><span class="n i-funcL">functional-light</span><span class="m fail">2.5:1 ✗</span></div>
+      <div class="tok"><span class="n i-action">action</span><span class="m fail">2.6:1 ✗ plate only</span></div>
+    </div>
+  </div>
+  <div class="pane dark">
+    <span class="pane-label">Inverted — the counterparts hold</span>
+    <div class="sw">
+      <div class="tok"><span class="n i-success">success</span><span class="m fail">3.2:1 ✗</span></div>
+      <div class="tok"><span class="n i-warning">warning</span><span class="m fail">2.8:1 ✗</span></div>
+      <div class="tok"><span class="n i-danger">danger</span><span class="m fail">2.7:1 ✗</span></div>
+      <div class="tok"><span class="n i-successS">success-soft</span><span class="m pass">5.6:1 ✓</span></div>
+      <div class="tok"><span class="n i-warningS">warning-soft</span><span class="m pass">8.3:1 ✓</span></div>
+      <div class="tok"><span class="n i-dangerS">danger-soft</span><span class="m pass">4.7:1 ✓</span></div>
+      <div class="tok"><span class="n i-func">functional</span><span class="m">non-text</span></div>
+      <div class="tok"><span class="n i-funcL">functional-light</span><span class="m pass">6.4:1 ✓</span></div>
+      <div class="tok"><span class="n i-action">action</span><span class="m pass">6.1:1 ✓</span></div>
+    </div>
+  </div>
+</div>
+
+<h2>2 — Inside the aurora band, glass does not rescue a hue</h2>
+<p class="note"><b>Rendered inverted, because that is where these numbers were taken</b> — the rule this card states forbids quoting a ratio without the scheme and position it came from, and an earlier draft of this very card showed light panels under dark figures. The three panels sit at the <b>same position</b> in the band and carry the <b>same ink</b>. Only the ground differs. Glass is translucent, so the gradient passes through it; and <code style="font-family:var(--font-mono);font-size:12px">blur(50px)</code> samples a wide neighbourhood and averages neighbouring bright lobes <b>in</b> — so a glass panel near a lobe is <i>lighter</i> than the canvas beneath it. Ordering the materials by thickness does not help: every tier lands 2.6–3.0:1, with the <b>thickest among the worst</b>.</p>
+
+<div class="band dark">
+  <div class="grounds">
+    <div class="g material-regular">
+      <span class="gl">Glass · blurred</span>
+      <span class="ink i-action">Co-signed</span>
+      <span class="ratio fail">2.87:1 ✗</span>
+    </div>
+    <div class="g material-thick">
+      <span class="gl">Thicker glass</span>
+      <span class="ink i-action">Co-signed</span>
+      <span class="ratio fail">3.38:1 ✗</span>
+    </div>
+    <div class="g g-opaque">
+      <span class="gl">Opaque · --canvas</span>
+      <span class="ink i-action">Co-signed</span>
+      <span class="ratio pass">6.10:1 ✓</span>
+    </div>
+  </div>
+</div>
+<p class="note" style="margin-top:10px"><b>Coloured ink requires an opaque ground.</b> Glass stays legal for primary and secondary text, which is luminance against its own material and does not depend on hue separation. This retired the rule that said <code style="font-family:var(--font-mono);font-size:12px">material-chrome</code> "re-establishes a ground" — it does not, and that rule had never been rendered.</p>
+
+<h2>3 — And the ground itself moves</h2>
+<p class="note">The band is a gradient, so a token's contrast is a function of <b>where the element sits</b>. The strip below is one continuous aurora with the <b>same ink at five heights</b> — nothing changes but position. Measured on the shipped dark page: <b class="fail">2.15:1</b> at the top of the band, rising to <b class="pass">6.32:1</b> below it. A threefold swing with no change to token, scheme, or material.</p>
+
+<div class="strip dark">
+  <div class="rung"><span class="ri">Co-signed</span><span class="rm fail">2.15:1 ✗</span></div>
+  <div class="rung"><span class="ri">Co-signed</span><span class="rm fail">4.70:1 ✗</span></div>
+  <div class="rung"><span class="ri">Co-signed</span><span class="rm pass">6.11:1 ✓</span></div>
+  <div class="rung"><span class="ri">Co-signed</span><span class="rm pass">6.32:1 ✓</span></div>
+  <div class="rung"><span class="ri">Co-signed</span><span class="rm pass">6.24:1 ✓</span></div>
+</div>
+<p class="note" style="margin-top:10px">Two sessions measured the same token on the same page and disagreed by a factor of two. <b>Both were right for where they sampled.</b></p>
+
+<p class="foot"><b>A contrast number without a position is not a measurement.</b> That is why this card carries no summary table of "the" contrast for each token, and why the spec carries none either — it would be a false constant. Quote the position or do not quote the number. <b>The opaque ground is not uniformly safer</b>, either: it is darker than glass in light and lighter in dark, so requiring it moves every token in opposite directions by scheme. Danger was the first token off that edge, which is why it moved from red-600 to red-700.</p>
+
+</div>
+</body>
+</html>

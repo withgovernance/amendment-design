@@ -8,6 +8,48 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.12) — Three specimens, and the card frame was painting the wrong canvas
+
+Trap 3 says nothing unrendered stays true: a rule with no specimen is violated
+somewhere. Eleven versions landed today and **`preview/` gained nothing** — the
+day's rules existed only as prose, in a system whose own trap list says that is
+the condition drift grows in.
+
+Three cards now cover the rules most likely to be violated and least settleable by
+reading: **`ink-and-ground`** (the palette-wide switch, glass versus opaque inside
+the band, and the same ink at five heights on one gradient), **`uppercase-two-homes`**
+(chrome against ceremonial, designation against sentence, and `--track-ceremonial`
+against the `tracking-wide` step that five sites had borrowed), and
+**`tint-is-not-a-plate`** (the alpha ladder beside a real control, both schemes).
+
+### `_card.css` was painting the opaque canvas and then drawing the aurora on it
+
+The shared specimen frame set the body to `--canvas` and layered the aurora over
+it. After `canvas-two-names` that is precisely the conflation the two names were
+introduced to end: `--canvas` is now defined as the **opaque, aurora-free** ground
+that coloured ink is measured against. Every card in the directory has been
+demonstrating rules on a ground that contradicts one of them. Fixed to
+`--canvas-live`.
+
+**And the frame had no dark mode at all** — 52 cards, one scheme, in a system
+whose stated workflow is "both schemes, mobile 390 and desktop 1440." A specimen
+that exists only in light is evidence about half the system. `_card.css` now
+carries a `.panes` / `.pane.dark` convention, which works because `.dark` is a real
+class selector and the material tiers are scoped as descendants.
+
+### The correction that makes the point better than the cards do
+
+The first render of `ink-and-ground` showed the glass-versus-opaque comparison in
+**light**, captioned with the **dark** measurements it was arguing from. That is
+the exact error `ink-ground-is-a-placement` was ratified to prevent — a ratio
+quoted away from the scheme and position it was taken at — committed in the
+specimen for that rule, by its author, hours after writing it.
+
+It was caught by rendering the card and looking at it, which is the step the
+workflow puts after "compose from roles and tokens" and which prose review would
+not have caught, because **the prose was correct**. The card now renders inverted
+and says why in its own caption.
+
 ## 2026-08-28 (v2026.08.28.11) — The entry points, which spent the day being right about everything except themselves
 
 Ten ratifications landed today and **not one of them touched `SKILL.md`** — the

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Typography" name="Typography — Uppercase has two homes" subtitle="Chrome and ceremonial · designation or sentence · a width preset is not a register" viewport="1120x1080" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amendment specimen — uppercase has two homes</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+.card { padding: 22px 26px; }
+h1 { font-family: var(--font-serif); font-variation-settings: var(--serif-display); font-weight: 800; font-size: 21px; margin: 0 0 4px; }
+.sub { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 14px; line-height: 1.5; color: var(--text-secondary); margin: 0 0 18px; max-width: min(32rem, 100% - 2rem); }
+h2 { font-family: var(--font-serif); font-variation-settings: var(--serif-display); font-weight: 800; font-size: 15px; margin: 24px 0 2px; }
+.note { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 13px; line-height: 1.55; color: var(--text-secondary); margin: 0 0 12px; max-width: min(34rem, 100% - 2rem); }
+.note b { color: var(--text-primary); font-weight: 600; }
+.mono { font-family: var(--font-mono); font-size: 12px; }
+
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 780px) { .two { grid-template-columns: 1fr; } }
+.box { padding: 16px 18px; border-radius: 8px; background: var(--canvas); box-shadow: inset 0 0 0 1px var(--border-subtle); }
+.tag { display: block; font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: var(--track-chrome); font-weight: var(--sans-semibold); color: var(--text-secondary); margin-bottom: 10px; }
+.verdict { display: block; font-family: var(--font-mono); font-size: 12px; margin-top: 8px; }
+.ok { color: var(--color-success); } .dark .ok { color: var(--color-action); }
+.no { color: var(--color-danger); }
+
+/* The two sanctioned homes, composed from tokens — never a literal. */
+.home-chrome { font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: var(--track-chrome); font-weight: var(--sans-semibold); }
+.home-ceremonial { font-variation-settings: var(--sans-ceremonial); text-transform: uppercase; font-size: 34px; letter-spacing: var(--track-ceremonial); font-weight: var(--sans-semibold); line-height: 1.15; }
+
+/* The failure being demonstrated: the same width preset with a borrowed
+   tracking literal. This is the ONLY place in this card a literal appears,
+   and it is the specimen, not the chrome. */
+.rebuilt { font-variation-settings: var(--sans-ceremonial); text-transform: uppercase; font-size: 34px; letter-spacing: 0.025em; font-weight: var(--sans-semibold); line-height: 1.15; }
+
+.serif-heading { font-family: var(--font-serif); font-variation-settings: var(--serif-display); font-weight: 800; font-size: 26px; line-height: 1.2; margin: 0; }
+.wrong-heading { font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 26px; letter-spacing: var(--track-chrome); font-weight: var(--sans-semibold); line-height: 1.25; margin: 0; }
+.ident-title { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 16px; line-height: 1.35; color: var(--text-primary); margin: 6px 0 0; }
+.foot { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 13px; line-height: 1.55; color: var(--text-secondary); margin: 20px 0 0; max-width: min(36rem, 100% - 2rem); }
+.foot b { color: var(--text-primary); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="card">
+
+<h1>Uppercase has two homes</h1>
+<p class="sub">The hard rule said uppercase belongs to chrome alone, while <span class="mono">role-ceremonial</span> sat in the stylesheet being <i>defined</i> by display-size uppercase. The exception was a whole role, which is why the rule read as absolute for so long.</p>
+
+<h2>The two homes</h2>
+<p class="note">They share a width preset — both are <span class="mono">wdth 125</span>. What separates them is <b>tracking and size</b>, not width.</p>
+<div class="two">
+  <div class="box">
+    <span class="tag">role-label-caps · chrome</span>
+    <div class="home-chrome">Endorsements</div>
+    <span class="verdict">12px · --track-chrome · the floor</span>
+  </div>
+  <div class="box">
+    <span class="tag">role-ceremonial · once per page</span>
+    <div class="home-ceremonial">H.R.&nbsp;4016</div>
+    <span class="verdict">display · --track-ceremonial</span>
+  </div>
+</div>
+
+<h2>Designation or sentence?</h2>
+<p class="note">The test, because "display-size uppercase" is not self-evidently one or the other. A <b>designation</b> is a name assigned to a thing and carried on the artifact. A <b>sentence</b> is something a person wrote. Setting a sentence in tracked uppercase does not make it ceremonial — it makes it hard to read at the size that was supposed to make it grand.</p>
+<div class="two">
+  <div class="box">
+    <span class="tag">Designation → ceremonial</span>
+    <div class="home-ceremonial">S.&nbsp;4351</div>
+    <p class="ident-title">A bill to amend title 5, United States Code, to provide for the disclosure of certain records.</p>
+    <span class="verdict ok">✓ identifier set, human sentence read</span>
+  </div>
+  <div class="box">
+    <span class="tag">Sentence → heading, not ceremonial</span>
+    <p class="wrong-heading">Browse bills by state</p>
+    <span class="verdict no">✗ a sentence wearing chrome</span>
+    <p class="serif-heading" style="margin-top:14px">Browse bills by state</p>
+    <span class="verdict ok">✓ serif, mixed case, not tracked out</span>
+  </div>
+</div>
+
+<h2>A width preset is not a register</h2>
+<p class="note">Both lines below take <span class="mono">--sans-ceremonial</span> and <span class="mono">uppercase</span>. Only the tracking differs — <span class="mono">--track-ceremonial</span> against the Tailwind <span class="mono">tracking-wide</span> step that five shipped sites had borrowed. That is <b>eight times under</b>, and the lower one is not a slightly-off ceremonial: it is a chrome label that has been made big.</p>
+<div class="two">
+  <div class="box">
+    <span class="tag">--track-ceremonial · correct</span>
+    <div class="home-ceremonial">H.R.&nbsp;4016</div>
+    <span class="verdict ok">✓ reads as a designation</span>
+  </div>
+  <div class="box">
+    <span class="tag">tracking-wide · the drift</span>
+    <div class="rebuilt">H.R.&nbsp;4016</div>
+    <span class="verdict no">✗ 8× under · missing the property that defines the register</span>
+  </div>
+</div>
+
+<p class="foot"><b>This is what the role layer is for.</b> A role is not a convenience or a shorthand — it is the only form in which a register is <i>checkable</i>. A hand-assembled register has no name, so nothing can assert about it: no lint rule, no test, no review. Give it a name and one grep decides it. Which is why the rule that catches this greps the <b>assembly</b> — <span class="mono">sans-chrome</span> adjacent to <span class="mono">uppercase</span> without <span class="mono">role-label-caps</span> — rather than measuring the value. The assembly is greppable and the value is not, and the rule found the <span class="mono">input-label</span> <b>utility</b>, where one line put every labelled field in the product five times under and no call site was wrong.</p>
+
+</div>
+</body>
+</html>

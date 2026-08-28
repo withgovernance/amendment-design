@@ -26,7 +26,12 @@
    ------------------------------------------------------------------------ */
 
 /* --- the frame ---------------------------------------------------------- */
-html, body { margin: 0; padding: 0; background: var(--canvas); color: var(--text-primary); }
+/* CORRECTED 2026-08-28 (canvas-two-names): the aurora belongs over the LIVE
+   canvas, not the opaque one. This painted var(--canvas) — which is now
+   defined as the opaque, aurora-free ground coloured ink is measured
+   against — and then drew the aurora on top of it, which is the exact
+   conflation the two names were introduced to end. */
+html, body { margin: 0; padding: 0; background: var(--canvas-live); color: var(--text-primary); }
 body { font-family: var(--font-sans); font-variation-settings: var(--sans-body); }
 /* The aurora sits under the card, fixed, so a card taller than its declared
    viewport does not tile it. z-index 0 against the card's 1. */
@@ -70,3 +75,23 @@ h1 { font-family: var(--font-serif); font-variation-settings: var(--serif-displa
    background. Weight carries the hover instead of hue. */
 a { color: var(--text-primary); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
 a:hover { text-decoration-thickness: 2px; }
+
+
+/* --- scheme panes, added 2026-08-28 -------------------------------------
+   Every card in this directory rendered in ONE scheme, while the workflow
+   that produces them says "both schemes, mobile 390 and desktop 1440". A
+   specimen that only exists in light is evidence about half the system.
+
+   `.dark` is a real class selector in colors_and_type.css (`.dark,
+   :root[data-theme="dark"]`), and the material tiers are scoped as
+   `.dark .material-*`, so a dark pane works as a plain wrapper element —
+   no second page, no iframe, and the two schemes sit side by side where a
+   difference between them is visible rather than remembered.
+
+   Use .panes > .pane + .pane.dark. The dark pane paints its own ground
+   because the body's is light. */
+.panes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 780px) { .panes { grid-template-columns: 1fr; } }
+.pane { position: relative; padding: 16px 18px; border-radius: 8px; box-shadow: inset 0 0 0 1px var(--border-subtle); background: var(--canvas-live); }
+.pane.dark { background: var(--canvas-live); color: var(--text-primary); }
+.pane > .pane-label { display: block; font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: var(--track-chrome); font-weight: var(--sans-semibold); color: var(--text-secondary); margin-bottom: 10px; }

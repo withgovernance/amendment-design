@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Foundations" name="Foundations — A tint is not a plate" subtitle="Alpha is not the channel carrying affordance · status is ink on neutral material" viewport="1120x920" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Amendment specimen — a tint is not a plate</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+.card { padding: 22px 26px; }
+h1 { font-family: var(--font-serif); font-variation-settings: var(--serif-display); font-weight: 800; font-size: 21px; margin: 0 0 4px; }
+.sub { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 14px; line-height: 1.5; color: var(--text-secondary); margin: 0 0 18px; max-width: min(32rem, 100% - 2rem); }
+h2 { font-family: var(--font-serif); font-variation-settings: var(--serif-display); font-weight: 800; font-size: 15px; margin: 24px 0 2px; }
+.note { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 13px; line-height: 1.55; color: var(--text-secondary); margin: 0 0 12px; max-width: min(34rem, 100% - 2rem); }
+.note b { color: var(--text-primary); font-weight: 600; }
+.mono { font-family: var(--font-mono); font-size: 12px; }
+
+.ladder { display: flex; align-items: flex-start; gap: 12px; flex-wrap: nowrap; }
+.ladder .step { flex: 0 0 auto; }
+.step { text-align: center; }
+.chip { display: inline-flex; align-items: center; gap: 5px; border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: var(--sans-semibold); color: var(--color-success); }
+.dark .chip { color: var(--color-action); }
+/* The alpha ladder IS the specimen, so the literals are the subject. */
+.a0  { background: transparent; }
+.a10 { background: color-mix(in srgb, var(--color-action) 10%, transparent); }
+.a20 { background: color-mix(in srgb, var(--color-action) 20%, transparent); }
+.a40 { background: color-mix(in srgb, var(--color-action) 40%, transparent); }
+.cap { display: block; font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); margin-top: 6px; }
+.ctrl { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 18px; border-radius: 8px; background: var(--color-action); color: var(--color-action-label); font-size: 15px; font-weight: var(--sans-semibold); box-shadow: var(--shadow-raised, 0 1px 2px rgb(0 0 0 / .08)); }
+.sep { width: 1px; align-self: stretch; background: var(--border-subtle); margin: 0 4px; }
+
+.channels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 6px; }
+@media (max-width: 780px) { .channels { grid-template-columns: 1fr 1fr; } }
+.ch { padding: 10px 12px; border-radius: 6px; background: var(--canvas); box-shadow: inset 0 0 0 1px var(--border-subtle); }
+.ch .k { display: block; font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: var(--track-chrome); font-weight: var(--sans-semibold); color: var(--text-secondary); }
+.ch .v { display: block; font-size: 13px; line-height: 1.4; margin-top: 4px; }
+.foot { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 13px; line-height: 1.55; color: var(--text-secondary); margin: 20px 0 0; max-width: min(36rem, 100% - 2rem); }
+.foot b { color: var(--text-primary); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="card">
+
+<h1>A tint is not a plate</h1>
+<p class="sub">The fill rule says a filled green plate is a control. It says nothing about alpha — so the open question was where a tint stops being a chip and starts being fill. The render answers it differently than the question assumed: <b>alpha is not the channel carrying the affordance at all.</b></p>
+
+<h2>The ladder, beside a real control</h2>
+<p class="note">Chip at 0 / 10 / 20 / 40% action tint, then an actual CTA. At 40% the chip reads as a filled badge — and still not as the control.</p>
+
+<div class="panes">
+  <div class="pane">
+    <span class="pane-label">Light</span>
+    <div class="ladder">
+      <div class="step"><span class="chip a0">Co-signed ✓</span><span class="cap">0%</span></div>
+      <div class="step"><span class="chip a10">Co-signed ✓</span><span class="cap">10% · ships</span></div>
+      <div class="step"><span class="chip a20">Co-signed ✓</span><span class="cap">20%</span></div>
+      <div class="step"><span class="chip a40">Co-signed ✓</span><span class="cap">40%</span></div>
+      <div class="sep"></div>
+      <div class="step"><span class="ctrl">Co-sign</span><span class="cap">the control</span></div>
+    </div>
+  </div>
+  <div class="pane dark">
+    <span class="pane-label">Inverted</span>
+    <div class="ladder">
+      <div class="step"><span class="chip a0">Co-signed ✓</span><span class="cap">0%</span></div>
+      <div class="step"><span class="chip a10">Co-signed ✓</span><span class="cap">10% · ships</span></div>
+      <div class="step"><span class="chip a20">Co-signed ✓</span><span class="cap">20%</span></div>
+      <div class="step"><span class="chip a40">Co-signed ✓</span><span class="cap">40%</span></div>
+      <div class="sep"></div>
+      <div class="step"><span class="ctrl">Co-sign</span><span class="cap">the control</span></div>
+    </div>
+  </div>
+</div>
+
+<h2>Four channels the tint never touches</h2>
+<p class="note">The control's identity does not ride on how green it is. It rides on these, and no amount of alpha on a flat pill reproduces any of them.</p>
+<div class="channels">
+  <div class="ch"><span class="k">Fill</span><span class="v">Full token strength, not a tint of it.</span></div>
+  <div class="ch"><span class="k">Elevation</span><span class="v">A raised shadow tier. The chip is flat.</span></div>
+  <div class="ch"><span class="k">Radius</span><span class="v">A control is <span class="mono">rounded-md</span>; a chip is <span class="mono">rounded-full</span>.</span></div>
+  <div class="ch"><span class="k">Label</span><span class="v">Ink on the plate, not coloured ink on a ground.</span></div>
+</div>
+
+<h2>The photometry agrees</h2>
+<p class="note">Measured as share of the CTA's own separation from its ground, the ladder reaches at most <b>30%</b> in light and <b>17%</b> inverted. <b>A tint never approaches the control at any alpha.</b> So the question "at what alpha does tint become fill" has no answer — not because it is hard, but because it is the wrong axis.</p>
+
+<p class="foot"><b>Status is ink on neutral material; a coloured plate belongs to a control.</b> That answers the general case as well as the green one — there is no tint token in any family and there should not be one. The <b>10% ceiling still binds</b>, and it binds for <i>contrast</i>, not affordance: at 10% the ink measures 4.52:1 on the page ground, clearing by two hundredths, and at 15% it is 4.31:1 and fails. That 10% is a framework step nobody chose — it survives on measurement, not intent, and it has no room to grow. Which is the whole reason to write it down before someone rounds it up to a nicer number.</p>
+
+</div>
+</body>
+</html>

@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.21
+# spec-version:   v2026.08.28.22
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1337,6 +1337,76 @@ materials:
       same pass.
       Written as a mix of --canvas-live rather than a literal so chrome
       follows the canvas if the Blue Hour value ever moves.
+    recession-declined: >-
+      RATIFIED 2026-08-28 from a specimen built for it —
+      preview/chrome-recession.html, navbar and sidebar at 390 and 1440,
+      both schemes, receding against material-chrome, over BOTH the token's
+      aurora and the brighter one the consumer actually ships, with every
+      label's ground sampled beneath the label rather than at the panel
+      edge. CHROME DOES NOT RECEDE. Four answers, in the order they were
+      asked, and the first one turns on the other three.
+      (1) WHAT material-chrome BECOMES: it stays a material, at the
+          2026-08-28 value — the canvas's own hue at 90%. It does not become
+          transparent, and it does not become a lighter veil.
+          THE COLLISION FIRST, because it was raised as the blocker. The
+          hard rule says "never bare text inside the aurora band; chrome
+          that must overlap carries material-chrome." MEASURED, THAT RULE IS
+          BROADER THAN ITS OWN REASON. The neutral ramp survives the bare
+          band everywhere: nav labels 4.57 light and 6.12 dark, the wordmark
+          14.7, tab labels 4.64/6.21. That is not a surprise — it is what
+          ink-needs-an-opaque-ground already said when it exempted
+          primary/secondary text as "luminance against its own material,
+          not dependent on hue separation". So recession does not fail on
+          the neutral text the rule was worded to protect.
+          IT FAILS ON THE TWO THINGS THE RULE DID NOT NAME. The section
+          title over the brightest lobe holds 14.03:1 with a ground and
+          6.22:1 without — still passing, and it has surrendered 56% of its
+          headroom TO A GRADIENT THAT MOVES, which means the margin is not a
+          constant it can be judged on again later. And the active nav item
+          dies outright; see (4).
+      (2) "CHROME IS STILL" SURVIVES, AND IT IS THE SECOND ARGUMENT AGAINST
+          RECESSION rather than a casualty of it. A surface with no material
+          of its own CANNOT BE STILL — it shows whatever moves under it, and
+          the aurora breathes by ratified thesis. Recession therefore does
+          not merely remove a contrast ground; it removes the condition that
+          makes stillness expressible. Chrome that recedes into a breathing
+          layer is not still chrome, it is chrome that has stopped existing
+          and left its labels behind.
+      (3) THE MOBILE TAB BAR TAKES WHATEVER THE NAVBAR TAKES, ALWAYS. They
+          are one navigation rendered at two widths, composed from one list;
+          a product whose nav has one identity on the desktop and another on
+          the phone has two navigations. The tab bar also carries an
+          independent reason to keep its ground: it sits at the bottom edge,
+          thumb-reached, and a target zone with no visual boundary is worse
+          than one with. Under this ruling both keep material-chrome, and
+          under any future ruling they move together or not at all.
+      (4) THE ACTIVE NAV ITEM KEEPS ITS PLATE, and this is the answer that
+          made the question self-resolving. MEASURED with no plate beneath
+          it, Midnight Indigo as a mark is 1.22:1 on the token aurora and
+          1.34:1 on the shipped one, in dark. Gone. That is exactly
+          primary.plate-not-mark arriving where it was always going to:
+          primary is a PLATE colour and has no inverted counterpart as a
+          mark, and no token in the palette can carry "your own trail"
+          because the one light-enough neutral family MEANS the system.
+          SO CHROME COULD NOT FULLY RECEDE EVEN IF IT WERE OTHERWISE RIGHT:
+          the active item would have to stay a plate, leaving one solid
+          rectangle floating on the aurora with no chrome around it — which
+          is a worse composition than either option under test.
+      WHAT RECESSION WAS REACHING FOR IS ALREADY DELIVERED. The complaint
+      behind it was chrome that looks like it predates the system — a warm
+      neutral slab on a cool canvas. That was real, and it was fixed the
+      same day by giving chrome the canvas's own hue at unchanged opacity.
+      That change bought belonging WITHOUT SPENDING THE GROUND. Recession
+      spends the ground to buy something already in hand.
+      WHAT WOULD REOPEN THIS: a stated goal recession serves that the hue
+      change does not. This ruling answers the version that was in front of
+      it — chrome should feel part of the page — and if the motivation was
+      something else, it comes back with the render rather than as a
+      description, because it was a render that settled it and prose that
+      could not.
+      CONSEQUENCE FOR LANDED CODE: stage 3 conformed the consumer's navbar
+      utility TO material-chrome. THAT CONFORMANCE STANDS. Nothing is
+      reverted, and 9b proceeds on the material it already has.
     dark-is-a-dark-wash-and-that-is-load-bearing: >-
       REAFFIRMED 2026-08-28 against a render that appeared to argue the
       opposite. Stage 3 reported that material-chrome "is a white wash
@@ -1422,7 +1492,7 @@ motion:
     - "Respect prefers-reduced-motion — all animations clamp to 0.01ms."
     - "Motion is permitted on exactly two surfaces: the Receipt (one-shot bloom at issuance) and the Commons (accruing momentum under real collective action). Both obey 'no motion without meaning' — motion reflects real state a person changed, never decoration. Hover states never move, on any surface."
     - "STREAMING IS NOT MOTION (stated 2026-08-02, audit §3.5). Text arriving token by token, a typing indicator, a skeleton resolving into content — these are CONTENT ARRIVING, not the interface moving, and they are permitted anywhere without spending the two-surface budget. The test: does it animate an element that is already on screen and already correct? Then it is motion and needs a sanctioned surface. Does it put content on screen for the first time? Then it is arrival. This carve-out is why the Reading Room's old 'generous' posture was a contradiction and not a third sanctioned surface."
-    - "Chrome is still. The navbar is always chrome (material-chrome) and does not animate on scroll — the earlier scroll-timeline fade-in was removed because it broke on app routes whose content scrolls inside an inner container rather than the document root."
+    - "Chrome is still — and stillness requires a ground of one's own. A surface with no material shows whatever moves under it, so a receding chrome inherits the aurora's breathing and cannot be still. See color.recession-declined. The navbar is always chrome (material-chrome) and does not animate on scroll — the earlier scroll-timeline fade-in was removed because it broke on app routes whose content scrolls inside an inner container rather than the document root."
 
 focus:
   color-light: "#64748b"   # slate-500

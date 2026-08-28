@@ -71,6 +71,39 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** delete the third direction added to `axis-must-be-declared-and-measured`. It was asserted from a computed fvs string showing a sans axis, without measuring whether that axis had the claimed effect — the failure the rule itself names, committed while writing the rule. What survives is only that a role beats an unstated inheritance. The `globals.css` comment explaining why there is deliberately no blanket serif fvs default — so `auto` stays live as the fallback — is correct and load-bearing: a sweep of **89** bare `font-serif` sites found the design cleared all 89.
 - **blocks:** the sentence is in the spec now, so this one is worth doing before the next pass reads it as settled.
 
+### Correction to the `lede` entry above — the "physical ceiling" was not one
+- **kind:** conformance, against my own queue entry two above
+- **found:** designer-21 measured it before ratifying, and it did not hold.
+- **evidence:** I computed the "ceiling" by growing one word list until it exceeded the width, which yields the ceiling **of that glyph mix**, not the maximum the line can hold. Measured across mixes: at 384px, statutory 44 / general **47** / narrow prose 63 / narrowest glyphs 70; at 448px, statutory 62 / general 63 / narrow prose 87 / narrowest glyphs 98. **47 is reachable on ordinary prose, and 69 is reachable at 448px.**
+- **proposes:** nothing new — the annotation fix already ratified is correct and both widths stay. Recorded because the difference decides the fix and my framing pointed at the wrong one: **a number at the top of a realistic band is an annotation problem; an unreachable number would have been a width problem.** As written, my entry argued for changing 24rem and 28rem, which would have been wrong.
+- **also:** the two bad `lede` numbers both used `ch`, which this system bans — the ban's wording scopes it to *tokens*, so prose slipped past. That gap exists for every unit banned that way, and it is the greppable part.
+- **blocks:** nothing.
+
+### The spec's aurora and the shipped aurora are two different grounds under one name
+- **kind:** unowned default
+- **found:** building `preview/chrome-recession.html`, which had to render both to answer the ruling honestly.
+- **evidence:** `--aurora` in `colors_and_type.css` is **three broad, low-chroma lobes** (72%×55% at 15% 8%, and two more). The consumer's `globals.css` ships **five narrow, far more saturated ones** (`oklch(0.86 0.21 150 / .66)` at 30% 12%, and four more). Measured in the specimen, the difference decides a number: the section title over the brightest lobe holds 14.03:1 on the token aurora with chrome and **6.22:1** on the shipped one without it.
+- **proposes:** nothing yet. `ink-ground-is-a-placement` says the ground that decides a question is the one that renders, so the shipped aurora is currently the real one and the token is decorative — which is the same shape as the `--canvas` divergence closed at `.6`, and it should probably be closed the same way.
+- **blocks:** nothing today. It blocks any future contrast claim about the band from being checkable, because there is no single band.
+
+### `role-label-caps` sets `line-height: 1`, and nothing says whether a chrome label may wrap
+- **kind:** spec silent
+- **found:** stage 9a, converting the footer's copyright line — then again, immediately, at a site converted in an earlier stage that I had not touched.
+- **evidence:** measured in `Footer` at 390, both `role-label-caps`:
+  - the copyright line wraps to **3 lines at `line-height: 12px`** — the lines touch, no leading at all. I caused this one by dropping the site's `leading-4` as part of taking the role, and restored it.
+  - **"Law & Legislation"**, a section header from an earlier stage, wraps to **2 lines at `line-height: 12px`** and has the same collision. Nobody introduced it in this pass; it has been shipping.
+  - Across the codebase: **79 usages in 43 files**, of which exactly **one** overrides leading — the one I just restored. So this is not a known pattern being managed; it is a property of the role that surfaces only when a label wraps, and it looks fine at every width where it doesn't.
+- **proposes:** decide which of two things is true, because they lead to different code. Either **a chrome label never wraps** — consistent with the existing rule that *"if a label no longer fits at 12px, the layout is the problem"* — in which case both footer sites are layout bugs and the role is correct as drawn. Or **a chrome label may wrap**, in which case `line-height: 1` is a single-line assumption baked into a role used in 79 places, and the role should carry a leading that survives a second line. I have not applied either: the second footer site is left as found, because picking the leading value here is exactly the thing that isn't ratified.
+- **note on the rule this tests:** the single-line assumption is invisible at every width where the label fits, which is most of them — the same shape as the padded-measure and the average-glyph findings. A default that is correct in the common case and silently wrong in the uncommon one is not caught by looking at the common case.
+- **blocks:** nothing. Stage 9a shipped with the one regression I introduced repaired and the pre-existing one queued rather than guessed at.
+
+### The Chromatic diffs cannot be walked — the account is out of snapshots
+- **kind:** conformance, blocked on billing rather than on a decision
+- **found:** stage 9a, attempting the walk this queue has been asking for.
+- **evidence:** build **3761** published from `design-pass-type` (140 components, 563 stories) and returned `Snapshot quota reached — this build is limited because your account is out of snapshots for the month.` **No snapshots were taken, so no diffs exist to review.** The built Storybook is browsable at `https://666359b2911b895a5f60cf9e-zdbpsgvaif.chromatic.com/`, which allows looking at stories but not comparing them against a baseline. No baselines were accepted, so nothing has been canonised.
+- **proposes:** nothing in the spec. Recorded so the standing "nobody is known to have walked the diffs" entry stops reading as neglect: it is now a known blocker with a cause and an owner. Until the quota resets or the plan changes, the migration's visual review is the story-by-story reads in each stage handoff, which is a weaker instrument and should be named as such rather than treated as equivalent.
+- **blocks:** the visual-diff review of the whole migration, and therefore any confidence claim that rests on it.
+
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by
@@ -102,6 +135,22 @@ fragile.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.22)** — **chrome does not recede.** Ruled from a
+  specimen built for it (`preview/chrome-recession.html`), both widths, both
+  schemes, both auroras, ground sampled beneath each label. The collision resolved
+  rather than avoided: **the hard rule is broader than its own reason** — the
+  neutral ramp survives the bare band (nav 4.57 light / 6.12 dark), which
+  `ink-needs-an-opaque-ground` already implied. Recession fails on what the rule
+  never named: the title over the brightest lobe keeps 14.03:1 with a ground and
+  **6.22:1 without**, surrendering 56% of its headroom to a gradient that moves;
+  and the active item's Midnight Indigo measures **1.22/1.34:1** with no plate —
+  dead, exactly as `primary.plate-not-mark` predicted. Four answers: (1)
+  `material-chrome` stays a material at the `.18` value; (2) **"Chrome is still"
+  survives and argues against recession** — a surface with no material cannot be
+  still, it shows whatever moves under it; (3) the tab bar takes whatever the
+  navbar takes, always; (4) the active item keeps its plate, which makes full
+  recession internally impossible. **Stage 3's conformance stands — nothing is
+  reverted, 9b proceeds.**
 - **2026-08-28 (v2026.08.28.21)** — **retraction.** The `opsz 18` mechanism
   ratified at `.20` is false and was tested so: a `wdth`-only
   `font-variation-settings` does **not** disable optical sizing, and the shipped

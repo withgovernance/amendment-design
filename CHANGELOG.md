@@ -8,6 +8,92 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.22) — Chrome does not recede, and the reason is not the one the rule gave
+
+The blocking queue entry: a chrome-recession ruling that existed in a conversation
+and in no file, contradicting the spec in four places, and reversing a conformance
+fix that had already landed. Decided from a specimen built for it —
+`preview/chrome-recession.html`: navbar and sidebar at 390 and 1440, both schemes,
+receding against `material-chrome`, over **both** the token's aurora and the
+brighter one the consumer ships, with every label's ground sampled *beneath the
+label* rather than at the panel edge.
+
+*(The first pass of that card sampled the panel's right edge and so missed that the
+section title sits on the green lobe — the same error the card exists to prevent,
+caught by looking at the render. Corrected before ruling.)*
+
+### The collision, resolved rather than routed around
+
+The hard rule says *never bare text inside the aurora band; chrome that must
+overlap carries `material-chrome`.* **Measured, that rule is broader than its own
+reason.** The neutral ramp survives the bare band everywhere: nav labels **4.57**
+light and **6.12** dark, wordmark 14.7, tab labels 4.64/6.21. Which is what
+`ink-needs-an-opaque-ground` already said when it exempted primary/secondary text
+as *"luminance against its own material, not dependent on hue separation."*
+
+So recession does not fail on the text the rule was worded to protect. **It fails
+on the two things the rule never named:**
+
+- The section title over the brightest lobe holds **14.03:1** with a ground and
+  **6.22:1** without. It still passes — and it has surrendered **56% of its
+  headroom to a gradient that moves**, which means that margin is not a constant
+  anyone can re-check later.
+- The active nav item **dies**: Midnight Indigo as a mark measures **1.22:1** on
+  the token aurora and **1.34:1** on the shipped one, in dark.
+
+### The four answers
+
+**(1) `material-chrome` stays a material**, at the value ratified earlier the same
+day — the canvas's own hue at 90%.
+
+**(2) "Chrome is still" survives, and it is the second argument against recession
+rather than a casualty of it.** A surface with no material of its own *cannot be
+still* — it shows whatever moves under it, and the aurora breathes by ratified
+thesis. Recession does not merely remove a contrast ground; it removes the
+condition that makes stillness expressible. Chrome that recedes into a breathing
+layer is not still chrome, it is chrome that has stopped existing and left its
+labels behind.
+
+**(3) The mobile tab bar takes whatever the navbar takes, always.** They are one
+navigation rendered at two widths, composed from one list. A product whose nav has
+one identity on the desktop and another on the phone has two navigations. The tab
+bar also has an independent reason to keep its ground: bottom edge, thumb-reached,
+and a target zone with no visual boundary is worse than one with.
+
+**(4) The active nav item keeps its plate — and this made the question
+self-resolving.** `primary.plate-not-mark` already settled that primary is a plate
+colour with no inverted mark counterpart, and that no token can carry "your own
+trail" because the one light-enough neutral family *means the system*. So **chrome
+could not fully recede even if it were otherwise right**: the active item would
+have to stay a plate, leaving one solid rectangle floating on the aurora with no
+chrome around it — a worse composition than either option under test.
+
+### What recession was reaching for was already delivered
+
+The complaint behind it was real: chrome that looks like it predates the system, a
+warm neutral slab on a cool canvas. That was fixed the same day by giving chrome
+**the canvas's own hue at unchanged opacity** — which bought belonging *without
+spending the ground*. Recession spends the ground to buy something already in hand.
+
+**What would reopen it:** a stated goal recession serves that the hue change does
+not. This ruling answers the version in front of it. If the motivation was
+something else, it comes back **with the render** — a render settled this and prose
+could not.
+
+### Consequence for landed code, stated because the queue asked
+
+Stage 3 conformed the consumer's navbar utility **to** `material-chrome` on the
+strength of `dark-is-a-dark-wash-and-that-is-load-bearing`. **That conformance
+stands. Nothing is reverted.** Stage 9b proceeds on the material it already has.
+
+### Found while building the card
+
+The spec's `--aurora` token is **three broad low-chroma lobes**; the consumer ships
+**five narrow, far more saturated ones**. Both are measured here, and the shipped
+one is where the title loses its headroom. Not ruled on — recorded, because
+`ink-ground-is-a-placement` says the ground that decides a question is the one that
+renders, and these are two different grounds under one name.
+
 ## 2026-08-28 (v2026.08.28.21) — Retraction, and a stronger claim that was also wrong
 
 ### Retracted: the `opsz 18` mechanism

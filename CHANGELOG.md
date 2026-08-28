@@ -8,6 +8,40 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.30) — Receded chrome requires that nothing scrolls beneath it
+
+A live collision on the conversation route: body text scrolling **under** the receded
+navbar and rendering **through** the page title. Not a contrast failure — text on text.
+
+**The rule was already implicit, and only one of its members was named.** The recession
+ruling kept `material-chrome` for the mobile tab bar because it is *"the one chrome that
+overlaps scrolling content."* **The criterion is right and general; "the one" was
+wrong.** The conversation title bar is its second member, and the set was never
+enumerated.
+
+So: **receded chrome requires that nothing scrolls beneath it.** Recession puts chrome
+on the aurora. If content passes under it, chrome is not on the aurora — it is on
+content, which is a different ground and the one that needs a material. Chrome that
+must overlap scrolling content **keeps a material and is therefore not receded** — an
+exception stated per surface, not a bug patched per route.
+
+**The fix is structural.** Give the scroll region its own container starting below the
+chrome. The spec already knows the pattern: `components.navbar` records that app routes
+*"scroll inside an inner container"* — which is why the old scroll-driven variant never
+advanced past `blur(0)`. The conversation route scrolls the **document**, which is why
+it collides.
+
+**And a hairline does not fix it.** A hairline is a *boundary*; the failure is
+*transparency*. A line between the nav and the title leaves body text passing through
+the title's glyphs. Recorded because it is the remedy that sounds like a design answer
+and is not one.
+
+If a route restores material as an interim it takes a **dated Known Divergence** naming
+the route and the condition for removal — not a comment. *"Temporarily"* has a record
+here: the `hexp` aliases and the 75% chrome value each outlived their migration.
+
+---
+
 ## 2026-08-28 (v2026.08.28.29) — "The navbar is chrome" is a claim about a surface, not its content
 
 Every navigation label in the product shipped in **tracked uppercase**. Jason called

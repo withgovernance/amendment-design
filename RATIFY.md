@@ -145,6 +145,16 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.30)** — **receded chrome requires that nothing scrolls
+  beneath it.** Found live: body text scrolling under the receded navbar and rendering
+  *through* the conversation title — text on text, not a contrast failure. The
+  criterion already existed in the recession ruling ("the one chrome that overlaps
+  scrolling content") and **only one member of the set was named**; the conversation
+  title bar is the second. Chrome that must overlap scrolling content keeps a material
+  and is not receded. **The fix is structural** — an inner scroll container starting
+  below the chrome, a pattern the spec already records for other app routes; the
+  conversation route scrolls the document. **A hairline does not fix it** — a hairline
+  is a boundary and the failure is transparency.
 - **2026-08-28 (v2026.08.28.29)** — **nav labels are not chrome.** Every navigation
   label shipped in tracked uppercase; they take `role-body`, sentence case, in the
   sidebar and tab bar alike. The category error is the reusable part: **"the navbar is

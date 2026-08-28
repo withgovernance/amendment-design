@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.29
+# spec-version:   v2026.08.28.30
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1771,6 +1771,36 @@ components:
     height: "56px"
     padding: "8px"
     layout: "max-width 80rem, three-column flex (leading / middle / trailing)"
+  recession-requires-nothing-scrolls-beneath: >-
+    RATIFIED 2026-08-28, from a live collision on the conversation route:
+    body text scrolling UNDER the receded navbar and rendering THROUGH the
+    page title. Not a contrast failure — TEXT ON TEXT.
+    THE RULE WAS ALREADY IMPLICIT AND ONLY ONE OF ITS MEMBERS WAS NAMED. The
+    recession ruling kept material-chrome for the mobile tab bar on the
+    grounds that it is "the one chrome that OVERLAPS SCROLLING CONTENT". That
+    criterion is right and it is general; what was wrong is "the one". The
+    conversation title bar is its second member, and nobody enumerated the
+    set.
+    SO: RECEDED CHROME REQUIRES THAT NOTHING SCROLLS BENEATH IT. Recession
+    puts chrome on the aurora. If content passes under it, chrome is not on
+    the aurora — it is on content, which is a different ground and the one
+    that needs a material. CHROME THAT MUST OVERLAP SCROLLING CONTENT KEEPS
+    A MATERIAL, and is therefore not receded; that is an exception to be
+    stated per surface, not a bug to be patched.
+    THE FIX IS STRUCTURAL, NOT COSMETIC. Give the scroll region its own
+    container beginning below the chrome. This file already knows that
+    pattern exists — components.navbar records that app routes "scroll inside
+    an inner container", which is why the old scroll-driven variant never
+    advanced past blur(0). The conversation route scrolls the DOCUMENT, which
+    is why it collides.
+    AND A HAIRLINE DOES NOT FIX IT. A hairline is a BOUNDARY; the failure is
+    TRANSPARENCY. Drawing a line between the nav and the title leaves the
+    body text still passing through the title's glyphs. Recorded because it
+    is the remedy that sounds like a design answer and is not one.
+    IF A ROUTE RESTORES MATERIAL AS AN INTERIM, it takes a dated Known
+    Divergence naming the route and the condition for removing it — not a
+    comment. "Temporarily" has a record in this system: the hexp aliases and
+    the 75% chrome value each outlived their migration.
   nav-labels-are-not-chrome: >-
     RATIFIED 2026-08-28. Every navigation label in the product shipped in
     TRACKED UPPERCASE, and it is wrong. NAV LABELS TAKE role-body — sentence

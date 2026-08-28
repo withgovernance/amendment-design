@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.16
+# spec-version:   v2026.08.28.17
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -715,6 +715,43 @@ typography:
   tracking:
     track-chrome:     "0.12em"
     track-ceremonial: "0.20em"
+  axis-must-be-declared-and-measured: >-
+    RATIFIED 2026-08-28, replacing a rule whose stated reason was false.
+    The old note said Archivo is self-hosted "so the chrome register
+    survives a blocked or offline CDN". That never distinguished this face:
+    Newsreader and IBM Plex Mono are fetched from Google in the same file,
+    so an outage already takes the body and the mono, and chrome surviving
+    alone is not a posture anyone chose.
+    MEASURED AGAINST THE LIVE CDN. Google DOES serve Archivo's full width
+    axis when asked — css2?family=Archivo:wdth,wght@62..125,100..900
+    returns font-stretch: 62% 125%, italic included. So self-hosting is not
+    what makes the axis available and the CDN is not what strips it.
+    BUT THE DEFAULT IS WRONG, AND SILENTLY. Ask without the axis —
+    family=Archivo:wght@100..900, or the bare family name — and Google
+    PINS font-stretch TO 100%. No error and no warning: the font loads,
+    renders, and THE ENTIRE CHROME REGISTER COLLAPSES TO NORMAL WIDTH.
+    SO THE RULE IS ABOUT WHERE THE AXIS LIVES, NOT ABOUT UPTIME.
+    SELF-HOSTED, THE AXIS IS A PROPERTY OF THE FILE — in the bytes, and it
+    cannot be forgotten. ON A CDN IT IS A PROPERTY OF THE URL — a query
+    parameter that a regenerated config, a copied snippet or a hand-edited
+    link drops without saying so. A property of a file cannot be omitted; a
+    property of a request is omitted BY DEFAULT. That is a weaker place to
+    keep something the whole chrome register depends on, and it is the
+    honest cost of moving to the CDN rather than a reason not to.
+    THIS IS retired-axis-fails-silently FROM THE OTHER SIDE: there the axis
+    was present and retired, here it is requested and absent. Same silence,
+    and it belongs to the same family.
+    THE REQUIREMENT, whichever host is chosen: THE AXIS IS DECLARED
+    EXPLICITLY and the load is VERIFIED BY MEASUREMENT, never by the page
+    looking right — a collapsed axis looks like a slightly narrower design,
+    not like a bug. Set a chrome string at wdth 125 and at wdth 62 and
+    confirm the widths DIFFER. "HOUSE OF REPRESENTATIVES" at 12px measures
+    roughly 230px against 116px across that range; equal numbers mean the
+    axis did not load. This check is cheap, it is the only thing that
+    catches the failure, and it belongs in CI rather than in a comment
+    asking the next person to remember.
+    NOT DECIDED HERE: whether to move. See the changelog entry — there is a
+    consideration on the other side that is not typographic.
   measure-before-you-shrink: >-
     RATIFIED 2026-08-28, and it is the missing half of a rule this file has
     had since the stat-caption question. That ruling said: IF A LABEL NO

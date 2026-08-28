@@ -8,6 +8,68 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.17) — The axis is a property of the file or of the URL
+
+### The old rule's stated reason was false, and the implementation session was right to say so
+
+`colors_and_type.css` said Archivo is self-hosted *"so the chrome register survives
+a blocked or offline CDN."* That never distinguished this face from the others —
+**Newsreader and IBM Plex Mono are fetched from Google in the line directly above**,
+so an outage already takes the body and the mono. Chrome surviving alone is not a
+posture anyone chose. Deleted.
+
+**Verified independently against the live CDN**: Google does serve Archivo's full
+width axis when asked. `css2?family=Archivo:wdth,wght@62..125,100..900` returns
+`font-stretch: 62% 125%`, italic included. So self-hosting is not what makes the
+axis available, and the CDN is not what strips it. That claim was wrong.
+
+### But the default is wrong, silently, and that changes the trade
+
+Also measured, and neither of us had stated it:
+
+```
+family=Archivo:wght@100..900   →  font-stretch: 100%
+family=Archivo                 →  font-stretch: 100%, weight 400
+```
+
+**Omit the axis and Google pins it to 100%.** No error, no warning — the font loads,
+renders, and the entire chrome register collapses to normal width.
+
+So the real argument was never about uptime. **Self-hosted, the axis is a property
+of the file** — it is in the bytes and cannot be forgotten. **On a CDN it is a
+property of the URL** — a query parameter that a regenerated config, a copied
+snippet or a hand-edited link drops without saying so. *A property of a file cannot
+be omitted; a property of a request is omitted by default.*
+
+That is the honest cost of the move rather than an argument against it, and it is
+`retired-axis-fails-silently` from the other side: there the axis was present and
+retired, here it is requested and absent. **Same silence, same family.**
+
+### `typography.axis-must-be-declared-and-measured`
+
+Whichever host wins: the axis is **declared explicitly**, and the load is **verified
+by measurement, never by the page looking right** — a collapsed axis looks like a
+slightly narrower design, not like a bug. Set a chrome string at `wdth` 125 and at
+62 and confirm the widths differ; "HOUSE OF REPRESENTATIVES" at 12px measures
+roughly 230px against 116px. Equal numbers mean the axis did not load. The
+implementation session proposed this check and it is right; it belongs in CI rather
+than in a comment asking the next person to remember.
+
+### What is not decided here, and why
+
+**The hosting choice itself.** I have corrected the rule's false rationale, which is
+mine to do on evidence alone. The decision to move is a product call with a
+consideration neither session raised: **Google Fonts sends every viewer's IP to
+Google.** For a product whose users look up legislation — which can be a sensitive
+thing to be seen doing — that is a real argument for self-hosting that has nothing
+to do with type, and a German court found Google Fonts embedding unlawful under
+GDPR in 2022. Set against it: automatic per-unicode-range subsetting is genuinely
+better than one hand-made subset, and it removes the accepted consequence that a
+sans-italic glyph outside Latin-1 falls back to the system italic.
+
+Both are real. Neither is a typography question, so neither is mine to settle, and
+the spec records the requirement rather than the choice.
+
 ## 2026-08-28 (v2026.08.28.16) — Most sub-floor type has no constraint behind it
 
 ### `measure-before-you-shrink`

@@ -22,12 +22,46 @@
    neither carries a width axis to lose, so CDN delivery is fine. */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
 
-/* Archivo is SELF-HOSTED — uploaded 2026-08-13, so it is no longer fetched from
-   Google Fonts and the chrome register survives a blocked or offline CDN. Both
-   cuts are the variable files with wdth AND wght intact (62–125, 100–900), which
-   is the thing that matters: a cut without wdth loads cleanly and silently
-   collapses chrome to normal width. Only IBM Plex Mono and Newsreader still come
-   from the CDN. */
+/* Archivo is SELF-HOSTED. CORRECTED 2026-08-28: the stated reason was wrong and
+   the real one is sharper.
+
+   THE OLD REASON — "so the chrome register survives a blocked or offline CDN" —
+   does not hold. It never distinguished this face from the others: Newsreader
+   and IBM Plex Mono are fetched from Google in the line above, so a CDN outage
+   already takes the body and the mono. Chrome surviving alone is not a posture
+   anyone chose.
+
+   WHAT IS ACTUALLY TRUE, measured against the live CDN 2026-08-28. Google DOES
+   serve Archivo's full width axis when you ask for it:
+     …css2?family=Archivo:wdth,wght@62..125,100..900  →  font-stretch: 62% 125%
+   So self-hosting is not what makes the axis available, and the axis-stripping
+   failure is not a property of the CDN.
+
+   BUT ASKING IS THE WHOLE THING, AND THE DEFAULT IS WRONG:
+     …css2?family=Archivo:wght@100..900   →  font-stretch: 100%
+     …css2?family=Archivo                 →  font-stretch: 100%, weight 400
+   Omit the axis and Google PINS IT TO 100% SILENTLY. No error, no warning: the
+   font loads, renders, and the entire chrome register collapses to normal width.
+
+   SO THE REAL ARGUMENT IS ABOUT WHERE THE AXIS LIVES, not about uptime.
+   SELF-HOSTED, THE AXIS IS A PROPERTY OF THE FILE — it is in the bytes and it
+   cannot be forgotten. ON THE CDN IT IS A PROPERTY OF THE URL — a query
+   parameter that a regenerated config, a copied snippet, or a hand-edited link
+   drops without saying so. A property of a file cannot be omitted; a property
+   of a request is omitted by default. That is a weaker place to keep something
+   the whole chrome register depends on.
+   This is retired-axis-fails-silently from the other side: there the axis was
+   present and retired, here it is requested and absent. Same silence.
+
+   IF THIS MOVES TO THE CDN — a live decision, see the changelog — the axis must
+   be declared explicitly (`axes: ["wdth"]` or the full css2 range) and the swap
+   must be VERIFIED BY MEASUREMENT, not by the page looking right: set a chrome
+   string at wdth 125 and at wdth 62 and confirm the widths differ. Collapsed to
+   100% they will not. "HOUSE OF REPRESENTATIVES" at 12px measures ~230px against
+   ~116px across that range; equal numbers mean the axis did not load.
+
+   Both self-hosted cuts are the variable files with wdth AND wght intact
+   (62–125, 100–900). */
 @font-face {
   font-family: 'Archivo';
   src: url('fonts/Archivo-VariableFont_wdth_wght.ttf') format('truetype-variations');

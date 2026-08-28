@@ -88,6 +88,18 @@ fragile.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.17)** — `axis-must-be-declared-and-measured`. The old
+  self-hosting rule's stated reason ("survives a blocked CDN") was **false** and is
+  deleted — Newsreader and Plex Mono come from Google in the line above, so chrome
+  surviving alone was never a chosen posture. Verified live: Google **does** serve
+  Archivo's full `wdth` axis when asked. **But omit it and Google pins
+  `font-stretch` to 100% silently** — the register collapses with no error. So the
+  argument is about *where the axis lives*: self-hosted it is a property of the
+  **file** and cannot be forgotten; on a CDN it is a property of the **URL** and is
+  omitted by default. `retired-axis-fails-silently` from the other side. Whichever
+  host: declare the axis and **verify by measurement** (a chrome string at wdth 125
+  vs 62 must differ — ~230px vs ~116px), in CI, not in a comment. **The hosting
+  choice is not ratified** — it turns on a privacy question that is not typographic.
 - **2026-08-28 (v2026.08.28.16)** — `measure-before-you-shrink`, the missing half
   of the stat-caption ruling. That one answered "the label does not fit"; this one
   answers the common case, where **nothing was tight and the type was shrunk by

@@ -88,6 +88,14 @@ fragile.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.19)** — **three tiers of reach**, contributed by the
+  implementation session and better than the rule it sharpens. Tier 1 the class
+  layer, a grep decides it. Tier 2 imperative styling — a grep cannot read it but a
+  **computed-style assertion can**, so the cost is effort, not possibility. Tier 3
+  **content**, which no static check reaches at any effort, because the rule is
+  about what a string *means*; it can only be **moved upstream** to the generator.
+  Knowing the tier is the point: tier 2 left as a note is a failure of will, tier 3
+  pursued in the design layer is a waste of it.
 - **2026-08-28 (v2026.08.28.18)** — **chrome did not belong to its own page.**
   `material-chrome` dark was zinc-900 at 90% — a *warm* neutral on a *cool* canvas,
   compositing to #16171b beside content at #1c2a4c. Now the canvas's own hue at the

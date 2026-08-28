@@ -8,6 +8,33 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.19) — Three tiers of reach
+
+`enforcement-has-a-blind-spot` said a clean lint run is a statement about the class
+layer. True, and it left the useful question open: **what do you do about it?** The
+implementation session supplied the distinction, and it is better than the rule it
+sharpens — **the blind spots differ in whether they can be closed at all.**
+
+- **Tier 1 — the class layer.** A grep decides it. Where the lint rules live and
+  where most of the system is.
+- **Tier 2 — imperative styling, reachable with more effort.** d3 setting
+  `.attr("font-size", n)`, canvas, anything drawn rather than classed. A grep cannot
+  read it, **but a computed-style or rendered-output assertion can.** The cost is
+  effort, not possibility.
+- **Tier 3 — content, which no static check reaches at any effort.** The emoji on a
+  conversation row are inside the title string, so the rule being broken is about
+  **what a string means.** No computed style contains it, no assertion can be
+  written for it, and a model wrote it. This cannot be solved in the design layer at
+  any level of effort — **it can only be moved upstream**, to wherever the content is
+  generated.
+
+**Knowing the tier is the point:** a tier 2 problem discovered and left as a note is
+a failure of will; a tier 3 problem pursued inside the design layer is a waste of
+it. `HexStateMap` is tier 2 and has a ticket. The conversation emoji are tier 3 and
+the only enforcement point is the title generator — a design rule applied to
+generated content has **no enforcement point at all unless the generator carries
+it.**
+
 ## 2026-08-28 (v2026.08.28.18) — Chrome did not belong to its own page
 
 Jason looked at the dark dashboard and asked whether the chrome was obsolete

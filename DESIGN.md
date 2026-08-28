@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.18
+# spec-version:   v2026.08.28.19
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -877,6 +877,26 @@ typography:
     clamped at 8 and tile geometry that never reaches the target floor:
     two hard-rule violations sitting in production, past a lint run that
     reports clean.
+    THREE TIERS OF REACH, added 2026-08-28 — and this is the part that tells
+    you WHAT TO DO, which the rule above only implied. A blind spot is not one
+    problem; the tiers differ in whether they can be closed at all.
+      TIER 1 — THE CLASS LAYER. A grep decides it. This is where the lint
+        rules live and where most of the system is. Cheap.
+      TIER 2 — IMPERATIVE STYLING, reachable with more effort. d3 setting
+        .attr("font-size", n), canvas, anything drawn rather than classed. A
+        grep cannot read it, but A COMPUTED-STYLE OR RENDERED-OUTPUT
+        ASSERTION CAN. The cost is effort, not possibility, so the honest
+        answer is to build the check rather than to note the exception.
+      TIER 3 — CONTENT, WHICH NO STATIC CHECK REACHES AT ANY EFFORT. The
+        emoji on a conversation row are inside the title string, so the rule
+        being broken is about WHAT A STRING MEANS. No computed style
+        contains it, no assertion can be written for it, and a model wrote
+        it. THIS CANNOT BE SOLVED IN THE DESIGN LAYER — it can only be MOVED
+        UPSTREAM, to wherever the content is generated. A design rule
+        applied to generated content is a rule with no enforcement point at
+        all unless the generator carries it.
+    KNOWING THE TIER IS THE POINT. Tier 2 discovered and left as a note is a
+    failure of will; tier 3 pursued inside the design layer is a waste of it.
     SO: A CLEAN LINT RUN IS A STATEMENT ABOUT THE CLASS LAYER, NOT ABOUT THE
     PRODUCT. Any surface that draws imperatively is outside the guarantee
     and needs its own check — an assertion on the rendered output, or a

@@ -8,6 +8,72 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.2) — The example that outranked its own rule, and the ground nobody named
+
+The 08-28 pass earlier today wrote `color.action.fill-rule-which-green` and got
+the rule right. It then closed the entry with an example — *"an ENACTED stamp is
+`--color-success` ink … It is NOT the action green"* — that reads absolutely.
+**Read alone, the example forbids in dark exactly what the rule requires there.**
+Measured on the real page grounds rather than a nominal canvas: light, `success`
+**4.99:1** vs `action` **2.64:1**; dark, `action` **6.72:1** vs `success`
+**3.56:1**. The absolutist reading ships a 3.56:1 label. The code was never
+wrong — `RubberStamp.tsx` ships `text-success dark:text-action`, which is the
+rule applied — so this was purely about the next reader, who finds the example
+before the rule.
+
+The example now carries the switch. **The general lesson is that an example
+placed after a rule outranks it in practice,** because the example is what a
+hurried reader reads; an example that can be mistaken for the rule has to state
+the rule's conditions itself.
+
+**The queue found one instance of a class; the class had four more members.**
+`fill-rule-which-green` was ratified without sweeping the sites that restate it,
+and four of them still taught flat "action green for enacted" — the accent
+`colors:` field, the Archive register prose, the tactile-accents inventory, and
+`README.md`. Under the ratified rule those are not merely stale: **the spec was
+instructing a 2.64:1 contrast failure in four places while the code did the
+right thing.** All four now name the switch. This is the "grep the entry points
+in the same pass" discipline failing on its first outing after being written
+down, and `README.md` was again the last file to hear about it.
+
+**Two oxblood Known Divergences deleted, not softened.** Both recorded
+production stamping ENACTED in `text-red-900` and both said *Spec ahead — the
+code has to migrate.* The code migrated. A resolved divergence left standing is
+worse than no record, because it teaches the next reader that none of the other
+divergence entries can be trusted either.
+
+**New: `color.action.fill-rule-ink-ground`.** Claim 2 says `--color-success` is
+the light-mode ink; it never said what it is legible *on*, and the answer moves
+fast enough to matter. Success ink measures **5.48:1 on pure white, 4.99:1 on
+the neutral-100 page ground the app actually renders, and 4.32:1 one plate step
+down — a fail.** `RubberStamp` is background-transparent, so its contrast is a
+property of its placement, not of the component. The number in the component's
+own comment (5.48:1) is measured against a ground the page does not have and
+overstates the headroom by roughly a full point.
+
+The sharp end of this is a **10% ceiling on green tint plates carrying green
+ink.** `AskSummaryCard`'s chip ships `bg-action/10` behind `text-success` and
+measures **4.52:1** — clearing the bar by two hundredths. At 15% it is 4.31:1
+and fails. That 10% is a framework step nobody chose: it survives on
+measurement, not on intent, and it has no room to grow. Written down before
+someone "rounds it up" to a nicer number.
+
+**Version scheme, ratified.** `v2026.08.28` was already tagged and this pass
+landed the same UTC day, so the date-only scheme had no way to express a second
+ratification. Serial from the second pass onward — `v2026.08.28.2` — dated in
+UTC because the first 08-28 pass already was, and a mixed convention makes tag
+order stop matching history order.
+
+**Left open** (in `RATIFY.md`): whether a *tint* plate is a plate for the
+purposes of claim 1 — does a tinted chip read as a control? This entry settles
+the contrast half only. It needs a render of the chip at several alphas beside a
+real button, not an argument.
+
+**Back to the code session as conformance, no decision needed:**
+`RubberStamp.tsx` ships `tracking-[0.1em]` with a comment claiming "per spec";
+chrome tracking is `--track-chrome` and the hard rules say 0.12em. It also names
+`hexp-60`, a deprecated alias, where `sans-chrome` is the live token.
+
 ## 2026-08-28 — The fill rule's missing sentence, and a rule hiding in a profile (stage 2)
 
 Stage 2 landed the colour tokens: `--color-action` exists, the CTA is flat green

@@ -339,9 +339,11 @@ Imagery color: **monochromatic, slate-700 ink, low chroma**. The Blue Hour palet
 - **No** colored left-border accents. **No** rounded-corner-with-gradient-only ornamentation.
 - Status is communicated by a **dot, badge, or rubber stamp** — never by tinting the entire card.
 - Avatars are **Midnight Indigo**, not a wax seal. An avatar is the user's trail.
-- Rubber stamps: **action green** for enacted/signed, slate for procedural, amber for vetoed, red-600 only for dead. Oxblood left the stamp palette in 2026-08.
+- Rubber stamps: **green ink** for enacted/signed — `--color-success` on light, `--color-action` under inversion, never action green as light-mode ink — slate for procedural, amber for vetoed, red-600 only for dead. Oxblood left the stamp palette in 2026-08.
 
 **The fill rule.** Action and success share a hue, so fill carries the difference: **a green plate is a control; green ink is a report.** Fill means *press me*. A numeral, chip, stamp, rule, or check — anything green that is not a filled plate — states a fact that is already true. Meters and ribbons are exempt: they encode quantity, not affordance. The rejected alternative (filled = done, outline = available) ghosts the primary action and makes every state on the page look pressable.
+
+**Which green is ink is a contrast fact, not a taste one.** `--color-action` is a plate colour; as text it measures 2.62:1 and is forbidden. Green ink is `--color-success` on light, switching to `--color-action` under inversion. And it is only as legal as the ground under it — success ink is 4.99:1 on the neutral-100 page ground but 4.32:1 one plate step down, so measure against the ground a thing actually lands on. A green tint plate carrying green ink caps at 10%.
 
 ---
 

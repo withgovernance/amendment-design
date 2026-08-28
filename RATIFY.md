@@ -50,7 +50,13 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
-*(nothing queued — emptied by the 2026-08-28 pass)*
+### Is a green TINT plate a "plate" for the purposes of the fill rule?
+- **kind:** spec silent
+- **found:** the 2026-08-28.2 ratification pass, while measuring grounds. `AskSummaryCard.tsx:113` ships a pill with `bg-action/10` behind `text-success dark:text-action`. It is not pressable. Under `fill-rule` claim 1, "a filled green plate is a control" — but the rule says nothing about alpha, and a 10% tint plainly does not read like the CTA. This chip survived the stage 2 green audit, so somebody already made this call implicitly; nothing records it.
+- **evidence:** the CONTRAST half is settled and is now in `color.action.fill-rule-ink-ground` — the chip measures 4.52:1 on the neutral-100 page ground, and a green tint plate carrying green ink caps at 10%. The AFFORDANCE half has no measurement at all, which is the whole problem: "does it read as a control" has been argued from prose only.
+- **proposes:** nothing yet — deciding this from a description is how the accents inventory ended up with nine sanctioned-sounding things nobody had built.
+- **blocks:** nothing shipping. It blocks the next green audit from being repeatable: without a threshold, every reviewer re-derives where tint stops being fill, and the answer drifts with whoever is reviewing.
+- **waiting on:** a render — the chip at 0% / 10% / 20% / 40% tint, beside a real `role-action` button, both schemes, at 390 and 1440. The alpha where the chip starts attracting a click is the rule. Cheap to produce and nobody has produced it.
 
 ---
 
@@ -58,6 +64,19 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.2)** — the ENACTED example rewritten to carry the
+  which-green switch instead of reading absolutely (the absolutist reading ships
+  a 3.56:1 dark label; the code was already correct). **The finding generalised:
+  an example placed after a rule outranks it in practice**, because the example
+  is what a hurried reader reads. The same class was then swept — four more
+  sites still taught flat "action green for enacted" (accent `colors:` field,
+  Archive register prose, accents inventory, `README.md`), which under the
+  ratified rule is the spec instructing a 2.64:1 failure. Two resolved oxblood
+  Known Divergences **deleted, not softened** — production migrated. New
+  `color.action.fill-rule-ink-ground`: measure ink against the ground it lands
+  on, never white (success is 4.99:1 on the page ground, 4.32:1 one plate step
+  down), and **green tint plates carrying green ink cap at 10%** (4.52:1; 15%
+  fails). Version scheme given a same-day serial, dated UTC.
 - **2026-08-28** — the stage 2 queue, emptied. `fill-rule-which-green` (the
   fill rule was missing a sentence, not contradicting itself: fill-vs-ink is
   global; *which* green is ink is a contrast fact — `success` light, `action`

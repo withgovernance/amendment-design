@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28
+# spec-version:   v2026.08.28.2
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -28,6 +28,14 @@
 #                    gets a version that silently lacks them.
 #
 # Never hand-edit this file's copy in a consuming repo. Consumers pin a tag.
+#
+# VERSION SCHEME, ratified 2026-08-28: `vYYYY.MM.DD`, dated in UTC, with a
+# `.N` serial appended from the SECOND ratification onward on the same UTC
+# day (v2026.08.28, then v2026.08.28.2). The scheme was silent on this and
+# the second pass of 2026-08-28 hit it immediately: the date was taken and
+# the only alternatives were overwriting a published tag or inventing a
+# convention per session. Dated in UTC because the first 08-28 pass already
+# was, and a mixed convention makes tag order stop matching history order.
 # ---------------------------------------------------------------------------
 name: Living Document
 description: >-
@@ -192,9 +200,15 @@ color:
             what the "single, scoped exception" clause in the prose section
             was distinguishing, and reading the scope as global deletes the
             semantic family's entire reason to exist.
-      SO: an ENACTED stamp is legal and is --color-success ink (a bill
-      enacted is success in its conventional sense). It is NOT the action
-      green, which would fail contrast as ink. A green plate that cannot be
+      SO, AS AN INSTANCE AND NOT A RULE: an ENACTED stamp is legal green
+      ink (a bill enacted is success in its conventional sense), which
+      means --color-success on light and --color-action under inversion,
+      per the switch in (2). It is never --color-action on light. AMENDED
+      2026-08-28: this closing line previously read absolutely -- "it is
+      --color-success ink ... NOT the action green" -- which, read alone,
+      forbids in dark exactly what (2) requires there and ships the label
+      at 3.56:1. The example is what a hurried reader reads, so the
+      example has to carry the switch. A green plate that cannot be
       pressed is a violation under (1) regardless of which token it uses.
     fill-rule-corollary: >-
       A RULE THAT LIVES ONLY INSIDE A PROFILE OR A REGISTER IS INVISIBLE TO
@@ -203,6 +217,30 @@ color:
       while writing a profile, hoist it to the section it actually governs
       and let the profile cite it — profiles are where general rules go to
       hide, because everyone reads them as being about email.
+    fill-rule-ink-ground: >-
+      RATIFIED 2026-08-28. GREEN INK IS ONLY AS LEGAL AS THE GROUND UNDER
+      IT, AND "ON LIGHT" IS NOT A GROUND. (2) says --color-success is the
+      light-mode ink; it does not say what it is legible ON, and the
+      answer moves fast enough to matter. MEASURED, success ink:
+      5.48:1 on pure white, 4.99:1 on the neutral-100 page ground the app
+      actually renders, 4.32:1 on neutral-200 — a FAIL one plate step
+      down. So:
+        - Measure ink against THE GROUND IT LANDS ON, never a nominal
+          canvas. The shipped stamp is background-transparent; it inherits
+          whatever it is placed on, so its contrast is a property of the
+          placement, not of the component. A number measured against white
+          overstates the headroom by roughly a full point.
+        - A GREEN TINT PLATE CARRYING GREEN INK CAPS AT 10%. Measured on
+          the neutral-100 page ground, --color-action at 10% behind
+          --color-success ink is 4.52:1 — clearing the bar by two
+          hundredths. At 15% it is 4.31:1 and fails. The 10% that ships is
+          a framework step nobody chose; it survives on measurement, not
+          on intent, and it has no room to grow. Under inversion the same
+          plate with --color-action ink has more slack (6.03:1 at 10%),
+          which is why this reads as a light-mode ceiling.
+      Whether a tint plate is a PLATE for the purposes of (1) — that is,
+      whether a tinted chip reads as a control — is a separate and still
+      open question. This entry governs contrast only.
   # -----------------------------------------------------------------------
   # NEUTRAL — the paper. Zinc scale, chosen for a warm-gray undertone that
   # complements slate-blue better than pure gray.
@@ -1550,14 +1588,16 @@ tactileAccents:
       ink-break: "Alpha noise 0–15% varying across the mark. Clean geometry."
       when: "Bill detail page, sits adjacent to the title row. One stamp per bill."
       owner: "Jason — head of product & design, The Governance Company"
-      colors: "Action green for positive status (enacted, signed) — success and action are one hue now, and a red ENACTED contradicts that; slate-700 for procedural (in committee, introduced, engrossed, enrolled); warning amber-700 for vetoed; danger red-600 only for truly dead/failed. Oxblood left the stamp palette in 2026-08."
+      colors: "Green ink for positive status (enacted, signed) — per color.action.fill-rule-which-green that is --color-success on light and --color-action under inversion, NOT action green on light, which is 2.62:1 as text. Success and action are one hue, so a red ENACTED would contradict the palette; slate-700 for procedural (in committee, introduced, engrossed, enrolled); warning amber-700 for vetoed; danger red-600 only for truly dead/failed. Oxblood left the stamp palette in 2026-08. CORRECTED 2026-08-28: this field said \"action green\" flat, which the 08-28 which-green ratification forbids as ink."
       implementation: "app/(data)/oversight/[jurisdiction]/bill/[bill]/components/RubberStamp.tsx"
-      known-divergence: >-
-        Production ships OXBLOOD (`text-red-900`) for enacted/signed, commented
-        as "the wax-seal positive register". The spec retired oxblood from the
-        stamp palette in 2026-08 (action and success are one hue; a red ENACTED
-        contradicts the palette). Spec ahead — the code has to migrate. Do NOT
-        un-retire oxblood to match the code.
+      divergence-resolved: >-
+        CLOSED 2026-08-28. This entry recorded oxblood (`text-red-900`) shipping
+        for enacted/signed and called it Spec ahead. The code migrated:
+        RubberStamp.tsx now ships success ink on light and action under
+        inversion, which is the which-green rule applied. The divergence is
+        gone and the record is deleted rather than softened — a resolved
+        divergence left standing teaches the next reader that none of the
+        others can be trusted either.
     guilloche:
       owner: "Jason — head of product & design, The Governance Company"
       description: >-
@@ -2799,8 +2839,10 @@ surface that deliberately echoes the physical legislative record.
   The column for body text holds to the body measure — 69 characters,
   28rem; metadata grids expand wider.
 - **Palette emphasis:** semantic status drives the color. Enacted bills
-  carry an action-green **ENACTED** rubber stamp — success and action are
-  one hue, so a red ENACTED would contradict the palette. Vetoed bills carry a
+  carry a green-ink **ENACTED** rubber stamp — `--color-success` here on
+  cream, `--color-action` under inversion, per the which-green switch;
+  success and action are one hue, so a red ENACTED would contradict the
+  palette. Vetoed bills carry a
   warning-amber **VETOED** stamp. In-committee bills carry a slate
   procedural stamp. The primary visual accent is the status stamp, not
   a button.
@@ -3151,11 +3193,12 @@ a bug, and unlike a status typed from memory, it is greppable.
 
 - **Rubber-stamp status** — rectangular or oval border, 2 px stroke,
   2–4° rotation, chrome-width uppercase typography, used for bill status on
-  Archive surfaces. One stamp per bill. Action green for enacted/signed,
-  amber for vetoed, slate for procedural, red-600 only for dead. It
-  carries real information and it appears on every bill. *Known
-  divergence: production still stamps ENACTED in oxblood, which the
-  palette retired. The code has to migrate; the spec does not move.*
+  Archive surfaces. One stamp per bill. Green ink for enacted/signed —
+  `--color-success` on light, `--color-action` inverted, never action
+  green as light-mode ink — amber for vetoed, slate for procedural,
+  red-600 only for dead. It carries real information and it appears on
+  every bill. *The oxblood divergence recorded here is closed: the code
+  migrated 2026-08.*
 - **Guilloche** — engraved line-work bands, top and bottom, on every
   Receipt artifact. Overlapping low-amplitude sine waves, 20–40 lines per
   band, slate-700 at 20–30%. The visual signature of an issued document

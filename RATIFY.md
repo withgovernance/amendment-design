@@ -50,14 +50,19 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
-### Uppercase at display size: hard rule 5, or the ceremonial register?
-- **kind:** two readings
-- **found:** stage 8, sweeping the remaining sans-stack headings. Hard rule 5 reads absolute — "uppercase belongs to chrome only: 12px, wdth 125, 0.12em" — but `role-ceremonial` and `--sans-ceremonial` both exist, and the ceremonial register is distinguished precisely by being tracked uppercase at a size chrome never reaches. I applied the exception-grep procedure and found the exception is a whole role, not a clause.
-- **evidence:** `BillDetailHeader`'s `h1` is `sans-ceremonial` uppercase at `text-2xl → md:text-4xl`, carrying the bill IDENTIFIER (the title is the serif `<p>` below it), and it carries an inline comment from the 1c sweep saying "Stays sans: this is the chrome register, not a heading voice. Do not sweep to serif." That one is deliberate and right, and `typography` assigns bill *titles* to `--serif-display` — which this is not. But **four other sites reach display size using the CHROME width preset rather than the ceremonial one**: `oversight/bills/page.tsx:76` (`sans-chrome text-2xl`), `dispatches/page.tsx:309` and `dispatches/health/page.tsx:305` (`sans-chrome text-xl`), `NotFoundContent.tsx:11` (`sans-chrome text-2xl`). Under the literal rule all five are violations; under the ceremonial reading, one is correct and four are citing the wrong preset.
-- **proposes:** state hard rule 5 as governing the CHROME register specifically, and say that ceremonial is the sanctioned uppercase-at-size register with `--sans-ceremonial` as its preset. Then the four sites are a one-line conformance fix rather than a judgement call, and the rule stops reading as a blanket ban on something the type system deliberately provides.
-- **blocks:** the four sites, left as shipped. I did not sweep them, because "uppercase heading" is the rule most likely to be applied literally by the next session and I would rather it be stated than guessed.
+### The consumer's `.claude/skills/` copy of the stylesheet must become a symlink
+- **kind:** conformance, in the consumer's repo — recorded here because the fix is not mine to make
+- **found:** the 2026-08-28.9 pass, grepping for HEXP in a path nobody was watching. `.claude/skills/amendment-design/colors_and_type.css` is a REGULAR FILE, not the symlink `design/` uses, and carries its own `SKILL.md` differing from the canonical one.
+- **evidence:** eight ratifications stale in a single day — `--color-danger` at the red-600 value that fails AA on the opaque ground, no `--canvas-live`, `--hexp-*` aliases present after their deletion. It is the file an agent LOADS AS ITS SKILL in that repo, so the staleness is actively taught rather than merely sitting there.
+- **proposes:** symlink both files to the canonical repo, exactly as `design/` already is. A copy that must be remembered will be forgotten.
+- **blocks:** nothing shipping, and everything downstream of it — any session working in the consumer repo is reading an eight-version-old system and will produce work that looks like it is ignoring the design system while faithfully obeying a copy of it.
 
-*(nothing queued for ratification)*
+### `tracking-is-half-the-register` is outstanding at 43 sites
+- **kind:** conformance, in the consumer's repo
+- **found:** verifying the stage 8 close-out, which reported the sweep complete.
+- **evidence:** 36 non-story sites still compose `sans-chrome` + `uppercase` + a literal Tailwind tracking step (0.025 / 0.05 / 0.1em) where `--track-chrome` is 0.12em; 7 more carry no tracking at all. Ten were fixed.
+- **proposes:** a lint rule rather than another sweep — `sans-chrome` + `uppercase` without `role-label-caps` is greppable in a way "did someone rebuild a register here" is not.
+- **blocks:** nothing, but it is the largest remaining known divergence and it will regrow without the rule.
 
 ## Needs a person — cannot close from inside the toolchain
 
@@ -78,6 +83,17 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.9)** — `retired-axis-fails-silently`: HexStateMap
+  was setting `'HEXP' 100` **in live code** on a face with no such axis; CSS
+  ignores an unknown variation axis, so the line ran, warned nothing, did
+  nothing, and read as deliberate. **The permanent grep set is a correctness
+  tool, not documentation hygiene** — and that is why it must cover comments and
+  code alike, and why a retired name should be deleted rather than left
+  resolving. `the-skill-directory-is-a-third-home`: the consumer carries a third,
+  non-symlinked copy of the stylesheet in `.claude/skills/`, eight ratifications
+  stale in one day, and it is what an agent loads as its skill — trap 1 in a new
+  directory and worse, because the staleness is taught rather than stored. Both
+  consumer-side fixes are queued above.
 - **2026-08-28 (v2026.08.28.8)** — `hexp-*` aliases **deleted** from the token
   layer and the spec; a reference now fails loudly rather than resolving,
   because a working fallback is what lets a retired name survive a grep.

@@ -8,6 +8,64 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.9) — A retired axis in live code, and a third home nobody was watching
+
+### `retired-axis-fails-silently` — the grep set is a correctness tool
+
+`HexStateMap` was setting `font-variation-settings: 'HEXP' 100` **in live code**,
+on a face with no such axis. CSS does not error on an unknown variation axis — it
+ignores it. **The line ran, produced no warning, produced no effect, and looked
+like a deliberate typographic decision to every reader for as long as it was
+there.**
+
+This changes what the permanent grep set is *for*, and that has been wrong in this
+file until now. The set was justified by prose ageing badly. The real reason is
+that `font-variation-settings`, like several CSS properties, **fails silently on a
+name it does not know** — so a retired axis in live code is indistinguishable from
+a working one at every level except the rendered glyph. Not the compiler, not the
+type checker, not a rendering test that doesn't measure the axis. **A grep will.**
+
+And it is why the set must cover comments *and* code: the same string in a comment
+is a stale instruction; in a declaration it is a stale instruction **the browser is
+dutifully ignoring.** The second is worse and looks identical.
+
+Corollary, and it retroactively justifies deleting the `hexp-*` aliases rather than
+keeping them resolving: **a name that fails loudly is found in one run; a name that
+resolves to something reasonable is found when someone greps for it, which is to
+say maybe never.**
+
+### `the-skill-directory-is-a-third-home`
+
+Found by grepping for HEXP in a path nobody was watching. The consumer carries a
+**third copy** of this stylesheet at `.claude/skills/amendment-design/` — a regular
+file, not the symlink `design/` uses — plus its own `SKILL.md` that differs from
+the canonical one.
+
+**Measured staleness: eight ratifications behind, in a single day.** It carries
+`--color-danger` at the red-600 value that fails AA on the opaque ground, no
+`--canvas-live`, and the `--hexp-*` aliases that had just been deleted.
+
+This is **trap 1 repeating in a new directory**, and worse than the original
+because of what that directory *is*: it is the file an agent **loads as its skill**
+when working in the consumer repo. The staleness doesn't sit quietly in a docs
+folder — it is actively taught to the next session, which then produces work that
+looks like it is ignoring the design system while faithfully obeying a copy of it.
+That is precisely the failure the trap list was written for, reproduced eight
+versions deep in one day. **The fix is not a sync, it is a symlink** — `design/`
+has stayed correct through every ratification this week for exactly one reason: it
+cannot drift.
+
+### Recorded, not ratified: the tracking sweep is not complete
+
+The stage 8 report says the hand-assembled-register sweep "is swept now." It is
+not. **36 non-story sites** still compose `sans-chrome` + `uppercase` + a literal
+Tailwind tracking step (`tracking-wide` 0.025em, `wider` 0.05em, `widest` 0.1em)
+where `--track-chrome` is 0.12em, plus 7 more carrying no tracking at all. Ten
+were fixed. This is not a new rule — it is `tracking-is-half-the-register` still
+outstanding at scale, and it is the right thing for the lint rule to own rather
+than another sweep: a role class is greppable in a way "did someone rebuild a
+register here" is not.
+
 ## 2026-08-28 (v2026.08.28.8) — The aliases are deleted; the axis is not gone
 
 Stage 8 moved 77 `hexp-*` call sites across 37 files onto the width presets and

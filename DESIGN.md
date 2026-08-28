@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.8
+# spec-version:   v2026.08.28.9
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -90,6 +90,30 @@ color:
       POSITION IT WAS TAKEN AT. Two sessions measuring the same token on the
       same page disagreed by a factor of two, and both were correct for
       where they sampled. Quote the position or do not quote the number.
+  the-skill-directory-is-a-third-home: >-
+    RECORDED 2026-08-28, found by grepping for HEXP in a path nobody was
+    watching. THE CONSUMER CARRIES A THIRD COPY OF THIS STYLESHEET at
+    .claude/skills/amendment-design/colors_and_type.css — a REGULAR FILE,
+    not the symlink the design/ directory uses — plus its own SKILL.md that
+    differs from the canonical one.
+    MEASURED STALENESS at the moment it was found: eight ratifications
+    behind in one day. It carries --color-danger at the red-600 value that
+    fails AA on the opaque ground, no --canvas-live, and the --hexp-*
+    aliases that had just been deleted.
+    THIS IS TRAP 1 REPEATING IN A NEW DIRECTORY, and worse than the original
+    because of WHAT that directory is: it is the file an agent LOADS AS ITS
+    SKILL when working in the consumer repo. So the staleness does not sit
+    quietly in a docs folder — it is actively taught to the next session,
+    which then produces work that looks like it is ignoring the design
+    system while faithfully obeying a copy of it. That is the exact failure
+    the trap list was written for, reproduced eight versions deep in a
+    single day, which is the measure of how fast a copy rots when the system
+    is moving.
+    THE FIX IS NOT A SYNC, IT IS A SYMLINK. design/ already resolves to the
+    canonical repo and has stayed correct through every ratification this
+    week precisely because it cannot drift. A copy that must be remembered
+    will be forgotten; there is one home. The consumer owns that checkout,
+    so this is recorded here and handed over rather than fixed from here.
   materials-are-a-second-copy: >-
     RECORDED 2026-08-28. The token EXTRACTION sanctioned on 2026-08-28
     covers colour and radii; THE MATERIALS ARE NOT EXTRACTED. The consumer
@@ -713,6 +737,30 @@ typography:
     SO a bill detail page is correct with the identifier ceremonial and the
     title in serif beneath it — the designation is set, the human sentence
     is read.
+  retired-axis-fails-silently: >-
+    RATIFIED 2026-08-28, and it changes what the permanent grep set IS FOR.
+    HexStateMap was setting font-variation-settings: 'HEXP' 100 IN LIVE
+    CODE, on a face with no such axis. CSS does not error on an unknown
+    variation axis — it ignores it. So the line ran, produced no warning,
+    produced no effect, and looked like a deliberate typographic decision
+    to every reader for as long as it was there.
+    THE GREP SET IS A CORRECTNESS TOOL, NOT DOCUMENTATION HYGIENE. That
+    distinction has been wrong in this file until now: the set was justified
+    by prose ageing badly. The real reason is that font-variation-settings,
+    like several CSS properties, FAILS SILENTLY ON A NAME IT DOES NOT KNOW —
+    so a retired axis in live code is indistinguishable from a working one
+    at every level except the rendered glyph. Neither the compiler, the type
+    checker, nor a rendering test that does not measure the axis will catch
+    it. A grep will.
+    AND IT IS WHY THE GREP SET MUST COVER COMMENTS AND CODE ALIKE. The same
+    string in a comment is a stale instruction; in a declaration it is a
+    stale instruction the browser is dutifully ignoring. The second is worse
+    and looks identical.
+    COROLLARY FOR ANY RETIRED NAME: prefer deleting the alias to keeping it
+    resolving. A name that fails loudly is found in one run; a name that
+    resolves to something reasonable is found when someone greps for it,
+    which is to say maybe never. This is why the hexp-* aliases were deleted
+    rather than kept (see hexpAxisRetired).
   tracking-is-half-the-register: >-
     ESCALATED 2026-08-28 from the breadcrumb to the general case. The
     breadcrumb entry ratified 2026-08-27 that shipping chrome's width

@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.15
+# spec-version:   v2026.08.28.16
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -715,6 +715,32 @@ typography:
   tracking:
     track-chrome:     "0.12em"
     track-ceremonial: "0.20em"
+  measure-before-you-shrink: >-
+    RATIFIED 2026-08-28, and it is the missing half of a rule this file has
+    had since the stat-caption question. That ruling said: IF A LABEL NO
+    LONGER FITS AT 12PX, THE LAYOUT IS THE PROBLEM. It answered the case
+    where a constraint is real. IT NEVER ANSWERED THE COMMON ONE, which is
+    that most sub-floor type has NO CONSTRAINT BEHIND IT AT ALL — it was
+    shrunk by habit, because small type reads as fine print and a bill's
+    title page is supposed to look like fine print.
+    MEASURED on the held statutory surface at 390: "HOUSE OF
+    REPRESENTATIVES", the longest string in the title-page apparatus, sets
+    251px at 12px with --track-chrome, in a column 358px wide. IT FITS WITH
+    OVER 100PX TO SPARE, and it had been shipping at 11px. Nothing was
+    tight. Nothing had to give. Four more strings in the same block were
+    under the floor for the same non-reason.
+    SO, BEFORE LOWERING TYPE BELOW THE FLOOR — WHICH YOU MAY NOT DO — AND
+    BEFORE CONCLUDING THE LAYOUT MUST CHANGE: measure the string at 12px in
+    the container it actually lands in. The three outcomes are different
+    work. It fits: raise it, change nothing else, and that is most cases.
+    It does not fit and the container can widen: widen it. It does not fit
+    and the container cannot widen: the layout is the problem, per the
+    stat-caption ruling, and that is the rare case rather than the default.
+    WHY THIS NEEDS SAYING: the expensive reading of the floor rule is
+    "sub-12px means a layout redesign", which makes every violation look
+    costly and is why forty of them sat unfixed behind a held surface. Most
+    are a one-line change. The measurement is what tells you which kind you
+    have, and it takes a minute.
   uppercase-has-two-homes: >-
     RATIFIED 2026-08-28. UPPERCASE IS LEGAL IN EXACTLY TWO REGISTERS, and
     the hard rule naming only one is the fourth instance of a general rule

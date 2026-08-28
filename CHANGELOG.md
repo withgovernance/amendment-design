@@ -8,6 +8,56 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.16) — Most sub-floor type has no constraint behind it
+
+### `measure-before-you-shrink`
+
+The stat-caption ruling said **if a label no longer fits at 12px, the layout is the
+problem.** That answers the case where a constraint is real. **It never answered
+the common one** — that most sub-floor type has no constraint behind it at all. It
+was shrunk by habit, because small type reads as fine print and a bill's title page
+is *supposed* to look like fine print.
+
+Measured on the held statutory surface at 390: **"HOUSE OF REPRESENTATIVES", the
+longest string in the title-page apparatus, sets 251px at 12px with
+`--track-chrome`, in a column 358px wide.** It fits with over 100px to spare, and
+it had been shipping at 11px. Nothing was tight. Four more strings in the same
+block were under the floor for the same non-reason.
+
+So the rule now has both halves. Before lowering type below the floor — which you
+may not do — and before concluding the layout must change, **measure the string at
+12px in the container it actually lands in.** Three outcomes, three different jobs:
+it fits, so raise it and change nothing else *(most cases)*; it does not fit and
+the container can widen, so widen it; it does not fit and the container cannot
+widen, so the layout is the problem *(the rare case, not the default)*.
+
+**Why it needs saying:** the expensive reading of the floor rule is "sub-12px means
+a layout redesign", which makes every violation look costly — and is why forty of
+them sat unfixed behind a held surface. Most are a one-line change. The measurement
+tells you which kind you have and it takes a minute.
+
+### The composition pass this came out of
+
+The statutory surface was held back deliberately as a composition problem rather
+than a sweep, which was right — but the composition problem turned out to be
+smaller and more specific than "decide what the text column is."
+
+**The column is already correct.** At 1440 the serif body sets **69 characters** in
+605px, which is `measure.body`'s stated value exactly. Someone got that right by
+hand. At 390 it is 33 characters, which is simply what 390px gives you; not a
+violation.
+
+**The actual defect is a gutter sized for content it never holds.** In the table of
+contents a single-digit section number occupies a **49px slot in a 302px row —
+16% of the line for one character**, while the title beside it wraps to two lines.
+At the floor a three-digit number needs about 24px. The reclaimed space is the
+difference between one line and two for most entries.
+
+And the section numbers in the body are already run-in (`SEC. 1.` sitting inline
+with its heading), which is how a statute is actually typeset — so they can go to
+the floor at no structural cost. **The composition was mostly sound; what it had
+was one mis-sized slot and a page of type shrunk for no reason.**
+
 ## 2026-08-28 (v2026.08.28.15) — A guard that reports success it did not earn
 
 ### `a-guard-may-degrade-but-never-silently`

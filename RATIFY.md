@@ -88,6 +88,15 @@ fragile.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.16)** — `measure-before-you-shrink`, the missing half
+  of the stat-caption ruling. That one answered "the label does not fit"; this one
+  answers the common case, where **nothing was tight and the type was shrunk by
+  habit**. Measured: "HOUSE OF REPRESENTATIVES" sets 251px at 12px with
+  `--track-chrome` in a 358px column at 390 — fits with 100px to spare, was
+  shipping at 11px. Three outcomes now named, and "the layout is the problem" is
+  the rare one, not the default. Came out of the statutory composition pass, where
+  the column was already correct at 69 characters and the real defect was a TOC
+  gutter giving 49px to a single digit.
 - **2026-08-28 (v2026.08.28.15)** — `a-guard-may-degrade-but-never-silently`,
   **revising a position both sides had already agreed on.** "A guard that skips on
   a missing credential is not a guard" is right about *silence* and wrong about

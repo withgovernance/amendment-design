@@ -8,6 +8,52 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.11) — The entry points, which spent the day being right about everything except themselves
+
+Ten ratifications landed today and **not one of them touched `SKILL.md`** — the
+file whose own trap entry records that it taught Merriweather, oxblood, wax seals
+and a superseded UI kit for 24 days after each was retired. It had gone stale
+again, in a single day, in exactly the documented way. Nothing here is a new
+decision; it is the sweep the ten passes owed and never paid.
+
+**`SKILL.md` was wrong or incomplete on eleven counts.** It taught `red-600` as
+the danger value (moved to red-700 this morning, for failing AA on the ground
+this file also failed to mention). It said uppercase "belongs to chrome alone"
+while `role-ceremonial` sat in the stylesheet being defined by display-size
+uppercase. It stated the 44px floor and the transform prohibition as
+unconditional, both of which acquired exceptions today. It said motion lives on
+two surfaces without the three things that were never on the budget. It named the
+aurora band's hazard while implying glass is the remedy, which measurement retired
+this morning. And **it did not mention the which-green switch at all** — the most
+re-litigated rule in this system's history, absent from the file most likely to be
+the only one read.
+
+Also corrected: the register table's canvas column now names `--canvas-live`; a
+step warned against pulling from `ui_kits/web/`, **a directory that did not
+survive the repo split** — the warning outlived the thing it warned about; and the
+"check `spec-version` before citing" instruction now appears in the file that most
+needs it rather than only in the file that is already current.
+
+**`_adherence.oxlintrc.json` sanctioned twelve `--hexp-*` entries** — as valid
+tokens, three versions after they were deleted. A lint rule that permits a deleted
+token is worse than no rule: it is a machine-checked assertion that the wrong
+thing is right.
+
+**The designer agent's own instructions named two directories that do not exist**
+— `specimens/` (it is `preview/`) and `history/` (the audits and handoffs are
+loose at the repo root). Both flattened by the repo split, neither noticed for a
+day of continuous work inside the repo.
+
+**The pattern, stated once so the next pass can check it cheaply.** Every
+correction above is the same shape as the findings the ten passes made about the
+consumer: a value taught in a second location, a rule stated absolutely because
+its exception lived elsewhere, a path that outlived its target. The passes were
+looking outward the whole time. **A ratification pass should end by grepping its
+own entry points for what it just retired** — the discipline already written down
+as "when a decision retires a value, grep the entry points for it in the same
+pass," which was followed for `DESIGN.md` and `colors_and_type.css` and not once
+for `SKILL.md`.
+
 ## 2026-08-28 (v2026.08.28.10) — What the role layer is actually for
 
 ### `composed-register-fails-silently`

@@ -8,6 +8,71 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.27) — The active row was ratified from a recommendation that asked to be measured
+
+`.23` states that the active nav row *"loses its fill and carries ink, weight and the
+filled glyph."* **The source of that sentence recommended it and said explicitly: this
+is a sub-decision, so measure it rather than assume.** I ratified the recommendation
+without the measurement — and the recommended 3c composition shows a **neutral fill**,
+which contradicts it.
+
+What *is* measured stands: **Midnight Indigo as a mark** dies on the aurora at 1.22:1
+and 1.34:1 in dark. That forecloses an indigo mark, and it is why `primary` has no role
+in chrome once no plate does. What that number does **not** cover: a **neutral tint is
+not indigo ink.** `bg-black/5` on the aurora is a different question from
+`--color-primary` as ink, and nothing has been measured about it.
+
+**So the shipped neutral tint stays until the dark render exists**, and the spec now
+says so rather than instructing a change on the strength of an unmeasured sentence.
+Pending: the active row in dark, four ways — neutral tint, ink and weight, filled
+glyph, and 3c's treatment.
+
+**An over-firm ratification is more dangerous than a missing one.** A gap gets queued;
+a sentence written with this system's usual confidence gets conformed to. This one
+would have removed a treatment the recommended design actually uses.
+
+---
+
+## 2026-08-28 (v2026.08.28.26) — Chromatic retired; Storybook local is the instrument
+
+**Decided by Jason.** The account is not renewed, Storybook runs locally, and stories
+are to be created and managed **liberally** to make sure everything looks right. The
+standing *"nobody has walked the diffs"* item closes with it — build 3761 took no
+snapshots, so nothing was ever canonised and there is no baseline to lose.
+
+**Named rather than assumed: there is now no automated visual regression detection.**
+Nothing will report that a token change moved pixels on a surface nobody opened. The
+`.18` chrome retint and the `.23` recession would each have lit up every route; neither
+would be caught automatically today.
+
+**What catches things instead is a real set rather than a gap:** the person iterating
+in Storybook, the designer's independent review pass at both widths and both schemes,
+`design:lint`, and the a11y assertions in stories — which have already caught two real
+failures this migration. Human-paced and story-scoped. Adequate at this size, and not
+equivalent to a diff on every route.
+
+**Liberal stories turn this from a loss into a method.** Trap 3 says nothing unrendered
+stays true; story coverage is the direct answer to it. It also reaches the **tier-2
+blind spot** — `HexStateMap` styles imperatively and `design:lint` cannot read it, but a
+story with a rendered-output assertion can. What makes a story count, since 563 stories
+nobody opens is not coverage either: it renders (one was deleted this migration for
+rendering nothing), it carries the a11y assertion, and it covers a **canonical state**
+rather than duplicating one.
+
+Available at zero new dependency cost if a regression ever bites: `@vitest/browser`
+4.1.9 already ships `toMatchScreenshot`, and the browser runner is already how the tests
+execute. **Precondition: baselines must be generated in the environment that checks
+them** — macOS baselines will not match Linux CI, which is the usual reason self-hosted
+visual regression gets abandoned. Self-hosting Archivo helps that determinism; moving it
+to a CDN would hurt it, which is a live interaction with the open font question.
+
+**Cleanup owed by voyager:** the chromatic workflow, the `package.json` script, the
+`@chromatic-com/storybook` addon, and two references in `deploy-links.yml`. A workflow
+that cannot run is the same class of thing as a lint rule reporting files clean without
+reading them.
+
+---
+
 ## 2026-08-28 (v2026.08.28.25) — The canvas is only an instrument when you paint with it
 
 A one-paragraph sharpening of yesterday's measurement rule, contributed with a

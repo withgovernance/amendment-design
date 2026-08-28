@@ -52,18 +52,11 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ### Name the Blue Hour canvas separately from the opaque ground
 - **kind:** unowned default
-- **found:** the 2026-08-28.3 pass, measuring grounds. `--canvas` resolves to neutral-100/900 and is painted by this spec's `.amendment-app`; the shipped body paints `slate-100` / a hardcoded `#080c17` plus the aurora layer. The rendered value is the shipped one.
-- **evidence:** they are not the same role, which is why this is a naming bug and not a mismatch. `#080c17` + aurora is the Live register's ground; the neutral pair is the opaque ground `color.ink-needs-an-opaque-ground` now requires. Measured, the opaque neutral is what restores contrast in the aurora band — `action` at 6.10:1 on it versus 2.87:1 on glass at the same position. One token cannot be both.
+- **found:** the 2026-08-28.3 pass. `--canvas` resolves to neutral-100/900 and is painted by this spec's `.amendment-app`; the shipped body paints `slate-100` / a hardcoded `#080c17` plus the aurora. The rendered value is the shipped one.
+- **evidence:** not the same role, which is why this is a naming bug. `#080c17` + aurora is the Live register's ground; the neutral pair is the opaque ground `color.ink-needs-an-opaque-ground` requires — measured, `action` is 6.10:1 on it versus 2.87:1 on glass at the same position. One token cannot be both.
 - **proposes:** a named Blue Hour token for the Live base, leaving `--canvas` as the opaque reading/writing ground.
-- **blocks:** nothing shipping. It blocks `ink-needs-an-opaque-ground` from being citable as a token rather than a description.
-- **waiting on:** the register table, which the naming should move with — not a measurement. Deliberately deferred rather than decided in a colour pass.
-
-### Bring the materials under the extraction guard
-- **kind:** conformance, systemic — recorded here because the fix is a process change, not a code edit
-- **found:** the 2026-08-28.3 pass, ruling on the navbar. `material-chrome` dark is `rgb(24 24 27 / 90%)` in `colors_and_type.css` and `dark:bg-white/12` in the consumer's `@utility` — the opposite treatment, not a rounding difference.
-- **evidence:** rendered both over the same full-width green CTA: the spec value is neutral charcoal, the shipped utility composites to a saturated green. The consumer's stylesheet also carries prose stating the drifted value in the register of a rule, so the copy reads as authoritative.
-- **proposes:** extend the 08-28 regenerate-and-diff guard from colour and radii to the materials.
-- **blocks:** nothing directly, but every material citation is unreliable until it lands — this one produced a well-argued proposal to change the palette to match a divergence.
+- **blocks:** nothing shipping. It blocks `ink-needs-an-opaque-ground` from citing a token rather than a description.
+- **waiting on:** the register table, which the naming should move with — not a measurement. Deferred deliberately for the second pass running; if it is still here at the end of stage 5 it should be scheduled rather than carried.
 
 ---
 
@@ -71,6 +64,20 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.4)** — the stage 4 queue, emptied. **`danger` moved
+  to red-700**: 4.39:1 as ink on the light opaque ground, under AA, and the only
+  semantic base not at the -700 step — the odd one out and the only failure were
+  the same fact. Reported as unfixable ("no darker option"); there was one.
+  `functional` at 4.33:1 explicitly NOT moving — graphical objects take 3:1 and
+  its role forbids text. New `opaque-ground-is-not-uniformly-safer`: yesterday's
+  rule was written from dark evidence and makes light-mode ink HARDER, so
+  re-measure both schemes when a surface moves onto the opaque ground.
+  **`colors_and_type.css` was behind `DESIGN.md`** on material-chrome light
+  (75% vs 55%, retired 08-27 and deleted everywhere but the stylesheet) — caught
+  by the new regenerate-and-diff guard on its first run, after two ratification
+  passes read both files and missed it. `a11y.targetSize` gains its **inline
+  exception**, which was in WCAG 2.5.5/2.5.8 all along; at `role-body`'s 24px
+  line box a 44px inline target overhangs 10px into the lines above and below.
 - **2026-08-28 (v2026.08.28.3)** — the stage 2.5 and stage 3 queues, emptied.
   **Glass blends, it does not cover** is the through-line. Ratified:
   `ink-switch-is-palette-wide` (the light/inverted switch governs the whole

@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.3
+# spec-version:   v2026.08.28.4
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -253,10 +253,41 @@ color:
     success-soft: "#10b981"   # emerald-500 — positive badges
     warning:      "#b45309"   # amber-700 — admin notices, non-blocking alerts
     warning-soft: "#f59e0b"   # amber-500 — warning icon fills
-    danger:       "#dc2626"   # red-600 — destructive, error states
+    danger:       "#b91c1c"   # red-700 — destructive, error states
     danger-soft:  "#ef4444"   # red-500 — error badges. Red is now the ONLY warm
                               # in the system outside the seal, which makes
                               # destructive states clearer than they have been.
+    danger-moved-to-red-700: >-
+      RATIFIED 2026-08-28. MEASURED 4.39:1 as ink on the light opaque ground
+      — under AA, on the very ground color.ink-needs-an-opaque-ground now
+      REQUIRES. At red-700 it is 5.89:1. The plate improves too: a white
+      label goes 4.83:1 to 6.47:1.
+      THE STRUCTURAL ARGUMENT IS BETTER THAN THE NUMBER. Every other
+      semantic base is the -700 step — success emerald-700, warning
+      amber-700 — and danger alone sat at -600. It was the odd one out and
+      it was the only one failing; those are the same fact. Moving it
+      restores the convention rather than making an exception to it.
+      The pair is unaffected: inverted ink is danger-soft, measured 4.71:1
+      on the opaque canvas, unchanged.
+      REPORTED AS UNFIXABLE — "there is no darker option, danger is already
+      the darker red." There was: -soft is the LIGHTER neighbour, and the
+      ramp continues downward past the base. Worth naming because the
+      report was otherwise exactly right, and the one wrong clause would
+      have turned a token change into a permanent AA exemption.
+      NOT IN SCOPE: functional measures 4.33:1 on the same ground and is NOT
+      moving. Its declared role is focus rings, progress, and hover states —
+      graphical objects, which take the 3:1 threshold, and its own entry
+      forbids it from carrying meaning as text. Do not "fix" it to match.
+    opaque-ground-is-not-uniformly-safer: >-
+      RATIFIED 2026-08-28, and it is the honest cost of
+      ink-needs-an-opaque-ground. THE OPAQUE GROUND IS DARKER THAN GLASS IN
+      LIGHT AND LIGHTER THAN GLASS IN DARK, so requiring it moves every
+      token in OPPOSITE DIRECTIONS BY SCHEME. It rescues inverted ink and it
+      makes light-mode ink harder. Danger was the first token to fall off
+      that edge and it is why danger moved.
+      SO: when a surface moves onto the opaque ground, re-measure BOTH
+      schemes. A rule that fixes one scheme is not neutral in the other, and
+      this one was written from dark-mode evidence.
     danger-inverted-is-not-broken: >-
       INVESTIGATED AND CLOSED 2026-08-28, NO TOKEN CHANGE. Stage 2.5 reported
       that danger is the one family with no ink passing inverted, measuring
@@ -1776,7 +1807,7 @@ tactileAccents:
       ink-break: "Alpha noise 0–15% varying across the mark. Clean geometry."
       when: "Bill detail page, sits adjacent to the title row. One stamp per bill."
       owner: "Jason — head of product & design, The Governance Company"
-      colors: "Green ink for positive status (enacted, signed) — per color.action.fill-rule-which-green that is --color-success on light and --color-action under inversion, NOT action green on light, which is 2.62:1 as text. Success and action are one hue, so a red ENACTED would contradict the palette; slate-700 for procedural (in committee, introduced, engrossed, enrolled); warning amber-700 for vetoed; danger red-600 only for truly dead/failed. Oxblood left the stamp palette in 2026-08. CORRECTED 2026-08-28: this field said \"action green\" flat, which the 08-28 which-green ratification forbids as ink."
+      colors: "Green ink for positive status (enacted, signed) — per color.action.fill-rule-which-green that is --color-success on light and --color-action under inversion, NOT action green on light, which is 2.62:1 as text. Success and action are one hue, so a red ENACTED would contradict the palette; slate-700 for procedural (in committee, introduced, engrossed, enrolled); warning amber-700 for vetoed; danger red (--color-danger) only for truly dead/failed. Oxblood left the stamp palette in 2026-08. CORRECTED 2026-08-28: this field said \"action green\" flat, which the 08-28 which-green ratification forbids as ink."
       implementation: "app/(data)/oversight/[jurisdiction]/bill/[bill]/components/RubberStamp.tsx"
       divergence-resolved: >-
         CLOSED 2026-08-28. This entry recorded oxblood (`text-red-900`) shipping
@@ -1845,7 +1876,7 @@ tactileAccents:
       fill-active: "slate-500/70 + animate-pulse"
       fill-completed: "slate-700 / slate-500 (dark)"
       fill-success: "emerald-600 / emerald-500 (dark) — entire bar"
-      fill-failure: "red-600 — only the segment where the bill died"
+      fill-failure: "--color-danger — only the segment where the bill died"
       markers: >-
         Chrome-width uppercase 12px label centered beneath each segment.
         Earlier versions added a 2px tick mark above each label, but
@@ -2153,7 +2184,7 @@ profilesClerk:
         Recorded rather than silently kept.
     danger:
       ships: "rose-500"
-      system: "red-600 (--color-danger)"
+      system: "--color-danger"
       verdict: >-
         A different red from the only red the system has left. Adopted as a
         deliberate profile value — Clerk's danger is inline validation on
@@ -2418,7 +2449,29 @@ a11y:
   reducedMotion:
     description: "All animations and transitions clamp to 0.01ms."
   targetSize:
-    rule: "Interactive targets are at least 44×44 px."
+    rule: "Interactive targets are at least 44×44 px, EXCEPT inline targets in prose — see inline-exception."
+    inline-exception: >-
+      RATIFIED 2026-08-28. A LINK INSIDE A SENTENCE IS EXEMPT, and this is
+      not a concession — it is in both authorities the 44 came from. WCAG
+      2.5.5 (AAA) and 2.5.8 (AA, 24×24) each carve out a target that "is in
+      a sentence" or whose size "is otherwise constrained by the
+      line-height of non-target text." The rule above inherited the number
+      from those criteria without their exceptions, so it read
+      unconditional and no component could satisfy it.
+      THE GEOMETRY IS THE ARGUMENT, and it was measured before it was
+      looked up: role-body is 1rem on a 1.5 line box — 24px — so a 44px
+      target centred on an inline link OVERHANGS 10px ABOVE AND 10px BELOW,
+      into the line boxes of the sentences around it. The enlarged target
+      does not just fail to help; it starts catching taps meant for the
+      lines above and below. Making the target compliant makes the page
+      less usable, which is the signal that the rule was being applied
+      outside its scope.
+      SO: an inline link in prose takes no minimum. It stays legible by
+      being underlined and by the paragraph's own line-height. This exempts
+      the LINK IN A SENTENCE only — a link that is its own block, a list
+      row, a card, or anything with its own line box is a target and takes
+      the floor. If you are unsure which you have, ask whether removing the
+      link would leave a gap in a sentence.
     # PROVENANCE — added 2026-08-02. The number was inherited, not derived, and
     # a rule whose source is unstated gets argued with by whoever wants 40.
     provenance:
@@ -2635,7 +2688,7 @@ page into something that looks pressable.
   learns one color once. Emerald belongs to neither party — which is what
   makes it the right hue for civic participation.
 
-Semantic states (success emerald, warning amber, danger red-600) are
+Semantic states (success emerald, warning amber, danger red) are
 reserved for their conventional meanings and never pressed into service
 as brand decoration — with the single, scoped exception of emerald as
 the Commons' Momentum Accent above, where "success" and "the demand is
@@ -3384,7 +3437,7 @@ a bug, and unlike a status typed from memory, it is greppable.
   Archive surfaces. One stamp per bill. Green ink for enacted/signed —
   `--color-success` on light, `--color-action` inverted, never action
   green as light-mode ink — amber for vetoed, slate for procedural,
-  red-600 only for dead. It carries real information and it appears on
+  --color-danger only for dead. It carries real information and it appears on
   every bill. *The oxblood divergence recorded here is closed: the code
   migrated 2026-08.*
 - **Guilloche** — engraved line-work bands, top and bottom, on every

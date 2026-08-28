@@ -8,6 +8,74 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.4) — The rule that fixed dark broke light, and the guard caught its author
+
+Four entries from stage 4. Two of them are the previous ratification's own bill
+coming due, which is the useful shape here: **a rule written from one scheme's
+evidence is not neutral in the other**, and **the file that enforces a decision
+is not the file that records it.**
+
+### `danger` moves to red-700
+
+Measured **4.39:1** as ink on the light opaque ground — under AA, on the exact
+ground `ink-needs-an-opaque-ground` started requiring yesterday. At red-700 it is
+**5.89:1**, and the plate improves too: a white label goes 4.83:1 → 6.47:1.
+
+The structural argument is better than the number. **Every other semantic base
+is the `-700` step** — success emerald-700, warning amber-700 — and danger alone
+sat at `-600`. It was the odd one out and the only one failing; those are the
+same fact. Moving it restores the convention instead of making an exception.
+
+The entry reported this as unfixable — *"there is no darker option, danger is
+already the darker red."* There was: `-soft` is the **lighter** neighbour, and
+the ramp continues past the base. Naming it because the rest of the entry was
+exactly right, and that one clause would have converted a token change into a
+permanent AA exemption.
+
+**Not in scope: `functional` measures 4.33:1 on the same ground and is not
+moving.** Its role is focus rings, progress, and hover — graphical objects at the
+3:1 threshold — and its own entry forbids it from carrying meaning as text. Said
+out loud so nobody "fixes" it to match.
+
+### `opaque-ground-is-not-uniformly-safer`
+
+The honest cost of yesterday's rule, and it deserves its own entry. **The opaque
+ground is darker than glass in light and lighter than glass in dark, so requiring
+it moves every token in opposite directions by scheme.** It rescues inverted ink
+and it makes light-mode ink harder. Danger was the first token off that edge.
+Yesterday's rule was written from dark-mode evidence; when a surface moves onto
+the opaque ground, re-measure **both** schemes.
+
+### `colors_and_type.css` was behind `DESIGN.md`, and the guard is why we know
+
+`material-chrome` light: **75% in the stylesheet, 55% in the spec.** The 08-27
+pass resolved this to 55% and deleted the dead 75% — from `DESIGN.md`, and from
+the consumer. It survived in the drop-in stylesheet, so any standalone consumer
+taking `colors_and_type.css` got the retired value.
+
+**Two ratification passes read both files this week and neither caught it. The
+regenerate-and-diff guard caught it on its first run** — the guard ordered one
+pass ago, for exactly this failure, which then found its first instance inside
+the authoring repo rather than downstream. That is the argument for the guard
+stated better than any prose could: *the enforcement surface drifts from the
+record, and the author is the last person who will notice.*
+
+### `a11y.targetSize` gains its inline exception
+
+A link inside a sentence is exempt — and this is not a concession, it is in both
+authorities the 44 came from. **WCAG 2.5.5 (AAA) and 2.5.8 (AA) each carve out a
+target that "is in a sentence" or is "constrained by the line-height of
+non-target text."** The rule inherited the number without the exceptions, so it
+read unconditional and no inline link could satisfy it.
+
+The geometry was measured before it was looked up, which is the better story:
+`role-body` is 1rem on a 1.5 line box, so **a 44px target on an inline link
+overhangs 10px above and 10px below, into the neighbouring sentences' line
+boxes** — it starts catching taps meant for other lines. Making the target
+compliant makes the page worse, which is the signal a rule is being applied
+outside its scope. Scoped narrowly: the link in a sentence only. Anything with
+its own line box is a target and takes the floor.
+
 ## 2026-08-28 (v2026.08.28.3) — Glass blends, it does not cover
 
 Six queued entries, and rendering them turned three inside out. The through-line

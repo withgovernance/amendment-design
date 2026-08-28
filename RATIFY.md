@@ -50,13 +50,20 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
-### Name the Blue Hour canvas separately from the opaque ground
-- **kind:** unowned default
-- **found:** the 2026-08-28.3 pass. `--canvas` resolves to neutral-100/900 and is painted by this spec's `.amendment-app`; the shipped body paints `slate-100` / a hardcoded `#080c17` plus the aurora. The rendered value is the shipped one.
-- **evidence:** not the same role, which is why this is a naming bug. `#080c17` + aurora is the Live register's ground; the neutral pair is the opaque ground `color.ink-needs-an-opaque-ground` requires — measured, `action` is 6.10:1 on it versus 2.87:1 on glass at the same position. One token cannot be both.
-- **proposes:** a named Blue Hour token for the Live base, leaving `--canvas` as the opaque reading/writing ground.
-- **blocks:** nothing shipping. It blocks `ink-needs-an-opaque-ground` from citing a token rather than a description — a literal waiting to happen, per trap 2.
-- **waiting on:** nothing external any more. **Carried three passes; scheduled rather than carried again** — this is the next spec task, ahead of the stage 6 queue, per the note made at v2026.08.28.4.
+*(nothing queued for ratification)*
+
+## Needs a person — cannot close from inside the toolchain
+
+Not a ratification queue. These do not resolve by deciding; they resolve by
+someone doing something an agent should not do unprompted. Listed separately so
+they stop reading as actionable to the next session that opens this file.
+
+### Real-client dark-mode email rendering has never been tested
+- **why it is here:** it means sending mail to live Gmail / Outlook / Apple Mail inboxes. That is outward-facing and no agent should do it unprompted. The stage 7 session correctly declined.
+- **what is already verified, so nobody re-does it:** dark mode is confirmed end to end in the rendered templates — `zinc-900` sheet, both `color-scheme` metas present, links at ~7:1 inverted, no webfonts, no glass, no oklch, no custom properties, no motion, no gap. The templates are correct. What is untested is what CLIENTS DO TO THEM.
+- **the specific thing to look for**, from `profiles.email.dark-mode`'s own open note: **Gmail on Android darkens the sheet itself, and the double rule is the first thing to go.** The issuance block is where to look — ledger number, double rule `#b6ac97`, signature line.
+- **protocol:** send one issuance email and one CTA email to a Gmail address opened on Android, an Outlook.com address opened in the Windows app, and an iCloud address opened in Apple Mail, each with the device in dark mode. Screenshot the issuance block. The pass condition is that the double rule is still visible and the ledger number is still legible as text.
+- **who:** Jason, or anyone with those three inboxes. Report back as a queue entry only if something fails.
 
 ---
 
@@ -64,6 +71,18 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.6)** — `canvas-two-names`, scheduled rather than
+  carried a fourth pass. `--canvas` is the **opaque ground** (value unchanged,
+  nothing consuming it moves); `--canvas-live` is the **Blue Hour base** under
+  the aurora — the literal `#080c17` that lived in the consumer's body and was
+  named nowhere. `.amendment-app` now paints the Live canvas, which it always
+  should have. `ink-needs-an-opaque-ground` cites a token instead of prose.
+  `profiles.email.substitutions.brand` names `#033271` + `#60a5fa` — email has
+  no hover, so a link is decided by colour alone; it stays in the profile so the
+  product does not acquire a blue by way of email. The CTA is correctly NOT one
+  of its roles. Real-client dark-mode email testing moved out of the queue into
+  **Needs a person**. Correction: the stage 5 revert was three controls, not
+  four — the other two were hover.
 - **2026-08-28 (v2026.08.28.5)** — the stage 5 queue, emptied. **Three things
   were never on the motion budget**, so the honest count is still two, not four.
   `committed-state-is-not-motion`: a control drawing a state the user just

@@ -8,6 +8,80 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.6) — Two canvases, one blue, and a test no agent can run
+
+### `canvas-two-names` — the last consequence of having had two homes
+
+Carried three passes, so it was scheduled instead of carried a fourth. One token
+was doing two jobs and could only be right for one:
+
+- **`--canvas`** is the **opaque ground** — what `ink-needs-an-opaque-ground`
+  requires. No aurora, no translucency, so a coloured ink has a *fixed* contrast
+  against it. Warm zinc. **Value unchanged, so nothing consuming it moves.**
+- **`--canvas-live`** is the **Blue Hour base** of the Live register, beneath the
+  aurora. Cool slate light; inverted, it is the value that lived as the literal
+  `#080c17` in the consumer's body for the life of the product and was named
+  nowhere. `.amendment-app` now paints it — it carries the aurora, so it was
+  always painting the wrong one.
+
+**The warm/cool split is why they were never interchangeable**, and it is a
+decision rather than an accident of two authors: zinc is warm and sits under the
+ink layer, the Blue Hour is cool and sits under a blue gradient. Substituting
+either puts a warm ground under cool light or the reverse.
+
+`ink-needs-an-opaque-ground` now cites a token instead of a description. It had
+been citing prose for three passes, which is trap 2 with a countdown on it.
+
+That this survived three passes — each one having a louder finding in front of
+it — is the argument for scheduling a carried entry rather than carrying it.
+
+### `profiles.email.substitutions.brand`
+
+`#033271` had been running unowned **in three roles**. Named now, with its
+inverted counterpart `#60a5fa`. Measured: as **ink** on the email viewport
+10.49:1 light and 7.02:1 on the dark sheet; as a **plate** with a white label
+12.36:1. Both clear comfortably — the value was never the problem, the ownership
+was.
+
+**Why email gets a blue the product does not have**, which is what makes this a
+substitution rather than a hole in the palette: in the product a link is carried
+by hover, underline, and position. **Email has no hover.** A reader decides what
+is clickable from colour alone, and blue is the one convention their clients'
+users already hold. Midnight Indigo as a link would be indistinguishable from
+body text at reading size. It lives in the profile and not in
+`colors_and_type.css` for the same reason `viewport` does — *a hex in the token
+file is a hex someone will use on the aurora* — and the product should not
+acquire a blue by way of the email profile.
+
+**The CTA is not one of its roles.** Stage 7 moved that to the transported action
+green, correctly: the fill rule transports, so the primary act takes the action
+plate whatever the medium. Brand navy is a link colour and a badge plate, and
+that is the whole list.
+
+One note recorded rather than corrected: the 12.36:1 reported as the light figure
+is the *plate-with-label* measurement, not the *ink-on-viewport* one (10.49:1).
+Both fine. Recorded because `ink-ground-is-a-placement` applies inside a profile
+too, and **a profile is exactly where a number loses the ground it was taken at.**
+
+### Recorded, not resolved: real-client dark-mode email testing
+
+The stage 7 report declines to send mail to live inboxes, and that is the right
+call — it is outward-facing and nobody authorised it. **This is now the only item
+in the system that cannot close from inside the toolchain**, and it should be
+labelled that way rather than sitting in a queue looking actionable. The profile's
+own open note is the thing to test: Gmail Android darkens the sheet and the
+double rule goes first. Filed as a human-executed check with an explicit protocol
+rather than a queue entry an agent will keep re-reading and re-deferring.
+
+### Correction
+
+I told the stage 5 session to revert **four** controls. It was three — I took the
+count from the earlier report rather than deriving it, and the other two transform
+removals were hover (`hover:scale-110`, `group-hover:translate-x-0.5`), which
+correctly stay removed under the committed-state test. Verified in the tree: the
+toggle thumb and two carets carry `transition-transform` again and no hover
+transform remains.
+
 ## 2026-08-28 (v2026.08.28.5) — Three things were never on the motion budget
 
 Stage 5 audited every animation against the arrival test and deleted five

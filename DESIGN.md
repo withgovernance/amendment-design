@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.5
+# spec-version:   v2026.08.28.6
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -105,9 +105,35 @@ color:
     NEEDS: the materials brought under the same regenerate-and-diff guard as
     the colour tokens. Until then, every material citation should be checked
     against colors_and_type.css rather than the consumer's utility.
-  canvas-divergence-2026-08-28: >-
-    UNOWNED DEFAULT, recorded not resolved. TWO DIFFERENT CANVASES ARE IN
-    PLAY UNDER ONE NAME. This spec's .amendment-app paints var(--canvas) =
+  canvas-two-names: >-
+    RATIFIED 2026-08-28, closing the divergence recorded at v2026.08.28.3
+    after it was carried three passes. TWO DIFFERENT CANVASES WERE IN PLAY
+    UNDER ONE NAME, and one token doing two jobs could only be right for
+    one. They are now named:
+      --canvas       THE OPAQUE GROUND. What ink-needs-an-opaque-ground
+                     requires — no aurora, no translucency, so a coloured
+                     ink has a FIXED contrast against it. Warm zinc,
+                     neutral-100 / neutral-900. Unchanged in value, so
+                     nothing consuming it has to move.
+      --canvas-live  THE BLUE HOUR BASE of the Live register, beneath the
+                     aurora layer. Cool slate light, and inverted the value
+                     that lived as the literal #080c17 in the consumer's
+                     body for the life of the product, named nowhere.
+                     Painted by .amendment-app. NOT A GROUND YOU MAY MEASURE
+                     INK AGAINST — the aurora moves it, per
+                     ink-ground-is-a-placement.
+    THE WARM/COOL SPLIT IS WHY THEY ARE NOT INTERCHANGEABLE, and it is a
+    decision rather than an accident of two authors: zinc is warm and sits
+    under the ink layer; the Blue Hour is cool and sits under a blue
+    gradient. Substituting either for the other puts a warm ground under
+    cool light or the reverse.
+    HISTORICAL: this was the last live consequence of the spec and the
+    consumer having two homes. It survived three ratification passes because
+    each one had a louder finding in front of it — which is the argument for
+    scheduling a carried entry rather than carrying it a fourth time.
+  canvas-divergence-superseded: >-
+    SUPERSEDED by canvas-two-names above. Kept as a stub because the
+    v2026.08.28.3 changelog entry cites this key by name. This spec's .amendment-app paints var(--canvas) =
     neutral-100 light / neutral-900 inverted. The shipped body paints
     slate-100 light and a hardcoded #080c17 inverted, plus the aurora layer.
     The value that reaches the rendered surface is the shipped one, so that
@@ -137,7 +163,10 @@ color:
       panel — so a glass panel near a bright lobe is LIGHTER than the canvas
       beneath it, which is the opposite of what a darkening overlay is
       supposed to do. Glass does not cover the aurora; it blends it.
-      SO: COLOURED INK REQUIRES AN OPAQUE GROUND. Glass is legal for
+      SO: COLOURED INK REQUIRES AN OPAQUE GROUND — and as of 2026-08-28
+      that ground has a name, --canvas, distinct from --canvas-live which
+      carries the aurora. See canvas-two-names. Until it was named this rule
+      cited a DESCRIPTION, which is a literal waiting to happen. Glass is legal for
       primary/secondary text, which is a luminance ramp against its own
       material and does not depend on hue separation. Anything carrying a
       semantic hue as text — status, error, success, a stamp, a count —
@@ -1535,6 +1564,33 @@ profiles:
         The fill rule transports intact: a green plate is a control, green ink
         is a report. Green INK on cards is --color-success "#047857" (5.25:1);
         the action green as text measures 2.62:1 and is forbidden.
+      brand: >-
+        RATIFIED 2026-08-28, naming a value that had been running unowned in
+        three roles. "#033271" — oklch(0.331 0.119 258) — with the inverted
+        counterpart "#60a5fa" (blue-400). MEASURED: as INK on the email
+        viewport, 10.49:1 light and 7.02:1 on the dark sheet; as a PLATE
+        with a white label, 12.36:1. Both roles clear comfortably; the
+        problem was never the value, it was that nobody had chosen it.
+        WHY EMAIL GETS A BLUE THE PRODUCT DOES NOT HAVE, and this is the
+        part that makes it a substitution rather than a gap in the palette:
+        in the product a link is carried by hover, underline, and position.
+        EMAIL HAS NO HOVER. A reader decides what is clickable from colour
+        alone, and blue is the one convention every client's users already
+        hold. Midnight Indigo as a link would be indistinguishable from body
+        text at reading size, which is the failure this avoids.
+        IT LIVES HERE, NOT IN colors_and_type.css, for the same reason
+        `viewport` does: a hex in the token file is a hex someone will use
+        on the aurora. The product has no blue and should not acquire one by
+        way of the email profile.
+        THE CTA IS NOT ONE OF ITS ROLES. Stage 7 moved that to the
+        transported action green, correctly — the fill rule transports, so
+        the primary act takes the action plate whatever the medium. Brand
+        navy is a LINK colour and a badge PLATE, and that is the whole list.
+        NOTE ON THE MEASUREMENT: the 12.36:1 reported for "light" is the
+        plate-with-label figure, not the ink-on-viewport one (10.49:1). Two
+        different grounds, both fine — recorded because
+        ink-ground-is-a-placement applies here too, and a profile is exactly
+        where a number loses the ground it was taken at.
       motion: >-
         A stopped accrual is a count. Sanctioned motion degrades to the state
         it was animating toward, stated plainly — "319 co-signs", "2,301 of

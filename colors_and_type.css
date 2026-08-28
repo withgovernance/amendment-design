@@ -159,7 +159,22 @@
   --spinner-ink:    rgb(0 0 0 / 38%);
 
   /* Background canvas */
+  /* TWO CANVASES, named separately 2026-08-28. They were one token doing two
+     jobs and it could only be right for one.
+       --canvas       the OPAQUE ground. What color.ink-needs-an-opaque-ground
+                      requires: no aurora, no translucency, so a coloured ink
+                      has a fixed contrast against it. Warm zinc, because it
+                      sits under the ink layer.
+       --canvas-live  the BLUE HOUR base of the Live register, under the aurora
+                      layer. Cool slate, because it sits under a blue gradient.
+                      Painted by .amendment-app; NOT a ground you may measure
+                      ink against — the aurora moves it (see
+                      color.ink-ground-is-a-placement).
+     The warm/cool split is the reason they are not interchangeable, not an
+     accident of two authors. */
   --canvas: var(--color-zinc-100);
+  --canvas-live: oklch(0.9683 0.0069 247.9);   /* slate-100 — the value the
+                                                  shipped body paints */
 
   /* Paper canvases (opaque) */
   --paper-cream:     oklch(0.965 0.012 85);   /* Archive bill text */
@@ -338,6 +353,10 @@
   --skeleton-block: rgb(255 255 255 / 8%);
   --spinner-ink:    rgb(255 255 255 / 38%);
   --canvas: var(--color-zinc-900);
+  --canvas-live: oklch(0.1562 0.0246 267.8);   /* Blue Hour. Was the literal
+                                                  #080c17 in the consumer's body
+                                                  for the life of the product and
+                                                  named nowhere. */
   /* Momentum follows action in both modes — no dark-mode substitute needed now
      that the accent is bright rather than deep. */
   --color-momentum: var(--color-action);
@@ -387,7 +406,10 @@
 
 /* Base body — sets the ink colour, Aurora layer, and default sans body. */
 .amendment-app {
-  background: var(--canvas);
+  /* The app shell carries the aurora, so it paints the LIVE canvas, not the
+     opaque one. Corrected 2026-08-28: it painted --canvas while the shipped
+     body painted the Blue Hour, which is how the two roles got conflated. */
+  background: var(--canvas-live);
   color: var(--text-primary);
   font-family: var(--font-sans);
   font-variation-settings: var(--sans-body);

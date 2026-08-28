@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.14
+# spec-version:   v2026.08.28.15
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -764,6 +764,36 @@ typography:
     resolves to something reasonable is found when someone greps for it,
     which is to say maybe never. This is why the hexp-* aliases were deleted
     rather than kept (see hexpAxisRetired).
+  a-guard-may-degrade-but-never-silently: >-
+    RATIFIED 2026-08-28, revising a position this file and the implementation
+    session had already agreed on — which is why it is recorded rather than
+    quietly applied. THE FOURTH AND SHARPEST MEMBER OF THE SILENT-FAILURE
+    FAMILY: the first three are things that fail without complaining; this
+    one is A CHECK THAT REPORTS SUCCESS IT DID NOT EARN.
+    THE AGREED POSITION WAS "a guard that skips on a missing credential is
+    not a guard", so the job should fail hard. That is right about SILENCE
+    and wrong about DEGRADATION, and the operational argument is the one
+    that decides it: A JOB THAT IS RED FOR REASONS UNRELATED TO THE PR THAT
+    TRIPS IT IS A JOB SOMEONE DELETES. Permanent red is not a strong guard;
+    it is a guard with a countdown on it. The failure mode we were guarding
+    against — nobody notices the check did not run — arrives anyway, later,
+    and takes the whole job with it.
+    SO, TWO TIERS:
+      TIER 1 runs always and needs no credential. It compares the
+        spec-version stamp in the generated token file against the pinned
+        ref, which catches THE LIKELY MISTAKE — the pin moves and nobody
+        regenerates — using only files the consumer already has.
+      TIER 2 is the real regenerate-and-diff, when the credential exists.
+        Its ABSENCE POSTS A WARNING NAMING THE CHECK THAT DID NOT RUN.
+    Degraded loudly, not skipped silently. The rule generalises past CI:
+    A CHECK THAT CANNOT RUN MUST SAY SO IN THE PLACE ITS RESULT WOULD HAVE
+    APPEARED. A green tick standing in for an absent check is worse than a
+    red one, because the red gets argued with and the green gets believed.
+    COROLLARY, and it is the honest cost: a credential-free tier is weaker
+    than the check it stands in for, so it must be described by what it
+    CATCHES rather than by what it guards. Tier 1 does not verify the tokens
+    match the spec; it verifies nobody moved the pin without regenerating.
+    Saying more than that would make the tier itself the thing that lies.
   enforcement-has-a-blind-spot: >-
     RATIFIED 2026-08-28, and it completes the silent-failure family. The
     first two describe values that fail without complaining. THIS ONE

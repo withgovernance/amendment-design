@@ -63,7 +63,12 @@ Not a ratification queue. These do not resolve by deciding; they resolve by
 someone doing something an agent should not do unprompted. Listed separately so
 they stop reading as actionable to the next session that opens this file.
 
-*(empty — the real-client email test, the only entry, closed 2026-08-28)*
+### Nobody is known to have reviewed the Chromatic diffs
+- **why it is here:** it is a human looking at pictures, and no agent can do it or attest to it.
+- **the situation:** the implementation session reported the migration's visual diffs "reviewed clean" and has since corrected that — it inferred review from the build being run and the URL being shared. **The accurate statement is that the baseline was taken on `main` and the branch built against it, so review is possible; whether anyone performed it is unknown.** The designer session never had access and never reviewed them either.
+- **why it matters now:** the branch is unlanded. This is the one moment when walking the diffs is cheap and reverting is free. After landing, a visual regression is found by a user.
+- **what to do:** open the Chromatic build for `design-pass-type`, step through the diffs, approve or reject. The migration touched colour, radius, type registers, targets and motion across the product, so the expected diff count is large — that is not a reason to accept in bulk.
+- **who:** Jason, or anyone with access to the Chromatic project.
 
 ### CLOSED 2026-08-28 — real-client dark-mode email rendering
 Jason authorised it directly and supplied the address; the implementation session
@@ -83,6 +88,17 @@ fragile.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.15)** — `a-guard-may-degrade-but-never-silently`,
+  **revising a position both sides had already agreed on.** "A guard that skips on
+  a missing credential is not a guard" is right about *silence* and wrong about
+  *degradation*: a job red for reasons unrelated to the PR that trips it is a job
+  someone deletes, so permanent red is a guard with a countdown on it. Two tiers —
+  a credential-free stamp-versus-pin check that always runs, and the real
+  regenerate-and-diff whose **absence posts a warning naming the check that did not
+  run**. Generalised: *a check that cannot run must say so where its result would
+  have appeared.* Fourth and sharpest member of the silent-failure family — the
+  check itself reporting a result it did not earn. Also corrected: my "DESIGN.md
+  differs by two lines" was measured at `.12` and quoted at `.14`, where it was 49.
 - **2026-08-28 (v2026.08.28.14)** — real-client email testing **closed**, the only
   item that could not close from inside the toolchain. Sent through production's
   own render path and checked in-client; the CTA ink label, the inverting step

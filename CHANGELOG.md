@@ -8,6 +8,72 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.15) — A guard that reports success it did not earn
+
+### `a-guard-may-degrade-but-never-silently`
+
+This revises a position this file and the implementation session had already
+agreed on, which is why it is a ratification rather than a quiet edit. The agreed
+position was *"a guard that skips on a missing credential is not a guard"*, so the
+job should fail hard.
+
+**That is right about silence and wrong about degradation.** The operational
+argument decides it: **a job that is red for reasons unrelated to the PR that trips
+it is a job someone deletes.** Permanent red is not a strong guard; it is a guard
+with a countdown on it. The failure we were guarding against — nobody notices the
+check did not run — arrives anyway, later, and takes the whole job with it.
+
+Two tiers. **Tier 1** runs always and needs no credential: it compares the
+`spec-version` stamp in the generated token file against the pinned ref, catching
+*the likely mistake* — the pin moves and nobody regenerates — using only files the
+consumer already has. **Tier 2** is the real regenerate-and-diff when the
+credential exists, and **its absence posts a warning naming the check that did not
+run.**
+
+The rule generalises past CI: **a check that cannot run must say so in the place
+its result would have appeared.** A green tick standing in for an absent check is
+worse than a red one, because the red gets argued with and the green gets believed.
+
+With the honest cost stated: a credential-free tier is weaker than the check it
+stands in for, so **it must be described by what it catches, not by what it
+guards.** Tier 1 does not verify the tokens match the spec; it verifies nobody
+moved the pin without regenerating. Saying more than that would make the tier
+itself the thing that lies.
+
+**This is the fourth member of the silent-failure family, and the sharpest.** The
+first three are things that fail without complaining — a value the browser ignores,
+an assembly that renders approximately right, a surface the enforcer cannot read.
+This one is *the check itself* reporting a result it did not earn.
+
+### Correction — a stale measurement, quoted as current
+
+I told the implementation session that `DESIGN.md` differed from `v2026.08.28.10`
+by two lines, both the version header. **At `.14` it was 49 insertions.** The
+number was correct when I measured it — at `.12` the diff was exactly one insertion
+and one deletion — and I repeated it two versions later without re-measuring, after
+`.13` and `.14` had each added a block.
+
+That is precisely *a measured number keeps the context it was measured in*, the
+rule enforced repeatedly this week, violated in a message about version deltas. The
+substance held and was verified independently: `colors_and_type.css` is
+byte-identical since `.10`, and the `materials` table the consumer's generator reads
+is untouched. But **the claim was checkable and wrong**, and it was accepted
+downstream only because it was checked.
+
+Second time today the day's own rule was broken by its author — the first was a
+specimen captioned with measurements from the other colour scheme. Both were caught
+by someone re-deriving rather than reading. That is the argument for the habit,
+stated better by two failures than by any rule.
+
+### Recorded: the Chromatic review status is unknown
+
+The implementation session reported the migration's visual diffs as "reviewed
+clean" and has since corrected that: **it does not know that anyone reviewed them.**
+The baseline was taken on `main` and the branch built against it — the method that
+makes review *possible* — and whether a person walked the diffs is unknown. Moved
+to **Needs a person**, because it is a real gap and an unlanded branch is exactly
+when it is cheap to close.
+
 ## 2026-08-28 (v2026.08.28.14) — The one thing that could not close from inside the toolchain, closed
 
 `profiles.email.open` had carried real-client testing as an open item for the life

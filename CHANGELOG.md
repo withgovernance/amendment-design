@@ -8,6 +8,62 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.32) — The tab bar keeps its material, and it is glass
+
+**Decided by Jason**, closing the last material question recession left open.
+
+**The tab bar keeps `material-chrome`.** It is a mobile menu on the iOS native model,
+and such a bar **sits above content by definition** — that is what makes it a tab bar
+rather than a footer.
+
+**So the material survives with exactly one consumer, deliberately.** Stated because a
+one-consumer material looks like an orphan to a later cleanup pass. It is not leftover:
+it is the only surface in the system that overlaps scrolling content, and the material
+is what lets it.
+
+The measured fact behind it: the bar is `fixed inset-x-0 bottom-0` with an `h-18`
+spacer, and **the spacer only guarantees the last item is reachable** — it does not stop
+content passing behind the bar mid-scroll, because with a fixed bottom bar whatever sits
+at the viewport's bottom edge is behind it at every scroll position. Receded, it would
+reproduce the text-through-text collision found on the conversation route, at the bottom
+edge instead of the top. And unlike the navbar it cannot escape by dropping sticky: **a
+bottom tab bar that scrolls away is not a tab bar.**
+
+### It is glass, not a slab
+
+Blur and transparency are the **point** of the iOS model, not a compromise in it:
+content beneath should be present and unreadable, so the bar reads as a layer above a
+continuing page rather than a lid on it. **Keeping a material does not mean going
+opaque.**
+
+**And the 90% figure does not transfer.** That was set for chrome over a *canvas*, where
+the risk was hue contamination from a CTA scrolling under — 90% moves by 25 in summed
+RGB against 222 for a 12% wash. Over arbitrary *content* the goal is not immunity; some
+show-through is intended.
+
+**The binding constraint is the bar's own labels:** they must clear 4.5:1 against the
+worst content that can pass beneath, and content is arbitrary — a green CTA, a danger
+badge, an image. **Blur alone does not floor that; the fill does, because blur spreads a
+colour rather than removing it.** Needs a measurement: the label ramp over the worst
+realistic content, at candidate fill levels, both schemes. Do not take the number from
+the desktop value or from the platform — measure this bar over this product's content.
+
+Glass is legal here at all because the labels are the **neutral ramp**, which
+`ink-needs-an-opaque-ground` explicitly exempts as luminance against its own material
+rather than hue separation.
+
+### A false absolute corrected
+
+The recession ruling said *"the mobile tab bar takes whatever the navbar takes,
+always."* That is now false. The intent was right — one navigation at two widths must
+not drift for aesthetic reasons — but **a clause cannot override a physical
+difference**, and there is one: the navbar stopped overlapping by dropping sticky; the
+tab bar cannot. **The shared identity is carried on the axis where it belongs** — both
+take `role-body` sentence case per `.29`. Same navigation, same voice, different
+material because they sit on different grounds.
+
+---
+
 ## 2026-08-28 (v2026.08.28.31) — The header stops being sticky
 
 **Decided by Jason.** The navbar is no longer sticky, which is how this surface

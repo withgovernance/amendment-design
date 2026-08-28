@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.31
+# spec-version:   v2026.08.28.32
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1307,14 +1307,46 @@ materials:
     ring-dark:  "1px solid rgb(255 255 255 / 12%)"
   material-chrome:
     description: >-
-      SCOPE NARROWED 2026-08-28 by recession-ratified-2026-08-28. Both
-      DESKTOP consumers are gone — the navbar and the sidebar rail now take
-      no material. What remains is the MOBILE TAB BAR, and only pending its
-      own decision: it is the one chrome that overlaps SCROLLING CONTENT
-      rather than a canvas, which is the strongest case for keeping a plate.
-      IF THE TAB BAR ALSO RECEDES, THIS MATERIAL RETIRES ENTIRELY. Do not
-      reach for it on a new surface in the meantime; a material with one
-      consumer and an open question over it is not a material to build on.
+      SCOPE NARROWED 2026-08-28 by recession-ratified-2026-08-28, and the
+      remaining question CLOSED the same day. Both DESKTOP consumers are gone
+      — the navbar and the sidebar rail take no material. THE MOBILE TAB BAR
+      KEEPS IT, decided by Jason: it is a mobile menu built on the iOS native
+      model, and such a bar SITS ABOVE CONTENT BY DEFINITION. That is what
+      makes it a tab bar rather than a footer.
+      SO THIS MATERIAL SURVIVES WITH EXACTLY ONE CONSUMER, deliberately.
+      Stated because a one-consumer material looks like an orphan to a later
+      cleanup pass: it is not leftover, it is the only surface in the system
+      that overlaps scrolling content, and the material is what lets it.
+      MEASURED FACT BEHIND IT: the bar is `fixed inset-x-0 bottom-0` with an
+      `h-18` spacer. THE SPACER ONLY GUARANTEES THE LAST ITEM IS REACHABLE —
+      it does not stop content passing behind the bar mid-scroll, because with
+      a fixed bottom bar whatever sits at the viewport's bottom edge is behind
+      it at every scroll position. Receded, it would reproduce the
+      text-through-text collision found on the conversation route, at the
+      bottom edge instead of the top. And unlike the navbar it cannot escape
+      by dropping sticky: A BOTTOM TAB BAR THAT SCROLLS AWAY IS NOT A TAB BAR.
+      AND IT IS GLASS, NOT A SLAB (Jason, 2026-08-28). Blur and transparency
+      are the POINT of the iOS model, not a compromise in it: content passing
+      beneath should be present and unreadable, so the bar reads as a layer
+      above a continuing page rather than as a lid on it. Keeping a material
+      does not mean going opaque.
+      SO THE CONSTRAINT ON THIS SURFACE IS DIFFERENT FROM THE DESKTOP ONE,
+      AND THE 90% FIGURE DOES NOT TRANSFER. That value was set for chrome over
+      a CANVAS, where the risk was hue contamination from a CTA scrolling
+      under it — measured, 90% moves by 25 in summed RGB against 222 for a
+      12% wash. Over arbitrary CONTENT the goal is not immunity; some
+      show-through is the intent. THE BINDING CONSTRAINT IS THE BAR'S OWN
+      LABELS: they must clear 4.5:1 against the worst content that can pass
+      beneath, and content is arbitrary — a green CTA, a danger badge, an
+      image. Blur alone does not floor that; the FILL does, because blur
+      spreads a colour rather than removing it.
+      NEEDS A MEASUREMENT, and it is the one that decides the value: the
+      label ramp over the worst realistic content beneath, at candidate fill
+      levels, both schemes. Do not pick a number from the desktop value or
+      from the platform's; measure this bar over this product's content.
+      Neutral labels are what is being protected, so ink-needs-an-opaque-
+      ground's exemption applies — this is luminance against its own
+      material, not hue separation — which is why glass is legal here at all.
     # RESOLVED 2026-08-27. Two light values had been shipping side by side:
     # 75% on a --animate-navbar default with no call site, and 55% on the
     # material-scroll utility that every rendered navbar actually takes.
@@ -1444,14 +1476,19 @@ materials:
           makes stillness expressible. Chrome that recedes into a breathing
           layer is not still chrome, it is chrome that has stopped existing
           and left its labels behind.
-      (3) THE MOBILE TAB BAR TAKES WHATEVER THE NAVBAR TAKES, ALWAYS. They
-          are one navigation rendered at two widths, composed from one list;
-          a product whose nav has one identity on the desktop and another on
-          the phone has two navigations. The tab bar also carries an
-          independent reason to keep its ground: it sits at the bottom edge,
-          thumb-reached, and a target zone with no visual boundary is worse
-          than one with. Under this ruling both keep material-chrome, and
-          under any future ruling they move together or not at all.
+      (3) THE TAB BAR AND THE NAVBAR SHARE AN IDENTITY, NOT A MATERIAL —
+          AMENDED 2026-08-28, because this clause was written as an absolute
+          and is now false. It said the tab bar takes whatever the navbar
+          takes, always. The intent was right: they are one navigation at two
+          widths and must not drift for aesthetic reasons. But THE CLAUSE
+          CANNOT OVERRIDE A PHYSICAL DIFFERENCE, and there is one. The navbar
+          stopped overlapping content by dropping sticky; the tab bar cannot
+          do the same, because a bottom bar that scrolls away is not a tab
+          bar. So the navbar recedes and THE TAB BAR KEEPS material-chrome.
+          THE SHARED IDENTITY IS CARRIED ON THE AXIS WHERE IT BELONGS: both
+          take the same TYPE REGISTER, role-body sentence case, per
+          nav-labels-are-not-chrome. Same navigation, same voice, different
+          material because they sit on different grounds.
       (4) THE ACTIVE NAV ITEM KEEPS ITS PLATE, and this is the answer that
           made the question self-resolving. MEASURED with no plate beneath
           it, Midnight Indigo as a mark is 1.22:1 on the token aurora and

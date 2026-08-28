@@ -81,7 +81,7 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ### Two decisions gate shipping recession — both are Jason's
 - **kind:** decided in part; the remainder needs a person
-- **(a) THE MOBILE TAB BAR.** Does it recede with the navbar, or keep `material-chrome`? It is the one chrome that overlaps SCROLLING CONTENT rather than a canvas, which is the strongest case for keeping a plate — and it has a second, independent reason: bottom edge, thumb-reached, and a target zone without a boundary is worse than one with. **If it recedes, `material-chrome` retires entirely.** Until this lands, the material has one consumer and an open question over it, and nothing new should be built on it.
+- **(a) THE MOBILE TAB BAR — CLOSED 2026-08-28.** It keeps `material-chrome`, as glass rather than a slab; see `v2026.08.28.32`. What remains from it is a measurement, not a decision: the fill level at which the bar's labels clear 4.5:1 over arbitrary content beneath. Superseded text follows for one cycle — Does it recede with the navbar, or keep `material-chrome`? It is the one chrome that overlaps SCROLLING CONTENT rather than a canvas, which is the strongest case for keeping a plate — and it has a second, independent reason: bottom edge, thumb-reached, and a target zone without a boundary is worse than one with. **If it recedes, `material-chrome` retires entirely.** Until this lands, the material has one consumer and an open question over it, and nothing new should be built on it.
 - **(b) `--text-secondary` DARKENS IN LIGHT, 55% → 60%.** Not a preference — the measurement below makes it the precondition for the band invariant, and it touches every secondary-ink surface in the product, so it is a visible change that wants a person's eye before it lands.
 - **the measurement, run 2026-08-28 as commissioned:** worst point of each band, 1440 frame, both schemes. **Spec token band: 4.53 light / 5.96 dark — passes. Shipped five-lobe curtain: 4.02 / 1.95 — fails, and cannot be tuned into compliance** (at ×0.3 alpha it is still 4.48 in light, approaching the bar asymptotically). **And the binding constraint is not the aurora at all:** on the light canvas with NO aurora, 55% black is 4.65:1 against a 4.50 bar, so the entire band budget in light is 0.15 of contrast. At 60% the worst point is 5.40:1.
 - **what this settles without a decision:** the aurora divergence closes in favour of the **three-lobe token band**; the five-lobe curtain retires. That is forced by the measurement rather than chosen.
@@ -145,6 +145,18 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.32)** — **the tab bar keeps `material-chrome`, and it is
+  glass.** Decided by Jason: a mobile menu on the iOS model sits above content by
+  definition. The material survives with **exactly one consumer, deliberately** — stated
+  so a cleanup pass doesn't read it as an orphan. Verified: the `h-18` spacer only makes
+  the last item reachable and does not stop content passing behind the bar mid-scroll,
+  and a bottom bar that scrolls away is not a tab bar. **Blur and transparency are the
+  point, not a compromise** — but the 90% desktop figure does not transfer, because that
+  was immunity over a canvas and this is legibility over arbitrary content. **Binding
+  constraint: the bar's own labels clear 4.5:1 against the worst content beneath — blur
+  spreads a colour, the fill is what floors it.** Needs a measurement. Also corrected: the
+  recession ruling's "the tab bar takes whatever the navbar takes, always" was a false
+  absolute; the shared identity is the type register, not the material.
 - **2026-08-28 (v2026.08.28.31)** — **the header stops being sticky**, decided by
   Jason. Satisfies `.30` by the cheaper of its two means — don't overlay the scroll,
   rather than contain it — **one class on one component, no structural change.**

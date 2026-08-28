@@ -50,13 +50,20 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
-### Is a green TINT plate a "plate" for the purposes of the fill rule?
-- **kind:** spec silent
-- **found:** the 2026-08-28.2 ratification pass, while measuring grounds. `AskSummaryCard.tsx:113` ships a pill with `bg-action/10` behind `text-success dark:text-action`. It is not pressable. Under `fill-rule` claim 1, "a filled green plate is a control" — but the rule says nothing about alpha, and a 10% tint plainly does not read like the CTA. This chip survived the stage 2 green audit, so somebody already made this call implicitly; nothing records it.
-- **evidence:** the CONTRAST half is settled and is now in `color.action.fill-rule-ink-ground` — the chip measures 4.52:1 on the neutral-100 page ground, and a green tint plate carrying green ink caps at 10%. The AFFORDANCE half has no measurement at all, which is the whole problem: "does it read as a control" has been argued from prose only.
-- **proposes:** nothing yet — deciding this from a description is how the accents inventory ended up with nine sanctioned-sounding things nobody had built.
-- **blocks:** nothing shipping. It blocks the next green audit from being repeatable: without a threshold, every reviewer re-derives where tint stops being fill, and the answer drifts with whoever is reviewing.
-- **waiting on:** a render — the chip at 0% / 10% / 20% / 40% tint, beside a real `role-action` button, both schemes, at 390 and 1440. The alpha where the chip starts attracting a click is the rule. Cheap to produce and nobody has produced it.
+### Name the Blue Hour canvas separately from the opaque ground
+- **kind:** unowned default
+- **found:** the 2026-08-28.3 pass, measuring grounds. `--canvas` resolves to neutral-100/900 and is painted by this spec's `.amendment-app`; the shipped body paints `slate-100` / a hardcoded `#080c17` plus the aurora layer. The rendered value is the shipped one.
+- **evidence:** they are not the same role, which is why this is a naming bug and not a mismatch. `#080c17` + aurora is the Live register's ground; the neutral pair is the opaque ground `color.ink-needs-an-opaque-ground` now requires. Measured, the opaque neutral is what restores contrast in the aurora band — `action` at 6.10:1 on it versus 2.87:1 on glass at the same position. One token cannot be both.
+- **proposes:** a named Blue Hour token for the Live base, leaving `--canvas` as the opaque reading/writing ground.
+- **blocks:** nothing shipping. It blocks `ink-needs-an-opaque-ground` from being citable as a token rather than a description.
+- **waiting on:** the register table, which the naming should move with — not a measurement. Deliberately deferred rather than decided in a colour pass.
+
+### Bring the materials under the extraction guard
+- **kind:** conformance, systemic — recorded here because the fix is a process change, not a code edit
+- **found:** the 2026-08-28.3 pass, ruling on the navbar. `material-chrome` dark is `rgb(24 24 27 / 90%)` in `colors_and_type.css` and `dark:bg-white/12` in the consumer's `@utility` — the opposite treatment, not a rounding difference.
+- **evidence:** rendered both over the same full-width green CTA: the spec value is neutral charcoal, the shipped utility composites to a saturated green. The consumer's stylesheet also carries prose stating the drifted value in the register of a rule, so the copy reads as authoritative.
+- **proposes:** extend the 08-28 regenerate-and-diff guard from colour and radii to the materials.
+- **blocks:** nothing directly, but every material citation is unreliable until it lands — this one produced a well-argued proposal to change the palette to match a divergence.
 
 ---
 
@@ -64,6 +71,27 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.3)** — the stage 2.5 and stage 3 queues, emptied.
+  **Glass blends, it does not cover** is the through-line. Ratified:
+  `ink-switch-is-palette-wide` (the light/inverted switch governs the whole
+  palette, not green — no token clears 4.5:1 in both schemes);
+  `ink-ground-is-a-placement` (the aurora is a gradient, so one token swings
+  2.15→6.32:1 by position — **a contrast number without a position is not a
+  measurement**, and no table is recorded for that reason);
+  `ink-needs-an-opaque-ground`, which **retires the hard rule** that
+  `material-chrome` re-establishes a ground — measured, glass is 2.87:1 where
+  opaque is 6.10:1, and thicker materials are *worse* because `blur(50px)`
+  averages neighbouring bright lobes in; `tint-is-not-a-plate` (settled from
+  the supplied ladder — alpha is not the channel carrying affordance, so
+  status is ink on neutral material and there is no tint token in any family);
+  `primary.plate-not-mark` (a limitation, not a gap — the primary/slate
+  distinction is light-mode-only). **Two entries dissolved on re-measurement:**
+  `danger` passes inverted at 4.71:1 on the opaque canvas — a placement bug was
+  about to buy a palette change; and `material-chrome` already specifies a dark
+  wash — the navbar comparison rendered the consumer's reimplementation
+  labelled as the spec. Both are conformance. New:
+  `materials-are-a-second-copy`. Canvas naming and the materials guard left
+  open above.
 - **2026-08-28 (v2026.08.28.2)** — the ENACTED example rewritten to carry the
   which-green switch instead of reading absolutely (the absolutist reading ships
   a 3.56:1 dark label; the code was already correct). **The finding generalised:

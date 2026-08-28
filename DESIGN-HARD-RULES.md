@@ -4,7 +4,9 @@ Source of truth: `DESIGN.md`. This file is the short list every visual change is
 
 ## Look at the render and ask
 
-1. **Bare text inside the aurora band?** Text sits on glass or paper, never directly on the gradient. Chrome that must overlap carries `material-chrome`, which re-establishes a ground. → violation
+1. **Coloured ink inside the aurora band?** Text sits on glass or paper, never directly on the gradient. But **glass does not rescue a coloured hue** — measured, every material lands 2.6–3.0:1 in the band, and `material-thick`/`material-chrome` are among the worst, because translucency passes the aurora through and `blur(50px)` averages neighbouring bright lobes *in*. **Anything carrying a semantic hue as text needs an OPAQUE ground** (`--canvas` measured 6.10:1 where glass measured 2.87:1). Glass stays legal for primary/secondary text, which is luminance against its own material. → violation
+   - **Check a material against `colors_and_type.css`, not the app's own utility.** The consumer hand-reimplements the materials and `material-chrome` dark has drifted to the opposite treatment (90% zinc in the system, 12% white in the app). A specimen must name which value it renders.
+   - **Corollary: a contrast number without a position is not a measurement.** The canvas is a gradient; the same token swings ~3× top-to-bottom of the page. Quote where you sampled or don't quote the number.
 2. **Is the green obeying the fill rule?** Three separate questions, and they are the most-violated rules in the system:
    - **A filled green plate is a control** (*press me*). One per surface, on the primary act. A green plate that isn't pressable is a violation.
    - **Green ink is a report** (*this happened*) — and green ink is **`--color-success`** on light, switching to **`--color-action`** under inversion. The action green **as text is forbidden** (2.62:1). A plate colour used as ink is a contrast failure, not a style choice.

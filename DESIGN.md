@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.2
+# spec-version:   v2026.08.28.3
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -51,6 +51,102 @@ description: >-
 
 color:
   # -----------------------------------------------------------------------
+  # INK LEGIBILITY — read this before choosing any coloured text token.
+  # Three rules, ratified 2026-08-28 from measured renders. They compose:
+  # the pair is necessary, the ground is necessary, and neither alone is
+  # sufficient.
+  # -----------------------------------------------------------------------
+  ink-switch-is-palette-wide: >-
+    RATIFIED 2026-08-28. THE LIGHT/INVERTED INK SWITCH IS A PROPERTY OF THE
+    PALETTE, NOT OF GREEN. Every semantic family behaves the same way: the
+    BASE token is the ink on light and fails inverted; the -soft counterpart
+    does the reverse. success/success-soft, warning/warning-soft,
+    danger/danger-soft, functional/functional-light, and action all measure
+    the same shape. NOT ONE TOKEN IN THE PALETTE CLEARS 4.5:1 IN BOTH
+    SCHEMES, which is why there is no such thing as "the" colour for a
+    semantic meaning — there is a pair, and the scheme picks.
+      SO: a semantic ink is its base token on light and its -soft
+      counterpart under inversion. color.action.fill-rule-which-green is now
+      ONE INSTANCE of this rule, not the rule; green was simply the family
+      that got measured first.
+      NO CONTRAST TABLE IS RECORDED HERE ON PURPOSE. See
+      ink-ground-is-a-placement, which is why any such table would be a
+      false constant.
+  ink-ground-is-a-placement: >-
+    RATIFIED 2026-08-28. ON THE LIVE CANVAS, CONTRAST IS A FUNCTION OF WHERE
+    THE ELEMENT SITS, NOT OF THE TOKEN PAIR. The canvas carries the aurora,
+    which is a gradient, so the ground moves continuously down the page and
+    a token's contrast moves with it. MEASURED on the shipped render, dark
+    scheme, one token (action) against the bare canvas at five vertical
+    positions: 2.15:1 inside the aurora band at the top, rising to 6.32:1
+    below it — a THREEFOLD swing with no change to the token, the scheme, or
+    the material.
+      SO: "--color-success is the light-mode ink" is necessary and NOT
+      sufficient. The pair from ink-switch-is-palette-wide holds on an
+      opaque, aurora-free ground. Inside the aurora band nothing in the
+      palette holds; see ink-needs-an-opaque-ground.
+      COROLLARY, and the reason this is a rule rather than a note: A SINGLE
+      CONTRAST NUMBER FOR A TOKEN IS MEANINGLESS UNLESS IT NAMES THE
+      POSITION IT WAS TAKEN AT. Two sessions measuring the same token on the
+      same page disagreed by a factor of two, and both were correct for
+      where they sampled. Quote the position or do not quote the number.
+  materials-are-a-second-copy: >-
+    RECORDED 2026-08-28. The token EXTRACTION sanctioned on 2026-08-28
+    covers colour and radii; THE MATERIALS ARE NOT EXTRACTED. The consumer
+    hand-reimplements every material as a Tailwind @utility, and at least
+    one has drifted hard — material-chrome dark is 90% zinc there and
+    bg-white/12 here, which is not a rounding difference, it is the
+    opposite treatment. Worse, the consumer's stylesheet carries PROSE
+    documenting the drift ("material-chrome: 12% white") in the register of
+    a rule, so the copy reads as authoritative to anyone who opens it.
+    This is trap 4 at file scale: a file that restates values IS a competing
+    copy of the system, and the materials now have two homes the way
+    DESIGN.md once did.
+    NEEDS: the materials brought under the same regenerate-and-diff guard as
+    the colour tokens. Until then, every material citation should be checked
+    against colors_and_type.css rather than the consumer's utility.
+  canvas-divergence-2026-08-28: >-
+    UNOWNED DEFAULT, recorded not resolved. TWO DIFFERENT CANVASES ARE IN
+    PLAY UNDER ONE NAME. This spec's .amendment-app paints var(--canvas) =
+    neutral-100 light / neutral-900 inverted. The shipped body paints
+    slate-100 light and a hardcoded #080c17 inverted, plus the aurora layer.
+    The value that reaches the rendered surface is the shipped one, so that
+    is what the system currently MEANS.
+    THEY ARE NOT THE SAME ROLE, which is why this is a naming bug rather
+    than a mismatch: #080c17 plus aurora is the LIVE register's ground, and
+    the neutral pair is the OPAQUE ground that ink-needs-an-opaque-ground
+    requires. One token is doing both jobs and can only be right for one.
+    NEEDS: a named Blue Hour token for the Live base, leaving --canvas as
+    the opaque reading/writing ground. Not decided here because the naming
+    touches the register table and should move with it.
+  ink-needs-an-opaque-ground: >-
+    RATIFIED 2026-08-28, and it RETIRES A HARD RULE THAT HAD NEVER BEEN
+    RENDERED. The rule said: chrome that must overlap the aurora carries
+    material-chrome, "which re-establishes a ground." MEASURED, IT DOES NOT.
+      Dark scheme, one position inside the aurora band, action as ink:
+        glass with backdrop-blur   2.87:1
+        glass, blur removed        3.45:1
+        OPAQUE ground (--canvas)   6.10:1
+      And ordering the materials by thickness does not help — every material
+      lands between 2.6:1 and 3.0:1 for danger-soft in the band, with
+      material-thick and material-chrome among the WORST, not the best.
+      TWO MECHANISMS, and the second is the surprise. (1) Translucency
+      passes the aurora through: a partly transparent panel over a gradient
+      is still over the gradient. (2) backdrop-filter: blur(50px) samples a
+      wide neighbourhood and AVERAGES NEIGHBOURING BRIGHT LOBES INTO the
+      panel — so a glass panel near a bright lobe is LIGHTER than the canvas
+      beneath it, which is the opposite of what a darkening overlay is
+      supposed to do. Glass does not cover the aurora; it blends it.
+      SO: COLOURED INK REQUIRES AN OPAQUE GROUND. Glass is legal for
+      primary/secondary text, which is a luminance ramp against its own
+      material and does not depend on hue separation. Anything carrying a
+      semantic hue as text — status, error, success, a stamp, a count —
+      needs an opaque plate, and inside the aurora band it needs one
+      regardless of scheme.
+      This is trap 3 collecting: the rule had no specimen, so it was wrong
+      somewhere, and it was wrong exactly where it was most confidently
+      cited.
+  # -----------------------------------------------------------------------
   # COLOR SPACE — the authoring rule. Anything this system AUTHORS is
   # written in oklch(). Hex survives only where the value is a verbatim
   # Tailwind default we are aliasing, and is annotated as such, so the
@@ -75,6 +171,25 @@ color:
     midnight-indigo-light: "#334155"   # slate-700 — hover / gradient top light
     midnight-indigo:       "#1e293b"   # slate-800 — default
     midnight-indigo-dark:  "#0f172a"   # slate-900 — active / gradient top dark
+    plate-not-mark: >-
+      RATIFIED 2026-08-28. PRIMARY IS A PLATE COLOUR. IT HAS NO INVERTED
+      COUNTERPART AS A MARK, AND THAT IS A LIMITATION, NOT A GAP TO FILL.
+      Midnight Indigo is dark by definition, so under inversion a primary
+      RULE, UNDERLINE, BORDER or INK disappears into the canvas — measured
+      on the shipped dark render, primary is 1.03:1 and primary-light
+      1.37:1 against the ground, both far under the 3:1 non-text threshold.
+      A primary PLATE is unaffected and correct in both schemes: the avatar
+      is white on indigo and reads either way.
+      NO TOKEN IN THE PALETTE CAN CARRY THIS. The one light-enough neutral
+      family is functional, and functional MEANS the system — so borrowing
+      it to mark the user's own trail would say the opposite of what the
+      mark exists to say.
+      SO: under inversion a primary mark resolves to the hairline neutral,
+      and THE PRIMARY/SLATE DISTINCTION IS A LIGHT-MODE DISTINCTION. In dark
+      the difference between "your trail" and "the system listening" is
+      carried by position and label, not by hue. Say this out loud rather
+      than shipping a substitute hue that quietly means something else — the
+      blockquote bar already ships the neutral, and it is correct.
   # -----------------------------------------------------------------------
   # ACTION — Momentum green. Reserved for moments of intent AND for the
   # crowd's assent: CTAs, FAB, co-signs, counts, thresholds, answered
@@ -142,6 +257,20 @@ color:
     danger-soft:  "#ef4444"   # red-500 — error badges. Red is now the ONLY warm
                               # in the system outside the seal, which makes
                               # destructive states clearer than they have been.
+    danger-inverted-is-not-broken: >-
+      INVESTIGATED AND CLOSED 2026-08-28, NO TOKEN CHANGE. Stage 2.5 reported
+      that danger is the one family with no ink passing inverted, measuring
+      danger-soft at 4.37:1 on glass and proposing a lighter token. RE-
+      MEASURED against the actual grounds: danger-soft is 4.71:1 on the
+      opaque canvas and 4.88:1 on the flat lower page — IT PASSES. It fails
+      only on glass (3.8:1) and inside the aurora band (2.2–3.0:1), which is
+      where EVERY token in the palette fails.
+      SO THE FAMILY IS FINE AND THE GROUND WAS THE PROBLEM. The fix is
+      color.ink-needs-an-opaque-ground, not a new red. Worth recording as a
+      method note: the entry was measured at one position on one material
+      and generalised to "the palette has a hole," which would have bought a
+      token change to fix a placement bug. Measure the ground before
+      changing the ink.
   # -----------------------------------------------------------------------
   # MOMENTUM — Emerald. The crowd's assent and accountability met: co-signs,
   # endorsements, "candidate answered", counts climbing. Shares emerald with
@@ -175,6 +304,9 @@ color:
       here: it ghosts the primary action, and a page where every state is a
       filled plate is a page where everything looks like a button.
     fill-rule-which-green: >-
+      SCOPE NARROWED 2026-08-28: this is ONE INSTANCE of
+      color.ink-switch-is-palette-wide, which governs every semantic family.
+      Read that first; what follows is the green case and its history.
       RATIFIED 2026-08-28, after stage 2 read the rule as self-contradictory
       and shipped the permissive branch. The two sentences do not disagree;
       they govern DIFFERENT TOKENS, and the missing sentence was this one.
@@ -218,7 +350,11 @@ color:
       and let the profile cite it — profiles are where general rules go to
       hide, because everyone reads them as being about email.
     fill-rule-ink-ground: >-
-      RATIFIED 2026-08-28. GREEN INK IS ONLY AS LEGAL AS THE GROUND UNDER
+      RATIFIED 2026-08-28. GENERALISED THE SAME DAY — the placement half of
+      this entry is now color.ink-ground-is-a-placement, which governs the
+      whole palette and supersedes the flat-canvas numbers below; they were
+      taken on a nominal ground with no aurora and hold only there. The tint
+      ceiling stands. GREEN INK IS ONLY AS LEGAL AS THE GROUND UNDER
       IT, AND "ON LIGHT" IS NOT A GROUND. (2) says --color-success is the
       light-mode ink; it does not say what it is legible ON, and the
       answer moves fast enough to matter. MEASURED, success ink:
@@ -238,9 +374,37 @@ color:
           on intent, and it has no room to grow. Under inversion the same
           plate with --color-action ink has more slack (6.03:1 at 10%),
           which is why this reads as a light-mode ceiling.
-      Whether a tint plate is a PLATE for the purposes of (1) — that is,
-      whether a tinted chip reads as a control — is a separate and still
-      open question. This entry governs contrast only.
+      RESOLVED 2026-08-28, see color.action.tint-is-not-a-plate. A tint is
+      not a plate; this entry's ceiling stands as the contrast half.
+    tint-is-not-a-plate: >-
+      RATIFIED 2026-08-28 from a rendered ladder, which is the only way this
+      could have been settled. THE "FILLED PLATE" IN THE FILL RULE MEANS THE
+      TOKEN AT FULL STRENGTH. A tint is not a plate at any alpha, and the
+      question "at what alpha does tint become fill" has no answer because
+      alpha is not the channel carrying the affordance.
+      THE RENDER: a co-signed chip at 0 / 10 / 20 / 40% action tint beside a
+      real CTA, both schemes. At 40% the chip reads as a filled badge and
+      still does not read as the CTA, because the control's identity is
+      carried by FOUR channels the tint never touches — full-strength fill,
+      elevation, corner radius (a control is rounded-md, a chip is
+      rounded-full), and an ink label rather than coloured ink.
+      THE PHOTOMETRY AGREES: measured as share of the CTA's own separation
+      from its ground, the ladder reaches at most 30% in light and 17% in
+      dark. A tint never approaches the control at any alpha on the ladder.
+      SO: status is INK ON NEUTRAL MATERIAL. A coloured plate belongs to a
+      control. This answers the general case as well as the green one —
+      there is no tint token in any family and there should not be one; a
+      surface wanting to show status reaches for ink, not a plate.
+      The 10% ceiling in fill-rule-ink-ground still binds, and it binds for
+      contrast, not affordance. It sits well below where affordance would
+      even become arguable, so one number does both jobs.
+      DISSENT RECORDED: the implementation session read the dark ladder as
+      "even 40% still reads as a label" and concluded the affordance
+      threshold is scheme-dependent. Reviewing the same render
+      independently, 40% dark reads as a filled pill, not a label. The
+      disagreement does not change the outcome — no alpha reaches the
+      control in either scheme — but it is exactly why the render is
+      reviewed by someone who did not build it.
   # -----------------------------------------------------------------------
   # NEUTRAL — the paper. Zinc scale, chosen for a warm-gray undertone that
   # complements slate-blue better than pure gray.
@@ -749,6 +913,30 @@ materials:
     # because translucent chrome over a dark canvas reads as smoke.
     bg-light: "rgb(255 255 255 / 55%)"
     bg-dark:  "rgb(24 24 27 / 90%)"
+    dark-is-a-dark-wash-and-that-is-load-bearing: >-
+      REAFFIRMED 2026-08-28 against a render that appeared to argue the
+      opposite. Stage 3 reported that material-chrome "is a white wash
+      (bg-white/12)" in dark, that composited over the action green the bar
+      drifts teal, and proposed replacing the spec's treatment with a dark
+      tint. THE SPEC ALREADY SPECIFIES A DARK WASH — 90%, right above this
+      line — and has since 2026-08-27. What the comparison rendered was the
+      CONSUMER'S REIMPLEMENTATION, which ships dark:bg-white/12, labelled
+      "MATERIAL-CHROME (SPEC)".
+      RENDERED BOTH: at bg-white/12 the bar composites to a saturated green
+      and does not read as chrome. At the spec's rgb(24 24 27 / 90%), over
+      the same full-width green CTA, the bar is neutral charcoal with NO
+      green cast — better than the shipped navbar's own material-thin plus
+      tint, which still carries one.
+      SO: CONFORMANCE, NOT RATIFICATION. Nothing in the palette changes. The
+      navbar takes material-chrome as components.navbar already says, once
+      the utility implements the value on this line.
+      WHY IT LOOKED LIKE A SPEC PROBLEM, and this is the part worth
+      remembering: the physics the report describes is REAL — a white wash
+      cannot absorb the hue it blurs, which is the same mechanism as
+      color.ink-needs-an-opaque-ground, one channel over. Correct physics
+      applied to a mislabelled specimen produces a confident, well-evidenced
+      argument for changing the wrong thing. A specimen that names which
+      value it is rendering is not a nicety.
     backdropFilter: "blur(25px)"
     ring-light: "1px solid rgb(0 0 0 / 10%)"
     ring-dark:  "1px solid rgb(255 255 255 / 10%)"

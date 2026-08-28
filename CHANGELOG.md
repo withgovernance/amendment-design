@@ -8,6 +8,122 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 — The fill rule's missing sentence, and a rule hiding in a profile (stage 2)
+
+Stage 2 landed the colour tokens: `--color-action` exists, the CTA is flat green
+with an ink label (measured 6.42:1 ink vs 2.90:1 white — the spec's own numbers
+reproduced), the `!important` came off and **nothing overrode the label**,
+oxblood is gone from the FAB and CTA, and the green audit fixed five fill-rule
+violations across 32 green surfaces.
+
+It also read the fill rule as contradicting itself, and shipped the permissive
+branch on the evidence that 18 of 32 green surfaces survive only that reading.
+**The rule does not contradict itself — it was missing a sentence**, now
+`color.action.fill-rule-which-green`. Three claims were being conflated:
+
+1. **Fill vs ink is global.** A filled green plate is a control anywhere; green
+   ink is a report anywhere.
+2. **Which green is ink is a contrast fact, not a taste one.** `--color-action`
+   is a plate colour; as text it is 2.62:1 and **forbidden**. Green ink is
+   `--color-success` on light, switching to `--color-action` under inversion.
+3. **"Where a crowd is counted" scopes the Momentum *accent*** — the brand use
+   of green — not the semantic success family, which keeps its conventional
+   meanings (enacted, completed, verified) everywhere.
+
+Read together, the permissive/strict split dissolves: most of the 18 surfaces
+were semantic success, which was never in question. **But one consequence bites
+what stage 2 shipped:** the ENACTED stamp went to action-green ink, which fails
+contrast. It is legal as a green stamp and it must be `--color-success`.
+
+**The finding underneath is the more valuable one.** Claim 2 was already in the
+spec — fully specified, with the inversion switch spelled out — **inside the
+email profile.** Stage 2 re-derived it from scratch by measuring both tokens
+against both grounds and arrived at the identical pair. That is the strongest
+possible evidence the rule is right, and that it was in the wrong section.
+
+New corollary: **a rule that lives only inside a profile or a register is
+invisible to the general case.** Profiles are where general rules go to hide,
+because everyone reads them as being about email. When a rule surfaces while
+writing a profile, hoist it to the section it governs and let the profile cite
+it.
+
+**Three more from the same queue, all accepted:**
+
+- **The neutral ramp was annotated as a verbatim Tailwind alias and had stopped
+  being one.** Tailwind moved its palette to oklch in v4; measured at v4.3.1 the
+  framework has `oklch(96.7% 0.001 286.375)` where this file had `#f4f4f5`.
+  Near-identical, not identical — so a consumer re-emitting the hex would nudge
+  every `zinc-*` utility in its product off the framework's own value to fix
+  nothing. `color.neutral` now **names** the ramp and cites the framework
+  instead of copying it; `colors_and_type.css` keeps the hex only so the
+  stylesheet stands alone with no framework under it, and says so.
+
+- **A consumer cannot import `colors_and_type.css`, which is how `CLAUDE.md`
+  described the consumer.** Three independent reasons, all measured: Turbopack
+  refuses a CSS import that leaves the project root (a panic log, not a
+  warning); the design checkout is gitignored in the consumer, so it is absent
+  on CI and Vercel; and this file is a standalone drop-in that pulls two font
+  families from the Google CDN the consumer self-hosts, and ships `role-*` and
+  `material-*` as plain classes the consumer implements as framework utilities.
+  **Extraction is now sanctioned, with one obligation: the consumer's CI
+  regenerates the token file and fails on any diff.** A generated file is a
+  second copy, and this one stamps the `spec-version` it came from — without
+  the guard it drifts while carrying a stamp that has become a lie. That is
+  why the guard is mandatory and not merely advisable.
+
+- **The 12px floor versus a corner badge: the badge loses.** Two live
+  violations (`text-[8px]` on a "Converts Best" hint, `text-[9px]` on a
+  share-code count) were queued as needing a decision. The spec already made
+  it — *"if a label no longer fits at 12px, the layout is the problem."*
+  Queueing it was the error, not the rule. Shorten the copy, move it out of
+  the corner, or drop it; an 8px label is not one of the options.
+
+Also this session: `DESIGN-HARD-RULES.md` **did not exist** — it was deleted by
+the repo-split prune script (my own instructions removed the folder holding it,
+with a "grab this first" note above the `rm`), so `CLAUDE.md`, `/design-iterate`
+and `/review-pr` all pointed at nothing for a day. Stage 2 fell back to the
+repo's `CLAUDE.md` and got the rules right anyway. Rewritten and committed. The
+trap is the familiar one at one more remove: **the file every enforcement path
+depends on was the file nobody rendered.**
+
+---
+
+## 2026-08-27 — Light-clean implies dark-clean (PR 1d, and a new invariant)
+
+The heading sweep finished: 63 conversions across 41 files, zero true headings
+left on the sans stack. But the durable finding is the **verification method**,
+which is better than the one this project had been using.
+
+`stat.tsx` taught that 16px sans → 18px serif can outgrow a container, so the
+sweep needed a clipping check in both schemes. Brute-forcing 160 stories × 2
+schemes hit a hard 60s cap on the tooling. Instead of sampling, the question
+was reframed: **how many dark-scoped rules change a type metric at all?**
+Three, in the entire stylesheet — `role-stat-display` 700 → 650 (lighter,
+therefore narrower, and no call site yet) and one `dark:font-medium` utility on
+a free-wrapping bubble. A lighter weight cannot clip where light didn't.
+
+So **light-clean implies dark-clean**, exhaustively over the stylesheet rather
+than sampled over stories. Recorded as `typography.notes.darkMetrics-invariant`.
+
+**What this reveals:** the single weight scale isn't merely tidier — it *buys*
+an invariant. Retiring the parallel dark scale in PR 1 is what makes a
+whole-stylesheet proof available instead of 320 screenshots. Any future
+dark-only size, weight, tracking, or family spends it. That cost was invisible
+until someone tried to verify something exhaustively and found they could.
+
+**The generalizable move:** when exhaustive checking is too expensive, don't
+sample — look for a property that makes the check unnecessary. Sampling proves
+the cases you looked at; an invariant proves the ones you didn't.
+
+Also: the implementation ran the retired-ladder grep on its own work and found
+three bare weights in its own new role definitions (450 ×2, 650) — off-ladder,
+specific, exactly the shape that survives a recalibration untouched. Now
+tokenized, with `--serif-display/text/quote` threaded through named weights.
+No bare `font-weight` number remains in `globals.css`. **The rule caught its
+author before the reviewer did, which is the only real test of a rule.**
+
+---
+
 ## 2026-08-27 — 497 came back, and the green fill rule has no home (PR 2 prep)
 
 Two findings from the italic-subset / roles PR, one of them the most serious

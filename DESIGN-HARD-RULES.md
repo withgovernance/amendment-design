@@ -1,22 +1,25 @@
 # Amendment — Hard Rules (the lookable checklist)
 
-Source of truth: `DESIGN.md`. This file is the short list every visual change is checked against — by `/design-iterate` (step 4½, against screenshots), by `/review-pr` (against the diff), and by you. If a rule here contradicts DESIGN.md, DESIGN.md wins; fix this file.
+Source of truth: `DESIGN.md`. This file is the short list every visual change is checked against — by `/design-iterate` against screenshots, by `/review-pr` against the diff, by `designer` against story renders. If a rule here contradicts `DESIGN.md`, `DESIGN.md` wins; fix this file in the same pass.
 
-## Look at the screenshot and ask
+## Look at the render and ask
 
-1. **Bare text inside the aurora band?** Text sits on glass or paper, never directly on the gradient. → violation
-2. **Green anywhere a crowd isn't counted?** A filled green plate is a control (*press me*); green ink is a report (*this happened*). Green appears only where a crowd is counted or on the primary act (Send / Co-sign / FAB). Conversation views are green-free. Meters/ribbons exempt (quantity, not affordance).
-3. **Any red that isn't semantic danger?** No oxblood, no red CTAs, no red ENACTED. Red = red-600 danger/"dead" only. No violet/pink/magenta accents; no amber except warning.
-4. **Anything moving on hover?** Hover = one background step + one shadow tier. No `scale()`, no `brightness()`, no transform transitions. Chrome is still. Motion exists on exactly two surfaces: Receipt bloom (once, at issuance) and Commons accrual (real aggregate state). Streaming text/skeletons are not motion.
-5. **ALL CAPS in a heading?** Uppercase belongs to chrome only: 12px, wdth 125, 0.12em tracking. Headings are serif (Newsreader), mixed case, never tracked out.
-6. **Type below 12px?** Hard floor, no chrome exception.
-7. **Touch target under 44px?** Interactive = ≥44px; primary CTA = 48px — by min-height or expanded hit area, never by inflating padding/appearance. Appearance and target are two geometries.
-8. **Serif italic doing decoration?** Italic serif = quoted human voice only, ≥1.125rem. Metadata is roman. Sans emphasis uses Archivo's real italic.
+1. **Bare text inside the aurora band?** Text sits on glass or paper, never directly on the gradient. Chrome that must overlap carries `material-chrome`, which re-establishes a ground. → violation
+2. **Is the green obeying the fill rule?** Three separate questions, and they are the most-violated rules in the system:
+   - **A filled green plate is a control** (*press me*). One per surface, on the primary act. A green plate that isn't pressable is a violation.
+   - **Green ink is a report** (*this happened*) — and green ink is **`--color-success`** on light, switching to **`--color-action`** under inversion. The action green **as text is forbidden** (2.62:1). A plate colour used as ink is a contrast failure, not a style choice.
+   - **The Momentum accent is scoped to where a crowd is counted** — co-signs, endorsements, tallies, threshold meters. A dialogue counts no crowd, so conversation views stay green-free. This scopes the *brand accent*; it does not forbid semantic success from its conventional meanings (enacted, completed, verified).
+3. **Any red that isn't semantic danger?** No oxblood, no red CTAs, no red ENACTED. Red-600 danger / "dead" only. No violet/pink/magenta accents; no amber except warning.
+4. **Anything moving on hover?** Hover = one background step + one shadow tier. No `scale()`, no `brightness()`, no transform transitions. Chrome is still. Motion exists on exactly two surfaces — Receipt bloom (once, at issuance) and Commons accrual (real aggregate state) — and never swaps or leaks. Streaming text and resolving skeletons are not motion. **An idle loop or a decorative ping is a violation wherever it is.**
+5. **ALL CAPS in a heading?** Uppercase belongs to chrome only: 12px, `wdth` 125, 0.12em tracking. Headings are serif, mixed case, never tracked out. A heading tag carrying a tracked uppercase label is not a heading — it's `role-label-caps` and stays sans.
+6. **Type below 12px?** Hard floor, no chrome exception. **If a label no longer fits at 12px, the layout is the problem** — the type is not there to fix a layout decision.
+7. **Touch target under 44px?** Interactive ≥44px; primary CTA 48px — by `min-height` or an expanded transparent hit area, never by inflating padding. Appearance and target are two geometries.
+8. **Serif italic doing decoration?** Italic serif is quoted human voice only, ≥1.125rem (`role-quote`). Below that it's roman 600 (`emphasis-serif-inline`). Metadata is roman. Sans emphasis uses Archivo's real italic.
 9. **Script face on anything but the user's own affirmed name, on their own artifact?** Never other names, never decoration. No name → serif "A constituent".
-10. **Emboss without paper under it, or below 44px?** The seal emboss needs a paper canvas. It can't print or survive email — the ledger number (always present as text) is the proof.
-11. **Both color schemes captured?** Light and dark are both first-class; glass collapses to solid zinc under `prefers-reduced-transparency` (email lives there permanently — no webfonts, Georgia/Segoe/Verdana, chrome ≥12px).
-12. **Wrong icons or imagery?** Phosphor only (never Lucide). No 🇺🇸/eagles/partisan marks, no stock photos, no photographic textures, no faux-3D. No 🎉 register — the Receipt is issued, not cheered.
-13. **A `ch` unit, or a hand-typed value a token already owns?** Widths in rem (`measure.body` = min(28rem, 100% − 2rem)); colors/shadows/materials from the token layer. A literal is how every drift in this system's history started.
+10. **Emboss without paper under it, or below 44px?** The emboss needs a paper canvas. It can't print or survive email — the ledger number, always present as text, is the proof.
+11. **Both colour schemes checked?** Light and dark are both first-class. Glass collapses to solid zinc under `prefers-reduced-transparency`; email lives there permanently (no webfonts — Georgia / Segoe stack / Verdana chrome ≥12px). Honour `prefers-reduced-motion` and `prefers-contrast`.
+12. **Wrong icons or imagery?** Phosphor only, never Lucide. No flags, eagles, or partisan marks; no stock photography, no photographic textures, no faux-3D. No 🎉 register — the Receipt is *issued*, not cheered.
+13. **A `ch` unit, or a hand-typed value a token already owns?** Widths in rem (`measure.body` = min(28rem, 100% − 2rem)). Colours, shadows, materials, weights from tokens. **Cite the token, never the number** — a literal is how every drift in this system started, and a specific number survives edits a token name wouldn't, because it looks deliberate.
 
 ## The four registers (pick the register, not the room)
 
@@ -28,3 +31,9 @@ Source of truth: `DESIGN.md`. This file is the short list every visual change is
 | Issued | Receipt | paper-cream | paper | 34rem portrait | bloom once, then static |
 
 Aurora limits: chroma ≤ 0.22, ≤ 5 lobes, never bare text in the band. No full-bleed photography, no repeating patterns.
+
+## Where findings go
+
+- **Spec clear, code disagrees** → conformance. Fix it. No queue entry.
+- **Spec silent, two readings, or a framework's default nobody chose** → append to `RATIFY.md` with the *kind* named and **the evidence attached, not the argument**. Render both readings and let the container decide; a clip, an overflow, or a contrast number settles it far cheaper than prose.
+- **A rule that exists only inside a profile or a register is invisible to the general case.** If you go looking for a rule and find it in an unexpected section, that is a finding worth queueing on its own.

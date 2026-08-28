@@ -1,4 +1,34 @@
 ---
+# ---------------------------------------------------------------------------
+# PROVENANCE — check this before citing anything below.
+#
+# canonical-repo: withgovernance/amendment-design
+# spec-version:   v2026.08.28
+# authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
+#
+# This file has TWO homes, which is the condition that produced every drift in
+# CHANGELOG.md. The rule that keeps it honest:
+#
+#   RATIFICATIONS ARE AUTHORED HERE. THE REPO IS THE ONLY PUBLISHER.
+#
+# A ratification is not finished when this file changes. It is finished when
+# the change is committed to the canonical repo, `spec-version` above is
+# bumped in the same commit, and the consumer's pin moves. Until then the
+# change exists but has not shipped, and no consumer should be told to follow
+# it.
+#
+# STALENESS CHECK, first thing in any session that will cite this file:
+# compare `spec-version` above against the canonical repo's latest tag.
+#   - equal        → this file is current; proceed.
+#   - repo newer   → THIS FILE IS STALE. Something was committed to the repo
+#                    without coming through here. Reconcile before citing it;
+#                    do not assume the difference is unimportant.
+#   - repo older   → unpublished ratifications are sitting here. Publish them
+#                    before starting new work, or the next consumer to sync
+#                    gets a version that silently lacks them.
+#
+# Never hand-edit this file's copy in a consuming repo. Consumers pin a tag.
+# ---------------------------------------------------------------------------
 name: Living Document
 description: >-
   The design system for a legislative-intelligence product whose thesis is that
@@ -16,7 +46,14 @@ color:
   # COLOR SPACE — the authoring rule. Anything this system AUTHORS is
   # written in oklch(). Hex survives only where the value is a verbatim
   # Tailwind default we are aliasing, and is annotated as such, so the
-  # alias stays greppable against the framework. Text and border colors
+  # alias stays greppable against the framework.
+  #
+  # CORRECTED 2026-08-28: for the NEUTRAL ramp that escape no longer holds.
+  # Tailwind authors its own palette in oklch as of v4, so the hex is no
+  # longer verbatim and no longer greps against anything — see color.neutral,
+  # which now cites the framework instead of copying it. The escape still
+  # covers a genuine one-for-one alias; it does not cover "this used to
+  # match."  Text and border colors
   # are the one standing exception: they are opacity on pure black or
   # white (`rgb(0 0 0 / N%)`) because they must composite predictably
   # over glass, paper, and aurora alike — see color.text. A new authored
@@ -41,7 +78,7 @@ color:
     # light, not an authored hue. Replaced Oxblood 2026-08.
     action:       "oklch(.66 .148 160)"
     action-hover: "oklch(.72 .150 161)"
-    action-active:"oklch(.60 .145 160)"
+    action-active: "oklch(.60 .145 160)"
     action-label: "rgb(0 0 0 / 87%)"   # INK, not white — see below
     # One value in both modes. A bright fill needs no dark variant, and on the
     # dark canvas it is the only control that behaves like the aurora rather
@@ -129,21 +166,69 @@ color:
       / outline-means-available, which reads well on a checkbox and is wrong
       here: it ghosts the primary action, and a page where every state is a
       filled plate is a page where everything looks like a button.
+    fill-rule-which-green: >-
+      RATIFIED 2026-08-28, after stage 2 read the rule as self-contradictory
+      and shipped the permissive branch. The two sentences do not disagree;
+      they govern DIFFERENT TOKENS, and the missing sentence was this one.
+      THREE distinct claims, and conflating any two produces the apparent
+      contradiction:
+        (1) FILL vs INK is global. A filled green plate is a control anywhere
+            in the system; green ink is a report anywhere in the system.
+        (2) WHICH green is ink is a CONTRAST fact, not a taste one.
+            --color-action is a PLATE colour; as text it measures 2.62:1 and
+            is FORBIDDEN. Green ink is --color-success on light, switching to
+            --color-action under inversion. This was already specified — see
+            registers.email.action and .inversion, where the switch is
+            spelled out — but it lived only inside a profile, so the general
+            case never found it. Stage 2 re-derived it by measurement and
+            arrived at the same pair (success light / action dark), which is
+            the best possible evidence that it is right and that it was in
+            the wrong section.
+        (3) WHERE A CROWD IS COUNTED scopes the MOMENTUM ACCENT — the brand
+            use of green for co-signs, endorsements, tallies, threshold
+            meters, per registers.live.palette-rule. It does NOT withdraw
+            semantic success from its conventional meanings. `success` still
+            means enacted, completed, verified, wherever those occur; that is
+            what the "single, scoped exception" clause in the prose section
+            was distinguishing, and reading the scope as global deletes the
+            semantic family's entire reason to exist.
+      SO: an ENACTED stamp is legal and is --color-success ink (a bill
+      enacted is success in its conventional sense). It is NOT the action
+      green, which would fail contrast as ink. A green plate that cannot be
+      pressed is a violation under (1) regardless of which token it uses.
+    fill-rule-corollary: >-
+      A RULE THAT LIVES ONLY INSIDE A PROFILE OR A REGISTER IS INVISIBLE TO
+      THE GENERAL CASE. The which-green answer sat in the email profile for
+      three weeks and cost a full re-derivation. When a rule is discovered
+      while writing a profile, hoist it to the section it actually governs
+      and let the profile cite it — profiles are where general rules go to
+      hide, because everyone reads them as being about email.
   # -----------------------------------------------------------------------
-  # NEUTRAL — the paper. Zinc scale chosen for its warm-gray undertone that
+  # NEUTRAL — the paper. Zinc scale, chosen for a warm-gray undertone that
   # complements slate-blue better than pure gray.
+  #
+  # THE FRAMEWORK OWNS THESE VALUES, not this file. CORRECTED 2026-08-28:
+  # the ramp shipped here as hex, annotated "verbatim Tailwind default we are
+  # aliasing" — which stopped being true when Tailwind moved its palette to
+  # oklch in v4. MEASURED at v4.3.1: the framework has
+  # oklch(96.7% 0.001 286.375) where this file had #f4f4f5, and
+  # oklch(21% 0.006 285.885) where it had #18181b. Near-identical, and not
+  # the same value — so a consumer re-emitting the hex would nudge every
+  # zinc-* utility in its product off the framework's own value, in the
+  # gamut where the difference actually shows, to fix nothing.
+  #
+  # So the ramp is named here and valued THERE. A consumer takes zinc, white
+  # and black from Tailwind and does not redeclare them. This entry exists to
+  # say WHICH ramp and WHY, which is the part a framework cannot carry.
   # -----------------------------------------------------------------------
   neutral:
-    white:    "#ffffff"
-    zinc-50:  "#fafafa"
-    zinc-100: "#f4f4f5"     # page canvas (light)
-    zinc-200: "#e4e4e7"
-    zinc-400: "#a1a1aa"
-    zinc-500: "#71717a"
-    zinc-700: "#3f3f46"
-    zinc-800: "#27272a"
-    zinc-900: "#18181b"     # page canvas (dark)
-    black:    "#000000"
+    ramp:   "Tailwind `zinc` — the framework's values, not restated here"
+    steps:  "50 · 100 (page canvas, light) · 200 · 400 · 500 · 700 · 800 · 900 (page canvas, dark)"
+    white:  "Tailwind `--color-white`"
+    black:  "Tailwind `--color-black`"
+    why-zinc: >-
+      Warm-gray undertone. Pure gray reads colder than the slate-blue
+      primary and makes the aurora look like a cast rather than a light.
   # -----------------------------------------------------------------------
   # TEXT — opacity on black/white, per Apple HIG three-rung hierarchy.
   # NOTE: This approach is only safe because the Living Document aurora is
@@ -261,6 +346,18 @@ typography:
       number; if a number is unavoidable, it is a candidate for the next
       grep. Every retired-ladder value (160/227/295/362/430/497/565/632)
       is a search term, permanently.
+    darkMetrics-invariant: >-
+      ESTABLISHED 2026-08-27, and it is a property to protect rather than a
+      note. Retiring the parallel dark weight scale left exactly THREE
+      dark-scoped rules in the stylesheet that touch a type metric, and all
+      three are lighter-or-equal (role-stat-display 700 → 650, and one
+      dark:font-medium utility on a free-wrapping bubble). A lighter weight is
+      narrower, so it cannot clip where the light mode did not. THEREFORE:
+      light-clean implies dark-clean for clipping and horizontal overflow,
+      provable over the whole stylesheet instead of sampled over stories.
+      This is what a single weight scale BUYS — it is not merely tidier.
+      Do not reintroduce a dark-only size, weight, tracking, or family
+      without knowing that this invariant is what you are spending.
     widthDiscipline: >-
       Chrome width + uppercase is a specific signal (institutional chrome
       label). It should not become ambient noise. Use it for nav, breadcrumbs,

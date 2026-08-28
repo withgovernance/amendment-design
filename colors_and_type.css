@@ -119,7 +119,14 @@
   --color-danger:        #dc2626;        /* red-600 */
   --color-danger-soft:   #ef4444;        /* red-500 */
 
-  /* Neutral — warm-gray zinc */
+  /* Neutral — warm-gray zinc. THE FRAMEWORK OWNS THESE VALUES (DESIGN.md
+     color.neutral, corrected 2026-08-28): Tailwind authors its palette in
+     oklch as of v4, so these hex values are no longer the verbatim alias they
+     were annotated as. They stay here only so this stylesheet works as a
+     standalone drop-in with no framework under it. A TAILWIND CONSUMER MUST
+     NOT RE-EMIT THEM — take zinc, white and black from the framework, or
+     every zinc-* utility in the product shifts off the framework's own value
+     to fix nothing. voyager's token extractor skips this block by name. */
   --color-white:   #ffffff;
   --color-zinc-50:  #fafafa;
   --color-zinc-100: #f4f4f5;

@@ -8,6 +8,42 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.25) — The canvas is only an instrument when you paint with it
+
+A one-paragraph sharpening of yesterday's measurement rule, contributed with a
+reproduction of all three layers in one run, and it changes what the rule tells you
+to do.
+
+`measure-by-painting-not-by-parsing` implied a clean split: parsing bad, canvas good.
+**That is wrong, and the wrongness is the point.** Three of the four ways to ask a
+colour question return the string — `getComputedStyle`, a regex over it, and the
+`fillStyle` echo — **and only the fourth returns a pixel.** The two failing canvas
+paths *look more rigorous* than the naive regex while being identically wrong. So
+**"I used a canvas" cannot stand in for the check**; only `fillRect()` +
+`getImageData()` is the check.
+
+**And the failure propagates into an action, not just a reading.** The number is not
+wrong-looking, it is *plausible*: `[0.66, 0.148, 160]` read as RGB is a near-black
+blue, so **a green would report as failing contrast on light and passing on dark** —
+the exact shape of a real finding in this file, several of which are real. Someone
+would then "fix" a colour that was already correct, **and the fix would be the
+damage.**
+
+Independently confirmed in that run: `fillStyle` echo returns the oklch string
+verbatim; `getImageData` on the same string gives `rgb(8,173,114)` = `--color-action`;
+`--canvas` gives `rgb(244,244,245)`. Three sessions' worth of numbers now agree by two
+methods.
+
+### A note on the correction that preceded it
+
+The `prefers-reduced-transparency` item was wrong on its merits, not merely
+misattributed — content cards remain `material-regular` under recession, so that
+block's main job is untouched. Worth recording what the consumer-side session
+observed about it: had it implemented the declaration that item asked for, **it would
+have shipped a rule for a path that did not need one, and it would have looked like
+diligence.** Unnecessary work that resembles care is not self-correcting, because
+nothing about it looks wrong.
+
 ## 2026-08-28 (v2026.08.28.24) — Three corrections, one of them about who said what
 
 ### I attributed a conformance list to the party that did not write it

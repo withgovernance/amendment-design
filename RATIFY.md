@@ -147,6 +147,14 @@ fragile.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-08-28 (v2026.08.28.25)** — `measure-by-painting-not-by-parsing` sharpened:
+  **the canvas is only an instrument when you paint with it.** Three of the four ways
+  to ask a colour question return the string (`getComputedStyle`, a regex over it, the
+  `fillStyle` echo); only `getImageData` returns a pixel — and **the two failing canvas
+  paths look more rigorous than the naive regex while being identically wrong.** The
+  failure propagates into an *action*: `[0.66, 0.148, 160]` read as RGB is a near-black
+  blue, so a green reports as failing on light and passing on dark, and someone "fixes"
+  a colour that was correct.
 - **2026-08-28 (v2026.08.28.24)** — three corrections. **I attributed a conformance
   list to the session that did not write it** (it came from the handoff) and agreed
   with an observation that session never made. Nothing false reached the spec, but a

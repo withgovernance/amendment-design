@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.24
+# spec-version:   v2026.08.28.25
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3150,6 +3150,20 @@ a11y:
       oklch(.66 .148 160) paints to rgb(8,173,114), which is --color-action,
       and --canvas paints to rgb(244,244,245). Both match values derived
       independently, which is the check that the method is sound.
+      SHARPENED 2026-08-28, and the sharper form is the useful one: THE
+      CANVAS IS ONLY AN INSTRUMENT WHEN YOU PAINT WITH IT. Touching a canvas
+      API is not the safeguard. THREE OF THE FOUR WAYS TO ASK A COLOUR
+      QUESTION RETURN THE STRING — getComputedStyle, a regex over it, and
+      the fillStyle echo — AND ONLY THE FOURTH RETURNS A PIXEL. The two
+      failing canvas paths LOOK MORE RIGOROUS than the naive regex while
+      being identically wrong, which is exactly why "I used a canvas" cannot
+      stand in for the check.
+      AND THE FAILURE PROPAGATES INTO AN ACTION, not just a reading. The
+      number is not wrong-looking, it is PLAUSIBLE: [0.66, 0.148, 160] read
+      as RGB is a near-black blue, so A GREEN WOULD REPORT AS FAILING
+      CONTRAST ON LIGHT AND PASSING ON DARK — the exact shape of a real
+      finding in this file. Someone would then "fix" a colour that was
+      already correct, and the fix would be the damage.
       SO: MEASURE BY PAINTING, NEVER BY PARSING. This is the silent-failure
       family pointed at the tool — a number that is wrong, confident, and
       shaped exactly like a right answer. It is worth stating here because

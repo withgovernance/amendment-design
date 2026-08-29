@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.29.11
+# spec-version:   v2026.08.29.12
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -623,9 +623,14 @@ typography:
       was not disobeyed; the alternative did not exist. role-ui-heading now
       does, and it is IMPLEMENTED IN colors_and_type.css rather than only
       described here.
-      SEPARATELY, AND FOUND WHILE ADDING IT: role-display-minor is named in
-      this file and in the entry points and IS NOT IN THE STYLESHEET. Same
-      trap, still open, and it has been referenced as though it exists.
+      SEPARATELY, AND RESOLVED IN THE SAME PASS: role-display-minor was named
+      in the designer agent's own role list and NEVER EXISTED IN THE
+      STYLESHEET — a phantom carried in the one file that tells the author
+      which roles are available. It is REMOVED rather than implemented,
+      because role-ui-heading now occupies the size it claimed and shipping a
+      second 1.125rem heading register would be two answers to one question.
+      A ROLE LIST IS A PROMISE. Every name on it must resolve in
+      colors_and_type.css, and that is a one-line check nobody was running.
     serifIntent: >-
       NARROWED 2026-08-29 by serif-belongs-to-the-canvas above: "every
       heading" means every heading ON THE CANVAS or on a document surface.

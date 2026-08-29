@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.29.1
+# spec-version:   v2026.08.29.2
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3382,7 +3382,37 @@ a11y:
       fallen back to the plain three-lobe Blue Hour. Inside the band it is
       not safe at any rung, in either room — in the dark room even 87% ink
       drops to 3.53:1. The band is light, not a text surface.
-    a-material-is-only-verified-in-the-app: >-
+    a-story-proves-what-it-rendered: >-
+    RATIFIED 2026-08-29, from a stub bug that had EVERY SIGNED-IN STORY IN
+    THE CONSUMER RENDERING SIGNED-OUT — not failing, PASSING, in the wrong
+    state.
+    THE MECHANISM: @clerk/nextjs was aliased to a stub in the Storybook
+    config, but VITE PRE-BUNDLES BARE PACKAGE SPECIFIERS BEFORE ALIASES
+    APPLY. Components resolved the pre-bundled real package; the preview file
+    imported the stub by relative path. TWO MODULES, TWO state VARIABLES. The
+    decorator set isSignedIn on one and the hook read the default off the
+    other. Found only by instrumenting the decorator and seeing it report
+    {isSignedIn: true} while the hook returned false — which rules out the
+    parameter merge and points at module identity. optimizeDeps.exclude gives
+    both sides one module.
+    THIS IS THE COMPANION TO a-material-is-only-verified-in-the-app AND IT IS
+    THE MORE DANGEROUS OF THE TWO. There, the story was RIGHT and the app was
+    wrong. Here THE STORY WAS WRONG AND LOOKED RIGHT: a signed-out surface is
+    a plausible surface. Nothing about it announces that it is the wrong
+    state, so a review of it is a review of something real — just not the
+    thing named on the tin.
+    SO: A STORY PROVES WHAT IT RENDERED, NOT WHAT IT CLAIMS TO RENDER. Any
+    story whose state comes from a MOCKED MODULE must ASSERT THAT STATE
+    before asserting anything downstream of it, or it can pass vacuously —
+    an empty list satisfies every assertion about its contents.
+    THE PATTERN THAT FIXES IT, from the story that found this: assert the
+    surface is PRESENT AND UNHIDDEN first, then its contents. A stub
+    regression then fails loudly instead of passing over zero items. And do
+    not assert a geometry the headless environment cannot produce — a
+    fixed inset-x-0 bar has zero width there, so a slot ratio is 0/0 and an
+    assertion on it is noise. Record such measurements in the doc comment at
+    the width where they mean something.
+  a-material-is-only-verified-in-the-app: >-
     RATIFIED 2026-08-29, from a regression that shipped every glass surface in
     the product as a FLAT WASH WITH NO BLUR, and that no story caught.
     THE MECHANISM: a token rewrite replaced @apply backdrop-blur-[…] with

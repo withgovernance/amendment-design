@@ -8,6 +8,52 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-29 (v2026.08.29.2) — A story proves what it rendered, and I verified against the fix
+
+### Every signed-in story in the consumer has been rendering signed-out
+
+Not failing — **passing, in the wrong state.** `@clerk/nextjs` was aliased to a stub,
+but **Vite pre-bundles bare package specifiers before aliases apply**: components
+resolved the pre-bundled real package while the preview file imported the stub by
+relative path. **Two modules, two `state` variables.** The decorator set `isSignedIn` on
+one; the hook read the default off the other.
+
+Found only by instrumenting the decorator and watching it report `{isSignedIn: true}`
+while the hook returned `false` — which rules out the parameter merge and points at
+module identity.
+
+**This is the companion to `a-material-is-only-verified-in-the-app`, and the more
+dangerous of the two.** There, the story was *right* and the app was wrong. Here **the
+story was wrong and looked right**: a signed-out surface is a plausible surface. Nothing
+about it announces the wrong state, so reviewing it is reviewing something real — just
+not the thing named on the tin.
+
+**So: a story proves what it rendered, not what it claims to render.** Any story whose
+state comes from a mocked module must **assert that state** before asserting anything
+downstream, or it passes vacuously — an empty list satisfies every assertion about its
+contents. The fix pattern, from the story that found it: assert the surface is present
+and unhidden *first*, then its contents.
+
+### And I told the consumer to stop fixing a real bug
+
+I grepped for `material-light`, found zero in source, zero in `node_modules`, no dynamic
+construction, and a last-touched date a month old — and concluded my own flag was noise
+from a stale dev server. **Every one of those checks was true of the working tree and
+none was true of `main`, where the six call sites sit.** I had grepped the tree *after*
+the fix landed.
+
+**The absence of a defect in a fixed tree is not evidence the defect was imaginary.** My
+evidence chain was internally consistent, thorough, and answered a question I had not
+asked: *does this exist now*, rather than *did this exist*. `git grep main` would have
+settled it in one command.
+
+Worth setting beside the hedge-hardening it was meant to correct: I flagged loosely, the
+flag came back specific and slightly wrong, and **my correction of that was wrong in the
+other direction and more confidently argued.** Both parties tightened at each pass and
+the tightening ran past the evidence in both directions.
+
+---
+
 ## 2026-08-28 (v2026.08.28.36) — The privacy objection was wrong; next/font self-hosts
 
 `axis-must-be-declared-and-measured` declined to ratify the Archivo hosting move on a

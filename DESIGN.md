@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.29.5
+# spec-version:   v2026.08.29.6
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1899,6 +1899,40 @@ components:
     height: "56px"
     padding: "8px"
     layout: "max-width 80rem, three-column flex (leading / middle / trailing)"
+  recession-is-a-claim-about-the-ground: >-
+    RATIFIED 2026-08-29, and it GENERALISES two rules that were written
+    separately and are the same rule. Recession is not a property chrome has.
+    IT IS A CLAIM THAT THE GROUND BENEATH IS CALM ENOUGH TO CARRY INK. Where
+    that claim holds, chrome takes no material. Where it fails, chrome keeps
+    one — and the failure is a property of the SURFACE, not of the chrome.
+    THE GROUND IS NOT CALM IN THREE CASES, and the third is new:
+      1. CONTENT SCROLLS BENEATH IT — the conversation route. Already
+         ratified as recession-requires-nothing-scrolls-beneath.
+      2. THE SURFACE OVERLAPS SCROLLING CONTENT BY DEFINITION — the mobile
+         tab bar, which keeps material-chrome for this reason.
+      3. A DECORATIVE LAYER SITS UNDER IT. FOUND LIVE 2026-08-29 on the
+         signed-out home, MEASURED ON THE RUNNING APP: the announcement bar
+         at 2.69:1 light and 2.08:1 dark, the search placeholder at 2.05 and
+         1.87, the wordmark at 3.83 inverted. Chrome-scale text failing in
+         both schemes on the first page every logged-out visitor sees.
+    THE CURTAIN IS NOT THE DEFECT AND MUST NOT BE DIMMED TO FIX THIS. It is
+    two aria-hidden, pointer-events-none, blur-2xl glows behind the hero,
+    deliberately authored, and the owner's judgement is that they are the
+    best thing on the page. THEY ARE A HERO TREATMENT, CORRECTLY BUILT. What
+    is wrong is that they bleed UPWARD — offset -top-40 and -top-12, spread
+    further by a 40px blur — under a header that has no ground.
+    SO: CHROME OVER A DECORATIVE LAYER KEEPS A MATERIAL. The marketing header
+    is not receded. This is the same sentence as the other two cases with a
+    different noun in it, which is why all three now live under one rule.
+    AND IT GIVES material-chrome A SECOND, PRINCIPLED CONSUMER. It was down
+    to the tab bar alone and reading like an orphan; it is not leftover, it
+    is the material for chrome that cannot claim a calm ground.
+    NEEDS A MEASUREMENT BEFORE IT SHIPS: the tab bar's 35%/45% were set for
+    legibility over CONTENT. A header over a bright glow is closer to the
+    original desktop case — immunity to what is beneath — and may want a
+    higher fill. Measure this surface rather than inheriting the tab bar's
+    number, which is the mistake this file made when it inherited the desktop
+    90% for the tab bar.
   recession-requires-nothing-scrolls-beneath: >-
     RATIFIED 2026-08-28, from a live collision on the conversation route:
     body text scrolling UNDER the receded navbar and rendering THROUGH the

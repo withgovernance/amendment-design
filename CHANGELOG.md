@@ -8,6 +8,57 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-29 (v2026.08.29.6) — Recession is a claim about the ground
+
+Found by finally reviewing the running app rather than a story or a specimen: **chrome
+text failing in both schemes on the signed-out home** — the announcement bar at 2.69:1
+light and 2.08:1 dark, the search placeholder at 2.05 and 1.87, the wordmark at 3.83
+inverted. The first page every logged-out visitor sees.
+
+**The curtain is not the defect and is not being dimmed.** It is two `aria-hidden`,
+`pointer-events-none`, `blur-2xl` glows behind the hero — deliberately authored, and the
+owner's judgement is that they are the best thing on the page. **They are a hero
+treatment, correctly built.** What is wrong is that they bleed *upward* — `-top-40` and
+`-top-12`, spread further by a 40px blur — under a header that has no ground.
+
+### The rule this produces absorbs two others
+
+**Recession is not a property chrome has. It is a claim that the ground beneath is calm
+enough to carry ink.** Where the claim holds, chrome takes no material. Where it fails,
+chrome keeps one — and **the failure is a property of the surface, not of the chrome.**
+
+The ground is not calm in three cases, and the third is new:
+
+1. **Content scrolls beneath it** — the conversation route.
+2. **The surface overlaps scrolling content by definition** — the mobile tab bar.
+3. **A decorative layer sits under it** — the marketing header, found live today.
+
+All three were being written as separate rules. They are one sentence with a different
+noun in it, and they now live under one entry.
+
+### Two things fall out
+
+**`material-chrome` gets a second, principled consumer.** It was down to the tab bar
+alone and had started reading like an orphan — I said as much in the spec. It is not
+leftover: it is the material for chrome that cannot claim a calm ground.
+
+**And the fill needs measuring, not inheriting.** The tab bar's 35%/45% were set for
+legibility over *content*. A header over a bright glow is closer to the original desktop
+case — immunity to what is beneath — and may want more. **Measure this surface**, which
+is exactly the mistake this file made when the tab bar inherited the desktop 90%.
+
+### Method note
+
+The failing numbers were produced twice. The first pass parsed
+`getComputedStyle().color` with a regex and returned nonsense — a near-white display
+heading at 1.30:1 — because the app serialises `lab()`. **That is
+`measure-by-painting-not-by-parsing`, ratified the previous day, violated by its author
+the next.** It was caught because the number was absurd, not because the rule was
+remembered, which is the argument for making that rule a lint check rather than a
+paragraph.
+
+---
+
 ## 2026-08-29 (v2026.08.29.5) — A token with no consumers is not a token
 
 **Third instance of the same shape this week, second in an hour.** A value lands

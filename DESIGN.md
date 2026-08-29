@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.29.7
+# spec-version:   v2026.08.29.8
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1729,7 +1729,14 @@ components:
         every button in the system was 4px under the floor and no line of the
         spec said so. Applies to button-secondary and button-ghost, which
         inherit this geometry.
-      known-divergence: "Production ships the 40px height. Spec ahead; the code migrates."
+      known-divergence: >-
+        RESOLVED 2026-08-29. Production shipped 40px and the migration took
+        min-height to 44, which made HEADER BUTTONS VISIBLY TOO TALL.
+        CHROME-SCALE CONTROLS TAKE THE SECOND BRANCH: an expanded transparent
+        hit area, keeping the visual height. min-height is for controls whose
+        plate can grow — a page CTA, a form button. Appearance and target are
+        two geometries, and this rule has always said so; the migration read
+        it as having one branch.
   button-cta:
     description: >-
       High-intent action — Momentum green, flat. No gradient: a bright fill
@@ -1899,6 +1906,41 @@ components:
     height: "56px"
     padding: "8px"
     layout: "max-width 80rem, three-column flex (leading / middle / trailing)"
+  a-register-change-is-a-width-change: >-
+    RATIFIED 2026-08-29 after THREE regressions found by the owner in one
+    pass, all from the same migration and all with one cause: A ROLE WAS
+    ADOPTED AND ITS CONTAINER WAS NOT RE-MEASURED.
+    role-label-caps IS WIDER THAN ALMOST ANYTHING IT REPLACES — wdth 125 at
+    the axis ceiling, plus 0.12em tracking, plus semibold. MEASURED on the
+    shipped state-code token, a fixed w-6 box giving 22px of content:
+      MN 27.81px   WA 27.38px   WY 27.28px   KY 23.39px   IL 15.63px
+    against 19.88 / 20.33 / 20.16 / 16.41 / 10.64 for the untracked wdth-104
+    treatment it replaced. EVERY TWO-LETTER CODE BUT THE NARROWEST OVERFLOWS.
+    Not a judgement call — a hard overflow, shipped.
+    AND IT READS AS A SIZE CHANGE WHEN IT IS NOT. The bill-card identifier
+    was reported as having grown; measured, it and the label beside it are
+    both 12px exactly. What changed is WIDTH AND WEIGHT. A register carries
+    four things — family, width, tracking, weight — and changing one changes
+    the mass of the text without changing a number anyone would think to
+    check.
+    SO: WHEN A CALL SITE ADOPTS A ROLE, MEASURE ITS CONTAINER. This is
+    widthDiscipline-measured, which this file has stated three times as an
+    observation and never as a required step. It is now the step: a fixed
+    width, a slot, a plate, a truncate — any of these near a role change is a
+    measurement, not a look.
+    THE OTHER HALF: A RULE WITH TWO BRANCHES HAS A DEFAULT, AND THE DEFAULT
+    IS NOT ALWAYS RIGHT. a11y.targetSize says 44px "by min-height OR AN
+    EXPANDED TRANSPARENT HIT AREA, never by inflating padding — appearance
+    and target are two geometries". The migration took min-height
+    everywhere, and header buttons came out visibly too tall. The second
+    branch exists precisely for chrome-scale controls, where the plate should
+    not grow. Same shape as measure-before-you-shrink: a rule with several
+    outcomes was read as having one.
+    THE PATTERN ACROSS ALL THREE, worth saying once: a migration applies
+    rules faithfully and a rule applied on its wrong branch is still a
+    regression. Faithfulness is not correctness, and the check for the
+    difference is a render at the call site — which is what found all three,
+    by a person, after every automated pass had reported clean.
   a-cutout-mark-is-for-dark-grounds-only: >-
     RATIFIED 2026-08-29, from a mark that is nearly invisible on the
     signed-out home in LIGHT mode — spotted by the owner, missed by this

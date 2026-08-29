@@ -2,6 +2,8 @@
 
 Source of truth: `DESIGN.md`. This file is the short list every visual change is checked against — by `/design-iterate` against screenshots, by `/review-pr` against the diff, by `designer` against story renders. If a rule here contradicts `DESIGN.md`, `DESIGN.md` wins; fix this file in the same pass.
 
+> **A material is only verified in the running app.** Storybook, the `preview/` specimens and the app are **three different CSS pipelines**, and only the third is the product. A blur regression shipped every glass surface flat while every story rendered it correctly. Read the computed style in the app for anything whose appearance depends on a *compiled* property.
+>
 > **Before trusting a clean lint run:** enforcement reads the *class layer*. A surface that draws imperatively — d3 `.attr("font-size", …)`, canvas, a third-party API taking a literal — is invisible to every check this system has, and is where the last three violations hid. Go look at those by hand.
 
 ## Look at the render and ask

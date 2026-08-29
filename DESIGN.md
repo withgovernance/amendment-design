@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.36
+# spec-version:   v2026.08.29.1
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3382,7 +3382,40 @@ a11y:
       fallen back to the plain three-lobe Blue Hour. Inside the band it is
       not safe at any rung, in either room — in the dark room even 87% ink
       drops to 3.53:1. The band is light, not a text surface.
-    measure-by-painting-not-by-parsing: >-
+    a-material-is-only-verified-in-the-app: >-
+    RATIFIED 2026-08-29, from a regression that shipped every glass surface in
+    the product as a FLAT WASH WITH NO BLUR, and that no story caught.
+    THE MECHANISM: a token rewrite replaced @apply backdrop-blur-[…] with
+    backdrop-filter: var(…) plus its -webkit- twin. Lightning CSS treats the
+    prefixed and unprefixed forms as ONE property and keeps the last, so the
+    build emitted only -webkit-backdrop-filter — and Chrome does not support
+    that form. VERIFIED IN THE RUNNING APP: CSS.supports('-webkit-backdrop-
+    filter', 'blur(10px)') is FALSE while the standard form is true. All five
+    materials rendered as their background colour alone.
+    STORYBOOK RENDERED IT CORRECTLY THE WHOLE TIME, because its pipeline keeps
+    both declarations. So every story review passed, the source read
+    correctly, and the token values were right. THE INSTRUMENT AGREED WITH
+    THE INTENT AND BOTH WERE WRONG ABOUT THE PRODUCT.
+    THERE ARE THREE CSS PIPELINES IN THIS SYSTEM AND ONLY ONE IS THE PRODUCT:
+      1. THIS REPO'S colors_and_type.css, linked raw — what preview/
+         specimens use. Proves the stylesheet, nothing else.
+      2. STORYBOOK'S build — what story review uses. Proves the component
+         under a different compiler.
+      3. THE APP'S Lightning CSS build — the only one users get.
+    A SPECIMEN AND A STORY BOTH PROVE THE FIRST TWO AND NEITHER PROVES THE
+    THIRD. That is not a caveat on this system's method; it is a hole in it,
+    and it sat under an entire migration's worth of review including my own.
+    SO: A MATERIAL — anything whose appearance depends on a COMPILED property
+    rather than a token value — IS VERIFIED IN THE RUNNING APP OR IT IS NOT
+    VERIFIED. Read the computed style there, not in a story and not in a
+    specimen. Token values, type registers and contrast survive the pipelines
+    intact; backdrop-filter, and anything else a compiler may rewrite or
+    collapse, does not.
+    THIS IS THE SILENT-FAILURE FAMILY'S LAST MEMBER AND ITS WORST: the first
+    four describe a value, an assembly, a surface and a check going wrong
+    quietly. This one is THE REVIEW ITSELF passing on a thing that was never
+    in front of it.
+  measure-by-painting-not-by-parsing: >-
       RATIFIED 2026-08-28, and it is about THE INSTRUMENT rather than the
       system — which matters because almost every number in this file now
       comes from an in-browser measurement.

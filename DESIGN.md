@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.29.4
+# spec-version:   v2026.08.29.5
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3382,7 +3382,42 @@ a11y:
       fallen back to the plain three-lobe Blue Hour. Inside the band it is
       not safe at any rung, in either room — in the dark room even 87% ink
       drops to 3.53:1. The band is light, not a text surface.
-    the-aurora-is-three-things: >-
+    a-token-with-no-consumers-is-not-a-token: >-
+    RATIFIED 2026-08-29, on the THIRD instance of the same shape in one week
+    and the second in one hour. A value lands correctly in the token layer, a
+    COPY is what the product paints, and the token change reports success
+    while no rendered pixel moves.
+      --canvas      declared here, unused; the body painted its own literal.
+      --aurora      generated into the consumer, CONSUMED BY NOTHING.
+      THE INK RAMP  --text-primary / -secondary / -tertiary: VERIFIED, ZERO
+                    consumers of any of the three. The product paints
+                    `text-black/55` — a `secondary-text` utility that expands
+                    to the literal at 225 sites, plus 178 more hardcoding it
+                    directly.
+    SO A CORRECT VALUE, CORRECTLY COMMITTED AND CORRECTLY REGENERATED, CHANGED
+    NOTHING A USER SEES — and every check passed: design:tokens:check green,
+    the diff shows the intended value, the stamp advances. THIS IS
+    composed-register-fails-silently AT THE TOKEN LAYER rather than the class
+    layer, and it is worse, because the token layer is where this system
+    tells everyone to look.
+    HOW IT WAS CAUGHT, and the method is the rule: THE CONSUMER WENT TO RUN A
+    VISUAL PASS AND COULD NOT FIND THE CHANGE ON ANY SURFACE. Not a failing
+    test — an absent effect. Independently corroborated here by an attempt to
+    probe live elements whose computed colour equalled the token's: ZERO
+    MATCHES, because the token had moved to 60% and every surface was still
+    painting 55%. The failure to find anything WAS the finding.
+    THE CHECK IS ONE GREP AND IT BELONGS IN CI: for every token this file
+    declares, does anything read var(--it)? A token nothing reads is not a
+    token, IT IS A COMMENT WITH A COLON IN IT — and it is worse than a
+    comment, because tooling reports it as infrastructure.
+    THE FIX IS NOT ALWAYS A SWEEP. Where a utility already gathers the call
+    sites, pointing THAT at the token reaches all of them at once: one line
+    changing `@apply text-black/55 dark:text-white/55` to
+    `color: var(--text-secondary)` reaches 225 sites AND handles both schemes,
+    because the token already resolves per-scheme. The remaining hardcoded
+    sites are the sweep, and afterwards a lint rule banning the literal
+    outside the token layer keeps them from returning.
+  the-aurora-is-three-things: >-
     RECORDED 2026-08-29, and it narrows a gate this file has been overstating.
     THREE AURORA DEFINITIONS EXIST IN THE CONSUMER:
       --aurora            generated from this file. THREE lobes, low chroma.

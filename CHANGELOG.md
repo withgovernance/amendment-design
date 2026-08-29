@@ -8,6 +8,62 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-29 (v2026.08.29.5) — A token with no consumers is not a token
+
+**Third instance of the same shape this week, second in an hour.** A value lands
+correctly in the token layer, a **copy** is what the product paints, and the token change
+reports success while no rendered pixel moves.
+
+- **`--canvas`** — declared here, unused; the body painted its own literal.
+- **`--aurora`** — generated into the consumer, consumed by nothing.
+- **The ink ramp** — verified: **zero** consumers of `--text-primary`, `--text-secondary`
+  or `--text-tertiary`. The product paints `text-black/55` via a `secondary-text` utility
+  at **225 sites**, plus **178** more hardcoding the literal directly.
+
+**So the 55% → 60% fix I committed, that was correctly regenerated, changed nothing a
+user sees.** Every check passed: `design:tokens:check` green, the diff shows the intended
+value, the stamp advances. On the surfaces users look at, secondary ink is still 55% —
+the value measured as failing at 4.42:1 in light.
+
+This is `composed-register-fails-silently` **at the token layer** rather than the class
+layer, and it is worse, because the token layer is where this system tells everyone to
+look.
+
+### How it was caught, and the method is the rule
+
+**The consumer went to run a visual pass and could not find the change on any surface.**
+Not a failing test — an *absent effect*.
+
+Corroborated here by accident: an attempt to probe live elements whose computed colour
+equalled the token's returned **zero matches**, because the token had moved to 60% and
+every surface was still painting 55%. **The failure to find anything was the finding**,
+and I had been about to treat it as a broken probe.
+
+### The check is one grep
+
+For every token this file declares: **does anything read `var(--it)`?** A token nothing
+reads is not a token, **it is a comment with a colon in it** — and worse than a comment,
+because tooling reports it as infrastructure.
+
+### The fix is not always a sweep
+
+Where a utility already gathers the call sites, pointing *that* at the token reaches all
+of them at once: one line changing `@apply text-black/55 dark:text-white/55` to
+`color: var(--text-secondary)` reaches **225 sites and handles both schemes**, since the
+token already resolves per-scheme. The 178 hardcoded sites are the sweep, and a lint rule
+banning the literal outside the token layer keeps them from returning.
+
+### And my dark number is withdrawn pending re-measurement
+
+I reported the shipping dark band failing at **4.28:1**. The consumer's reconstruction
+gives **5.96:1**, which is also what I had measured earlier by a different method. **Two
+methods agree and mine is the outlier.** After the day's error rate, being the outlier is
+grounds for suspicion rather than confidence. The light finding stands — it was
+reproduced and it is the one that mattered. **Nobody should sweep 400 sites on the
+strength of the dark number until it is settled.**
+
+---
+
 ## 2026-08-29 (v2026.08.29.4) — The band was measured; the change I called optional was the fix
 
 The shipping band, read off the running app and repainted in isolation so no app content

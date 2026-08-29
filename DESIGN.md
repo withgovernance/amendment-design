@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.29.3
+# spec-version:   v2026.08.29.4
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3407,17 +3407,36 @@ a11y:
     token as written would have LOST a correctness property — a
     colour-to-transparent fade without it interpolates in sRGB and gray-halos
     toward black at the lobe edge.
-    WHAT IS NOT DECIDED, and must not be guessed: WHOSE VALUES WIN. "The value
-    that reaches a rendered surface is the value the system means" argues for
-    the body's; the band invariant argues for whichever is BOUNDED. Those can
-    disagree, and only a measurement of the SHIPPING band settles it. That
-    measurement is owed and has not been taken — an attempt on 2026-08-29
-    produced obvious nonsense (a pure-white worst ground in dark mode) by
-    hiding the body's children and leaving something else painting, and was
-    discarded rather than reported.
-    UNTIL THEN THE TOKEN'S VALUES ARE NOT ADOPTED AND THE BODY IS NOT
-    CHANGED. The dead --aurora token stays dead rather than being wired to a
-    value nobody has checked.
+    MEASURED 2026-08-29, and it settles the question in the opposite
+    direction from everything this file had assumed. The shipping band was
+    read off the running app, repainted in isolation so no app content could
+    contaminate the sample, and swept at every point:
+      SECONDARY 55%   light 4.42:1 FAIL    dark 4.28:1 FAIL
+      SECONDARY 60%   light 5.24:1 PASS    dark 4.77:1 PASS
+      PRIMARY   87%   light 12.67:1        dark 8.12:1
+    THREE CONSEQUENCES, AND THE FIRST IS A CORRECTION OF THIS FILE'S OWN
+    RULINGS.
+    (1) THE 55%->60% MOVE IS A FIX, NOT HARDENING. This file called it
+        optional twice, in writing, and told the owner not to spend attention
+        on it — "a gate stops a ship; a hardening is a backlog item". THAT
+        WAS MEASURED ON THE TOKEN BAND, WHICH NOTHING PAINTS. On the band
+        users actually see, 55% FAILS IN BOTH SCHEMES. The owner asked for
+        the change anyway and was right to; the argument against it was mine
+        and it was built on the wrong band.
+    (2) DARK FAILS TOO. This file said "dark needs no change: 55% white is
+        5.96:1". That was the token band. The shipping band is 4.28:1.
+    (3) THE BAND DOES NOT NEED TO CHANGE AT ALL. At 60% secondary the
+        shipping values PASS in both schemes, so the invariant is satisfied
+        by the ink alone. THERE IS NO SECOND VISUAL MIGRATION: no page
+        background moves, nothing needs a sweep at both widths and schemes,
+        and the "one real gate" this file has been carrying for days
+        dissolves into a token change that has already landed.
+    SO WHOSE VALUES WIN: THE BODY'S. They ship, they pass, and forcing every
+    page to a lighter band to match a token nothing consumes would be a
+    visual change bought for nothing. THE TOKEN IS THE THING THAT IS WRONG —
+    it should be corrected to match what ships, or deleted, so it stops being
+    a competing definition. That is the --canvas lesson exactly, and this is
+    the second time the same shape has appeared in this file.
   a-story-proves-what-it-rendered: >-
     RATIFIED 2026-08-29, from a stub bug that had EVERY SIGNED-IN STORY IN
     THE CONSUMER RENDERING SIGNED-OUT — not failing, PASSING, in the wrong

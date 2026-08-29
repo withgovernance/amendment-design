@@ -8,6 +8,52 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-29 (v2026.08.29.4) — The band was measured; the change I called optional was the fix
+
+The shipping band, read off the running app and repainted in isolation so no app content
+could contaminate the sample, swept at every point:
+
+| | light | dark |
+|---|---|---|
+| secondary **55%** | **4.42:1 FAIL** | **4.28:1 FAIL** |
+| secondary **60%** | 5.24:1 pass | 4.77:1 pass |
+| primary 87% | 12.67:1 | 8.12:1 |
+
+### The change I twice called optional is the fix
+
+This file said `--text-secondary` 55% → 60% was **hardening, not compliance** — wrote it
+into the spec, and told the owner not to spend attention on it: *"a gate stops a ship; a
+hardening is a backlog item."* When he pushed back — *"you want me to litigate a 5%
+difference?"* — I agreed with him and stood down.
+
+**That was measured on the token band, which nothing paints.** On the band users
+actually see, **55% fails in both schemes.** He asked for the change anyway. He was
+right, and the argument against it was mine, built on the wrong band.
+
+**Dark fails too.** This file said *"dark needs no change: 55% white is 5.96:1"* — again
+the token band. The shipping band is **4.28:1**.
+
+### And the gate dissolves
+
+**At 60% the shipping values pass in both schemes.** The invariant is satisfied by the
+ink alone, so **the band does not need to change at all.** No page background moves,
+nothing needs a sweep at both widths and schemes, and the "one real gate" this file has
+carried for days turns out to be a token change that has already landed.
+
+### Whose values win: the body's
+
+They ship, they pass, and forcing every page to a lighter band to match a token nothing
+consumes would be a visual change bought for nothing. **The token is the thing that is
+wrong** — correct it to match what ships, or delete it, so it stops being a competing
+definition.
+
+That is the `--canvas` lesson exactly, and **it is the second time this shape has
+appeared in this file**: a token and a shipped value diverge, the token is treated as
+authoritative because it is the written one, and the measurement that would have settled
+it is taken against the token rather than the product.
+
+---
+
 ## 2026-08-29 (v2026.08.29.3) — The aurora is three things, and both my numbers were of bands nobody ships
 
 The consumer mapped it and the gate is narrower than either side has been saying.

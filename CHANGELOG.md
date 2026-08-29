@@ -8,6 +8,126 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-29 (v2026.08.29.12) — The entry points, swept again, and a phantom role removed
+
+**Nine rules ratified since the last sweep had reached no entry point** — audited by name
+across `SKILL.md`, `README.md` and `DESIGN-HARD-RULES.md`: **zero hits for all nine.** All
+are now in; the hard rules run to nineteen.
+
+**Second sweep in two days.** The trap list calls these the most read and least rendered
+files; twenty-four days was the record, and the rate is now a day.
+
+**A phantom role removed.** `role-display-minor` was named in the designer agent's own
+role list — the file that tells the author which roles exist — **and never existed in the
+stylesheet.** Removed rather than implemented, since `role-ui-heading` occupies the size it
+claimed. **A role list is a promise:** every name must resolve in `colors_and_type.css`,
+and that check now runs clean. One line of shell, never run until today.
+
+---
+
+## 2026-08-29 (v2026.08.29.11) — Serif belongs to the canvas
+
+Jason's rule, and better than the one being drafted because it is checkable by looking:
+**a serif heading belongs to the canvas; inside a container the heading takes sans.** A
+serif hero on the aurora is the institution speaking; the same face heading a card, among
+sans contents, is furniture wearing the document's voice. **A header that shares its
+content's voice stops being a frame.**
+
+**Carve-out:** a container whose content *is* the document — bill page, statutory text, the
+Receipt, a quoted excerpt — is not furniture and keeps serif. The test is what's inside.
+
+**`role-ui-heading` added and implemented** — sans, body width, 1.125rem, semibold. It
+happened because **every display role is serif and no sans heading register existed**: the
+rule was not disobeyed, the alternative did not exist. Trap 2, twice in one day.
+
+---
+
+## 2026-08-29 (v2026.08.29.10) — A dimension reached by arithmetic is not declared
+
+**`a-dimension-reached-by-arithmetic-is-not-declared`**, contributed by the consumer.
+`components.navbar` states 56px and the code never declared it — the bar hit 56 because
+40px buttons plus 16px padding happens to equal it. **That arithmetic broke twice in one
+migration, to 64 then 48, without either change touching the navbar file.** The test: *if
+changing a child changes the parent's stated dimension, the parent never declared it.*
+
+**`cva-ordering-cuts-both-ways`** — my "the migration applied `min-h-11` everywhere" was
+wrong. `size="sm"` already took the correct branch; the CTA compound variant emitting after
+`size` made it inert. **And that compound variant was itself an earlier fix for the
+opposite bug.** A precedence fix aimed at one pair makes a rule for every pair.
+
+**`emphasis-serif-inline.not-for-blocks`** — the role is inline; applied to a three-line
+block it makes the passage emphatic. **A quoted excerpt is body text in quotation marks.**
+
+---
+
+## 2026-08-29 (v2026.08.29.9) — line-height:1 has two consequences; a count is ink
+
+`role-label-caps` sets `line-height: 1`, noticed once as a *wrapping* problem. **The second
+consequence ships everywhere: a tight line box mis-centres its own ink.** The baseline sits
+~78% down and uppercase has no descenders, so ink lands optically at ~43% of the box —
+`items-center` centres the box and leaves the letters high.
+
+Same root as the width finding: **adopting `role-label-caps` changed four properties at
+once** — family, width, tracking, line-height — and each produced its own regression. *A
+role is a bundle.*
+
+**`count-is-ink-not-a-plate`** — a count is a report, not an object. It varied within one
+screen: a pill beside "Conversations", none beside "Following" below it.
+
+---
+
+## 2026-08-29 (v2026.08.29.8) — A register change is a width change
+
+Three regressions found by Jason in one pass, one cause: **a role was adopted and its
+container was never re-measured.** `role-label-caps` is `wdth` 125 + 0.12em + semibold,
+wider than nearly anything it replaces. Measured on a fixed `w-6` (22px content): MN
+**27.81px**, WA 27.38, WY 27.28 — against ~20px before. **Every code but the narrowest
+overflowed, shipped.**
+
+And it reads as a size change when it is not: the bill-card identifier was reported as
+grown; measured, it and the label beside it are both **12px**. Width and weight changed.
+
+**`widthDiscipline-measured` is now a required step, not an observation.** Plus: *a rule
+with two branches has a default, and the default is not always right* — the 44px target
+rule offers `min-height` **or** an expanded hit area, and the migration took the first
+everywhere.
+
+---
+
+## 2026-08-29 (v2026.08.29.7) — A cutout mark is for dark grounds only
+
+The mark ships as a cutout in **both** schemes; its own SVG comment says the foreground is
+solid white. White on a pale aurora is a ghost. **The assets were already right and already
+paired** — `mark.svg` is the ink variant — and `assets/README.md` already stated the rule.
+
+**Nothing needed designing. The rule existed in a file nobody reads while `DESIGN.md` was
+silent** — third instance of that shape, and the first where the rule was written down
+*completely* and still had no effect.
+
+Also: **a mark is a graphical object and takes the 3:1 non-text floor.** This session's
+review sweep checked font sizes and text contrast and had **no non-text check at all**,
+which is why a human eye caught a white logo on a white field that an automated pass walked
+past.
+
+---
+
+### A note on all six
+
+**These six entries were written after the fact.** Each version was committed with its
+`DESIGN.md` change and its tag and **no changelog entry**, against this file's own rule
+that a spec commit carries all three.
+
+**This is the second time today.** `.26` and `.27` were backfilled the same way, with a note
+saying the record thins exactly where decisions get faster. It then happened six more times
+in a row, during the fastest stretch of the day.
+
+The lesson is not "remember the changelog". It is that **a discipline that depends on
+remembering fails under exactly the conditions that make it valuable**, and the fix is a
+check — a tag without a matching entry is a one-line test, and it is now the fourth such
+one-liner this session has identified after the fact.
+
+---
+
 ## 2026-08-29 (v2026.08.29.6) — Recession is a claim about the ground
 
 Found by finally reviewing the running app rather than a story or a specimen: **chrome

@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.29.9
+# spec-version:   v2026.08.29.10
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1122,6 +1122,17 @@ typography:
       style: normal
       weight: 600
       use: "em / i within role-body-serif. Never italic at this size."
+      not-for-blocks: >-
+        STATED 2026-08-29 after this role was applied to a whole three-line
+        block quote, which made the entire passage emphatic and read closer
+        to a heading than to an excerpt. THE ROLE IS INLINE — "em / i WITHIN"
+        is the whole scope, and a role that emphasises a phrase inside a
+        paragraph does something different when it takes the paragraph.
+        A QUOTED EXCERPT IS BODY TEXT IN QUOTATION MARKS. The marks do the
+        quoting; no register is required to signal a quotation, and reaching
+        for one turns the passage into emphasis. Set it in role-body-serif.
+        role-quote is for QUOTED HUMAN VOICE at 1.125rem and up — a person
+        speaking, not a document excerpted.
     code:
       family: mono
       size: 0.875rem
@@ -1906,6 +1917,41 @@ components:
     height: "56px"
     padding: "8px"
     layout: "max-width 80rem, three-column flex (leading / middle / trailing)"
+  a-dimension-reached-by-arithmetic-is-not-declared: >-
+    RATIFIED 2026-08-29, contributed by the consumer and it is the
+    target-size finding one level up. components.navbar states height 56px.
+    THE CODE NEVER DECLARED IT. The bar hit 56 because its buttons were 40px
+    and 40 + 16 of padding happens to be 56. THE ARITHMETIC BROKE TWICE IN
+    ONE MIGRATION — to 64, then to 48 — WITHOUT EITHER CHANGE TOUCHING
+    Navbar/index.tsx.
+    THE TEST, and it is cheap: IF CHANGING A CHILD CHANGES THE PARENT'S
+    STATED DIMENSION, THE PARENT NEVER DECLARED IT. A number a spec states
+    and a layout only reaches by coincidence is not a specification, it is a
+    description that was true once.
+    This is the same shape as "40px is not a decision anybody made about
+    buttons, it is padding + line-height", which this file already records
+    for controls. It applies to every container that states a height, a
+    width, or a measure. DECLARE IT ON THE CONTAINER.
+  cva-ordering-cuts-both-ways: >-
+    RECORDED 2026-08-29. The header buttons rendering too tall was diagnosed
+    here as "the migration applied min-h-11 everywhere". THAT WAS WRONG and
+    the real cause is narrower and more interesting: `size="sm"` ALREADY TOOK
+    THE CORRECT BRANCH — min-h-8 with a before:h-11 expanded hit area, exactly
+    what a11y.targetSize's second branch asks for. What defeated it was the
+    CTA compound variant emitting AFTER size, so a sm+cta button rendered a
+    48px plate and the sm was inert.
+    AND THAT COMPOUND VARIANT WAS ITSELF AN EARLIER FIX FOR THE OPPOSITE BUG:
+    a bare min-h-12 on the variant used to lose to size, so it was moved to
+    compoundVariants to make it win. It now wins where it should not.
+    THE LESSON IS NOT ABOUT cva. A precedence fix aimed at one pair makes a
+    rule that applies to every pair, and the second pair is found later by
+    eye. When a rule is written as "this must win", ask what it must win
+    OVER — the answer is usually narrower than the implementation.
+    THE FIX SCOPES THE 48 TO THE BRANCH IT BELONGS ON: a growable plate at
+    default/md/lg, and at sm the 48 moves onto the hit area instead. The
+    TARGET is preserved everywhere and only the PLATE returns to chrome
+    scale, which is a11y.targetSize's own sentence — appearance and target
+    are two geometries.
   line-height-1-has-two-consequences: >-
     RATIFIED 2026-08-29, widening an entry queued about wrapping to cover the
     thing that is actually visible everywhere.

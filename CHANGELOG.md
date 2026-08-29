@@ -8,6 +8,33 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-28 (v2026.08.28.36) — The privacy objection was wrong; next/font self-hosts
+
+`axis-must-be-declared-and-measured` declined to ratify the Archivo hosting move on a
+non-typographic ground: **Google Fonts sends every viewer's IP to Google**, which a
+German court found unlawful under GDPR in 2022. I told the consumer to hold the swap.
+
+**That is true of a runtime CDN link. It is not what the consumer does.** The app uses
+`next/font/google`, **which self-hosts at build time** — Next downloads the files during
+the build and serves them from the deployment's own origin. **Verified: no reference to
+`fonts.googleapis.com` or `fonts.gstatic.com` anywhere in `app/` or `components/`.** No
+viewer IP reaches Google.
+
+*"Google-hosted"* here means **Google as a build-time source**, not a runtime CDN. **The
+two have opposite privacy properties under the same name**, and I did not check which
+was in play.
+
+**Not a wrong measurement but a wrong assumption about what was being measured — used to
+stop someone else's work.** Plausible, correctly sourced, irrelevant, and one import line
+would have settled it.
+
+**Where it still applies**, a different surface: this repo's `colors_and_type.css`
+`@import`s Newsreader and IBM Plex Mono from Google, so anything linking the drop-in
+directly — the `preview/` specimens, any standalone consumer — *does* fetch at runtime.
+Low stakes for specimens; real if the drop-in ever faces users.
+
+---
+
 ## 2026-08-28 (v2026.08.28.35) — Design rules bind the system's voice, not the user's
 
 **Decided by Jason**, reverting a `cleanTitle()` that stripped leading emoji from

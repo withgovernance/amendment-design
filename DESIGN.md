@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.28.35
+# spec-version:   v2026.08.28.36
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -750,8 +750,28 @@ typography:
     axis did not load. This check is cheap, it is the only thing that
     catches the failure, and it belongs in CI rather than in a comment
     asking the next person to remember.
-    NOT DECIDED HERE: whether to move. See the changelog entry — there is a
-    consideration on the other side that is not typographic.
+    THE MOVE IS FINE, AND THE OBJECTION THIS ENTRY RAISED WAS WRONG.
+    CORRECTED 2026-08-28. It said the hosting choice turned on a
+    non-typographic consideration — that Google Fonts sends every viewer's IP
+    to Google, which a German court found unlawful under GDPR in 2022. THAT
+    IS TRUE OF A RUNTIME CDN LINK. IT IS NOT WHAT THE CONSUMER DOES.
+    The app uses next/font/google, WHICH SELF-HOSTS AT BUILD TIME: Next
+    downloads the files during the build and serves them from the
+    deployment's own origin. VERIFIED — no reference to fonts.googleapis.com
+    or fonts.gstatic.com anywhere in the consumer's app or components. No
+    viewer IP reaches Google. "Google-hosted" here means GOOGLE AS A
+    BUILD-TIME SOURCE, not as a runtime CDN, and THE TWO HAVE OPPOSITE
+    PRIVACY PROPERTIES UNDER THE SAME NAME.
+    I RAISED IT WITHOUT READING THE IMPLEMENTATION and told the consumer to
+    hold on it. Not a wrong measurement but a WRONG ASSUMPTION ABOUT WHAT WAS
+    BEING MEASURED, used to stop someone else's work. Reading one import line
+    would have settled it.
+    WHERE IT DOES STILL APPLY, a different surface: this file's own
+    colors_and_type.css carries an @import from fonts.googleapis.com for
+    Newsreader and IBM Plex Mono, so anything linking the drop-in directly —
+    the preview/ specimens, any standalone consumer — DOES fetch from Google
+    at runtime. Low stakes for specimens; real if the drop-in ever faces
+    users.
   measure-before-you-shrink: >-
     RATIFIED 2026-08-28, and it is the missing half of a rule this file has
     had since the stat-caption question. That ruling said: IF A LABEL NO

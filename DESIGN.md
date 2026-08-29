@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.29.6
+# spec-version:   v2026.08.29.7
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1899,7 +1899,37 @@ components:
     height: "56px"
     padding: "8px"
     layout: "max-width 80rem, three-column flex (leading / middle / trailing)"
-  recession-is-a-claim-about-the-ground: >-
+  a-cutout-mark-is-for-dark-grounds-only: >-
+    RATIFIED 2026-08-29, from a mark that is nearly invisible on the
+    signed-out home in LIGHT mode — spotted by the owner, missed by this
+    session's review pass.
+    THE MARK SHIPS AS A CUTOUT IN BOTH SCHEMES. The consumer's
+    votizen-cutout.svg says so in its own comment: "Cutout variant — slate
+    field is transparent; foreground pieces are SOLID WHITE." White on a pale
+    aurora at 80% opacity is a ghost. In dark it also carries
+    mix-blend-soft-light and reads correctly, which is why only one scheme
+    breaks.
+    THE ASSETS WERE ALREADY RIGHT AND ALREADY PAIRED. assets/ carries
+    mark.svg AND mark-cutout.svg, wordmark.svg AND wordmark-cutout.svg,
+    wordmark-caret.svg AND wordmark-caret-cutout.svg. mark.svg is drawn in
+    Midnight Indigo on paper cream — THE INK VARIANT, for light. And
+    assets/README.md ALREADY STATES THE RULE: the cutout is for "dark
+    surfaces, photography, the Midnight Indigo face of print pieces".
+    SO NOTHING NEEDED DESIGNING AND NOTHING NEEDED MEASURING. THE RULE EXISTED
+    IN THE ASSET README AND NOT IN THIS FILE, which is the same failure as
+    which-green sitting in the email profile and the toggle's slide sitting in
+    a component entry — a correct rule in a place nobody reads while the file
+    everyone reads is silent. Third instance of that shape, and the first
+    where the rule was written down COMPLETELY and still had no effect.
+    THE RULE, now here: A CUTOUT MARK IS FOR DARK GROUNDS ONLY. Light takes
+    the ink variant. A mark is not scheme-agnostic and there is no single
+    file that serves both — that is why the pair exists.
+    AND A MARK IS A GRAPHICAL OBJECT: it takes the 3:1 non-text floor, not
+    the 4.5:1 text floor and not nothing. THIS SESSION'S REVIEW SWEEP CHECKED
+    FONT SIZES AND TEXT CONTRAST AND HAD NO CHECK FOR NON-TEXT CONTRAST AT
+    ALL, which is why a human eye caught a white logo on a white field that
+    an automated pass walked straight past. Icons, marks, rules, and status
+    dots are all in scope for that floor.
     RATIFIED 2026-08-29, and it GENERALISES two rules that were written
     separately and are the same rule. Recession is not a property chrome has.
     IT IS A CLAIM THAT THE GROUND BENEATH IS CALM ENOUGH TO CARRY INK. Where

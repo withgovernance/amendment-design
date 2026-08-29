@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.29.8
+# spec-version:   v2026.08.29.9
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1906,6 +1906,41 @@ components:
     height: "56px"
     padding: "8px"
     layout: "max-width 80rem, three-column flex (leading / middle / trailing)"
+  line-height-1-has-two-consequences: >-
+    RATIFIED 2026-08-29, widening an entry queued about wrapping to cover the
+    thing that is actually visible everywhere.
+    role-label-caps sets line-height: 1. That was noticed once, as a WRAPPING
+    problem — a label that wraps has its lines touching, no leading at all,
+    found at two footer sites. THE SECOND CONSEQUENCE IS THE ONE SHIPPING IN
+    MANY PLACES: A TIGHT LINE BOX MIS-CENTRES ITS OWN INK.
+    WHY. At line-height 1 the line box equals the font size. Ink does not sit
+    in the middle of that box: the baseline falls around 78% down, and
+    UPPERCASE TEXT HAS NO DESCENDERS, so the ink occupies roughly the top 8%
+    to 78% — optically centred near 43%, NOT 50%. Put that in a container with
+    SYMMETRIC padding and centre the BOX, and the INK sits high with a gap
+    beneath it. The container is correctly centred; the letters are not.
+    SO: A TIGHT LINE BOX AND SYMMETRIC PADDING CANNOT BOTH BE RIGHT. A pill,
+    chip, or badge around uppercase chrome needs its padding tuned to the
+    INK, not the box — or a line-height that restores the descender space it
+    is centring on. Optical centring is a measurement of where the glyphs
+    land, and `items-center` does not perform it.
+    THIS IS THE SAME ROOT AS a-register-change-is-a-width-change. Adopting
+    role-label-caps changed FOUR properties at once — family, width, tracking
+    and LINE-HEIGHT — and each has produced its own regression. A role is a
+    bundle, and a call site that took it for one property inherited all four.
+  count-is-ink-not-a-plate: >-
+    RATIFIED 2026-08-29, because it currently varies within one screen: a
+    count beside "Conversations" carries a pill and the one beside
+    "Following", directly below it, does not.
+    A COUNT IS A REPORT, NOT AN OBJECT. It takes ink — role-metadata beside
+    the heading it counts — and NO PILL. The system already spends its plates
+    on affordance, and wrapping a single numeral in a container makes it look
+    like a discrete thing that can be acted on when it is a fact about the
+    thing beside it.
+    THE RULE IS CONSISTENCY EITHER WAY, and that is why this is worth an
+    entry at all: two treatments of the same element on one screen is worse
+    than whichever treatment loses. A reader learns that a pill means
+    something, and here it means nothing.
   a-register-change-is-a-width-change: >-
     RATIFIED 2026-08-29 after THREE regressions found by the owner in one
     pass, all from the same migration and all with one cause: A ROLE WAS

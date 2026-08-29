@@ -8,6 +8,52 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-29 (v2026.08.29.3) — The aurora is three things, and both my numbers were of bands nobody ships
+
+The consumer mapped it and the gate is narrower than either side has been saying.
+
+**Three aurora definitions exist:** `--aurora`, generated from this file, three lobes —
+**consumed by nothing**. `--aurora-curtain`, the consumer's own, five lobes — **exactly
+two call sites, both MarketingHome**. And the **body background**, hardcoded, three
+lobes, same geometry as this file's token lobe-for-lobe but ~1.7–1.8× the chroma and
+1.2–1.4× the alpha — **what nearly every page actually paints**.
+
+So **the five-lobe curtain I measured at 4.02/1.95 is the marketing home page, not the
+product.** The five-lobe divergence is scoped to one route, which is outside the
+register table anyway.
+
+**And my 4.53/5.96 "the token band passes" was taken on values the product does not
+ship.** The band under nearly every surface is a third set of values neither side has
+measured. **Both numbers this file has reasoned from describe bands users never see.**
+
+### Fixed: `in oklab` on the token
+
+The shipped body gradient has always carried it; this token did not. A
+colour-to-transparent fade without it interpolates in sRGB and **gray-halos toward black
+at the lobe edge** — so adopting the token as written would have *lost* a correctness
+property. Caught by the consumer while mapping the three.
+
+### Done at Jason's request: `--text-secondary` 55% → 60% in light
+
+Hardening rather than a fix, as established. **The paper scope deliberately stays at
+55%** — paper is an opaque, aurora-free ground and the argument for the change was about
+the band. *A number raised for one ground does not transfer to another.* That distinction
+surfaced only because an assertion failed on two matches instead of one.
+
+### Not decided, and not guessed: whose values win
+
+*"The value that reaches a rendered surface is the value the system means"* argues for
+the body's. The band invariant argues for whichever is **bounded**. Those can disagree,
+and only a measurement of the **shipping** band settles it.
+
+**That measurement is owed and has not been taken.** An attempt produced obvious nonsense
+— a pure-white worst ground in dark mode, from hiding the body's children and leaving
+something else painting — and was discarded rather than reported. Until it exists, the
+token's values are not adopted, the body is not changed, and the dead `--aurora` stays
+dead rather than being wired to a value nobody has checked.
+
+---
+
 ## 2026-08-29 (v2026.08.29.2) — A story proves what it rendered, and I verified against the fix
 
 ### Every signed-in story in the consumer has been rendering signed-out

@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.29.2
+# spec-version:   v2026.08.29.3
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3382,7 +3382,43 @@ a11y:
       fallen back to the plain three-lobe Blue Hour. Inside the band it is
       not safe at any rung, in either room — in the dark room even 87% ink
       drops to 3.53:1. The band is light, not a text surface.
-    a-story-proves-what-it-rendered: >-
+    the-aurora-is-three-things: >-
+    RECORDED 2026-08-29, and it narrows a gate this file has been overstating.
+    THREE AURORA DEFINITIONS EXIST IN THE CONSUMER:
+      --aurora            generated from this file. THREE lobes, low chroma.
+                          CONSUMED BY NOTHING — dead in the token layer.
+      --aurora-curtain    the consumer's own. FIVE lobes, chroma to 0.20.
+                          Consumed at EXACTLY TWO SITES, both MarketingHome.
+      the body background hardcoded in globals.css. THREE lobes, same
+                          geometry as this file's token lobe-for-lobe, but
+                          roughly 1.7-1.8x the chroma and 1.2-1.4x the alpha.
+                          THIS IS WHAT NEARLY EVERY PAGE PAINTS.
+    SO THE FIVE-LOBE CURTAIN MEASURED AT 4.02/1.95 IS THE MARKETING HOME
+    PAGE, NOT THE PRODUCT. The claim that the band change "replaces the
+    background of every page" was wrong, and so was the framing that the
+    five-lobe divergence is product-wide: it is scoped to one route, which is
+    outside the register table anyway.
+    AND THE 4.53/5.96 "TOKEN BAND PASSES" FIGURE WAS TAKEN ON VALUES THE
+    PRODUCT DOES NOT SHIP. The band under nearly every surface is a THIRD set
+    of values that neither side has measured. Both of the numbers this file
+    has been reasoning from describe bands that are not the one users see.
+    WHAT IS FIXED HERE: the token now carries `in oklab` on every lobe. The
+    shipped body gradient always had it; this token did not, so adopting the
+    token as written would have LOST a correctness property — a
+    colour-to-transparent fade without it interpolates in sRGB and gray-halos
+    toward black at the lobe edge.
+    WHAT IS NOT DECIDED, and must not be guessed: WHOSE VALUES WIN. "The value
+    that reaches a rendered surface is the value the system means" argues for
+    the body's; the band invariant argues for whichever is BOUNDED. Those can
+    disagree, and only a measurement of the SHIPPING band settles it. That
+    measurement is owed and has not been taken — an attempt on 2026-08-29
+    produced obvious nonsense (a pure-white worst ground in dark mode) by
+    hiding the body's children and leaving something else painting, and was
+    discarded rather than reported.
+    UNTIL THEN THE TOKEN'S VALUES ARE NOT ADOPTED AND THE BODY IS NOT
+    CHANGED. The dead --aurora token stays dead rather than being wired to a
+    value nobody has checked.
+  a-story-proves-what-it-rendered: >-
     RATIFIED 2026-08-29, from a stub bug that had EVERY SIGNED-IN STORY IN
     THE CONSUMER RENDERING SIGNED-OUT — not failing, PASSING, in the wrong
     state.

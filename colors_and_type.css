@@ -178,7 +178,14 @@
 
   /* Text — opacity on black (HIG three-rung) */
   --text-primary:   rgb(0 0 0 / 87%);
-  --text-secondary: rgb(0 0 0 / 55%);
+  /* 60%, raised from 55% on 2026-08-29 at Jason's request. HARDENING, NOT A
+     FIX: at 55% this cleared 4.5:1 on the token band by 0.03, and the entire
+     light-mode budget above the floor was 0.15 of contrast on a bare canvas.
+     60% takes the bare canvas to 5.59:1 and gives the band room to exist.
+     THE PAPER SCOPE BELOW DELIBERATELY STAYS AT 55%: paper is an opaque,
+     aurora-free ground and the argument for this change was about the band.
+     A number raised for one ground does not transfer to another. */
+  --text-secondary: rgb(0 0 0 / 60%);
   --text-tertiary:  rgb(0 0 0 / 38%);
 
   /* Borders */

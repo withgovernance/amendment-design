@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.29.10
+# spec-version:   v2026.08.29.11
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -599,7 +599,36 @@ typography:
       ladder — chrome (125) is wider than display (120). Width separates the
       CLERICAL register from the EDITORIAL one; display escalates by size and
       weight, ceremonial by tracking. Do not normalize this into 100/110/120/125.
+    serif-belongs-to-the-canvas: >-
+      RATIFIED 2026-08-29 from the owner's read, which is a better rule than
+      the one this file was about to write. serifIntent below said "Newsreader
+      carries EVERY heading" and that is too broad.
+      THE RULE, AND IT IS CHECKABLE BY LOOKING RATHER THAN BY CATEGORISING:
+      A SERIF HEADING BELONGS TO THE CANVAS. INSIDE A CONTAINER, THE HEADING
+      TAKES SANS — role-ui-heading. A serif hero on the aurora reads as the
+      institution speaking. The same face heading a card, among sans
+      contents, reads as odd, because the card is furniture and its header
+      labels the furniture.
+      THE ONE CARVE-OUT, so the rule does not strip the product of its voice:
+      A CONTAINER WHOSE CONTENT IS THE DOCUMENT IS NOT FURNITURE. A bill
+      page, statutory text, the Receipt, a quoted excerpt — those are the
+      record, their content is serif, and their headings stay serif. THE
+      TEST IS WHAT IS INSIDE: a container holding a list, a control, or a
+      summary is apparatus; a container holding the record is the record.
+      THE DEFECT THAT FOUND IT: a dashboard card headed "Conversations" in
+      serif. A HEADER THAT SHARES ITS CONTENT'S VOICE STOPS BEING A FRAME —
+      it was doing the document's job for a piece of furniture.
+      WHY IT HAPPENED, and it is trap 2 again: EVERY display role in this
+      system is serif and THERE WAS NO SANS HEADING REGISTER AT ALL. The rule
+      was not disobeyed; the alternative did not exist. role-ui-heading now
+      does, and it is IMPLEMENTED IN colors_and_type.css rather than only
+      described here.
+      SEPARATELY, AND FOUND WHILE ADDING IT: role-display-minor is named in
+      this file and in the entry points and IS NOT IN THE STYLESHEET. Same
+      trap, still open, and it has been referenced as though it exists.
     serifIntent: >-
+      NARROWED 2026-08-29 by serif-belongs-to-the-canvas above: "every
+      heading" means every heading ON THE CANVAS or on a document surface.
       Newsreader carries every heading. A serif for the ink layer is a
       deliberate civic gesture: this is a document, not an app UI. A SCOTCH
       ROMAN specifically — the face of the nineteenth-century press and the

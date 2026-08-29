@@ -482,6 +482,21 @@
   color: var(--text-primary);
   text-wrap: balance;
 }
+/* UI heading — the voice a heading takes INSIDE A CONTAINER. Added
+   2026-08-29. Serif headings belong to the canvas; a heading inside a card
+   labels the card and takes sans. Sentence case, body width — this is not a
+   display register, it is a label that happens to be large.
+   See typography.serif-belongs-to-the-canvas. */
+.role-ui-heading {
+  font-family: var(--font-sans);
+  font-variation-settings: var(--sans-body);
+  font-size: 1.125rem;
+  font-weight: var(--sans-semibold);
+  line-height: 1.35;
+  letter-spacing: normal;
+  color: var(--text-primary);
+}
+
 .role-display-section {
   font-family: var(--font-serif);
   font-variation-settings: var(--serif-display);

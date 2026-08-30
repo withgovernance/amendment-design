@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.30.2
+# spec-version:   v2026.08.30.3
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -132,6 +132,25 @@ color:
     NEEDS: the materials brought under the same regenerate-and-diff guard as
     the colour tokens. Until then, every material citation should be checked
     against colors_and_type.css rather than the consumer's utility.
+  print-is-a-known-divergence: >-
+    RECORDED 2026-08-30. SPEC AHEAD. `colors_and_type.css` carries a full
+    `@media print` block — ink re-based to 100/45/45 rather than flattened to
+    black, `.paper-*` backgrounds dropped because the stock already has a
+    colour and banding is worse than nothing, measure taken from the 6.5in
+    margin rather than a counted line, nav/fab/toaster/tabbar hidden, and the
+    emboss suppressed because a deformation of a sheet prints as grey mud on
+    the very artifact whose authority it carries. THE CONSUMER HAS NO PRINT
+    STYLESHEET AT ALL.
+    DELIBERATELY NOT SOLVED BY THE TOKEN GENERATOR. Emitting the three print
+    token declarations would put print tokens in a file the next reader would
+    take as print coverage, while the hidden chrome and the emboss rule — the
+    two that actually matter on a Receipt — stayed missing. A partial copy
+    that reads as complete is worse than an absence.
+    NEEDS: the print block carried whole into the consumer, as a stylesheet
+    rather than as tokens. Its own pass. Until then, ANY CLAIM THAT AN
+    ARTIFACT PRINTS CORRECTLY IS UNVERIFIED — and the Receipt is where that
+    claim matters most, since the ledger number is the proof precisely
+    because the emboss cannot survive print.
   rationale-has-one-home: >-
     RATIFIED 2026-08-30, at the owner's direction, and it is trap 4 at two
     more scales — the code comment and the consumer's contributor doc.
@@ -1082,6 +1101,40 @@ typography:
     claim to a guard, missed by the guard that existed. Cheapness of the
     finding is not evidence the guard was unnecessary; it is evidence of what
     the guard is for.
+    AMENDED 2026-08-30, ONE TURN LATER, BY THE CONSUMER SESSION — and the
+    amendment is worth more than the entry it amends. The repaired tool ran,
+    reported "in sync", passed its lint, and was STILL EMITTING A WRONG
+    ARTIFACT. `--text-secondary` is declared in FIVE scopes in the source;
+    the generator knew TWO, because its scope list was hand-written as
+    `:root` and `.dark`. A GUARD REPORTS AGREEMENT ABOUT WHAT IT LOOKS AT AND
+    IS SILENT ABOUT EVERYTHING ELSE. Repairing the parser made it able to
+    check; it did not make it complete, and green meant the same thing in
+    both states.
+    SCOPE IS A PROPERTY OF A TOKEN, NOT A DETAIL OF IT. `--text-secondary` at
+    60% is not a value; it is a value ON THE AURORA-FREE `:root` GROUND. The
+    paper declaration at 55% is a different token that shares a name. A tool
+    that flattens the scopes has not copied the token, it has copied one of
+    its readings — `ink-ground-is-a-placement` restated in a build step.
+    WHAT WAS DECIDED. `[data-paper]` and `@media (prefers-contrast: more)`
+    are TOKEN-ONLY scopes and are now emitted. `@media print` IS NOT AND MUST
+    NOT BE: its block is a real stylesheet — hidden chrome, measure in inches,
+    the emboss suppression, page-break behaviour — and lifting only its three
+    token lines would produce a partial copy that READS AS COVERAGE to the
+    next person who opens the file. Print is either carried whole or not
+    carried; it is recorded at print-is-a-known-divergence, not smuggled in
+    as tokens.
+    THE LIVE CONSEQUENCE, larger than the token that surfaced it: the
+    consumer has TWENTY-THREE `paper-cream`/`paper-parchment` call sites and
+    ZERO `data-paper` attributes. Every paper surface it ships has been inked
+    from `:root` since the day paper landed. The 55%-to-60% question was never
+    the bug; it was the first symptom legible enough to notice.
+    AND THE PART THAT IS MINE. The verify checklist I handed over asked the
+    consumer to confirm `[data-paper]` at 55% IN A FILE THAT STRUCTURALLY
+    COULD NOT CONTAIN IT. I wrote the check against the SOURCE and shipped it
+    against the ARTIFACT. A CHECK WRITTEN AGAINST THE WRONG ARTIFACT IS THE
+    SAME FAILURE AS A GUARD THAT CANNOT RUN — it cannot come back false, so
+    it certifies nothing while reading as diligence. Write the check against
+    the bytes the consumer will actually hold.
   composed-register-fails-silently: >-
     RATIFIED 2026-08-28, contributed by the implementation session as a
     generalisation of retired-axis-fails-silently, and it is the more useful

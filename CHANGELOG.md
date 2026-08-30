@@ -8,6 +8,40 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-30 (v2026.08.30.3) — The repaired guard still had a blind spot
+
+Found by the consumer session one turn after the parsers were fixed, and the
+amendment is worth more than the entry it amends.
+
+The repaired generator ran, reported "in sync", passed lint — and was still
+emitting a wrong artifact. `--text-secondary` is declared in **five** scopes;
+the generator's scope list was hand-written as `:root` and `.dark`, so it
+emitted two. **A guard reports agreement about what it looks at and is silent
+about everything else.** Repairing the parser made it able to check; it did not
+make it complete, and green meant the same thing in both states.
+
+**Scope is a property of a token, not a detail of it.** 60% is not a value, it
+is a value on the aurora-free `:root` ground; the paper declaration at 55% is a
+different token that shares a name.
+
+`[data-paper]` and `@media (prefers-contrast: more)` are token-only and are now
+emitted. `@media print` is not and must not be — recorded instead as
+`color.print-is-a-known-divergence`, since lifting its three token lines would
+read as coverage while the hidden chrome and emboss suppression stayed missing.
+
+**The live consequence is larger than the token that surfaced it.** The consumer
+has 23 `paper-cream`/`paper-parchment` call sites and **zero** `data-paper`
+attributes: every paper surface it ships has been inked from `:root` since paper
+landed. Conformance, its own pass.
+
+**And the part that is mine.** The verify checklist I handed over asked the
+consumer to confirm `[data-paper]` at 55% in a file that structurally could not
+contain it — written against the source, shipped against the artifact. A check
+written against the wrong artifact cannot come back false, so it certifies
+nothing while reading as diligence.
+
+---
+
 ## 2026-08-30 (v2026.08.30.2) — Rationale has one home
 
 At the owner's direction, and prompted by engineering asking for the design

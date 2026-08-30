@@ -8,6 +8,43 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-30 (v2026.08.30.1) — The token guard had never run
+
+`design:tokens --check` — the CI guard that regenerates `app/design-tokens.css`
+from `colors_and_type.css` and fails on any difference, made mandatory when the
+system sanctioned keeping tokens in a second file — **has never executed a single
+check.** Its selector lookup was a literal string match, and the stylesheet has
+written `.dark, :root[data-theme="dark"]` across two lines since the 2026-08-27
+repo split. It threw on its first statement every time. A second parser carried
+the same defect for the material rules.
+
+Fixed both, and found a third while doing it: `partition()` was line-based, so a
+declaration whose value spans multiple lines lost everything after its first
+line. A formatter pass had rewrapped `--aurora` to fourteen lines during the
+inert period, which means the first correct run of the repaired tool would have
+emitted `--aurora:` **with an empty value** — valid CSS, no error, and no aurora
+in light mode. Repairing one parser without the other would have shipped that.
+
+Ratified as `color.a-guard-that-cannot-run-reports-agreement`, completing the
+silent-failure family: nothing in the system distinguishes *checked and agreed*
+from *never asked*. Both are silence. The corollary is a constraint on tools —
+**a tool that parses the system's own source must not depend on that source's
+formatting**, because formatting is not a decision this system records and can
+change under any editor at any time. Parse declarations, not lines; match
+selectors as patterns, not as literals.
+
+Real drift, once the tool could run: **one line.** `--text-secondary` at 55% in
+`app/design-tokens.css` against the spec's 60% — the contrast fix ratified
+2026-08-29, which is the change with the strongest claim to a guard and the one
+the guard missed.
+
+**Tooling moved home.** `build-tokens.mjs` and `lint-rules.mjs` now live at
+`tools/` in this repo rather than in the consumer, and take `--target <repo>`.
+The design system owns verification of the design system; the consumer repo
+should carry the generated artifact and nothing about how it is produced.
+
+---
+
 ## 2026-08-29 (v2026.08.29.12) — The entry points, swept again, and a phantom role removed
 
 **Nine rules ratified since the last sweep had reached no entry point** — audited by name

@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.29.12
+# spec-version:   v2026.08.30.1
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -986,6 +986,52 @@ typography:
     INVENTORIED rather than discovered again: a rule cannot be enforced on a
     surface the enforcer cannot read, and the honest response is to list
     those surfaces, not to trust the green check.
+  a-guard-that-cannot-run-reports-agreement: >-
+    RATIFIED 2026-08-30. The newest member of the silent-failure family, and
+    the one that explains why the others survived. The previous entries
+    describe values, registers and surfaces that fail without complaining.
+    THIS ONE IS ABOUT THE CHECK ITSELF.
+    `design:tokens --check` regenerates `app/design-tokens.css` from
+    `colors_and_type.css` and fails the build on any difference. It was made
+    mandatory when the system sanctioned extracting tokens into a second
+    file, on the reasoning that a copy is safe only while something proves it
+    is a copy. IT HAD NEVER ONCE RUN. Its selector lookup was
+    `css.indexOf(selector + " {")` — a LITERAL STRING match — and the
+    stylesheet has written `.dark, :root[data-theme="dark"]` across two lines
+    since the 2026-08-27 repo split. The tool threw on its first statement
+    every time it was invoked. A second parser had the same defect for the
+    material rules.
+    A THROW IS NOT AN ALARM IF NOTHING INVOKES IT. The guard was correct
+    about its own failure and told no one, because a build step that is not
+    wired to a runner is indistinguishable from a build step that passes.
+    NOTHING IN THE SYSTEM DISTINGUISHES "checked and agreed" FROM "never
+    asked". Both are silence.
+    AND THE FAILURE MODES COMPOUND WHILE A GUARD IS INERT — this is the part
+    worth carrying forward. During the inert period a formatter pass
+    rewrapped `--aurora` from one line to fourteen. The generator's
+    `partition()` was LINE-BASED, so it emitted `--aurora:` and swept the
+    three radial-gradients into a buffer that was discarded: a property with
+    an EMPTY VALUE. Valid CSS. No parse error, no build failure, and no
+    aurora in light mode — the surface the owner had just described as
+    "gorgeous and I designed it so". Fixing only the selector parser would
+    have shipped that. A guard does not sit still while it is broken; the
+    ground it was watching keeps moving, so the first repair must be followed
+    by a render, not by a green check.
+    THE COROLLARY IS A CONSTRAINT ON TOOLS, NOT ON PEOPLE: A TOOL THAT PARSES
+    THE SYSTEM'S OWN SOURCE MUST NOT DEPEND ON THAT SOURCE'S FORMATTING.
+    Formatting is not a decision this system records — no changelog entry
+    will ever say why a gradient wrapped — so it can change under any
+    editor, any formatter, at any time. Both defects here were a tool reading
+    layout instead of structure. Parse declarations, not lines; match
+    selectors as patterns, not as literals.
+    WHAT THE MEASUREMENT SHOWED, once the tool could run: exactly ONE line of
+    real drift between the spec and the shipped artifact, `--text-secondary`
+    at 55% against the spec's 60%. That is the whole argument in one number.
+    The drift was small because the humans were careful, and the one thing
+    that had slipped was THE CONTRAST FIX — the change with the strongest
+    claim to a guard, missed by the guard that existed. Cheapness of the
+    finding is not evidence the guard was unnecessary; it is evidence of what
+    the guard is for.
   composed-register-fails-silently: >-
     RATIFIED 2026-08-28, contributed by the implementation session as a
     generalisation of retired-axis-fails-silently, and it is the more useful

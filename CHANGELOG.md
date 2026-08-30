@@ -8,6 +8,37 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-30 (v2026.08.30.4) — The token layer has no consumers, and it now matters
+
+Amends `a-token-with-no-consumers-is-not-a-token`, and the amendment is that
+**nothing has changed** — which is the finding. Re-derived independently by the
+consumer session: the three ink tokens have zero consumers in voyager, they sit
+in `:root` rather than `@theme` so Tailwind generates no utility from them
+either, and ink still comes from `text-black/55` literals at ~690 sites. The
+one-line fix this entry named on 2026-08-29 has not been taken.
+
+**The structural cause, newly named: the role layer was implemented without its
+ink half.** A role is the whole type decision in one class, colour included;
+voyager's `role-*` utilities set family, weight, size and leading and no colour
+at all. A parallel literal system grew to supply the missing half. The tokens
+aren't unused through neglect — the thing meant to consume them shipped with a
+hole exactly their shape.
+
+**Why it is now load-bearing.** The 55→60 hardening was ratified as a *contrast
+fix* on a band measuring 4.42:1. It is in the artifact, the guard is green, and
+secondary ink in the product is still 55% everywhere. **A contrast claim about
+the consumer must be measured on a rendered surface, never on the token file.**
+
+Third ring of one failure in three days: the guard could not run; then it ran
+without looking at every scope; now it is complete and green over an artifact
+nothing reads. Each ring asserted agreement about something it never asked.
+
+Also recorded: the commentary-finder command handed to the consumer read
+`git diff main...HEAD`, which sees committed state only, and missed uncommitted
+work on the branch. Diff the working tree when auditing a live branch.
+
+---
+
 ## 2026-08-30 (v2026.08.30.3) — The repaired guard still had a blind spot
 
 Found by the consumer session one turn after the parsers were fixed, and the

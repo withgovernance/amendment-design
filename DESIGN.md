@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.30.3
+# spec-version:   v2026.08.30.4
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3787,6 +3787,42 @@ a11y:
     because the token already resolves per-scheme. The remaining hardcoded
     sites are the sweep, and afterwards a lint rule banning the literal
     outside the token layer keeps them from returning.
+    AMENDED 2026-08-30, AND THE AMENDMENT IS THAT NOTHING HAS CHANGED — which
+    is the finding. The consumer session re-derived this independently while
+    landing the token artifact: `var(--text-primary)`, `var(--text-secondary)`
+    and `var(--text-tertiary)` have ZERO consumers in voyager, they are
+    declared in `:root` rather than `@theme` so Tailwind generates no utility
+    from them either, and the ink still comes from `text-black/55` literals
+    at roughly 690 sites. The fix named above — one line pointing
+    `secondary-text` at the token — has not been taken.
+    THE STRUCTURAL CAUSE, which the first version of this entry did not name:
+    THE ROLE LAYER WAS IMPLEMENTED WITHOUT ITS INK HALF. A role is supposed
+    to be the whole type decision in one class, colour included; the
+    consumer's `role-*` utilities set family, variation settings, weight,
+    size and leading AND NO COLOUR AT ALL. A parallel literal system grew to
+    supply the missing half. The tokens are not unused because nobody got to
+    them — they are unused because the thing that was supposed to consume
+    them shipped with a hole exactly their shape.
+    WHY IT IS NOW LOAD-BEARING RATHER THAN UNTIDY. The 55%-to-60% hardening
+    was ratified as a CONTRAST FIX on a band that measured 4.42:1. It is in
+    the generated artifact, the guard is green, and SECONDARY INK IN THE
+    PRODUCT IS STILL 55% EVERYWHERE. The token file agrees with the spec and
+    the product never asks. SO: A CONTRAST CLAIM ABOUT THE CONSUMER MUST BE
+    MEASURED ON A RENDERED SURFACE, NEVER ON THE TOKEN FILE — the artifact is
+    a statement of intent until something reads it.
+    THAT IS THE THIRD RING OF THE SAME FAILURE IN THREE DAYS. The guard could
+    not run; then it ran without looking at every scope; now it is complete
+    and green over an artifact with no consumers. EACH RING ASSERTED
+    AGREEMENT ABOUT SOMETHING IT NEVER ASKED, and each was invisible from
+    inside the ring below it.
+    AND A THIRD INSTANCE OF THE WRONG-ARTIFACT CHECK. The command I handed
+    over for finding design commentary read `git diff main...HEAD`, which
+    sees COMMITTED state only. The owner had uncommitted work on the branch,
+    and one of the heaviest passages in the pass was invisible to it. When
+    auditing a working branch, diff the WORKING TREE (`git diff main`), not
+    the merge base. A check that reads the wrong bytes cannot come back
+    false — stated once about a checklist, once about a token scope, and now
+    about a diff range.
   the-aurora-is-three-things: >-
     RECORDED 2026-08-29, and it narrows a gate this file has been overstating.
     THREE AURORA DEFINITIONS EXIST IN THE CONSUMER:

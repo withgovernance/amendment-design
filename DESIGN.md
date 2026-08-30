@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.30.1
+# spec-version:   v2026.08.30.2
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -132,6 +132,56 @@ color:
     NEEDS: the materials brought under the same regenerate-and-diff guard as
     the colour tokens. Until then, every material citation should be checked
     against colors_and_type.css rather than the consumer's utility.
+  rationale-has-one-home: >-
+    RATIFIED 2026-08-30, at the owner's direction, and it is trap 4 at two
+    more scales — the code comment and the consumer's contributor doc.
+    THE RULE: A COMMENT THAT EXPLAINS A CODE CONSTRAINT STAYS. A COMMENT THAT
+    ARGUES A DESIGN DECISION GOES TO THE SPEC. The test is one question —
+    WOULD THIS SENTENCE STILL BE TRUE AFTER A REDESIGN? If yes it is a
+    constraint and it belongs where the code is. If a redesign would make it
+    false, it is an argument, it has a home already, and the copy in the
+    source will age against that home silently.
+    WORKED, because the line is sharper in examples than in prose:
+      STAYS — "next/font's generated CSS module is rejected under
+        components/ as a CSS Module: Selector \"*\" is not pure." A
+        Turbopack fact. Survives any redesign.
+      STAYS — "axes: ['wdth'] is load-bearing; a cut fetched without it
+        loads cleanly, renders approximately right, and silently collapses
+        chrome to normal width — nothing errors." A silent failure mode of
+        THIS CODE. An engineer deleting the array needs it.
+      GOES — "the section title gives up 56% of its contrast headroom; two
+        chrome plates meeting at the top-left form an L brighter than the
+        cards they frame." The recession argument in full. Every word is
+        already ratified prose; the copy can only drift.
+      GOES — "at the fill's lightness white measures 2.90:1 and ink 6.42:1."
+        A measurement, which is a token with a number written on it.
+      TRIM — "appearance and target are two geometries; the fix is
+        min-height, never more padding." Keep the instruction, drop the
+        argument for the floor's value.
+    A ONE-LINE POINTER IS PERMITTED AND USUALLY RIGHT — `role-label-caps, see
+    DESIGN.md` — because it stops a maintainer from "fixing" something they
+    cannot see the reason for. A pointer names; it does not restate.
+    THE FINDING THAT MAKES THIS MORE THAN HOUSEKEEPING: THE CONSUMER HAD
+    ALREADY WRITTEN THIS RULE DOWN. voyager's CLAUDE.md says plainly that
+    design-system exposition belongs in DESIGN.md and not in component or CSS
+    comments, and that a comment must justify itself to a maintainer who can
+    already see the code. The design pass then put design exposition in
+    twenty-two files. It was not defiance — THE DESIGN SIDE READ PRODUCTION
+    AS EVIDENCE AND NEVER READ PRODUCTION'S RULES. The reading was
+    one-directional, and this system's own instruction to "read production
+    before rewriting a rule" is what made that feel complete.
+    SO IT BINDS BOTH WAYS: THE CONSUMER'S CONTRIBUTOR DOC IS AN INPUT TO
+    DESIGN WORK, not just a place design work leaves instructions.
+    AND AT FILE SCALE — the consumer's CLAUDE.md must POINT AT THE PUBLIC
+    REPO, `withgovernance/amendment-design`, AND RESTATE NOTHING. It
+    currently restates the material table, the action colour with its oklch
+    literal, the hard-rule list, and the spec's line count; and because it
+    restates, it has already rotted. It still teaches Readex Pro and
+    Merriweather as shipping, oxblood as the enacted colour, 40px buttons,
+    and `hexp-*` as live deprecated aliases — every one of them retired, the
+    axis DELETED. That is trap 1 recurring on schedule in the one file every
+    contributor and every agent reads first. A pointer cannot rot. A summary
+    always does.
   canvas-two-names: >-
     RATIFIED 2026-08-28, closing the divergence recorded at v2026.08.28.3
     after it was carried three passes. TWO DIFFERENT CANVASES WERE IN PLAY

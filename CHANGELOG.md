@@ -8,6 +8,33 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-30 (v2026.08.30.2) — Rationale has one home
+
+At the owner's direction, and prompted by engineering asking for the design
+branch to be purely visual. Trap 4 at two more scales.
+
+**Comments.** A comment explaining a *code constraint* stays; a comment arguing
+a *design decision* goes to the spec. One test: would the sentence still be true
+after a redesign? A one-line pointer is permitted and usually right — it names
+without restating.
+
+**The finding.** voyager's own `CLAUDE.md` already said this: design-system
+exposition belongs in DESIGN.md, not in component or CSS comments. The design
+pass then put it in twenty-two files. Not defiance — **the design side read
+production as evidence and never read production's rules.** Recorded as binding
+both ways: the consumer's contributor doc is an *input* to design work, not only
+a place design work leaves instructions.
+
+**At file scale.** The consumer's `CLAUDE.md` must point at the public repo,
+`withgovernance/amendment-design`, and restate nothing. It currently restates the
+material table, `--color-action` with its oklch literal, the hard-rule list and
+the spec's line count — and, because it restates, has already rotted: it still
+teaches Readex Pro, Merriweather, oxblood, 40px buttons and `hexp-*` as live.
+Every one retired; the axis deleted. Trap 1, on schedule, in the file every
+contributor and every agent reads first.
+
+---
+
 ## 2026-08-30 (v2026.08.30.1) — The token guard had never run
 
 `design:tokens --check` — the CI guard that regenerates `app/design-tokens.css`

@@ -8,6 +8,23 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-30 (v2026.08.30.5) — An inert token accumulates
+
+Sequencing consequence, contributed by the consumer session. While nothing
+consumes a token, every ratified change to it is queued rather than shipped, and
+the queue lands on the day it gains a consumer. **The conformance pass that
+wires it is a visual change wearing a refactor's clothes** — one line pointing
+`secondary-text` at `--text-secondary` darkens ink across ~690 sites.
+
+Measured rather than asserted: the queue is **one change deep** — the 55% → 60%
+hardening, nothing else. Not a backlog, and saying so matters more than the
+general case. But it grows in silence, which is the argument for taking the
+one-line fix early rather than waiting for the sweep.
+
+Recorded on the ticket request so the sweep is not signed off as a refactor.
+
+---
+
 ## 2026-08-30 (v2026.08.30.4) — The token layer has no consumers, and it now matters
 
 Amends `a-token-with-no-consumers-is-not-a-token`, and the amendment is that

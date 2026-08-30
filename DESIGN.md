@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.30.4
+# spec-version:   v2026.08.30.5
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3823,6 +3823,18 @@ a11y:
     the merge base. A check that reads the wrong bytes cannot come back
     false — stated once about a checklist, once about a token scope, and now
     about a diff range.
+    AND AN INERT TOKEN ACCUMULATES, contributed by the consumer session as the
+    sequencing consequence. While nothing consumes a token, every ratified
+    change to it is QUEUED RATHER THAN SHIPPED, and the whole queue lands on
+    the day it gains a consumer. So the conformance pass that wires it is A
+    VISUAL CHANGE WEARING A REFACTOR'S CLOTHES — here, one line pointing
+    `secondary-text` at the token darkens secondary ink across roughly 690
+    sites. Measured honestly, the queue is ONE CHANGE DEEP today: the 55%-to-60%
+    hardening and nothing else. It is not a backlog, and saying so matters more
+    than the drama of the general case. But it grows in silence, which is the
+    second reason to take the one-line fix early rather than to wait for the
+    sweep: the shorter the token stays inert, the smaller the thing that
+    eventually ships unannounced.
   the-aurora-is-three-things: >-
     RECORDED 2026-08-29, and it narrows a gate this file has been overstating.
     THREE AURORA DEFINITIONS EXIST IN THE CONSUMER:

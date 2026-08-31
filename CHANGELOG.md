@@ -8,6 +8,36 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-31 (v2026.08.31.1) — A heading belongs to whoever it works for
+
+Ratified from the owner's articulation, with specimens from both shipped
+screens. `serif-belongs-to-the-canvas` (2026-08-29) told you which typeface a
+heading takes once you know where it sits; it was silent on the placement
+decision itself, so inside-vs-above was still a per-screen judgment call. Now
+it isn't: a section title goes **inside** the card when the title is the
+card's own (Conversations, Following), **above** when it is an entry in the
+page's outline (the bill rail's Where it stands / Sponsors / Roll Call Votes),
+and **nowhere** when the content names itself (the composer). One test decides
+— **could a second card join under this title?** — and the typeface falls out
+of the answer (`role-display-section` above, `role-ui-heading` inside), so the
+2026-08-29 rule becomes a consequence instead of a separate call.
+
+Two refinements from review before it landed: the owner's draft made "carries
+scoped controls" part of the inside condition, which left a bounded list with
+no count undecided — controls are demoted to evidence and the second-card test
+decides alone. And the draft's "don't mix the two registers" is written as
+*placements*, because "register" is already the Live/Reading/Writing/Issued
+term and the collision would misread as a register-table rule.
+
+The conversation view was raised as a possible exception ("we're mixing
+voices") and ratified as the opposite — the third specimen: in a dialogue the
+container boundary *is* the voice boundary (bubble = sans apparatus, canvas =
+serif record, no headings — a message names itself). New note
+`a-heading-belongs-to-whoever-it-works-for` beside the rule it extends;
+hard-rules #6 gains the placement test in the same pass.
+
+---
+
 ## 2026-08-30 (v2026.08.30.5) — An inert token accumulates
 
 Sequencing consequence, contributed by the consumer session. While nothing

@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.30.5
+# spec-version:   v2026.08.31.1
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -700,6 +700,40 @@ typography:
       second 1.125rem heading register would be two answers to one question.
       A ROLE LIST IS A PROMISE. Every name on it must resolve in
       colors_and_type.css, and that is a one-line check nobody was running.
+    a-heading-belongs-to-whoever-it-works-for: >-
+      RATIFIED 2026-08-31, extending serif-belongs-to-the-canvas above from a
+      typeface rule into the placement decision it was always downstream of.
+      A section title has THREE legal placements and ONE test.
+      INSIDE the card when the title is the card's own — it carries work
+      scoped to the card. Specimens: Conversations, Following.
+      ABOVE the card when the title is an entry in the page's outline.
+      Specimens: the bill rail's Where it stands / Sponsors / Roll Call Votes.
+      NEITHER when the content names itself — a composer's placeholder, a
+      search field, a lone stat. Specimen: the composer.
+      THE TEST IS THE SECOND CARD: could a sibling card join under this
+      title? YES means the title is the page's — place it above. NO means it
+      is the card's — place it inside. A count or a "View all" scoped to the
+      card is EVIDENCE the title is the card's, not the qualifying condition;
+      a bounded list with no controls still answers the second-card test.
+      THE TYPEFACE THEN FALLS OUT RATHER THAN BEING A SECOND CALL. Above the
+      card is the canvas — role-display-section, serif. Inside the card is
+      apparatus — role-ui-heading, sans. Placement and voice are ONE
+      decision, and serif-belongs-to-the-canvas becomes this rule's
+      consequence rather than a separate judgment. (Placement does not waive
+      the ground: canvas ink on the aurora still rides
+      a11y.contrast.band-is-bounded.)
+      NEVER BOTH — a serif title above plus a repeated label inside is the
+      failure this rule exists to prevent, and it is exactly what ships when
+      two sessions each add "the missing" title. AND NEVER MIX THE TWO
+      PLACEMENTS INSIDE ONE COLUMN — a column reads as one apparatus or one
+      outline, not an alternation.
+      THE CONVERSATION COROLLARY, which looked like an exception and is the
+      rule's third specimen: in a dialogue THE CONTAINER BOUNDARY IS THE
+      VOICE BOUNDARY. The user's message sits in a bubble — contained,
+      apparatus, sans. The reply floats on the canvas — the record, serif.
+      Neither carries a heading, because A MESSAGE NAMES ITSELF. Mixing
+      voices in one view is not drift here; the surface is carrying the
+      voice distinction, which is the placement rule doing its job.
     serifIntent: >-
       NARROWED 2026-08-29 by serif-belongs-to-the-canvas above: "every
       heading" means every heading ON THE CANVAS or on a document surface.

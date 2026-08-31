@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.31.1
+# spec-version:   v2026.08.31.2
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -698,6 +698,17 @@ typography:
       which roles are available. It is REMOVED rather than implemented,
       because role-ui-heading now occupies the size it claimed and shipping a
       second 1.125rem heading register would be two answers to one question.
+      THE REMOVAL IS SUPERSEDED 2026-08-31: it conflated the document's quiet
+      rung with the apparatus label. Placement
+      (a-heading-belongs-to-whoever-it-works-for, below) separates them into
+      TWO questions — ui-heading is the sans label INSIDE a container;
+      display-minor is the serif voice above a card or inside the record —
+      so two 1.125rem registers is no longer two answers to one question.
+      role-display-minor is REINSTATED in colors_and_type.css. Production
+      never stopped needing it: markdown h3/h4 in document content and
+      outline sub-entries kept rendering through the consumer's own copy of
+      the utility, which is exactly what "removed in the spec, alive in the
+      product" looks like.
       A ROLE LIST IS A PROMISE. Every name on it must resolve in
       colors_and_type.css, and that is a one-line check nobody was running.
     a-heading-belongs-to-whoever-it-works-for: >-
@@ -716,8 +727,11 @@ typography:
       card is EVIDENCE the title is the card's, not the qualifying condition;
       a bounded list with no controls still answers the second-card test.
       THE TYPEFACE THEN FALLS OUT RATHER THAN BEING A SECOND CALL. Above the
-      card is the canvas — role-display-section, serif. Inside the card is
-      apparatus — role-ui-heading, sans. Placement and voice are ONE
+      card is the canvas — serif, at the rung matching the title's OUTLINE
+      DEPTH: role-display-section for a top-level entry, role-display-minor
+      for a sub-entry (forcing every canvas title to 24/800 would flatten
+      the page's hierarchy). Inside the card is apparatus — role-ui-heading,
+      sans. Placement and voice are ONE
       decision, and serif-belongs-to-the-canvas becomes this rule's
       consequence rather than a separate judgment. (Placement does not waive
       the ground: canvas ink on the aurora still rides

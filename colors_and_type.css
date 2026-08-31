@@ -505,6 +505,21 @@
   line-height: 1.2;
   color: var(--text-primary);
 }
+/* Minor display — the quieter serif rung: h3/h4 inside document content,
+   sub-entries in a page outline. Ratified 2026-08-27, removed 2026-08-29 as
+   a phantom, REINSTATED 2026-08-31: the removal conflated this with
+   role-ui-heading, but placement separates them — ui-heading is the sans
+   label INSIDE apparatus; this is the serif voice ABOVE a card or inside
+   the record. The rung follows outline depth, not a fixed size.
+   See typography.a-heading-belongs-to-whoever-it-works-for. */
+.role-display-minor {
+  font-family: var(--font-serif);
+  font-variation-settings: var(--serif-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
 .role-body-lead {
   font-family: var(--font-sans);
   font-variation-settings: var(--sans-body);

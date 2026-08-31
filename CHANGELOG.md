@@ -8,6 +8,27 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-31 (v2026.08.31.2) — The quiet serif rung returns
+
+`role-display-minor` is reinstated in `colors_and_type.css`. The 2026-08-29
+removal called it a second answer to role-ui-heading's question; the placement
+rule (v2026.08.31.1) shows they answer two different questions — the sans
+label *inside* apparatus versus the serif voice *above* a card or inside the
+record — so the "two answers" argument no longer holds. The deciding evidence
+is production-ahead: the consumer never stopped rendering it (its own
+`@utility` copy carries markdown h3/h4 in bill summaries and outline
+sub-entries like "Your districts"), which is what "removed in the spec, alive
+in the product" looks like. Values are the 2026-08-27 ratification's,
+unchanged: serif, 1.125rem, 700, 1.3.
+
+Consequence written into the placement rule: an outline title above a card
+takes the serif rung matching its **outline depth** — `role-display-section`
+top-level, `role-display-minor` sub-entry — because forcing every canvas title
+to 24/800 flattens the page's hierarchy. This resolves the consumer's flag
+("several canvas titles sit at display-minor") as **no sweep needed**.
+
+---
+
 ## 2026-08-31 (v2026.08.31.1) — A heading belongs to whoever it works for
 
 Ratified from the owner's articulation, with specimens from both shipped

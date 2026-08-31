@@ -8,6 +8,30 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-31 (v2026.08.31.6) — Identity is not decoration: jurisdiction marks are sanctioned
+
+Owner's call, reversing this morning's flag removal — his words: a state's
+own flag, or senate/congress seals, are not partisan marks, and they gave
+the site visual interest. The removal was a faithful application of an
+overbroad rule: "no flags, eagles, or partisan marks" could not tell a
+Colorado "C" identifying a Colorado bill from an American-flag wash setting
+a mood, and the designer's review pass applied it at blanket strength.
+
+The ratified line: **identity is sanctioned, mood stays banned.** A
+jurisdiction's own flag or official chamber seal, at badge scale, beside
+that jurisdiction's designation on its records, identifies; nationalist
+imagery as accent, wash, or ornament decorates. New Icons → Jurisdiction
+identity marks subsection carries the test and scope; the four shipped
+surfaces are the specimens. Two conflations untangled in the same pass:
+the `jurisdiction-seal` watermark entry's "pulled" verdict is scoped to the
+watermark form (it was wrongly read as ammunition against badges this
+morning), and the illustrated-pin forbidden list stands unchanged — the
+exception does not creep into pins. The icons section had already
+half-known this: "jurisdiction seals on bills" sat in the
+icons-earn-their-place list as legitimate disambiguation all along.
+
+---
+
 ## 2026-08-31 (v2026.08.31.5) — Warning ink moves to amber-800; the ladder loses to the meter
 
 The deadline-urgency conformance fix (red → warning, this morning) put

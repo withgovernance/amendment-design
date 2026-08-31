@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.31.5
+# spec-version:   v2026.08.31.6
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3100,7 +3100,7 @@ tactileAccents:
   dont:
     - "No drop-shadow faux-3D (iOS 6 skeuomorphism is a museum piece)."
     - "No gradient bevels, inner glows, or drop-shadow depth faked on a flat element. This is NOT a ban on the blind emboss: the canonical wax seal IS an emboss. As written this line forbade it from 2026-08 until running the promotion gates caught the conflict. What is forbidden is fake depth on something that is not paper; what is sanctioned is a real press into a real paper canvas."
-    - "No American-flag accents, eagle icons, or other nationalist iconography — civic is not partisan."
+    - "No American-flag accents, eagle icons, or other nationalist iconography — civic is not partisan. Scoped 2026-08-31: this bans DECORATION. A jurisdiction's own flag or chamber seal at badge scale, identifying that jurisdiction's records, is sanctioned — see Icons → Jurisdiction identity marks."
     - "No photographic paper textures. Grain is procedural and monochromatic."
     - "No tactile accent without meaning — ornament is forbidden."
   # ------------------------------------------------------------------------
@@ -3241,7 +3241,7 @@ tactileAccents:
       description: "Jurisdiction seal as background watermark on bill pages."
       placement: "Centered behind the document content, on the paper-cream canvas (not on aurora chrome). The seal is what the document is *printed on* — it sits behind the title block."
       opacity: "5–8% — paper provides its own background contrast. Visible on inspection, invisible to scan."
-      form: "Pending custom design. Earlier iterations tried (1) the JurisdictionFlag SVG passed through `saturate-0`, which read as a chromatic decal because flags are graphic-rectangular even when desaturated; and (2) a generic capitol-dome circular seal, which read as decorative ornament rather than civic mark. Both were pulled. The right form needs to dissolve into the cream paper as background ink, not compete with content as artwork."
+      form: "Pending custom design. Earlier iterations tried (1) the JurisdictionFlag SVG passed through `saturate-0`, which read as a chromatic decal because flags are graphic-rectangular even when desaturated; and (2) a generic capitol-dome circular seal, which read as decorative ornament rather than civic mark. Both were pulled. The right form needs to dissolve into the cream paper as background ink, not compete with content as artwork. SCOPE (2026-08-31): this 'pulled' verdict is about the WATERMARK use only — badge-scale jurisdiction identity marks are separately sanctioned (Icons → Jurisdiction identity marks) and were once wrongly removed on the strength of this entry."
       status: "Implementation removed; design TBD. Its absence is deliberately commented in production (BillContentSection.tsx) — the one entry in this inventory the system has always been honest about."
     line-numbers:
       blocked-on: IMPLEMENTATION     # blocked with ruled-page; they are one artifact
@@ -4428,6 +4428,37 @@ Weight register:
 Phosphor names use the `Icon` suffix (Phosphor v2.1+):
 `MagnifyingGlassIcon`, `EnvelopeIcon`, `CaretDownIcon`, `GearIcon`,
 etc. Bare names (e.g. `MagnifyingGlass`) are deprecated by the library.
+
+#### Jurisdiction identity marks
+
+RATIFIED 2026-08-31, by the owner's direct call, reversing a removal made
+the same morning on the unqualified rule. **A jurisdiction's own flag, or
+an official chamber seal, rendered at badge scale adjacent to that
+jurisdiction's designation on that jurisdiction's records, is an IDENTITY
+mark — sanctioned.** The no-flags rule was always aimed at DECORATION —
+nationalist imagery as accent, wash, background, or emotional ornament
+("civic is not partisan") — and as written it could not tell a Colorado
+"C" identifying a Colorado bill from an American-flag wash setting a mood.
+The owner's words: a state's own flag, or senate/congress seals, are not
+partisan marks.
+
+**The test: does the mark IDENTIFY the jurisdiction of the record beside
+it, or does it SET A MOOD?** Identity is sanctioned; mood stays banned.
+
+Scope, stated tightly so the next sweep doesn't re-remove them:
+
+- Sanctioned: badge-scale marks beside a `role-designation` or on a
+  jurisdiction hero — the four shipped surfaces (oversight jurisdiction
+  heroes, elections state hero, bill cards) are the specimens.
+- Still banned: flag/eagle ACCENTS, washes, red-white-blue treatments,
+  any nationalist imagery doing decoration; flags inside illustrated
+  pins (that entry's forbidden list stands unchanged).
+- The `jurisdiction-seal` WATERMARK verdict stands: the desaturated
+  flag-as-watermark experiment failed as a chromatic decal and remains
+  pulled *for that use*. That entry's "pulled" is about the watermark
+  form, and is not a verdict on badge-scale identity use — the two were
+  conflated in the 2026-08-31 morning removal, which is what this
+  ratification untangles.
 
 #### When icons earn their place
 

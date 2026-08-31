@@ -148,7 +148,11 @@
   /* Semantic — conventional only, never brand decoration */
   --color-success:       #047857;        /* emerald-700 */
   --color-success-soft:  #10b981;        /* emerald-500 */
-  --color-warning:       #b45309;        /* amber-700 */
+  --color-warning:       #92400e;        /* amber-800 — see warning-moved-to-amber-800:
+                                            the -700 step fails 4.5:1 as ink on the card
+                                            material (4.38:1 measured); amber is lighter
+                                            than the other hues at the same step, and the
+                                            measurement outranks the ladder symmetry. */
   --color-warning-soft:  #f59e0b;        /* amber-500 */
   --color-danger:        #b91c1c;        /* red-700 — MOVED from red-600
                                             2026-08-28: at #dc2626 danger was

@@ -8,6 +8,22 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-31 (v2026.08.31.5) — Warning ink moves to amber-800; the ladder loses to the meter
+
+The deadline-urgency conformance fix (red → warning, this morning) put
+`--color-warning` on the card material as text for the first time, and the
+consumer's pixel-sampled measurement came back 4.38:1 — the same edge danger
+fell off at 4.39:1 on 2026-08-28, now one step further up the ramp. Warning
+was already at the -700 base the danger ratification standardized, so this
+move **deliberately breaks the all-bases-at-700 symmetry**: amber at -700
+fails where emerald and red pass because a hue's lightness at a step is a
+fact about the hue, not the ladder. Both entries are one lesson — the
+convention was a proxy for the measurement, and when they diverge the
+measurement wins. `warning-soft` (amber-500) is unchanged: graphical 3:1
+uses and the inverted dark ink, where it passes.
+
+---
+
 ## 2026-08-31 (v2026.08.31.4) — Uppercase's third home: the repeated designation
 
 The bill-slug regression the owner reported ("US HR3633" much smaller between

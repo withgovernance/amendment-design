@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.31.4
+# spec-version:   v2026.08.31.5
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -376,7 +376,9 @@ color:
   semantic:
     success:      "#047857"   # emerald-700 — bill enacted, action completed
     success-soft: "#10b981"   # emerald-500 — positive badges
-    warning:      "#b45309"   # amber-700 — admin notices, non-blocking alerts
+    warning:      "#92400e"   # amber-800 — admin notices, non-blocking alerts,
+                              # deadline urgency. Moved from amber-700 2026-08-31,
+                              # see warning-moved-to-amber-800.
     warning-soft: "#f59e0b"   # amber-500 — warning icon fills
     danger:       "#b91c1c"   # red-700 — destructive, error states
     danger-soft:  "#ef4444"   # red-500 — error badges. Red is now the ONLY warm
@@ -403,6 +405,26 @@ color:
       moving. Its declared role is focus rings, progress, and hover states —
       graphical objects, which take the 3:1 threshold, and its own entry
       forbids it from carrying meaning as text. Do not "fix" it to match.
+    warning-moved-to-amber-800: >-
+      RATIFIED 2026-08-31. MEASURED 4.38:1 as ink on the card material it
+      was designed to sit on (BillActionCallout, light, sampled top-left
+      over the bright aurora lobe — position quoted per the contrast rule),
+      3.99:1 on the bare canvas one step down, 3.84:1 on its own
+      warning-tinted plate at 12px caps where 4.5 applies. At amber-800 it
+      lands ~5.6:1 against the same sampled plate.
+      THIS DELIBERATELY BREAKS THE ALL-BASES-AT-700 SYMMETRY that
+      danger-moved-to-red-700 restored, and the two entries are the same
+      lesson at different steps: THE CONVENTION WAS A PROXY FOR THE
+      MEASUREMENT. Danger at -600 was the odd one out AND the failing one,
+      so moving it to -700 served both; amber at -700 fails where emerald
+      and red pass, because a hue's lightness at a given step is a fact
+      about the hue, not the ladder. When the proxy and the measurement
+      diverge, the measurement wins — a ramp position is not a contrast
+      guarantee.
+      THE PAIR IS UNAFFECTED: warning-soft stays amber-500 — icon fills and
+      graphical uses at the 3:1 threshold, and the inverted ink for dark,
+      where it passes. Re-measure any dark surface using the BASE token as
+      text under inversion; there should be none.
     opaque-ground-is-not-uniformly-safer: >-
       RATIFIED 2026-08-28, and it is the honest cost of
       ink-needs-an-opaque-ground. THE OPAQUE GROUND IS DARKER THAN GLASS IN

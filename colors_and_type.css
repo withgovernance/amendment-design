@@ -592,6 +592,21 @@
   font-weight: 420;
   color: var(--text-secondary);
 }
+/* Metadata on APPARATUS. role-metadata is serif because metadata usually
+   annotates the record. Inside a container the surface's voice is sans, and
+   a heading's count or a list entry's timestamp is part of that surface —
+   serif metadata beside a sans role-ui-heading mixes families inside one
+   lockup. Added 2026-08-31; the defect that found it was a serif "12"
+   beside a sans "Asks". Tabular numerals because counts and dates are most
+   of what this role carries. */
+.role-metadata-sans {
+  font-family: var(--font-sans);
+  font-variation-settings: var(--sans-body);
+  font-size: 0.875rem;
+  font-weight: var(--sans-normal);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+}
 /* ITALIC POLICY. Serif italic stays the italic of RECORD — quoted human voice:
    a constituent's words, a pull quote, an epigraph — at 18px and up, where it is
    legible and where its warmth is the point. Never below 1.125rem, never for

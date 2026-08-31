@@ -8,6 +8,32 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-31 (v2026.08.31.3) — Apparatus ink is sans, all of it
+
+Two defects from the owner's screens, one cause. A serif "12" sat beside the
+new sans "Asks" heading — because hard-rules #7 said "count → `role-metadata`"
+and role-metadata is serif, so the conformance sweep faithfully installed a
+family mix inside a single lockup. And the Conversations card set its entry
+titles serif over sans timestamps — defended as "user voice," since titles are
+user-set or system-suggested.
+
+The ratification: **inside a container, all ink is sans** — heading, count,
+entry titles, timestamps. One surface, one family. Metadata takes its
+surface's voice: `role-metadata` (serif) annotating the record or canvas,
+new **`role-metadata-sans`** (Archivo 0.875rem, tabular numerals,
+`--text-secondary`) on apparatus. The role is implemented in
+`colors_and_type.css` in the same commit because the gap is trap 2 exactly:
+the sweep, lacking a sans metadata role, hand-rolled `/55` opacity where the
+token belonged.
+
+On user voice: it does not override placement. A user-set title in a list is
+a label naming a link, not quoted speech — serif voice is honoured where
+speech is quoted (`role-quote`) and where the same string stands as the
+conversation page's own canvas title. `rules-bind-the-system-not-the-user`
+governs what the user may put there, not what family the list sets it in.
+
+---
+
 ## 2026-08-31 (v2026.08.31.2) — The quiet serif rung returns
 
 `role-display-minor` is reinstated in `colors_and_type.css`. The 2026-08-29

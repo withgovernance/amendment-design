@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.31.2
+# spec-version:   v2026.08.31.3
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -748,6 +748,20 @@ typography:
       Neither carries a heading, because A MESSAGE NAMES ITSELF. Mixing
       voices in one view is not drift here; the surface is carrying the
       voice distinction, which is the placement rule doing its job.
+      APPARATUS INK IS SANS, ALL OF IT — added 2026-08-31, same day. The
+      heading, its count, the entry titles, the timestamps: ONE SURFACE, ONE
+      FAMILY. A count is metadata ink in ITS SURFACE'S voice —
+      role-metadata (serif) beside a serif heading on canvas or record,
+      role-metadata-sans beside role-ui-heading inside a container. The
+      defects that found it: a serif "12" beside a sans "Asks", and serif
+      conversation titles over sans timestamps inside one card.
+      USER VOICE DOES NOT OVERRIDE PLACEMENT. A user-set conversation title
+      in a list is a LABEL NAMING A LINK, not quoted speech — voice is
+      honoured where speech is QUOTED (role-quote, ≥1.125rem italic), and
+      the same string earns its serif where it stands as the conversation
+      page's own title on the canvas. rules-bind-the-system-not-the-user
+      governs what the user may PUT THERE, not what family the list sets
+      it in.
     serifIntent: >-
       NARROWED 2026-08-29 by serif-belongs-to-the-canvas above: "every
       heading" means every heading ON THE CANVAS or on a document surface.

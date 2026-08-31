@@ -514,7 +514,10 @@
    See typography.a-heading-belongs-to-whoever-it-works-for. */
 .role-display-minor {
   font-family: var(--font-serif);
-  font-variation-settings: var(--serif-display);
+  /* Not var(--serif-display): that token bundles 'wght' 800, and variation
+     settings beat font-weight in a variable font — the ratified 700 must
+     live in the axis or it renders 800. Display opsz, minor weight. */
+  font-variation-settings: 'opsz' 60, 'wght' 700;
   font-size: 1.125rem;
   font-weight: 700;
   line-height: 1.3;

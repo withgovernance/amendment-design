@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.31.3
+# spec-version:   v2026.08.31.4
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -964,13 +964,28 @@ typography:
     are a one-line change. The measurement is what tells you which kind you
     have, and it takes a minute.
   uppercase-has-two-homes: >-
-    RATIFIED 2026-08-28. UPPERCASE IS LEGAL IN EXACTLY TWO REGISTERS, and
-    the hard rule naming only one is the fourth instance of a general rule
-    whose exception lives somewhere else — here the exception is a WHOLE
-    ROLE rather than a clause, which is why it read as absolute for so long.
-      CHROME     role-label-caps — 12px, sans-chrome, track-chrome.
-      CEREMONIAL role-ceremonial — display size, sans-ceremonial,
-                 track-ceremonial, semibold, ONCE PER PAGE.
+    RATIFIED 2026-08-28. AMENDED 2026-08-31 — THREE registers now; the key
+    keeps its name because references do. UPPERCASE IS LEGAL IN EXACTLY
+    THREE REGISTERS, and the hard rule naming only one was the fourth
+    instance of a general rule whose exception lives somewhere else — here
+    the exception is a WHOLE ROLE rather than a clause, which is why it
+    read as absolute for so long.
+      CHROME      role-label-caps — 12px, sans-chrome, track-chrome,
+                  secondary ink. A FIELD LABEL naming apparatus.
+      DESIGNATION role-designation — 0.875rem, sans-chrome, track-chrome,
+                  semibold, PRIMARY ink. A designation REPEATED at text
+                  size, leading a table row or card: bill slugs,
+                  jurisdiction codes ahead of a title. Added 2026-08-31:
+                  the taxonomy below already distinguished designation
+                  from sentence but gave a repeated designation nowhere
+                  to live — ceremonial is once per page at display size,
+                  chrome is a label at 12px — so prod improvised (a bill
+                  slug at unowned inherited 16px, still on the retired
+                  width axis) and the migration mis-slotted it into
+                  role-label-caps, shrinking a row-leading identifier to
+                  a field label. Both were the same gap.
+      CEREMONIAL  role-ceremonial — display size, sans-ceremonial,
+                  track-ceremonial, semibold, ONCE PER PAGE.
     Chrome and ceremonial share a width preset, so what separates them is
     TRACKING AND SIZE — this file already says so under widthPresets. A
     ceremonial element that is not tracked to 0.20em is not ceremonial; it
@@ -987,7 +1002,9 @@ typography:
     make it grand.
     SO a bill detail page is correct with the identifier ceremonial and the
     title in serif beneath it — the designation is set, the human sentence
-    is read.
+    is read. AND A TABLE OF BILLS is correct with each slug in
+    role-designation leading its row — the same designation, at the size
+    of a thing that repeats.
   retired-axis-fails-silently: >-
     RATIFIED 2026-08-28, and it changes what the permanent grep set IS FOR.
     HexStateMap was setting font-variation-settings: 'HEXP' 100 IN LIVE
@@ -1317,6 +1334,19 @@ typography:
       weight: 600           # semibold (was 497 on the retired ladder)
       lineHeight: 1
       tracking: "0.12em"          # track-chrome — recovers Archivo's narrower ceiling
+      textTransform: uppercase
+      fontVariationSettings: '"wdth" 125'
+    # RATIFIED 2026-08-31. Uppercase's third home: a designation repeated
+    # at text size, leading a table row or card (bill slugs, jurisdiction
+    # codes). Chrome's register at the metadata rung, PRIMARY ink — a
+    # referent name, not a field label. See uppercase-has-two-homes
+    # (amended) for the taxonomy and the defect that found the gap.
+    designation:
+      family: sans
+      size: 0.875rem        # 14px
+      weight: 600           # semibold
+      lineHeight: 1         # the row declares its own height
+      tracking: "0.12em"          # track-chrome
       textTransform: uppercase
       fontVariationSettings: '"wdth" 125'
     # Metadata is serif ROMAN, not italic. Newsreader's italic is a true
@@ -5105,7 +5135,11 @@ celebration mechanics on any non-Receipt surface.
   question textarea. It is the canonical entry point. Every question
   starts here.
 - **Bill Cards** — `material-thin` tiles with a small semantic status
-  dot, a mono bill number, and a short title. They tile in a responsive
+  dot, a `role-designation` bill number, and a short title. (Corrected
+  2026-08-31: this entry said "mono" while the IBM Plex Mono rule above
+  had already ruled a bill number is a signpost, chrome-width sans, not
+  mono — the Patterns section was an uncontrolled copy of a decision
+  that had moved.) They tile in a responsive
   grid. They do not cast heavy shadows; they float on the aurora.
 - **The Map** — a state-level hex grid where population weight is
   encoded as slate opacity (previously violet). Active jurisdictions

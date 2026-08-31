@@ -8,6 +8,38 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-08-31 (v2026.08.31.4) — Uppercase's third home: the repeated designation
+
+The bill-slug regression the owner reported ("US HR3633" much smaller between
+main and the PR) measured out as both candidate mechanisms at once — a 16px →
+12px sweep into `role-label-caps`, compounded by that role's `line-height: 1`
+collapsing the row box 24px → 12px. But neither side was ratified. Main's
+16px was an **unowned inherited default still rendering the retired
+Readex/HEXP-60/497 stack in prod** — the "correct before" was the retired
+system at a size nobody chose. The PR slotted a row-leading identifier into a
+12px field-label role because **nothing else uppercase existed at text size**:
+the 2026-08-28 taxonomy already separated *designation* from *sentence*, but
+gave a designation only one home (ceremonial — display size, once per page).
+A designation that repeats had nowhere to live, so prod improvised and the
+migration mis-slotted. Same gap, two failures.
+
+New role **`role-designation`**: chrome's register (`wdth` 125, semibold,
+`--track-chrome`, uppercase) at 0.875rem, **primary ink** — a referent name
+leading a row reads coequal beside 1rem mixed-case titles; a field label does
+not. `line-height: 1` like every caps role — the row declares its own height
+(hard rule 9), which is the fix for the second mechanism. Applied to bill
+slugs in tables and bill cards.
+
+Swept in the same pass, per the retire-and-grep discipline: the Patterns
+section still said bill cards carry "a mono bill number," contradicting the
+IBM Plex Mono rule's own signpost test (a bill number is chrome-width sans,
+not mono) — the consumer session found it; corrected to `role-designation`
+with the correction noted in place. `uppercase-has-two-homes` is amended to
+three registers and keeps its key name because references do; hard-rules #10
+updated in the same pass.
+
+---
+
 ## 2026-08-31 (v2026.08.31.3) — Apparatus ink is sans, all of it
 
 Two defects from the owner's screens, one cause. A serif "12" sat beside the

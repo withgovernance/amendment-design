@@ -582,6 +582,26 @@
   font-variation-settings: var(--sans-chrome);
   color: var(--text-secondary);
 }
+/* Designation — uppercase's THIRD home (typography.uppercase-has-two-homes,
+   amended 2026-08-31): a designation repeated at text size, leading a table
+   row or card — bill slugs, jurisdiction codes ahead of a title. Chrome's
+   register at the metadata size rung: caps this wide at semibold read
+   coequal beside 1rem mixed-case titles without outweighing them. Primary
+   ink, not secondary — it is a referent name, not a field label.
+   line-height 1 like every caps role; the ROW declares its own height (a
+   container's height is declared, never reached by arithmetic). The defect
+   that found it: a bill slug swept from an unowned inherited 16px (still on
+   the retired width axis in prod) into 12px role-label-caps. */
+.role-designation {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: var(--sans-semibold);
+  line-height: 1;
+  letter-spacing: var(--track-chrome);
+  text-transform: uppercase;
+  font-variation-settings: var(--sans-chrome);
+  color: var(--text-primary);
+}
 /* Metadata is serif ROMAN, not italic. Newsreader's italic is a true
    calligraphic italic — single-storey a, real entry strokes — which is lovely
    at 20px and genuinely hard at 14. That is not a fault in the face; it is the

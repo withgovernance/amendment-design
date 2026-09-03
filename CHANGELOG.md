@@ -8,6 +8,28 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-03 (v2026.09.03.3) — You cannot override a vendor's inline style; you can only outrank its box
+
+Extends this morning's floor rule with the part that outlives the button. The
+fractional number was hard-coded inside the library that emits the markup —
+not a token, not a class, not a line in `DESIGN.md`. This profile does not
+author its own HTML, it commissions it, and the commissioned thing arrives
+with opinions no declaration on our side can see. That is why the rendered box
+is the only honest source here.
+
+And the value could not be overridden. The component's API does not reach the
+span it wraps children in, and `style` lands on the anchor where an ignored
+line-height was already sitting. The tempting repair — `!important` in a
+<style> block — appears to win and does not: the clients that strip <style>
+are exactly the population an accessibility floor exists for, so it fails
+precisely where it is needed and passes everywhere it is not.
+
+The move is to give the content its own box, carrying the metric you chose,
+governing the line in place of the vendor's strut. Verified on the shipped
+template at three device pixel ratios: integral, label unchanged.
+
+---
+
 ## 2026-09-03 (v2026.09.03.2) — A floor is reached with integers, not with an arbitrary padding
 
 Second pass on the same templates, same class of failure as the morning's

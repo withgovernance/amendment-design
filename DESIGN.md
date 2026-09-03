@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.03.2
+# spec-version:   v2026.09.03.3
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2891,6 +2891,23 @@ profiles:
       GENERAL FORM, for the next floor in this profile: a target the transport
       can round is not reached until the arithmetic is integral. Sample the
       rendered box, not the declaration.
+      WHERE THE FRACTION CAME FROM, added after the repair and the part that
+      outlives this button: A VENDOR COMPONENT'S INLINE STYLE. Not a token, not
+      a class, not a line in this file — a value hard-coded inside the library
+      that emits the markup, visible in no declaration either agent could read.
+      That is why the rendered box is the only honest source here: this profile
+      does not author its own HTML, it commissions it, and the commissioned
+      thing arrives with opinions.
+      AND YOU CANNOT OVERRIDE SUCH A VALUE — YOU CAN ONLY OUTRANK ITS BOX. The
+      component's API does not reach the span it wraps children in; `style`
+      lands on the anchor, where an ignored line-height was already sitting.
+      A `!important` rule in a <style> block appears to win and does not: the
+      clients that strip <style> are exactly the population an accessibility
+      floor exists for, so that repair fails precisely where it is needed and
+      passes everywhere it is not. THE MOVE IS TO GIVE THE CONTENT ITS OWN BOX
+      — a box you own, carrying the metric you chose, governing the line in
+      place of the vendor's strut. Verified on the shipped template: integral
+      at three device pixel ratios, label unchanged.
     dark-mode: >-
       Required, both modes, in every email — production already ships the
       mechanism (Tailwind dark: variants + both colour-scheme metas); this

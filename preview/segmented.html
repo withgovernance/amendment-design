@@ -38,11 +38,12 @@ p.note b { color: var(--text-primary); font-weight: 600; }
   border: 0;
   background: transparent;
   border-radius: var(--radius-sm);
+  /* Sentence case at body register, per components.segmented-control.labels.
+     A segment label is the VALUE being chosen — not a field label naming
+     apparatus, which is what the chrome register is for. */
   font-family: var(--font-sans);
-  font-variation-settings: var(--sans-chrome);
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: var(--track-chrome);
+  font-variation-settings: var(--sans-body);
+  font-size: 1rem;
   font-weight: var(--sans-normal);
   color: var(--text-secondary);
   cursor: pointer;
@@ -77,7 +78,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 <div class="card">
 
 <h1>Segmented control</h1>
-<p class="sub">It switches Email and Phone on the first screen of sign-up, and it has no entry in <b>components.*</b>, no token and no rule. Two readings of what carries SELECTED, rendered on the card the control actually sits in.</p>
+<p class="sub">It switches Email and Phone on the first screen of sign-up, and until v2026.09.03.4 it had no entry in <b>components.*</b>, no token and no rule. Two readings of what carries SELECTED, rendered on the card the control actually sits in.</p>
 
 <h2>A — the material step carries selection</h2>
 <p class="note">The selected segment is the only raised member: a plate one material tier above the track, with <b>--shadow-raised</b>. Read the two segments, then read the separation table below.</p>
@@ -184,7 +185,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 <h2>Geometry and motion</h2>
 <p class="note">Each segment declares <b>min-height: 44px</b>, per <b>a11y.targetSize</b> — the track's height is then 48px, which is 44 plus the track's own inset, not a number anyone picked. Two or three segments; past three this is a select. Motion is a background cross-fade and nothing else: a plate that translates is <b>components.toggle</b>'s signal, and the two controls must not read alike.</p>
 
-<p class="caption" style="margin-top:18px;">UNRATIFIED. Nothing here has a <b>components.*</b> entry — see <b>RATIFY.md</b>. Reading B is what this specimen recommends; both are rendered because the separation table is the argument, not the prose.</p>
+<p class="caption" style="margin-top:18px;">RATIFIED v2026.09.03.4 as <b>components.segmented-control</b> and <b>components.selection-is-ink</b>. <b>Reading B</b> is what landed; A stays rendered because the separation table is the argument, not the prose. Labels are now sentence case at body register — a segment label is the value being chosen, not a field label naming apparatus.</p>
 
 </div>
 </body>

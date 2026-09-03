@@ -8,6 +8,89 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-03 (v2026.09.03.4) — The form layer gets its rules, and selection stops being a plate
+
+Six queued entries close together because they are one finding seen from six
+places: **the most-used surface in the product had almost no spec**, so every
+call site improvised, and the improvisations disagreed.
+
+**Selection is ink plus a non-colour channel; a material step only confirms
+it.** The measurement is what settles it, and it is not close — composited from
+the base canvas through the brightest lobe, `components.card` and the field
+recess, **no material tier reaches 1.15:1 against its own track in either
+scheme**. Against the 3:1 a non-text signal owes, no choice of tier helps.
+Worse, under inversion every dark tier is a black overlay, so a *raised* plate
+paints **darker** than the trough around it — which is precisely how AMD-2002
+shipped a selected chip that read as the unselected one. The system had already
+answered this three times, in `tabbar`, `card-select` and `toggle`, and never
+with a plate; the principle simply lived nowhere general, so a fourth control
+rediscovered it from a bug report. It is now `components.selection-is-ink`.
+
+The non-colour channel is **load-bearing rather than belt-and-braces**, and that
+too is measured: under `prefers-contrast: more` the selected/unselected ink gap
+collapses 2.60→1.46:1 light and 2.18→1.29:1 dark, because that query lifts
+`--text-secondary` toward primary *and* solidifies the material tiers at once.
+Both channels give way together. The weight step is what is left standing.
+
+**`components.segmented-control` exists.** It had no entry, no token and no rule
+while sitting on the first screen of sign-up. Track is `components.input`'s
+recess, so it reads as part of the form rather than chrome over it; each segment
+declares the 44px target and the track's 48px is then a *consequence*, not a
+number anyone picked. Two or three segments; past three it is a select. Motion
+is a background cross-fade and nothing else, because a plate that translates is
+the toggle's signal and the two controls must not read alike.
+
+**Segment labels are sentence case, not chrome caps** — and the render is the
+argument, which is why prose had not settled it. At chrome caps the word EMAIL
+appears **twice in one column, ~120px apart, in the identical register**: once
+as the option the user picked, once as the name of the field below it. Nothing
+in the type tells a value from a name. The taxonomy had already decided this and
+nobody had applied it here: `uppercase-has-two-homes` gives chrome to *a field
+label naming apparatus*, and a segment label is neither a field label nor a
+designation — it is the value being chosen.
+
+**`radii.full` belongs to surfaces with no label inside them.** AMD-2002 read it
+the other way and was defensible on the letter, since the line says "toggles"
+and `components.toggle.rounded` is `full`. But the toggle is *unlabelled* and
+reads its state from position, and its own `do-not` says a track big enough to
+hold content stops being a switch. Text in a full-round track loses its end
+padding to the corner arc — the physical reason labelled segments ship square
+everywhere.
+
+**A field a user types identity into carries a label**, and a placeholder is an
+example of the value, never the name of the field. Nobody chose placeholder-only
+sign-up: `profilesClerk` maps nineteen `--clerk-*` properties and not one is a
+label, so the surface could not express one. The cost that does not show in a
+screenshot is that the name vanishes the moment the field is filled.
+
+**The action colour governs form submits, including the account surfaces.** The
+shipped near-black slab wins on separation (14.22:1 light) and loses on
+identity: it is two different materials in the two schemes, on the button that
+means assent everywhere else. The light number is a constraint rather than a
+counter-argument — `--color-action` at 2.82:1 on a `material-regular` card is
+under the 3:1 a non-text boundary owes, so a green submit takes its edge from
+`button-cta`'s ring, not its fill.
+
+**Two entries recorded rather than decided**, because both were already right
+and only unwritten: a component's declared material outranks the register
+default (`components.card`), and the focus ring is inset on a recess and outset
+at 4px on a plate (`a11y.focusRing`) — an unowned default that turned out
+coherent, measured off the rendered form. `components.input.focusRing` now cites
+`--color-functional` instead of naming a Tailwind ramp stop.
+
+**Corrected:** `components.input-label` restated `role-label-caps` in longhand
+and specified `tracking-wide`, which is not `--track-chrome` — chrome's width
+without chrome's tracking, the same defect already fixed on the breadcrumb. The
+consumer's utility was the correct half all along and composes the role
+directly. Production ahead; the spec was stale.
+
+**Left open deliberately:** the dark-glass entry. Its diagnosis was corrected in
+the queue — the aurora's warm stop does not survive its own alpha, so neutral
+glass is cancelling nothing — but the remaining question generalises to all five
+material tiers and belongs to `materials`, not to a forms pass.
+
+---
+
 ## 2026-09-03 (v2026.09.03.3) — You cannot override a vendor's inline style; you can only outrank its box
 
 Extends this morning's floor rule with the part that outlives the button. The

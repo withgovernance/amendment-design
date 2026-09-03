@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.03.3
+# spec-version:   v2026.09.03.4
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1575,6 +1575,19 @@ radii:
   md:   "0.5rem"    # 8px — buttons, cards, most content surfaces
   lg:   "0.75rem"   # 12px — modals, FAB, floating overlays
   full: "9999px"    # pills, toggles, avatars
+  full-is-for-unlabelled: >-
+    RATIFIED 2026-09-03. `full` BELONGS TO SURFACES WITH NO LABEL INSIDE
+    THEM — the switch, the pill, the avatar. AMD-2002 read it the other way
+    and the reading was defensible on the letter: this line says "toggles"
+    and components.toggle.rounded is `full`, so a two-option control looked
+    like a toggle. IT IS NOT ONE. components.toggle is UNLABELLED, its state
+    is read from thumb POSITION, and its own `do-not` clause says a track
+    grown big enough to hold content stops reading as a switch. A labelled
+    segmented control is components.tabbar at inline scale and takes the
+    control radius — see components.segmented-control.
+    THE PHYSICAL REASON, so this is not re-argued from taste: text inside a
+    full-round track loses its end padding to the corner arc. That is why
+    labelled segments do not ship round anywhere, in any system.
 
 borders:
   hairline:
@@ -2052,6 +2065,26 @@ components:
       contrast the label depends on.
     background: "color.action (same value in both modes)"
     color: "color.action-label — INK, not white"
+    governs-form-submits: >-
+      RATIFIED 2026-09-03 from preview/forms.html. THE ACTION COLOUR GOVERNS
+      FORM SUBMITS, INCLUDING THE ACCOUNT SURFACES. What shipped was a
+      near-black slab in light and a light glass slab in dark — and those are
+      not one control in two schemes, they are TWO MATERIALS, neither of them
+      color.action, on the button that means assent everywhere else in the
+      product.
+      THE SLAB IS NOT FAILING ANYTHING, WHICH IS THE POINT. Measured against
+      the card it sits on it separates at 14.22:1 light and 15.44:1 dark,
+      against --color-action's 2.82:1 and 6.58:1. IT WINS ON SEPARATION AND
+      LOSES ON IDENTITY, and identity is what color.action is specified to
+      carry: one accent for every action and every act of assent. A rule of
+      the form "the primary action colour, except in the account surfaces"
+      is not one anybody infers from a screenshot, so the alternative was
+      never the cheaper option — it was the same decision left unwritten.
+      THE LIGHT NUMBER IS THE CONSTRAINT, NOT A COUNTER-ARGUMENT.
+      --color-action at 2.82:1 against a material-regular card is under the
+      3:1 a non-text boundary owes, so A GREEN SUBMIT ON A LIGHT CARD TAKES
+      ITS EDGE FROM THIS COMPONENT'S RING, NOT FROM THE FILL. The label is
+      unaffected either way: action-label on action is 6.42:1 in both schemes.
     implementation-home: >-
       STATED 2026-08-27. The CTA recipe lives in ONE place: the Button
       component's default variant. There is deliberately no `role-action`
@@ -2523,6 +2556,16 @@ components:
     background: "material-regular"
     rounded: "0.5rem"
     padding: "16px"
+    material-outranks-the-register: >-
+      STATED 2026-09-03, from the forms specimens, because it fell out of
+      building one and nobody had written it down. A CARD IN A LIVE ROOM IS
+      material-regular, NOT registers.live's material-thin. A COMPONENT THAT
+      DECLARES ITS OWN MATERIAL OUTRANKS THE REGISTER DEFAULT; a register's
+      material is the default for surfaces that declare none.
+      THE OUTCOME AGREES WITH THE PRECEDENCE, which is why this is recorded
+      rather than argued: a form is where the tiers stack deepest, and
+      material-thin under a column of field recesses does not hold its text
+      off the aurora behind it. See color.ink-needs-an-opaque-ground.
   card-empty:
     description: Empty-state dashed placeholder
     background: "transparent"
@@ -2554,7 +2597,7 @@ components:
     padding: "8px"
     shadow: "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)"
     ring: "inset 1px solid rgb(0 0 0 / 10%)"
-    focusRing: "2px slate-500/80 inset"
+    focusRing: "2px --color-functional at 80%, inset — see a11y.focusRing"
     placeholder: "tertiary text"
     touchTarget:
       rule: "min-height: 44px, declared. See a11y.targetSize."
@@ -2567,7 +2610,93 @@ components:
         The recess is unaffected. The extra height goes to the field box, not
         the inset shadow or the 1px ring, so the "quiet recess" reading holds.
   input-label:
-    typography: "sans-chrome 12px uppercase tracking-wide semibold secondary"
+    typography: >-
+      role-label-caps, secondary ink. NAME THE ROLE; DO NOT RESTATE IT.
+      CORRECTED 2026-09-03: this entry read "sans-chrome 12px uppercase
+      tracking-wide semibold secondary", and `tracking-wide` IS NOT
+      --track-chrome — chrome's width without chrome's tracking, which is
+      the defect already corrected on components.breadcrumb.typography and
+      recurs here for the same reason: a longhand copy of a role drifts from
+      it one property at a time, and a specific value looks deliberate.
+      THE CONSUMER WAS THE CORRECT HALF. voyager's `input-label` utility
+      already composes role-label-caps directly and carries a comment saying
+      not to rebuild its width, case or tracking by hand. The spec was stale,
+      not the code — a Production-ahead divergence, recorded as one.
+    mandatory: >-
+      RATIFIED 2026-09-03 from preview/form-fields.html, which renders both
+      readings side by side. A FIELD A USER TYPES IDENTITY INTO CARRIES A
+      LABEL. The shipped sign-up form was placeholder-only — First name,
+      Last name, Phone number — and NOBODY CHOSE THAT: profilesClerk maps
+      nineteen --clerk-* custom properties and not one of them is a label,
+      so the variable surface could not express a label and none was
+      supplied. An unowned default, and it resolves in the DOM we own rather
+      than in the variable mapping.
+    placeholder-is-not-the-name: >-
+      A PLACEHOLDER IS AN EXAMPLE OF THE VALUE, NEVER THE NAME OF THE FIELD.
+      Two costs, and the second does not show in a screenshot. First, the
+      name of the field is set in the 38% rung, which
+      color.aurora.tertiary-rung already calls decorative only and names
+      placeholders as what it is for; measured on the field recess over the
+      brightest lobe it is 2.63:1 light and 3.53:1 dark. Second, THE NAME
+      DISAPPEARS THE MOMENT THE FIELD IS FILLED, so the only way back to it
+      is to clear what you typed.
+      If the label row is genuinely unaffordable at 390pt, that is a layout
+      decision with a floating-label answer — not a reason to delete the name.
+  # RATIFIED 2026-09-03. The control had no entry, no token and no rule of any
+  # kind while sitting on the first screen of sign-up, so every call site
+  # improvised its geometry, elevation, label register and motion — trap 2, on
+  # the highest-traffic form in the product. Specimen: preview/segmented.html,
+  # both schemes, two and three segments, with the separation table that is the
+  # actual argument. Assembled in context: preview/forms.html.
+  segmented-control:
+    description: >-
+      Two or three mutually exclusive options, inline in a form. Past three
+      it is a select. IT IS components.tabbar AT INLINE SCALE — not
+      components.toggle, which is unlabelled and reads its state from
+      position rather than from a label.
+    track: >-
+      components.input's recess, one control wide: the same background,
+      inset shadow and 1px inset ring. The control then reads as PART OF THE
+      FORM rather than as chrome laid over it.
+    rounded: "track radii.md, segments radii.sm — see radii.full-is-for-unlabelled"
+    geometry: >-
+      Each segment declares min-height 44px per a11y.targetSize; the track's
+      own 2px inset then makes the track 48px. THE TRACK HEIGHT IS A
+      CONSEQUENCE, NOT A CHOSEN NUMBER. Stated so a future dense variant has
+      to argue with the arithmetic instead of discovering it, which is the
+      same reason components.card-select records its own.
+    labels: >-
+      SENTENCE CASE AT BODY REGISTER, NOT CHROME CAPS. The taxonomy already
+      decided this and nobody had applied it here:
+      typography.uppercase-has-two-homes gives the chrome register to "A
+      FIELD LABEL NAMING APPARATUS", and a segment label is neither a field
+      label nor a designation — IT IS THE VALUE THE PERSON IS CHOOSING.
+      THE RENDER IS THE ARGUMENT, and it is why this was not settled from
+      the prose. In preview/forms.html at chrome caps the word EMAIL appears
+      TWICE in one column, roughly 120px apart, in the identical register:
+      once as the option the user picked, once as the name of the field
+      below it. Nothing in the type tells a value from a name. Rendered in
+      sentence case the two registers do different jobs again — pick a
+      value, then fill named fields — and the form reads as a hierarchy
+      instead of as one texture.
+    selected: >-
+      Ink plus a non-colour channel, per components.selection-is-ink. The
+      selected segment takes --text-primary at semibold inside a 2px border;
+      the unselected keeps --text-secondary at normal weight.
+      THE UNSELECTED LABEL STAYS AT --text-secondary. Stepping it back to
+      --text-tertiary buys a wider state difference and puts a TAPPABLE
+      CONTROL at 2.63:1 light and 3.53:1 dark — the rung
+      color.aurora.tertiary-rung calls decorative only. The unselected option
+      is not dimmed; it is simply not selected.
+      THE BORDER INVERTS TO NEUTRAL. Light takes --color-primary; dark cannot
+      — color.primary.plate-not-mark measures primary as a mark at 1.03:1 on
+      the dark ground — so under inversion it resolves to --text-primary.
+    motion: >-
+      A BACKGROUND CROSS-FADE AND NOTHING ELSE. A plate that translates is
+      components.toggle's signal, and the two controls must not read alike.
+      This is the user's own committed state being drawn, so it is permitted
+      and it is NOT on the two-surface motion budget — see
+      motion.rules.committed-state-is-not-motion.
   toggle:
     track-off: "rgb(0 0 0 / 5%) / rgb(255 255 255 / 5%)"
     track-on:  "material-ultrathin"
@@ -2639,6 +2768,48 @@ components:
         decoration between two of them. Adjacent crumbs' targets must not
         overlap; if a crumb's label is narrower than the space its target
         wants, the target stops at the caret.
+  selection-is-ink: >-
+    RATIFIED 2026-09-03, from preview/segmented.html and the AMD-2002 defect
+    that prompted it. SELECTION IS CARRIED BY INK PLUS A NON-COLOUR CHANNEL.
+    A MATERIAL STEP CONFIRMS SELECTION AND NEVER CARRIES IT — and therefore
+    takes no non-text floor of its own, because it is not the thing being
+    read.
+    THE MEASUREMENT THAT SETTLES IT, composited by construction from the base
+    canvas through the brightest aurora lobe, components.card and the field
+    recess, position named per color.ink-ground-is-a-placement: NO MATERIAL
+    TIER REACHES 1.15:1 against the track it sits in, in either scheme —
+    ultrathin 1.01/1.01, thin 1.07/1.08, regular 1.13/1.12, opaque canvas
+    1.05/1.06. Against the 3:1 a non-text signal owes, the material channel
+    is not close, and no choice of tier makes it close.
+    AND UNDER INVERSION IT RUNS BACKWARDS. Every dark tier is a black
+    overlay, so a RAISED plate paints DARKER than the trough around it. A
+    control leaning on the tier alone reverses its meaning between schemes,
+    which is exactly how AMD-2002 shipped a selected chip that read as the
+    unselected one.
+    THE SYSTEM ALREADY SAID THIS THREE TIMES, AND NEVER WITH A PLATE:
+    components.tabbar.activeTreatment is the active colour on icon and label
+    plus Phosphor regular→fill; components.card-select carries selection on
+    borderSelected, while its backgroundSelected is a TINT and
+    color.action.tint-is-not-a-plate says a tint carries nothing at any
+    alpha; components.toggle carries state on thumb POSITION over a
+    separation smaller than any measured here. THIS ENTRY EXISTS BECAUSE THE
+    PRINCIPLE LIVED ONLY INSIDE THOSE THREE COMPONENTS and a fourth control
+    had to rediscover it from a bug report.
+    THE NON-COLOUR CHANNEL IS LOAD-BEARING, NOT BELT-AND-BRACES. Under
+    prefers-contrast: more the selected/unselected ink gap COLLAPSES from
+    2.60:1 to 1.46:1 in light and 2.18:1 to 1.29:1 in dark — a 44% loss —
+    because that query lifts --text-secondary toward primary AND solidifies
+    the material tiers at the same time. Both channels a control might lean
+    on give way together, and the weight step is what is left standing.
+    A TWO-WEIGHT STATE PAIR COMPOSES role-label-caps; IT DOES NOT REBUILD IT.
+    The role fixes weight 600, so the unselected member steps back to 400 and
+    the selected keeps the role's own — the mechanism
+    components.breadcrumb.weightHierarchy already uses for the current crumb.
+    Second occurrence, so it is stated generally here rather than left in a
+    component: A ROLE THAT FIXES A WEIGHT IS STILL THE RIGHT BASE FOR A STATE
+    PAIR. Step the weight, keep the role. Rebuilding the role in longhand to
+    get a second weight is how components.input-label acquired the wrong
+    tracking.
   card-select:
     description: Icon + label radio tile group (e.g. jurisdiction picker)
     border: "2px solid rgb(0 0 0 / 8%)"
@@ -3919,6 +4090,27 @@ a11y:
       date the rule was cited by one component and violated by five — four of
       them arriving under the floor by `padding + line-height`, which is the
       same way the tab bar shipped 40.
+  focusRing:
+    rule: >-
+      2px --color-functional. A RECESSED CONTROL TAKES THE RING INSET; A
+      RAISED ONE TAKES IT OUTSET AT 4px OFFSET.
+    why: >-
+      STATED 2026-09-03 as an UNOWNED DEFAULT that turned out to be right,
+      which is the only reason it is ratified rather than corrected.
+      components.input.focusRing was the sole focus specification in the
+      system, so every other control took whatever the global default
+      produced. MEASURED on preview/forms.html: the input resolves to a 2px
+      slate-500 outline at offset -2px, and the segments and the CTA to the
+      same 2px slate-500 at +4px. Two geometries, chosen by nobody, and
+      coherent — a ring inside a recess and outside a plate is what each
+      shape can actually show.
+      THE VALUE THAT REACHES A RENDERED SURFACE IS THE VALUE THE SYSTEM
+      MEANS. Recording it makes it checkable; leaving it unwritten meant the
+      next control to declare a focus state would have invented a third.
+      NOT RESOLVED HERE: whether the 4px offset survives a segment inside a
+      2px track, where the ring necessarily paints outside the track and onto
+      the card. It renders cleanly at both specimen widths; it has not been
+      measured against a segment at the 390pt column.
   contrast:
     # The old rule claimed the aurora was MONOCHROMATIC and that opacity-based
     # text depended on that. Both halves were false. Production has shipped a

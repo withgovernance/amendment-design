@@ -8,6 +8,31 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-03 (v2026.09.03.2) — A floor is reached with integers, not with an arbitrary padding
+
+Second pass on the same templates, same class of failure as the morning's
+ring. The primary CTA sat short of its floor, and the repair on offer was a
+padding computed to close the gap. Rendered and measured, it does not close
+it — the plate lands a hair under, because the value it solves against is
+itself fractional. An accessibility floor must not sit one rounding away from
+failing in a client nobody has opened.
+
+The cause is invisible in the class list: react-email's Button inlines a
+proportional line-height on an inner inline-block, so that span's box governs
+the line and the anchor's own line-height never reaches the plate height. No
+step on the padding scale can land a floor from a content box that is 4/5 of
+an integer.
+
+Ratified in `profiles.email.a-floor-is-reached-with-integers`: set the metric
+you control, then take a scale step. The label takes the body line-height, the
+plate takes its scale step, and the floor is struck exactly — integers the
+whole way down, measured unchanged at three device pixel ratios. An arbitrary
+padding backed out of a target is the same mistake as a literal size on an
+element: it looks deliberate, it survives edits a step name would not, and it
+encodes one transport's font metrics as though they were the system's.
+
+---
+
 ## 2026-09-03 (v2026.09.03.1) — The email card edge is a border; the class list is not the value
 
 A card edge reported as harsh in dark was not a palette problem. The rendered

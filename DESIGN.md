@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.03.1
+# spec-version:   v2026.09.03.2
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2866,6 +2866,31 @@ profiles:
       above closed the question of whether the marks SURVIVE the client; this
       closes the one before it — whether what left the build is what was
       written.
+    a-floor-is-reached-with-integers: >-
+      RATIFIED 2026-09-03, the same day and the same class of failure as the
+      key above it. The primary CTA was landing short of its floor, and the
+      repair on offer was an arbitrary padding computed to close the gap. IT
+      DOES NOT CLOSE IT: measured in a render, the computed padding lands the
+      plate a hair UNDER the floor, because the value it was solving against
+      is itself fractional. A floor approached from a fraction is a floor
+      missed, and this one is an accessibility floor — it must not sit one
+      rounding away from failing in a client nobody has opened.
+      WHY THE PLATE CAME UP SHORT, and it is worth knowing because it is not
+      visible in the class list: react-email's Button inlines a proportional
+      line-height on an INNER INLINE-BLOCK. That span's box governs the line,
+      so the anchor's own line-height does not reach the plate height at all,
+      and no step on the padding scale can land the floor from a content box
+      that is 4/5 of an integer.
+      THE RULE: SET THE METRIC YOU CONTROL, THEN TAKE A SCALE STEP. Give the
+      label the body line-height and the plate its scale step, and the floor
+      is struck exactly, with integers the whole way down — measured at three
+      device pixel ratios, unchanged. An arbitrary padding backed out of a
+      target is the same mistake as a literal size on an element: it looks
+      deliberate, it survives edits a step name would not, and it encodes one
+      transport's font metrics as though they were the system's.
+      GENERAL FORM, for the next floor in this profile: a target the transport
+      can round is not reached until the arithmetic is integral. Sample the
+      rendered box, not the declaration.
     dark-mode: >-
       Required, both modes, in every email — production already ships the
       mechanism (Tailwind dark: variants + both colour-scheme metas); this

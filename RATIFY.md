@@ -139,6 +139,13 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** decide whether dark glass is neutral or takes the canvas's hue. If the 2026-08-28 ruling generalises it generalises to **all five tiers**, and it is a `materials` change with nothing to do with forms — filed from forms only because that is the surface where a whole page of glass makes it visible.
 - **blocks:** nothing. The specimen ships both readings and commits to neither.
 
+### `button-cta` names an edge the component does not have at a usable value
+- **kind:** spec ahead
+- **found:** 2026-09-03, from voyager after v2026.09.03.4. `components.button-cta.governs-form-submits` says a green submit on a light card "takes its edge from this component's ring, not from the fill", because `--color-action` measures 2.82:1 against `material-regular` — under the 3:1 a non-text boundary owes. **The ring it names is `ring-1 ring-black/[.03]` in the consumer.** 3% black is not an edge; the entry currently points at a mechanism that exists but not at a value that does the job.
+- **evidence:** not yet taken, and that is the point — the composited number for a 3% black ring against `material-regular` over the aurora has not been measured, at any position. The 2.82:1 fill figure is measured and stands; what is unmeasured is whether anything is making up the difference.
+- **proposes:** measure the ring as composited, then give it a real value in `components.button-cta` — one value, named as a token, that carries the boundary in both schemes. Do NOT let the fill be thickened to solve it: `color.action.label-rule` fixes this token's lightness against both label polarities and says not to move it without re-measuring both.
+- **blocks:** nothing shipping, but the entry as written is quotable as though the boundary were satisfied. **Do not treat the current ring as satisfying 3:1 until this closes.** Changing `button-cta` touches every CTA in the app, so it wants its own branch and its own render rather than a forms follow-up.
+
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by

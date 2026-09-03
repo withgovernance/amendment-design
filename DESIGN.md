@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.03.4
+# spec-version:   v2026.09.03.5
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -4107,10 +4107,33 @@ a11y:
       THE VALUE THAT REACHES A RENDERED SURFACE IS THE VALUE THE SYSTEM
       MEANS. Recording it makes it checkable; leaving it unwritten meant the
       next control to declare a focus state would have invented a third.
-      NOT RESOLVED HERE: whether the 4px offset survives a segment inside a
-      2px track, where the ring necessarily paints outside the track and onto
-      the card. It renders cleanly at both specimen widths; it has not been
-      measured against a segment at the 390pt column.
+    inside-beats-raised: >-
+      RESOLVED 2026-09-03, same day, by the render the entry above asked for.
+      IT DOES NOT SURVIVE, AND THE VIEWPORT WAS NEVER THE VARIABLE — the
+      question was filed as "does 4px survive at 390pt" and the answer is
+      that it fails identically at every width, because the geometry that
+      breaks it is the track's 2px inset and the segments' shared edges,
+      neither of which is responsive.
+      MEASURED on preview/segmented.html, track 459x48, segment 227.5x44,
+      adjacent segments at gap 0, track overflow visible so nothing clips:
+      a +4px ring on a segment paints 6px INTO ITS NEIGHBOUR'S BOX — the
+      outer edge is offset PLUS width, which is the part the arithmetic
+      misses if only the offset is counted — and 4px past the track's own
+      edge onto the card. Two adjacent focus targets contend for the same
+      strip. Re-measured at -2px: zero overhang into the neighbour, zero
+      past the track, the ring sitting 4px inside the track edge and
+      touching nothing.
+      SO A SEGMENT TAKES THE RECESS GEOMETRY, NOT THE PLATE'S. And the rule
+      stays at TWO geometries rather than growing a third, because the
+      correction is to the TEST, not to the taxonomy: THE RING IS CHOSEN BY
+      WHAT A CONTROL SITS IN, NOT BY WHAT IT LOOKS LIKE. A selected segment
+      looks raised — that is exactly what components.selection-is-ink says
+      the plate is for, confirming — but it lives inside another control's
+      box, so it rings inward. Anything inside a recess or a track rings
+      inset; only a free-standing control rings outset.
+      THE SAME REASONING PUT THE TRACK ON components.input's RECESS in
+      components.segmented-control.track, which is the tell that this was
+      one decision the entry had been making in two halves.
   contrast:
     # The old rule claimed the aurora was MONOCHROMATIC and that opacity-based
     # text depended on that. Both halves were false. Production has shipped a

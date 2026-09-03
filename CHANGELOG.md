@@ -8,6 +8,39 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-03 (v2026.09.03.5) — The focus ring is chosen by what a control sits in, not by what it looks like
+
+`a11y.focusRing` shipped this morning with one thing left open: whether the
+outset 4px offset survived a segment inside a 2px track at the 390pt column.
+It does not — and **the viewport was never the variable**. The question was
+filed against a width and the answer is that it fails identically at every
+one, because the geometry that breaks it is the track's 2px inset and the
+segments' shared edges, neither of which is responsive. Filing an open
+question against the wrong axis is worth recording, because the render
+answered a question nobody had asked.
+
+Measured on `preview/segmented.html` — track 459×48, segment 227.5×44,
+adjacent segments at gap 0, track overflow visible so nothing clips it — a
++4px ring paints **6px into its neighbour's box**, not 4: the ring's outer
+edge is offset *plus* width, which is the term the arithmetic drops if only
+the offset is counted. It also overhangs the track by 4px onto the card. Two
+adjacent focus targets contend for the same strip. Re-measured at −2px: zero
+overhang either way, ring sitting 4px inside the track edge, touching nothing.
+
+**The correction is to the test, not to the taxonomy.** The rule stays at two
+geometries rather than growing a third: the ring is chosen by *what a control
+sits in*, not by what it looks like. A selected segment looks raised — which
+is precisely what `components.selection-is-ink` says the plate is for,
+confirming — but it lives inside another control's box, so it rings inward.
+Anything inside a recess or a track rings inset; only a free-standing control
+rings outset.
+
+That is the same reasoning that put the segmented control's track on
+`components.input`'s recess, which is the tell that this had been one decision
+made in two halves.
+
+---
+
 ## 2026-09-03 (v2026.09.03.4) — The form layer gets its rules, and selection stops being a plate
 
 Six queued entries close together because they are one finding seen from six

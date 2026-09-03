@@ -8,6 +8,39 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-03 (v2026.09.03.6) — The selected segment takes no border, and a sequence of correct decisions is not a correct pair
+
+`components.segmented-control.selected` shipped at `.4` specifying "`--text-primary`
+at semibold **inside a 2px border**". It is withdrawn. Jason rejected it twice on
+the rendered control — *"it's still heavy"* — and the implementation session
+declined to reinstate it on the strength of a spec file, which was the right call
+in both directions.
+
+**It is also wrong on the merits, and the cause is mine.** At `.4` the focus ring
+was outset at +4px, so a 2px inset selected border shared no geometry with it. At
+`.5` I moved the segment's focus ring *inside*, to −2px, to stop it colliding with
+its neighbour. That leaves **two 2px rings, 2px apart, on a 44px control** —
+rendered, they stack into a single doubled bezel and neither reads as its own
+signal. The `.5` change made the `.4` border untenable, and I ratified them in
+sequence without re-rendering the first against the second.
+
+**The border was imported, not derived.** It came from
+`components.card-select.borderSelected` by way of "card-select at inline scale". A
+tile's only channel is not automatically an inline control's channel: `card-select`
+has no track and no plate, so its border is the whole structural signal it has. A
+segmented control already carries both, so the border was a fourth channel on a
+control that needs two. `components.selection-is-ink` is satisfied without it — ink
+plus weight *is* "ink plus a non-colour channel", which is what the entry says and
+what the render confirms.
+
+The general lesson is recorded in the entry because it will recur: **when a
+ratification moves a shared geometry, re-render every entry that landed on it in
+the same pass.** A sequence of individually-correct decisions is not a correct pair.
+
+Both specimens conformed.
+
+---
+
 ## 2026-09-03 (v2026.09.03.5) — The focus ring is chosen by what a control sits in, not by what it looks like
 
 `a11y.focusRing` shipped this morning with one thing left open: whether the

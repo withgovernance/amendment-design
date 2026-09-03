@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.03.5
+# spec-version:   v2026.09.03.6
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2680,9 +2680,36 @@ components:
       value, then fill named fields — and the form reads as a hierarchy
       instead of as one texture.
     selected: >-
-      Ink plus a non-colour channel, per components.selection-is-ink. The
-      selected segment takes --text-primary at semibold inside a 2px border;
-      the unselected keeps --text-secondary at normal weight.
+      Ink plus a non-colour channel, per components.selection-is-ink:
+      --text-primary at semibold against --text-secondary at normal weight,
+      confirmed by the raised plate. NO BORDER.
+    no-border-amended: >-
+      AMENDED 2026-09-03 at v2026.09.03.6, same day it was ratified. THE
+      SELECTED SEGMENT TAKES NO BORDER. v2026.09.03.4 specified
+      "--text-primary at semibold inside a 2px border", inverting to neutral
+      in dark. Jason rejected it twice on the rendered control — "it's still
+      heavy" — and the implementation session declined to reinstate it on the
+      strength of a spec file, which was the right call.
+      IT IS ALSO WRONG ON THE MERITS, AND THE CAUSE IS MINE: I RATIFIED TWO
+      ENTRIES IN SEQUENCE WITHOUT CHECKING THEM AGAINST EACH OTHER. At .4 the
+      focus ring was outset at +4px, so a 2px inset selected border shared no
+      geometry with it. At .5 a11y.focusRing.inside-beats-raised moved the
+      segment's focus ring INSIDE, to -2px. That leaves TWO 2px RINGS, 2px
+      APART, ON A 44px CONTROL — rendered, they stack into a single doubled
+      bezel and neither reads as its own signal. The .5 change made the .4
+      border untenable and I did not go back and look.
+      AND THE BORDER WAS IMPORTED, NOT DERIVED. It came from
+      components.card-select.borderSelected via "card-select at inline
+      scale". A TILE'S ONLY CHANNEL IS NOT AUTOMATICALLY AN INLINE CONTROL'S
+      CHANNEL: card-select has no track and no plate, so its border is the
+      whole structural signal it has. A segmented control already carries
+      both. The border was a fourth channel on a control that needed two, and
+      components.selection-is-ink is satisfied without it — ink plus weight
+      is precisely "ink plus a non-colour channel".
+      THE GENERAL LESSON, because this will recur: WHEN A RATIFICATION MOVES
+      A SHARED GEOMETRY, RE-RENDER EVERY ENTRY THAT LANDED ON IT IN THE SAME
+      PASS. A sequence of individually-correct decisions is not a correct
+      pair.
       THE UNSELECTED LABEL STAYS AT --text-secondary. Stepping it back to
       --text-tertiary buys a wider state difference and puts a TAPPABLE
       CONTROL at 2.63:1 light and 3.53:1 dark — the rung

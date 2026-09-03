@@ -8,6 +8,32 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-03 (v2026.09.03.1) — The email card edge is a border; the class list is not the value
+
+A card edge reported as harsh in dark was not a palette problem. The rendered
+pixel was the LIGHT ring — near-white on the dark card, 11.74:1 — because the
+`dark:` ring class beside it compiled to an empty rule and never applied. The
+mechanism generalises: Tailwind's `ring` utility runs through custom
+properties, which this profile's `dead-on-arrival` list already rules out, so
+the base utility survived by inlining a literal shadow and the variant had
+nothing to inline. `ring-utility` joins that list; in the email profile the
+card edge is a border, or a box-shadow written out in full, in both schemes.
+
+Nothing in the palette moves. Rendered as specified, the dark ring sits 1.43:1
+off the card and reads as an edge — the lighter-in-dark polarity every
+`materials.*.ring-dark` already declares. A darker ring and no ring were both
+rendered against it; each dissolves the corner radius and costs the card its
+silhouette against a viewport only 1.20:1 away.
+
+The rule the pass leaves behind, in the new
+`profiles.email.the-edge-is-a-border-here-and-the-class-list-lies`: a
+dark-scheme value in this profile is not shipped until a rendered pixel has
+been sampled. Every other transport lets you read a value out of the class
+list and trust it; this one emits through a compiler that can drop a variant
+silently, so the class list states intent and the pixel states the value.
+
+---
+
 ## 2026-08-31 (v2026.08.31.6) — Identity is not decoration: jurisdiction marks are sanctioned
 
 Owner's call, reversing this morning's flag removal — his words: a state's

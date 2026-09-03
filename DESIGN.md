@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.08.31.6
+# spec-version:   v2026.09.03.1
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2764,7 +2764,7 @@ profiles:
       is therefore a Tailwind config plus a component set — not a rulebook
       about <td>. Registry lives in lib/notifications/types.ts; every new type
       declares a register here alongside its opt-out label.
-    dead-on-arrival: [aurora, oklch, backdrop-filter, width-axis, web-fonts, gap, custom-properties, motion, seal-emboss, signature-face]
+    dead-on-arrival: [aurora, oklch, backdrop-filter, width-axis, web-fonts, gap, custom-properties, ring-utility, motion, seal-emboss, signature-face]
     substitutions:
       viewport: >-
         "#e7edf4" — the three aurora lobes composited over --canvas at their
@@ -2834,6 +2834,38 @@ profiles:
         NEVER below 12px. With no axis to expand the face, shrinking it is the
         one move that has nothing left to give.
       ibm-plex-mono: "ui-monospace, Menlo, Consolas, 'Courier New', monospace"
+    the-edge-is-a-border-here-and-the-class-list-lies: >-
+      RATIFIED 2026-09-03, from a render, after the card edge was reported as
+      harsh in dark. THE VALUE ON SCREEN WAS NOT THE VALUE IN THE MARKUP. The
+      card carried the light ring and a `dark:` ring class beside it; the dark
+      class COMPILED TO AN EMPTY RULE, so both schemes shipped the LIGHT ring —
+      near-white hairline on the dark card, measured 11.74:1 off the rendered
+      pixel. That is ink-level contrast spent on a 1px edge, and it is the
+      whole of what looked like a palette problem.
+      WHY IT COMPILED TO NOTHING, and this is the general case rather than one
+      bug: Tailwind's `ring` utility is implemented through custom properties,
+      and CUSTOM-PROPERTIES ARE ALREADY ON THIS PROFILE'S DEAD-ON-ARRIVAL LIST.
+      The base utility survived only because it happened to inline a literal
+      shadow; the variant, which sets the property alone, had nothing to
+      inline. So `ring` joins that list. IN THIS PROFILE THE CARD EDGE IS A
+      BORDER — or a box-shadow written out in full — in both schemes.
+      THE VALUES WERE NEVER WRONG. Rendered as specified, the dark ring sits
+      1.43:1 off the card and reads as an edge, not a halo — the same
+      lighter-in-dark polarity every material in this system already declares
+      (`materials.*.ring-dark` is a white alpha, without exception). Three
+      alternatives were rendered against it: a ring DARKER than the card, and
+      no ring at all, both dissolve the corner radius and cost the card its
+      silhouette against a viewport only 1.20:1 away; a quieter white edge at
+      the light pair's own ring-to-card ratio is legible but buys nothing the
+      specified value does not already have.
+      THE RULE THIS LEAVES: A DARK-SCHEME VALUE IN THIS PROFILE IS NOT SHIPPED
+      UNTIL A RENDERED PIXEL HAS BEEN SAMPLED. Every other transport lets you
+      read a value out of the class list and trust it. This one emits its CSS
+      through a compiler that can silently drop a variant, so the class list is
+      a claim about intent and the pixel is the value. `real-client-tested`
+      above closed the question of whether the marks SURVIVE the client; this
+      closes the one before it — whether what left the build is what was
+      written.
     dark-mode: >-
       Required, both modes, in every email — production already ships the
       mechanism (Tailwind dark: variants + both colour-scheme metas); this

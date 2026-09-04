@@ -8,6 +8,38 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-03 (v2026.09.03.8) — A count beside a heading is not a count opposite it
+
+The org home page (PR #769) draws its section count as `role-label-caps`,
+right-aligned **opposite** the heading under `justify-between`. It was flagged as
+a live counterexample to hard rule 7. It is not one — and the rule was silent
+rather than wrong.
+
+**Rule 7 governs an adjacent count.** Its entire argument is the *lockup*: two
+things sitting together read as one unit, so they must share a family.
+`justify-between` is not adjacency — it is a rail, and the far end of a rail is a
+different position doing a different job. Nobody had built the separated case, so
+the rule never said which side of the line it fell on.
+
+**And the text settles it.** "12 published" is not a count. It is a number *plus a
+state word* — a labelled statement about the section's contents, which is exactly
+what `typography.uppercase-has-two-homes` gives the chrome register: *"a field
+label naming apparatus."* A bare numeral beside a heading is a fact about that
+heading and stays `role-metadata` in the heading's voice.
+
+Rendered all three, both schemes. Serif metadata **beside** the heading reads as a
+subtitle — "Asks 12 published" scans as one phrase and the count stops being
+apparatus. Serif metadata **right-aligned** reads as body text stranded at the
+edge with nothing anchoring it. The caps label right-aligned is the only one where
+the heading is instantly the content and the count is instantly the apparatus.
+
+So the shipped treatment stands, and hard rule 7 gains the distinction rather than
+a carve-out: **adjacent → `role-metadata` in the heading's voice; opposite end of a
+section header → chrome, `role-label-caps`. The test is the text**, not position
+alone.
+
+---
+
 ## 2026-09-03 (v2026.09.03.7) — The chip was too tight in the track, and the gutter that fixes it fixes the radii too
 
 Owner's eye on a rendered control: the selected chip sits too tight inside the

@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.03.7
+# spec-version:   v2026.09.03.8
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2317,6 +2317,33 @@ components:
     entry at all: two treatments of the same element on one screen is worse
     than whichever treatment loses. A reader learns that a pill means
     something, and here it means nothing.
+  count-beside-is-not-count-opposite: >-
+    RATIFIED 2026-09-03, from a live counterexample rather than a hypothesis:
+    the org home page draws its section count as role-label-caps, right-
+    aligned OPPOSITE the heading under justify-between, which reads as a
+    violation of the entry above and is not one.
+    THE ENTRY ABOVE GOVERNS AN ADJACENT COUNT. Its whole argument is the
+    LOCKUP — two things sitting together read as one unit, so they must share
+    a family. justify-between is not adjacency; it is a rail, and the far end
+    of a rail is a different position with a different job. The rule never
+    said which, because nobody had built the separated case.
+    AND THE TEXT SETTLES WHICH IT IS. "12 published" is not a count. It is a
+    number PLUS A STATE WORD — a labelled statement about the section's
+    contents, which is exactly what typography.uppercase-has-two-homes gives
+    the chrome register: "a field label naming apparatus". A BARE NUMERAL
+    beside a heading is a fact about that heading and stays role-metadata in
+    the heading's voice.
+    RENDERED, all three, both schemes: serif metadata BESIDE the heading
+    reads as a subtitle — "Asks 12 published" scans as one phrase and the
+    count stops being apparatus. Serif metadata RIGHT-ALIGNED reads as body
+    text stranded at the edge with nothing anchoring it. The caps label
+    right-aligned is the only one where the heading is instantly the content
+    and the count is instantly the apparatus.
+    SO: a count ADJACENT to a heading is role-metadata in that heading's
+    voice; a labelled status at the OPPOSITE end of a section header is
+    chrome and takes role-label-caps. THE TEST IS THE TEXT, not the position
+    alone — a bare number attached to a heading, or a labelled statement
+    about the section.
   a-register-change-is-a-width-change: >-
     RATIFIED 2026-08-29 after THREE regressions found by the owner in one
     pass, all from the same migration and all with one cause: A ROLE WAS

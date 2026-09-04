@@ -126,15 +126,34 @@ const RULES = [
     exempt: ["lint-rules.mjs"],
   },
   {
-    name: "retired weight ladder",
+    name: "retired weight ladder (prose)",
     // 160/227/295/362/430/497/565/632 — a permanent grep set. It re-entered
     // the spec twice, once in a block written the same week its retirement was
     // ratified, because a specific number reads as a measurement someone took.
+    //
+    // SCOPED TO A WEIGHT CONTEXT 2026-09-03, after this rule flagged
+    // `oklch(.66 .148 160)` — where 160 is a HUE ANGLE. Bare, these digits are
+    // hue angles, z-indexes, durations and coordinates far more often than they
+    // are weights, and a check that cries wolf gets muted rather than obeyed.
+    // `commentsOnly` was the wrong axis for the same reason: the false positive
+    // was itself a comment. Bind the digits to the PROPERTY, not to the line.
     why: "The interpolated weight ladder was retired; weights are 100-900 named tokens.",
-    pattern: /\b(?:160|227|295|362|430|497|565|632)\b/,
+    pattern:
+      /(?:font-?weight|\bweights?\b|\bladder\b|\bstops?\b)[^\n]{0,40}?\b(?:160|227|295|362|430|497|565|632)\b|\b(?:160|227|295|362|430|497|565|632)\b[^\n]{0,24}?(?:font-?weight|\bweights?\b|\bladder\b)/i,
     roots: ["app", "components"],
     exempt: ["lint-rules.mjs"],
     commentsOnly: true,
+  },
+  {
+    name: "retired weight ladder (code)",
+    // The half `commentsOnly` could never reach: a ladder value actually
+    // SET as a weight. This is the case that changes a rendered glyph, so it
+    // is not comment-scoped and it does not need a nearby word to qualify.
+    why: "The interpolated weight ladder was retired; weights are 100-900 named tokens.",
+    pattern:
+      /(?:font-?[Ww]eight\s*[:=]\s*|font-\[|--sans-[a-z-]+\s*:\s*)["']?(?:160|227|295|362|430|497|565|632)\b/,
+    roots: ["app", "components"],
+    exempt: ["lint-rules.mjs"],
   },
   {
     name: "Phosphor icons only",

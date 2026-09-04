@@ -8,6 +8,35 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-03 (v2026.09.03.7) — The chip was too tight in the track, and the gutter that fixes it fixes the radii too
+
+Owner's eye on a rendered control: the selected chip sits too tight inside the
+segmented track. It shipped at a **2px** gutter — and that 2px was never chosen
+either. It came from the first specimen and was ratified along with everything
+built around it.
+
+**It reads tighter than its number**, which is how it survived a review that was
+looking hard at radii: the chip carries a 1px inset ring of its own, so half the
+visible gutter is spent before the gap starts. On a 44px chip, 2px is under 5%
+of the chip's height.
+
+**4px is the value that also fixes the radii, which is the tell that it is right
+rather than merely looser.** A `radii.sm` chip plus a 4px gutter is *exactly* a
+`radii.md` track — concentric, both values on the scale, and the same md/sm pair
+`v2026.09.03.4` already ratified. The shipped artifact had meanwhile drifted to a
+4px track with a **2px chip**, and 2px is not on the radius scale at all. One
+change lands the gutter and returns both radii to named steps.
+
+Rendered at 2 / 3 / 4px in both schemes, on the warm dark values as well as the
+light ones. 3px loosens the gutter and puts the track at a 7px radius, which is
+on no scale and buys nothing 4px does not.
+
+The track goes 48px → **52px**. It stays a consequence — 44 plus the gutter, top
+and bottom — not a number anyone picked. Both specimens conformed and verified in
+the browser: track 52, chip 44, gutter 4, radii 8/4, concentric.
+
+---
+
 ## 2026-09-03 (v2026.09.03.6) — The selected segment takes no border, and a sequence of correct decisions is not a correct pair
 
 `components.segmented-control.selected` shipped at `.4` specifying "`--text-primary`

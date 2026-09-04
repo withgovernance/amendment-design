@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.03.6
+# spec-version:   v2026.09.03.7
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2661,10 +2661,29 @@ components:
     rounded: "track radii.md, segments radii.sm — see radii.full-is-for-unlabelled"
     geometry: >-
       Each segment declares min-height 44px per a11y.targetSize; the track's
-      own 2px inset then makes the track 48px. THE TRACK HEIGHT IS A
+      4px gutter then makes the track 52px. THE TRACK HEIGHT IS A
       CONSEQUENCE, NOT A CHOSEN NUMBER. Stated so a future dense variant has
       to argue with the arithmetic instead of discovering it, which is the
       same reason components.card-select records its own.
+    gutter-is-4px: >-
+      CORRECTED 2026-09-03 at v2026.09.03.7, from the owner's eye on a
+      rendered control: at the 2px this shipped with, THE CHIP IS TOO TIGHT
+      IN THE TRACK. The 2px was never chosen either — it was inherited from
+      the first specimen and ratified along with everything else around it.
+      IT READS TIGHTER THAN ITS NUMBER, which is why it survived a review
+      that was looking at radii: the chip carries a 1px inset ring of its
+      own, so half the visible gutter is spent before the gap begins. At a
+      44px chip a 2px gutter is under 5% of the chip's height.
+      AND 4px IS THE VALUE THAT FIXES THE RADII AT THE SAME TIME, which is
+      the tell that it is right rather than merely looser. A radii.sm chip
+      plus a 4px gutter is EXACTLY a radii.md track — concentric, both
+      values on the scale, and the same md/sm pair v2026.09.03.4 already
+      ratified. The shipped artifact had drifted to a 4px track with a 2px
+      chip, and 2px is not on the radius scale at all; one change lands the
+      gutter and returns both radii to named steps.
+      RENDERED at 2 / 3 / 4px, both schemes, on the warm dark values as well
+      as the light ones. 3px loosens the gutter and puts the track at a 7px
+      radius, which is on no scale and buys nothing the 4px does not.
     labels: >-
       SENTENCE CASE AT BODY REGISTER, NOT CHROME CAPS. The taxonomy already
       decided this and nobody had applied it here:

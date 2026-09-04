@@ -24,15 +24,18 @@ p.note b { color: var(--text-primary); font-weight: 600; }
   background: rgb(0 0 0 / 5%);
   box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05), inset 0 0 0 1px var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 2px;
+  padding: 4px;
   box-sizing: border-box;
 }
 .dark .seg { background: rgb(255 255 255 / 6%); }
 .seg-2 { grid-template-columns: 1fr 1fr; }
 .seg-3 { grid-template-columns: 1fr 1fr 1fr; }
 
-/* A segment declares its own target. 44 + the track's 2px inset top and
-   bottom is a 48px track — the height is a consequence, not a chosen number. */
+/* A segment declares its own target. 44 + the track's 4px gutter top and
+   bottom is a 52px track — the height is a consequence, not a chosen number.
+   The gutter is 4px because a radii.sm chip plus 4px is exactly a radii.md
+   track: concentric, and both values on the scale. At 2px the chip's own
+   1px ring spends half the visible gap and the chip reads tight. */
 .seg > button {
   min-height: 44px;
   border: 0;
@@ -183,7 +186,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 <p class="note" style="margin-top:12px;">Stepping the unselected label back to <b>--text-tertiary</b> buys a wider state difference and puts a tappable control under 4.5:1 in both schemes. It is the rung <b>color.aurora.tertiary-rung</b> already calls decorative only. The alternative is not dimmed; it is simply not selected.</p>
 
 <h2>Geometry and motion</h2>
-<p class="note">Each segment declares <b>min-height: 44px</b>, per <b>a11y.targetSize</b> — the track's height is then 48px, which is 44 plus the track's own inset, not a number anyone picked. Two or three segments; past three this is a select. Motion is a background cross-fade and nothing else: a plate that translates is <b>components.toggle</b>'s signal, and the two controls must not read alike.</p>
+<p class="note">Each segment declares <b>min-height: 44px</b>, per <b>a11y.targetSize</b> — the track's height is then 52px, which is 44 plus the track's 4px gutter top and bottom, not a number anyone picked. The gutter is 4px because a <b>radii.sm</b> chip plus 4px is exactly a <b>radii.md</b> track — concentric, and both values on the scale. Two or three segments; past three this is a select. Motion is a background cross-fade and nothing else: a plate that translates is <b>components.toggle</b>'s signal, and the two controls must not read alike.</p>
 
 <p class="caption" style="margin-top:18px;">RATIFIED v2026.09.03.4 as <b>components.segmented-control</b> and <b>components.selection-is-ink</b>. <b>Reading B</b> is what landed; A stays rendered because the separation table is the argument, not the prose. Labels are now sentence case at body register — a segment label is the value being chosen, not a field label naming apparatus.</p>
 

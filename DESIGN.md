@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.03.8
+# spec-version:   v2026.09.10
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3019,7 +3019,28 @@ profiles:
         The reduced-transparency collapse, verbatim: material-thin/ultrathin →
         zinc-50 "#fafafa", material-regular → zinc-100. Cards separate from the
         viewport by RING, not contrast (1.13:1) — exactly as they do on the
-        aurora. Dark: zinc-800 "#27272a", ring "#3f3f46".
+        aurora.
+        DARK IS OFF THE PRIMARY RAMP, NOT THE NEUTRAL ONE — RATIFIED
+        2026-09-10 from a render, replacing zinc-800 "#27272a" / ring
+        "#3f3f46". The grey card read wrong on the navy sheet and THE CAUSE
+        WAS HUE, NOT SEPARATION: a warm neutral sitting on a cool sheet at
+        card size. Measured, the old pair separated 1.20:1 and the new one
+        1.22:1 — SEPARATION WAS NEVER THE PROBLEM AND IS ESSENTIALLY
+        UNCHANGED.
+        THE VALUES ARE NOT NEW, WHICH IS THE WHOLE ARGUMENT: this profile's
+        dark viewport is already --color-primary-dark, so the card takes
+        --color-primary and its edge --color-primary-light — THE NEXT TWO
+        STEPS OF THE RAMP THE SHEET ITSELF COMES FROM. Name the tokens, do
+        not quote the hexes; a profile that quotes them acquires a private
+        copy of the ramp and drifts off it the next time the ramp moves.
+        Edge-to-card measures 1.41:1, holding the lighter-in-dark polarity
+        and the magnitude the-edge-is-a-border-here rendered and defended.
+        CORRECTION TO THE FIGURE ABOVE: 1.22:1 sits just OUTSIDE the
+        1.13-1.20 band this entry states for the light pair. The band
+        describes light and was never measured on the navy sheet. Recorded
+        rather than widened silently — the honest comparison is old-to-new
+        on the same ground (1.20 → 1.22), not the new value against a
+        light-mode range.
       paper: >-
         "#f7f3eb" paper-cream, used ONLY for an issued artifact inside the
         message. Paper DOES NOT INVERT in dark mode — paper is lit, not
@@ -3048,6 +3069,26 @@ profiles:
         `viewport` does: a hex in the token file is a hex someone will use
         on the aurora. The product has no blue and should not acquire one by
         way of the email profile.
+        BLUE IS FOR A LINK THE READER MUST FIND, NOT EVERY LINK —
+        RATIFIED 2026-09-10, narrowing the rule above rather than
+        contradicting it. "A reader decides what is clickable from colour
+        alone" is an argument about DISCOVERY: a link encountered mid-prose
+        has to announce itself, because email gives it no hover and the
+        reader is not looking for it. AN UNSUBSCRIBE LINK IS SOUGHT, NOT
+        DISCOVERED. It has to be findable WHEN LOOKED FOR, which an
+        underline in prose colour satisfies, and blue spends brand emphasis
+        on the one link in the message we are not asking anyone to follow.
+        SO: prose colour plus a permanent underline, and THE UNDERLINE IS
+        THE WHOLE AFFORDANCE — it is not decoration on top of a colour cue,
+        it is the only cue, so it may never be removed for tidiness.
+        THE CONSTRAINT THAT COMES WITH IT: prose colour means the FLOOR
+        APPLIES AT FULL STRENGTH. See footer-prose-switches-rather-than-
+        darkens — this link is a functional control and inherits that
+        ruling, so it cannot ride under-AA footer ink. Taking prose colour
+        is permission to drop the blue, NOT permission to be quiet.
+        THE TEST, for the next link in this profile: would the reader have
+        to already want it? Sought → prose plus underline. Encountered →
+        brand navy.
         THE CTA IS NOT ONE OF ITS ROLES. Stage 7 moved that to the
         transported action green, correctly — the fill rule transports, so
         the primary act takes the action plate whatever the medium. Brand
@@ -3066,6 +3107,60 @@ profiles:
         Typesetting, not pressing: the ledger number in mono, a double rule
         "#b6ac97", a signature line. See registers.issued.proof-rule — this
         profile is where that rule came from.
+    footer-prose-switches-rather-than-darkens: >-
+      RULED 2026-09-10. A shipped footer at slate-500 — measured 3.75:1 on
+      the dark viewport and 4.04:1 on the light — WAS REJECTED. It was a
+      deliberate call, correctly flagged rather than left for an audit, and
+      the design complaint behind it is real: at 6.81:1 the footer read
+      louder than the message above it. The floor still holds.
+      THE FLOOR IS NOT NEGOTIABLE HERE BECAUSE THIS SPEC HAS ALREADY
+      REFUSED THIS EXACT NUMBER ONCE. a11y.contrast.mechanism measured 55%
+      ink at 4.10:1 and ruled it "not safe at any rung" — the same value,
+      the same conclusion. A profile cannot hold a floor the system spent a
+      measurement rejecting.
+      AND IT COMPOUNDS WITH THE ENTRY BELOW: once the unsubscribe link
+      takes prose colour, under-AA prose puts a FUNCTIONAL CONTROL under
+      the floor — the one control in the message a regulator expects to be
+      conspicuous. Decorative prose under AA is a defect; an opt-out under
+      AA is a different category of problem.
+      WHERE THE REASONING WENT WRONG, AND IT IS THE PART WORTH KEEPING:
+      the repair was scoped as "one step up the ramp", and A RAMP STEP IS
+      NOT SCHEME-SYMMETRIC. Measured: slate-400 lands 6.96:1 on the dark
+      sheet — the "7:1, which is where it started" objection, and it is
+      correct — but 2.18:1 on the LIGHT sheet, which is not a quieter
+      footer, it is an illegal one. Light must go DOWN the ramp where dark
+      goes UP. The footer is a FOURTH mark that must SWITCH RATHER THAN
+      DARKEN, exactly like the three in dark-mode below, and it was being
+      reasoned about as one value with one direction.
+      THE RAMP HAS NO RUNG AT AA, which is the honest obstacle: light jumps
+      4.04 → 6.43, dark 3.75 → 6.96. So quiet-and-legal is not a ramp step;
+      it is a PAIRED DERIVED VALUE, which this profile already sanctions —
+      viewport is "a DERIVED value, not a new token" for the same reason.
+      Computed, the minimum pair clearing 4.5:1 is 4.53:1 light and 4.56:1
+      dark, roughly a quarter step off slate-500 in opposite directions.
+      STILL OPEN — WAITING ON ONE RENDER, NOT ON A DECISION: whether the
+      loudness was ever contrast. The rejected footer sat at 6.81:1 and the
+      status sits at 6.96:1, so the footer already carried STATUS-LEVEL ink
+      against a message at 12:1 — two rungs quieter and still reported
+      loud, which points at size, measure or copy volume rather than ink.
+      Render the footer at the ramp step and at the derived pair, both
+      schemes, and the container decides; either is legal and the choice is
+      then a measurement instead of an argument.
+    dark-ink-follows-the-same-ramp: >-
+      RATIFIED 2026-09-10, the same render and the same cause as the card.
+      Header wordmark, status, card eyebrow, byline and count sentence all
+      moved zinc → slate: a cool sheet wants cool ink, and a neutral ramp
+      over a navy ground reads as a second, dirtier grey. IT COST NOTHING,
+      which is why it is recorded as a free consequence rather than a
+      trade — measured on the dark viewport, the wordmark lands 12.02:1
+      against 12.08 before it and the status 6.96:1 against 6.81. The ink
+      ramp is the primary ramp's light end, taken by role, not by hex.
+      THE GENERAL FORM: THIS PROFILE HAS ONE HUE PER SCHEME. A substitution
+      that imports a neutral into a scheme whose ground is chromatic will
+      read as a mistake at card size even when every contrast figure
+      passes — hue mismatch is invisible to a contrast sweep, and both
+      halves of this ratification were reported as "looks wrong" by an
+      owner rather than caught by a check.
     type-stack:
       # Approved 2026-08-02. NO WEB FONTS: a webfont reaches a minority of
       # clients while blocking render in the rest (reasoning lifted from
@@ -3078,6 +3173,57 @@ profiles:
         NEVER below 12px. With no axis to expand the face, shrinking it is the
         one move that has nothing left to give.
       ibm-plex-mono: "ui-monospace, Menlo, Consolas, 'Courier New', monospace"
+      wordmark-metrics: >-
+        ADDED 2026-09-10, after a first implementation set the wordmark at
+        700 and the owner identified it as a different mark on sight. This
+        profile recorded that the WIDTH AXIS is dead on arrival and Verdana
+        stands in — and said nothing about the other two properties, so the
+        one that survives transport was left to a guess.
+        WHAT TRANSPORTS: THE AXIS IS LOST, THE WEIGHT AND THE TRACKING
+        TRANSPORT. Verdana's natural width partly stands in for the lost
+        'wdth' 125; nothing stands in for weight or tracking, so both must
+        be stated on the substitute rather than inherited. Tracking is
+        settled — assets/wordmark.svg sets letter-spacing 2.8 at font-size
+        56, which is 0.05em and scales.
+        THE WEIGHT IS OPEN, AND assets/wordmark.svg IS NOT THE AUTHORITY
+        FOR IT. The asset carries font-weight 430. THAT IS A RUNG OF THE
+        RETIRED READEX LADDER (160/227/295/362/430/497/565/632), and the
+        asset predates its retirement: the wordmark was rebuilt 2026-08-01
+        and its geometry "measured against the live font", which on that
+        date was Readex; the ladder was recalibrated to canonical 100...900
+        on 2026-08-13, in the same pass that replaced Readex with Archivo.
+        THE FAMILY IN THE FILE WAS SWAPPED TO ARCHIVO AND THE WEIGHT WAS
+        NOT — so the mark is drawn at a weight that no longer names
+        anything, on a face it was not measured on.
+        AND THE viewBox INHERITS THE SAME STALENESS: 490 was tightened from
+        an advance of 487.2 units measured at 56 / 430 / 2.8 on Readex, and
+        Archivo at 'wdth' 125 measures about 4% NARROWER than Readex did.
+        The mark therefore carries roughly 4% of trailing dead space inside
+        its own box, which is an off-centre mark anywhere the box is
+        centred rather than the glyphs.
+        TWO READINGS, AND THEY DISAGREE — this is a measurement someone has
+        to take, not a value to derive. By LADDER POSITION the mapping is
+        systematic (160→100 ... 430→500 ... 497→600, the last confirmed in
+        the recalibration itself), which puts the mark at --sans-medium and
+        makes it HEAVIER, because the recalibration deliberately dropped
+        Readex's optical compensation. By APPEARANCE the mark should not
+        gain weight at all — a brand mark that shifts because a ladder was
+        renamed has been redrawn by accident. FOR AN IDENTITY ASSET
+        APPEARANCE NORMALLY WINS, but that is the owner's call and not this
+        profile's to make.
+        UNTIL IT IS SETTLED: transport the mark's weight as whatever the
+        re-measured wordmark carries, and NEVER as 430 — quoting it here
+        would put a retired rung back into the system through the one file
+        every consumer copies from. 700 is wrong regardless, which is the
+        only part the render already settled.
+        GENERAL FORM, and it is the durable half of this entry: when an
+        axis dies in transport, name the properties that DO survive in the
+        same breath. A dead-on-arrival list says what is lost and is silent
+        on what remains, and the silence is where the mark gets rebuilt
+        wrong. Second general form: AN ASSET IS A SPECIMEN AND GOES STALE
+        LIKE ONE — this one was cited as the authority precisely because it
+        is a drawn file, and drawn files are the last thing a token
+        migration sweeps.
     the-edge-is-a-border-here-and-the-class-list-lies: >-
       RATIFIED 2026-09-03, from a render, after the card edge was reported as
       harsh in dark. THE VALUE ON SCREEN WAS NOT THE VALUE IN THE MARKUP. The
@@ -3110,6 +3256,28 @@ profiles:
       above closed the question of whether the marks SURVIVE the client; this
       closes the one before it — whether what left the build is what was
       written.
+    body-paints-the-wrapper-td-and-only-variants-the-body: >-
+      RATIFIED 2026-09-10, and it is THE SAME CLASS OF FAILURE as
+      the-edge-is-a-border-here: the class list is a claim, the pixel is the
+      value. react-email's Body copies its STATIC background inline onto the
+      wrapper <td> it emits, but carries the `dark:` class on <body> ALONE.
+      So a dark client inverts the ink and KEEPS THE LIGHT SHEET UNDER
+      EVERYTHING.
+      MEASURED ON AN UNMODIFIED RENDER: body correct at rgb(24,24,27),
+      wrapper td rgb(255,255,255), heading flipped to rgb(212,212,216) —
+      about 1.5:1. Not a degraded dark mode; light ground with dark-mode ink
+      on it, which is worse than shipping no dark mode at all, because the
+      variant that was supposed to protect the reader is what breaks them.
+      THE FIX: paint a FULL-WIDTH SECTION YOU CONTROL inside Body and let
+      Body's own background be irrelevant. Do not attempt to reach the
+      emitted <td> — this profile does not author its HTML, it commissions
+      it, and the commissioned markup arrives with opinions
+      (see a-floor-is-reached-with-integers, same root cause, different
+      vendor component).
+      WHY IT BELONGS IN THIS FILE AND NOT A CODE COMMENT: an inline style
+      on generated markup is invisible to every check this system has and to
+      both agents reading the declaration. It is found by sampling a pixel
+      or not at all.
     a-floor-is-reached-with-integers: >-
       RATIFIED 2026-09-03, the same day and the same class of failure as the
       key above it. The primary CTA was landing short of its floor, and the
@@ -3152,6 +3320,20 @@ profiles:
       — a box you own, carrying the metric you chose, governing the line in
       place of the vendor's strut. Verified on the shipped template: integral
       at three device pixel ratios, label unchanged.
+    a-centred-img-does-not-centre: >-
+      RATIFIED 2026-09-10. `mx-auto` on an Img is INERT inside an email
+      table — auto margins need a width-constrained block in normal flow and
+      a table cell is neither. Measured on the templates in main, a mark
+      declared centred sits at 672 against a 600 page centre. It centres
+      only via `text-align` on the PARENT cell.
+      PRESENT IN PRODUCTION TODAY on welcome and donation-receipt — those
+      two are a CONFORMANCE fix, not a decision, and do not wait on this
+      entry.
+      THE PATTERN THIS IS THE THIRD INSTANCE OF: a utility that resolves
+      through a mechanism email does not have (custom properties for `ring`,
+      a vendor strut for the CTA floor, normal-flow margins here) COMPILES
+      TO SOMETHING AND CENTRES NOTHING. Silence, not an error. Alignment in
+      this profile is a property of the container, never of the child.
     dark-mode: >-
       Required, both modes, in every email — production already ships the
       mechanism (Tailwind dark: variants + both colour-scheme metas); this
@@ -3161,6 +3343,21 @@ profiles:
       bright action green), and EVERY LINK — a class on a paragraph does not
       reach its anchors, so an inline indigo link inside inverted body copy
       measures 1.02:1 and vanishes silently.
+    the-header-is-a-row-not-a-centred-mark: >-
+      RATIFIED 2026-09-10. Wordmark left, status right ("CO-SIGN RECORDED",
+      "VOTE PLEDGED"), chosen over the centred logo it replaced. Two
+      reasons and the second is the real one: it costs less vertical space
+      above the message, and THE STATUS DOES A JOB IN THE INBOX-SCAN MOMENT
+      THAT A CENTRED MARK CANNOT — a reader triaging a full inbox learns
+      what happened from the header without opening the body. A centred
+      mark tells them only who sent it, which they already knew from the
+      sender line.
+      The mark moves to the footer as decoration linking home, where being
+      decorative is honest.
+      THE STATUS IS CHROME AND TAKES THE CHROME STACK: type-stack's
+      archivo-chrome — Verdana, uppercase, .12-.24em, never below 12px.
+      It is a designation, not a heading, and the caps are the register
+      rather than emphasis.
     registers:
       reading: "Bill notices, digests, status changes. The profile that barely degrades — canvas, column, serif lead and motion:none all survive transport."
       issued: "Delivery records, co-sign confirmations, receipts. An inbox is a filing cabinet, which is close to the artifact's intent."
@@ -3190,6 +3387,36 @@ profiles:
       expected this to break and it did not" is the finding — the next person
       to touch the issuance block should know it has been tested in-client,
       not assume it is fragile and design around a hazard that is not there.
+    the-email-mark-is-a-third-variant-and-the-non-text-floor-is-why: >-
+      RATIFIED 2026-09-10, sanctioning what is already published rather than
+      replacing it. assets/ carries the correct scheme-paired SVGs
+      (mark + mark-cutout, wordmark + wordmark-cutout) and NONE OF IT IS
+      USABLE HERE: they are SVG, which Gmail and Outlook strip, and they are
+      not published under a fetchable URL. What is published is logo.png and
+      wordmark.png — a single mid-grey file on a transparent field, serving
+      both grounds, which is precisely what "a mark is not scheme-agnostic
+      and there is no single file that serves both" says cannot exist.
+      IT EXISTS BECAUSE A MARK IS NOT TEXT, AND THAT IS THE WHOLE RULE. Hard
+      rule 17 puts a graphical object at a 3:1 non-text floor, not 4.5:1.
+      Measured, the published grey lands 3.26:1 on the light viewport and
+      4.65:1 on the dark — LEGAL ON BOTH, in a window that exists only
+      because the bar is 3:1. No text colour has such a window, which is why
+      the ink/cutout pair is right everywhere else in the system and wrong
+      here. The single file survives by being neither ink nor cutout, and
+      that is a derivation, not a loophole.
+      AND THE PAIRED ROUTE IS WORSE IN THIS TRANSPORT, which is the second
+      half of the argument: swapping images by scheme works in Apple Mail
+      and FAILS IN GMAIL, so a scheme-paired export trades a mark that is
+      legal in every client for one that is optimal in some and broken in
+      the rest. Correctness in the worst client governs here.
+      THE MEASUREMENT STILL WORTH TAKING: 3.26:1 clears the floor by 0.26,
+      which is thin enough that any future darkening of the light viewport
+      breaks it. One step darker on the grey buys light headroom while
+      staying legal on dark — render it before assuming the published value
+      is the best one in the window rather than merely inside it.
+      ASSET-SIDE FOLLOW-UP, not a spec question: assets/ should carry this
+      variant and its README should name it, so the next person does not
+      rediscover it by finding a URL that works.
     open: >-
       Tables, forms, loading states and Spanish are still unaddressed under
       §3.8.

@@ -8,6 +8,102 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-10 (v2026.09.10) — profiles.email gets an implementation, and the profile learns what it never had to know
+
+`profiles.email` was specified 2026-08-02 and never built. It is now live and both
+confirmation emails render through it, so eight of the nine items below exist because
+**a written profile met a transport for the first time.** The reasoning arrives here
+rather than in code comments because the implementation's own repo correctly strips
+design rationale — this is where it lives or it is lost.
+
+**The card and the ink move off the neutral ramp onto the primary one.** A grey card on
+the navy sheet was reported as reading wrong; **the cause was hue, not separation.**
+Measured, the old zinc pair separated 1.20:1 and the new slate pair 1.22:1 — separation
+was never the problem. The values are not new, which is the argument: the dark viewport
+is already `--color-primary-dark`, so the card takes `--color-primary` and its edge
+`--color-primary-light`, the next two steps of the ramp the sheet comes from. Named as
+tokens, not quoted as hexes. Header wordmark, status, eyebrow, byline and count
+sentence follow for the same reason and it cost nothing — wordmark 12.02:1 against
+12.08, status 6.96:1 against 6.81. **The general form: this profile has one hue per
+scheme, and a hue mismatch is invisible to a contrast sweep** — both halves were
+reported by eye and caught by no check.
+
+**A deliberately under-AA footer was rejected, and the reasoning behind it was
+half-scoped.** Shipped at 3.75:1 dark / 4.04:1 light, flagged rather than hidden. It
+does not stand: `a11y.contrast.mechanism` already measured 4.10:1 and ruled it "not safe
+at any rung," so the floor was refused once on this exact number. It also compounds —
+with the unsubscribe link now taking prose colour, under-AA prose puts a **functional
+control** under the floor. The defence was "the next step up the ramp lands at 7:1,
+which is where it started," and **a ramp step is not scheme-symmetric**: slate-400 is
+6.96:1 on the dark sheet and **2.18:1 on the light one**, so light must go *down* where
+dark goes *up*. The footer is a fourth mark that **switches rather than darkens**, like
+the three in `dark-mode`. The ramp has no rung at AA in either scheme (light 4.04 →
+6.43, dark 3.75 → 6.96), so quiet-and-legal is a paired derived value — precedent:
+`viewport` is already "a DERIVED value, not a new token." Left open, waiting on one
+render rather than a decision: the rejected footer sat two rungs below the message and
+still read loud, which points at size, measure or copy volume rather than ink.
+
+**Blue is for a link the reader must find, not every link.** `substitutions.brand`
+argued links get blue because "email has no hover — a reader decides what is clickable
+from colour alone." That is an argument about **discovery**, and an unsubscribe link is
+**sought**. Narrowed rather than contradicted: sought → prose colour plus a permanent
+underline, and the underline is the whole affordance; encountered mid-prose → brand
+navy. Dropping the blue is not permission to be quiet — the link inherits the floor
+ruling above.
+
+**The header is a row, not a centred mark.** Wordmark left, status right. It costs less
+vertical space, and the status does a job in the inbox-scan moment a centred mark
+cannot: the reader learns what happened without opening the body. The mark moves to the
+footer, where being decorative is honest.
+
+**Three transport facts nobody had written down.** `<Body>` copies its static background
+inline onto the wrapper `<td>` it emits while carrying the `dark:` class on `<body>`
+alone — so a dark client inverts the ink and **keeps the light sheet**, measured at
+about 1.5:1 on an unmodified render. Worse than shipping no dark mode, because the
+variant meant to protect the reader is what breaks them; the fix is a full-width Section
+you control. `mx-auto` on an `<Img>` is **inert** in an email table — measured 672
+against a 600 page centre, and present in production today on welcome and
+donation-receipt, which is a conformance fix that does not wait on this entry. Both join
+the `ring` utility and the vendor strut as **the third and fourth instances of one
+pattern: a utility resolving through a mechanism email does not have compiles to
+something and does nothing, silently.**
+
+**The wordmark's weight is open, and the asset is not the authority for it.** An
+implementation set 700 and was caught by eye. The correction offered was to read the
+weight off `assets/wordmark.svg` — which carries **font-weight 430, a rung of the
+retired Readex ladder.** The asset predates the retirement: rebuilt 2026-08-01 with its
+geometry "measured against the live font," which was then Readex; the ladder was
+recalibrated and Readex replaced on 2026-08-13. **The family in the file was swapped to
+Archivo and the weight was not.** The `viewBox` inherits it — 490 came from an advance
+measured at 56 / 430 / 2.8 on Readex, and Archivo at `wdth` 125 is about 4% narrower, so
+the mark carries ~4% of trailing dead space inside its own box. Two readings that
+disagree: by ladder position 430 → `--sans-medium` (systematic, and confirmed by
+497 → 600 in the recalibration itself), which makes the mark heavier because the
+recalibration dropped Readex's optical compensation; by appearance a brand mark should
+not gain weight because a ladder was renamed. Appearance normally wins for an identity
+asset, but that is the owner's call. **Recorded as open, and 430 is deliberately not
+quoted as a value** — this file is the one every consumer copies from. Tracking *is*
+settled at 0.05em. **General form: an asset is a specimen and goes stale like one** —
+this one was trusted precisely because it is a drawn file, and drawn files are the last
+thing a token migration sweeps.
+
+**The email mark is sanctioned as a third variant, and the non-text floor is why.** The
+scheme-paired SVGs in `assets/` are unusable here — Gmail and Outlook strip SVG and they
+are not published at a fetchable URL. What is published is a single mid-grey PNG serving
+both grounds, which the system elsewhere says cannot exist. It exists because **a mark
+is not text**: hard rule 17 sets a 3:1 non-text floor, and the grey measures 3.26:1
+light / 4.65:1 dark — legal on both, in a window that exists only because the bar is 3:1.
+No text colour has such a window. The paired route is also *worse* in this transport:
+scheme-swapped images work in Apple Mail and fail in Gmail, so correctness in the worst
+client governs. Open measurement: 3.26:1 clears by 0.26, thin enough that any future
+darkening of the light viewport breaks it.
+
+Also corrected in place: the `cards` entry's 1.13–1.20 separation band describes the
+light pair and was never measured on the navy sheet, so the new 1.22:1 is recorded as
+sitting just outside it rather than the band being widened silently.
+
+---
+
 ## 2026-09-03 (v2026.09.03.8) — A count beside a heading is not a count opposite it
 
 The org home page (PR #769) draws its section count as `role-label-caps`,

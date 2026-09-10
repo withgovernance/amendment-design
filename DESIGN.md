@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.10.2
+# spec-version:   v2026.09.10.3
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3172,6 +3172,22 @@ profiles:
         "Verdana, Geneva, sans-serif" + uppercase + letter-spacing .12–.24em,
         NEVER below 12px. With no axis to expand the face, shrinking it is the
         one move that has nothing left to give.
+        AND THE SUBSTITUTE IS TWO-STATE, WHICH IS THE OTHER HALF OF NAMING
+        WHAT SURVIVES — ADDED 2026-09-10.3. Verdana ships Regular and Bold
+        and nothing between, so the weight ladder DOES NOT CROSS THIS
+        TRANSPORT BOUNDARY. Measured at 12px, uppercase, .14em: 300, 400,
+        430 and 500 all set to one identical width, 600 and 700 to another.
+        Two faces. ANY VALUE FROM 401 TO 599 RENDERS AS 400 AND ANY VALUE
+        ABOVE AS BOLD.
+        WHY IT IS WORTH A LINE: a profile that says "the weight transports"
+        invites an implementation to write a specific weight and believe it
+        did something. It did not — the number lands in the markup, changes
+        no pixel, and reads as a deliberate measurement to the next person.
+        The only weight distinction email chrome can express is REGULAR VS
+        BOLD, and it should be written as one.
+        GENERAL FORM: when an axis dies and a substitute stands in, name
+        WHAT THE SUBSTITUTE CAN EXPRESS, not only what was lost. A ladder
+        that stops at the transport boundary stops SILENTLY.
       ibm-plex-mono: "ui-monospace, Menlo, Consolas, 'Courier New', monospace"
       wordmark-metrics: >-
         ADDED 2026-09-10, after a first implementation set the wordmark at
@@ -3180,11 +3196,20 @@ profiles:
         stands in — and said nothing about the other two properties, so the
         one that survives transport was left to a guess.
         WHAT TRANSPORTS: THE AXIS IS LOST, THE WEIGHT AND THE TRACKING
-        TRANSPORT. Verdana's natural width partly stands in for the lost
-        'wdth' 125; nothing stands in for weight or tracking, so both must
-        be stated on the substitute rather than inherited. Tracking is
-        settled — assets/wordmark.svg sets letter-spacing 2.8 at font-size
-        56, which is 0.05em and scales.
+        TRANSPORT — BUT NOT TO THIS PROFILE, AND THAT CORRECTION IS THE
+        POINT. The rule holds for any surface that RE-SETS the wordmark as
+        live type. Email is not one: verified in the implementation, the
+        wordmark DOES NOT APPEAR IN THE MESSAGE AT ALL. What appears is the
+        company name as CHROME TEXT (12px Verdana, uppercase, .14em) and the
+        square mark as a 28px RASTER. Type metrics do not reach a raster,
+        and chrome text at chrome size is not the mark.
+        SO NOTHING BELOW IS AN EMAIL DECISION. It is recorded in this
+        profile because this is where the question was asked, and it is
+        flagged as belonging to assets/ and the surfaces that set the
+        wordmark as type. Tracking is settled AT THE ASSET:
+        assets/wordmark.svg sets letter-spacing 2.8 at font-size 56, which
+        is 0.05em and scales — and it does not travel here, because there is
+        no type here to carry it.
         THE WEIGHT IS OPEN, AND assets/wordmark.svg IS NOT THE AUTHORITY
         FOR IT. The asset carries font-weight 430. THAT IS A RUNG OF THE
         RETIRED READEX LADDER (160/227/295/362/430/497/565/632), and the
@@ -3381,6 +3406,23 @@ profiles:
       archivo-chrome — Verdana, uppercase, .12-.24em, never below 12px.
       It is a designation, not a heading, and the caps are the register
       rather than emphasis.
+      AND SO DOES THE NAME ON THE LEFT — RULED 2026-09-10.3, on a question
+      that dissolved rather than resolved. It was raised as a genuine
+      either/or: does the header wordmark keep the MARK's 0.05em tracking
+      at any size, or take the chrome range at chrome size? NEITHER READING
+      SURVIVES CONTACT WITH WHAT SHIPS. The header carries the company name
+      as LIVE CHROME TEXT, and the mark itself is a raster in the footer.
+      There is no wordmark in the header to give its tracking, and a raster
+      cannot receive tracking, so the mark's 0.05em has nothing to apply to
+      in this transport. The name is chrome at chrome size and takes the
+      chrome range; .14em as shipped is inside it and correct.
+      WORTH KEEPING AS A METHOD, not just an answer: this was about to be
+      settled by rendering the two readings against each other, which would
+      have compared the mark's tracking against chrome's ON AN ELEMENT THAT
+      IS NOT THE MARK — a real measurement of the wrong thing, the same
+      shape as the retracted centring claim. WHAT A COMPOSITION SHIPS
+      SETTLES SOME QUESTIONS MORE CHEAPLY THAN A RENDER DOES; read the
+      composition before commissioning the pair.
     registers:
       reading: "Bill notices, digests, status changes. The profile that barely degrades — canvas, column, serif lead and motion:none all survive transport."
       issued: "Delivery records, co-sign confirmations, receipts. An inbox is a filing cabinet, which is close to the artifact's intent."

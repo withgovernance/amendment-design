@@ -8,6 +8,51 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-10 (v2026.09.10.3) — The wordmark is not in the email, and the substitute is two-state
+
+Two questions came back from the implementation and **both dissolved rather than
+resolved.** Recorded because the reason they dissolved is reusable.
+
+**Scope correction to `wordmark-metrics`.** That entry said "the weight and the tracking
+transport." True for any surface that **re-sets the wordmark as live type** — and email
+is not one. Verified in the implementation: **the wordmark does not appear in the message
+at all.** What appears is the company name as chrome text (12px Verdana, uppercase,
+.14em) and the square mark as a 28px raster. Type metrics do not reach a raster, and
+chrome text at chrome size is not the mark. So nothing in that entry is an email
+decision; it belongs to `assets/` and the surfaces that set the wordmark as type, and it
+is now flagged that way. **The `430` finding is unaffected** — the asset still carries a
+retired ladder rung and a `viewBox` measured on a retired face. It was never an email
+question, and attaching it to this pass overstated it.
+
+**`archivo-chrome` gains the other half of naming what survives.** Verdana ships Regular
+and Bold and nothing between, so **the weight ladder does not cross this transport
+boundary.** Measured at 12px, uppercase, .14em: 300, 400, 430 and 500 set to one
+identical width, 600 and 700 to another. Any value from 401 to 599 renders as 400. A
+profile that says "the weight transports" invites an implementation to write a specific
+weight and believe it did something — the number lands in the markup, changes no pixel,
+and reads as a deliberate measurement to the next person. The only distinction email
+chrome can express is regular vs bold. **General form: when an axis dies and a
+substitute stands in, name what the substitute can express, not only what was lost. A
+ladder that stops at the transport boundary stops silently.**
+
+**The header tracking question is ruled, not rendered.** Raised as a real either/or —
+does the header wordmark keep the mark's 0.05em at any size, or take the chrome range at
+chrome size? Neither reading survives what ships: the header is live chrome text and the
+mark is a raster in the footer, so there is no wordmark to give tracking and no type to
+receive it. The name is chrome at chrome size and takes the chrome range; .14em as
+shipped is correct.
+
+**The method is the part worth keeping.** This was about to be settled by rendering the
+two readings against each other, which would have compared the mark's tracking against
+chrome's **on an element that is not the mark** — a real measurement of the wrong thing,
+the same shape as the centring claim retracted in v2026.09.10.2. This system's standing
+instruction is to render both readings and let the container decide, and that instruction
+has a precondition: **read the composition first.** Some questions are cheaper to settle
+by looking at what ships than by commissioning a pair, and a render aimed at the wrong
+element is not a cheap measurement, it is a confident one.
+
+---
+
 ## 2026-09-10 (v2026.09.10.2) — Retracted: `mx-auto` was the mechanism that worked
 
 `a-centred-img-does-not-centre`, ratified hours earlier, is **withdrawn and replaced by

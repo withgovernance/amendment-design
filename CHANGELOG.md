@@ -8,6 +8,46 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-10 (v2026.09.10.2) — Retracted: `mx-auto` was the mechanism that worked
+
+`a-centred-img-does-not-centre`, ratified hours earlier, is **withdrawn and replaced by
+`alignment-follows-the-emitted-display`.** It was wrong in both halves, and following it
+would have moved a correctly centred logo hard left on welcome and donation-receipt.
+
+**What is true**, read out of the component source rather than inferred from a render:
+react-email's `Img` sets `display: block` in its own inline style. A block box with a
+definite width is the textbook case for `margin: auto`, so **`mx-auto` centres it** and
+**`text-align` on the parent does not** — precisely because it is block, not inline.
+Isolated: `mx-auto` alone centres, `text-align` alone does not. There is no production
+bug; both templates centre today, and they carry `mx-auto` *and* a `text-center` parent,
+which is why a wrong rule was survivable.
+
+**The replacement rule is narrower than the one it replaces:** alignment in this
+transport is chosen by the child's **emitted `display`**, which a vendor component sets
+and the class list does not show. A block child takes auto margins; an inline-block
+child takes `text-align` on its parent. Both shapes are in these templates — the logo is
+block, a share-icon row is inline-block — and **they need opposite mechanisms.** The
+check is not which utility is correct, it is *read the emitted display first.*
+
+**It stays in the same family as `the-edge-is-a-border-here` and
+`body-paints-the-wrapper-td` — a vendor inline style decides the outcome and is
+invisible in the declaration — but the direction flips.** Here the vendor's inline style
+is what *makes* the utility work rather than what defeats it, so "email lacks the
+mechanism" is not a safe default assumption either. That correction is worth more than
+the original claim was.
+
+**How a wrong claim survived a real measurement**, which is the transferable part: the
+element was selected with `querySelectorAll("img").pop()` — the last image, which is the
+fourth share icon in a centred inline row, correctly off-centre. A true number was read
+off the wrong element and a mechanism inferred from it without isolating the variable.
+**A measurement identifies its element or it is not a measurement** — the companion to
+`ink-ground-is-a-placement`, which says the same about grounds. Both of this pass's
+errors were the same shape in opposite directions: an asset taken as authoritative
+without checking whether its value had been superseded (`430`), and a render taken as
+authoritative without checking which element it described.
+
+---
+
 ## 2026-09-10 (v2026.09.10) — profiles.email gets an implementation, and the profile learns what it never had to know
 
 `profiles.email` was specified 2026-08-02 and never built. It is now live and both
@@ -67,6 +107,12 @@ donation-receipt, which is a conformance fix that does not wait on this entry. B
 the `ring` utility and the vendor strut as **the third and fourth instances of one
 pattern: a utility resolving through a mechanism email does not have compiles to
 something and does nothing, silently.**
+
+> ~~The `mx-auto` half of that paragraph is RETRACTED — see v2026.09.10.2.~~ It was
+> backwards: `Img` emits `display: block`, so `mx-auto` is the mechanism that *works* and
+> `text-align` on the parent is the inert one. There was no production bug, and acting on
+> the entry would have moved a centred logo hard left. The `<Body>` half stands as
+> measured.
 
 **The wordmark's weight is open, and the asset is not the authority for it.** An
 implementation set 700 and was caught by eye. The correction offered was to read the

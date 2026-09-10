@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.10
+# spec-version:   v2026.09.10.2
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3320,20 +3320,43 @@ profiles:
       — a box you own, carrying the metric you chose, governing the line in
       place of the vendor's strut. Verified on the shipped template: integral
       at three device pixel ratios, label unchanged.
-    a-centred-img-does-not-centre: >-
-      RATIFIED 2026-09-10. `mx-auto` on an Img is INERT inside an email
-      table — auto margins need a width-constrained block in normal flow and
-      a table cell is neither. Measured on the templates in main, a mark
-      declared centred sits at 672 against a 600 page centre. It centres
-      only via `text-align` on the PARENT cell.
-      PRESENT IN PRODUCTION TODAY on welcome and donation-receipt — those
-      two are a CONFORMANCE fix, not a decision, and do not wait on this
-      entry.
-      THE PATTERN THIS IS THE THIRD INSTANCE OF: a utility that resolves
-      through a mechanism email does not have (custom properties for `ring`,
-      a vendor strut for the CTA floor, normal-flow margins here) COMPILES
-      TO SOMETHING AND CENTRES NOTHING. Silence, not an error. Alignment in
-      this profile is a property of the container, never of the child.
+    alignment-follows-the-emitted-display: >-
+      RATIFIED 2026-09-10.2, REPLACING A RETRACTED ENTRY. The retracted
+      claim was that `mx-auto` on an Img is inert and that alignment is a
+      property of the container, never the child. IT WAS BACKWARDS IN BOTH
+      HALVES, and acting on it would have moved a centred logo hard left on
+      two live templates.
+      WHAT IS TRUE, verified in the component source rather than inferred
+      from a render: react-email's Img emits `display: block` in its own
+      inline style. A block box with a definite width is the textbook case
+      for `margin: auto`, SO `mx-auto` IS THE MECHANISM THAT WORKS — and
+      `text-align` on the parent does nothing to it, precisely because it is
+      block and not inline. Isolated: `mx-auto` alone centres; `text-align`
+      alone does not.
+      THE RULE, and it is narrower than the one it replaces: ALIGNMENT HERE
+      IS CHOSEN BY THE CHILD'S EMITTED `display`, WHICH A VENDOR COMPONENT
+      SETS AND THE CLASS LIST DOES NOT SHOW. A block child takes auto
+      margins; an inline-block child takes `text-align` on its parent. Both
+      shapes are in these templates — the logo is block, a share-icon row is
+      inline-block — AND THEY NEED OPPOSITE MECHANISMS. So the check is not
+      "which utility is correct here", it is READ THE EMITTED DISPLAY FIRST.
+      THERE IS NO PRODUCTION BUG. welcome and donation-receipt centre
+      correctly today, and carry both `mx-auto` and a `text-center` parent —
+      belt and braces, which is why the wrong rule was survivable.
+      STILL THE SAME FAMILY AS the-edge-is-a-border-here AND
+      body-paints-the-wrapper-td: A VENDOR INLINE STYLE DECIDES THE OUTCOME
+      AND IS INVISIBLE IN THE DECLARATION. That is the durable half. The
+      difference is the direction — here the vendor's inline style is what
+      MAKES the utility work, not what defeats it, so "email lacks the
+      mechanism" is not a safe default assumption either.
+      HOW THE RETRACTED CLAIM SURVIVED A MEASUREMENT, because this is the
+      transferable part: the element was selected with
+      `querySelectorAll("img").pop()`, which returned the LAST image — the
+      fourth share icon in a centred inline row, correctly off-centre. A
+      real number was read off the wrong element and a mechanism was
+      inferred from it without isolating the variable. A MEASUREMENT
+      IDENTIFIES ITS ELEMENT OR IT IS NOT A MEASUREMENT — the companion to
+      ink-ground-is-a-placement, which says the same thing about grounds.
     dark-mode: >-
       Required, both modes, in every email — production already ships the
       mechanism (Tailwind dark: variants + both colour-scheme metas); this

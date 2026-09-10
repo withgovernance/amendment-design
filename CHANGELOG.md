@@ -8,6 +8,72 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-10 (v2026.09.10.5) — profiles.email reconciled against what shipped
+
+The confirmation emails landed (voyager #794). This pass reads the shipped surface and
+the emitted markup rather than the reported values. Every figure below was measured,
+most in rendered HTML.
+
+**Two templates are not on the profile, and they ship the `<Body>` failure today.**
+Welcome and donation-receipt weren't in the rebuild. Confirmed per template in the
+emitted markup: each puts a white background inline on the wrapper td and carries dark
+mode only as a class on `<body>`. In any client that honours `prefers-color-scheme`,
+their ink inverts onto the white — **body text 1.48:1, headings 1.10:1.** Recorded as a
+spec-ahead Known Divergence. The fix is moving both onto the profile's frame. This is
+the most consequential item in the pass, because the welcome email reaches every new
+user.
+
+**Paper is inked from the `[data-paper]` ramp, rasterized.** The system already decided
+how ink sits on paper (87 / 55 / 38 black). The profile now carries each step composited
+over paper cream, as `viewport` does: `paper-primary` 14.73:1, `paper-secondary` 4.66:1,
+tertiary never on paper (2.64:1). The first implementation missed it twice. The chrome
+label and **ledger stamp** used a frame neutral at **4.3668:1 — under the floor, in both
+schemes, on the line this system calls the proof.** The body ink was an invented warm
+grey with no recorded reason — legal, but a different artifact from the product's
+Receipt. Both are conformance fixes.
+
+**Every colour this profile emits is solid.** A 50% paper separator emits a
+four-argument `rgb(182,172,151,0.5)`, a newer syntax than anything else in the message
+and newer than the in-client test that cleared the double rule. Whether every client
+accepts it is untested, and this entry doesn't claim it fails. It removes the question:
+the composite over paper is identical on screen and has no client-dependent branch.
+When the cheap answer removes the variable, measuring the variable isn't diligence.
+
+**`dark-mode` re-measured against the card as it now is.** Its figures were taken on
+zinc-800, and the dark card moved to `--color-primary` in v2026.09.10 without this
+entry being swept. The indigo plate *is* `--color-primary`, so on the dark card it is
+now the card's own colour — **1.00:1**. What read as a contrast problem at 1.02:1 is now
+a structural one. Green ink on the card is 2.67:1. The switched values clear: action
+green 5.04:1 on the card, brand-inverse 7.02:1 on the viewport and 5.75:1 on the card. A
+value that moves takes every figure measured against it.
+
+**~~"One hue per scheme"~~ — overstated, generalised from the dark scheme alone.** The
+light scheme has the same structure — neutral card and ink on a cool viewport — and was
+reviewed in both schemes without complaint. In oklch the dark viewport carries C 0.040
+and the light one C 0.011, under a third of it at a lightness where that barely
+registers. Rewritten with its condition: a neutral on a chromatic ground reads as a
+mistake **where the ground's chroma is perceptible.** The light scheme stays neutral.
+
+**Links gain a third state: redundant → may be unmarked.** The confirmation cards link
+their title to the same page as the CTA beneath and ship it unmarked — a spare target,
+not an affordance. Marking it would put a second call to action beside the primary one.
+The condition is strict: the same destination, with the control carrying it visible in
+the same view.
+
+**The header status contract is recorded as shipped:** one past-tense verb beside a
+seal-check icon, with the pair carrying "recorded." The earlier examples ("CO-SIGN
+RECORDED") repeated the icon and were the first thing to wrap at 390. The icon is
+Phosphor SealCheck, rasterized in one tone. Read off the file's pixels, it is slate-500 —
+the only step on this ramp clearing the 3:1 non-text floor on both viewports (4.04 /
+3.75). It's the second instance of the email-mark argument, and it's an icon, not the
+seal.
+
+Conformance found and handed to the implementation, no spec change: the card byline sets
+**14px serif italic**, which hard rule 13 forbids twice over — it is metadata, not
+quoted voice, and it's under 1.125rem. It takes roman.
+
+---
+
 ## 2026-09-10 (v2026.09.10.4) — Loudness is contrast times area, and a floor quoted to two decimals hides its own failure
 
 **The footer question is closed and contrast was the answer.** Rendered in the real

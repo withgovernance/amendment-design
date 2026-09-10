@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.10.4
+# spec-version:   v2026.09.10.5
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3009,6 +3009,23 @@ profiles:
       about <td>. Registry lives in lib/notifications/types.ts; every new type
       declares a register here alongside its opt-out label.
     dead-on-arrival: [aurora, oklch, backdrop-filter, width-axis, web-fonts, gap, custom-properties, ring-utility, motion, seal-emboss, signature-face]
+    every-colour-is-solid: >-
+      RATIFIED 2026-09-10.5. Every colour this profile emits is a solid
+      value. AN ALPHA IS COMPOSITED AGAINST THE GROUND IT LANDS ON AND
+      SHIPPED AS THE RESULT — the rule `viewport`, `quiet` and the paper
+      inks already follow, stated once so that an opacity modifier on a
+      utility does not quietly reopen the question.
+      THE CASE THAT PROMPTED IT: a paper separator written as the rule
+      colour at 50% emits `rgb(182,172,151,0.5)` — a four-argument rgb(),
+      newer syntax than anything else in the message, and newer than the
+      in-client test that cleared the double rule. WHETHER EVERY CLIENT
+      ACCEPTS IT IS UNTESTED, and this entry does not claim it fails. It
+      removes the question instead: the composite over paper is "#d6d0c1",
+      identical on screen, with no client-dependent branch.
+      WHY NOT JUST TEST IT: a real-client send settles one syntax in the
+      clients one person opened. A solid value settles it in all of them,
+      at zero visual cost. When the cheap answer removes the variable,
+      measuring the variable is not diligence.
     substitutions:
       viewport: >-
         "#e7edf4" — the three aurora lobes composited over --canvas at their
@@ -3046,6 +3063,27 @@ profiles:
         message. Paper DOES NOT INVERT in dark mode — paper is lit, not
         swapped — so an issued artifact is the same artifact in both modes.
         The rule in one line: the frame inverts, the artifact does not.
+        INK ON PAPER IS THE [data-paper] RAMP, RASTERIZED — RATIFIED
+        2026-09-10.5. The system already decided how ink sits on paper
+        (colors_and_type.css, [data-paper]: 87 / 55 / 38 black). Email cannot
+        composite an alpha reliably, so the profile carries each step
+        composited over paper cream, the same move `viewport` makes with the
+        aurora:
+          paper-primary    87% over paper  "#20201f"  14.73:1
+          paper-secondary  55% over paper  "#6f6d6a"   4.66:1
+          tertiary         38% over paper   2.64:1 — NEVER ON PAPER, which
+                           is why the print block promotes it to secondary.
+        NO DARK VARIANTS: paper does not invert, so these are the values in
+        both schemes.
+        WHY IT HAD TO BE WRITTEN DOWN: the first implementation inked the
+        paper receipt from outside the ramp and missed twice. Its chrome
+        label and LEDGER STAMP took a neutral secondary from the frame that
+        lands 4.3668:1 on paper — UNDER THE FLOOR, in both schemes, on the
+        one line this system calls THE PROOF. And its body ink was an
+        invented warm grey with no recorded reason: legal, but a different
+        artifact from the product's Receipt, which inks paper from this same
+        ramp. An issued artifact is the same artifact in every medium or it
+        is not issued. Both are conformance fixes, not decisions.
       action: >-
         Momentum green plate "#08ad72" with the ink label "#01160f" (6.44:1).
         The fill rule transports intact: a green plate is a control, green ink
@@ -3088,6 +3126,16 @@ profiles:
         is permission to drop the blue, NOT permission to be quiet.
         THE TEST, for the next link in this profile: would the reader have
         to already want it? Sought → prose plus underline. Encountered →
+        brand navy.
+        A THIRD STATE, RATIFIED 2026-09-10.5: REDUNDANT → MAY BE UNMARKED. A
+        link whose destination a visible control already carries is not a
+        link the reader has to find. The confirmation cards link their title
+        to the same page as the CTA beneath, and it ships unmarked, prose
+        colour, no underline — a spare target for the reader who taps the
+        title anyway, not an affordance. Marking it would put a second
+        call to action beside the primary one. THE CONDITION IS STRICT:
+        same destination, and the control carrying it visible in the same
+        view. A title linking anywhere else is an encountered link and takes
         brand navy.
         THE CTA IS NOT ONE OF ITS ROLES. Stage 7 moved that to the
         transported action green, correctly — the fill rule transports, so
@@ -3181,12 +3229,19 @@ profiles:
       trade — measured on the dark viewport, the wordmark lands 12.02:1
       against 12.08 before it and the status 6.96:1 against 6.81. The ink
       ramp is the primary ramp's light end, taken by role, not by hex.
-      THE GENERAL FORM: THIS PROFILE HAS ONE HUE PER SCHEME. A substitution
-      that imports a neutral into a scheme whose ground is chromatic will
-      read as a mistake at card size even when every contrast figure
-      passes — hue mismatch is invisible to a contrast sweep, and both
-      halves of this ratification were reported as "looks wrong" by an
-      owner rather than caught by a check.
+      THE GENERAL FORM, stated with the condition it was measured under:
+      A NEUTRAL ON A CHROMATIC GROUND READS AS A MISTAKE WHERE THE GROUND'S
+      CHROMA IS PERCEPTIBLE, and hue mismatch is invisible to a contrast
+      sweep — both halves of this ratification were reported as "looks
+      wrong" by an owner rather than caught by a check.
+      CORRECTED 2026-09-10.5 — this said "ONE HUE PER SCHEME", generalised
+      from the dark scheme alone. The light scheme has the same structure,
+      neutral card and ink on a cool viewport, and was reviewed in both
+      schemes without complaint. Measured in oklch, the dark viewport
+      carries C 0.040 and the light one C 0.011 — under a third of it, at
+      a lightness where that chroma barely registers. The light scheme stays
+      neutral. The rule applies where the ground carries chroma a reader
+      can see, and a sheet near white mostly does not.
     type-stack:
       # Approved 2026-08-02. NO WEB FONTS: a webfont reaches a minority of
       # clients while blocking render in the rest (reasoning lifted from
@@ -3329,6 +3384,18 @@ profiles:
       on generated markup is invisible to every check this system has and to
       both agents reading the declaration. It is found by sampling a pixel
       or not at all.
+      KNOWN DIVERGENCE, SPEC AHEAD — recorded 2026-09-10.5. WELCOME AND
+      DONATION-RECEIPT ARE NOT ON THIS PROFILE AND SHIP THIS FAILURE TODAY.
+      Confirmed per template in the emitted markup: both put a white
+      background inline on the wrapper td and carry dark mode only as a
+      class on <body>, with no section of their own painting the viewport.
+      In any client that honours prefers-color-scheme their ink inverts onto
+      that white: body text 1.48:1, headings 1.10:1. The two templates
+      rebuilt on this profile paint their own viewport and are clear.
+      The fix is the one above, and the cheapest route to it is moving both
+      templates onto the profile's frame rather than patching them in place.
+      ONLY THE CONFIRMATION EMAILS WERE REBUILT; this entry is the record of
+      what was not.
     a-floor-is-reached-with-integers: >-
       RATIFIED 2026-09-03, the same day and the same class of failure as the
       key above it. The primary CTA was landing short of its floor, and the
@@ -3412,14 +3479,31 @@ profiles:
       Required, both modes, in every email — production already ships the
       mechanism (Tailwind dark: variants + both colour-scheme metas); this
       profile supplies the values. THREE MARKS CANNOT SURVIVE INVERSION and
-      must switch rather than darken: the indigo plate (1.02:1 on zinc-800 →
-      light plate with ink numerals), green ink (--color-success 2.72:1 → the
-      bright action green), and EVERY LINK — a class on a paragraph does not
-      reach its anchors, so an inline indigo link inside inverted body copy
-      measures 1.02:1 and vanishes silently.
+      must switch rather than darken: the indigo plate (→ light plate with
+      ink numerals), green ink (--color-success → the bright action green),
+      and EVERY LINK — a class on a paragraph does not reach its anchors, so
+      an inline indigo link inside inverted body copy vanishes silently.
+      RE-MEASURED 2026-09-10.5 against the card as it now is. The figures
+      this entry used to carry were taken on zinc-800, and the dark card
+      moved to --color-primary. THE INDIGO PLATE IS --color-primary, SO ON
+      THE DARK CARD IT IS NOW THE CARD'S OWN COLOUR — 1.00:1, identical. It
+      was 1.02:1 and read as a contrast problem; it is now a structural one,
+      and the switch is no longer a tuning choice. Green ink on the dark
+      card: 2.67:1 (was 2.72). The switched values clear where they land —
+      action green as ink on the dark card 5.04:1, brand-inverse 7.02:1 on
+      the dark viewport and 5.75:1 on the dark card.
+      A value that moves takes every figure measured against it: moving the
+      card without re-measuring this entry left three numbers describing a
+      ground that no longer shipped.
     the-header-is-a-row-not-a-centred-mark: >-
-      RATIFIED 2026-09-10. Wordmark left, status right ("CO-SIGN RECORDED",
-      "VOTE PLEDGED"), chosen over the centred logo it replaced. Two
+      RATIFIED 2026-09-10. Wordmark left, status right, chosen over the
+      centred logo it replaced.
+      THE STATUS CONTRACT, AS SHIPPED — updated 2026-09-10.5, replacing
+      examples written before the implementation: the status is ONE
+      PAST-TENSE VERB ("Co-signed", "Endorsed") beside a seal-check icon,
+      and THE PAIR carries "recorded" — the icon says it, so the words do
+      not. Short enough to hold one line at 390 wide. A longer status
+      ("CO-SIGN RECORDED") repeats the icon and is the first thing to wrap. Two
       reasons and the second is the real one: it costs less vertical space
       above the message, and THE STATUS DOES A JOB IN THE INBOX-SCAN MOMENT
       THAT A CENTRED MARK CANNOT — a reader triaging a full inbox learns
@@ -3508,6 +3592,13 @@ profiles:
       ASSET-SIDE FOLLOW-UP, not a spec question: assets/ should carry this
       variant and its README should name it, so the next person does not
       rediscover it by finding a URL that works.
+      A SECOND INSTANCE, SAME ARGUMENT — added 2026-09-10.5: the header's
+      seal-check icon (Phosphor SealCheck, rasterized) is one tone, slate-500,
+      read off the published file's pixels. A PNG cannot switch by scheme,
+      and on this ramp slate-500 is the only step clearing the 3:1 non-text
+      floor on both viewports — 4.04:1 light, 3.75:1 dark; one step either
+      way fails the other scheme. The window is the one the mark uses. It
+      is an icon, not the seal: the emboss rules do not reach it.
     open: >-
       Tables, forms, loading states and Spanish are still unaddressed under
       §3.8.

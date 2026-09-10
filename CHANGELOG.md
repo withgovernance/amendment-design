@@ -8,6 +8,47 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-10 (v2026.09.10.4) — Loudness is contrast times area, and a floor quoted to two decimals hides its own failure
+
+**The footer question is closed and contrast was the answer.** Rendered in the real
+composition, both schemes: the ramp step reads as body text and competes with the message
+above it — in light it is heavier than the count line it sits under — while the derived
+pair recedes as intended. The gap between 4.5:1 and the rejected 4.04:1 is nearly
+invisible; the gap between 4.5:1 and 6.43:1 is the whole complaint. **No size, measure or
+copy change was needed.** The fix was available above the floor the entire time, and the
+only reason the first attempt went under it is that the ramp has no rung there. The pair
+ships as `quiet` / `quiet-dark` beside `viewport` and `paper` — named as derived values,
+not as slate-anything, so the next reader is not invited to snap them back onto the ramp.
+
+**A ratio describes a pair of colours, not how much of the page is wearing them.**
+Hoisted to `a11y.contrast` rather than left in the profile, because it is not an email
+fact. A footer at 6.81:1 read louder than the message; a status mark at **6.96:1** on the
+same sheet drew no complaint. Higher contrast, no complaint — so the ratio is not what
+made one of them loud. **The difference is area:** the status is 12px uppercase chrome, 17
+characters, in a corner; the footer was 13px sentence case, ~60 characters, centred at
+full measure — the same ink wearing roughly **nine times** the surface. The status is the
+control case that proves it. This is the companion to `ink-ground-is-a-placement`: that
+rule says a number without its ground is not a measurement, and this one says a number
+without its **area** does not describe what the reader sees. Both are ways a contrast
+figure can be correct and still answer the wrong question. It licenses nothing under a
+floor — when quantity is the cause, the axes are size, measure and how much copy there
+is, and all three are cheaper than a floor.
+
+**The first shipped pair missed the floor by a rounding.** Reported as "4.50:1 both
+schemes"; computed unrounded, **4.4761:1 light and 4.4964:1 dark — both under.** Caught
+by recomputing rather than by reading the report, and corrected by **one RGB step per
+channel**: visually identical, clearing with a margin two decimals cannot hide.
+`a-floor-is-reached-with-integers` predicted this and said so in general terms — *"a
+target the transport can round is not reached until the arithmetic is integral"* — a rule
+written about a button's height, and **this was the next floor in this profile.**
+
+**So: quote a floor to enough precision to show its margin.** Two decimals is precisely
+the precision at which a failure becomes invisible. 4.4964 and 4.5036 are the same number
+at two decimals and opposite verdicts, and the honest report of a value sitting at a floor
+includes its margin or it is not a report.
+
+---
+
 ## 2026-09-10 (v2026.09.10.3) — The wordmark is not in the email, and the substitute is two-state
 
 Two questions came back from the implementation and **both dissolved rather than

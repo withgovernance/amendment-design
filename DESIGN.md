@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.10.3
+# spec-version:   v2026.09.10.4
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3138,14 +3138,40 @@ profiles:
       viewport is "a DERIVED value, not a new token" for the same reason.
       Computed, the minimum pair clearing 4.5:1 is 4.53:1 light and 4.56:1
       dark, roughly a quarter step off slate-500 in opposite directions.
-      STILL OPEN — WAITING ON ONE RENDER, NOT ON A DECISION: whether the
-      loudness was ever contrast. The rejected footer sat at 6.81:1 and the
-      status sits at 6.96:1, so the footer already carried STATUS-LEVEL ink
-      against a message at 12:1 — two rungs quieter and still reported
-      loud, which points at size, measure or copy volume rather than ink.
-      Render the footer at the ramp step and at the derived pair, both
-      schemes, and the container decides; either is legal and the choice is
-      then a measurement instead of an argument.
+      CLOSED 2026-09-10.4 BY THE RENDER, AND CONTRAST WAS THE ANSWER —
+      the open question was whether it ever had been, and it was. Rendered
+      in the real composition, both schemes: the ramp step reads as body
+      text and competes with the message (in light it is heavier than the
+      count line above it), while the derived pair recedes exactly as
+      intended and sits a hair off where the rejected value sat. The
+      difference between 4.5:1 and the rejected 4.04:1 is nearly invisible;
+      the difference between 4.5:1 and 6.43:1 is the whole complaint. NO
+      SIZE, MEASURE OR COPY CHANGE WAS NEEDED — the fix was available above
+      the floor the entire time, and the only reason the first attempt went
+      under it is that THE RAMP HAS NO RUNG THERE.
+      WHY THE STATUS NEVER COMPETED AT A HIGHER RATIO is now general and
+      lives at a11y.contrast.a-ratio-describes-a-pair-of-colours-not-how-
+      much-of-the-page-wears-them: loudness is contrast times AREA, and the
+      status is the control case.
+      THE PAIR IS A DERIVED VALUE AND IS NAMED AS ONE — `quiet` and
+      `quiet-dark` in the email config beside `viewport` and `paper`, NOT
+      as slate-anything, because they are deliberately off the ramp.
+      Naming them for the ramp would invite the next reader to snap them
+      back onto it, which is the move this entry exists to prevent.
+      AND THE FIRST SHIPPED PAIR MISSED THE FLOOR BY A ROUNDING, WHICH IS
+      THE PART TO REMEMBER. Reported as "4.50:1 both schemes"; computed
+      unrounded, 4.4761:1 light and 4.4964:1 dark. BOTH UNDER. Corrected by
+      ONE RGB STEP per channel — visually identical, and clearing with a
+      margin two decimals cannot hide. a-floor-is-reached-with-integers
+      predicted this exactly and said so in general terms: "a target the
+      transport can round is not reached until the arithmetic is integral."
+      It was written about a button's height and THIS WAS THE NEXT FLOOR IN
+      THIS PROFILE.
+      SO: QUOTE A FLOOR TO ENOUGH PRECISION TO SHOW ITS MARGIN. Two
+      decimals is precisely the precision at which a failure becomes
+      invisible — 4.4964 and 4.5036 are the same number at two decimals and
+      opposite verdicts, and the honest report of a value at the floor
+      includes the margin or it is not a report.
     dark-ink-follows-the-same-ramp: >-
       RATIFIED 2026-09-10, the same render and the same cause as the card.
       Header wordmark, status, card eyebrow, byline and count sentence all
@@ -4520,6 +4546,31 @@ a11y:
       fallen back to the plain three-lobe Blue Hour. Inside the band it is
       not safe at any rung, in either room — in the dark room even 87% ink
       drops to 3.53:1. The band is light, not a text surface.
+    a-ratio-describes-a-pair-of-colours-not-how-much-of-the-page-wears-them: >-
+      RATIFIED 2026-09-10.4, measured in profiles.email and hoisted here
+      because it is not an email fact. A footer at 6.81:1 was reported as
+      reading LOUDER than the message above it, while a status mark at
+      6.96:1 on the same sheet drew no complaint. HIGHER CONTRAST, NO
+      COMPLAINT — so the ratio is not what made one of them loud.
+      THE DIFFERENCE IS AREA. The status is 12px uppercase tracked chrome,
+      17 characters, in a corner. The footer was 13px sentence case, about
+      60 characters, centred at full measure — the same ink wearing roughly
+      NINE TIMES the surface. The status is the control case that proves it:
+      identical contrast, no competition, because there is almost none of
+      it.
+      SO LOUDNESS IS CONTRAST TIMES QUANTITY, and a ratio alone does not
+      predict whether an element competes. This is the companion to
+      ink-ground-is-a-placement: that rule says a number without its ground
+      is not a measurement, and this one says a number without its AREA
+      does not describe what the reader sees. Both are ways a contrast
+      figure can be correct and still answer the wrong question.
+      WHAT IT DOES NOT LICENSE: this is not an argument for going under a
+      floor. Measured in the real composition, 4.50:1 recedes and 6.43:1
+      does not, so the fix was available ABOVE the floor the whole time —
+      the reason the first attempt went under it was that the ramp has no
+      rung there, not that the floor was in the way. When quantity is the
+      cause, the other axes are size, measure and how much copy there is,
+      and they are all cheaper than a floor.
     a-token-with-no-consumers-is-not-a-token: >-
     RATIFIED 2026-08-29, on the THIRD instance of the same shape in one week
     and the second in one hour. A value lands correctly in the token layer, a

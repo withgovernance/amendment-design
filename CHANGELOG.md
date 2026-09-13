@@ -8,6 +8,19 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-13 (v2026.09.13) — The independent eye is `design-reviewer`
+
+The `designer` agent was retired 2026-09-12. `DESIGN-HARD-RULES.md` named it as the pass
+that checks story renders, so the checklist pointed at a reviewer that no longer runs. That
+pass now belongs to the read-only `design-reviewer` agent, spawned after a builder's own
+`/design-iterate`; it renders both schemes at 390 and 1440 itself and files what it finds as
+conformance fixes or `RATIFY.md` entries. It never edits the spec.
+
+The spec's one writer is now a session in this repo running `/ratify` (`CLAUDE.md` →
+One writer). Ratification is still Jason's decision. No rule changes in this entry.
+
+---
+
 ## 2026-09-10 (v2026.09.10.5) — profiles.email reconciled against what shipped
 
 The confirmation emails landed (voyager #794). This pass reads the shipped surface and

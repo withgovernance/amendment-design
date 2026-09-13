@@ -1,6 +1,6 @@
 # Amendment — Hard Rules (the lookable checklist)
 
-Source of truth: `DESIGN.md`. This file is the short list every visual change is checked against — by `/design-iterate` against screenshots, by `/review-pr` against the diff, by `designer` against story renders. If a rule here contradicts `DESIGN.md`, `DESIGN.md` wins; fix this file in the same pass.
+Source of truth: `DESIGN.md`. This file is the short list every visual change is checked against — by `/design-iterate` against screenshots, by `/review-pr` against the diff, by the `design-reviewer` agent against story renders. If a rule here contradicts `DESIGN.md`, `DESIGN.md` wins; fix this file in the same pass.
 
 > **A story proves what it rendered, not what it claims to render.** A mocked-module state must be *asserted* before anything downstream of it, or the story passes vacuously — every signed-in story in the consumer rendered signed-out and passed.
 >

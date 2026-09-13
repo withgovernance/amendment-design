@@ -35,7 +35,9 @@ The mechanism that works: implementation proposes, spec ratifies, implementation
 
 **`DESIGN.md` and `CHANGELOG.md` have exactly one writer: a session in this repo running `/ratify`**, one at a time, with `git status` clean before the pass. Everything else — any other session in this repo, a session in voyager — **appends to `RATIFY.md`** and does not touch the spec. Concurrent edits to one file lose writes silently; there is no merge conflict when two open sessions both hold the same file.
 
-Work that IS in scope for a session in this repo: implementing `colors_and_type.css` to match the spec, building `preview/` specimens, running the greps and checks. All of that is **conformance** — the spec decided, this makes it real. If it needs a rule changed, that is a `RATIFY.md` entry like any other.
+**Empty `RATIFY.md` at the end of each migration stage or around five entries.** Longer means code is building on undecided rules, which is how a divergence quietly becomes a precedent. After a pass, tell the code session the version moved so it re-reads the rules instead of citing what is already in its context.
+
+Work that IS in scope for a session in this repo: implementing `colors_and_type.css` to match the spec, building `preview/` specimens, running the greps and checks. All of that is **conformance** — the spec decided, this makes it real. If it needs a rule changed, that is a `RATIFY.md` entry like any other. A specimen follows `SKILL.md`'s workflow (the register table lives there) and is rendered in both schemes at 390 and 1440 before it is called done.
 
 **Review is a second pass by someone who didn't build it.** After a builder's own `/design-iterate`, spawn the `design-reviewer` agent: it renders the stories or specimens itself in both schemes at 390 and 1440, and splits what it finds into conformance fixes (back to the builder) and `RATIFY.md` entries. It is read-only — it never edits the spec or the canvas. A stage is done when the hard rules pass against real renders in both schemes, every visual component has a story covering its canonical states, divergences are recorded with their kind, and that review is complete.
 
@@ -92,7 +94,7 @@ Three of these six caught real problems on their first manual run.
   **This used to read "imports `colors_and_type.css` rather than restating values." That is not executable, and stage 2 proved it three ways** (`RATIFY.md`, 2026-08-28): Turbopack refuses a CSS import that leaves the project root — a panic, not a warning; the checkout is gitignored in the consumer, so it is absent on CI and on Vercel and any build input there fails every deploy; and this file is a standalone drop-in that pulls two font families from the Google CDN the consumer self-hosts and ships `role-*` and `material-*` as plain classes the consumer implements as framework utilities, so importing it whole double-loads three families and gives every type role a second definition at higher specificity.
 
   **Extraction is therefore sanctioned, and it comes with one obligation: the consumer's CI regenerates and fails on any diff.** A generated file is a second copy; without the guard it drifts, and it drifts while stamping a `spec-version` that is by then a lie. The stamp is the reason the guard is mandatory rather than nice.
-- **wireframer** (low-fi, Paper) — upstream. Produces high-fidelity briefs that must name roles from this repo, never values.
+- **wireframer** (low-fi, Paper) — upstream. Produces high-fidelity briefs (`~/agents/wireframer/`) that must name roles from this repo, never values. If a brief specifies a hex, weight or size, distrust it and read the role from the system.
 
 Stack: wireframer (low-fi) → high-fidelity design → voyager (code). Handoff is forward; only structural discoveries return upstream.
 

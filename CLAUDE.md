@@ -33,9 +33,11 @@ The mechanism that works: implementation proposes, spec ratifies, implementation
 
 ## One writer
 
-**`DESIGN.md` and `CHANGELOG.md` have exactly one writer: the `designer` agent.** Everything else — a session in this repo, a session in voyager — **appends to `RATIFY.md`** and does not touch the spec. Concurrent edits to one file lose writes silently; there is no merge conflict when two open sessions both hold the same file.
+**`DESIGN.md` and `CHANGELOG.md` have exactly one writer: a session in this repo running `/ratify`**, one at a time, with `git status` clean before the pass. Everything else — any other session in this repo, a session in voyager — **appends to `RATIFY.md`** and does not touch the spec. Concurrent edits to one file lose writes silently; there is no merge conflict when two open sessions both hold the same file.
 
 Work that IS in scope for a session in this repo: implementing `colors_and_type.css` to match the spec, building `preview/` specimens, running the greps and checks. All of that is **conformance** — the spec decided, this makes it real. If it needs a rule changed, that is a `RATIFY.md` entry like any other.
+
+**Review is a second pass by someone who didn't build it.** After a builder's own `/design-iterate`, spawn the `design-reviewer` agent: it renders the stories or specimens itself in both schemes at 390 and 1440, and splits what it finds into conformance fixes (back to the builder) and `RATIFY.md` entries. It is read-only — it never edits the spec or the canvas. A stage is done when the hard rules pass against real renders in both schemes, every visual component has a story covering its canonical states, divergences are recorded with their kind, and that review is complete.
 
 **A mention is not a ratification.** If another agent @mentions for a decision, the decision still lands as its own commit with a changelog entry and a `spec-version` bump. And ask for the render before deciding — the asker frames the question and usually gets the answer they were leaning toward.
 

@@ -580,7 +580,7 @@
   font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: var(--sans-semibold);
-  line-height: 1;
+  line-height: 1.25;   /* the caption rung: a chrome label may wrap (2026-09-14) */
   letter-spacing: var(--track-chrome);
   text-transform: uppercase;
   font-variation-settings: var(--sans-chrome);

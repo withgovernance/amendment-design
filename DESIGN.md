@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.14.6
+# spec-version:   v2026.09.14.7
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1353,8 +1353,8 @@ typography:
     label-caps:
       family: sans
       size: 0.75rem         # 12px
-      weight: 600           # semibold (was 497 on the retired ladder)
-      lineHeight: 1
+      weight: 600           # semibold
+      lineHeight: 1.25      # the caption rung — a chrome label may wrap (2026-09-14)
       tracking: "0.12em"          # track-chrome — recovers Archivo's narrower ceiling
       textTransform: uppercase
       fontVariationSettings: '"wdth" 125'
@@ -2320,6 +2320,25 @@ components:
     role-label-caps changed FOUR properties at once — family, width, tracking
     and LINE-HEIGHT — and each has produced its own regression. A role is a
     bundle, and a call site that took it for one property inherited all four.
+    A CHROME LABEL MAY WRAP — RATIFIED 2026-09-14, closing the question this
+    entry widened from. "If a label no longer fits at 12px, the layout is
+    the problem" is true of a label someone wrote to fit a slot, and cannot
+    be promised for a string that comes from data. Measured on the consumer:
+    of the role's call sites, seventeen set data-driven or long copy in
+    narrow slots — bill status steps, chamber names, section heads — and six
+    already wrap in current stories, lines touching; "Chamber Passed" is a
+    two-word label wider than its step at 640. "Never wraps" would be a rule
+    the product breaks by receiving a longer jurisdiction name.
+    SO THE ROLE CARRIES A LEADING THAT SURVIVES A SECOND LINE: the caption
+    rung, the role's size-mate. The cost is real and bounded: every chip,
+    tile, stamp or toggle built on the tight box grows unless it declares its
+    own height — which is what `a11y.targetSize` already asks of anything
+    with a target. A call site that needs a single-line box states it; the
+    role no longer assumes it.
+    WHAT THIS DOES NOT LICENSE: a SENTENCE in chrome. A label that wraps
+    because it is a notice or a copyright line was never a designation or a
+    field label, and fails uppercase-has-two-homes before it reaches this
+    rule. The footer's copyright line is that case.
   count-is-ink-not-a-plate: >-
     RATIFIED 2026-08-29, because it currently varies within one screen: a
     count beside "Conversations" carries a pill and the one beside

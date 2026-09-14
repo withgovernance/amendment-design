@@ -8,6 +8,34 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-14 (v2026.09.14.7) — A chrome label may wrap, so the role carries a second line's leading
+
+Decided by Jason. `role-label-caps` set `line-height: 1`, and the spec never said whether a
+chrome label may wrap. Two readings led to different code: never (every wrapping site is a
+layout bug) or may (the role needs leading).
+
+**The census decided it, not the footer that raised it.** On voyager main the role has 67
+call sites; 34 are short static labels, but **17 set data-driven or long copy in narrow
+slots** — bill status steps, chamber names, section heads — and **6 already wrap in current
+stories with their lines touching.** "Chamber Passed" is wider than its step at 640. "If a label
+no longer fits, the layout is the problem" holds for a label someone wrote to fit; it cannot be
+promised for a string the product receives.
+
+**The role's leading moves to the caption rung**, its size-mate. The cost is named rather than
+discovered: chips, tiles, stamps and toggles built on the tight box — filter chips,
+`DeadlineTile`, `RubberStamp`, the hex-map toggles — grow unless they declare their own
+height, which `a11y.targetSize` already asks of anything with a target.
+
+**Not licensed: a sentence in chrome.** The footer's copyright line, which raised the entry,
+is a legal notice and links, not a field label or a designation; it fails
+`uppercase-has-two-homes` before it reaches this rule. That site is conformance. It also
+overflows by 52px at 320 because nothing lets the line break around its middots.
+
+Swept: `DESIGN-HARD-RULES.md` rule 8 and `SKILL.md` no longer describe the role as a
+single-line box, and the label-caps entry drops a retired-ladder weight from its comment.
+
+---
+
 ## 2026-09-14 (v2026.09.14.6) — The CTA's edge gets a value: `color.action-active`
 
 Decided by Jason. `components.button-cta.governs-form-submits` said a green submit on a light

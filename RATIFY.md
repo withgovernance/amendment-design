@@ -50,17 +50,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
-### `role-label-caps` sets `line-height: 1`, and nothing says whether a chrome label may wrap
-- **kind:** spec silent
-- **found:** stage 9a, converting the footer's copyright line — then again, immediately, at a site converted in an earlier stage that I had not touched.
-- **evidence:** measured in `Footer` at 390, both `role-label-caps`:
-  - the copyright line wraps to **3 lines at `line-height: 12px`** — the lines touch, no leading at all. I caused this one by dropping the site's `leading-4` as part of taking the role, and restored it.
-  - **"Law & Legislation"**, a section header from an earlier stage, wraps to **2 lines at `line-height: 12px`** and has the same collision. Nobody introduced it in this pass; it has been shipping.
-  - Across the codebase: **79 usages in 43 files**, of which exactly **one** overrides leading — the one I just restored. So this is not a known pattern being managed; it is a property of the role that surfaces only when a label wraps, and it looks fine at every width where it doesn't.
-- **proposes:** decide which of two things is true, because they lead to different code. Either **a chrome label never wraps** — consistent with the existing rule that *"if a label no longer fits at 12px, the layout is the problem"* — in which case both footer sites are layout bugs and the role is correct as drawn. Or **a chrome label may wrap**, in which case `line-height: 1` is a single-line assumption baked into a role used in 79 places, and the role should carry a leading that survives a second line. I have not applied either: the second footer site is left as found, because picking the leading value here is exactly the thing that isn't ratified.
-- **note on the rule this tests:** the single-line assumption is invisible at every width where the label fits, which is most of them — the same shape as the padded-measure and the average-glyph findings. A default that is correct in the common case and silently wrong in the uncommon one is not caught by looking at the common case.
-- **blocks:** nothing. Stage 9a shipped with the one regression I introduced repaired and the pre-existing one queued rather than guessed at.
-
 ### The cut-out is real, and it is worse in light than in dark
 - **kind:** spec silent — the check `.28` asked for, answered
 - **found:** stage 9b, rendering `Sidebar/FullBleedNeighbour` in both schemes against the cut-out question rather than the edge question.

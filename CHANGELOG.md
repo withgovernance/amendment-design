@@ -8,6 +8,37 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-14 (v2026.09.14.16) — Entry points state the current rule; a retirement is a deletion
+
+Decided by Jason. The entry points had become changelogs: `README.md` ran to 6,100 words of
+dated retirements, measurements of retired faces, provenance notes and corrections of
+corrections; `SKILL.md`, which voyager loads as the skill its agents read, carried the same;
+`DESIGN-HARD-RULES.md` wrapped its rules in the incidents that produced them. **A dated "X was
+retired" in an entry point reads downstream as guidance about X** — it is how retired values
+kept resurfacing, and every retirement sweep made it worse, because the sweep wrote the
+retirement down instead of deleting the value.
+
+The rule, now in `CLAUDE.md`: an entry point states each rule as it stands, in role and token
+names, pointing at its `DESIGN.md` key. No dates, no "replaced", no measurements of retired
+things, no restated values. Rationale lives here. `tools/check-retired.mjs` enforces the half it
+can: an exemption marker in `README.md`, `SKILL.md` or `DESIGN-HARD-RULES.md` is itself a hit.
+
+- `README.md` — 6,123 → 2,655 words, a map of the current system; twelve places where it
+  contradicted the spec now follow the spec.
+- `SKILL.md` — 1,727 → 739 words: workflow, registers, roles, the rules most often broken, and a
+  pointer to the checklist rather than a second copy of it.
+- `DESIGN-HARD-RULES.md` — every rule kept, each with its key, stories and superseded figures
+  cut. It gains three rules ratified in this cycle and missing from the checklist: every
+  `color.action` plate carries its ring, the two empty-state components, and count rows follow
+  the ask. Its note that glass collapses to "solid zinc" is corrected for dark.
+- `CLAUDE.md` — current operating rules; three claims that were false today removed (a consumer
+  CI guard that does not exist, and two directories that do not).
+
+`DESIGN.md` keeps its reasoning inline for now; splitting rules from rationale there is a
+separate decision.
+
+---
+
 ## 2026-09-14 (v2026.09.14.15) — The sweep `body-count-is-a-band` owed
 
 Conformance. v2026.08.28.20 ruled that `measure.body` does not set 69 characters — a count is a

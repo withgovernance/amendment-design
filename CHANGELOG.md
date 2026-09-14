@@ -8,6 +8,41 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-14 (v2026.09.14.3) — Dark secondary ink moves to 60%; the withdrawn number was right
+
+Decided by Jason. `--text-secondary` dark moves 55% → 60%, matching light.
+
+**The dark figure withdrawn at v2026.08.29.5 stands.** Swept at every pixel of the band the
+product paints in dark (`--canvas-live` plus the body's three `.dark` lobes, cross-checked
+pixel-for-pixel against a Storybook render), 55% measures **4.22:1 at the centre of the blue
+lobe**, at 1440 and 390 alike — under the 4.5:1 floor. 60% measures **4.73:1**. The 5.96 that
+got the number withdrawn reproduces exactly on the `--aurora` token and nowhere the product
+paints: the "two methods agree" were two methods measuring the wrong band. Neither oklab
+interpolation, `bg-fixed`, nor viewport size moves the worst point.
+
+**It also closes a failure nobody had filed.** `material-ultrathin` has no fill in dark, so
+secondary ink on it sits on the band with little between: **4.49:1 at 55%, 5.05:1 at 60%**,
+at the blue lobe. That is the tier `AskDetailCounts` and `card-empty` ship on.
+
+A card is not the binding case — on `material-regular` dark at the band's peak, 55% is
+already 5.62:1. The bare band is, and so is anything nearly transparent over it.
+
+Swept: `color.text.secondary-dark`; the `the-aurora-is-three-things` record; `README.md`,
+which quoted the ramp as three percentages and the semantic inks as three retired ramp steps,
+now cites the tokens; `preview/color-ink-opacity.html`, which restated both schemes' ink as
+literals — light at the pre-v2026.08.29.3 value, dark at the retired dark weight scale — now
+reads the tokens. The paper scope stays 55%, deliberately: paper is an opaque, aurora-free
+ground.
+
+**Owed by voyager, and it is the whole change:** the product paints secondary ink through
+the `secondary-text` utility, which on voyager main is still `@apply text-black/55
+dark:text-white/55`, plus 186 hardcoded `white/55` sites. **So light's move to 60% at
+v2026.08.29.3 has never reached a pixel either.** One line — the utility reading
+`var(--text-secondary)` — reaches every call site in both schemes; the hardcoded sites are the
+sweep (`a-token-with-no-consumers-is-not-a-token`).
+
+---
+
 ## 2026-09-14 (v2026.09.14.2) — `in oklab` lands on the aurora token, and its reason did not survive a render
 
 `the-aurora-is-three-things` said on 2026-08-29 that the token "now carries `in oklab`
@@ -1154,6 +1189,8 @@ token already resolves per-scheme. The 178 hardcoded sites are the sweep, and a 
 banning the literal outside the token layer keeps them from returning.
 
 ### And my dark number is withdrawn pending re-measurement
+
+> ~~Withdrawn~~ — reinstated 2026-09-14 (v2026.09.14.3): re-measured at 4.22:1; the 5.96 was the token band.
 
 I reported the shipping dark band failing at **4.28:1**. The consumer's reconstruction
 gives **5.96:1**, which is also what I had measured earlier by a different method. **Two

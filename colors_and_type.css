@@ -393,7 +393,7 @@
 /* Dark mode is applied either by .dark on a parent or by prefers-color-scheme */
 .dark, :root[data-theme="dark"] {
   --text-primary:   rgb(255 255 255 / 87%);
-  --text-secondary: rgb(255 255 255 / 55%);
+  --text-secondary: rgb(255 255 255 / 60%);
   --text-tertiary:  rgb(255 255 255 / 38%);
   --border-hairline: rgb(255 255 255 / 20%);
   --border-subtle:   rgb(255 255 255 / 10%);
@@ -1021,7 +1021,7 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   /* The sheet IS the paper canvas: a cream fill is an ink wash across a whole
      page, it bands on consumer printers, and the stock already has a colour. */
   .paper-cream, .paper-parchment { background: none; box-shadow: none; }
-  /* Ink is RE-BASED, not flattened. The 87/55/38 scale is how ink sits on a
+  /* Ink is RE-BASED, not flattened. The three-rung ink scale is how ink sits on a
      page; * { color: #000 } deletes it. Tertiary does not print. */
   :root {
     --text-primary: rgb(0 0 0 / 100%);

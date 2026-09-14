@@ -171,9 +171,9 @@ Every screen is composed of an **ink layer** (permanent: serif headings, Midnigh
 - **The seal** — **no colour at all.** A blind emboss, pressed into the paper: highlight up-left, warm shadow down-right. Issued artifacts only (post-send confirmation, Receipt, envelope postage corner), and it needs paper beneath it — an emboss has nothing to press into on glass. **Oxblood is retired from the system entirely** as of 2026-08. There is no red here now except semantic danger.
 - **Slate Blue** (`slate-400/500/600`) — functional. Focus ring, page-load progress, icon-button hover. Never carries brand meaning; only confirms attention.
 - **Momentum is no longer a separate token.** `--color-momentum` now aliases `--color-action`. Because action and success share a hue, **fill carries the difference**: a filled green plate means *do this*; an unfilled green mark means *this happened*. That rule still needs writing properly.
-- **Semantic** — `emerald-700` (success), `amber-700` (warning), `red-600` (danger). Conventional only.
+- **Semantic** — `--color-success`, `--color-warning`, `--color-danger`. Conventional only.
 
-**Text** is opacity on black/white at three rungs (87% / 55% / 38%, Apple HIG). This works *only* because the aurora is monochromatic and low-chroma; a more chromatic backdrop would break the invariant.
+**Text** is opacity on black/white at three rungs (`--text-primary` / `--text-secondary` / `--text-tertiary`, Apple HIG). This works *only* because the aurora is monochromatic and low-chroma; a more chromatic backdrop would break the invariant.
 
 ### Typography
 

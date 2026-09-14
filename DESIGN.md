@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.14.2
+# spec-version:   v2026.09.14.3
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -633,7 +633,7 @@ color:
     secondary-light: "rgb(0 0 0 / 60%)"
     tertiary-light:  "rgb(0 0 0 / 38%)"
     primary-dark:    "rgb(255 255 255 / 87%)"
-    secondary-dark:  "rgb(255 255 255 / 55%)"
+    secondary-dark:  "rgb(255 255 255 / 60%)"
     tertiary-dark:   "rgb(255 255 255 / 38%)"
   border:
     hairline-light: "rgb(0 0 0 / 5%)"
@@ -4790,6 +4790,12 @@ a11y:
         and it was built on the wrong band.
     (2) DARK FAILS TOO. This file said "dark needs no change: 55% white is
         5.96:1". That was the token band. The shipping band is 4.28:1.
+        RE-MEASURED 2026-09-14, after CHANGELOG v2026.08.29.5 withdrew the
+        dark figure: swept at every pixel of the shipping dark band, 55% is
+        4.22:1 at the centre of the blue lobe, at 1440 and 390 alike, and 60%
+        is 4.73:1. The withdrawal's 5.96 was the token band a second time.
+        Dark `--text-secondary` moved to 60% at v2026.09.14.3, so the ink
+        alone satisfies the invariant in both schemes.
     (3) THE BAND DOES NOT NEED TO CHANGE AT ALL. At 60% secondary the
         shipping values PASS in both schemes, so the invariant is satisfied
         by the ink alone. THERE IS NO SECOND VISUAL MIGRATION: no page

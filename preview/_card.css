@@ -115,11 +115,14 @@ body::before {
 }
 
 /* --- the card's own titling --------------------------------------------- */
-/* .sub was max-width: 80ch until 2026-08-04. `ch` is the advance width of the
-   zero glyph of the element carrying the rule, so a count written in it is not
-   the count that renders — 80ch of 14px Newsreader is 101 characters. Stated
-   now as a counted line in rem: 69 characters, the target from
-   DESIGN.md -> spacing.measure. See explorations/What 65ch Measures.html. */
+/* .sub's width is the measure.body line, re-derived in rem for this rule's
+   smaller size (DESIGN.md -> spacing.measure: the rem is re-derived when a
+   role size changes). It states no character count, because a count is a
+   measurement of a set line of specific prose, not a property of a width
+   (spacing.measure.body-count-is-a-band). It was a `ch` length until
+   2026-08-04; `ch` is the advance width of the zero glyph of the element
+   carrying the rule, so a length written in it does not set the line it
+   appears to name. */
 h1 {
   font-family: var(--font-serif);
   font-variation-settings: var(--serif-display);

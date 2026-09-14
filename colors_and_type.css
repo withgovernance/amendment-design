@@ -16,7 +16,7 @@
    excellent chrome and wrong as a body face (wide, soft, evenly weighted, so
    word silhouettes flatten at paragraph length) and had no italic at all, which
    is why every italic in the system had to be serif. Newsreader (variable, with
-   a real opsz axis) + IBM Plex Mono complete the trio. */
+   a real opsz axis) + IBM Plex Mono complete the trio. retired-ok: history */
 /* Archivo is self-hosted above. Newsreader (variable, with a real opsz axis) +
    IBM Plex Mono still come from Google Fonts — neither has a local cut and
    neither carries a width axis to lose, so CDN delivery is fine. */
@@ -109,7 +109,7 @@
      The label is INK, not white. At this lightness white measures 2.90:1 and
      ink 6.42:1; the reverse is true below about L .55, and between roughly
      L .55–.60 NEITHER clears 4.5:1. Do not move --color-action's lightness
-     without re-measuring the label. */
+     without re-measuring the label. retired-ok: history */
   --color-action:        oklch(.66 .148 160);
   --color-action-hover:  oklch(.72 .150 161);
   --color-action-active: oklch(.60 .145 160);  /* ~6 points of headroom before
@@ -124,7 +124,7 @@
      the paper, not pigment applied to it. So the seal is a blind emboss —
      highlight up-left, warm shadow down-right, no ink at all. Oxblood was
      retired from the system entirely in 2026-08; these are shadow values on
-     paper, not a brand accent. Use the .seal-emboss role below. */
+     paper, not a brand accent. Use the .seal-emboss role below. retired-ok: history */
   --seal-highlight: rgb(255 255 255 / 90%);   /* @kind color */
   --seal-shadow:    rgb(96 62 28 / 30%);      /* @kind color */
   --seal-bite:      rgb(96 62 28 / 10%);      /* @kind color */
@@ -240,7 +240,7 @@
 
      ALWAYS set an opsz stop. The axis defaults high, and a Scotch roman at the
      display end has hairlines far too fine for body text — use the two stops
-     below and never one value for both. */
+     below and never one value for both. retired-ok: history */
   --font-serif: 'Newsreader', ui-serif, Georgia, serif;
   /* The two optical stops. Display sits just off the 72 extreme so the
      hairlines keep authority without thinning to a wire; text sits at roughly
@@ -272,7 +272,7 @@
      NOTE the presets are NOT monotonic in width: chrome (125) is wider than
      display (120). Width is not a single escalating ladder — it distinguishes
      the CLERICAL register from the EDITORIAL one. Display escalates by size and
-     weight; ceremonial, by tracking. Do not "fix" this into 100/110/120/125. */
+     weight; ceremonial, by tracking. Do not "fix" this into 100/110/120/125. retired-ok: history */
   /* BODY IS 104, NOT THE AXIS DEFAULT — do not "tidy" this to 100. Widening a
      face LOWERS its character count. Measured in a 28rem column at 16px:
      Readex at HEXP 2 (what the system was calibrated on) = 56 chars; Archivo at
@@ -283,7 +283,7 @@
      1.028 at 106, true 1.000 at ~102). Full parity with Readex needs ~110,
      which is where lowercase stops reading as a text register. 104 is the
      deliberate compromise between parity and rest state, not a rounding.
-     `ch` remains banned: these are counted characters of the rendered face. */
+     `ch` remains banned: these are counted characters of the rendered face. retired-ok: history */
   --sans-body:       "wdth" 104;   /* @kind font */  /* paragraphs, UI text */
   --sans-chrome:     "wdth" 125;   /* @kind font */  /* institutional chrome */
   --sans-display:    "wdth" 120;   /* @kind font */  /* display register */
@@ -301,7 +301,8 @@
      point: HEXP is on the permanent grep set and a silent fallback would
      defeat it. Mapping, for anyone reading old code:
        hexp-2/10/40 -> --sans-body   hexp-60 -> --sans-chrome
-       hexp-80 -> --sans-display     hexp-100 -> --sans-ceremonial */
+       hexp-80 -> --sans-display     hexp-100 -> --sans-ceremonial
+     retired-ok: deletion record and migration map */
 
   /* Sans weight scale — ONE scale, both modes. The former parallel dark
      scale was retired 2026-08: it doubled every weight decision and the
@@ -325,7 +326,7 @@
      THE COST: --sans-semibold moves 497 → 600, +13% ink. That is the CTA label,
      the chrome label, the ceremonial register and the seal — all get visibly
      heavier. Correct (they were rendering as Medium under a SemiBold name), but
-     it is the change you will see. Body moves 362 → 400, +5%. */
+     it is the change you will see. Body moves 362 → 400, +5%. retired-ok: history */
   --sans-thin:       100;      /* @kind font */
   --sans-extralight: 200;      /* @kind font */
   --sans-light:      300;      /* @kind font */
@@ -530,7 +531,7 @@
   font-size: 1.125rem;
   /* Was a raw 200 — below --sans-thin and off the scale entirely. Archivo at
      extralight is finer than Readex was at the same number, so this sits at the
-     token and no lower. */
+     token and no lower. retired-ok: history */
   font-weight: var(--sans-extralight);  line-height: 1.5;
   color: var(--text-secondary);
 }
@@ -563,7 +564,7 @@
    (spacing.measure.lede-count-is-a-band). It used to be written `52ch`,
    and because a larger face has a wider zero that bought back nearly all the
    width it was meant to give up: 600px against the body column's 636px, one
-   character of difference to the eye. See DESIGN.md → spacing.measure. */
+   character of difference to the eye. See DESIGN.md → spacing.measure. retired-ok: history */
 .role-lede {
   font-family: var(--font-serif);
   font-variation-settings: var(--serif-text);
@@ -609,7 +610,7 @@
    at 20px and genuinely hard at 14. That is not a fault in the face; it is the
    old rule asking small italic to do too much, and it would recur with any
    real serif. Merriweather's italic was just flat enough to hide it.
-   Changed 2026-08. .role-metadata-italic is kept as a deprecated alias. */
+   Changed 2026-08. .role-metadata-italic is kept as a deprecated alias. retired-ok: history */
 .role-metadata, .role-metadata-italic {
   font-family: var(--font-serif);
   font-variation-settings: 'opsz' 16, 'wght' 420;
@@ -644,7 +645,7 @@
    ships a real italic at every weight, so inline emphasis inside sans copy is
    now a drawn italic and needs no role of its own — just <em>. Do NOT read this
    as a licence for sans italic display or sans pull quotes: quoted voice is
-   still serif. */
+   still serif. retired-ok: history */
 em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader italic in serif */
 .role-quote {
   font-family: var(--font-serif);
@@ -943,7 +944,7 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
    which is why the spec art looked wider than the render. Now sized to ~54% of
    the inner die at every size, and the 0.06em letter-spacing is GONE: on a
    single glyph, tracking is pure trailing space, so it shoved the letter left
-   of the die's centre. */
+   of the die's centre. retired-ok: history */
 .seal-emboss {
   width: 84px; height: 84px; border-radius: var(--radius-full);
   display: grid; place-items: center; flex: none;
@@ -991,7 +992,7 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
    filled with serif prose measured 636px = 97 characters, which nobody chose.
    The count is the intent; the rem is the value; re-derive when a face or a
    role size changes. Target 69 characters, ceiling 75.
-   Mobile-first: the min() means these never need a breakpoint. */
+   Mobile-first: the min() means these never need a breakpoint. retired-ok: quotes the defect */
 .measure      { max-width: min(28rem, 100% - 2rem); }
 /* CORRECTED 2026-08-28: this said "69 chars of role-body-serif @16px". Measured,
    it sets a BAND of roughly 58-64 — statutory prose lowest, because it has the

@@ -49,7 +49,7 @@ Full list in `DESIGN-HARD-RULES.md`. The ones most often broken:
 
 - **Green fill rule** — a filled green plate is a control (*press me*); green ink is a report (*this happened*). Green appears where a crowd is counted or on the primary act. Conversation views are green-free. Meters/ribbons exempt.
 - **The CTA carries an INK label, not white.** The fill's lightness was chosen *for* the ink. Flat, never a gradient.
-- **No red except semantic danger** (`--color-danger`). No violet/pink/magenta accents. No amber except warning. Oxblood is retired.
+- **No red except semantic danger** (`--color-danger`). No violet/pink/magenta accents. No amber except warning. Oxblood is retired. <!-- retired-ok: prohibition -->
 - **12px type floor**, no chrome exception. Headings never ALL CAPS — uppercase has three homes: `role-label-caps`, `role-designation`, `role-ceremonial`.
 - **Targets ≥44px, CTA 48px** — by `min-height` or an expanded hit area, never padding. Appearance and target are two geometries.
 - **No transform transitions, no `scale()`, no `brightness()`.** Hover = one background step + one shadow tier. Motion lives on exactly two surfaces: Receipt bloom, Commons accrual. Streaming is not motion.
@@ -62,6 +62,7 @@ Full list in `DESIGN-HARD-RULES.md`. The ones most often broken:
 
 Prose that quotes a weight, hex, or size is an uncontrolled copy of a token. It ages silently and **survives edits the token name would not — because a specific number looks deliberate.** Nobody re-derives `497`; it reads as a measurement someone took. It re-entered this spec twice, once in a block written the same week the recalibration was ratified.
 
+<!-- retired-ok: the permanent grep set -->
 The retired weight ladder — `160 227 295 362 430 497 565 632` — is a permanent grep set. So are `Merriweather`, `Readex`, `HEXP`, `Oxblood`, `#7f1d1d`.
 
 ## Dark mode has no independent type metrics
@@ -81,10 +82,10 @@ Three of these six caught real problems on their first manual run.
 
 ## Traps
 
-1. **The entry point is the stalest file here, precisely because it is the most read and least rendered.** `SKILL.md` taught Merriweather, oxblood, wax seals, and "pull from `ui_kits/`" for 24 days after each was retired — so every consuming agent inherited August 1st and looked like it was ignoring the design system. It wasn't; it was obeying. **When a decision lands in `DESIGN.md`, grep the entry points for the value it retires in the same pass. An entry point is a specimen too.**
+1. **The entry point is the stalest file here, precisely because it is the most read and least rendered.** `SKILL.md` taught Merriweather, oxblood, wax seals, and "pull from `ui_kits/`" for 24 days after each was retired — so every consuming agent inherited August 1st and looked like it was ignoring the design system. It wasn't; it was obeying. **When a decision lands in `DESIGN.md`, grep the entry points for the value it retires in the same pass. An entry point is a specimen too.** <!-- retired-ok: quotes the defect -->
 2. **A rule the spec names but no stylesheet implements is a literal waiting to happen.** `role-*` was referenced from the beginning and existed nowhere in CSS, so every call site improvised. The role layer *is* the enforcement surface.
 3. **Nothing that isn't rendered stays true.** Unshown specimens went wrong; unrendered prose went wrong. If a rule has no specimen, assume it is violated somewhere.
-4. **A brief or a doc that restates values is a copy of the system.** Briefs name roles. wireframer's handoff shipped `Oxblood #7f1d1d` with hover and pressed values three weeks after retirement, specific enough to be believed.
+4. **A brief or a doc that restates values is a copy of the system.** Briefs name roles. wireframer's handoff shipped `Oxblood #7f1d1d` with hover and pressed values three weeks after retirement, specific enough to be believed. <!-- retired-ok: quotes the defect -->
 5. **Read production before rewriting a rule** — but don't mistake it for authority. It is the live truth about what is being built, which is evidence, not permission.
 
 ## Consumers

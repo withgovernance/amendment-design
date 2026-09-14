@@ -168,7 +168,7 @@ Every screen is composed of an **ink layer** (permanent: serif headings, Midnigh
 
 - **Midnight Indigo** (`slate-700/800/900`) — primary. Default button, active nav, selected card border, ink on the tab bar. Reads *ink on archival paper*. This is the user's trail.
 - **Momentum green** (`oklch(.66 .148 160)`) — **action and the crowd, one colour.** CTA, FAB, co-sign, counts, thresholds, answered positions. Sampled from the shipped `--aurora-curtain`, not authored from nothing. Its label is **ink, not white** — at this lightness white measures 2.90:1 and ink 6.42:1. Same value in both modes.
-- **The seal** — **no colour at all.** A blind emboss, pressed into the paper: highlight up-left, warm shadow down-right. Issued artifacts only (post-send confirmation, Receipt, envelope postage corner), and it needs paper beneath it — an emboss has nothing to press into on glass. **Oxblood is retired from the system entirely** as of 2026-08. There is no red here now except semantic danger.
+- **The seal** — **no colour at all.** A blind emboss, pressed into the paper: highlight up-left, warm shadow down-right. Issued artifacts only (post-send confirmation, Receipt, envelope postage corner), and it needs paper beneath it — an emboss has nothing to press into on glass. **Oxblood is retired from the system entirely** as of 2026-08. There is no red here now except semantic danger. <!-- retired-ok: records the retirement -->
 - **Slate Blue** (`slate-400/500/600`) — functional. Focus ring, page-load progress, icon-button hover. Never carries brand meaning; only confirms attention.
 - **Momentum is no longer a separate token.** `--color-momentum` now aliases `--color-action`. Because action and success share a hue, **fill carries the difference**: a filled green plate means *do this*; an unfilled green mark means *this happened*. That rule still needs writing properly.
 - **Semantic** — `--color-success`, `--color-warning`, `--color-danger`. Conventional only.
@@ -179,12 +179,14 @@ Every screen is composed of an **ink layer** (permanent: serif headings, Midnigh
 
 Three families, three jobs:
 - **Newsreader** — every heading. A serif on the ink layer is a deliberate civic gesture: *document, not app*.
-- **Archivo** — variable sans, weight 100–900, `wdth` axis 62–125, **and a true italic at every weight**. Replaced Readex Pro 2026-08-13: Readex was excellent chrome and wrong as a body face — wide, soft, evenly weighted, so word silhouettes flatten at paragraph length — and it had no italic at all, which is why every italic in the system had to be serif. Registers are the four `--sans-*` width presets: body `wdth` **104** (see below), institutional chrome (navbar, breadcrumbs, labels, status stamps, column heads) `wdth` **125** with `--track-chrome` `.12em` uppercase letterspacing, display `wdth` 120 (hero stat numerals), ceremonial `wdth` 125 + `--track-ceremonial` `.20em` — Receipt place-of-issue caption, wax-seal monogram, once per page. The old width aliases were deleted 2026-08-28; a reference to one now fails loudly.
+- **Archivo** — variable sans, weight 100–900, `wdth` axis 62–125, **and a true italic at every weight**. Replaced Readex Pro 2026-08-13: Readex was excellent chrome and wrong as a body face — wide, soft, evenly weighted, so word silhouettes flatten at paragraph length — and it had no italic at all, which is why every italic in the system had to be serif. Registers are the four `--sans-*` width presets: body `wdth` **104** (see below), institutional chrome (navbar, breadcrumbs, labels, status stamps, column heads) `wdth` **125** with `--track-chrome` `.12em` uppercase letterspacing, display `wdth` 120 (hero stat numerals), ceremonial `wdth` 125 + `--track-ceremonial` `.20em` — Receipt place-of-issue caption, wax-seal monogram, once per page. The old width aliases were deleted 2026-08-28; a reference to one now fails loudly. <!-- retired-ok: replacement history -->
 
   The weight scale was recalibrated to canonical 100…900 on 2026-08-13 — the old interpolated ladder ran up to a full two steps under its own names in Archivo (`preview/type-weight-ladder.html` has the measured ledger). `--sans-semibold` 497 → 600 is where the visible change lands.
 
+  <!-- retired-ok: measured against the retired face -->
   Two costs, stated. **Chrome is ~4% narrower**: Readex at HEXP 60 measured 334px for `ARCHIVE COMMONS WRITING DESK` at 12px; Archivo at `wdth` 125 — its ceiling — measures 322px. Recovered in tracking, not size. And because chrome now sits at the ceiling, **width can no longer separate four registers**; ceremonial is distinguished by tracking and size. Correct hierarchy anyway, but a spec change rather than a token swap.
 
+  <!-- retired-ok: measured against the retired face -->
   **Body is `wdth` 104, not the axis default** (applied 2026-08-14) — do not tidy it to 100. Widening a face *lowers* its character count: in a 28rem column at 16px, Readex at `HEXP` 2 — the face the measure was calibrated on — set 56 characters, while Archivo sets 63 at `wdth` 100, **60 at 104**, 59 at 106, 57 at 110. At the default, body copy narrowed by seven characters a line when the family changed and nobody chose that. 104 is also where Archivo's *O* is a circle (ink ratio 1.014; true 1.000 at ≈102); parity with Readex needs ≈110, where lowercase stops reading as a text register. Still open: `measure.body`'s 69 characters were counted in **Newsreader**, so **sans body copy has no counted measure yet**.
 - **IBM Plex Mono** — machine identifiers in body prose (`§ 791.02(1)`, `42 U.S.C. § 1983`), line numbers, copy-pasteable strings, `<code>`. Not for referent names — bill numbers in chrome are chrome-width sans, not mono.
 
@@ -206,6 +208,7 @@ Spacing is a 4px unit. Inset scale `sm 8 / md 16 / lg 24 / xl 32`. Containers ar
 
 **A measure is not a container.** The measure caps the element that *holds the text*, and it is stated mobile-first in rem derived from a counted line: `measure.body` = `min(28rem, 100% - 2rem)`; `measure.lede` = `min(24rem, 100% - 2rem)`. Each sets a band of counts, not a count — a count is a measurement of a set line of specific prose (`spacing.measure.body-count-is-a-band`). The range is `measure.range`.
 
+<!-- retired-ok: quotes the defect -->
 **`ch` is banned from length tokens** (2026-08-04) **and from prose that states a length** (2026-09-14). `ch` is the advance width of the zero glyph *of the element carrying the rule* — so `max-width: 65ch` on a page shell that inherits the body **sans**, wrapping **serif** prose, measured 636px and **97 characters**. Nobody chose 97. Two ambiguities stack: zero vs average glyph within a face (42% in Newsreader) and measuring face vs rendered face between two (50%). Self-consistency fixes only the second — 65ch set on the serif itself is still 92 characters. See `explorations/What 65ch Measures.html`.
 
 Radii are a short, meaningful scale:
@@ -339,7 +342,7 @@ Imagery color: **monochromatic, slate-700 ink, low chroma**. The Blue Hour palet
 - **No** colored left-border accents. **No** rounded-corner-with-gradient-only ornamentation.
 - Status is communicated by a **dot, badge, or rubber stamp** — never by tinting the entire card.
 - Avatars are **Midnight Indigo**, not a wax seal. An avatar is the user's trail.
-- Rubber stamps: **green ink** for enacted/signed — `--color-success` on light, `--color-action` under inversion, never action green as light-mode ink — slate for procedural, amber for vetoed, red-600 only for dead. Oxblood left the stamp palette in 2026-08.
+- Rubber stamps: **green ink** for enacted/signed — `--color-success` on light, `--color-action` under inversion, never action green as light-mode ink — slate for procedural, amber for vetoed, red-600 only for dead. Oxblood left the stamp palette in 2026-08. <!-- retired-ok: records the retirement -->
 
 **Serif belongs to the canvas.** A serif heading on the aurora is the institution speaking. **Inside a container, the heading takes `role-ui-heading`** — sans, sentence case — because the card is furniture and its header labels the furniture. The carve-out is what's inside: a container holding the *record* (a bill page, statutory text, the Receipt, a quoted excerpt) keeps serif; one holding a list or a control does not. A header that shares its content's voice stops being a frame.
 
@@ -386,6 +389,7 @@ They become noise when they sit next to a text label that already names the thin
 
 ### Logo / brand marks
 
+<!-- retired-ok: records the retirement -->
 Amendment uses a custom wordmark + a monogram seal. **The seal carries no ink**: it is a blind emboss (`.seal-emboss`) — highlight up-left, warm shadow down-right, the mark a deformation of the sheet rather than pigment on it. The "flat circular Oxblood" description here was stale; oxblood was retired from the system entirely in 2026-08. Issued artifacts only, and it needs paper under it — see `assets/` and `preview/color-seal.html`. Jurisdiction seals exist as **public-domain vector watermarks**, drawn monochromatic slate at 5–8% opacity behind the bill-page title block. Their visual form is **pending** in the canonical spec; the placeholders shipped here are flagged accordingly.
 
 ---
@@ -397,7 +401,7 @@ If you're an agent creating a mockup, slide, prototype, or screen:
 2. Drop [`colors_and_type.css`](./colors_and_type.css) into your `<head>`. Use the role classes (`.role-display-hero`, `.material-regular`, `.shadow-raised`).
 3. Copy assets from [`assets/`](./assets/) — do not regenerate logos or seals from text descriptions.
 4. Pick the **register**, not the room: Live (chat, asks, co-signs — on the aurora), Reading (bills, statutes — on paper), Writing (letters, call scripts — on parchment), or Issued (certificates). Four registers, five rooms; the rooms are narrative and the registers carry the tokens. Each has different defaults for canvas, material, lead family, and motion posture.
-5. Treat [`ui_kits/web/`](./ui_kits/web/) as an **archive** — spec-derived, built before repo access, superseded on four values (oxblood FAB, black dark-overlays, near-black paper, seal + signature line as canonical). Do not port from it. Build from the role classes and the `preview/` cards; `github.md` maps screens to real production source.
+5. Treat [`ui_kits/web/`](./ui_kits/web/) as an **archive** — spec-derived, built before repo access, superseded on four values (oxblood FAB, black dark-overlays, near-black paper, seal + signature line as canonical). Do not port from it. Build from the role classes and the `preview/` cards; `github.md` maps screens to real production source. <!-- retired-ok: lists what the archive got wrong -->
 
 Caveats to keep in mind:
 - **The `resistbot/voyager` repo is readable** as of 2026-08-02 — see `github.md` for the sync record and screen map. Earlier material in this system is spec-derived and has not all been reconciled against source; the UI kit in particular was built before access and is faithful to the spec, not to the implementation. Check the code before rewriting a rule.

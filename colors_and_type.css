@@ -225,8 +225,9 @@
   --paper-cream:     oklch(0.965 0.012 85);   /* Archive bill text */
   --paper-parchment: oklch(0.955 0.018 80);   /* Writing Desk letter */
 
-  /* Aurora — three-stop Blue Hour, oklch, low chroma */
-  --aurora: radial-gradient(ellipse 72% 55% at 15% 8% in oklab, oklch(0.88 0.05 250 / 0.40), transparent), radial-gradient(ellipse 58% 46% at 85% 20% in oklab, oklch(0.90 0.04 270 / 0.32), transparent), radial-gradient(ellipse 60% 50% at 50% 90% in oklab, oklch(0.94 0.03 60 / 0.28), transparent); /* @kind color */
+  /* Aurora — three-stop Blue Hour, oklch, low chroma. The values the product
+     paints (color.the-aurora-is-three-things), corrected 2026-09-14. */
+  --aurora: radial-gradient(ellipse 72% 55% at 15% 8% in oklab, oklch(0.84 0.09 250 / 0.48), transparent), radial-gradient(ellipse 58% 46% at 85% 20% in oklab, oklch(0.86 0.07 270 / 0.40), transparent), radial-gradient(ellipse 60% 50% at 50% 90% in oklab, oklch(0.92 0.05 60 / 0.40), transparent); /* @kind color */
 
   /* --------------------------- TYPE --------------------------------- */
   --font-sans:  'Archivo', ui-sans-serif, system-ui, sans-serif;
@@ -419,7 +420,7 @@
   --paper-parchment: oklch(0.77 0.067 64);
   --paper-cream-lamp: radial-gradient(ellipse 60% 38% at 50% 32% in oklab, oklch(1 0.055 80 / 0.55), transparent 78%), radial-gradient(ellipse 110% 80% at 50% 30% in oklab, oklch(0.97 0.06 78 / 0.35), transparent 80%); /* @kind color */
   --paper-parchment-lamp: radial-gradient(ellipse 60% 38% at 50% 32% in oklab, oklch(1 0.06 76 / 0.55), transparent 78%), radial-gradient(ellipse 110% 80% at 50% 30% in oklab, oklch(0.97 0.065 74 / 0.35), transparent 80%); /* @kind color */
-  --aurora: radial-gradient(ellipse 72% 55% at 15% 8% in oklab, oklch(0.30 0.08 250 / 0.45), transparent), radial-gradient(ellipse 58% 46% at 85% 20% in oklab, oklch(0.25 0.06 270 / 0.35), transparent), radial-gradient(ellipse 60% 50% at 50% 90% in oklab, oklch(0.40 0.03 60 / 0.20), transparent); /* @kind color */
+  --aurora: radial-gradient(ellipse 72% 58% at 15% 6% in oklab, oklch(0.50 0.13 255 / 0.62), transparent), radial-gradient(ellipse 60% 48% at 88% 16% in oklab, oklch(0.42 0.10 285 / 0.50), transparent), radial-gradient(ellipse 62% 55% at 50% 94% in oklab, oklch(0.48 0.05 55 / 0.26), transparent); /* @kind color */
   --focus-color: var(--color-functional-light);
 }
 

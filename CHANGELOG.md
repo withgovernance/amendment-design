@@ -8,6 +8,29 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-14 (v2026.09.14.13) — The aurora token takes the band the product paints
+
+Conformance with a ruling that was written down and never carried out.
+`the-aurora-is-three-things` decided on 2026-08-29 that the body's values win — they ship and
+they pass — and that the token "should be corrected to match what ships, or deleted, so it stops
+being a competing definition". Neither happened, and for sixteen days every measurement taken
+"on the token band" described a band no user sees, including the 5.96 that got a correct dark
+contrast number withdrawn.
+
+`--aurora` and `color.background.aurora-light`/`-dark` now carry the body's three lobes in both
+schemes, geometry included — dark shifts its hues to 255 / 285 / 55 and its lobes slightly, as
+the body does. Corrected rather than deleted, because specimens paint it: `.amendment-app`, the
+`.pane.live` panes from v2026.09.14.12, and now `preview/color-aurora-merged.html` and
+`preview/surface-system.html`, which drew their own boosted copies of the old values over the
+opaque `--canvas` instead of `--canvas-live`. **The spec, the specimens and the product now paint
+one band.** The band invariant holds on it: `--text-secondary` at 60% measures 5.24:1 light and
+4.73:1 dark at the worst point.
+
+The token is still consumed by nothing in voyager — the body hardcodes the same gradient. Owed by
+voyager: the body's `background-image` reads `var(--aurora)`, so the copy stops being a copy.
+
+---
+
 ## 2026-09-14 (v2026.09.14.12) — The independent review of this pass, and what it caught
 
 Conformance, no rule change. The read-only `design-reviewer` rendered the six specimens this pass

@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.14.12
+# spec-version:   v2026.09.14.13
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -649,14 +649,16 @@ color:
   background:
     canvas-light: "#f4f4f5"
     canvas-dark:  "#18181b"
+    # CORRECTED 2026-09-14 to the values the product paints — see
+    # the-aurora-is-three-things. Dark shifts its hues to 255 / 285 / 55.
     aurora-light:
-      - "radial-gradient(ellipse 72% 55% at 15% 8% in oklab,  oklch(0.88 0.05 250 / 0.40), transparent)"
-      - "radial-gradient(ellipse 58% 46% at 85% 20% in oklab, oklch(0.90 0.04 270 / 0.32), transparent)"
-      - "radial-gradient(ellipse 60% 50% at 50% 90% in oklab, oklch(0.94 0.03  60 / 0.28), transparent)"
+      - "radial-gradient(ellipse 72% 55% at 15% 8% in oklab, oklch(0.84 0.09 250 / 0.48), transparent)"
+      - "radial-gradient(ellipse 58% 46% at 85% 20% in oklab, oklch(0.86 0.07 270 / 0.40), transparent)"
+      - "radial-gradient(ellipse 60% 50% at 50% 90% in oklab, oklch(0.92 0.05 60 / 0.40), transparent)"
     aurora-dark:
-      - "radial-gradient(ellipse 72% 55% at 15% 8% in oklab,  oklch(0.30 0.08 250 / 0.45), transparent)"
-      - "radial-gradient(ellipse 58% 46% at 85% 20% in oklab, oklch(0.25 0.06 270 / 0.35), transparent)"
-      - "radial-gradient(ellipse 60% 50% at 50% 90% in oklab, oklch(0.40 0.03  60 / 0.20), transparent)"
+      - "radial-gradient(ellipse 72% 58% at 15% 6% in oklab, oklch(0.50 0.13 255 / 0.62), transparent)"
+      - "radial-gradient(ellipse 60% 48% at 88% 16% in oklab, oklch(0.42 0.10 285 / 0.50), transparent)"
+      - "radial-gradient(ellipse 62% 55% at 50% 94% in oklab, oklch(0.48 0.05 55 / 0.26), transparent)"
 
 typography:
   fontFamilies:
@@ -4925,7 +4927,11 @@ a11y:
     page to a lighter band to match a token nothing consumes would be a
     visual change bought for nothing. THE TOKEN IS THE THING THAT IS WRONG —
     it should be corrected to match what ships, or deleted, so it stops being
-    a competing definition. That is the --canvas lesson exactly, and this is
+    a competing definition.
+    CORRECTED 2026-09-14 (v2026.09.14.13): the token now carries the body's
+    three lobes in both schemes, geometry and all, so the spec, the
+    specimens and the product paint one band. Every figure above marked
+    as measured "on the token band" describes the retired values. That is the --canvas lesson exactly, and this is
     the second time the same shape has appeared in this file.
   a-story-proves-what-it-rendered: >-
     RATIFIED 2026-08-29, from a stub bug that had EVERY SIGNED-IN STORY IN

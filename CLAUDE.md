@@ -49,11 +49,11 @@ Full list in `DESIGN-HARD-RULES.md`. The ones most often broken:
 
 - **Green fill rule** — a filled green plate is a control (*press me*); green ink is a report (*this happened*). Green appears where a crowd is counted or on the primary act. Conversation views are green-free. Meters/ribbons exempt.
 - **The CTA carries an INK label, not white.** The fill's lightness was chosen *for* the ink. Flat, never a gradient.
-- **No red except semantic danger** (red-600). No violet/pink/magenta accents. No amber except warning. Oxblood is retired.
-- **12px type floor**, no chrome exception. Headings never ALL CAPS — uppercase is chrome only (12px, `wdth` 125, 0.12em).
+- **No red except semantic danger** (`--color-danger`). No violet/pink/magenta accents. No amber except warning. Oxblood is retired.
+- **12px type floor**, no chrome exception. Headings never ALL CAPS — uppercase has three homes: `role-label-caps`, `role-designation`, `role-ceremonial`.
 - **Targets ≥44px, CTA 48px** — by `min-height` or an expanded hit area, never padding. Appearance and target are two geometries.
 - **No transform transitions, no `scale()`, no `brightness()`.** Hover = one background step + one shadow tier. Motion lives on exactly two surfaces: Receipt bloom, Commons accrual. Streaming is not motion.
-- **Never bare text inside the aurora band.** Placement protects contrast, not hue.
+- **Text may sit on the aurora; coloured ink may not.** The band is bounded so `--text-secondary` clears 4.5:1 everywhere; coloured ink still needs an opaque ground.
 - **Serif italic is quoted human voice ≥1.125rem.** Below that, roman 600 (`emphasis-serif-inline`). A caveat is roman; a voice is italic.
 - **`ch` is banned from length tokens and from spec prose.** Intent as a counted line, value in rem.
 - Icons are **Phosphor**, never Lucide.

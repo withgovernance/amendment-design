@@ -8,6 +8,23 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-14 (v2026.09.14.5) — The entry points catch up with three rulings
+
+Conformance, no rule change. Found while sweeping for this pass's retirements:
+
+- `SKILL.md` and `DESIGN-HARD-RULES.md` still gave uppercase **two** homes in places; it has had
+  three since v2026.08.31.4 (`role-designation`).
+- `DESIGN-HARD-RULES.md` rule 1 said the band invariant was "not yet true" because of the
+  five-lobe curtain. The curtain is marketing-only (`the-aurora-is-three-things`), and since
+  v2026.09.14.3 the token clears the product's band in both schemes. What is not yet true is
+  the product: voyager's secondary ink is a literal utility, not the token. The rule now says
+  which half is missing.
+- `CLAUDE.md` still taught "never bare text inside the aurora band", gone from the entry points
+  since chrome receded at v2026.08.28.23, the danger ink as red-600, and uppercase as chrome
+  only.
+
+---
+
 ## 2026-09-14 (v2026.09.14.4) — A ban written for tokens covers the prose that describes them
 
 Decided by Jason. `spacing.measure.rule` bans `ch` from length tokens; the two `lede` counts

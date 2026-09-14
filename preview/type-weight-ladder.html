@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="_card.css">
 <style>
 .card{padding:18px 22px}
+/* Seven columns, three of them nowrap, have a min-content wider than a phone's
+   card. The table scrolls inside its own box so the page never does. */
+.ladder{overflow-x:auto}
 table{border-collapse:collapse;width:100%}
 th{font-family:var(--font-sans);font-variation-settings:var(--sans-chrome);font-weight:var(--sans-semibold);font-size:10px;text-transform:uppercase;letter-spacing:var(--track-chrome);color:var(--text-tertiary);text-align:left;padding:0 8px 7px 0;border-bottom:1px solid var(--border-subtle);white-space:nowrap}
 th.n,td.n{text-align:right}
@@ -28,6 +31,7 @@ code{font-family:var(--font-mono);font-size:11.5px}
 <div class="card">
   <div class="role-label-caps" style="margin-bottom:8px">Sans weight scale · recalibrated 2026-08-13</div>
   <p class="lede">The old ladder interpolated Readex's 160–700 range to compensate for Readex reading optically heavy. Archivo needs no compensation, and its named instances at 100…900 are the designer's own drawn stops. Ink coverage of a fixed pangram at 16px says how far the names had drifted.</p>
+  <div class="ladder" tabindex="0" role="region" aria-label="Weight ladder measurements">
   <table>
     <thead><tr><th>Token</th><th>Specimen</th><th class="n">Now</th><th class="n">Was</th><th class="n">Ink</th><th class="n">Δ ink</th><th>Reading of the old value</th></tr></thead>
     <tbody>
@@ -42,6 +46,7 @@ code{font-family:var(--font-mono);font-size:11.5px}
       <tr><td class="tok">--sans-black</td><td class="spec" style="font-weight:900">Handgloves</td><td class="n num">900</td><td class="n was">700</td><td class="n num">488,180</td><td class="n d up">+32.0%</td><td class="was"><b>was exactly Bold</b></td></tr>
     </tbody>
   </table>
+  </div>
   <p class="foot"><b>The drift grew monotonically up the ladder</b> — the bottom three rungs were within 8% of their names, the top three were one to two full steps under them, and 800/900 were unreachable. <b>The cost is concentrated in one token:</b> <code>--sans-semibold</code> moves 497 → 600, and that token carries the CTA label, the chrome label, the ceremonial register and the seal, so all four get visibly heavier. Correct — they were rendering as Medium under a SemiBold name — but it is the change you will see. Body moves +5%. Measured with <code>scratch/weight-measure.html</code>.</p>
 </div>
 </body>

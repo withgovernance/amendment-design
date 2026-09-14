@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.14.11
+# spec-version:   v2026.09.14.12
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2970,8 +2970,11 @@ components:
     ultrathin 1.01/1.01, thin 1.07/1.08, regular 1.13/1.12, opaque canvas
     1.05/1.06. Against the 3:1 a non-text signal owes, the material channel
     is not close, and no choice of tier makes it close.
-    AND UNDER INVERSION IT RUNS BACKWARDS. Every dark tier is a black
-    overlay, so a RAISED plate paints DARKER than the trough around it. A
+    AND UNDER INVERSION IT RUNS BACKWARDS. Every dark tier composites
+    darker than the band beneath it — first as a black overlay, and since
+    v2026.09.14.10 as the canvas's own hue, which is darker than the lit
+    aurora it sits on — so a RAISED plate paints DARKER than the trough
+    around it. Re-checked on the canvas-hue tiers: still darker. A
     control leaning on the tier alone reverses its meaning between schemes,
     which is exactly how AMD-2002 shipped a selected chip that read as the
     unselected one.

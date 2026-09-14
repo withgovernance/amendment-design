@@ -191,6 +191,15 @@ a:hover {
   background: var(--canvas-live);
   color: var(--text-primary);
 }
+/* A pane that shows a MATERIAL paints the Live register's ground: the aurora
+   over --canvas-live. Dark tiers are the canvas's own hue
+   (materials.dark-glass-takes-the-canvas-hue), so glass over a flat
+   --canvas-live is its own ground and cannot show. Panes that measure ink
+   against the opaque ground stay flat. */
+.pane.live {
+  background-color: var(--canvas-live);
+  background-image: var(--aurora);
+}
 .pane > .pane-label {
   display: block;
   font-variation-settings: var(--sans-chrome);

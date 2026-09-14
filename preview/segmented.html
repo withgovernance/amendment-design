@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- @dsCard group="Components" name="Components — Segmented control" subtitle="No entry in components.* · a material step is not a selection signal in either scheme" viewport="1120x1080" -->
+<!-- @dsCard group="Components" name="Components — Segmented control" subtitle="components.segmented-control · a material step is not a selection signal in either scheme" viewport="1120x1080" -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -58,8 +58,8 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 .a .is-sel { background: rgb(255 255 255 / 85%); box-shadow: var(--shadow-raised); color: var(--text-primary); }
 .dark .a .is-sel { background: color-mix(in srgb, var(--canvas-live) 41%, transparent); }
 
-/* --- READING B: ink, weight and a border carry it; the plate confirms ----
-   components.card-select at inline scale — borderSelected plus primary ink. */
+/* --- READING B: ink and weight carry it; the plate confirms ---------------
+   Ratified; the selected segment takes no border (v2026.09.03.6). */
 .b .is-sel {
   color: var(--text-primary);
   font-weight: var(--sans-semibold);
@@ -86,7 +86,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 <h2>A — the material step carries selection</h2>
 <p class="note">The selected segment is the only raised member: a plate one material tier above the track, with <b>--shadow-raised</b>. Read the two segments, then read the separation table below.</p>
 <div class="panes">
-  <div class="pane">
+  <div class="pane live">
     <span class="pane-label">Light</span>
     <div class="pane-body">
       <div class="host material-regular a">
@@ -104,7 +104,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
       </div>
     </div>
   </div>
-  <div class="pane dark">
+  <div class="pane dark live">
     <span class="pane-label">Dark</span>
     <div class="pane-body">
       <div class="host material-regular a">
@@ -127,7 +127,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 <h2>B — ink and weight carry it; the plate only confirms</h2>
 <p class="note">Selected takes the primary ink at semibold; unselected keeps the secondary ink at normal. The plate is unchanged from A — what changed is that it is no longer the thing being read. <b>No border:</b> at v2026.09.03.5 the segment's focus ring moved inside to −2px, and a 2px selected border 2px outside it stacks into a doubled bezel on a 44px control. See <b>components.segmented-control.no-border-amended</b>.</p>
 <div class="panes">
-  <div class="pane">
+  <div class="pane live">
     <span class="pane-label">Light</span>
     <div class="pane-body">
       <div class="host material-regular b">
@@ -145,7 +145,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
       </div>
     </div>
   </div>
-  <div class="pane dark">
+  <div class="pane dark live">
     <span class="pane-label">Dark</span>
     <div class="pane-body">
       <div class="host material-regular b">
@@ -168,17 +168,17 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 <h2>The separation, composited</h2>
 <p class="note">Taken by construction rather than by sampling: base canvas → the brightest aurora lobe at its own stop → <b>components.card</b> at material-regular → the field recess the track is made of → the plate. Position named, per <b>color.ink-ground-is-a-placement</b>. Every tier is listed because the finding is not about one of them.</p>
 <table class="tbl">
-  <tr><th>Plate tier</th><th>Light — plate : track</th><th>Dark — plate : track</th></tr>
+  <tr><th>Plate tier</th><th>Light — plate : track</th><th>Dark — plate : track, black-overlay tiers</th></tr>
   <tr><td>material-ultrathin</td><td class="n">1.01</td><td class="n">1.01</td></tr>
   <tr><td>material-thin</td><td class="n">1.07</td><td class="n">1.08</td></tr>
   <tr><td>material-regular</td><td class="n">1.13</td><td class="n">1.12</td></tr>
   <tr><td>opaque --canvas</td><td class="n">1.05</td><td class="n">1.06</td></tr>
 </table>
-<p class="note" style="margin-top:12px;"><b>No tier reaches 1.15:1 in either scheme</b>, against the 3:1 a non-text signal owes. Sampled off this card's own render at its own position — a different ground, so a different number, per the rule — the shipped pair measures <b>1.11 light and 1.08 dark</b>. The step is visible; it is nowhere near carrying a state on its own. And under inversion it runs backwards: every dark tier is a black overlay, so the raised plate paints <b>darker</b> (11,12,16) than the trough around it (19,22,28). Whatever reading A appears to be doing, it is doing with the ink step it also happens to have.</p>
+<p class="note" style="margin-top:12px;"><b>No tier reaches 1.15:1 in either scheme</b>, against the 3:1 a non-text signal owes. Sampled off this card's own render at its own position — a different ground, so a different number, per the rule — the shipped pair measures <b>1.11 light and 1.08 dark</b>. The step is visible; it is nowhere near carrying a state on its own. And under inversion it runs backwards: a dark tier composites darker than the ground beneath it, so the raised plate paints <b>darker</b> than the trough around it. The dark figures were taken on the black-overlay tiers; re-checked after the tiers took the canvas hue (v2026.09.14.10), the plate is still the darker of the two, so the conclusion stands and the numbers are superseded. Whatever reading A appears to be doing, it is doing with the ink step it also happens to have.</p>
 
 <h2>What the labels measure</h2>
 <table class="tbl">
-  <tr><th>Label</th><th>Light</th><th>Dark</th></tr>
+  <tr><th>Label</th><th>Light</th><th>Dark — at the pre-v2026.09.14.3 55%</th></tr>
   <tr><td>selected — --text-primary</td><td class="n pass">14.33</td><td class="n pass">12.87</td></tr>
   <tr><td>unselected — --text-secondary</td><td class="n pass">5.50</td><td class="n pass">5.90</td></tr>
   <tr><td>unselected — --text-tertiary</td><td class="n fail">2.63</td><td class="n fail">3.53</td></tr>

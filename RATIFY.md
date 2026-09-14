@@ -60,6 +60,27 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **checked 2026-09-14:** Paper is reachable again. No page of `Amendment UX/Wireframes` (UI Wireframes, Bot Scripts, iOS) has an artboard named 3A/3B/3C or text containing "of 25" or "District 76". The only "notified" copy is on the iOS page's "Ask detail · no responses" — *"Both NY-14 candidates have been notified…"* — so a notification concept exists in the low-fi, at a different trigger. PR #782 closed unmerged 2026-09-09, so the caption never shipped. Nothing to decide on the design side until the product answer lands.
 - **blocks:** nothing shipping. It blocks trusting `3A`/`3B`/`3C` as a source, which is the more expensive thing to get wrong.
 
+### `card-empty` and `card-placeholder` do not say what type their message takes
+- **kind:** unowned default
+- **found:** `design-reviewer` on `preview/cards.html`, after v2026.09.14.8 split the two components.
+- **evidence:** the specimen sets one `role-caption` line. Voyager's `card-empty` utility sets no size, and its call sites carry a `role-ui-heading` title plus a `text-sm` message (`app/(data)/dispatches/page.tsx:526–529`). The spec names padding, ink and alignment and says nothing about the message's role, or whether a title is allowed.
+- **proposes:** render both shapes — one caption line; a `role-ui-heading` title over a `role-body` message — inside the 32px panel at 390, both schemes, and let the container decide.
+- **blocks:** nothing. Voyager's migration of the dashed sites (handoff 2026-09-14) can land either way.
+
+### May a specimen print a value it resolved at render time?
+- **kind:** unowned default
+- **found:** `design-reviewer`, comparing `preview/color-ink-opacity.html` (now prints no values, only token names) with `preview/measure.html` (prints computed widths and counts).
+- **evidence:** "cite the token, never the number" governs typed prose. A value a specimen computes from the live stylesheet cannot go stale the way a typed one does — but it can be computed by a retracted method: `measure.html` still divides a width by an average glyph and labels the result "measured", printing 69 / 47 / 97 where the first set line counts 64 / 41 / 91. That half is conformance and is owed regardless.
+- **proposes:** decide whether render-time values are allowed in specimens, and if so, that they must be measured the way the spec measures (a set line, a painted pixel), never derived.
+- **blocks:** nothing.
+
+### `_card.css` builds its own chrome labels — is specimen furniture exempt from the role layer?
+- **kind:** two readings
+- **found:** `design-reviewer`, across the specimens reviewed on 2026-09-14.
+- **evidence:** `_card.css` declares itself "not system guidance", yet `.voice-eyebrow`, `.lbl` and `.pane-label` are hand-built uppercase labels at 0.06–0.08em tracking and tertiary ink, where `role-label-caps` is `--track-chrome` and secondary ink. Hard rule 10 bans a hand-assembled register; the file's own disclaimer implies its furniture is outside the rule.
+- **proposes:** render the specimen frame both ways — furniture on `role-label-caps`, and as shipped — and decide whether a specimen's frame is held to the rules it demonstrates. A frame that breaks them teaches the break.
+- **blocks:** nothing.
+
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by

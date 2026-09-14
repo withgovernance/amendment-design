@@ -8,6 +8,34 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-14 (v2026.09.14.12) — The independent review of this pass, and what it caught
+
+Conformance, no rule change. The read-only `design-reviewer` rendered the six specimens this pass
+touched, at 390 and 1440, both schemes. What it found in work from this pass is fixed here:
+
+- `components.selection-is-ink` said "every dark tier is a black overlay" — false since
+  v2026.09.14.10. The cause is restated (a dark tier composites darker than the band beneath it,
+  in either construction) and the conclusion re-checked: the raised plate still paints darker.
+- **A flat dark pane cannot show a canvas-hue material** — the glass composites to its own
+  ground, 1.00:1. `preview/_card.css` gains `.pane.live`, which paints the Live ground (aurora
+  over `--canvas-live`), used where a pane shows a material: `cards.html`, `forms.html`,
+  `segmented.html`. Panes that measure ink against the opaque ground stay flat.
+- `cards.html` pushed `card-placeholder` off-screen at 390, set both new components at 14px
+  where the spec says 32px, had no dark pane, and drew the material tiles in literals; the
+  v2026.09.14.8 entry's "now shows both components from tokens" was true of two tiles in four.
+  It now wraps, pads to spec, renders both schemes, and reads every value from a role or token.
+- `forms.html` kept the ratified dark-glass section in its amber "unratified" frame and its
+  token-band figures; it now shows the product-band figures and no warning styling.
+  `segmented.html` marks its dark figures as taken on the retired tiers and 55% ink.
+- `accent-inventory.html` had "oxblood" back in a specimen, narrating a divergence the spec
+  deleted rather than softened.
+- `color-ink-opacity.html` was titled "on paper" while rendering the screen scope; paper's
+  `--text-secondary` is a different value.
+
+Proposed ratifications the review raised are queued in `RATIFY.md`.
+
+---
+
 ## 2026-09-14 (v2026.09.14.11) — The rail cut-out is recorded, not ruled
 
 Decided by Jason: no rule. The recession entry named a receded rail flush against full-height

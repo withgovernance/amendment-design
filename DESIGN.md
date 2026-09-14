@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.14.3
+# spec-version:   v2026.09.14.4
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1544,6 +1544,15 @@ spacing:
       and 601px on a serif element. A length that computes differently per
       consumer is not a token, and it cannot be audited by reading, which is
       why four sessions of reading missed it.
+      THE BAN COVERS SPEC PROSE TOO, RATIFIED 2026-09-14. It was written for
+      tokens, and two `lede` counts slipped past it in prose, where a length
+      stated in `ch` reads as a measure and is copied like one. So: no
+      length in this file, an entry point, a brief or a specimen caption is
+      stated in `ch`, except where the text quotes a retired value as the
+      defect. The same extension applies to EVERY ban worded for tokens — a
+      unit or value barred from a token is barred from prose that describes
+      one. Enforced by grep, not by reading: `\b[0-9.]+ch\b` outside quoted
+      defects and `history/`.
   rhythm:
     section-y-mobile: 64px
     section-y-desktop: 128px

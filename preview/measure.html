@@ -45,7 +45,7 @@ dd code,.tok code{font-family:var(--font-mono);font-size:12px;color:var(--text-s
 </div>
 
 <dl class="rules">
-  <dt>The unit</dt><dd><b><code>ch</code> is banned from length tokens.</b> It is the advance width of the zero glyph <i>of the element carrying the rule</i> &mdash; so <code>65ch</code> on a shell that inherits the body <b>sans</b>, wrapping <b>serif</b> prose, rendered 97 characters. Nobody chose 97.</dd>
+  <dt>The unit</dt><dd><b><code>ch</code> is banned from length tokens, and from prose that states a length.</b> It is the advance width of the zero glyph <i>of the element carrying the rule</i> &mdash; so <code>65ch</code> on a shell that inherits the body <b>sans</b>, wrapping <b>serif</b> prose, rendered 97 characters. Nobody chose 97.</dd>
   <dt>Two ambiguities</dt><dd>Zero vs average glyph <i>within</i> a face is 42% in Newsreader; measuring face vs rendered face <i>between</i> two is 50%. Self-consistency fixes only the second: <code>65ch</code> set on the serif itself is still 92 characters.</dd>
   <dt>Where it goes</dt><dd>On the text, not the shell. A page may be wide; the paragraph is capped. <code>container.*</code> are shells, <code>measure.*</code> are measures.</dd>
   <dt>The counts</dt><dd><b>Target 69, ceiling 75.</b> <code>measure.body</code> <code>min(28rem, 100% - 2rem)</code>; <code>measure.lede</code> <code>min(24rem, 100% - 2rem)</code>. The <code>min()</code> is why neither needs a breakpoint. Metadata grids, rolls and tallies are not copy and may run wider.</dd>

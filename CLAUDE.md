@@ -55,7 +55,7 @@ Full list in `DESIGN-HARD-RULES.md`. The ones most often broken:
 - **No transform transitions, no `scale()`, no `brightness()`.** Hover = one background step + one shadow tier. Motion lives on exactly two surfaces: Receipt bloom, Commons accrual. Streaming is not motion.
 - **Never bare text inside the aurora band.** Placement protects contrast, not hue.
 - **Serif italic is quoted human voice ≥1.125rem.** Below that, roman 600 (`emphasis-serif-inline`). A caveat is roman; a voice is italic.
-- **`ch` is banned from length tokens.** Intent as a counted line, value in rem.
+- **`ch` is banned from length tokens and from spec prose.** Intent as a counted line, value in rem.
 - Icons are **Phosphor**, never Lucide.
 
 ## Cite the token, never the number

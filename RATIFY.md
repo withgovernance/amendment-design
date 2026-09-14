@@ -50,14 +50,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
-### Correction to the `lede` entry above — the "physical ceiling" was not one
-- **kind:** conformance, against my own queue entry two above
-- **found:** designer-21 measured it before ratifying, and it did not hold.
-- **evidence:** I computed the "ceiling" by growing one word list until it exceeded the width, which yields the ceiling **of that glyph mix**, not the maximum the line can hold. Measured across mixes: at 384px, statutory 44 / general **47** / narrow prose 63 / narrowest glyphs 70; at 448px, statutory 62 / general 63 / narrow prose 87 / narrowest glyphs 98. **47 is reachable on ordinary prose, and 69 is reachable at 448px.**
-- **proposes:** nothing new — the annotation fix already ratified is correct and both widths stay. Recorded because the difference decides the fix and my framing pointed at the wrong one: **a number at the top of a realistic band is an annotation problem; an unreachable number would have been a width problem.** As written, my entry argued for changing 24rem and 28rem, which would have been wrong.
-- **also:** the two bad `lede` numbers both used `ch`, which this system bans — the ban's wording scopes it to *tokens*, so prose slipped past. That gap exists for every unit banned that way, and it is the greppable part.
-- **blocks:** nothing.
-
 ### `role-label-caps` sets `line-height: 1`, and nothing says whether a chrome label may wrap
 - **kind:** spec silent
 - **found:** stage 9a, converting the footer's copyright line — then again, immediately, at a site converted in an earlier stage that I had not touched.

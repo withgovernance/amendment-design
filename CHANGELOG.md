@@ -8,6 +8,22 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-14 (v2026.09.14.4) — A ban written for tokens covers the prose that describes them
+
+Decided by Jason. `spacing.measure.rule` bans `ch` from length tokens; the two `lede` counts
+retired at v2026.08.28.21 were both stated in `ch` in prose, and the ban's wording let them
+through. A length in prose reads as a measure and is copied like one, so the ban now covers
+spec prose, entry points, briefs and specimen captions — except where a retired value is
+quoted as the defect. **Generalised: every unit or value barred from a token is barred from
+prose describing one.** Enforced by grep (`\b[0-9.]+ch\b`, outside quoted defects), not by
+reading.
+
+It costs nothing today: the four `ch` lengths left in the spec all quote the retired value
+as the defect. `SKILL.md`, `README.md`, `CLAUDE.md` and `preview/measure.html` carry the new
+wording.
+
+---
+
 ## 2026-09-14 (v2026.09.14.3) — Dark secondary ink moves to 60%; the withdrawn number was right
 
 Decided by Jason. `--text-secondary` dark moves 55% → 60%, matching light.

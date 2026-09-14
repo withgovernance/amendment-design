@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.14.8
+# spec-version:   v2026.09.14.9
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2379,6 +2379,27 @@ components:
     chrome and takes role-label-caps. THE TEST IS THE TEXT, not the position
     alone — a bare number attached to a heading, or a labelled statement
     about the section.
+  a-count-row-is-reach: >-
+    RATIFIED 2026-09-14, decided by Jason. A GEOGRAPHY ROW UNDER A COUNT
+    APPEARS ONLY WHERE THE VIEWER'S SIGNATURE CAN MOVE THAT COUNT. The ask
+    page's "Co-signs near you" shipped five rows for every personal account
+    — nationwide, your state, your U.S. House district, your state senate
+    district, your state house district — whatever the ask's level or
+    state. A federal ask listed the viewer's state chambers; a Wisconsin ask
+    listed a Minnesota viewer's own districts. Where no counter exists the
+    row renders an em dash, so it never invents a zero and never tells anyone
+    to recruit where recruiting cannot help — honest, and still noise: rows
+    of the viewer's own unreachable geography, on the one card whose job is
+    to say where a signature counts.
+    SO THE ROWS FOLLOW THE ASK: its LEVEL decides which chambers appear, and
+    its STATE decides whether any state-scoped row appears at all. An
+    out-of-state viewer on a state ask sees nationwide and nothing beneath
+    it. Nearest first, nationwide last. The component therefore needs the
+    ask's level and state in scope, which it did not have.
+    THE SHAPE IS SHARED with role-label-caps' single-line assumption: correct
+    in the common case, silently undefined in the uncommon one, and invisible
+    in stories that render only the common case. A count component's stories
+    include the out-of-scope viewer.
   a-register-change-is-a-width-change: >-
     RATIFIED 2026-08-29 after THREE regressions found by the owner in one
     pass, all from the same migration and all with one cause: A ROLE WAS

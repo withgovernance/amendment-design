@@ -8,6 +8,28 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-14 (v2026.09.14.9) — A count's geography rows follow the ask
+
+Decided by Jason. New `components.a-count-row-is-reach`: a geography row under a count appears
+only where the viewer's signature can move that count.
+
+The queue entry was raised against an unmerged ledger (PR #782, closed 2026-09-09), and read
+as moot for a moment. **It is live on voyager main anyway:** `AskDetailCounts`, in the ask
+sidebar since #588, shows every personal account five rows — nationwide, state, U.S. House,
+state senate, state house — and is given neither the ask's level nor its state. A federal ask
+lists the viewer's state chambers; an out-of-state viewer on a state ask sees their own
+districts. The counter keys on the viewer's geography, so those rows are em-dashed rather than
+zero — no false "go recruit" — but they are the viewer's unreachable geography on the one card
+whose job is to say where a signature counts.
+
+The ask's level decides which chambers appear; its state decides whether any state-scoped row
+appears. Nearest first, nationwide last. Count stories include the out-of-scope viewer, since
+the common case is the only one the current stories render.
+
+Owed by voyager: `AskDetailCounts` takes the ask's level and state and filters its rows.
+
+---
+
 ## 2026-09-14 (v2026.09.14.8) — `card-empty` was two components under one name
 
 Decided by Jason. The spec drew `card-empty` as a dashed placeholder; voyager shipped it as a

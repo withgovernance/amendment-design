@@ -87,15 +87,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** decide whether dark glass is neutral or takes the canvas's hue. If the 2026-08-28 ruling generalises it generalises to **all five tiers**, and it is a `materials` change with nothing to do with forms — filed from forms only because that is the surface where a whole page of glass makes it visible.
 - **blocks:** nothing. The specimen ships both readings and commits to neither.
 
-### The ask ledger's chamber rows have no term for the ask's own state
-- **kind:** spec silent
-- **found:** `amd-ask-rail-three-surfaces`, reviewing `AskCosignLedger` on a Wisconsin state ask. Raised as a question about the *statewide* row; the statewide row turned out to be correct and the chamber rows above it are the case with no rule.
-- **evidence:** `cosignLedgerRows` takes the ask's `level` and the viewer's `address`, and `AskDetail` passes `level={ask.level}` only — the ask's **state is never in scope**, so the function structurally cannot compare it against the viewer's. An out-of-state viewer on a state ask therefore gets their own `STATE_LOWER`/`STATE_UPPER` rows, which cannot move that ask. The docstring claims "only the rows that can move this ask," which is not what the code does for this case.
-  - **The failure is milder than it first reads, and the measurement is why.** Read from deepspace source by the implementing session: `AskCounterResponse` defaults every district field to `None` and only `national` to `0`; `get_counts` keys each district row on the **viewer's** state + district, so a Minnesota viewer on a Wisconsin ask looks up a counter that exists only if someone in that Minnesota district signed this Wisconsin ask. Normally nothing returns, the field stays `None`, and voyager renders the em dash. **The path never invents a `0`** — so the "nobody here yet, go recruit" misreading cannot occur. What ships is two em-dashed rows of the viewer's own unreachable geography.
-- **proposes:** decide which is true, because they lead to different code. Either **the chamber rows are suppressed when the viewer's state differs from the ask's** — consistent with the docstring, and it requires threading the ask's state into `cosignLedgerRows`, which it currently has no access to. Or **em-dashed rows correctly report "your districts, no reach here"**, in which case the docstring is the thing that is wrong and should say so.
-- **note on the shape:** this is the same class as the `role-label-caps` wrap entry above — a rule that is correct in the common case (viewer in the ask's state) and silently undefined in the uncommon one. Neither is visible from the common case, and the ask rail's stories all render the in-state viewer.
-- **blocks:** nothing. The rows are honest as drawn; only their selection is unruled.
-
 ### Three ask-rail artboards carry copy the product cannot perform — and their provenance is the open question
 - **kind:** waiting on a person; **kind depends on the answer** (copy error, or spec ahead)
 - **found:** reviewing the same branch against artboards labelled `3A`/`3B`/`3C` (phone dark, phone light, desktop).

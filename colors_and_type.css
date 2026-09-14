@@ -562,8 +562,9 @@
    at one family and one weight the lede, the facts and the action all landed
    at the same value and nothing told the eye where to start.
    One sentence. Second person. Directly beneath the bill title, above
-   provenance. Measure is `measure.lede` — 47 characters at 20px, which is
-   visibly shorter than the body measure's 69. It used to be written `52ch`,
+   provenance. Measure is `measure.lede`, visibly shorter than `measure.body`;
+   its count is a band measured on set lines, not a property of the width
+   (spacing.measure.lede-count-is-a-band). It used to be written `52ch`,
    and because a larger face has a wider zero that bought back nearly all the
    width it was meant to give up: 600px against the body column's 636px, one
    character of difference to the eye. See DESIGN.md → spacing.measure. */
@@ -573,7 +574,7 @@
   font-size: 1.25rem;
   font-weight: 450;
   line-height: 1.55;
-  max-width: min(24rem, 100% - 2rem);   /* measure.lede — 47 chars @20px */
+  max-width: min(24rem, 100% - 2rem);   /* measure.lede */
   color: var(--text-primary);
   text-wrap: pretty;
 }
@@ -1004,7 +1005,7 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
    border box, so px-* is subtracted FROM the measure rather than sitting outside
    it — measured, a 448px token with lg:px-12 set a 352px line. Gutter outside,
    measure on the box that holds the line. See typography.measure. */
-.measure-lede { max-width: min(24rem, 100% - 2rem); }  /* 47 chars of role-lede @20px */
+.measure-lede { max-width: min(24rem, 100% - 2rem); }  /* role-lede; its count is a band — spacing.measure.lede-count-is-a-band */
 
 /* ---- Print: the mailed letter ---------------------------------------------
    DESIGN.md -> profilesPrint, decided 2026-08-04. Paper is not a degraded

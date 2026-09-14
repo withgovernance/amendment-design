@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.14.5
+# spec-version:   v2026.09.14.6
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2094,26 +2094,32 @@ components:
       3:1 a non-text boundary owes, so A GREEN SUBMIT ON A LIGHT CARD TAKES
       ITS EDGE FROM THIS COMPONENT'S RING, NOT FROM THE FILL. The label is
       unaffected either way: action-label on action is 6.42:1 in both schemes.
+    ring: >-
+      RATIFIED 2026-09-14. color.action-active, 1px, in BOTH modes, at rest,
+      on hover and when pressed — the component's non-text boundary. The
+      sentence above named a ring and no value; what shipped was a 3% black
+      ring, which measured 1.06–1.07:1 against a light material-regular card
+      over the product's band. Nothing was carrying the 3:1.
+      color.action-active measures 3.49:1 against that card at the worst
+      light position and 4.37:1 in dark, where the fill already clears 3:1 on
+      its own. It is chosen over a neutral alpha because it is the plate's
+      own ramp: a darker step of the same green reads as the plate's edge,
+      and in the render it is all but invisible — the boundary is measured,
+      not seen. It is one value, not a per-scheme pair.
+      THE FILL DOES NOT MOVE. color.action.label-rule fixes its lightness
+      against both labels, and thickening the plate to buy an edge would
+      spend that. EVERY color.action PLATE OWES THE SAME EDGE — button-fab
+      and a toast's action button fill with the same colour over arbitrary
+      content, and take the same ring.
     implementation-home: >-
       STATED 2026-08-27. The CTA recipe lives in ONE place: the Button
-      component's default variant. There is deliberately no `role-action`
+      component's `cta` variant. There is deliberately no `role-action`
       CSS utility — role-* is the TYPE layer, and a button is fill + ink +
       radius + padding + elevation + three interaction states, which is a
       component, not a role. A parallel utility would give the CTA two
       sources of truth, and the one that lost would drift silently.
       colors_and_type.css ships a .role-action for standalone HTML
       specimens; that is a specimen affordance, not the production home.
-    known-divergence: >-
-      MEASURED 2026-08-27, and this is the live one. Production's Button
-      default ships an emerald-600 → 700 RADIAL GRADIENT with `text-white!`,
-      and `--color-action` does not exist in globals.css at all. Both halves
-      of this entry's first two lines are therefore violated on the most
-      consequential control in the product — and in exactly the direction
-      the description above warns about: a gradient under a label, and the
-      label pushed to white because ink stopped being legible on it. The ink
-      label is not a preference; it is what the fill's lightness was chosen
-      for. Spec ahead; PR 2 (colour) owns the fix, and it is the highest
-      priority item in it.
     rounded: "0.5rem"
     padding: "0.5rem 1rem"
     typography: "sans body semibold"
@@ -2141,6 +2147,7 @@ components:
     description: Fixed bottom-right action button — Momentum green.
     background: "color.action"
     color: "color.action-label — ink"
+    ring: "color.action-active, 1px — button-cta.ring; the fill is under 3:1 on light content"
     rounded: "0.75rem"
     size: "48px mobile, 56px desktop"
     position: "fixed bottom: 20px; right: 20px; z-index: 10"

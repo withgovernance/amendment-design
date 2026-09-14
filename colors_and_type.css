@@ -915,7 +915,7 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   border: 0;
   border-radius: var(--radius-md);
   padding: 13px 22px;
-  box-shadow: var(--shadow-raised), inset 0 0 0 1px rgb(0 0 0 / 10%);
+  box-shadow: var(--shadow-raised), inset 0 0 0 1px var(--color-action-active);
   cursor: pointer;
   transition: background var(--duration-base) var(--ease-standard),
               box-shadow var(--duration-base) var(--ease-standard);

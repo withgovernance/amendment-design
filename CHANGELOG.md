@@ -8,6 +8,34 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-14 (v2026.09.14.6) — The CTA's edge gets a value: `color.action-active`
+
+Decided by Jason. `components.button-cta.governs-form-submits` said a green submit on a light
+card takes its 3:1 boundary from the component's ring, because `--color-action` is 2.82:1
+against `material-regular`. **The ring it named had no value that did the job.** Measured on
+the real CTA over the product's band, the shipped 3% black ring is **1.06–1.07:1** against
+the card; removing it moves the edge by 0.06. Nothing was carrying the boundary.
+
+**The ring is now `color.action-active`, 1px, both modes, in every state** — 3.49:1 against
+the card at the worst light position, 4.37:1 in dark. Chosen over a neutral alpha (the minimum
+that works is 42% black in light, 34% white in dark) because it is the plate's own ramp: a
+darker step of the same green reads as the plate's edge and in the render is all but
+invisible. One value, not a per-scheme pair. The fill does not move — `color.action.label-rule`
+fixes its lightness against both labels.
+
+**The rule is about the fill, not the component name,** so `button-fab` and a toast's action
+button, which fill with the same colour over arbitrary content and ship no ring, take the same
+one.
+
+Swept with it: the entry's 2026-08-27 known divergence (an emerald gradient with a white
+label) is **deleted, not softened** — production's `cta` variant ships flat `color.action` with
+the ink label — and `implementation-home` now names the `cta` variant, where the recipe
+actually lives. The specimen affordance `.role-action` and `preview/forms.html` carry the ring.
+
+Owed by voyager: the `cta` variant's ring, `fab`, and the toast action button.
+
+---
+
 ## 2026-09-14 (v2026.09.14.5) — The entry points catch up with three rulings
 
 Conformance, no rule change. Found while sweeping for this pass's retirements:

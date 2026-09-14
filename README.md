@@ -111,8 +111,6 @@ Folders
 - [`fonts/`](./fonts/) — **Archivo, self-hosted** (variable roman + italic, `wdth` and `wght` intact) and Amerika Signature (signatures only). Newsreader and IBM Plex Mono come from Google Fonts.
 - [`assets/`](./assets/) — logos, jurisdiction marks, civic illustrations
 - [`preview/`](./preview/) — Design System tab cards over [`preview/_card.css`](./preview/_card.css), the shared card chrome. Since 2026-08-12 every file in the folder carries an `@dsCard` marker: the folder and the tab are the same set.
-- [`scratch/card-audit.html`](./scratch/card-audit.html) — loads every card at its declared width, measures it, and lints the 12px floor. **Run it before writing a viewport marker.**
-- [`ui_kits/web/`](./ui_kits/web/) — recreations of the surfaces as interactive HTML + JSX components
 
 ---
 
@@ -342,7 +340,7 @@ Imagery color: **monochromatic, slate-700 ink, low chroma**. The Blue Hour palet
 - **No** colored left-border accents. **No** rounded-corner-with-gradient-only ornamentation.
 - Status is communicated by a **dot, badge, or rubber stamp** — never by tinting the entire card.
 - Avatars are **Midnight Indigo**, not a wax seal. An avatar is the user's trail.
-- Rubber stamps: **green ink** for enacted/signed — `--color-success` on light, `--color-action` under inversion, never action green as light-mode ink — slate for procedural, amber for vetoed, red-600 only for dead. Oxblood left the stamp palette in 2026-08. <!-- retired-ok: records the retirement -->
+- Rubber stamps: **green ink** for enacted/signed — `--color-success` on light, `--color-action` under inversion, never action green as light-mode ink — slate for procedural, amber for vetoed, `--color-danger` only for dead. Oxblood left the stamp palette in 2026-08. <!-- retired-ok: records the retirement -->
 
 **Serif belongs to the canvas.** A serif heading on the aurora is the institution speaking. **Inside a container, the heading takes `role-ui-heading`** — sans, sentence case — because the card is furniture and its header labels the furniture. The carve-out is what's inside: a container holding the *record* (a bill page, statutory text, the Receipt, a quoted excerpt) keeps serif; one holding a list or a control does not. A header that shares its content's voice stops being a frame.
 
@@ -401,7 +399,7 @@ If you're an agent creating a mockup, slide, prototype, or screen:
 2. Drop [`colors_and_type.css`](./colors_and_type.css) into your `<head>`. Use the role classes (`.role-display-hero`, `.material-regular`, `.shadow-raised`).
 3. Copy assets from [`assets/`](./assets/) — do not regenerate logos or seals from text descriptions.
 4. Pick the **register**, not the room: Live (chat, asks, co-signs — on the aurora), Reading (bills, statutes — on paper), Writing (letters, call scripts — on parchment), or Issued (certificates). Four registers, five rooms; the rooms are narrative and the registers carry the tokens. Each has different defaults for canvas, material, lead family, and motion posture.
-5. Treat [`ui_kits/web/`](./ui_kits/web/) as an **archive** — spec-derived, built before repo access, superseded on four values (oxblood FAB, black dark-overlays, near-black paper, seal + signature line as canonical). Do not port from it. Build from the role classes and the `preview/` cards; `github.md` maps screens to real production source. <!-- retired-ok: lists what the archive got wrong -->
+5. Build from the role classes and the `preview/` cards; `github.md` maps screens to real production source. The old `ui_kits/` did not survive the 2026-08-27 repo split, and is not to be ported from.
 
 Caveats to keep in mind:
 - **The `resistbot/voyager` repo is readable** as of 2026-08-02 — see `github.md` for the sync record and screen map. Earlier material in this system is spec-derived and has not all been reconciled against source; the UI kit in particular was built before access and is faithful to the spec, not to the implementation. Check the code before rewriting a rule.

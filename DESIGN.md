@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.14.9
+# spec-version:   v2026.09.14.10
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1653,33 +1653,56 @@ elevation:
 
 materials:
   # Five glass tiers. Uniform 50px blur (25px for chrome). Fall back to
-  # solid zinc surfaces when the OS sets prefers-reduced-transparency or
-  # prefers-contrast: more.
+  # opaque surfaces — zinc in light, the canvas's own family in dark — when
+  # the OS sets prefers-reduced-transparency or prefers-contrast: more.
+  dark-glass-takes-the-canvas-hue: >-
+    RATIFIED 2026-09-14, decided by Jason, generalising what material-chrome
+    did on 2026-08-28. EVERY DARK TIER IS THE CANVAS'S OWN HUE AT THAT
+    TIER'S OPACITY — a mix of --canvas-live, not black. A neutral black
+    overlay composites to a grey that belongs to no part of the Blue Hour,
+    which is the "grey on blue" a whole page of glass made visible on the
+    dark form register.
+    THREE READINGS WERE RENDERED ON A NON-FORM CARD over the band the product
+    paints, to separate the tier's cost from the form card's. NEUTRAL (as
+    shipped) reads as a near-black slab at the band's warm stop. WARM ADDED
+    LIGHT, from a reference artifact, is the only reading that comes out
+    warm — and at the cool lobe it REMOVES chroma and greys the blue, which
+    is the complaint itself; it is not adopted. CANVAS HUE reads as part of
+    the page at both positions.
+    ITS COST IS THE TIER'S, NOT THE CARD'S, and it is named: pane-to-ground
+    separation drops by roughly a twentieth on every tier (material-regular
+    1.130 to 1.083 at the warm stop, 1.475 to 1.381 at the cool lobe), and
+    what it buys is violet-blue chroma, not warmth. Secondary ink stays
+    above 6:1 on material-regular at both positions. material-ultrathin is
+    too thin for the reading to register and is unchanged in effect.
+    Written as a mix, not a literal, so the tiers follow --canvas-live if
+    the Blue Hour moves. The reduced-transparency collapse already resolves
+    to the canvas family and does not change.
   material-ultrathin:
     description: Toggles, hover states, progress bars, form input backings
     bg-light: "rgb(255 255 255 / 10%)"
-    bg-dark:  "rgb(0 0 0 / 2%)"
+    bg-dark:  "color-mix(in srgb, var(--canvas-live) 2%, transparent)"
     backdropFilter: "blur(50px)"
     ring-light: "1px solid rgb(0 0 0 / 5%)"
     ring-dark:  "1px solid rgb(255 255 255 / 5%)"
   material-thin:
     description: Cards, ghost buttons, secondary containers
     bg-light: "rgb(255 255 255 / 45%)"
-    bg-dark:  "rgb(0 0 0 / 26%)"
+    bg-dark:  "color-mix(in srgb, var(--canvas-live) 26%, transparent)"
     backdropFilter: "blur(50px)"
     ring-light: "1px solid rgb(0 0 0 / 5%)"
     ring-dark:  "1px solid rgb(255 255 255 / 8%)"
   material-regular:
     description: Primary content cards, forms, search bars
     bg-light: "rgb(255 255 255 / 85%)"
-    bg-dark:  "rgb(0 0 0 / 41%)"
+    bg-dark:  "color-mix(in srgb, var(--canvas-live) 41%, transparent)"
     backdropFilter: "blur(50px)"
     ring-light: "1px solid rgb(0 0 0 / 10%)"
     ring-dark:  "1px solid rgb(255 255 255 / 10%)"
   material-thick:
     description: Modals, dropdowns, floating overlays
     bg-light: "rgb(255 255 255 / 95%)"
-    bg-dark:  "rgb(0 0 0 / 60%)"
+    bg-dark:  "color-mix(in srgb, var(--canvas-live) 60%, transparent)"
     backdropFilter: "blur(50px)"
     ring-light: "1px solid rgb(0 0 0 / 15%)"
     ring-dark:  "1px solid rgb(255 255 255 / 12%)"

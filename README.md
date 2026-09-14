@@ -242,7 +242,7 @@ Five tiers, all 50px backdrop-blur (25px for chrome):
 - `material-thick` — modals, dropdowns, floating overlays
 - `material-chrome` — persistent window chrome (navbar, mobile tab bar)
 
-When the OS sets `prefers-reduced-transparency`, all glass collapses to solid zinc surfaces with backdrop-filter removed. Layout does not shift.
+When the OS sets `prefers-reduced-transparency`, all glass collapses to opaque surfaces — zinc in light, the canvas's own family in dark — with backdrop-filter removed. Layout does not shift.
 
 ### Hover, press, focus
 

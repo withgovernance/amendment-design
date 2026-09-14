@@ -8,6 +8,39 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-14 (v2026.09.14.10) — Dark glass takes the canvas's hue, on every tier
+
+Decided by Jason. New `materials.dark-glass-takes-the-canvas-hue`: every dark tier is
+`--canvas-live` at that tier's opacity, the construction `material-chrome` took on 2026-08-28,
+instead of a black overlay.
+
+**The measurement the queue was waiting on:** the same three readings on a non-form card, over
+the band the product paints, both positions. Neutral reads as a near-black slab at the warm
+stop. The warm reading from the reference artifact is the only one that comes out warm, and at
+the cool lobe it removes chroma — `material-regular` 0.056 → 0.042 — greying the blue, which is
+the complaint itself. Canvas hue reads as part of the page at both. **The separation cost is
+the tier's, not the form card's:** every tier loses about a twentieth of pane-to-ground
+separation (`material-regular` 1.130 → 1.083 at the warm stop), and what it buys is violet-blue
+chroma, not warmth. Secondary ink stays above 6:1 on `material-regular`.
+
+**Two corrections to the queue entry, both from the render.**
+- ~~"There is no lamp … zero gradients anywhere inside it"~~ — killed: the artifact paints a
+  warm lamp in `.pane.dark::before`, two radial gradients over the aurora. The retraction read
+  the pane's own `background-image` and missed the pseudo-element. It does not change the
+  decision, because the warm reading fails at the cool lobe on its own terms.
+- The artifact's absolute figures (ground C 0.014, 1.08 → 1.04, secondary 6.11:1) reproduce
+  only on the `--aurora` token, which nothing in the product paints. On the product's band the
+  same comparison is 1.130 → 1.083.
+
+`components.selection-is-ink` stands as written: a canvas-hue tier over the band is still darker
+than its ground, so the "raised plate paints darker than its trough" reasoning holds.
+
+Swept: `preview/forms.html` commits to the ratified reading and its selected segment follows the
+tier; `preview/segmented.html` likewise. The entry points said glass collapses to "solid zinc"
+under reduced transparency, which has been true only in light since 2026-08-28.
+
+---
+
 ## 2026-09-14 (v2026.09.14.9) — A count's geography rows follow the ask
 
 Decided by Jason. New `components.a-count-row-is-reach`: a geography row under a count appears

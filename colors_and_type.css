@@ -690,7 +690,9 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   letter-spacing: var(--track-ceremonial);
 }
 
-/* ---- Material tiers ---- */
+/* ---- Material tiers ----
+   Dark tiers are the canvas's own hue at each tier's opacity, the construction
+   material-chrome took 2026-08-28 — materials.dark-glass-takes-the-canvas-hue. */
 .material-ultrathin {
   background: rgb(255 255 255 / 10%);
   backdrop-filter: blur(50px);
@@ -698,7 +700,7 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   box-shadow: inset 0 0 0 1px rgb(0 0 0 / 5%);
 }
 .dark .material-ultrathin, [data-theme="dark"] .material-ultrathin {
-  background: rgb(0 0 0 / 2%);
+  background: color-mix(in srgb, var(--canvas-live) 2%, transparent);
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 5%);
 }
 .material-thin {
@@ -708,7 +710,7 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   box-shadow: inset 0 0 0 1px rgb(0 0 0 / 5%);
 }
 .dark .material-thin, [data-theme="dark"] .material-thin {
-  background: rgb(0 0 0 / 26%);
+  background: color-mix(in srgb, var(--canvas-live) 26%, transparent);
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 8%);
 }
 .material-regular {
@@ -718,7 +720,7 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   box-shadow: inset 0 0 0 1px rgb(0 0 0 / 10%);
 }
 .dark .material-regular, [data-theme="dark"] .material-regular {
-  background: rgb(0 0 0 / 41%);
+  background: color-mix(in srgb, var(--canvas-live) 41%, transparent);
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 10%);
 }
 .material-thick {
@@ -728,7 +730,7 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   box-shadow: inset 0 0 0 1px rgb(0 0 0 / 15%);
 }
 .dark .material-thick, [data-theme="dark"] .material-thick {
-  background: rgb(0 0 0 / 60%);
+  background: color-mix(in srgb, var(--canvas-live) 60%, transparent);
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 12%);
 }
 .material-chrome {

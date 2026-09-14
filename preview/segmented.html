@@ -56,7 +56,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 
 /* --- READING A: the plate carries selection ----------------------------- */
 .a .is-sel { background: rgb(255 255 255 / 85%); box-shadow: var(--shadow-raised); color: var(--text-primary); }
-.dark .a .is-sel { background: rgb(0 0 0 / 41%); }
+.dark .a .is-sel { background: color-mix(in srgb, var(--canvas-live) 41%, transparent); }
 
 /* --- READING B: ink, weight and a border carry it; the plate confirms ----
    components.card-select at inline scale — borderSelected plus primary ink. */
@@ -66,7 +66,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
   box-shadow: var(--shadow-raised);
   background: rgb(255 255 255 / 85%);
 }
-.dark .b .is-sel { box-shadow: var(--shadow-raised); background: rgb(0 0 0 / 41%); }
+.dark .b .is-sel { box-shadow: var(--shadow-raised); background: color-mix(in srgb, var(--canvas-live) 41%, transparent); }
 
 .tbl { width: 100%; max-width: 46rem; border-collapse: collapse; font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); }
 .tbl th { text-align: left; font-family: var(--font-sans); font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: var(--track-chrome); font-weight: var(--sans-semibold); color: var(--text-secondary); padding: 0 10px 6px 0; }

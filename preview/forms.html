@@ -48,7 +48,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
   transition: background-color 200ms var(--ease-standard), box-shadow 200ms var(--ease-standard); }
 .seg > button.is-sel { color: var(--text-primary); font-weight: var(--sans-semibold);
   background: rgb(255 255 255 / 85%); box-shadow: var(--shadow-raised); }
-.dark .seg > button.is-sel { background: rgb(0 0 0 / 41%); box-shadow: var(--shadow-raised); }
+.dark .seg > button.is-sel { background: color-mix(in srgb, var(--canvas-live) 41%, transparent); box-shadow: var(--shadow-raised); }
 
 /* button-cta: color.action, ink label, flat, 48px declared, ringed in color.action-active. */
 .cta { display: block; width: 100%; min-height: 48px; border: 0; border-radius: var(--radius-md);
@@ -164,11 +164,11 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 
 <h2>Dark glass has no hue, and the warm stop it is accused of cancelling is not there</h2>
 <div class="unrat">
-  <span class="flag">Unratified — both readings, neither decided</span>
-  <p class="note" style="margin-bottom:10px;">Left is what ships: every dark material tier is a pure-black overlay. Right is the reading <b>materials.material-chrome</b> already took on 2026-08-28 for exactly this complaint — the canvas's own hue at the same opacity — generalised to <b>material-regular</b>. Same form, same opacity, one property different.</p>
+  <span class="flag">Ratified v2026.09.14.10 — the canvas's own hue, every dark tier</span>
+  <p class="note" style="margin-bottom:10px;">Left is the retired reading: every dark material tier a pure-black overlay. Right is the reading <b>materials.material-chrome</b> already took on 2026-08-28 for exactly this complaint — the canvas's own hue at the same opacity — generalised to <b>material-regular</b>. Same form, same opacity, one property different.</p>
   <div class="panes">
     <div class="pane dark">
-      <span class="pane-label">Neutral — as shipped</span>
+      <span class="pane-label">Neutral — retired</span>
       <div class="glass g-neutral">
         <div class="rows">
           <div class="row"><span class="role-label-caps">Email</span><input class="f" placeholder="jane@example.com"></div>
@@ -195,7 +195,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
   <p class="note" style="margin-top:12px; margin-bottom:0;">The complaint is real — <b>C 0.008</b> is a neutral grey, and it is the pane a whole form sits on. The diagnosis it arrived under — that neutral glass cancels the aurora's warm stop — is not: at that stop the <em>ground itself</em> composites to C 0.013 at hue 285, cooler than the base canvas and lower in chroma. The warm lobe does not survive its own alpha, so nothing warm is being cancelled, and warm-tinted glass would be inventing a light source rather than admitting one. The canvas-hue reading raises chroma in both places and costs about four hundredths of pane-to-ground separation. If it is ratified it generalises to all five tiers, and it belongs to <b>materials</b>, not to forms.</p>
 </div>
 
-<p class="caption" style="margin-top:18px;">Every number here was composited by construction from the tokens, at a named position on the aurora — see <b>color.ink-ground-is-a-placement</b>. The segmented control, the label rule and the submit colour were ratified at <b>v2026.09.03.4</b>. The dark glass is still open in <b>RATIFY.md</b> — its diagnosis was corrected, and what remains generalises to all five material tiers, so it belongs to <b>materials</b> rather than to forms.</p>
+<p class="caption" style="margin-top:18px;">Every number here was composited by construction from the tokens, at a named position on the aurora — see <b>color.ink-ground-is-a-placement</b>. The segmented control, the label rule and the submit colour were ratified at <b>v2026.09.03.4</b>. The dark glass was ratified at <b>v2026.09.14.10</b> for all five tiers, as <b>materials.dark-glass-takes-the-canvas-hue</b>.</p>
 
 </div>
 </body>

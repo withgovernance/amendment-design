@@ -8,6 +8,24 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-14 (v2026.09.14.2) — `in oklab` lands on the aurora token, and its reason did not survive a render
+
+`the-aurora-is-three-things` said on 2026-08-29 that the token "now carries `in oklab`
+on every lobe". Neither copy did — not `color.aurora-light`/`-dark` here, not `--aurora` in
+`colors_and_type.css`. The keyword is now on all six lobes in both.
+
+**~~Without it, a colour-to-transparent fade interpolates in sRGB and gray-halos toward
+black~~ — false.** Painted both ways in Chromium, the lobes are pixel-identical with and
+without the keyword, and different under `in srgb`: a gradient with any non-legacy stop
+already interpolates in Oklab by default, and every stop here is `oklch()`. The keyword is
+kept because the shipped body gradient states it and a stated method does not depend on a
+default; it changes no pixel. The entry is corrected in place.
+
+A claimed fix is not a fix until the file says so. This one read as done for sixteen days
+because the sentence announcing it was in the spec and the change was not.
+
+---
+
 ## 2026-09-14 (v2026.09.14) — The spec's prose still taught the oxblood it retired
 
 Conformance, no rule change. The `color` section retired oxblood entirely in 2026-08 —

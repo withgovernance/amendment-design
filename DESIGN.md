@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.14
+# spec-version:   v2026.09.14.2
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -650,13 +650,13 @@ color:
     canvas-light: "#f4f4f5"
     canvas-dark:  "#18181b"
     aurora-light:
-      - "radial-gradient(ellipse 72% 55% at 15% 8%,  oklch(0.88 0.05 250 / 0.40), transparent)"
-      - "radial-gradient(ellipse 58% 46% at 85% 20%, oklch(0.90 0.04 270 / 0.32), transparent)"
-      - "radial-gradient(ellipse 60% 50% at 50% 90%, oklch(0.94 0.03  60 / 0.28), transparent)"
+      - "radial-gradient(ellipse 72% 55% at 15% 8% in oklab,  oklch(0.88 0.05 250 / 0.40), transparent)"
+      - "radial-gradient(ellipse 58% 46% at 85% 20% in oklab, oklch(0.90 0.04 270 / 0.32), transparent)"
+      - "radial-gradient(ellipse 60% 50% at 50% 90% in oklab, oklch(0.94 0.03  60 / 0.28), transparent)"
     aurora-dark:
-      - "radial-gradient(ellipse 72% 55% at 15% 8%,  oklch(0.30 0.08 250 / 0.45), transparent)"
-      - "radial-gradient(ellipse 58% 46% at 85% 20%, oklch(0.25 0.06 270 / 0.35), transparent)"
-      - "radial-gradient(ellipse 60% 50% at 50% 90%, oklch(0.40 0.03  60 / 0.20), transparent)"
+      - "radial-gradient(ellipse 72% 55% at 15% 8% in oklab,  oklch(0.30 0.08 250 / 0.45), transparent)"
+      - "radial-gradient(ellipse 58% 46% at 85% 20% in oklab, oklch(0.25 0.06 270 / 0.35), transparent)"
+      - "radial-gradient(ellipse 60% 50% at 50% 90% in oklab, oklch(0.40 0.03  60 / 0.20), transparent)"
 
 typography:
   fontFamilies:
@@ -4765,11 +4765,13 @@ a11y:
     PRODUCT DOES NOT SHIP. The band under nearly every surface is a THIRD set
     of values that neither side has measured. Both of the numbers this file
     has been reasoning from describe bands that are not the one users see.
-    WHAT IS FIXED HERE: the token now carries `in oklab` on every lobe. The
-    shipped body gradient always had it; this token did not, so adopting the
-    token as written would have LOST a correctness property — a
-    colour-to-transparent fade without it interpolates in sRGB and gray-halos
-    toward black at the lobe edge.
+    THE TOKEN CARRIES `in oklab` ON EVERY LOBE, as the shipped body gradient
+    does — declared 2026-08-29 and actually applied 2026-09-14. ~~Adopting the
+    token without it would have lost a correctness property, a gray halo
+    toward black at the lobe edge~~ — killed by measurement 2026-09-14: a
+    gradient with any non-legacy stop already interpolates in Oklab, and
+    Chromium paints these lobes pixel-identical with and without the keyword.
+    It is kept for explicitness, not correctness; nothing renders differently.
     MEASURED 2026-08-29, and it settles the question in the opposite
     direction from everything this file had assumed. The shipping band was
     read off the running app, repainted in isolation so no app content could

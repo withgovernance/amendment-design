@@ -8,6 +8,27 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-14 (v2026.09.14.11) — The rail cut-out is recorded, not ruled
+
+Decided by Jason: no rule. The recession entry named a receded rail flush against full-height
+glass as "the case to check"; the queue measured it on a green lobe and proposed nothing.
+
+**That lobe was the marketing curtain**, not the product. Re-measured on the band the app paints
+(`Sidebar/FullBleedNeighbour`, 1440): in light the rail carries ~7× the panel's chroma at the
+peak (oklch C 0.044 against 0.006), pale blue, fading to neutral below mid-height; in dark it is
+a 1.5–1.8× tonal step. Rendered, light reads as a tinted rail beside a white sheet rather than
+a hole.
+
+**~~The lower-chroma token band would shrink this by construction~~** — killed: the token band
+gives the same 7.1× ratio at lower absolute chroma, because an 85% plate strips a fixed share of
+whatever is beneath it. A quieter band quiets the rail; it never closes the gap.
+
+No route on voyager main is full-bleed — every route sits in a centred or max-width column — so
+the case exists only in a story. Recorded on the recession entry so the next full-bleed route is
+rendered against it before it ships.
+
+---
+
 ## 2026-09-14 (v2026.09.14.10) — Dark glass takes the canvas's hue, on every tier
 
 Decided by Jason. New `materials.dark-glass-takes-the-canvas-hue`: every dark tier is

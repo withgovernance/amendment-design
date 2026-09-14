@@ -50,18 +50,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
-### The cut-out is real, and it is worse in light than in dark
-- **kind:** spec silent — the check `.28` asked for, answered
-- **found:** stage 9b, rendering `Sidebar/FullBleedNeighbour` in both schemes against the cut-out question rather than the edge question.
-- **evidence:** measured, `material-regular` in light is `rgba(255,255,255,0.85)` + `blur(50px)`. Compositing a representative aurora lobe under it against leaving it bare:
-  - **rail** (no plate, raw aurora): `rgb(150,228,183)`, **34.2% saturation**
-  - **panel** (same pixel under the plate): `rgb(239,251,244)`, **4.8% saturation**
-  - the plate removes **86% of the aurora's saturation**; the receded rail keeps all of it.
-  So on a full-bleed route the rail carries **~7× the chroma of everything beside it.** Read in the render, it does not look like a surface the nav sits on — it reads as a coloured strip cut into the panel, with the glass as the object and the rail as the hole.
-- **and the direction matters:** this is **worse in light than in dark**, which is the reverse of where recession's risks have been looked for. In dark both sides are low-luminance and the gap is mostly tonal; in light the glass washes to near-white while the rail keeps a saturated lobe, so the rail becomes the single most chromatic region on the screen. **A change made to help chrome recede makes it the most prominent thing on a full-bleed light route.**
-- **proposes:** nothing — same reason as the edge entry. Every fix here (a plate, a hairline, damping the aurora under the rail) is the material decision recession removed, and this is the second consecutive case where the intuitive fix would undo the ruling. Worth noting the interaction: **the aurora divergence and this are the same lever.** The three-lobe token band the shipping gate already requires is lower-chroma, which would shrink this by construction — so this may not need a decision of its own once that lands.
-- **blocks:** nothing landed. It is the open question on 9b, not the edge one.
-
 ### Three ask-rail artboards carry copy the product cannot perform — and their provenance is the open question
 - **kind:** waiting on a person; **kind depends on the answer** (copy error, or spec ahead)
 - **found:** reviewing the same branch against artboards labelled `3A`/`3B`/`3C` (phone dark, phone light, desktop).

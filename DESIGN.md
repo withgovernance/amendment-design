@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.14.10
+# spec-version:   v2026.09.14.11
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2265,6 +2265,17 @@ components:
       recession — the rail becomes the absence of the panel instead of a
       surface in its own right. That is the case to check on a full-bleed
       route, which is the exact opposite of what this entry asked for.
+      CHECKED 2026-09-14, NO RULE. On the band the product paints, a bare
+      rail flush against full-height material-regular carries about seven
+      times the panel's chroma in light, in a pale blue that fades to
+      neutral below mid-height; in dark the gap is a tonal step, not a
+      chroma one. The spec token band gives the SAME RATIO at lower absolute
+      chroma — an 85% plate strips a fixed share of whatever is under it, so
+      a lower-chroma band never closes the gap, it only quiets it. Rendered,
+      the light case reads as a tinted rail beside a white sheet rather than
+      a hole. AND NO SHIPPING ROUTE IS FULL-BLEED: every route sits in a
+      centred or max-width column. This is recorded so the next full-bleed
+      route is rendered against it before it ships, not decided in advance.
       DO NOT ADD A RAIL EDGE TO FIX EITHER. Drawing one is the material
       decision recession just removed.
     background: "none — the aurora is the ground"

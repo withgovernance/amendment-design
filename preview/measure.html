@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- @dsCard group="Foundations" name="Foundations — The measure" subtitle="69 characters, stated in rem — never in ch" viewport="900x988" -->
+<!-- @dsCard group="Foundations" name="Foundations — The measure" subtitle="Stated in rem, never in ch — and a count is a set line of prose, measured live" viewport="900x1120" -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -10,7 +10,7 @@
 .card{padding:22px 26px 26px}
 .spec{margin-top:18px;display:flex;flex-direction:column;gap:14px}
 .row{background:rgb(255 255 255/.55);box-shadow:inset 0 0 0 1px var(--border-subtle);border-radius:8px;padding:13px 16px 15px}
-.row .hd{display:flex;align-items:baseline;gap:10px;margin-bottom:7px}
+.row .hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-bottom:7px}
 .row .ct{font-family:var(--font-mono);font-size:12px;color:var(--text-secondary);margin-left:auto}
 .row .ct b{font-family:var(--font-sans);font-weight:600;color:var(--text-primary)}
 .samp{font-family:var(--font-serif);font-variation-settings:var(--serif-text);font-size:16px;font-weight:450;line-height:1.68;color:var(--text-primary);margin:0}
@@ -22,57 +22,131 @@ dd{margin:0;font-size:13px;line-height:1.5;color:var(--text-primary);max-width:m
 dd b{font-weight:600}
 dd code,.tok code{font-family:var(--font-mono);font-size:12px;color:var(--text-secondary)}
 .probe{margin-top:16px}
+.probe-lab{position:fixed;left:0;top:0;width:0;height:0;overflow:hidden;visibility:hidden}
+.probe-lab>div{width:4000px}
 </style>
 </head>
 <body>
 <div class="card">
 <h1>The measure</h1>
-<p class="sub">A measure caps the element that <b>holds the text</b>, and it is stated in <code>rem</code> derived from a counted line. The count is the intent; the rem is the value.</p>
+<p class="sub">A measure caps the element that <b>holds the text</b>, and it is stated in <code>rem</code> derived from a counted line. The count is the intent; the rem is the value; and a count belongs to the prose it was taken on, not to the width.</p>
 
 <div class="spec">
   <div class="row over" style="max-width:none">
-    <div class="hd"><span class="lbl">was: 65ch on the page shell</span><span class="ct">636px &middot; <b id="c1">…</b> characters</span></div>
-    <p class="samp" id="p1" style="max-width:636px">I rent in your district and my lease went up eleven percent this spring, which is the third increase in four years and more than my pay has moved in that time.</p>
+    <div class="hd"><span class="lbl">was: 65ch on the page shell</span><span class="ct"><span id="w1">…</span> &middot; first line <b id="c1">…</b><span id="l1"> &middot; lines <b id="b1">…</b></span></span></div>
+    <!-- The retired value, reproduced as the defect (spacing.measure.rule): the
+         shell inherits the body sans, so its `ch` counts sans zeros. -->
+    <div class="shell" id="s1" style="max-width:65ch">
+      <p class="samp" id="p1">I rent in your district and my lease went up eleven percent this spring, which is the third increase in four years and more than my pay has moved in that time.</p>
+    </div>
   </div>
   <div class="row on">
-    <div class="hd"><span class="lbl">measure.body &middot; 28rem</span><span class="ct">448px &middot; <b id="c2">…</b> characters</span></div>
+    <div class="hd"><span class="lbl">measure.body &middot; 28rem</span><span class="ct"><span id="w2">…</span> &middot; first line <b id="c2">…</b><span id="l2"> &middot; lines <b id="b2">…</b></span></span></div>
     <p class="samp" id="p2" style="max-width:min(28rem,100% - 2rem)">I rent in your district and my lease went up eleven percent this spring, which is the third increase in four years and more than my pay has moved in that time.</p>
   </div>
   <div class="row on">
-    <div class="hd"><span class="lbl">measure.lede &middot; 24rem</span><span class="ct">384px &middot; <b id="c3">…</b> characters</span></div>
+    <div class="hd"><span class="lbl">measure.lede &middot; 24rem</span><span class="ct"><span id="w3">…</span> &middot; first line <b id="c3">…</b><span id="l3"> &middot; lines <b id="b3">…</b></span></span></div>
     <p class="samp" id="p3" style="max-width:min(24rem,100% - 2rem);font-size:20px">Your landlord could raise the rent by any amount, with sixty days&rsquo; notice.</p>
   </div>
 </div>
 
 <dl class="rules">
-  <dt>The unit</dt><dd><b><code>ch</code> is banned from length tokens, and from prose that states a length.</b> It is the advance width of the zero glyph <i>of the element carrying the rule</i> &mdash; so <code>65ch</code> on a shell that inherits the body <b>sans</b>, wrapping <b>serif</b> prose, rendered 97 characters. Nobody chose 97.</dd>
-  <dt>Two ambiguities</dt><dd>Zero vs average glyph <i>within</i> a face is 42% in Newsreader; measuring face vs rendered face <i>between</i> two is 50%. Self-consistency fixes only the second: <code>65ch</code> set on the serif itself is still 92 characters.</dd>
+  <dt>The unit</dt><dd><b><code>ch</code> is banned from length tokens, and from prose that states a length.</b> It is the advance width of the zero glyph <i>of the element carrying the rule</i> &mdash; so <code>65ch</code> on a shell that inherits the body <b>sans</b>, wrapping <b>serif</b> prose, computes <b id="u-w">…</b> here and sets this sample&rsquo;s first line at <b id="u-n">…</b> characters. Nobody chose that number.</dd>
+  <dt>Two ambiguities</dt><dd>Zero vs average glyph <i>within</i> a face: Newsreader&rsquo;s zero is <b id="a-in">…</b> wider than this sample&rsquo;s average character. Measuring face vs rendered face <i>between</i> two: the sans zero is <b id="a-bt">…</b> wider than Newsreader&rsquo;s. Self-consistency fixes only the second: <code>65ch</code> set on the serif itself still sets <b id="a-self">…</b> characters on this sample&rsquo;s first line.</dd>
   <dt>Where it goes</dt><dd>On the text, not the shell. A page may be wide; the paragraph is capped. <code>container.*</code> are shells, <code>measure.*</code> are measures.</dd>
-  <dt>The counts</dt><dd><b>Target 69, ceiling 75.</b> <code>measure.body</code> <code>min(28rem, 100% - 2rem)</code>; <code>measure.lede</code> <code>min(24rem, 100% - 2rem)</code>. The <code>min()</code> is why neither needs a breakpoint. Metadata grids, rolls and tallies are not copy and may run wider.</dd>
+  <dt>The counts</dt><dd><b>A count is a line of specific prose, not a property of a width.</b> <code>measure.body</code> and <code>measure.lede</code> each set a band, lowest on statutory prose with its long words &mdash; <code>body-count-is-a-band</code>, <code>lede-count-is-a-band</code>; the target and ceiling are <code>measure.range</code>. The <code>min()</code> in both tokens is why neither needs a breakpoint. Metadata grids, rolls and tallies are not copy and may run wider.</dd>
   <dt>On paper</dt><dd><b>6.5in</b>, set by the 1in margin &mdash; paper takes its measure from the margin, not from a count. See <code>profilesPrint</code>.</dd>
 </dl>
 
 <p class="note probe" id="probe">measuring&hellip;</p>
 </div>
+<div class="probe-lab" aria-hidden="true"><div id="lab"></div></div>
 <script>
+/* Every number this card prints is read off the render, never derived.
+   A count is the characters on a line the browser actually set: each
+   character's DOM range is placed in the line box it landed in, the
+   collapsed space at a wrap is dropped, and the last (ragged) line is never
+   a count. Widths are getBoundingClientRect of the element that holds the
+   text. All of it reruns whenever a sample's box changes size. */
 (async () => {
   await document.fonts.ready;
-  const face = getComputedStyle(document.getElementById('p1'));
-  function avg(fs){
-    const s = document.createElement('span');
-    s.style.cssText = 'position:absolute;left:-9999px;white-space:pre;font-family:'+face.fontFamily+';font-variation-settings:'+face.fontVariationSettings+';font-weight:450;font-size:'+fs+'px';
-    s.textContent = 'the quick brown fox jumps over the lazy dog and asks the legislature to reconsider a rent stabilization bill this session ';
-    document.body.appendChild(s);
-    const w = s.getBoundingClientRect().width / s.textContent.length; s.remove(); return w;
+  const $ = id => document.getElementById(id);
+  const lab = $('lab');
+
+  function setLines(el){
+    const lines = [], r = document.createRange();
+    const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    let cur = null;
+    for (let t; (t = walk.nextNode()); ) {
+      for (let i = 0; i < t.data.length; i++) {
+        r.setStart(t, i); r.setEnd(t, i + 1);
+        const b = r.getClientRects()[0];
+        if (b && b.width > 0 && (!cur || b.top > cur.top + b.height / 2)) {
+          cur = { top: b.top, text: '' }; lines.push(cur);
+        }
+        if (cur) cur.text += t.data[i];
+      }
+    }
+    return lines.map(l => [...l.text.replace(/\s+/g, ' ').trim()].length);
   }
-  const a16 = avg(16), a20 = avg(20);
-  document.getElementById('c1').textContent = Math.round(636 / a16);
-  document.getElementById('c2').textContent = Math.round(448 / a16);
-  document.getElementById('c3').textContent = Math.round(384 / a20);
-  document.getElementById('probe').innerHTML =
-    'Measured in this card, not asserted: average rendered glyph <b>' + a16.toFixed(2) + 'px</b> at 16px and <b>' +
-    a20.toFixed(2) + 'px</b> at 20px; the zero glyph of the body sans is <b>9.79px</b>, which is what <code>65ch</code> was counting. ' +
-    'Re-derive the rem when a text face or a role size changes. DESIGN.md \u2192 spacing.measure.';
+  function counts(el){
+    const n = setLines(el);
+    const full = n.length > 1 ? n.slice(0, -1) : n;
+    const lo = Math.min(...full), hi = Math.max(...full);
+    return { first: n[0], wrapped: n.length - 1, band: lo === hi ? String(lo) : lo + '\u2013' + hi };
+  }
+  const px = el => Math.round(el.getBoundingClientRect().width) + 'px';
+  function advance(host, text){
+    const s = document.createElement('span');
+    s.style.cssText = 'position:absolute;visibility:hidden;white-space:pre';
+    s.textContent = text; host.appendChild(s);
+    const w = s.getBoundingClientRect().width; s.remove();
+    return w / [...text].length;
+  }
+  /* What a rule computes to with room to spare, off the page: a clone of the
+     sample under the rule, in a 4000px lab that cannot scroll the card. */
+  function clone(id){
+    const n = $(id).cloneNode(true);
+    [n, ...n.querySelectorAll('[id]')].forEach(e => e.removeAttribute('id'));
+    return n;
+  }
+
+  function measure(){
+    ['1', '2', '3'].forEach(n => {
+      const el = $('p' + n), k = counts(el);
+      $('w' + n).textContent = px(el); $('c' + n).textContent = k.first; $('b' + n).textContent = k.band;
+      $('l' + n).hidden = k.wrapped < 2;          // one wrapped line: the first line is the whole band
+    });
+
+    const shell = clone('s1'), serif = clone('p1');
+    serif.style.maxWidth = '65ch';               // the retired value, on the serif itself
+    lab.replaceChildren(shell, serif);
+    $('u-w').textContent = px(shell);
+    $('u-n').textContent = counts(shell.querySelector('p')).first;
+    $('a-self').textContent = counts(serif).first;
+
+    const text = $('p1').textContent.replace(/\s+/g, ' ').trim();
+    const zSans = advance(shell, '0'.repeat(100));
+    const zSerif = advance(serif, '0'.repeat(100));
+    const avg = advance(serif, text);
+    lab.replaceChildren();
+    const pct = x => Math.round((x - 1) * 100) + '%';
+    $('a-in').textContent = pct(zSerif / avg);
+    $('a-bt').textContent = pct(zSans / zSerif);
+
+    $('probe').innerHTML =
+      'Measured live at the width each paragraph renders, recounted on resize: a count is the characters on a line the browser set ' +
+      '(DOM ranges by line box; the space at a wrap and the ragged last line excluded), never a width divided by a glyph. ' +
+      'Zero glyph of the body sans <b>' + zSans.toFixed(2) + 'px</b> \u2014 what <code>65ch</code> counts in; of Newsreader at 16px <b>' +
+      zSerif.toFixed(2) + 'px</b>; this sample&rsquo;s average character <b>' + avg.toFixed(2) + 'px</b>. ' +
+      'One sample is one point; the spec&rsquo;s band spans prose. DESIGN.md \u2192 spacing.measure, body-count-is-a-band, lede-count-is-a-band.';
+  }
+
+  let queued = 0;
+  const again = () => { if (!queued) queued = requestAnimationFrame(() => { queued = 0; measure(); }); };
+  measure();
+  const ro = new ResizeObserver(again);
+  ['s1', 'p1', 'p2', 'p3'].forEach(id => ro.observe($(id)));
 })();
 </script>
 </body>

@@ -8,6 +8,35 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-14 (v2026.09.14.8) — `card-empty` was two components under one name
+
+Decided by Jason. The spec drew `card-empty` as a dashed placeholder; voyager shipped it as a
+`material-ultrathin` panel at four call sites; nine more sites hand-roll dashed borders in two
+strengths (the spec's 2px/30% on the org public sections, a quieter 1px/10% across the admin
+lists and the shared `SectionNotice`); and `--border-dashed-empty` is referenced by nothing.
+Both treatments were owner decisions on different surfaces. **A failed load ships in both** —
+`ConversationsLoadError` material, `SectionNotice` dashed — which is what made one name
+untenable.
+
+**Two components, split by who acts next.** `card-empty` is content that did not arrive: zero
+results, a failed load — nobody can fill it. `card-placeholder` is a slot waiting on someone's
+input — an org with no asks yet, a list its owner fills — and its dashed edge is the outline
+of the thing that goes there, drawn in `borders.dashed-empty`. The placeholder takes 16px of
+padding inside a dense list, which is what the admin sites were reaching for.
+
+**The label moves from tertiary to secondary ink** in both. The old entry set the one line
+that names the missing thing in the 38% rung, which `color.aurora.tertiary-rung` calls
+decorative only — it clears 4.5:1 nowhere. A label that is read is not decoration.
+
+Swept: the Patterns section's empty-state line, and `preview/cards.html`, which drew the old
+dashed `card-empty` in literals and tertiary ink and now shows both components from tokens.
+
+Owed by voyager: `SectionNotice` moves to `card-empty`; the org public and admin "nothing yet"
+sites become `card-placeholder` on the token; the `card-empty` utility's ink moves to
+secondary.
+
+---
+
 ## 2026-09-14 (v2026.09.14.7) — A chrome label may wrap, so the role carries a second line's leading
 
 Decided by Jason. `role-label-caps` set `line-height: 1`, and the spec never said whether a

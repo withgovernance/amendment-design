@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.14.7
+# spec-version:   v2026.09.14.8
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2629,13 +2629,39 @@ components:
       material-thin under a column of field recesses does not hold its text
       off the aurora behind it. See color.ink-needs-an-opaque-ground.
   card-empty:
-    description: Empty-state dashed placeholder
-    background: "transparent"
-    border: "2px dashed rgb(0 0 0 / 30%)"
+    description: >-
+      Content that did not arrive — zero results, a failed load, a list
+      nobody has added to. A quiet material panel, not a slot.
+    background: "material-ultrathin"
     rounded: "0.5rem"
     padding: "32px"
     textAlign: "center"
-    color: "tertiary text"
+    color: "secondary text — the label is read; tertiary is decorative only (color.aurora.tertiary-rung)"
+    two-components-not-one: >-
+      RATIFIED 2026-09-14, decided by Jason. card-empty named two things. The
+      spec drew a dashed placeholder; the consumer shipped a material panel
+      under the same name at four call sites; nine more hand-rolled dashed
+      borders in two strengths, and the dashed token was referenced by
+      nothing. BOTH TREATMENTS WERE OWNER DECISIONS, made on different
+      surfaces for different reasons, and neither was wrong — they answer
+      different states. A FAILED LOAD SHIPPED IN BOTH, which is what made the
+      single name untenable.
+      SO: card-empty is CONTENT THAT DID NOT ARRIVE — the system looked and
+      there is nothing, or it could not look. card-placeholder is A SLOT
+      WAITING ON SOMEONE'S INPUT — an org with no asks yet, a list its owner
+      fills. The test is who acts next: if nobody can, it is card-empty; if
+      someone can fill it, it is a placeholder, and the dashed edge is the
+      outline of the thing that goes there.
+  card-placeholder:
+    description: >-
+      A slot waiting on someone's input. Dashed, unfilled — the outline of
+      what goes there. See card-empty.two-components-not-one.
+    background: "transparent"
+    border: "borders.dashed-empty (--border-dashed-empty)"
+    rounded: "0.5rem"
+    padding: "32px; 16px inside a dense list"
+    textAlign: "center"
+    color: "secondary text"
   modal:
     description: Popover and dropdown surface
     background: "linear-gradient from rgb(255 255 255 / 25%) to rgb(255 255 255 / 40%)"
@@ -6037,8 +6063,9 @@ celebration mechanics on any non-Receipt surface.
   encoded as slate opacity (previously violet). Active jurisdictions
   fill; out-of-session ones fall to a pale zinc hex with a thin ring.
 - **Empty States** — never blank. A Phosphor illustration icon at
-  `weight="light"` sits centered inside a dashed `card-empty`, under
-  a sans-serif label that names the missing thing.
+  `weight="light"` sits centered inside a `card-empty` (content that did
+  not arrive) or a dashed `card-placeholder` (a slot awaiting someone's
+  input), under a sans-serif label that names the missing thing.
 - **The FAB** — `button-fab`, the action colour with an ink label, fixed
   bottom-right. It appears only on screens where the primary action is
   ambiguous or discovery-driven, and it is that screen's one green plate.

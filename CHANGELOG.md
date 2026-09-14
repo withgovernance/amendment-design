@@ -8,6 +8,20 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-14 (v2026.09.14.15) — The sweep `body-count-is-a-band` owed
+
+Conformance. v2026.08.28.20 ruled that `measure.body` does not set 69 characters — a count is a
+measurement of a set line of specific prose, not a property of a width — and corrected the token's
+own annotation. The retirement sweep never ran. Seven places kept stating 69 (and `measure.lede`'s
+47) as what the width holds: `registers.reading`, the sans-measure note, the Archive and Writing
+Desk surfaces, `SKILL.md`, and two in `README.md`. They now cite the measure and the rule. The
+range's target and ceiling stay where they belong, in `measure.range`.
+
+`preview/measure.html` now counts set lines live instead of dividing a width by a glyph, and the
+stylesheet's lede comments no longer quote 47.
+
+---
+
 ## 2026-09-14 (v2026.09.14.14) — `--container-normal` was still a `ch` length
 
 Conformance, found by the new `tools/check-retired.mjs` on its first run. `spacing.container.normal`

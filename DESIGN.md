@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.14.14
+# spec-version:   v2026.09.14.15
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1529,8 +1529,8 @@ spacing:
       an unreachable number would have been a WIDTH problem. The width is
       fine, here and at 28rem.
     print: "6.5in"                                # paper takes its measure from the margin, not a count
-    # OPEN — SANS BODY COPY HAS NO COUNTED MEASURE. `body` above (69 characters,
-    # 28rem) was counted in NEWSREADER. Grading sans copy against a serif count
+    # OPEN — SANS BODY COPY HAS NO COUNTED MEASURE. `body` above (28rem) was
+    # counted in NEWSREADER. Grading sans copy against a serif count
     # is the same category error `ch` was banned for. The 2026-08-14 width
     # calibration counted Archivo at 60 characters in that column at wdth 104,
     # which is inside the 45–75 range but is a byproduct, not a decision. A
@@ -3063,7 +3063,7 @@ registers:
     canvas: paper-cream
     lead-family: serif
     heading-family: serif
-    column-width: "measure.body — 69 characters (28rem)"
+    column-width: "measure.body (28rem) — its count is a band, spacing.measure.body-count-is-a-band"
     motion: none                    # documents do not dance
     palette-rule: "Semantic status only. Rubber-stamp for state, slate ink for everything else."
   writing:
@@ -5673,8 +5673,8 @@ surface that deliberately echoes the physical legislative record.
   not chatting.
 - **Rhythm:** dense and hierarchical. A bill page moves top-down through
   title, jurisdiction, sponsors, status, summary, text, history, votes.
-  The column for body text holds to the body measure — 69 characters,
-  28rem; metadata grids expand wider.
+  The column for body text holds to `measure.body`; metadata grids expand
+  wider.
 - **Palette emphasis:** semantic status drives the color. Enacted bills
   carry a green-ink **ENACTED** rubber stamp — `--color-success` here on
   cream, `--color-action` under inversion, per the which-green switch;
@@ -5733,8 +5733,8 @@ should feel like sitting down with good paper and a pen.
   state, recipient picker, send button).
 - **Default material:** `material-regular`. The canvas itself is more
   opaque than the surrounding UI — it is the "paper" you are writing on.
-- **Rhythm:** a single centered prose column at the body measure (28rem,
-  69 characters), generous margins,
+- **Rhythm:** a single centered prose column at `measure.body`, generous
+  margins,
   no sidebars crowding the canvas. The letter is the hero.
 - **Palette emphasis:** the **Send / Seal / Publish** button is action
   green — it is the most consequential control in the product. The

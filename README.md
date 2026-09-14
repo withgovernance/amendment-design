@@ -32,7 +32,7 @@ in tokens, not adjectives.
 | Register | Rooms | Canvas | Material | Column | Motion |
 |---|---|---|---|---|---|
 | **Live** | Reading Room · Commons | none (aurora) | `material-thin` | 48rem | accrual permitted |
-| **Reading** | Archive | `paper-cream` | `material-regular` | 28rem (69 chars) | none |
+| **Reading** | Archive | `paper-cream` | `material-regular` | `measure.body` 28rem | none |
 | **Writing** | Writing Desk | `paper-parchment` | `material-regular` | 28rem portrait | minimal |
 | **Issued** | Receipt | `paper-cream` | `paper-cream` | 34rem portrait | bloom, once |
 
@@ -204,7 +204,7 @@ Hard limits, measured 2026-08 (`a11y.contrast`): chroma ≤ 0.22, at most five l
 
 Spacing is a 4px unit. Inset scale `sm 8 / md 16 / lg 24 / xl 32`. Containers are **shells** — tight `48rem` for conversation columns, normal `min(31rem, 100%)` for a prose page, wide `80rem` for chrome.
 
-**A measure is not a container.** The measure caps the element that *holds the text*, and it is stated mobile-first in rem derived from a counted line: `measure.body` = `min(28rem, 100% - 2rem)` = **69 characters** of body serif at 16px; `measure.lede` = `min(24rem, 100% - 2rem)` = 47 characters at 20px. Target 69, ceiling 75.
+**A measure is not a container.** The measure caps the element that *holds the text*, and it is stated mobile-first in rem derived from a counted line: `measure.body` = `min(28rem, 100% - 2rem)`; `measure.lede` = `min(24rem, 100% - 2rem)`. Each sets a band of counts, not a count — a count is a measurement of a set line of specific prose (`spacing.measure.body-count-is-a-band`). The range is `measure.range`.
 
 **`ch` is banned from length tokens** (2026-08-04) **and from prose that states a length** (2026-09-14). `ch` is the advance width of the zero glyph *of the element carrying the rule* — so `max-width: 65ch` on a page shell that inherits the body **sans**, wrapping **serif** prose, measured 636px and **97 characters**. Nobody chose 97. Two ambiguities stack: zero vs average glyph within a face (42% in Newsreader) and measuring face vs rendered face between two (50%). Self-consistency fixes only the second — 65ch set on the serif itself is still 92 characters. See `explorations/What 65ch Measures.html`.
 

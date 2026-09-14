@@ -39,6 +39,10 @@ const ENTRY_FILES = [
   "CLAUDE.md",
   "colors_and_type.css",
 ];
+// Entry points state the current rule: a retirement there is a deletion, not a
+// note (CLAUDE.md, "Entry points state the current rule"). A marker in one of
+// these files is itself a hit, and exempts nothing.
+const NO_EXEMPTION = new Set(["SKILL.md", "README.md", "DESIGN-HARD-RULES.md"]);
 const SPECIMEN_DIR = "preview";
 const SPECIMEN_EXT = /\.(?:html|css)$/;
 
@@ -237,7 +241,12 @@ for (const file of files) {
   const text = fs.readFileSync(file, "utf8");
   const lines = text.split("\n");
   const lineOf = lineIndex(text);
-  const marks = markers(text, path.extname(file), lineOf);
+  let marks = markers(text, path.extname(file), lineOf);
+  if (NO_EXEMPTION.has(rel)) {
+    for (const mk of marks)
+      found.push(`${rel}:${mk.line}: retired-ok — an entry point states the current rule; delete the retired value`);
+    marks = [];
+  }
   for (const mk of marks) {
     mk.rel = rel;
     allMarkers.push(mk);

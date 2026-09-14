@@ -65,6 +65,11 @@ Say why after it: `/* retired-ok: the measure specimen renders the defect */`.
 - A comment trailing code, or a multi-line block, exempts nothing past its own
   last line — the line after a history block is usually a live declaration.
 - `retired-ok` outside a comment is not honoured, and is reported as such.
+- **Entry points take no marker.** In `SKILL.md`, `README.md` and
+  `DESIGN-HARD-RULES.md` a marker is itself a hit and exempts nothing: an entry
+  point states the current rule, and a retirement there is a deletion, not a
+  note. Markers belong in `CLAUDE.md` (the grep set), the stylesheet's history
+  comments, and specimens that render a defect.
 
 Every run prints how many hits were exempted and lists each marker with the
 span it covers and its count; a marker that exempts nothing is flagged for

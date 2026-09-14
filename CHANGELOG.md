@@ -8,6 +8,32 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-14 (v2026.09.14) — The spec's prose still taught the oxblood it retired
+
+Conformance, no rule change. The `color` section retired oxblood entirely in 2026-08 —
+first from the CTA, then from the seal, which became a blind emboss. **Nine passages in the
+prose half never got the sweep** and kept presenting it as live: the Writing register's
+palette emphasis, the envelope's postage corner, Two Layers, Color as a Civic Register ("survives
+only as the wax seal"), the dark-mode brand-colour line, the Writing Desk surface, the
+Commons' "three accents, three jobs", Celebration, and Patterns' "The FAB — Oxblood". Each now
+says what the rest of the spec already decided: the seal is embossed and uninked, the postage
+corner is slate ink, the Commons carries the same two accents as everywhere, and the FAB is
+`button-fab` in the action colour. Celebration keeps the seal's scale-in — it is part of the
+sanctioned Receipt bloom (`celebration.mechanics`); only its colour was wrong.
+
+This is trap 1 inside the spec itself. The retirement landed in the YAML, and the prose below
+it — the half an agent reads for the narrative — was never grepped.
+
+Swept with it, all stale copies of decided values:
+- `color.text.secondary-light` read 55%; the stylesheet has shipped 60% since v2026.08.29.3.
+- `DESIGN-HARD-RULES.md` named red-600 as the danger ink; danger moved to red-700 at
+  v2026.08.28.4. It now cites `--color-danger`.
+- `preview/accent-inventory.html` still listed "ships oxblood ENACTED" as a known divergence,
+  closed 2026-08-28.
+- `measure.body` said the `lede` count had never been measured; it has.
+
+---
+
 ## 2026-09-13 (v2026.09.13) — The independent eye is `design-reviewer`
 
 The `designer` agent was retired 2026-09-12. `DESIGN-HARD-RULES.md` named it as the pass

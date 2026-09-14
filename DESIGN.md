@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.13
+# spec-version:   v2026.09.14
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -630,7 +630,7 @@ color:
   # -----------------------------------------------------------------------
   text:
     primary-light:   "rgb(0 0 0 / 87%)"
-    secondary-light: "rgb(0 0 0 / 55%)"
+    secondary-light: "rgb(0 0 0 / 60%)"
     tertiary-light:  "rgb(0 0 0 / 38%)"
     primary-dark:    "rgb(255 255 255 / 87%)"
     secondary-dark:  "rgb(255 255 255 / 55%)"
@@ -1484,8 +1484,8 @@ spacing:
       Contrast needs its ground and its position; a character count needs
       its prose.
       THE WIDTH IS NOT CHANGING. 28rem is a good measure; the number
-      attached to it was the wrong part. The same audit is owed to `lede`
-      below, whose 47 has never been measured either.
+      attached to it was the wrong part. `lede` below has since been
+      measured the same way.
     a-measure-is-a-property-of-the-line: >-
       RATIFIED 2026-08-28. A MEASURE AND HORIZONTAL PADDING MAY NOT SHARE A
       BOX. The framework sizes max-width against the BORDER box, so a
@@ -3682,7 +3682,7 @@ surfaces:
     motion-posture: minimal
     rhythm: centered-prose-column
     column-width: "measure.body — a letter is a letter"
-    palette-emphasis: "Action green on the Send / Seal / Publish button. The oxblood WAX SEAL appears once, on the post-send confirmation — the letter is now an issued artifact. Everything else slate ink."
+    palette-emphasis: "Action green on the Send / Seal / Publish button. The blind-embossed seal appears once, on the post-send confirmation, and carries no pigment — the letter is now an issued artifact. Everything else slate ink."
     skeuomorphic-accents:
       - "[proposed] faint horizontal ruling at line-height (4% black) on the letter canvas"
       - "[proposed] folder-tab step markers for the composition flow"
@@ -4077,7 +4077,7 @@ tactileAccents:
       blocked-on: IMPLEMENTATION
       description: "Envelope-shaped preview of sent correspondence."
       form: "Rectangular card with 3:4 aspect, subtle fold shadow along horizontal center."
-      postage-corner: "Small oxblood stamp shape in upper-right with bill number or campaign ID — permitted because a sent envelope is an issued artifact."
+      postage-corner: "Small stamp shape in slate ink in upper-right with bill number or campaign ID — permitted because a sent envelope is an issued artifact."
       when: "Writing Desk — post-Send state."
 
   # ------------------------------------------------------------------------
@@ -5020,7 +5020,7 @@ Every screen is composed of two stacked layers:
 for chrome and body, Midnight Indigo for the user's own trail through
 the product, and Momentum green for every moment of intent. It is the
 signature, the statute number, the chamber vote — and, on an issued
-artifact and nowhere else, the oxblood wax seal. The ink layer does not
+artifact and nowhere else, the blind-embossed seal. The ink layer does not
 move, does not brighten, does not dance. It holds.
 
 **The Aurora Layer** is alive. It is a three-stop *Blue Hour* gradient —
@@ -5045,8 +5045,8 @@ consequence of them.
 **Two accents carry the brand, not three.** Midnight Indigo is the ink and the
 user's trail. **Momentum green is everything the user does and everything the
 crowd does** — the CTA, the co-sign, the count, the threshold, the answered
-position. Oxblood is retired from every interactive surface and survives only
-as the wax seal.
+position. Oxblood is retired entirely: first from every interactive surface,
+then from the seal, which is a blind emboss with no pigment.
 
 The merge was the point. Separating *your intent* from *the crowd* was a
 distinction without a difference: co-signing **is** joining, and a constituent
@@ -5460,7 +5460,7 @@ none.** The next person to adjust a dark ink colour on a paper surface will chan
 it, see no difference, and have no way to know why. When a paper surface is
 touched, strip the `dark:` classes inside it — that is a grep, and it is the only
 part of this rule a reader can act on.
-- ❌ Brand colors — Midnight Indigo, Momentum green, and the oxblood seal have no dark variants. They are *the ink* and *the light* in both modes, and they hold regardless of room lighting.
+- ❌ Brand colors — Midnight Indigo and Momentum green have no dark variants. They are *the ink* and *the light* in both modes, and they hold regardless of room lighting.
 
 ## Surfaces: Five Rooms of the Same Building
 
@@ -5613,7 +5613,7 @@ should feel like sitting down with good paper and a pen.
   letter-spaced "Your Name" label beneath it. On Send, a wax-seal stamp
   fades in (no bounce, no rotate) to confirm the correspondence has
   been sealed — pressed into the sheet, no pigment. Post-send views can show an envelope preview with a
-  small oxblood postage corner — the envelope has been issued.
+  small slate-ink postage corner — the envelope has been issued.
 
 ### Room Tints
 
@@ -5737,14 +5737,14 @@ impulse, made plural and made public.
 - **Rhythm:** a vertical feed of asks at ≤48rem; inside a single ask, a
   **roll** of co-signers and a ledger of responses that can run wider
   than the prose column.
-- **Palette emphasis — three accents, three jobs.** Midnight Indigo is
-  *your trail* (where you've navigated, what you've selected). Oxblood is
-  *your intent* — when you put your name to a demand, the act lands at
-  full wax-seal saturation, because signing your name is the most
-  consequential thing you do here. **Emerald is the crowd**: co-signs,
-  endorsements, "candidate answered", and counts climbing. This is the
-  one surface where green is a brand color, not just a semantic one (see
-  the Momentum Accent).
+- **Palette emphasis — two accents, as everywhere.** Midnight Indigo is
+  *your trail* (where you've navigated, what you've selected). **Momentum
+  green is your act and the crowd's alike** — putting your name to a
+  demand and the count moving by one are the same event: the co-sign
+  plate, co-signs, endorsements, "candidate answered", and counts
+  climbing. Green appears where a crowd is counted
+  (`registers.live.palette-rule`), and per the fill rule it is a plate
+  only on the act itself; everywhere else it is ink.
 - **Tactile accents:** the **signature roll** (co-signers accruing as a
   roll of names and avatars — the petition sheet), the **on-the-record
   entry** (a candidate's reply as a dated ledger line: position · bill ·
@@ -5952,8 +5952,8 @@ state — *with two exceptions, different in kind*. The first is the
 Receipt's **bloom**; the second is the Commons' **accrual** (described
 in its surface section). This section governs the bloom. When a Receipt
 is issued, the system is permitted, for 250–400 ms, to bloom. The Blue Hour aurora deepens by
-about 15% chroma at all three stops and then settles back. The Oxblood
-wax seal scales in from 0.8 to 1.0 with a small drop-shadow lag,
+about 15% chroma at all three stops and then settles back. The embossed
+seal scales in from 0.8 to 1.0 with a small shadow lag,
 landing last so it reads as *applied* rather than *drawn*. The
 guilloche border draws on left-to-right like ink applied across the
 page. The numbered ledger entry counts up to its final value. After
@@ -5961,8 +5961,8 @@ that moment, the receipt is static — a piece of paper the user can
 keep, share, or download.
 
 This bloom is exclusive to the Receipt — the only place where the aurora
-*intensifies in a single arc* and where Oxblood lands in full saturation
-as a *visual event* rather than a button color. Restraint everywhere
+*intensifies in a single arc* and where the seal lands as a *visual
+event* — pressed, not painted. Restraint everywhere
 else is what gives this moment its weight. If the same bloom leaked into
 Reading Room messages or Archive bill pages, it would stop meaning
 anything. The Commons also moves, but it does not *bloom* — it
@@ -5996,9 +5996,9 @@ celebration mechanics on any non-Receipt surface.
 - **Empty States** — never blank. A Phosphor illustration icon at
   `weight="light"` sits centered inside a dashed `card-empty`, under
   a sans-serif label that names the missing thing.
-- **The FAB** — Oxblood, fixed bottom-right, appears only on screens
-  where the primary action is ambiguous or discovery-driven. It is the
-  wax seal on the correspondence.
+- **The FAB** — `button-fab`, the action colour with an ink label, fixed
+  bottom-right. It appears only on screens where the primary action is
+  ambiguous or discovery-driven, and it is that screen's one green plate.
 
 ## What NOT to Do
 

@@ -8,6 +8,19 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-09-14 (v2026.09.14.14) — `--container-normal` was still a `ch` length
+
+Conformance, found by the new `tools/check-retired.mjs` on its first run. `spacing.container.normal`
+has read `max-width: min(31rem, 100%)` since the measure was decided on 2026-08-04 — a prose page is
+`measure.body` plus its gutters — but `colors_and_type.css` still declared `--container-normal: 65ch`,
+the exact value that ban was written against. It now carries the spec's value. Nothing in the
+consumer's generated token file carries container tokens, so no product pixel moves.
+
+Also removed: a "DEPRECATED — HEXP aliases … kept" comment left directly above the comment recording
+those aliases' deletion on 2026-08-28.
+
+---
+
 ## 2026-09-14 (v2026.09.14.13) — The aurora token takes the band the product paints
 
 Conformance with a ruling that was written down and never carried out.

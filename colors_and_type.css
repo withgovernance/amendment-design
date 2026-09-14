@@ -293,10 +293,6 @@
   --track-chrome:     0.12em;      /* @kind other */
   --track-ceremonial: 0.20em;      /* @kind other */
 
-  /* DEPRECATED — HEXP aliases onto the width presets, kept so shipped component
-     code and the adherence lint keep resolving mid-migration. Do not use in new
-     code; migrate to --sans-body / --sans-chrome / --sans-display /
-     --sans-ceremonial. */
   /* The --hexp-* aliases were DELETED 2026-08-28. They existed only to keep
      shipped code resolving mid-migration; the migration is complete (77 call
      sites moved to the width presets) and an alias kept past its migration is
@@ -355,7 +351,7 @@
   --space-32: 128px;  /* section-y desktop */
 
   --container-tight:  48rem;   /* prose, conversation columns */
-  --container-normal: 65ch;    /* body prose */
+  --container-normal: min(31rem, 100%);   /* a prose page: measure.body + its gutters */
   --container-wide:   80rem;   /* navbar, footer */
 
   /* --------------------------- RADII -------------------------------- */

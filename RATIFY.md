@@ -57,6 +57,7 @@ Anything still open after a pass stays here with a note on what it's waiting for
   - Separately, these three IDs appear in **no** written record — not the brief, whose artboards for this work are `CHQ-1` and `B79-0`, not this repo, not the consumer. They reached the implementing session as images pasted by Jason. The Paper MCP has been `ConnectionRefused` since 2026-09-08, so the low-fi authority cannot be opened to reconcile them, and the brief already carries a banner that its own artboard citations were never re-verified.
 - **proposes:** nothing yet — **the answer decides the kind, and it is not the design side's to guess.** If notification-at-25 is a real product intention, these artboards are **spec ahead** and the gap is a Known Divergence to record, not copy to delete. If the line was written to sound civic, it is a **fabricated goal** under the prohibition and the artboards need correcting at source before anyone specs from them again. Either way the shipped caption stays as it is: a caption may not promise a notification the product does not send.
 - **status:** with Jason. The question is narrow — *is legislator notification at the public-count threshold a thing we intend to build, or not?*
+- **checked 2026-09-14:** Paper is reachable again. No page of `Amendment UX/Wireframes` (UI Wireframes, Bot Scripts, iOS) has an artboard named 3A/3B/3C or text containing "of 25" or "District 76". The only "notified" copy is on the iOS page's "Ask detail · no responses" — *"Both NY-14 candidates have been notified…"* — so a notification concept exists in the low-fi, at a different trigger. PR #782 closed unmerged 2026-09-09, so the caption never shipped. Nothing to decide on the design side until the product answer lands.
 - **blocks:** nothing shipping. It blocks trusting `3A`/`3B`/`3C` as a source, which is the more expensive thing to get wrong.
 
 ## Needs a person — cannot close from inside the toolchain
@@ -72,6 +73,17 @@ they stop reading as actionable to the next session that opens this file.
 ## Recently ratified
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
+
+- **2026-09-14 (v2026.09.14 – .11)** — **the first pass after the `designer` agent was retired.**
+  Dark `--text-secondary` → 60%: the withdrawn 4.28:1 was right, the 5.96 was the token band
+  (**voyager's `secondary-text` utility is a literal, so neither scheme's 60% reaches a pixel
+  yet**). The `ch` ban covers prose. `button-cta.ring` is `color.action-active` (3.49:1 light),
+  and `button-fab` and toast actions take it too. `role-label-caps` takes the caption leading:
+  a chrome label may wrap. `card-empty` splits into `card-empty` (material; content that did
+  not arrive) and `card-placeholder` (dashed; a slot awaiting input). `a-count-row-is-reach`:
+  ask count rows follow the ask's level and state. `materials.dark-glass-takes-the-canvas-hue`
+  for every dark tier. The rail cut-out is recorded, not ruled. Plus conformance: nine oxblood
+  passages in the spec's prose, `in oklab` on the aurora token, and stale entry points.
 
 - **2026-09-03 (v2026.09.03.4)** — **the forms batch, five entries.** `components.selection-is-ink`
   (selection is ink plus a non-colour channel; **no material tier reaches 1.15:1** against its own

@@ -81,6 +81,27 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** render the specimen frame both ways — furniture on `role-label-caps`, and as shipped — and decide whether a specimen's frame is held to the rules it demonstrates. A frame that breaks them teaches the break.
 - **blocks:** nothing.
 
+### `progress-ribbon` below `sm`: one caption, or the forbidden status caption?
+- **kind:** production ahead, or two readings
+- **found:** making `preview/progress-ribbon.html` fit 390. Five `markers` labels cannot sit under five segments at that width, so the specimen now copies voyager's `sm:hidden` branch in `bill-status-progress-bar.tsx`: one centred caption naming the active step.
+- **evidence:** the 390 render of the specimen. `components.progress-ribbon.markers` puts a label under every segment and has no narrow form; `failure-honesty` sanctions a single caption only for failure; `status-redundancy` forbids captioning the ribbon with the status the RubberStamp already spells out.
+- **proposes:** render both readings at 390 on the bill detail header with the RubberStamp present, then decide. (A) the caption is the active segment's own label, so write it into `markers` as the narrow form. (B) it is the status caption `status-redundancy` forbids, and it drops the other four positions, so narrow shows first-and-last labels or no label row.
+- **blocks:** nothing; the specimen shows production's form until this is decided.
+
+### `progress-ribbon` `fill-active` loops forever
+- **kind:** two readings
+- **found:** `design-reviewer`, on the same specimen.
+- **evidence:** `components.progress-ribbon.fill-active` specifies `animate-pulse`, an idle loop; the motion rules say motion is "never decorative, never an idle loop". The static specimen hides the conflict.
+- **proposes:** decide whether the active segment pulses. If it doesn't, drop `animate-pulse` from `fill-active` and voyager conforms.
+- **blocks:** nothing.
+
+### What a gutter line number counts when statute text wraps
+- **kind:** spec silent
+- **found:** making `preview/type-legislature.html` fit 390. Its statute rows were `nowrap`; they now wrap below 40rem, and a wrapped continuation carries no number.
+- **evidence:** the 390 render: each number aligns to its line's first visual row, and continuation rows are unnumbered. `components.line-numbers` is `blocked-on: IMPLEMENTATION` and does not say whether a number counts source lines or visual lines.
+- **proposes:** (A) a number counts source (enrolled-bill) lines, so a continuation is unnumbered. This matches statute citation ("page 2, line 14") and the specimen as it now renders. (B) a number counts visual lines, so text never wraps and scrolls sideways instead. Decide before line-numbers ships.
+- **blocks:** nothing now; line-numbers implementation.
+
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by

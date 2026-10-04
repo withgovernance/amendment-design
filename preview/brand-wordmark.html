@@ -13,6 +13,7 @@
    `stretch` blows each <img> box out to the full content width, and an SVG <img>
    letterboxes centred inside it (preserveAspectRatio xMidYMid), so the artwork
    drifts right of its own caption. flex-start lets width:auto resolve intrinsic. */
+@media (max-width: 780px) { .card { grid-template-columns: minmax(0, 1fr); } }
 .pane{border-radius:6px;padding:20px 22px;display:flex;flex-direction:column;align-items:flex-start;gap:14px;justify-content:center}
 .pane.light{background:#f4f4f5;box-shadow:inset 0 0 0 1px rgb(0 0 0/.06)}
 .pane.dark{background:#0f172a}

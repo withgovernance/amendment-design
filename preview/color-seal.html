@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="../colors_and_type.css">
 <link rel="stylesheet" href="_card.css">
 <style>.card { padding:24px; display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+@media (max-width: 780px) { .card { grid-template-columns: minmax(0, 1fr); } }
 .pane{border-radius:6px;padding:24px;display:flex;align-items:center;gap:22px}
 /* Explicit paper values — the emboss needs paper, and these must not follow
    --canvas, which the theme can flip. */

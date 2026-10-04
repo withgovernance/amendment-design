@@ -41,6 +41,13 @@ html,body{background-color:#080c17;background-image:radial-gradient(ellipse 72% 
 .foot .note{color:rgb(255 255 255/55%)}
 .foot .note b{color:rgb(255 255 255/87%)}
 .tall{height:520px}
+.at-narrow{display:none}
+@media (max-width:780px){
+.cols{grid-template-columns:minmax(0,1fr)}
+.colhd{flex-wrap:wrap}
+.at-wide{display:none}
+.at-narrow{display:inline}
+}
 </style>
 </head>
 <body>
@@ -48,7 +55,7 @@ html,body{background-color:#080c17;background-image:radial-gradient(ellipse 72% 
 <div class="hdr">
 <h1>Paper in dark mode is a desk lamp</h1>
 <p class="sub">The refactor target for <b>RECONCILIATION §4</b>. Both sheets below carry byte-identical colours and light pools, read from <b>voyager@e440076210f2</b>. The only difference is <code>background-attachment</code>. <b>Scroll the page</b> — that is the entire specimen; nothing about it is visible standing still.</p>
-<div class="note"><b>Scroll to compare.</b> Left holds its light. Right drags the pool up and out of frame, and the page below it goes dim.</div>
+<div class="note"><b>Scroll to compare.</b> <span class="at-wide">Left holds its light. Right drags</span><span class="at-narrow">The upper sheet holds its light. The lower one drags</span> the pool up and out of frame, and the page below it goes dim.</div>
 </div>
 
 <div class="cols">

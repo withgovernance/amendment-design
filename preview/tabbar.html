@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
 <style>.card { display:grid; grid-template-columns:390px 1fr; gap:26px; align-items:start; }
+@media (max-width: 780px) { .card { grid-template-columns: minmax(0, 390px); } }
 .cap{font-variation-settings:var(--sans-chrome);text-transform:uppercase;font-size:12px;letter-spacing:.07em;color:var(--text-secondary);font-weight:var(--sans-semibold);margin-bottom:8px}
 .screen{position:relative;height:330px;border-radius:14px;overflow:hidden;background:#f1f5f9;box-shadow:inset 0 0 0 1px var(--border-subtle)}
 .body{padding:14px 14px 0}

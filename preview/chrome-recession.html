@@ -58,7 +58,18 @@ h2 { font-family: var(--font-serif); font-variation-settings: var(--serif-displa
 .convo { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 15px; color: var(--text-primary); margin: 0 0 8px; }
 .lbl { position: absolute; right: 8px; bottom: 6px; z-index: 3; font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); }
 
-.narrow { width: 390px; }
+.narrow { width: 390px; max-width: 100%; }
+.tbl-narrow, .at-narrow { display: none; }
+.tbl-narrow caption { caption-side: top; text-align: left; padding: 10px 0 2px; font-family: var(--font-serif); font-variation-settings: var(--serif-display); font-weight: 800; font-size: 13px; color: var(--text-primary); }
+@media (max-width: 780px) {
+  .scene .shell { flex-wrap: wrap; }
+  .rail { flex: 1 1 100%; width: auto; }
+  .main { min-width: 0; }
+  .bar { flex-wrap: wrap; row-gap: 6px; }
+  .tbl-wide { display: none; }
+  .tbl-narrow { display: table; }
+  .at-narrow { display: block; }
+}
 .pair { display: grid; gap: 10px; }
 table { border-collapse: collapse; font-family: var(--font-mono); font-size: 12px; margin-top: 6px; }
 td, th { padding: 3px 12px 3px 0; text-align: left; vertical-align: top; }
@@ -79,6 +90,7 @@ th { font-variation-settings: var(--sans-chrome); text-transform: uppercase; let
 <p class="sub">A chrome that recedes into the aurora does not become subtle chrome — it stops being a ground, and every label it carries becomes bare text on the band. That is the rule this decision collides with, so the collision is what the card measures.</p>
 
 <h2>1440 — the spec's aurora</h2>
+<p class="caption at-narrow">Stacked to fit this width. The scene is the 1440 layout, and the contrasts below were measured at 1440 label positions.</p>
 <div class="pair" data-w="1440">
   <div class="scene mat" data-scene="1440-mat"><div class="ground"></div><div class="band"></div>
     <span class="lbl">material-chrome</span>
@@ -102,6 +114,7 @@ th { font-variation-settings: var(--sans-chrome); text-transform: uppercase; let
 
 <h2>1440 — the aurora the product actually ships</h2>
 <p class="note">The consumer's <span class="mono">globals.css</span> carries five narrow, far more saturated lobes rather than the token's three. Per <span class="mono">ink-ground-is-a-placement</span>, the ground that decides this is the one that renders.</p>
+<p class="caption at-narrow">Stacked to fit this width. The scene is the 1440 layout, and the contrasts below were measured at 1440 label positions.</p>
 <div class="pair">
   <div class="scene mat app" data-scene="app-mat"><div class="ground"></div><div class="band"></div>
     <span class="lbl">material-chrome · shipped aurora</span>
@@ -146,13 +159,31 @@ th { font-variation-settings: var(--sans-chrome); text-transform: uppercase; let
 <h2 id="results">Measured</h2>
 <p class="note">Ground sampled <b>directly beneath each label</b>, not at the panel edge — the first pass of this card sampled the panel's right edge and so missed that "Conversations" sits on the green lobe. Contrast computed with each ink composited at its real alpha over that ground.</p>
 
-<table>
+<table class="tbl-wide">
 <tr><th>label</th><th>light · chrome</th><th>light · receding</th><th>dark · chrome</th><th>dark · receding</th></tr>
 <tr><td>wordmark</td><td>14.91</td><td>14.91</td><td>14.71</td><td>14.71</td></tr>
 <tr><td>nav label</td><td>4.65</td><td class="">4.57</td><td>6.25</td><td>6.12</td></tr>
 <tr><td>title, over the brightest lobe</td><td>14.60</td><td>12.67</td><td>14.03</td><td class="fail">6.22</td></tr>
 <tr><td>tab-bar label (390)</td><td>4.65</td><td>4.64</td><td>6.25</td><td>6.21</td></tr>
 <tr><td><b>active item · Midnight Indigo</b></td><td>plate</td><td>13.35</td><td>plate</td><td class="fail">1.34</td></tr>
+</table>
+<table class="tbl-narrow">
+<caption class="tcap">Light</caption>
+<tr><th>label</th><th>chrome</th><th>receding</th></tr>
+<tr><td>wordmark</td><td>14.91</td><td>14.91</td></tr>
+<tr><td>nav label</td><td>4.65</td><td>4.57</td></tr>
+<tr><td>title, over the brightest lobe</td><td>14.60</td><td>12.67</td></tr>
+<tr><td>tab-bar label (390)</td><td>4.65</td><td>4.64</td></tr>
+<tr><td><b>active item · Midnight Indigo</b></td><td>plate</td><td>13.35</td></tr>
+</table>
+<table class="tbl-narrow">
+<caption class="tcap">Dark</caption>
+<tr><th>label</th><th>chrome</th><th>receding</th></tr>
+<tr><td>wordmark</td><td>14.71</td><td>14.71</td></tr>
+<tr><td>nav label</td><td>6.25</td><td>6.12</td></tr>
+<tr><td>title, over the brightest lobe</td><td>14.03</td><td class="fail">6.22</td></tr>
+<tr><td>tab-bar label (390)</td><td>6.25</td><td>6.21</td></tr>
+<tr><td><b>active item · Midnight Indigo</b></td><td>plate</td><td class="fail">1.34</td></tr>
 </table>
 
 <p class="note" style="margin-top:12px"><b>The neutral ramp survives recession everywhere.</b> `--text-primary` and `--text-secondary` are luminance against a low-chroma ground, so they clear 4.5:1 on the bare band in both schemes — which is what <span class="mono">ink-needs-an-opaque-ground</span> already said when it exempted primary/secondary text. The hard rule's "never bare text" is broader than its own reason.</p>

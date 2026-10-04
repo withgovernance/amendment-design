@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="_card.css">
 <style>.card { padding: 14px 20px; min-height: 300px; }.lbl { font-size: 12px; }
   .eyebrow { font-family: var(--font-sans); font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; color: var(--text-tertiary); font-weight: var(--sans-semibold); margin-bottom: 6px; }.caption { font-variation-settings: 'opsz' 16, 'wght' 420; line-height: 1.35; }
+  @media (max-width: 780px) { .tiers { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 </style>
 </head>
 <body>
@@ -15,7 +16,7 @@
   <div class="eyebrow">Glass — five tiers on aurora</div>
   <div style="position: relative; padding: 14px 12px; border-radius: 6px; background-color: var(--canvas-live); background-image: var(--aurora);
     box-shadow: inset 0 0 0 1px rgb(0 0 0 / 6%);">
-    <div style="display: flex; gap: 8px;">
+    <div class="tiers" style="display: flex; flex-wrap: wrap; gap: 8px;">
       
         <div style="background: rgb(255 255 255 / 10%); backdrop-filter: blur(50px); -webkit-backdrop-filter: blur(50px); padding: 12px 10px; border-radius: 6px; box-shadow: inset 0 0 0 1px rgb(0 0 0 / 10%); flex: 1; display: flex; flex-direction: column; gap: 3px;">
           <span class="lbl">Material</span>

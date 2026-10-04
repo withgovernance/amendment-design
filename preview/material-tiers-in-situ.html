@@ -71,6 +71,15 @@ body::before{display:none}
 .room-light .modeflag{background:rgb(0 0 0/8%);color:rgb(0 0 0/55%)}
 .room-dark .modeflag{background:rgb(255 255 255/12%);color:rgb(255 255 255/70%)}
 .divider{width:1px;background:rgb(0 0 0/8%)}
+@media (max-width:780px){
+.grid{grid-template-columns:minmax(0,1fr)}
+.lblrow,.nav{flex-wrap:wrap}
+.nav{height:auto;min-height:52px;row-gap:4px;padding-block:8px}
+.navlinks{flex-wrap:wrap}
+.pop{width:auto;max-width:270px}
+.seg{flex-wrap:wrap}
+.segb{white-space:nowrap}
+}
 </style>
 </head>
 <body>

@@ -17,6 +17,7 @@ h2 { font-family: var(--font-serif); font-variation-settings: var(--serif-displa
 
 .ladder { display: flex; align-items: flex-start; gap: 12px; flex-wrap: nowrap; }
 .ladder .step { flex: 0 0 auto; }
+@media (max-width: 780px) { .ladder { flex-wrap: wrap; row-gap: 14px; } .pane { min-width: 0; } .ladder .sep { display: none; } .ladder .step:last-child { flex-basis: 100%; text-align: left; } }
 .step { text-align: center; }
 .chip { display: inline-flex; align-items: center; gap: 5px; border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: var(--sans-semibold); color: var(--color-success); }
 .dark .chip { color: var(--color-action); }

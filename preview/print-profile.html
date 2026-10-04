@@ -54,6 +54,20 @@ dd b{font-weight:600}dd code{font-family:var(--font-mono);font-size:12px;color:v
 .scale b{display:block;font-family:var(--font-sans);font-variation-settings:var(--sans-chrome);font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;color:rgb(0 0 0/45%)}
 .note{margin-top:16px}
 .legend{font-family:var(--font-mono);font-size:12px;color:var(--text-tertiary);margin-top:8px;line-height:1.45}
+/* Below the pair's width the sheets stack. Below 540px a sheet at 53% no
+   longer fits the column, so the scale model is shown at 38% instead — still
+   the whole page, margins and folds included. */
+.at-narrow{display:none}
+@media (max-width:1000px){
+.pair{grid-template-columns:minmax(0,456px)}
+.slot{width:auto;min-width:0}
+}
+@media (max-width:540px){
+.frame{width:auto;height:calc(1056px * .38 + 24px)}
+.sheet{transform:scale(.38)}
+.at-wide{display:none}
+.at-narrow{display:inline}
+}
 </style>
 </head>
 <body>
@@ -122,14 +136,15 @@ dd b{font-weight:600}dd code{font-family:var(--font-mono);font-size:12px;color:v
 </dl>
 
 <p class="note" id="probe">measuring&hellip;</p>
-<p class="legend"><b>The sheets are scale models, not chrome.</b> Each is authored at true US&nbsp;Letter geometry &mdash; 816&thinsp;&times;&thinsp;1056px at 96px/in &mdash; and shown at 53%, so type set at 11.5pt renders about 8px here. That is the one licensed way a specimen may render below the 12px floor, and it is stated in the file rather than assumed.</p>
+<p class="legend"><b>The sheets are scale models, not chrome.</b> Each is authored at true US&nbsp;Letter geometry &mdash; 816&thinsp;&times;&thinsp;1056px at 96px/in &mdash; and shown at <span class="at-wide">53%, so type set at 11.5pt renders about 8px here</span><span class="at-narrow">38% at this width (53% on a wider screen), so type set at 11.5pt renders about 6px here</span>. That is the one licensed way a specimen may render below the 12px floor, and it is stated in the file rather than assumed.</p>
 </div>
 <script>
 (async () => {
   await document.fonts.ready;
   const sh = document.querySelectorAll('.sheet')[1];
   const pad = parseFloat(getComputedStyle(sh.querySelector('.pad')).paddingLeft);
-  const w = sh.getBoundingClientRect().width / 0.53;
+  const scale = new DOMMatrixReadOnly(getComputedStyle(sh).transform).a;
+  const w = sh.getBoundingClientRect().width / scale;
   const measure = (w - pad * 2) / 96;
   const sig = parseFloat(getComputedStyle(sh.querySelector('.sig')).marginTop) / 96;
   document.getElementById('probe').innerHTML =

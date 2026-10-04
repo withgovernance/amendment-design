@@ -7,10 +7,15 @@
 <link rel="stylesheet" href="../colors_and_type.css">
 <link rel="stylesheet" href="_card.css">
 <!-- chrome comes from _card.css -->
+<style>
+.swatches { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+.swatches > div { min-width: 0; }
+@media (max-width: 780px) { .swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>
 </head>
 <body>
 <div class="card">
-  <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px;">
+  <div class="swatches">
     
   <div style="display: flex; flex-direction: column; gap: 6px; align-items: stretch;">
     <div style="background: #047857; height: 56px; border-radius: 6px; box-shadow: inset 0 0 0 1px rgb(0 0 0 / 8%);"></div>

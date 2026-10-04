@@ -7,7 +7,17 @@
 <link rel="stylesheet" href="../colors_and_type.css">
 <link rel="stylesheet" href="_card.css">
 <style>.card { padding: 14px 24px; }
-  
+/* Below sm, five chrome-width labels cannot sit under five segments at 12px.
+   Production (bill-status-progress-bar.tsx) replaces the row with one centred
+   caption naming the active step — the same shape as the failure case. */
+.cap-narrow { display: none; }
+.ribbon-current { display: none; text-align: center; color: var(--text-primary); }
+@media (max-width: 639.98px) {
+  .ribbon-labels { display: none !important; }
+  .ribbon-current { display: block; }
+  .cap-wide { display: none; }
+  .cap-narrow { display: inline; }
+}
 </style>
 </head>
 <body>
@@ -20,11 +30,12 @@
       <div style="flex:1; background: rgb(148 163 184 / 0.2); border-radius: 9999px;"></div>
       <div style="flex:1; background: rgb(148 163 184 / 0.2); border-radius: 9999px;"></div>
     </div>
-    <div style="display:flex; gap:1px;">
+    <div class="ribbon-current lbl">Engrossed</div>
+    <div class="ribbon-labels" style="display:flex; gap:1px;">
       <div style="flex:1; text-align:center;" class="lbl">Prefiled</div><div style="flex:1; text-align:center;" class="lbl">Introduced</div><div style="flex:1; text-align:center;" class="lbl">Engrossed</div><div style="flex:1; text-align:center;" class="lbl">Enrolled</div><div style="flex:1; text-align:center;" class="lbl">Enacted</div>
     </div>
   </div>
-  <div style="margin-top: 8px; font-family: var(--font-serif); font-variation-settings: 'opsz' 16, 'wght' 420; font-size: 12px; color: var(--text-secondary);">8px segmented bar · chrome-width milestone labels · slate ink, emerald on enacted</div>
+  <div style="margin-top: 8px; font-family: var(--font-serif); font-variation-settings: 'opsz' 16, 'wght' 420; font-size: 12px; color: var(--text-secondary);"><span class="cap-wide">8px segmented bar · chrome-width milestone labels · slate ink, emerald on enacted</span><span class="cap-narrow">8px segmented bar · below sm only the active step’s label shows, as production does · slate ink, emerald on enacted</span></div>
 </div>
 </body>
 </html>

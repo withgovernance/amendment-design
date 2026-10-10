@@ -45,13 +45,33 @@ const specRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "..",
 );
-const argTarget = (() => {
-  const i = process.argv.indexOf("--target");
-  return i !== -1 && process.argv[i + 1] ? process.argv[i + 1] : null;
-})();
-const targetRoot = path.resolve(
-  argTarget ?? path.join(process.env.HOME ?? "", "git", "voyager"),
+// The target is required. A default meant any unrecognised invocation —
+// `--help` included — rewrote the consumer's committed token file.
+const USAGE = `usage:
+  node tools/build-tokens.mjs --target <consumer-repo>            write <consumer-repo>/app/design-tokens.css
+  node tools/build-tokens.mjs --target <consumer-repo> --check    verify, exit 1 on drift`;
+const args = process.argv.slice(2);
+if (args.includes("--help") || args.includes("-h")) {
+  console.log(USAGE);
+  process.exit(0);
+}
+const unknown = args.filter(
+  (a, i) => a !== "--target" && a !== "--check" && args[i - 1] !== "--target",
 );
+const argTarget = (() => {
+  const i = args.indexOf("--target");
+  return i !== -1 && args[i + 1] && !args[i + 1].startsWith("--")
+    ? args[i + 1]
+    : null;
+})();
+if (!argTarget || unknown.length) {
+  console.error(
+    (unknown.length ? `unknown argument: ${unknown.join(" ")}\n` : "--target is required\n") +
+      USAGE,
+  );
+  process.exit(2);
+}
+const targetRoot = path.resolve(argTarget);
 const repoRoot = specRoot; // spec-side reads resolve here
 const sourcePath = path.join(specRoot, "colors_and_type.css");
 const outPath = path.join(targetRoot, "app", "design-tokens.css");

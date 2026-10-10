@@ -191,6 +191,10 @@
      A number raised for one ground does not transfer to another. */
   --text-secondary: rgb(0 0 0 / 60%);
   --text-tertiary:  rgb(0 0 0 / 38%);
+  /* components.tabbar.activeColor: the Midnight Indigo trail on the active
+     nav item, icon and label. Primary in light; slate-300 in dark, because
+     primary as a mark disappears on the dark ground (primary.plate-not-mark). */
+  --text-nav-active: var(--color-primary);
 
   /* Borders */
   --border-hairline: rgb(0 0 0 / 5%);
@@ -393,6 +397,7 @@
   --text-primary:   rgb(255 255 255 / 87%);
   --text-secondary: rgb(255 255 255 / 60%);
   --text-tertiary:  rgb(255 255 255 / 38%);
+  --text-nav-active: #cbd5e1;   /* slate-300 */
   --border-hairline: rgb(255 255 255 / 20%);
   --border-subtle:   rgb(255 255 255 / 10%);
   --border-dashed-empty: rgb(255 255 255 / 30%);

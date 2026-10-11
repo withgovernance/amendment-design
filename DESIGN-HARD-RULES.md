@@ -16,7 +16,7 @@ Source of truth: `DESIGN.md`. This file is the short list every visual change is
    - **Check a material against `colors_and_type.css`, not the app's own utility.** A specimen names which value it renders.
    - **A contrast number without a position is not a measurement.** The canvas is a gradient; quote where you sampled or don't quote the number (`color.ink-ground-is-a-placement`).
 2. **Is the green obeying the fill rule?** Three separate questions (`color.action.fill-rule`):
-   - **A filled green plate is a control** (*press me*). One per surface, on the primary act. A green plate that isn't pressable is a violation.
+   - **A filled green plate is a control** (*press me*). One per surface, on that surface's primary act — and a card is a surface, so each ask card carries its own Co-sign plate; an act the page has already plated takes `button-secondary` when it repeats (`color.action.fill-rule-one-per-surface`). A green plate that isn't pressable is a violation.
    - **Green ink is a report** (*this happened*): `--color-success` on light, `--color-action` under inversion. The action green **as text is forbidden** (`fill-rule-which-green`).
    - **Green ink is only as legal as the ground under it.** Measure against the ground the element lands on, not white. A **green tint plate carrying green ink caps at 10%** (`color.action.fill-rule-ink-ground`).
    - **The Momentum accent is scoped to where a crowd is counted** — co-signs, endorsements, tallies, threshold meters. Conversation views are green-free. This scopes the brand accent, not semantic success (enacted, completed, verified) (`registers.live.palette-rule`).
@@ -48,7 +48,7 @@ Source of truth: `DESIGN.md`. This file is the short list every visual change is
 18. **Wrong icons or imagery?** These bind the system's own voice, not user-authored content (`color.rules-bind-the-system-not-the-user`). Phosphor only, never Lucide. No flags, eagles or partisan marks **as decoration** — a jurisdiction's own flag or chamber seal at badge scale, identifying that jurisdiction's records, is a sanctioned identity mark. No stock photography, no photographic textures, no faux-3D, no emoji in the system's voice. No 🎉 register — the Receipt is *issued*, not cheered.
 19. **A `ch` unit, or a hand-typed value a token already owns?** Widths in rem from the measure and container tokens; `ch` is banned from tokens and from prose (`spacing.measure.rule`). Colours, shadows, materials, weights from tokens. **Cite the token, never the number.**
 20. **A green plate without its edge?** Every `color.action` plate carries a 1px `color.action-active` ring — the fill alone is under 3:1 on a light card (`components.button-cta.ring`).
-21. **An empty state?** Content that did not arrive is `card-empty` (material); a slot someone can fill is `card-placeholder` (dashed). The label is read, so it takes secondary ink (`components.card-empty.two-components-not-one`).
+21. **An empty state?** Content that did not arrive is `card-empty` (material); a slot someone can fill is `card-placeholder` (dashed). An empty card is a `role-ui-heading` title over a `role-body` message in secondary ink (`components.card-empty.typography`).
 
 ## The four registers (pick the register, not the room)
 

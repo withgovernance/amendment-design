@@ -50,97 +50,7 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
-### `card-empty` and `card-placeholder` do not say what type their message takes
-- **kind:** unowned default
-- **found:** `design-reviewer` on `preview/cards.html`, after v2026.09.14.8 split the two components.
-- **evidence:** the specimen sets one `role-caption` line. Voyager's `card-empty` utility sets no size, and its call sites carry a `role-ui-heading` title plus a `text-sm` message (`app/(data)/dispatches/page.tsx:526–529`). The spec names padding, ink and alignment and says nothing about the message's role, or whether a title is allowed.
-- **proposes:** render both shapes — one caption line; a `role-ui-heading` title over a `role-body` message — inside the 32px panel at 390, both schemes, and let the container decide.
-- **blocks:** nothing. Voyager's migration of the dashed sites (handoff 2026-09-14) can land either way.
-
-### `_card.css` builds its own chrome labels — is specimen furniture exempt from the role layer?
-- **kind:** two readings
-- **found:** `design-reviewer`, across the specimens reviewed on 2026-09-14.
-- **evidence:** `_card.css` declares itself "not system guidance", yet `.voice-eyebrow`, `.lbl` and `.pane-label` are hand-built uppercase labels at 0.06–0.08em tracking and tertiary ink, where `role-label-caps` is `--track-chrome` and secondary ink. Hard rule 10 bans a hand-assembled register; the file's own disclaimer implies its furniture is outside the rule.
-- **proposes:** render the specimen frame both ways — furniture on `role-label-caps`, and as shipped — and decide whether a specimen's frame is held to the rules it demonstrates. A frame that breaks them teaches the break.
-- **blocks:** nothing.
-
-### `progress-ribbon` below `sm`: one caption, or the forbidden status caption?
-- **kind:** production ahead, or two readings
-- **found:** making `preview/progress-ribbon.html` fit 390. Five `markers` labels cannot sit under five segments at that width, so the specimen now copies voyager's `sm:hidden` branch in `bill-status-progress-bar.tsx`: one centred caption naming the active step.
-- **evidence:** the 390 render of the specimen. `components.progress-ribbon.markers` puts a label under every segment and has no narrow form; `failure-honesty` sanctions a single caption only for failure; `status-redundancy` forbids captioning the ribbon with the status the RubberStamp already spells out.
-- **proposes:** render both readings at 390 on the bill detail header with the RubberStamp present, then decide. (A) the caption is the active segment's own label, so write it into `markers` as the narrow form. (B) it is the status caption `status-redundancy` forbids, and it drops the other four positions, so narrow shows first-and-last labels or no label row.
-- **blocks:** nothing; the specimen shows production's form until this is decided.
-
-### Material backdrops carry no saturation boost
-- **kind:** spec silent
-- **found:** voyager session, 2026-10-08, measuring Apple's web materials (music.apple.com, maps.apple.com) against ours.
-- **evidence:** every Apple Music material composes `saturate()` (1.8–2.2) before `blur()`: nav and player `saturate(2.2) blur(16px)`, small controls `saturate(1.9) blur(60px)`. Maps uses none. Our `materials` tiers are `blur()` alone. The cost this would offset is already on record: an opaque-ish plate removes a fixed share of the chroma beneath it (v2026.09.14.11), and canvas-hue dark glass lowers pane-to-ground separation on every tier (`materials.dark-glass-takes-the-canvas-hue`). The measurement came from headless Chromium with a Safari UA, not real Safari.
-- **comparison render:** https://claude.ai/artifact/8zhJi4x824Zo5BZ9rthBs4 shows current against proposed in both schemes over the live aurora, with each change on its own toggle. It ran in Chromium, so use it for comparison only; it is not the ratification render.
-- **proposes:** render `material-regular` and `material-thin` with and without `saturate()` over the band the product paints, at the warm stop and the cool lobe, in both schemes. Re-measure `color.ink-needs-an-opaque-ground`'s case and secondary ink on `material-regular`, because a saturated backdrop moves both. If adopted, it goes into `materials.*.backdropFilter` as one value for every tier.
-- **blocks:** nothing.
-
-### Light material ladder: steep on purpose, or never chosen?
-- **kind:** spec silent
-- **found:** same comparison.
-- **evidence:** Apple spaces its five light tiers evenly. Ours jumps from `material-ultrathin` to `material-thin` to `material-regular`, so our `material-regular` sits about where Apple's ultrathick does, and `material-thick` sits above anything Apple ships. Apple's light fill is an off-white (`--glassMaterialBackground`), and ours is pure white. Our light strokes on `material-regular` and `material-thick` are heavier than Apple's single 5% stroke. Neither `DESIGN.md` nor `CHANGELOG.md` gives a reason for the step sizes, though `material-regular`'s near-opacity is likely what holds secondary ink on cards over the aurora.
-- **comparison render:** https://claude.ai/artifact/8zhJi4x824Zo5BZ9rthBs4 shows current against proposed in both schemes over the live aurora, with each change on its own toggle. It ran in Chromium, so use it for comparison only; it is not the ratification render.
-- **proposes:** nothing until the reason is known. If the steps were chosen for text contrast on cards, write that reason into `materials` and close this entry. If they were never chosen, render an evenly spaced ladder with secondary ink measured on each tier at the band's worst position, and decide from that render.
-- **blocks:** nothing.
-
-### Material rings: one stroke for every tier, or graduated per tier?
-- **kind:** spec silent (the stroke); the fill is already decided
-- **found:** voyager session, 2026-10-08, comparing Apple's web materials with ours, then a second capture of Apple's controls and cards, checked by independent verifiers.
-- **evidence:**
-  - **Apple uses one stroke for all its glass, whatever the thickness.** Mini-player, chrome-player, cloud-buttons and classical-button all paint the same 0.5px inset stroke: black at 5% light and white at 20% dark when the page sets a theme, rising to 10% / 25% under the system scheme. Apple's sidebar sets those values but paints no stroke from them.
-  - **Ours is graduated per tier.** `materials.*.ring-light` and `ring-dark` step up with thickness, the dark rings stay well under Apple's, and none of them references `borders.hairline`, whose own values already match Apple's explicit-theme stroke.
-  - **Apple's content artwork takes a separate 0.5px inset hairline,** not a glass ring.
-  - **The fill is not reopened.** Apple's dark fill is a lifted neutral grey, the reading `materials.dark-glass-takes-the-canvas-hue` rendered and rejected for greying the blue. The report that ours is "black" came from voyager's stale generated tokens.
-  - Measured in headless Chromium with a Safari UA.
-- **comparison render:** https://claude.ai/artifact/8zhJi4x824Zo5BZ9rthBs4 shows current against proposed in both schemes over the live aurora, with each change on its own toggle. It ran in Chromium, so use it for comparison only; it is not the ratification render.
-- **proposes:** render every tier with its ring as shipped, then with one ring for all tiers on `borders.hairline`, on canvas-hue glass at both band positions in both schemes. Check whether the heavier dark ring does the job of the dark inset bevel, and whether a 5% light ring still separates `material-regular` cards from the aurora. If one ring wins, `materials.*.ring-*` collapses into a reference to `borders.hairline`.
-- **also (review, 2026-10-11):** `material-chrome.ring-light`/`ring-dark` still read "1px solid", an all-round ring, while `material-chrome.edge` draws one line on the content-facing edge. Settle which the material draws in the same pass.
-- **blocks:** nothing. Voyager's regeneration is a conformance fix that is owed whatever is decided here.
-
-### Is a material's edge a boundary held to 3:1?
-- **kind:** unowned default
-- **found:** ring audit, 2026-10-09, from a live 390 dark render of a candidate page with `AskSignDock` showing. The side of the line and the dock's consumer status were ratified 2026-10-11 (`materials.material-chrome.edge`, `.consumers`); this half stays open.
-- **evidence:** dock fill (16,16,24) against the card scrolling beneath it (16,16,21) is **1.002:1**, so in dark the edge has nothing to carry it but its line. No ring in the system clears the 3:1 non-text floor, and neither does Apple's: ring alpha over the dock's own ground, flat and before blur, is white 5% 1.12, 8% 1.21, 10% 1.29, 12% 1.38, 20% 1.83, 35% 3.2; black in light 5% 1.12, 10% 1.25, 20% 1.6, 35% 2.42. `DESIGN.md` puts "rules" under the 3:1 floor, next to marks and icons.
-- **proposes:** render the dock and the tab bar at 390 in both schemes with the top edge at `border.subtle`, `borders.hairline` and a 3:1 value, over a canvas-hue card, and decide. If the edge is a boundary, every ring is redrawn; if it is exempt, write that down and say what separates an overlapping bar from content instead. Closes with "Material rings" above.
-- **blocks:** nothing structurally.
-### How many green plates a page carries when it lists asks
-- **kind:** two readings
-- **found:** homepage hi-fi (`Homepage · Desktop.png`, 2026-10-07, approved for ratification). One page carries eight `button-cta` plates: "Find your district" in the hero, a Co-sign on each of six ask cards, and "Find your district" again in the close.
-- **evidence:** `DESIGN-HARD-RULES.md` item 2 says a plate is the control "one per surface, on the primary act", but `color.action.fill-rule` in `DESIGN.md` has no count, and nothing in `DESIGN.md` says "one per surface" apart from the FAB entry ("that screen's one green plate") and the lede's thirty-second path ("One green plate"). Production already shows a plate on each card: `AskSummaryCard.stories.tsx` renders `Button variant="cta"` Co-sign as "control", per card. Two readings: (a) the surface is the card, so each ask's Co-sign is that card's one plate; (b) the surface is the page, so one plate per screen and every other Co-sign becomes `button-secondary`. A second question comes with it: "Find your district" is navigation, not the crowd act the Commons palette-emphasis gives the plate to.
-- **proposes:** nothing until it's rendered. Render the hero and the six-card grid at 1440 and 390 in both schemes under (a) and (b), and decide by whether the hero's plate still reads as the page's first action next to six others. Whichever reading wins, `DESIGN-HARD-RULES.md` item 2 and `color.action.fill-rule` have to say the same thing.
-- **blocks:** the homepage build. Voyager has to know which buttons are plates.
-
-### Ask title inside a card: serif (Commons) or `role-ui-heading` (container rule)
-- **kind:** two readings
-- **found:** the same hi-fi sets the six ask-card titles and the hero card's ask rows in sans semibold. Production's `AskSummaryCard.tsx:215` sets the ask title `font-serif font-medium`.
-- **evidence:** the Commons surface says "Serif still carries the *ask itself*: a demand a constituent authored deserves the same weight a bill title gets." Hard rule 6 / `a-heading-belongs-to-whoever-it-works-for` says that inside a container the heading is `role-ui-heading`, unless the container's content *is* the document. The placement test ("could a second card join under this title?") answers no, which makes the title the card's own and sans. The two rules disagree on an ask card, and the hi-fi follows one while production follows the other.
-- **proposes:** decide whether an ask is "the document" under rule 6's carve-out. If it is, add asks to the carve-out by name, and the hi-fi's titles conform to serif. If it isn't, narrow the Commons sentence to the ask *detail* page.
-- **blocks:** the homepage ask cards and the hero "top asks" card, and through them any consistency with `/asks`.
-
-### Progress-ribbon fills on lamp paper: the light set or the dark set?
-- **kind:** unowned default
-- **found:** `design-reviewer` on `preview/progress-ribbon.html`, 2026-10-11, after its panel took `data-paper`.
-- **evidence:** since the desk-lamp ruling, dark `paper-cream` is light paper and `[data-paper]` resets ink to light values, but `components.progress-ribbon`'s dark fills (`fill-completed` slate-500, `fill-success` emerald-500, `track-dark`) were written for a dark sheet. Painted on dark lamp paper as the dark set: track 1.05:1, active 2.36:1, both under 3:1. On light paper with the light set: track 1.16:1, active 4.3:1. The specimen now draws the light set in both schemes.
-- **proposes:** render both sets on lamp paper at 390 and 1440 and measure each segment against 3:1. If the paper scope wins, the ribbon's dark fills apply only off paper, and `[data-paper]` should say it governs fills as well as ink. The track fails 3:1 either way, so say whether a track is a boundary.
-- **blocks:** nothing.
-
-### `canvases.paper-cream.bg-dark` still states the dark sheet
-- **kind:** production ahead
-- **found:** `design-reviewer`, 2026-10-11.
-- **evidence:** the key holds the near-black value; the prose section "Dark Mode: Paper Islands", `CHANGELOG.md` ("dark-mode paper is a desk lamp") and the stylesheet all ship light lamp paper. A ruling recorded and not applied to its own key.
-- **proposes:** the key takes `--paper-cream`'s dark value and cites the lamp ruling. Check `paper-parchment` the same way.
-- **blocks:** nothing.
-
-### Is a specimen judged at its declared viewport or at 1440?
-- **kind:** spec silent
-- **found:** `design-reviewer`, 2026-10-11.
-- **evidence:** the tab bar's `dd` text and type-institution's `.caption` run about 1,150 and 1,400 CSS px per line at 1440. Their `@dsCard` viewports (820 and 700) imply a frame the page doesn't enforce, and CLAUDE.md asks for renders at 1440.
-- **proposes:** either specimens cap their prose at `measure.body` like any reading surface, or the card frame enforces its declared viewport and 1440 renders the frame centred. One sentence under Governance → Specimens.
-- **blocks:** nothing.
+*(empty — v2026.10.11.3 settled the queue)*
 
 ## Needs a person — cannot close from inside the toolchain
 
@@ -156,6 +66,20 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-10-11 (v2026.10.11.3)** — **a card is a surface**: each ask card keeps its Co-sign
+  plate, the hero's form submit keeps its own, and a repeated act takes `button-secondary`. Ask
+  titles inside cards are `role-ui-heading`. Every material tier takes one ring,
+  `--border-subtle`, and a material's edge is not held to 3:1. Empty cards are a
+  `role-ui-heading` title over a `role-body` message. **The progress ribbon has no narrow form —
+  voyager deletes its `sm:hidden` branch** — and takes its light fills on paper in both schemes;
+  its date is `role-metadata`, roman. Specimen frames are held to the role layer and to
+  `measure.body`.
+
+- **2026-10-11 (v2026.10.11.2)** — legislator notification at the public-count threshold is
+  planned, so the 3A/3B/3C artboards are spec ahead
+  (`surfaces.commons.known-divergence-legislator-notification`). No shipped caption names the
+  notification until it ships.
+
 - **2026-10-11 (v2026.10.11)** — `--text-nav-active` carries the active nav ink, and the sidebar
   takes it too. `tabbar.labelFit` measures `role-body`. The progress-ribbon's active segment no
   longer pulses: **voyager drops `animate-pulse`**. Statute line numbers count source lines. A
@@ -165,20 +89,3 @@ Moved out of this file on ratification; listed here for one cycle so the code si
   sites, closed: the section divider and the status stamp** — breadcrumbs, progress-ribbon
   milestones, column heads, count chips and the `Sources:` prefix go to sentence case, which
   voyager sweeps.
-
-- **2026-10-11 (v2026.10.11.2)** — legislator notification at the public-count threshold is
-  planned, so the 3A/3B/3C artboards are spec ahead
-  (`surfaces.commons.known-divergence-legislator-notification`). No shipped caption names the
-  notification until it ships.
-
-
-- **2026-09-14 (v2026.09.14 – .11)** — **the first pass after the `designer` agent was retired.**
-  Dark `--text-secondary` → 60%: the withdrawn 4.28:1 was right, the 5.96 was the token band
-  (**voyager's `secondary-text` utility is a literal, so neither scheme's 60% reaches a pixel
-  yet**). The `ch` ban covers prose. `button-cta.ring` is `color.action-active` (3.49:1 light),
-  and `button-fab` and toast actions take it too. `role-label-caps` takes the caption leading:
-  a chrome label may wrap. `card-empty` splits into `card-empty` (material; content that did
-  not arrive) and `card-placeholder` (dashed; a slot awaiting input). `a-count-row-is-reach`:
-  ask count rows follow the ask's level and state. `materials.dark-glass-takes-the-canvas-hue`
-  for every dark tier. The rail cut-out is recorded, not ruled. Plus conformance: nine oxblood
-  passages in the spec's prose, `in oklab` on the aurora token, and stale entry points.

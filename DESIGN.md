@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.11.2
+# spec-version:   v2026.10.11.3
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -481,6 +481,21 @@ color:
       / outline-means-available, which reads well on a checkbox and is wrong
       here: it ghosts the primary action, and a page where every state is a
       filled plate is a page where everything looks like a button.
+    fill-rule-one-per-surface: >-
+      RATIFIED 2026-10-11, decided by Jason. A filled green plate goes ONE
+      PER SURFACE, ON THAT SURFACE'S PRIMARY ACT, and A CARD IS A SURFACE —
+      as are the page, a sheet, a modal and a dock. A feed of ask cards
+      carries one Co-sign plate per card; the page's own primary act (a hero
+      form's submit, governed by button-cta.governs-form-submits) keeps its
+      plate beside them. A second call to an act the page has already plated
+      — a closing "Find your district" repeating the hero's — takes
+      button-secondary.
+      WHY THE CARD AND NOT THE PAGE: rendered with one plate per page, a
+      button-secondary Co-sign on a card nearly vanishes into it (fill and
+      ring both under 1.3:1 against the card), so the crowd act, the reason
+      the feed exists, reads as a caption. THE COST, named: at 1440 the
+      first screen of a feed can carry four identical plates, the hero's
+      among them; at 390 it carries one.
     fill-rule-which-green: >-
       SCOPE NARROWED 2026-08-28: this is ONE INSTANCE of
       color.ink-switch-is-palette-wide, which governs every semantic family.
@@ -1400,8 +1415,8 @@ typography:
     metadata:
       family: serif          # Newsreader roman, opsz 16 / wght 420
       size: 0.875rem         # 14px
-      weight: 400
-      style: italic
+      weight: 420
+      style: normal          # roman — see the note above
       color: secondary
       use: >-
         Byline, provenance, relationship descriptors, action-verbs in
@@ -1655,17 +1670,14 @@ elevation:
   # instead of mixing Tailwind defaults with a tint.
   flat:
     shadow: "none"
-    ring: "1px solid rgb(0 0 0 / 5%)"
   whisper:
     shadow: "0 1px 2px 0 rgb(15 23 42 / 0.04), 0 1px 1px -1px rgb(15 23 42 / 0.04)"
     use: "material-thin, ghost-button hover, default-button rest"
   raised:
     shadow: "0 4px 6px -1px rgb(15 23 42 / 0.12), 0 2px 4px -2px rgb(15 23 42 / 0.12)"
-    ring: "1px solid rgb(0 0 0 / 10%)"
     use: "material-regular, default-button hover, cards"
   floating:
     shadow: "0 20px 25px -5px rgb(15 23 42 / 0.18), 0 8px 10px -6px rgb(15 23 42 / 0.18)"
-    ring: "1px solid rgb(0 0 0 / 12%)"
     use: "material-thick, modal, FAB, dropdowns, secondary-button hover"
   chrome:
     shadow: "0 8px 16px -4px rgb(15 23 42 / 0.12), 0 3px 6px -3px rgb(15 23 42 / 0.12)"
@@ -1698,34 +1710,52 @@ materials:
     Written as a mix, not a literal, so the tiers follow --canvas-live if
     the Blue Hour moves. The reduced-transparency collapse already resolves
     to the canvas family and does not change.
+  one-ring: >-
+    RATIFIED 2026-10-11, decided by Jason. EVERY TIER TAKES ONE RING,
+    borders.subtle, in both schemes; a tier's own `ring` key names it and
+    elevation carries none. IN LIGHT THE FILL SEPARATES A PANE, NOT THE
+    RING, so stepping the ring with the fill bought nothing visible. In dark
+    a 1px borders.hairline outlines every tier like a wireframe, at twice
+    the weight of the native glass it follows; borders.subtle holds the
+    edge without drawing it.
+  light-ladder-sets-separation: >-
+    RECORDED 2026-10-11. The light fills (ultrathin through thick) do NOT
+    protect text: --text-secondary clears its floor on the bare aurora with
+    no material at all (a11y.contrast.band-is-bounded). The steps set only how
+    far a pane stands off the canvas, so they are a judgement of depth, not
+    a contrast floor, and an evenly spaced ladder renders nearly the same.
+    The values stand. A proposal to move them argues from separation, never
+    from legibility.
+  no-saturation-boost: >-
+    DECIDED 2026-10-11, not adopted. A saturate() on the backdrop filter
+    does nothing visible in light and in dark turns panes into saturated
+    navy plates, against dark-glass-takes-the-canvas-hue: dark glass takes
+    the canvas's hue at the canvas's chroma. Measured on device, not
+    assumed.
   material-ultrathin:
     description: Toggles, hover states, progress bars, form input backings
     bg-light: "rgb(255 255 255 / 10%)"
     bg-dark:  "color-mix(in srgb, var(--canvas-live) 2%, transparent)"
     backdropFilter: "blur(50px)"
-    ring-light: "1px solid rgb(0 0 0 / 5%)"
-    ring-dark:  "1px solid rgb(255 255 255 / 5%)"
+    ring: "borders.subtle"
   material-thin:
     description: Cards, ghost buttons, secondary containers
     bg-light: "rgb(255 255 255 / 45%)"
     bg-dark:  "color-mix(in srgb, var(--canvas-live) 26%, transparent)"
     backdropFilter: "blur(50px)"
-    ring-light: "1px solid rgb(0 0 0 / 5%)"
-    ring-dark:  "1px solid rgb(255 255 255 / 8%)"
+    ring: "borders.subtle"
   material-regular:
     description: Primary content cards, forms, search bars
     bg-light: "rgb(255 255 255 / 85%)"
     bg-dark:  "color-mix(in srgb, var(--canvas-live) 41%, transparent)"
     backdropFilter: "blur(50px)"
-    ring-light: "1px solid rgb(0 0 0 / 10%)"
-    ring-dark:  "1px solid rgb(255 255 255 / 10%)"
+    ring: "borders.subtle"
   material-thick:
     description: Modals, dropdowns, floating overlays
     bg-light: "rgb(255 255 255 / 95%)"
     bg-dark:  "color-mix(in srgb, var(--canvas-live) 60%, transparent)"
     backdropFilter: "blur(50px)"
-    ring-light: "1px solid rgb(0 0 0 / 15%)"
-    ring-dark:  "1px solid rgb(255 255 255 / 12%)"
+    ring: "borders.subtle"
   material-chrome:
     description: >-
       SCOPE NARROWED 2026-08-28 by recession-ratified-2026-08-28, and the
@@ -1791,8 +1821,8 @@ materials:
     # material-scroll utility that every rendered navbar actually takes.
     # Nobody chose either — an unowned default, session 8's open item. The
     # 75% reached no surface, so it is deleted rather than reconciled: the
-    # value in the code is the value the system means. Dark stays 90%,
-    # because translucent chrome over a dark canvas reads as smoke.
+    # value in the code is the value the system means. Both values were
+    # replaced on 2026-08-28 (description, above).
     bg-light: "rgb(255 255 255 / 35%)"
     bg-dark:  "color-mix(in srgb, var(--canvas-live) 45%, transparent)"
     consumers: >-
@@ -1805,9 +1835,16 @@ materials:
       the top, for a bar anchored to the bottom — at border.subtle in both
       schemes. It had been drawn on the bottom edge, left over from the top
       navbar, where it lay against the viewport with nothing beneath it. The
-      shadow casts away from the anchor too (elevation.chrome). Whether a
-      material's edge is a boundary held to the 3:1 non-text floor is open
-      in RATIFY.md.
+      shadow casts away from the anchor too (elevation.chrome).
+      A MATERIAL'S EDGE IS NOT A BOUNDARY HELD TO THE 3:1 NON-TEXT FLOOR
+      (RATIFIED 2026-10-11, decided by Jason). The floor protects a thing a
+      person must perceive to operate the interface; the bar is told apart
+      from the page by the break in blur, its fixed position and its own
+      controls, each of which meets its own floor. Measured, border.subtle
+      sits near 1.3:1 against the bar; reaching 3:1 takes an edge dark
+      enough in light and bright enough in dark to read as a hard rule,
+      which turns glass into a lid. The same holds for every material's ring
+      (one-ring) and for a meter's track on paper.
     bg-dark-was: >-
       rgb(24 24 27 / 90%) until 2026-08-28. CHANGED BECAUSE CHROME DID NOT
       BELONG TO ITS OWN PAGE. zinc-900 is a WARM NEUTRAL and the canvas it
@@ -1993,8 +2030,7 @@ materials:
       argument for changing the wrong thing. A specimen that names which
       value it is rendering is not a nicety.
     backdropFilter: "blur(25px)"
-    ring-light: "1px solid rgb(0 0 0 / 10%)"
-    ring-dark:  "1px solid rgb(255 255 255 / 10%)"
+    ring: "none — the edge key replaces it"
 
 # --------------------------------------------------------------------------
 # CANVASES — opaque paper surfaces. Distinct from materials (which are
@@ -2012,10 +2048,11 @@ canvases:
       Warm parchment for Archive reading surfaces. Bill text viewers,
       statute excerpts, long-form AI analysis on bill pages.
     bg-light: "oklch(0.965 0.012 85)"     # warm cream
-    bg-dark:  "oklch(0.20 0.010 70)"      # aged ivory inverted (deep warm)
+    bg-dark:  "oklch(0.78 0.058 68)"      # desk-lamp paper: light in both schemes (Dark Mode: Paper Islands)
+    lamp-dark: "--paper-cream-lamp"       # the lamp's pool, over bg-dark
     rounded: "0.25rem"
     ring-light: "1px solid rgb(0 0 0 / 8%)"
-    ring-dark:  "1px solid rgb(255 255 255 / 10%)"
+    ring-dark:  "1px solid oklch(0.5 0.05 55 / 0.5)"   # a warm edge on lit paper, with a deep cast shadow
     shadow: "raised"
     pairs-with: [ruled-page, line-numbers]
     when: "Archive bill-text viewers, statute excerpts."
@@ -2024,10 +2061,11 @@ canvases:
       Aged-paper tint for Writing Desk composition canvases. Slightly
       warmer than paper-cream — the tint of letterhead stock.
     bg-light: "oklch(0.955 0.018 80)"     # aged parchment
-    bg-dark:  "oklch(0.22 0.012 65)"      # deep warm manila
+    bg-dark:  "oklch(0.77 0.067 64)"      # desk-lamp paper: light in both schemes (Dark Mode: Paper Islands)
+    lamp-dark: "--paper-parchment-lamp"   # the lamp's pool, over bg-dark
     rounded: "0.25rem"
     ring-light: "1px solid rgb(0 0 0 / 10%)"
-    ring-dark:  "1px solid rgb(255 255 255 / 10%)"
+    ring-dark:  "1px solid oklch(0.5 0.05 55 / 0.55)"
     shadow: "raised"
     pairs-with: [ruled-page, paper-grain, signature-line]
     when: "Writing Desk letter canvas, call-script composition."
@@ -2721,6 +2759,12 @@ components:
     padding: "32px"
     textAlign: "center"
     color: "secondary text — the label is read; tertiary is decorative only (color.aurora.tertiary-rung)"
+    typography: >-
+      RATIFIED 2026-10-11, decided by Jason. A role-ui-heading title over a
+      role-body message, the title in --text-primary and the message in
+      secondary text. A lone role-caption line under the icon reads as a
+      blank box with a footnote; the title says what did not arrive and the
+      message says what, if anything, happens next.
     two-components-not-one: >-
       RATIFIED 2026-09-14, decided by Jason. card-empty named two things. The
       spec drew a dashed placeholder; the consumer shipped a material panel
@@ -3495,7 +3539,7 @@ profiles:
       THE VALUES WERE NEVER WRONG. Rendered as specified, the dark ring sits
       1.43:1 off the card and reads as an edge, not a halo — the same
       lighter-in-dark polarity every material in this system already declares
-      (`materials.*.ring-dark` is a white alpha, without exception). Three
+      (`materials.one-ring`: `borders.subtle` is a white alpha in dark). Three
       alternatives were rendered against it: a ring DARKER than the card, and
       no ring at all, both dissolve the corner radius and cost the card its
       silhouette against a viewport only 1.20:1 away; a quieter white edge at
@@ -3922,7 +3966,7 @@ surfaces:
       and where candidates answer on the record. Freedom of assembly and
       the right to petition, rendered as product.
     lead-family: sans              # present tense — live and social, not an archived document
-    heading-family: serif          # the ask itself is authored; serif gives the demand weight
+    heading-family: serif          # on the ask's own page, where its title stands on the canvas; an ask title inside a card is apparatus, role-ui-heading (typography.serif-belongs-to-the-canvas)
     default-material: material-thin
     canvas: none                   # stays on aurora — the Commons is live and public, never an artifact
     motion-posture: accruing       # the one surface besides Receipt where motion is permitted
@@ -4007,7 +4051,7 @@ tactileAccents:
     rubber-stamp-status:
       description: "Rubber-stamp treatment for bill status on Archive surfaces."
       geometry: "Rectangular border, 2px stroke (`ring-2 ring-inset`), 2–4° rotation applied via inline transform so each render lands at a deterministic angle per status."
-      typography: "sans semibold uppercase, sans-chrome, tracked 0.12em."
+      typography: "role-label-caps — the status stamp is one of its two sites (typography.chrome-sites-are-closed)."
       ink-break: "Alpha noise 0–15% varying across the mark. Clean geometry."
       when: "Bill detail page, sits adjacent to the title row. One stamp per bill."
       owner: "Jason — head of product & design, The Governance Company"
@@ -4081,6 +4125,20 @@ tactileAccents:
       fill-completed: "slate-700 / slate-500 (dark)"
       fill-success: "emerald-600 / emerald-500 (dark) — entire bar"
       fill-failure: "--color-danger — only the segment where the bill died"
+      on-paper: >-
+        RATIFIED 2026-10-11, decided by Jason. The ribbon sits on
+        paper-cream, which stays light paper in both schemes ([data-paper]),
+        so it TAKES THE LIGHT FILLS IN BOTH; the dark values apply only off
+        paper. The dark fills on light paper put the active segment near
+        2.4:1 against it, the light fills near 4.3:1. THE TRACK IS GROUND,
+        NOT A BOUNDARY: it fails 3:1 in either scheme and is exempt like a
+        material's edge (materials.material-chrome.edge) — the segments and
+        their labels carry the status.
+      below-sm: >-
+        RATIFIED 2026-10-11, decided by Jason. NO NARROW FORM. All five
+        sentence-case markers fit beneath their segments at 390, two of them
+        on two lines. The narrow form, showing only the active step, existed
+        for tracked caps, which no longer set here.
       markers: >-
         role-caption, sentence case, centred beneath each segment
         (typography.uppercase-has-two-homes, chrome-sites-are-closed).
@@ -4093,8 +4151,9 @@ tactileAccents:
         out the same value (ENGROSSED / ENROLLED / VETOED / ENACTED).
         Do not also caption the ribbon with "{status} on {date}" — the
         stamp + active segment + label already encode the status. The
-        *date* is real new information; render it as italic-serif
-        metadata adjacent to the ribbon, not as a chrome caption.
+        *date* is real new information; render it as role-metadata
+        (serif roman — it is under the italic floor, typography's
+        serif-italic rule) adjacent to the ribbon, not as a chrome caption.
       failure-honesty: >-
         All failure statuses fuzzy-match to one terminal step, so the stage
         of death is not known. Production renders a single red pin at the
@@ -4650,9 +4709,11 @@ a11y:
   reducedTransparency:
     description: >-
       When the OS sets prefers-reduced-transparency, all glass materials
-      collapse to solid zinc surfaces (zinc-50 / zinc-100 in light mode,
-      zinc-800 / zinc-900 in dark mode) and backdrop-filter is removed.
-      The layout does not shift; only the material does.
+      collapse to opaque surfaces and backdrop-filter is removed: zinc-50 /
+      zinc-100 in light, and in dark the canvas's own family lifted toward
+      white (--canvas-live mixed with white), never zinc, which is warm on a
+      cool canvas (material-chrome.bg-dark-was). The layout does not shift;
+      only the material does.
   highContrast:
     description: >-
       prefers-contrast: more boosts secondary text from 55% to 75% opacity
@@ -5605,18 +5666,18 @@ default border do not need a `dark:` modifier.
 
 **Materials in dark mode.** Every glass tier in the `materials:` token
 block ships both `bg-light` and `bg-dark` variants. They are not
-symmetric — light glass is white with high opacity; dark glass is
-black with much lower opacity, because dark backgrounds need less veil
-to read as a distinct surface. Use the matched pair; never mix a
-light tier's bg with a dark tier's ring.
+symmetric: light glass is white at high opacity; dark glass is the
+canvas's own hue at lower opacity (`dark-glass-takes-the-canvas-hue`),
+because a dark ground needs less veil to read as a distinct surface.
+Every tier takes the one ring, `borders.subtle` (`one-ring`).
 
 | Tier | bg-light | bg-dark | Notes |
 |------|----------|---------|-------|
-| ultrathin | 10% white | 2% black | Toggles, hover states |
-| thin | 45% white | 26% black | Cards, ghost buttons |
-| regular | 85% white | 41% black | Primary content cards |
-| thick | 95% white | 60% black | Modals, dropdowns |
-| chrome | 55% white | 90% zinc-900 | Persistent navbar — chrome solidifies in dark mode rather than thinning, because translucent chrome over a dark canvas reads as smoke. Light value resolved 2026-08-27: 55% is what every rendered navbar takes; the 75% default reached no surface and was deleted |
+| ultrathin | 10% white | 2% canvas-live | Toggles, hover states |
+| thin | 45% white | 26% canvas-live | Cards, ghost buttons |
+| regular | 85% white | 41% canvas-live | Primary content cards |
+| thick | 95% white | 60% canvas-live | Modals, dropdowns |
+| chrome | 35% white | 45% canvas-live | Mobile tab bar and AskSignDock — glass over scrolling content; its labels set the fill (`material-chrome.description`) |
 
 **What `dark:` modifies — and what it does not.**
 
@@ -5903,9 +5964,11 @@ impulse, made plural and made public.
 
 - **Lead family:** sans for the live, social mechanics (counts,
   co-signers, candidate responses, timestamps) — this is the present
-  tense, not an archived document. Serif still carries the *ask itself*:
-  a demand a constituent authored deserves the same weight a bill title
-  gets.
+  tense, not an archived document. Serif carries the *ask itself* on its
+  own page, where its title stands on the canvas: a demand a constituent
+  authored deserves the same weight a bill title gets. In a feed card the
+  ask's title is apparatus and takes `role-ui-heading`, like every title
+  inside a container.
 - **Default material:** `material-thin` on aurora. The Commons never
   lands on paper — paper is for issued and archived artifacts, and an ask
   is *live*, still gaining signatures, still awaiting a reply. Glass keeps
@@ -6293,6 +6356,12 @@ because a value read off the live stylesheet cannot go stale the way a
 typed one does. It must be measured the way the spec measures — a set
 line, a painted pixel — and never derived, such as a width divided by an
 average glyph. Ratified 2026-10-11.
+A specimen is held to the rules it shows. Its frame (`preview/_card.css`)
+is not exempt from the role layer: its section labels take
+`role-label-caps`, its row labels `role-caption`. Its prose is a
+reading surface and stops at `measure.body` at every viewport, so a
+specimen rendered at 1440 is judged as rendered, not at the viewport its
+card declares. Ratified 2026-10-11.
 
 **Versioning.** Dated entries in `CHANGELOG.md`, newest first. No
 semantic version — the system is not consumed as a package, and a version

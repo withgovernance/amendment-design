@@ -145,7 +145,7 @@ The CTA lives in the Button component’s `cta` variant; `role-action` is for sp
 - **A measure is not a container.** `.measure` and `.measure-lede` cap the element holding the text, in rem from a counted line; a count is a band (`spacing.measure`). Sans body copy has no counted measure yet.
 - **No length in `ch`,** in tokens or prose (`spacing.measure.rule`). A measure and horizontal padding never share a box.
 - `--radius-sm` inputs and pills; `--radius-md` buttons and cards; `--radius-lg` modals, FAB, overlays; `--radius-full` unlabelled surfaces only (`radii.full-is-for-unlabelled`). Bigger than a modal is a page, and pages don’t have corners.
-- `--border-hairline` rings translucent cards; `--border-subtle` separates more; `--border-dashed-empty` belongs to `card-placeholder`.
+- `--border-subtle` rings every material tier (`materials.one-ring`); `--border-dashed-empty` belongs to `card-placeholder`.
 
 ### Elevation and materials
 

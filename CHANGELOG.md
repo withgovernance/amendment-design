@@ -8,6 +8,65 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-11 (v2026.10.11.3) — A card is a surface; one ring; what a material's edge owes
+
+Decided by Jason, thirteen entries from the queue, each from a render or a measurement.
+
+- **A card is a surface, so a green plate goes one per card** (`color.action.fill-rule-one-per-surface`).
+  The homepage hi-fi carried eight plates. Rendered with one plate per page instead, a
+  `button-secondary` Co-sign on a card nearly vanishes into it (fill and ring under 1.3:1), and
+  the crowd act the feed exists for reads as a caption. So each ask card keeps its Co-sign plate,
+  the hero's "Find your district" keeps its plate because it submits a form
+  (`governs-form-submits`), and the closing repeat of it becomes `button-secondary`. The cost:
+  at 1440 the first screen can carry four identical plates. "One per surface" had lived only in
+  the entry points; it is now in the spec, and hard rule 2 and `SKILL.md` say the same thing.
+- **An ask title inside a card is `role-ui-heading`.** Set in serif, it read quieter than the
+  caps eyebrow and the Co-sign beside it. The container rule already said so; the Commons line
+  "serif carries the ask itself" now applies only to the ask's own page, where its title stands
+  on the canvas.
+- **A material's edge is not a boundary held to 3:1** (`materials.material-chrome.edge`). Reaching
+  3:1 needs an edge dark enough in light and bright enough in dark to read as a hard rule, which
+  turns glass into a lid. What separates a bar from content is the break in blur, its fixed
+  position and its own controls, each held to its own floor. The same goes for every ring and for
+  a meter's track on paper.
+- **One ring for every material tier: `borders.subtle`** (`materials.one-ring`). In light the
+  fill separates a pane, not the ring; in dark a `borders.hairline` ring outlines every tier like
+  a wireframe. The ring keys on `elevation.flat`, `raised` and `floating` fold into it
+  (elevation carries shadow only, as it already said), and `material-chrome` takes its edge key
+  instead of a ring. Retires the graduated per-tier rings, swept from the stylesheet and
+  `README.md`.
+- **The light material ladder sets depth, not legibility** (`materials.light-ladder-sets-separation`).
+  No reason had been recorded for the steps. `--text-secondary` clears its floor on the bare
+  aurora, so the fills protect no text; the values stand, and a proposal to move them argues
+  from separation.
+- **No saturation boost on material backdrops** (`materials.no-saturation-boost`). On device it
+  changed nothing in light and turned dark panes into saturated navy plates, against dark glass
+  taking the canvas's own hue.
+- **An empty card is a `role-ui-heading` title over a `role-body` message**
+  (`components.card-empty.typography`). Production's shape. A lone caption under the icon read
+  as a blank box with a footnote.
+- **The progress ribbon has no narrow form below `sm`** (`progress-ribbon.below-sm`). All five
+  sentence-case markers fit at 390; the narrow form existed for tracked caps. Voyager deletes its
+  `sm:hidden` branch.
+- **On paper the ribbon takes its light fills in both schemes** (`progress-ribbon.on-paper`).
+  Paper stays light under the desk lamp; the dark fills put the active segment near 2.4:1
+  against it, the light fills near 4.3:1. The track is ground, not a boundary.
+- **The ribbon's date is `role-metadata`, serif roman.** `status-redundancy` asked for italic
+  serif below the italic floor. `typography.metadata` still said `style: italic` beside its own
+  note that metadata is roman, and now matches the stylesheet.
+- **The rubber stamp's typography is `role-label-caps`**, one of its two sites, in place of a
+  typed tracking value.
+- **A specimen is held to the rules it shows** (Governance → Specimens). The frame's section
+  labels take `role-label-caps`, its row labels `role-caption`, and its prose stops at
+  `measure.body` at every viewport, so a specimen is judged as rendered at 1440. The frame's
+  hand-built labels were failing contrast in tertiary ink.
+- **Spec text that contradicted rulings already made**, corrected: `canvases.paper-cream` and
+  `paper-parchment` dark keys state desk-lamp paper rather than a dark sheet; the dark-mode
+  materials table states canvas-hue glass and chrome at 35%/45%; `a11y.reducedTransparency`
+  states the canvas-family fallback in dark, not zinc.
+
+---
+
 ## 2026-10-11 (v2026.10.11.2) — Legislator notification at the threshold is planned
 
 Decided by Jason. The ask-rail artboards 3A/3B/3C caption a threshold with "…before your

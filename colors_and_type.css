@@ -696,46 +696,47 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
 
 /* ---- Material tiers ----
    Dark tiers are the canvas's own hue at each tier's opacity, the construction
-   material-chrome took 2026-08-28 — materials.dark-glass-takes-the-canvas-hue. */
+   material-chrome took 2026-08-28 — materials.dark-glass-takes-the-canvas-hue.
+   Every tier takes one ring, --border-subtle (materials.one-ring). */
 .material-ultrathin {
   background: rgb(255 255 255 / 10%);
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px);
-  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 5%);
+  box-shadow: inset 0 0 0 1px var(--border-subtle);
 }
 .dark .material-ultrathin, [data-theme="dark"] .material-ultrathin {
   background: color-mix(in srgb, var(--canvas-live) 2%, transparent);
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 5%);
+  box-shadow: inset 0 0 0 1px var(--border-subtle);
 }
 .material-thin {
   background: rgb(255 255 255 / 45%);
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px);
-  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 5%);
+  box-shadow: inset 0 0 0 1px var(--border-subtle);
 }
 .dark .material-thin, [data-theme="dark"] .material-thin {
   background: color-mix(in srgb, var(--canvas-live) 26%, transparent);
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 8%);
+  box-shadow: inset 0 0 0 1px var(--border-subtle);
 }
 .material-regular {
   background: rgb(255 255 255 / 85%);
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px);
-  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 10%);
+  box-shadow: inset 0 0 0 1px var(--border-subtle);
 }
 .dark .material-regular, [data-theme="dark"] .material-regular {
   background: color-mix(in srgb, var(--canvas-live) 41%, transparent);
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 10%);
+  box-shadow: inset 0 0 0 1px var(--border-subtle);
 }
 .material-thick {
   background: rgb(255 255 255 / 95%);
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px);
-  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 15%);
+  box-shadow: inset 0 0 0 1px var(--border-subtle);
 }
 .dark .material-thick, [data-theme="dark"] .material-thick {
   background: color-mix(in srgb, var(--canvas-live) 60%, transparent);
-  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 12%);
+  box-shadow: inset 0 0 0 1px var(--border-subtle);
 }
 .material-chrome {
   /* 55%, not 75%. The 75% was retired 2026-08-27 and deleted from DESIGN.md

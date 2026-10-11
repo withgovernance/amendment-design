@@ -98,6 +98,7 @@ Anything still open after a pass stays here with a note on what it's waiting for
   - Measured in headless Chromium with a Safari UA.
 - **comparison render:** https://claude.ai/artifact/8zhJi4x824Zo5BZ9rthBs4 shows current against proposed in both schemes over the live aurora, with each change on its own toggle. It ran in Chromium, so use it for comparison only; it is not the ratification render.
 - **proposes:** render every tier with its ring as shipped, then with one ring for all tiers on `borders.hairline`, on canvas-hue glass at both band positions in both schemes. Check whether the heavier dark ring does the job of the dark inset bevel, and whether a 5% light ring still separates `material-regular` cards from the aurora. If one ring wins, `materials.*.ring-*` collapses into a reference to `borders.hairline`.
+- **also (review, 2026-10-11):** `material-chrome.ring-light`/`ring-dark` still read "1px solid", an all-round ring, while `material-chrome.edge` draws one line on the content-facing edge. Settle which the material draws in the same pass.
 - **blocks:** nothing. Voyager's regeneration is a conformance fix that is owed whatever is decided here.
 
 ### Is a material's edge a boundary held to 3:1?
@@ -119,6 +120,27 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **evidence:** the Commons surface says "Serif still carries the *ask itself*: a demand a constituent authored deserves the same weight a bill title gets." Hard rule 6 / `a-heading-belongs-to-whoever-it-works-for` says that inside a container the heading is `role-ui-heading`, unless the container's content *is* the document. The placement test ("could a second card join under this title?") answers no, which makes the title the card's own and sans. The two rules disagree on an ask card, and the hi-fi follows one while production follows the other.
 - **proposes:** decide whether an ask is "the document" under rule 6's carve-out. If it is, add asks to the carve-out by name, and the hi-fi's titles conform to serif. If it isn't, narrow the Commons sentence to the ask *detail* page.
 - **blocks:** the homepage ask cards and the hero "top asks" card, and through them any consistency with `/asks`.
+
+### Progress-ribbon fills on lamp paper: the light set or the dark set?
+- **kind:** unowned default
+- **found:** `design-reviewer` on `preview/progress-ribbon.html`, 2026-10-11, after its panel took `data-paper`.
+- **evidence:** since the desk-lamp ruling, dark `paper-cream` is light paper and `[data-paper]` resets ink to light values, but `components.progress-ribbon`'s dark fills (`fill-completed` slate-500, `fill-success` emerald-500, `track-dark`) were written for a dark sheet. Painted on dark lamp paper as the dark set: track 1.05:1, active 2.36:1, both under 3:1. On light paper with the light set: track 1.16:1, active 4.3:1. The specimen now draws the light set in both schemes.
+- **proposes:** render both sets on lamp paper at 390 and 1440 and measure each segment against 3:1. If the paper scope wins, the ribbon's dark fills apply only off paper, and `[data-paper]` should say it governs fills as well as ink. The track fails 3:1 either way, so say whether a track is a boundary.
+- **blocks:** nothing.
+
+### `canvases.paper-cream.bg-dark` still states the dark sheet
+- **kind:** production ahead
+- **found:** `design-reviewer`, 2026-10-11.
+- **evidence:** the key holds the near-black value; the prose section "Dark Mode: Paper Islands", `CHANGELOG.md` ("dark-mode paper is a desk lamp") and the stylesheet all ship light lamp paper. A ruling recorded and not applied to its own key.
+- **proposes:** the key takes `--paper-cream`'s dark value and cites the lamp ruling. Check `paper-parchment` the same way.
+- **blocks:** nothing.
+
+### Is a specimen judged at its declared viewport or at 1440?
+- **kind:** spec silent
+- **found:** `design-reviewer`, 2026-10-11.
+- **evidence:** the tab bar's `dd` text and type-institution's `.caption` run about 1,150 and 1,400 CSS px per line at 1440. Their `@dsCard` viewports (820 and 700) imply a frame the page doesn't enforce, and CLAUDE.md asks for renders at 1440.
+- **proposes:** either specimens cap their prose at `measure.body` like any reading surface, or the card frame enforces its declared viewport and 1440 renders the frame centred. One sentence under Governance → Specimens.
+- **blocks:** nothing.
 
 ## Needs a person — cannot close from inside the toolchain
 

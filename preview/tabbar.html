@@ -11,7 +11,7 @@
 <style>.card { display:grid; grid-template-columns:390px 1fr; gap:26px; align-items:start; }
 @media (max-width: 780px) { .card { grid-template-columns: minmax(0, 390px); } }
 .cap{font-variation-settings:var(--sans-chrome);text-transform:uppercase;font-size:12px;letter-spacing:.07em;color:var(--text-secondary);font-weight:var(--sans-semibold);margin-bottom:8px}
-.screen{position:relative;height:330px;border-radius:14px;overflow:hidden;background:var(--canvas);box-shadow:inset 0 0 0 1px var(--border-subtle)}
+.screen{position:relative;height:330px;border-radius:14px;overflow:hidden;background:var(--canvas-live);box-shadow:inset 0 0 0 1px var(--border-subtle)}
 .body{padding:14px 14px 0}
 .h{font-family:var(--font-serif);font-variation-settings:var(--serif-display);font-weight:800;font-size:18px;margin:4px 0 10px;color:var(--text-primary)}
 .ln{height:9px;border-radius:3px;background:var(--border-subtle);margin-bottom:8px}
@@ -19,7 +19,7 @@
 .bar{position:absolute;inset-inline:0;bottom:0}
 .cta{position:absolute;inset-inline:14px;bottom:96px;min-height:48px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-md);background:var(--color-action);color:var(--color-action-label);box-shadow:inset 0 0 0 1px var(--color-action-active);font-family:var(--font-sans);font-variation-settings:var(--sans-body);font-size:16px;font-weight:var(--sans-semibold)}
 .items{display:flex;align-items:center;justify-content:space-around;padding:8px}
-.tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:44px;min-height:44px;text-decoration:none}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:44px;min-height:44px;text-decoration:none}
 .tab .ic{display:flex;width:40px;height:40px;align-items:center;justify-content:center;font-size:22px;color:var(--text-secondary)}
 .tab .tl{color:var(--text-secondary);white-space:nowrap}
 .tab.on .ic,.tab.on .tl{color:var(--text-nav-active)}
@@ -59,9 +59,9 @@ dd code{font-family:var(--font-mono);font-size:12px;color:var(--text-secondary)}
 <div class="cap">The spec</div>
 <dl>
 <dt>Items</dt><dd>A curated <b>five</b>, not the whole nav. Actions and Tracked live in the account menu. Both navs compose from one list so they cannot drift.</dd>
-<dt>Labels</dt><dd><b>role-body</b> — sentence case, no tracking. A nav label names a place, not a part of the interface. Fits because every item defines <code>shortLabel</code>; the widest, Races, uses 63% of its 75px slot.</dd>
-<dt>Active</dt><dd>Phosphor icon <b>regular → fill</b> plus Midnight Indigo on icon and label. No motion — chrome is still.</dd>
-<dt>Target</dt><dd>Explicit <b>44×44 minimum</b> per tab. The labels do not get there on their own: Bills, Chat and Asks measure 31.1, 35.7 and 36.6px wide.</dd>
+<dt>Labels</dt><dd><b>role-body</b> — sentence case, no tracking. A nav label names a place, not a part of the interface. Fits because every item defines <code>shortLabel</code>; the widest, <span id="m-wide">Races</span>, uses <span id="m-pct">…</span> of its <span id="m-slot">…</span> slot in this frame.</dd>
+<dt>Active</dt><dd>Phosphor icon <b>regular → fill</b> plus <code>--text-nav-active</code> on icon and label. No motion — chrome is still.</dd>
+<dt>Target</dt><dd>Explicit <b>44×44 minimum</b> per tab. The labels do not get there on their own: <span id="m-short">…</span>. Each tab fills its slot, so the gaps belong to their neighbouring targets.</dd>
 <dt>Safe area</dt><dd><code>padding-bottom: max(8px, env(safe-area-inset-bottom))</code>, and the spacer grows to match.</dd>
 <dt>Hidden on</dt><dd><code>/conversation/*</code> and <code>/action/*</code> — <b>composing surfaces surrender the chrome</b>. Signed-out users get no bar.</dd>
 </dl>
@@ -69,5 +69,18 @@ dd code{font-family:var(--font-mono);font-size:12px;color:var(--text-secondary)}
 
 <p class="foot"><b>Known divergence:</b> production ships no safe-area inset. Spec ahead; the code migrates. <b>The rule this component produced:</b> a component with a touch target declares its own minimum, measured, in its own spec entry — <code>a11y.targetSize</code> has said 44×44 all along and was cited by nothing, which is how a tab reached 40px.</p>
 </div>
+<script>
+// Measured from the rendered mock (Governance → Specimens): a set label's painted width, never derived.
+addEventListener('load',()=>document.fonts.ready.then(()=>{
+  const tabs=[...document.querySelectorAll('.tab')];
+  const w=t=>{const r=document.createRange();r.selectNodeContents(t.querySelector('.tl'));return r.getBoundingClientRect().width};
+  const m=tabs.map(t=>({l:t.querySelector('.tl').textContent,w:w(t),s:t.getBoundingClientRect().width}));
+  const wide=m.reduce((a,b)=>b.w>a.w?b:a);
+  document.getElementById('m-wide').textContent=wide.l;
+  document.getElementById('m-pct').textContent=Math.round(wide.w/wide.s*100)+'%';
+  document.getElementById('m-slot').textContent=wide.s.toFixed(1)+'px';
+  document.getElementById('m-short').textContent=m.filter(x=>x.w<44).sort((a,b)=>a.w-b.w).map(x=>x.l+' '+x.w.toFixed(1)+'px').join(', ')+' wide';
+}));
+</script>
 </body>
 </html>

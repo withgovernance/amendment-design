@@ -9,8 +9,8 @@
    memory each time (traps 6 and 9).
 
    THIS FILE IS CHROME ONLY. It holds the frame a specimen is shown in —
-   canvas, aurora, the card box, and the four text roles every card needs
-   to caption a specimen. It holds NO specimen styling: nothing here should
+   canvas, aurora, the card box, and the spacing of the labels every card
+   captions a specimen with. It holds NO specimen styling: nothing here should
    ever be the thing a card is demonstrating, or the card stops being
    evidence and starts quoting this file.
 
@@ -62,29 +62,12 @@ body::before {
 
 /* --- the four text roles a card captions with ---------------------------- */
 
-/* Chrome label. Sans, wdth 125 so it holds up wide-tracked and small.
-   12px is the chrome floor (DESIGN.md a11y / audit §3.4) and this is it —
-   nothing in a card may set a smaller size. */
-.lbl {
-  font-family: var(--font-sans);
-  font-variation-settings: var(--sans-chrome);
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: var(--track-chrome);
-  color: var(--text-secondary);
-  font-weight: var(--sans-semibold);
-}
-
-/* Section eyebrow. The label with more air and a step back in value, used
-   where a card has named parts rather than named swatches. */
+/* The frame is held to the rules it shows (DESIGN.md Governance ->
+   Specimens). Its labels take roles in the markup, and only their spacing
+   lives here: a row label is `lbl role-caption`; a section eyebrow is
+   `voice-eyebrow role-label-caps`, short copy, a section divider. */
 .voice-eyebrow {
-  font-family: var(--font-sans);
-  font-variation-settings: var(--sans-chrome);
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  color: var(--text-tertiary);
-  font-weight: var(--sans-semibold);
+  display: block;
   margin-bottom: 6px;
 }
 
@@ -98,6 +81,7 @@ body::before {
   font-size: 12px;
   color: var(--text-secondary);
   line-height: 1.4;
+  max-width: min(28rem, 100%);   /* prose stops at measure.body at every viewport */
 }
 
 /* Machine facts — token names, measured ratios, pixel values. Mono earns
@@ -107,6 +91,7 @@ body::before {
   font-size: 12px;
   line-height: 1.5;
   color: var(--text-secondary);
+  max-width: min(28rem, 100%);   /* measure.body */
 }
 .note b {
   font-family: var(--font-sans);
@@ -203,13 +188,7 @@ a:hover {
   background-color: var(--canvas-live);
   background-image: var(--aurora);
 }
-.pane > .pane-label {
+.pane > .pane-label {   /* role-label-caps in the markup */
   display: block;
-  font-variation-settings: var(--sans-chrome);
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: var(--track-chrome);
-  font-weight: var(--sans-semibold);
-  color: var(--text-secondary);
   margin-bottom: 10px;
 }

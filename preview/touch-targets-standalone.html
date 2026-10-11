@@ -58,56 +58,56 @@ dd code{color:var(--text-secondary)}
 
 <div class="grid">
   <div class="slot under" id="s1">
-    <div class="hd"><span class="lbl">button, as specified</span><span class="m"><b id="m1">…</b>px</span></div>
+    <div class="hd"><span class="lbl role-caption">button, as specified</span><span class="m"><b id="m1">…</b>px</span></div>
     <div class="stage"><div class="floor"></div><button class="btn ctl" id="b1">Track this bill</button></div>
     <div class="legend">0.5rem 1rem + 16px&thinsp;&times;&thinsp;1.5 &mdash; nobody chose 40</div>
   </div>
   <div class="slot ok">
-    <div class="hd"><span class="lbl">+ min-height: 44px</span><span class="m"><b id="m2">…</b>px</span></div>
+    <div class="hd"><span class="lbl role-caption">+ min-height: 44px</span><span class="m"><b id="m2">…</b>px</span></div>
     <div class="stage"><div class="floor"></div><button class="btn btn--tall ctl" id="b2">Track this bill</button></div>
     <div class="legend">padding untouched &mdash; the plate grows, the label stays centred</div>
   </div>
 
   <div class="slot under">
-    <div class="hd"><span class="lbl">input, as specified</span><span class="m"><b id="m3">…</b>px</span></div>
+    <div class="hd"><span class="lbl role-caption">input, as specified</span><span class="m"><b id="m3">…</b>px</span></div>
     <div class="stage"><div class="floor"></div><input class="inp ctl" id="b3" value="Boulder, CO 80302"></div>
     <div class="legend">same arithmetic, same 4px short</div>
   </div>
   <div class="slot ok">
-    <div class="hd"><span class="lbl">+ min-height: 44px</span><span class="m"><b id="m4">…</b>px</span></div>
+    <div class="hd"><span class="lbl role-caption">+ min-height: 44px</span><span class="m"><b id="m4">…</b>px</span></div>
     <div class="stage"><div class="floor"></div><input class="inp inp--tall ctl" id="b4" value="Boulder, CO 80302"></div>
     <div class="legend">the recess is unaffected &mdash; height goes to the box</div>
   </div>
 
   <div class="slot under">
-    <div class="hd"><span class="lbl">toggle, as specified</span><span class="m"><b id="m5">…</b>px tall</span></div>
+    <div class="hd"><span class="lbl role-caption">toggle, as specified</span><span class="m"><b id="m5">…</b>px tall</span></div>
     <div class="stage"><div class="floor"></div><span class="tgl-wrap ctl"><span class="tgl" id="b5"><i></i></span></span></div>
     <div class="legend">the 44 in the spec is the track's <b>width</b> &mdash; which is how this hid</div>
   </div>
   <div class="slot ok">
-    <div class="hd"><span class="lbl">target expanded, track unchanged</span><span class="m"><b>44</b>px</span></div>
+    <div class="hd"><span class="lbl role-caption">target expanded, track unchanged</span><span class="m"><b>44</b>px</span></div>
     <div class="stage"><div class="floor"></div><span class="tgl-wrap expand ctl"><span class="tgl"><i></i></span></span></div>
     <div class="legend">a 44px track stops reading as a switch &mdash; grow the target, not the box</div>
   </div>
 
   <div class="slot under">
-    <div class="hd"><span class="lbl">breadcrumb, as specified</span><span class="m"><b id="m6">…</b>px tall</span></div>
+    <div class="hd"><span class="lbl role-caption">breadcrumb, as specified</span><span class="m"><b id="m6">…</b>px tall</span></div>
     <div class="stage"><div class="floor"></div><nav class="crumbs ctl"><a href="#" id="b6">Colorado</a><span class="sep">&rsaquo;</span><a href="#">HB24&#8209;1098</a></nav></div>
     <div class="legend">27% of the floor &mdash; the worst in the system</div>
   </div>
   <div class="slot ok">
-    <div class="hd"><span class="lbl">target expanded around 12px type</span><span class="m"><b>44</b>px</span></div>
+    <div class="hd"><span class="lbl role-caption">target expanded around 12px type</span><span class="m"><b>44</b>px</span></div>
     <div class="stage"><div class="floor"></div><nav class="crumbs expand ctl"><a href="#">Colorado</a><span class="sep">&rsaquo;</span><a href="#">HB24&#8209;1098</a></nav></div>
     <div class="legend">the caret is decoration, not a target &mdash; it takes no hit area</div>
   </div>
 
   <div class="slot ok">
-    <div class="hd"><span class="lbl">icon button &mdash; already complied</span><span class="m"><b id="m7">…</b>px</span></div>
+    <div class="hd"><span class="lbl role-caption">icon button &mdash; already complied</span><span class="m"><b id="m7">…</b>px</span></div>
     <div class="stage"><div class="floor"></div><button class="icb ctl" id="b7"><span></span></button></div>
     <div class="legend">states a size, so it has one. The glyph is 18px; the target is not.</div>
   </div>
   <div class="slot ok">
-    <div class="hd"><span class="lbl">CTA and FAB &mdash; 48, not 44</span><span class="m"><b id="m8">…</b>px</span></div>
+    <div class="hd"><span class="lbl role-caption">CTA and FAB &mdash; 48, not 44</span><span class="m"><b id="m8">…</b>px</span></div>
     <div class="stage"><div class="floor"></div><button class="btn btn--cta btn--tall ctl" id="b8">Send</button><button class="fab ctl"></button></div>
     <div class="legend">consequential and thumb-reached &mdash; Android's 48 is the right floor here</div>
   </div>

@@ -94,7 +94,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 
 <div class="panes">
   <div class="pane live">
-    <span class="pane-label">Light</span>
+    <span class="pane-label role-label-caps">Light</span>
     <div class="auth material-regular">
       <h3>Write your representative</h3>
       <p class="lede">One letter, delivered on paper, counted where it counts.</p>
@@ -115,7 +115,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
     </div>
   </div>
   <div class="pane dark live">
-    <span class="pane-label">Dark</span>
+    <span class="pane-label role-label-caps">Dark</span>
     <div class="auth material-regular">
       <h3>Write your representative</h3>
       <p class="lede">One letter, delivered on paper, counted where it counts.</p>
@@ -141,11 +141,11 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 <p class="note">Above, the submit is <b>button-cta</b>: <b>--color-action</b> at full strength carrying <b>--color-action-label</b>, flat, 48px declared. Below is what ships — a near-black slab in light and a light glass slab under inversion. Those are not one control in two schemes; they are two materials, and neither is the colour <b>color.action</b> is specified to carry <em>every</em> action and every act of assent.</p>
 <div class="panes">
   <div class="pane live">
-    <span class="pane-label">Light — as shipped</span>
+    <span class="pane-label"><span class="role-label-caps">Light</span> <span class="role-caption">as shipped</span></span>
     <div class="auth material-regular" style="padding:14px;"><button class="slab-shipped">Continue</button></div>
   </div>
   <div class="pane dark live">
-    <span class="pane-label">Dark — as shipped</span>
+    <span class="pane-label"><span class="role-label-caps">Dark</span> <span class="role-caption">as shipped</span></span>
     <div class="auth material-regular" style="padding:14px;"><button class="slab-shipped">Continue</button></div>
   </div>
 </div>
@@ -163,7 +163,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
   <p class="note" style="margin-bottom:10px;">Left is the retired reading: every dark material tier a pure-black overlay. Right is the reading <b>materials.material-chrome</b> already took on 2026-08-28 for exactly this complaint — the canvas's own hue at the same opacity — generalised to <b>material-regular</b>. Same form, same opacity, one property different.</p>
   <div class="panes">
     <div class="pane dark live">
-      <span class="pane-label">Neutral — retired</span>
+      <span class="pane-label"><span class="role-label-caps">Neutral</span> <span class="role-caption">retired</span></span>
       <div class="glass g-neutral">
         <div class="rows">
           <div class="row"><span class="role-label-caps">Email</span><input class="f" placeholder="jane@example.com"></div>
@@ -172,7 +172,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
       </div>
     </div>
     <div class="pane dark live">
-      <span class="pane-label">The canvas's own hue, same opacity</span>
+      <span class="pane-label"><span class="role-label-caps">Canvas hue</span> <span class="role-caption">same opacity</span></span>
       <div class="glass g-hue">
         <div class="rows">
           <div class="row"><span class="role-label-caps">Email</span><input class="f" placeholder="jane@example.com"></div>

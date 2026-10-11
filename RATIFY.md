@@ -50,16 +50,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
-### Three ask-rail artboards carry copy the product cannot perform — and their provenance is the open question
-- **kind:** waiting on a person; **kind depends on the answer** (copy error, or spec ahead)
-- **found:** reviewing the same branch against artboards labelled `3A`/`3B`/`3C` (phone dark, phone light, desktop).
-- **evidence:** the artboard threshold caption reads *"2 of 25 in Assembly District 76 before your legislators are notified."* Both halves disagree with the product. `canSeeAskCount` compares `ask.national_signature_count` against `PUBLIC_COUNT_THRESHOLD` — **ask-wide against the national count, not district-scoped** — and a sweep of the consumer for a notification path (`notify_legislator`, "legislators notified", `notifyLegislator`) returns **nothing**. The share-loop brief's own sanctioned exception to the no-goal-bars prohibition gives the test: *a goal is allowed exactly when crossing it changes the product's behaviour*. Count-goes-public does. Legislator-notification, as of this repo, does not exist to change.
-  - Separately, these three IDs appear in **no** written record — not the brief, whose artboards for this work are `CHQ-1` and `B79-0`, not this repo, not the consumer. They reached the implementing session as images pasted by Jason. The Paper MCP has been `ConnectionRefused` since 2026-09-08, so the low-fi authority cannot be opened to reconcile them, and the brief already carries a banner that its own artboard citations were never re-verified.
-- **proposes:** nothing yet — **the answer decides the kind, and it is not the design side's to guess.** If notification-at-25 is a real product intention, these artboards are **spec ahead** and the gap is a Known Divergence to record, not copy to delete. If the line was written to sound civic, it is a **fabricated goal** under the prohibition and the artboards need correcting at source before anyone specs from them again. Either way the shipped caption stays as it is: a caption may not promise a notification the product does not send.
-- **status:** with Jason. The question is narrow — *is legislator notification at the public-count threshold a thing we intend to build, or not?*
-- **checked 2026-09-14:** Paper is reachable again. No page of `Amendment UX/Wireframes` (UI Wireframes, Bot Scripts, iOS) has an artboard named 3A/3B/3C or text containing "of 25" or "District 76". The only "notified" copy is on the iOS page's "Ask detail · no responses" — *"Both NY-14 candidates have been notified…"* — so a notification concept exists in the low-fi, at a different trigger. PR #782 closed unmerged 2026-09-09, so the caption never shipped. Nothing to decide on the design side until the product answer lands.
-- **blocks:** nothing shipping. It blocks trusting `3A`/`3B`/`3C` as a source, which is the more expensive thing to get wrong.
-
 ### `card-empty` and `card-placeholder` do not say what type their message takes
 - **kind:** unowned default
 - **found:** `design-reviewer` on `preview/cards.html`, after v2026.09.14.8 split the two components.
@@ -153,6 +143,11 @@ Moved out of this file on ratification; listed here for one cycle so the code si
   sites, closed: the section divider and the status stamp** — breadcrumbs, progress-ribbon
   milestones, column heads, count chips and the `Sources:` prefix go to sentence case, which
   voyager sweeps.
+
+- **2026-10-11 (v2026.10.11.2)** — legislator notification at the public-count threshold is
+  planned, so the 3A/3B/3C artboards are spec ahead
+  (`surfaces.commons.known-divergence-legislator-notification`). No shipped caption names the
+  notification until it ships.
 
 
 - **2026-09-14 (v2026.09.14 – .11)** — **the first pass after the `designer` agent was retired.**

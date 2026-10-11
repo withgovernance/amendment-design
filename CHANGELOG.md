@@ -8,6 +8,18 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-11 (v2026.10.11.2) — Legislator notification at the threshold is planned
+
+Decided by Jason. The ask-rail artboards 3A/3B/3C caption a threshold with "…before your
+legislators are notified", and production sends no such notification. The question was whether
+that line was a fabricated goal or a product intention; it is an intention. So the artboards are
+**spec ahead**, recorded at `surfaces.commons.known-divergence-legislator-notification`, not copy
+to correct, and the threshold is a goal the share loop may show because crossing it will change
+what the product does. Until the notification ships, no shipped caption names it. Left open:
+per-district threshold, as drawn, or per-ask, as production counts.
+
+---
+
 ## 2026-10-11 (v2026.10.11) — Chrome caps close to two sites; the tab bar's ink and edge
 
 Decided by Jason, seven entries from the queue.

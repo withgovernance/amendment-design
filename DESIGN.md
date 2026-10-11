@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.11
+# spec-version:   v2026.10.11.2
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3953,6 +3953,18 @@ surfaces:
       - candidate response / position card
       - endorsement + vote-pledge
       - campaigns strip
+    known-divergence-legislator-notification: >-
+      SPEC AHEAD, recorded 2026-10-11, decided by Jason. Notifying an ask's
+      legislators when it crosses the public-count threshold is a PLANNED
+      product behaviour, so a threshold is a goal that changes what the
+      product does, and the share loop's goal-bar exception covers it. The
+      ask-rail artboards 3A/3B/3C ("…before your legislators are notified")
+      draw that intended state. PRODUCTION DOES NOT SEND IT: canSeeAskCount
+      compares the ask's national count against PUBLIC_COUNT_THRESHOLD, and
+      no notification path exists. UNTIL IT SHIPS, NO SHIPPED CAPTION NAMES
+      THE NOTIFICATION — a caption may not promise what the product does
+      not do. Not decided here: whether the threshold is per district, as
+      the artboards draw it, or per ask, as production counts.
 
 # --------------------------------------------------------------------------
 # TACTILE ACCENTS — the rules that govern skeuomorphic detail.

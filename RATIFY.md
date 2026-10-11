@@ -50,7 +50,40 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
-*(empty — v2026.10.11.3 settled the queue)*
+### `progress-ribbon.below-sm` says the markers fit at 390; the specimen says they collide
+- **kind:** spec ahead
+- **found:** `design-reviewer` on `preview/progress-ribbon.html`, 2026-10-11, after v2026.10.11.3.
+- **evidence:** at 390 no marker wraps. "Engrossed" sets 61px over a 58px segment and pushes Enrolled and Enacted 3px off their segments; "Introduced" fills its slot with 1px of ink gap to its neighbour. The entry's "two of them on two lines" came from a render with wrapping allowed; the specimen's flex items keep `min-width: auto`, so they cannot wrap.
+- **proposes:** render the row with `min-width: 0` and wrapping, and with a wider gap, at 390 in both schemes, and let the container decide. If neither holds, the no-narrow-form ruling is reopened.
+- **blocks:** voyager deleting its `sm:hidden` branch — hold until this is measured.
+
+### Scheme panes under a dark page
+- **kind:** unowned default
+- **found:** `design-reviewer`, 2026-10-11.
+- **evidence:** `segmented`, `forms`, `form-fields` and `cards` show a "Light" and a "Dark" pane side by side. Under page-level `data-theme="dark"` the Light pane inherits dark ink: white "Email" on its light plate measures 1.30:1. The stylesheet has no element-level light scope apart from `[data-paper]`.
+- **proposes:** either add an element-level light scope (a `.light` mirror of `.dark`) so a pane holds its scheme, or declare pane specimens rendered in the light page only. One sentence under Governance → Specimens.
+- **blocks:** nothing.
+
+### May one label carry two roles?
+- **kind:** spec silent
+- **found:** `design-reviewer`, 2026-10-11.
+- **evidence:** pane labels such as `role-label-caps` "Canvas hue" followed by `role-caption` "same opacity" (`preview/forms.html`, `preview/form-fields.html`). Legible and on one line, but `chrome-sites-are-closed` says nothing about a caps divider carrying a sentence-case qualifier.
+- **proposes:** allow it as the divider plus a caption, or move the qualifier into the pane's caption.
+- **blocks:** nothing.
+
+### The printed name under a signature line has no role
+- **kind:** spec silent
+- **found:** `design-reviewer` on `preview/type-citizen.html`, 2026-10-11.
+- **evidence:** `registers.issued.signature` makes the printed name mandatory and names no role. The specimen set it in hand-built chrome caps, which `chrome-sites-are-closed` leaves no home for; it now uses `role-metadata` as a placeholder.
+- **proposes:** name the role in `signature` — `role-metadata` (the letter's serif voice) or `role-designation` (a referent name, caps) — and render both on paper at 390.
+- **blocks:** nothing.
+
+### Progress-ribbon fills have no tokens
+- **kind:** spec ahead
+- **found:** `design-reviewer`, 2026-10-11.
+- **evidence:** `components.progress-ribbon` names its fills in Tailwind slate steps; `colors_and_type.css` carries no token for them, so the specimen paints literal hex and rgb, and so does every consumer.
+- **proposes:** name ribbon fill tokens (completed, active, track, light and dark) in the spec, and implement them in the stylesheet.
+- **blocks:** nothing.
 
 ## Needs a person — cannot close from inside the toolchain
 

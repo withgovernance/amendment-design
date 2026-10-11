@@ -742,15 +742,15 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
      in that pass but survived here for a day — caught 2026-08-28 by the
      consumer's regenerate-and-diff guard, not by either ratification pass
      that read both files. */
-  /* 35%, set 2026-08-28 for the tab bar, which is now this material's only
-     consumer. The 55% it replaces was a desktop-chrome value and its job was
+  /* 35%, set 2026-08-28 for the tab bar, one of this material's two consumers
+     with AskSignDock. The 55% it replaces was a desktop-chrome value and its job was
      immunity to what scrolled beneath; over content the job is legibility,
      and glass is the point. Measured on the rendered bar with a full-strength
      action-green CTA passing behind it: labels 9.88:1. */
   background: rgb(255 255 255 / 35%);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
-  box-shadow: inset 0 -1px 0 0 rgb(0 0 0 / 10%);
+  box-shadow: inset 0 1px 0 0 var(--border-subtle);   /* top edge: faces the content (materials.material-chrome.edge) */
 }
 .dark .material-chrome, [data-theme="dark"] .material-chrome {
   /* CHANGED 2026-08-28 from rgb(24 24 27 / 90%) — zinc-900, a WARM NEUTRAL, at
@@ -768,7 +768,7 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   /* 45%, set 2026-08-28 — see the light value above. Measured with the same
      green CTA behind it: labels 6.64:1. */
   background: color-mix(in srgb, var(--canvas-live) 45%, transparent);
-  box-shadow: inset 0 -1px 0 0 rgb(255 255 255 / 10%);
+  box-shadow: inset 0 1px 0 0 var(--border-subtle);
 }
 
 /* ---- Paper canvases (opaque) ---- */

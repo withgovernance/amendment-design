@@ -18,13 +18,10 @@
       <div style="font-family: var(--font-sans); font-variation-settings: var(--sans-body); font-weight: var(--sans-normal); font-size: 16px; line-height: 1.5; color: var(--text-primary);">Body — Archivo wdth 104, weight 400. The default reading register.</div>
     </div>
     <div style="display:flex; gap:18px; align-items: baseline;">
-      <span style="font-family: var(--font-sans); font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: var(--track-chrome); font-weight: var(--sans-semibold); color: var(--text-secondary);">CONVERSATIONS</span>
-      <span style="color: var(--text-tertiary); font-size: 12px;">›</span>
-      <span style="font-family: var(--font-sans); font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: var(--track-chrome); font-weight: var(--sans-semibold); color: var(--text-secondary);">COLORADO</span>
-      <span style="color: var(--text-tertiary); font-size: 12px;">›</span>
-      <span style="font-family: var(--font-sans); font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: var(--track-chrome); font-weight: var(--sans-bold); color: var(--text-primary);">HB 21</span>
+      <span class="role-label-caps">Bill text</span>
+      <span class="role-caption">Conversations <span style="color: var(--text-tertiary);">›</span> Colorado <span style="color: var(--text-tertiary);">›</span> <span style="font-weight: var(--sans-semibold); color: var(--text-primary);">HB 21</span></span>
     </div>
-    <div class="caption">Chrome labels use wdth 125 + uppercase + 0.12em tracking — the engraved-label-tape register. Reserved for navbar, breadcrumbs, form labels, status stamps, table heads.</div>
+    <div class="caption">Chrome labels (<code>role-label-caps</code>) take two sites only: the section divider and the status stamp. A breadcrumb is sentence case, <code>role-caption</code> (<code>typography.chrome-sites-are-closed</code>).</div>
   </div>
 </div>
 </body>

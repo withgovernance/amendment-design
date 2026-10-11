@@ -8,6 +8,48 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-11 (v2026.10.11) — Chrome caps close to two sites; the tab bar's ink and edge
+
+Decided by Jason, seven entries from the queue.
+
+- **Chrome caps have two sites, closed: the section divider and the status stamp**
+  (`typography.chrome-sites-are-closed`). This lands Jason's 2026-09-10 ruling, of which only the
+  form-labels part had reached the spec, so every list voyager built since defaulted to caps. Wide
+  tracked caps hold a short label, never a phrase, and never lead a row that repeats down a list:
+  multi-word caps at chrome size are hard to read, and repeated they make a list a wall of caps.
+  A designation stays `role-designation`. The navbar slot from 09-10 is gone, because nav labels
+  have been `role-body` since `nav-labels-are-not-chrome`. "Accents" was proposed as a site and
+  left out: undefined, it would reopen the list. Retires chrome caps from breadcrumbs (now
+  `role-caption`), progress-ribbon milestones, column heads, count chips and the `Sources:`
+  prefix, swept from the spec, the hard rules, `README.md` and two specimens. The 09-10 evidence
+  files are still only in the Claude Design project; this session could not reach it.
+- **`--text-nav-active`** names the active nav ink `components.tabbar.activeColor` had stated
+  only as slate names, so every surface drawing it restated the dark value. Primary in light,
+  slate-300 in dark, because primary as a mark vanishes on the dark ground. The sidebar's active
+  row takes it too. 13.1:1 light and 12.0:1 dark on the rendered bar; the fill-glyph swap carries
+  the state, since active against inactive is only 2.4:1 and 1.7:1.
+- **`tabbar.labelFit` and `touchTarget`** now carry `role-body` measurements. The figures had
+  measured tracked caps after the labels left them. Three of five labels are under 44px wide, so
+  the declared minimum still does the work.
+- **The progress-ribbon's active segment is static.** `fill-active` specified `animate-pulse`, an
+  idle loop the motion rules forbid; the general rule wins over the component entry.
+- **Statute line numbers count source lines** (`components.line-numbers.counts`). A wrapped line
+  keeps one number; a number that moved with the viewport could not be cited.
+- **Specimens may print render-time values** if measured the way the spec measures, never
+  derived (Governance → Specimens).
+- **`material-chrome`'s line faces the content** — the top edge of a bottom-anchored bar, at
+  `border.subtle` — and its shadow casts away from the anchor. It had sat on the bottom edge, a
+  navbar leftover lying against the viewport. Its consumers are named: the tab bar and
+  `AskSignDock`. Its `bg-light`/`bg-dark` fields still said 55%/90%, the desktop values its own
+  2026-08-28 ruling replaced; they now carry 35%/45%, as the stylesheet always has. Whether a
+  material's edge must clear 3:1 stays open.
+
+Owed by voyager: drop `animate-pulse` from the ribbon, sweep caps off the retired sites, move the
+tab bar and dock line to the top edge, and adopt `--text-nav-active` at its next extraction —
+which also brings it from `v2026.08.31.5`.
+
+---
+
 ## 2026-09-14 (v2026.09.14.16) — Entry points state the current rule; a retirement is a deletion
 
 Decided by Jason. The entry points had become changelogs: `README.md` ran to 6,100 words of

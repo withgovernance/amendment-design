@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.09.14.16
+# spec-version:   v2026.10.11
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -635,6 +635,11 @@ color:
     primary-dark:    "rgb(255 255 255 / 87%)"
     secondary-dark:  "rgb(255 255 255 / 60%)"
     tertiary-dark:   "rgb(255 255 255 / 38%)"
+    # --text-nav-active. RATIFIED 2026-10-11. The Midnight Indigo trail on the
+    # active nav item, icon and label. Primary as a mark disappears on the dark
+    # ground (primary.plate-not-mark), so dark takes slate-300.
+    nav-active-light: "var(--color-primary)"
+    nav-active-dark:  "#cbd5e1"
   border:
     hairline-light: "rgb(0 0 0 / 5%)"
     hairline-dark:  "rgb(255 255 255 / 20%)"
@@ -672,8 +677,8 @@ typography:
       excellent chrome and wrong as a body face — wide, soft, evenly weighted,
       so word silhouettes flatten at paragraph length — and it had no italic at
       all, which is the real reason every italic in the system had to be serif.
-      Body copy sits at wdth 100; institutional chrome (navbar, breadcrumbs,
-      column heads) moves to wdth 125 with 0.12em uppercase letterspacing —
+      Body copy sits at wdth 100; institutional chrome (the section divider,
+      the status stamp) moves to wdth 125 with 0.12em uppercase letterspacing —
       a register that reads clerical without shouting.
       Two costs, stated. The chrome register is ~4% NARROWER than before:
       Readex at HEXP 60 measured 334px for "ARCHIVE COMMONS WRITING DESK" at
@@ -995,7 +1000,7 @@ typography:
     the exception is a WHOLE ROLE rather than a clause, which is why it
     read as absolute for so long.
       CHROME      role-label-caps — 12px, sans-chrome, track-chrome,
-                  secondary ink. A FIELD LABEL naming apparatus.
+                  secondary ink. Its sites are a closed list (below).
       DESIGNATION role-designation — 0.875rem, sans-chrome, track-chrome,
                   semibold, PRIMARY ink. A designation REPEATED at text
                   size, leading a table row or card: bill slugs,
@@ -1029,6 +1034,19 @@ typography:
     is read. AND A TABLE OF BILLS is correct with each slug in
     role-designation leading its row — the same designation, at the size
     of a thing that repeats.
+  chrome-sites-are-closed: >-
+    RATIFIED 2026-10-11, landing Jason's 2026-09-10 ruling, which only its
+    form-labels part had reached. role-label-caps has exactly TWO sites: the
+    section divider (the eyebrow over a section) and the status stamp. A
+    designation — a bill slug, a jurisdiction code — is role-designation.
+    Everything else that took chrome caps is sentence case: table and footer
+    column heads, form labels, count chips, nav labels in both navs
+    (nav-labels-are-not-chrome), breadcrumbs, progress-ribbon milestones and
+    the `Sources:` prefix. A third site is a ratification.
+    AND SHORT, NOT REPEATED. Wide tracked caps hold a short label, never a
+    phrase, and never lead a row that repeats down a list. Multi-word caps at
+    chrome size are hard to read, and repeated they turn a list into a wall
+    of caps. A repeated row-leader is a designation or it is sentence case.
   retired-axis-fails-silently: >-
     RATIFIED 2026-08-28, and it changes what the permanent grep set IS FOR.
     HexStateMap was setting font-variation-settings: 'HEXP' 100 IN LIVE
@@ -1651,7 +1669,7 @@ elevation:
     use: "material-thick, modal, FAB, dropdowns, secondary-button hover"
   chrome:
     shadow: "0 8px 16px -4px rgb(15 23 42 / 0.12), 0 3px 6px -3px rgb(15 23 42 / 0.12)"
-    use: "material-chrome (persistent navbar). Wider spread than raised."
+    use: "material-chrome. Wider spread than raised. Casts away from the bar's anchor: upward on a bottom-anchored bar (materials.material-chrome.edge)."
 
 materials:
   # Five glass tiers. Uniform 50px blur (25px for chrome). Fall back to
@@ -1716,10 +1734,10 @@ materials:
       KEEPS IT, decided by Jason: it is a mobile menu built on the iOS native
       model, and such a bar SITS ABOVE CONTENT BY DEFINITION. That is what
       makes it a tab bar rather than a footer.
-      SO THIS MATERIAL SURVIVES WITH EXACTLY ONE CONSUMER, deliberately.
-      Stated because a one-consumer material looks like an orphan to a later
-      cleanup pass: it is not leftover, it is the only surface in the system
-      that overlaps scrolling content, and the material is what lets it.
+      SO THIS MATERIAL SURVIVES ONLY WHERE A SURFACE OVERLAPS SCROLLING
+      CONTENT, deliberately (consumers, below). Stated because a material
+      with so few consumers looks like an orphan to a later cleanup pass: it
+      is not leftover, and the material is what lets those surfaces overlap.
       MEASURED FACT BEHIND IT: the bar is `fixed inset-x-0 bottom-0` with an
       `h-18` spacer. THE SPACER ONLY GUARANTEES THE LAST ITEM IS REACHABLE —
       it does not stop content passing behind the bar mid-scroll, because with
@@ -1775,8 +1793,21 @@ materials:
     # 75% reached no surface, so it is deleted rather than reconciled: the
     # value in the code is the value the system means. Dark stays 90%,
     # because translucent chrome over a dark canvas reads as smoke.
-    bg-light: "rgb(255 255 255 / 55%)"
-    bg-dark:  "color-mix(in srgb, var(--canvas-live) 90%, transparent)"
+    bg-light: "rgb(255 255 255 / 35%)"
+    bg-dark:  "color-mix(in srgb, var(--canvas-live) 45%, transparent)"
+    consumers: >-
+      RATIFIED 2026-10-11: the mobile tab bar and AskSignDock, both fixed to
+      the bottom over scrolling content. Each overlapping surface is named
+      here (recession-requires-nothing-scrolls-beneath); a third is a
+      ratification.
+    edge: >-
+      RATIFIED 2026-10-11. The line sits on the edge that FACES THE CONTENT —
+      the top, for a bar anchored to the bottom — at border.subtle in both
+      schemes. It had been drawn on the bottom edge, left over from the top
+      navbar, where it lay against the viewport with nothing beneath it. The
+      shadow casts away from the anchor too (elevation.chrome). Whether a
+      material's edge is a boundary held to the 3:1 non-text floor is open
+      in RATIFY.md.
     bg-dark-was: >-
       rgb(24 24 27 / 90%) until 2026-08-28. CHANGED BECAUSE CHROME DID NOT
       BELONG TO ITS OWN PAGE. zinc-900 is a WARM NEUTRAL and the canvas it
@@ -2060,7 +2091,7 @@ components:
   # proportions and the type's optical centring; a declared minimum leaves
   # a compliant control alone and only grows the ones that fall short.
   # For a control shorter than the floor whose SIZE must stay small (the
-  # breadcrumb's 12px caps, a dense inline chip), the target is expanded
+  # breadcrumb's 12px caption, a dense inline chip), the target is expanded
   # around it — a transparent ::before at the minimum, centred — rather
   # than the visible box being inflated to match.
   # ==========================================================================
@@ -2612,7 +2643,7 @@ components:
     background: "material-chrome"
     position: "fixed inset-x-0 bottom-0"
     visibility: "< sm breakpoint only; signed-in users only"
-    activeColor: "slate-800 (light) / slate-300 (dark) — Midnight Indigo trail"
+    activeColor: "--text-nav-active (color.text.nav-active) — the Midnight Indigo trail. The sidebar's active row takes the same token."
     activeTreatment: "Phosphor icon switches regular → fill, plus the active colour on icon and label. No motion: chrome is still."
     labelTypography: >-
       CHANGED 2026-08-28. Was "sans-chrome 12px uppercase tracking-wider". NAV
@@ -2621,12 +2652,9 @@ components:
       applies and is no longer the binding constraint, because sentence case
       is narrower than tracked caps at every label in the set.
     labelFit: >-
-      MEASURED, not assumed. At 390pt the five slots are 74.8px each. At 12px
-      the widest short label ("Races") measures 53.8px — 72% of its slot, with
-      about a quarter spare. The audit worried the 12px floor might not
-      survive five tab labels and resolved it on paper by raising the floor
-      anyway; the tension never existed. What makes it fit is `shortLabel`
-      (below), not the type size.
+      MEASURED at role-body. At 390pt the five slots are 74.8px each. The
+      widest short label ("Races") measures 47.4px — 63% of its slot. What
+      makes the row fit is `shortLabel` (below), not the type size.
     items: >-
       A CURATED FIVE, not the whole nav. The sidebar carries seven
       destinations; the tab bar carries Dashboard · Asks · Elections · Bills ·
@@ -2649,10 +2677,9 @@ components:
       rule: "Each tab is an explicit 44×44 minimum. The gaps between tabs belong to their neighbouring targets, not to nothing."
       why: >-
         The tab is a bare link around a 40px icon span and a label, so the
-        target is whatever the content happens to measure. Measured at 12px:
-        Home 48.0, Asks 43.6, Races 53.8, Bills 50.8, Chat 43.3. Raising the
-        label to 12px lifts three of five clear and leaves the two shortest
-        words fractionally under — which is exactly why the minimum has to be
+        target is whatever the content happens to measure. Measured at
+        role-body: Home 45.3, Asks 36.6, Races 47.4, Bills 31.1, Chat 35.7 —
+        three of five under 44px wide, which is why the minimum has to be
         declared rather than inherited from type size. See `a11y.targetSize`,
         which has said 44×44 since before any of this and was never applied.
     hidden-on:
@@ -2932,12 +2959,11 @@ components:
     hoverDecorationColor: "rgb(0 0 0 / 87%)"
     transition: "color 200ms"
   breadcrumb:
-    typography: "sans-chrome 12px uppercase, tracking exactly 0.12em (--track-chrome). Corrected 2026-08-27: shipped 0.05em, which is chrome's width without chrome's tracking — the tracking is what recovers Archivo's narrower ceiling, so half of it is a different register."
+    typography: "role-caption, sentence case, no tracking (typography.chrome-sites-are-closed)."
     weightHierarchy: >-
-      STATED 2026-08-27, found by implementation. role-label-caps sets
-      weight 600, so applying it to the <ol> flattens every crumb to one
-      weight and destroys the only signal that says which one you are on.
-      Ancestors step back to weight 400; the current page keeps 600. A
+      Ancestors take weight 400; the current page takes 600. One weight
+      across every crumb destroys the only signal that says which one you
+      are on. A
       breadcrumb is a trail with a position on it — if every crumb weighs the
       same it is a list of links, not a trail.
     separator: "Phosphor CaretRightIcon, size 12px, tertiary text"
@@ -4039,12 +4065,13 @@ tactileAccents:
       rounded: "full per segment, 1px gap between segments"
       track-light: "slate-400/20"
       track-dark: "slate-400/15"
-      fill-active: "slate-500/70 + animate-pulse"
+      fill-active: "slate-500/70, static. RATIFIED 2026-10-11: the active segment does not pulse — motion is never an idle loop (motion)."
       fill-completed: "slate-700 / slate-500 (dark)"
       fill-success: "emerald-600 / emerald-500 (dark) — entire bar"
       fill-failure: "--color-danger — only the segment where the bill died"
       markers: >-
-        Chrome-width uppercase 12px label centered beneath each segment.
+        role-caption, sentence case, centred beneath each segment
+        (typography.uppercase-has-two-homes, chrome-sites-are-closed).
         Earlier versions added a 2px tick mark above each label, but
         segments + labels alone are sufficient to encode the milestone
         positions; the ticks were a third graphic claim on the same
@@ -4062,7 +4089,7 @@ tactileAccents:
         first segment and replaces the milestone row with one caption rather
         than implying progress through unverified stages. Keep this.
       variants:
-        ribbon: "8px segmented bar + sans-chrome label per step. Used on bill detail pages."
+        ribbon: "8px segmented bar + role-caption label per step. Used on bill detail pages."
         compact: "Mini-bar (h-2) without milestone labels. Used in bill list tables."
       when: "Archive bill detail pages, on the paper-cream canvas."
       implementation: "app/(data)/oversight/bills/components/bill-status-progress-bar.tsx"
@@ -4097,6 +4124,12 @@ tactileAccents:
       typography: "IBM Plex Mono 12px, tertiary text"
       alignment: "right-aligned in a 2rem gutter"
       when: "Bill text viewer only. Numbers reset per section."
+      counts: >-
+        RATIFIED 2026-10-11. A number counts SOURCE lines — the enrolled
+        bill's lines — not visual lines. A line that wraps keeps its one
+        number on its first row and its continuation rows are unnumbered.
+        That is how a statute is cited ("page 2, line 14"), and a number
+        that moved with the viewport could not be cited at all.
     ruled-page:
       blocked-on: IMPLEMENTATION
       demoted: >-
@@ -4681,7 +4714,7 @@ a11y:
       proportions and the optical centring of its label; a declared minimum
       leaves an already-compliant control untouched and grows only the ones
       that fall short. Where the control's visible size must stay smaller than
-      the floor — the breadcrumb's 12px caps, a toggle track that has to read
+      the floor — the breadcrumb's 12px caption, a toggle track that has to read
       as a switch — EXPAND THE TARGET AROUND IT: a transparent hit area at the
       minimum, centred on the control, rather than inflating the box. The
       appearance and the target are two different geometries and this rule
@@ -5260,10 +5293,8 @@ because typography was not the problem:
   125 and a true italic at every weight. Body runs at `wdth` 100. The width
   axis has three discrete chrome registers:
 
-  - **`wdth` 125 · chrome** — institutional chrome. Default for navbar, breadcrumbs,
-    footer column heads, form labels, table heads, status stamps,
-    progress-ribbon milestone labels, count chips, jurisdiction-code
-    badges, "Sources:" prefixes. Reads clerical, calm, like the
+  - **`wdth` 125 · chrome** — institutional chrome. Two sites only: the section divider
+    and the status stamp (`typography.chrome-sites-are-closed`). Reads clerical, calm, like the
     engraved label tape on a filing cabinet drawer. The axis goes
     further but going further changes the *gesture's intent*, not just
     its size.
@@ -6244,6 +6275,12 @@ same change that removes the implementation.
 and it will drift. Once a quarter someone reads it against the codebase
 and marks what is real. Anything that survives two reconciliations
 unbuilt gets cut, not re-promised.
+
+**Specimens.** A specimen may print a value it resolves at render time,
+because a value read off the live stylesheet cannot go stale the way a
+typed one does. It must be measured the way the spec measures — a set
+line, a painted pixel — and never derived, such as a width divided by an
+average glyph. Ratified 2026-10-11.
 
 **Versioning.** Dated entries in `CHANGELOG.md`, newest first. No
 semantic version — the system is not consumed as a package, and a version

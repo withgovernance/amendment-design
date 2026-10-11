@@ -116,7 +116,7 @@ Not guidance: [`proposed/`](./proposed/) (an unratified draft), `github.md` (a d
 | `role-display-hero` · `-section` · `-minor` | Serif canvas headings, by outline depth |
 | `role-ui-heading` | Sans heading inside a container |
 | `role-body` · `role-body-serif` · `role-body-lead` · `role-lede` | Body text; the newcomer’s lede |
-| `role-label-caps` | Chrome field label |
+| `role-label-caps` | Chrome label: the section divider and the status stamp only (`typography.chrome-sites-are-closed`) |
 | `role-designation` | Bill slug or code leading a row or card |
 | `role-ceremonial` | Display designation, once per page |
 | `role-metadata` · `role-metadata-sans` | Who, when, how — serif on canvas, sans in containers |

@@ -67,13 +67,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** render both shapes — one caption line; a `role-ui-heading` title over a `role-body` message — inside the 32px panel at 390, both schemes, and let the container decide.
 - **blocks:** nothing. Voyager's migration of the dashed sites (handoff 2026-09-14) can land either way.
 
-### May a specimen print a value it resolved at render time?
-- **kind:** unowned default
-- **found:** `design-reviewer`, comparing `preview/color-ink-opacity.html` (now prints no values, only token names) with `preview/measure.html` (prints computed widths and counts).
-- **evidence:** "cite the token, never the number" governs typed prose. A value a specimen computes from the live stylesheet cannot go stale the way a typed one does — but it can be computed by a retracted method: `measure.html` still divides a width by an average glyph and labels the result "measured", printing 69 / 47 / 97 where the first set line counts 64 / 41 / 91. That half is conformance and is owed regardless.
-- **proposes:** decide whether render-time values are allowed in specimens, and if so, that they must be measured the way the spec measures (a set line, a painted pixel), never derived.
-- **blocks:** nothing.
-
 ### `_card.css` builds its own chrome labels — is specimen furniture exempt from the role layer?
 - **kind:** two readings
 - **found:** `design-reviewer`, across the specimens reviewed on 2026-09-14.
@@ -87,20 +80,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **evidence:** the 390 render of the specimen. `components.progress-ribbon.markers` puts a label under every segment and has no narrow form; `failure-honesty` sanctions a single caption only for failure; `status-redundancy` forbids captioning the ribbon with the status the RubberStamp already spells out.
 - **proposes:** render both readings at 390 on the bill detail header with the RubberStamp present, then decide. (A) the caption is the active segment's own label, so write it into `markers` as the narrow form. (B) it is the status caption `status-redundancy` forbids, and it drops the other four positions, so narrow shows first-and-last labels or no label row.
 - **blocks:** nothing; the specimen shows production's form until this is decided.
-
-### `progress-ribbon` `fill-active` loops forever
-- **kind:** two readings
-- **found:** `design-reviewer`, on the same specimen.
-- **evidence:** `components.progress-ribbon.fill-active` specifies `animate-pulse`, an idle loop; the motion rules say motion is "never decorative, never an idle loop". The static specimen hides the conflict.
-- **proposes:** decide whether the active segment pulses. If it doesn't, drop `animate-pulse` from `fill-active` and voyager conforms.
-- **blocks:** nothing.
-
-### What a gutter line number counts when statute text wraps
-- **kind:** spec silent
-- **found:** making `preview/type-legislature.html` fit 390. Its statute rows were `nowrap`; they now wrap below 40rem, and a wrapped continuation carries no number.
-- **evidence:** the 390 render: each number aligns to its line's first visual row, and continuation rows are unnumbered. `components.line-numbers` is `blocked-on: IMPLEMENTATION` and does not say whether a number counts source lines or visual lines.
-- **proposes:** (A) a number counts source (enrolled-bill) lines, so a continuation is unnumbered. This matches statute citation ("page 2, line 14") and the specimen as it now renders. (B) a number counts visual lines, so text never wraps and scrolls sideways instead. Decide before line-numbers ships.
-- **blocks:** nothing now; line-numbers implementation.
 
 ### Material backdrops carry no saturation boost
 - **kind:** spec silent
@@ -131,44 +110,12 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** render every tier with its ring as shipped, then with one ring for all tiers on `borders.hairline`, on canvas-hue glass at both band positions in both schemes. Check whether the heavier dark ring does the job of the dark inset bevel, and whether a 5% light ring still separates `material-regular` cards from the aurora. If one ring wins, `materials.*.ring-*` collapses into a reference to `borders.hairline`.
 - **blocks:** nothing. Voyager's regeneration is a conformance fix that is owed whatever is decided here.
 
-### `material-chrome`'s edge faces away from the content on every surface that uses it
+### Is a material's edge a boundary held to 3:1?
 - **kind:** unowned default
-- **found:** ring audit, 2026-10-09, from a live 390 dark render of a candidate page with `AskSignDock` showing ("Endorse with …").
-- **evidence:**
-  - **The only edge chrome draws is on the wrong side.** `DESIGN.md`'s `materials.material-chrome` defines no ring. The stylesheet adds one anyway: `inset 0 -1px 0 0`, a bottom-edge line left over from the top navbar. Its only consumers are anchored to the bottom: `TabBar.tsx` and `AskSignDock.tsx`, both `material-chrome fixed inset-x-0 bottom-0`. That puts the line against the viewport edge, where nothing is beneath it. The edge that faces content, the top, has no line.
-  - **Measured off the render:** dock fill (16,16,24) against the card scrolling beneath it (16,16,21) is **1.002:1**. Canvas-hue glass over canvas-hue content can't separate by fill (`materials.dark-glass-takes-the-canvas-hue`), and the slate-900 shadow ink disappears on a slate-900 ground. So in dark the edge has nothing to carry it but a line, and there is no line.
-  - **`elevation.chrome` casts down** (`0 8px 16px -4px`). On a bottom-anchored bar that shadow falls off the screen.
-  - **`AskSignDock` is an unlisted consumer.** `material-chrome` names the tab bar and the marketing header. `recession-requires-nothing-scrolls-beneath` says each surface that overlaps content is stated by name, and the dock isn't.
-  - **No ring in the system clears the 3:1 non-text floor, and neither does Apple's.** This is ring alpha over the dock's own ground, flat and before blur: white 5% 1.12, 8% 1.21, 10% 1.29, 12% 1.38, 20% (`borders.hairline` dark) 1.83, 35% 3.2. Black in light: 5% 1.12, 10% 1.25, 20% 1.6, 35% 2.42. `DESIGN.md` puts "rules" under the 3:1 floor, next to marks and icons.
-  - **Voyager's generated tokens are stale** (`v2026.08.31.5` against `v2026.09.14.16`). The four dark tiers are still `rgb(0 0 0 / n%)`. Chrome happens to be current.
-- **proposes:** (1) `material-chrome` takes a ring in `DESIGN.md`, on the edge that faces the content. For a bottom-anchored bar that is the top: `inset 0 1px 0 0`. Its shadow casts away from the anchor too. (2) Decide whether a material's edge counts as a boundary that 3:1 applies to. If it does, every ring has to be redrawn. If it doesn't, write down that a material's edge is exempt, and say what separates an overlapping bar from content instead. Overlapping bars are the case where the boundary does the work, so render the dock at 390 in both schemes with its top edge at `borders.hairline` and at a 3:1 value, over a canvas-hue card, and decide from that. (3) Name `AskSignDock` as a consumer of `material-chrome`. This entry and "Material rings" above can close in the same pass.
-- **blocks:** nothing structurally. The dock and the tab bar both ship with no visible top edge in dark until it's decided.
-
-### Wide tracked caps: how much text, and how often
-- **kind:** spec silent. The intent is decided by Jason (2026-10-09); the test is open.
-- **decided:** wide tracked caps are for bill slugs, short labels, eyebrows and accents. They don't go on multi-word text, and they don't go on a header that repeats down rows. Multi-word caps at chrome size are hard to read, and repeating them turns a list into a wall of caps.
-- **evidence:**
-  - **The spec says where caps may go, not how much.** `typography.uppercase-has-two-homes` limits caps to three roles, and its test is "a designation or a sentence?". Neither `role-label-caps` ("a field label naming apparatus") nor that test limits word count or repetition. `role-designation` explicitly allows repetition, as "a designation REPEATED … leading a table row", and that is correct for slugs. But nothing stops `role-label-caps` from repeating the same way when it holds words instead of a designation.
-  - **Voyager:** 93 uses of `role-label-caps` in 51 files, 7 of `role-designation`, 1 of `role-ceremonial`, and 55 raw `uppercase` classes outside any role (`.tsx`, stories and tests excluded). Most label text is dynamic, so these counts measure reach, not violations.
-  - **Live examples from one candidate page at 390 dark:** a breadcrumb in tracked caps whose last crumb is a person's name ("ELECTIONS › … › MARK R. WARNER"); "GENERAL ELECTION" as a row header that repeats for every date in Key Dates; "ON THE BALLOT · 2026" as an eyebrow, which is legitimate.
-  - **This was decided once already and never landed.** On 2026-09-10 Jason closed the chrome-caps register to four sites: section divider, status stamp, jurisdiction code, global navbar. Table column heads, footer column heads, form labels, count chips, the mobile tab bar, breadcrumbs, progress-ribbon milestones and the `Sources:` prefix went to sentence case. The evidence is `proposed/Chrome Caps — Where It Earns Its Place.html` and `explorations/Form Labels — Caps vs Sentence Case.html`. The record is `handoff-amendment-design/CHROME-CAPS-2026-09-10.md`. All three exist only in the Claude Design project (https://claude.ai/artifact/BzJcUjpH11UCbinKuoP27W), not in this repo. Only the form-labels part reached `DESIGN.md`. `components.breadcrumb` still specifies uppercase.
-- **proposes:** ratify the 2026-09-10 list as a **closed list**: a fifth site is a ratification. Fold today's wording into it: "eyebrows" is the section divider, and bill slugs and jurisdiction codes are `role-designation`. Two things are still open. **(1) The navbar row.** Since `recession-ratified-2026-08-28` and hard rule 5, nav labels are `role-body`, so the 09-10 navbar keep, and the navbar/tab-bar breakpoint conflict the handoff left open, may both be moot. Confirm, and the list becomes three plus designation. **(2) "Accents"** needs defining, or it reopens the list. Bring the three files over from Claude Design as evidence in the same pass. Correct `components.breadcrumb`, `progress-ribbon` markers and `widthPresets`' site list, and hard rule 10. After ratification, voyager sweeps the 93 + 55, which is conformance.
-- **blocks:** nothing. Every new list or row header voyager builds defaults to caps until this lands.
-
-### Token name for the active nav ink
-- **kind:** spec silent
-- **found:** preview/tabbar.html — `components.tabbar.activeColor` names its values (slate-800 light, slate-300 dark, "the Midnight Indigo trail") but no stylesheet token held them, so every surface drawing the active state restated the dark value. `colors_and_type.css` now declares `--text-nav-active`: `--color-primary` in light, slate-300 in dark.
-- **evidence:** active label on the rendered `material-chrome` bar at 1440: 13.1:1 light, 12.0:1 dark. Active against inactive is 2.4:1 light and 1.7:1 dark, so the Phosphor regular→fill swap carries the state. Production already matches: `TabBar.tsx` uses `text-primary dark:text-slate-300`.
-- **proposes:** name `--text-nav-active` under `color`, and point `components.tabbar.activeColor` and the sidebar's active row at it instead of slate names.
-- **blocks:** nothing. Voyager adopts it at its next extraction.
-
-### `tabbar.labelFit` still measures the retired caps treatment
-- **kind:** spec silent
-- **found:** preview/tabbar.html after its labels moved to `role-body` — `components.tabbar.labelFit` and the width list under it give tracked-caps widths at 12px (Races 53.8px, 72% of the slot).
-- **evidence:** at `role-body` in the 390 specimen, slot 74.8px: Home 45.3, Asks 36.6, Races 47.4, Bills 31.1, Chat 35.7. The widest fills 63%. Three labels are narrower than 44px, so the explicit 44px minimum width is what meets the target.
-- **proposes:** replace the `labelFit` figures with the `role-body` measurements, and keep the `shortLabel` requirement, which is still what makes the row fit.
-- **blocks:** nothing.
-
+- **found:** ring audit, 2026-10-09, from a live 390 dark render of a candidate page with `AskSignDock` showing. The side of the line and the dock's consumer status were ratified 2026-10-11 (`materials.material-chrome.edge`, `.consumers`); this half stays open.
+- **evidence:** dock fill (16,16,24) against the card scrolling beneath it (16,16,21) is **1.002:1**, so in dark the edge has nothing to carry it but its line. No ring in the system clears the 3:1 non-text floor, and neither does Apple's: ring alpha over the dock's own ground, flat and before blur, is white 5% 1.12, 8% 1.21, 10% 1.29, 12% 1.38, 20% 1.83, 35% 3.2; black in light 5% 1.12, 10% 1.25, 20% 1.6, 35% 2.42. `DESIGN.md` puts "rules" under the 3:1 floor, next to marks and icons.
+- **proposes:** render the dock and the tab bar at 390 in both schemes with the top edge at `border.subtle`, `borders.hairline` and a 3:1 value, over a canvas-hue card, and decide. If the edge is a boundary, every ring is redrawn; if it is exempt, write that down and say what separates an overlapping bar from content instead. Closes with "Material rings" above.
+- **blocks:** nothing structurally.
 ### How many green plates a page carries when it lists asks
 - **kind:** two readings
 - **found:** homepage hi-fi (`Homepage · Desktop.png`, 2026-10-07, approved for ratification). One page carries eight `button-cta` plates: "Find your district" in the hero, a Co-sign on each of six ask cards, and "Find your district" again in the close.
@@ -197,6 +144,17 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-10-11 (v2026.10.11)** — `--text-nav-active` carries the active nav ink, and the sidebar
+  takes it too. `tabbar.labelFit` measures `role-body`. The progress-ribbon's active segment no
+  longer pulses: **voyager drops `animate-pulse`**. Statute line numbers count source lines. A
+  specimen may print a render-time value only if it is measured, never derived.
+  `material-chrome`'s line moves to the edge facing content, its consumers are the tab bar and
+  `AskSignDock`, and its spec fields now carry the stylesheet's values. **Chrome caps have two
+  sites, closed: the section divider and the status stamp** — breadcrumbs, progress-ribbon
+  milestones, column heads, count chips and the `Sources:` prefix go to sentence case, which
+  voyager sweeps.
+
+
 - **2026-09-14 (v2026.09.14 – .11)** — **the first pass after the `designer` agent was retired.**
   Dark `--text-secondary` → 60%: the withdrawn 4.28:1 was right, the 5.96 was the token band
   (**voyager's `secondary-text` utility is a literal, so neither scheme's 60% reaches a pixel
@@ -207,13 +165,3 @@ Moved out of this file on ratification; listed here for one cycle so the code si
   ask count rows follow the ask's level and state. `materials.dark-glass-takes-the-canvas-hue`
   for every dark tier. The rail cut-out is recorded, not ruled. Plus conformance: nine oxblood
   passages in the spec's prose, `in oklab` on the aurora token, and stale entry points.
-
-- **2026-09-03 (v2026.09.03.4)** — **the forms batch, five entries.** `components.selection-is-ink`
-  (selection is ink plus a non-colour channel; **no material tier reaches 1.15:1** against its own
-  track in either scheme, and under inversion a raised plate paints *darker* than its trough);
-  `components.segmented-control` created, with sentence-case labels — at chrome caps the word EMAIL
-  rendered twice in one column meaning two different things, and **that render is the argument**;
-  `radii.full-is-for-unlabelled`; `components.input-label` corrected to compose the role rather than
-  restate it, made mandatory on identity fields, with the placeholder rule; `button-cta` gains
-  **the action colour governs form submits**. Two more recorded rather than decided, both already
-  right and only unwritten: `components.card.material-outranks-the-register` and `a11y.focusRing`.

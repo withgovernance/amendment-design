@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.12.2
+# spec-version:   v2026.10.12.3
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2833,6 +2833,24 @@ components:
       note: >-
         The recess is unaffected. The extra height goes to the field box, not
         the inset shadow or the 1px ring, so the "quiet recess" reading holds.
+    states: >-
+      RATIFIED 2026-10-12 (v2026.10.12.3), from preview/form-fields.html,
+      which measures each one.
+    invalid: >-
+      A 2px inset ring and the message beneath, both in the danger pair:
+      --color-danger on light, --color-danger-soft under inversion
+      (color.ink-switch-is-palette-wide). The message is role-caption in that
+      ink and says what to type, not that something is wrong. One red across
+      both schemes fails as a ring on the dark card.
+    hint: >-
+      role-metadata beneath the field — the serif voice that explains, never
+      the field's name (input-label.placeholder-is-not-the-name). A field
+      shows its hint or its error, not both.
+    textarea: "min-height 6rem, vertical resize only; the 44px target holds."
+    consent: >-
+      A checkbox and a sentence, and THE WHOLE ROW IS THE TARGET, at least
+      44px tall. The sentence is role-metadata and says what consenting
+      does.
   input-label:
     typography: >-
       role-caption, sentence case, secondary ink, above its field.
@@ -4147,9 +4165,12 @@ tactileAccents:
         role-caption at primary ink, its date beneath in role-metadata,
         centred. Stacked rather than run together, because sans and serif on
         one line sit on two baselines. The switch is the ribbon's own width — a container
-        query at 20rem of ribbon — not a viewport breakpoint. Measured at the
-        bill header's 24px gutters: the row holds at 390 and 375 and misses
-        by about a pixel at 360, which takes the caption.
+        query at 20rem of ribbon — not a viewport breakpoint. 20rem IS A
+        DELIBERATE MARGIN (ratified 2026-10-12, v2026.10.12.3): at the 1px
+        gap, five widest markers fit in about 19rem, and the extra rem
+        absorbs a wider label or a font fallback rather than letting a marker
+        collide. At the bill header's 24px gutters the row shows at 390 and
+        375, and 360 takes the caption.
       dark-ladder: >-
         RATIFIED 2026-10-12 (v2026.10.12.2). The dark fills mirror the light
         ladder: completed is the strongest fill, active the middle, the track

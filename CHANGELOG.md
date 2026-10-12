@@ -8,6 +8,21 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-12 (v2026.10.12.3) — Field states; the ribbon's margin
+
+Delegated by Jason to the ratifying session, two entries from the queue.
+
+- **The field states enter the spec** (`components.input.states`): invalid, hint, textarea and
+  consent. `preview/form-fields.html` had rendered and measured them since September under a
+  caption pointing at a queue entry that never existed. Invalid takes the danger pair as both
+  ring and message, because one red across both schemes fails as a ring on the dark card. The
+  hint and the consent sentence take `role-metadata`, and the error takes `role-caption`, so
+  no field state has hand-built type. A field shows its hint or its error, never both.
+- **The ribbon's 20rem switch is a deliberate margin** (`progress-ribbon.below-width`). The
+  "misses by a pixel at 360" measurement used production's 4px gap. At the spec's 1px gap the
+  markers fit in about 19rem. The extra rem absorbs a wider label or a fallback font, so a marker
+  never collides. The 360 sentence is corrected.
+
 ## 2026-10-12 (v2026.10.12.2) — Form labels leave caps; the dark ribbon ladder; the narrow caption
 
 Delegated by Jason to the ratifying session, four entries from the queue, each from a render.

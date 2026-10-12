@@ -50,19 +50,7 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
-### The ribbon's 20rem threshold switches earlier than the markers need
-- **kind:** two readings
-- **found:** `design-reviewer` on `preview/progress-ribbon.html`, 2026-10-12, after v2026.10.12.2.
-- **evidence:** `below-width` says the row "misses by about a pixel at 360". That was measured with production's `gap-1` (4px) between segments. At the spec's 1px gap, a 312px ribbon gives segments of about 61.6px against a widest marker of 60.2px, so the row would hold, and the 20rem query switches to the caption about 7px early. Nothing clips either way.
-- **proposes:** keep 20rem and record it as a deliberate margin, or state the threshold as "five widest markers plus the gaps" and set the query from it. Fix the 360 sentence either way.
-- **blocks:** nothing; voyager can ship 20rem.
-
-### Field states have no spec entry: invalid, hint, textarea height, consent row
-- **kind:** spec silent
-- **found:** `design-reviewer` on `preview/form-fields.html`, 2026-10-12. The specimen's caption points here, but the states never entered the queue.
-- **evidence:** the specimen renders all four and measures them. The invalid ring is 5.63:1 light and 4.45:1 dark. The error text is 6.29:1 and 5.08:1, using `--color-danger` and `--color-danger-soft` (`color.ink-switch-is-palette-wide`).
-- **proposes:** add them as `components.input` sub-keys. Invalid takes the danger pair as both ring and ink. The hint is `role-body-serif`-family secondary ink under the field. Also name the textarea's minimum height and the consent row's target size.
-- **blocks:** nothing.
+*(empty)*
 
 ## Needs a person — cannot close from inside the toolchain
 
@@ -78,25 +66,13 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-10-12 (v2026.10.12.3)** — the ribbon's 20rem switch is a deliberate margin. Field
+  states are spec: **invalid** is a 2px ring plus a `role-caption` message in the danger pair,
+  **hint** is `role-metadata`, a **textarea** is at least 6rem tall, and the **consent** row is
+  one target of at least 44px with a `role-metadata` sentence.
+
 - **2026-10-12 (v2026.10.12.2)** — **form labels are `role-caption`**, sentence case, above the
   field: voyager's `input-label` utility recomposes on it. The ribbon's dark ladder mirrors the
   light one, so dark `--ribbon-completed` takes `--text-nav-active`'s value, and ribbon segments
   are not held to 3:1. The ribbon's narrow caption is the active step in `role-caption` over its
   date in `role-metadata`, stacked. `card-placeholder` takes the card-empty pair.
-
-- **2026-10-12 (v2026.10.12)** — **the progress ribbon's narrow form returns, switched on its own
-  width**: below 20rem of ribbon, one caption for the active step replaces the five markers.
-  **Voyager swaps `sm:hidden` for that container query**, not deletes it. The bill page header
-  sets the ribbon on the aurora; the light-fills-on-paper rule now applies only where a ribbon
-  sits on paper. The fills are tokens, `--ribbon-completed`, `--ribbon-active` and
-  `--ribbon-track`, and **voyager paints them in place of slate steps**. The printed name under
-  a signature rule is `role-metadata`. A caps divider may carry a `role-caption` qualifier.
-  Specimens that show both schemes in panes render in the light page only.
-
-- **2026-10-11 (v2026.10.11.3)** — **a card is a surface**: each ask card keeps its Co-sign
-  plate, the hero's form submit keeps its own, and a repeated act takes `button-secondary`. Ask
-  titles inside cards are `role-ui-heading`. Every material tier takes one ring,
-  `--border-subtle`, and a material's edge is not held to 3:1. Empty cards are a
-  `role-ui-heading` title over a `role-body` message. The progress ribbon's date is
-  `role-metadata`, roman. Specimen frames are held to the role layer and to
-  `measure.body`.

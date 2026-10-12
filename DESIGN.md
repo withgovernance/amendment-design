@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.12
+# spec-version:   v2026.10.12.2
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -871,8 +871,9 @@ typography:
       without knowing that this invariant is what you are spending.
     widthDiscipline: >-
       Chrome width + uppercase is a specific signal (institutional chrome
-      label). It should not become ambient noise. Use it for nav, breadcrumbs,
-      form labels, and footer column heads — not for every small caption.
+      label). It should not become ambient noise. It has the two sites
+      typography.chrome-sites-are-closed names — the section divider and the
+      status stamp — and no others.
     widthDiscipline-measured: >-
       MEASURED 2026-08-27, and the measurement decided a reading the prose
       could not. A stat caption was called "chrome drift" and moved TO
@@ -2792,7 +2793,11 @@ components:
     rounded: "0.5rem"
     padding: "32px; 16px inside a dense list"
     textAlign: "center"
-    color: "secondary text"
+    typography: >-
+      RATIFIED 2026-10-12. The card-empty pair: a role-ui-heading title
+      naming the empty slot over a role-body message in secondary ink saying
+      who fills it and how. A lone caption in a dashed box reads as a blank
+      box with a footnote.
   modal:
     description: Popover and dropdown surface
     background: "linear-gradient from rgb(255 255 255 / 25%) to rgb(255 255 255 / 40%)"
@@ -2830,17 +2835,10 @@ components:
         the inset shadow or the 1px ring, so the "quiet recess" reading holds.
   input-label:
     typography: >-
-      role-label-caps, secondary ink. NAME THE ROLE; DO NOT RESTATE IT.
-      CORRECTED 2026-09-03: this entry read "sans-chrome 12px uppercase
-      tracking-wide semibold secondary", and `tracking-wide` IS NOT
-      --track-chrome — chrome's width without chrome's tracking, which is
-      the defect already corrected on components.breadcrumb.typography and
-      recurs here for the same reason: a longhand copy of a role drifts from
-      it one property at a time, and a specific value looks deliberate.
-      THE CONSUMER WAS THE CORRECT HALF. voyager's `input-label` utility
-      already composes role-label-caps directly and carries a comment saying
-      not to rebuild its width, case or tracking by hand. The spec was stale,
-      not the code — a Production-ahead divergence, recorded as one.
+      role-caption, sentence case, secondary ink, above its field.
+      RATIFIED 2026-10-12: form labels are not a chrome-caps site
+      (typography.chrome-sites-are-closed). NAME THE ROLE; DO NOT RESTATE
+      IT — a longhand copy of a role drifts from it one property at a time.
     mandatory: >-
       RATIFIED 2026-09-03 from preview/form-fields.html, which renders both
       readings side by side. A FIELD A USER TYPES IDENTITY INTO CARRIES A
@@ -4145,15 +4143,24 @@ tactileAccents:
         RATIFIED 2026-10-12, decided by Jason; replaces the 2026-10-11 "no
         narrow form". The markers are single words and cannot wrap, so the
         row holds only while every segment is as wide as its widest marker.
-        Below that, the row gives way to ONE caption naming the active step,
-        with its date. The switch is the ribbon's own width — a container
+        Below that, the row gives way to ONE caption: the active step in
+        role-caption at primary ink, its date beneath in role-metadata,
+        centred. Stacked rather than run together, because sans and serif on
+        one line sit on two baselines. The switch is the ribbon's own width — a container
         query at 20rem of ribbon — not a viewport breakpoint. Measured at the
         bill header's 24px gutters: the row holds at 390 and 375 and misses
         by about a pixel at 360, which takes the caption.
-      known-divergence-dark-ladder: >-
-        OPEN (RATIFY.md). On the dark aurora the dark fills invert the light
-        ladder: --ribbon-completed sits about 1.2:1 from --ribbon-active and
-        near 2.5:1 against the ground, so completed and active read as one.
+      dark-ladder: >-
+        RATIFIED 2026-10-12 (v2026.10.12.2). The dark fills mirror the light
+        ladder: completed is the strongest fill, active the middle, the track
+        the faintest. Dark --ribbon-completed takes --text-nav-active's value.
+        Measured on the dark aurora: completed about 8:1 against the ground
+        and about 2.7:1 from active, matching light's about 8:1 and 3.4:1.
+      contrast: >-
+        RATIFIED 2026-10-12. THE SEGMENTS ARE NOT HELD TO 3:1. The active
+        segment sits near 2.3:1 on the light aurora and near 3:1 on the dark
+        one; the marker row (or the narrow caption) and the RubberStamp both
+        name the status, so the fill is a redundant cue, like the track.
       markers: >-
         role-caption, sentence case, centred beneath each segment
         (typography.uppercase-has-two-homes, chrome-sites-are-closed).
@@ -4166,7 +4173,8 @@ tactileAccents:
         out the same value (ENGROSSED / ENROLLED / VETOED / ENACTED).
         Do not also caption the ribbon with "{status} on {date}" — the
         stamp + active segment + label already encode the status. The
-        *date* is real new information; render it as role-metadata
+        narrow form is the exception: its caption IS the marker row
+        (below-width). The *date* is real new information; render it as role-metadata
         (serif roman — it is under the italic floor, typography's
         serif-italic rule) adjacent to the ribbon, not as a chrome caption.
       failure-honesty: >-

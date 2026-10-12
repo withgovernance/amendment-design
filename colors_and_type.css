@@ -408,7 +408,7 @@
   --border-dashed-empty: rgb(255 255 255 / 30%);
   --skeleton-block: rgb(255 255 255 / 8%);
   --spinner-ink:    rgb(255 255 255 / 38%);
-  --ribbon-completed: #64748b;                 /* slate-500 */
+  --ribbon-completed: #cbd5e1;                 /* slate-300, --text-nav-active's value: the light ladder mirrored */
   --ribbon-active:    rgb(148 163 184 / 70%);  /* slate-400/70 */
   --ribbon-track:     rgb(148 163 184 / 15%);  /* slate-400/15 */
   --canvas: var(--color-zinc-900);

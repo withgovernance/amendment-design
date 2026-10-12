@@ -8,6 +8,32 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-12 (v2026.10.12.2) — Form labels leave caps; the dark ribbon ladder; the narrow caption
+
+Delegated by Jason to the ratifying session, four entries from the queue, each from a render.
+
+- **Form labels are `role-caption`, sentence case, above the field** (`components.input-label`).
+  The closed-caps ruling had named form labels, but `input-label` and `widthDiscipline` still
+  prescribed caps and the specimens followed them. Rendered in the sign-up form at 390, the
+  sentence-case labels still name every field. They sit quieter than the field and stop
+  competing with the section divider, the one caps word a form keeps.
+- **The dark ribbon mirrors the light ladder** (`progress-ribbon.dark-ladder`). Measured on the
+  dark aurora, the shipped dark fills set completed about 1.2:1 from active, so a bill's
+  history and its present step read as one bar. Dark `--ribbon-completed` now takes
+  `--text-nav-active`'s value: about 8:1 against the ground and 2.7:1 from active, the same
+  steps the light ladder takes.
+- **Ribbon segments are not held to 3:1** (`progress-ribbon.contrast`). The light active segment
+  measures near 2.3:1 on the aurora. The marker row and the RubberStamp both name the status,
+  so the fill is a redundant cue. Darkening it to 3:1 would have shrunk the step from active to
+  completed that the ladder exists to show.
+- **The narrow caption stacks** (`progress-ribbon.below-width`). The active step goes in
+  `role-caption` with its date beneath in `role-metadata`. Run together on one line, sans and
+  serif sat on two baselines. `status-redundancy` now exempts the narrow form, whose caption
+  stands in for the marker row.
+- **`card-placeholder` takes the card-empty pair**: a `role-ui-heading` title over a `role-body`
+  message saying who fills the slot. A lone caption in a dashed box was the treatment
+  `card-empty` had already rejected.
+
 ## 2026-10-12 (v2026.10.12) — The ribbon switches on its own width; the ribbon's fills are tokens
 
 Decided by Jason, five entries from the queue.

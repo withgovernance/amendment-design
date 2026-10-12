@@ -50,33 +50,7 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
-### The dark ribbon fills invert the light ladder on the aurora
-- **kind:** two readings
-- **found:** ratification pass v2026.10.12, measuring `progress-ribbon` where production sets it: the bill header, on the aurora.
-- **evidence:** at 390 and 1440, sampled against the aurora beside each segment. Light: `--ribbon-completed` about 8:1, `--ribbon-active` about 2.3:1, completed-to-active about 3.4:1. Dark, with today's dark tokens: completed about 2.5:1, active about 2.9:1, completed-to-active about 1.2:1, so completed and active read as one fill (`preview/progress-ribbon.html`, dark). Dark `--ribbon-completed` set one step lighter than active, at `--text-nav-active`'s value: completed about 8.2:1, active about 3.0:1, completed-to-active about 2.7:1, which mirrors the light ladder.
-- **proposes:** dark `--ribbon-completed` takes `--text-nav-active`'s value. Separately decide whether the light active segment, near 2.3:1 on the aurora, needs 3:1. It is a graphic whose status its label and the stamp repeat, the same argument that exempts the track.
-- **blocks:** nothing. Voyager paints the tokens either way.
-
-### Form labels: `components.input-label` and `typography.widthDiscipline` still name chrome caps
-- **kind:** two readings. A ruling recorded and not applied.
-- **found:** `design-reviewer`, 2026-10-12.
-- **evidence:** `components.input-label` names `role-label-caps`, and `widthDiscipline` lists form labels among chrome-caps uses. Both contradict `typography.chrome-sites-are-closed`, which makes form labels sentence case. `preview/forms.html` and `preview/form-fields.html` follow the older entries.
-- **proposes:** delete the caps wording from both entries and name the sentence-case form-label role. The candidate is `role-caption`, the same as breadcrumbs. Render forms.html with both labels at 390 and compare the label row and the form's height.
-- **blocks:** the forms specimens' labels, and voyager's form-label sweep.
-
-### The ribbon's narrow caption mixes two families on one line
-- **kind:** two readings
-- **found:** `design-reviewer` on `preview/progress-ribbon.html`, 2026-10-12.
-- **evidence:** `below-width` asks for "one caption naming the active step, with its date". The specimen sets the step in `role-caption` (sans) and the date in `role-metadata` (serif, the larger size), so the line has two baselines at 390 and 320. `status-redundancy` still says not to caption the ribbon with "{status} on {date}", and the narrow form now does exactly that.
-- **proposes:** set the caption in one role, or set step and date as two adjacent elements, each in its own role. Then exempt the narrow form in `status-redundancy`. Render both.
-- **blocks:** nothing; voyager's narrow branch can switch on width meanwhile.
-
-### `card-placeholder` has no typography rule
-- **kind:** spec silent
-- **found:** `design-reviewer` on `preview/cards.html`, 2026-10-12.
-- **evidence:** the placeholder is one `role-caption` line in a dashed slot, which is the treatment `card-empty.typography` rejected as a blank box with a footnote.
-- **proposes:** the placeholder takes the card-empty pair (a `role-ui-heading` title over a `role-body` message), or it stays a caption and the spec says why.
-- **blocks:** nothing.
+*(empty)*
 
 ## Needs a person — cannot close from inside the toolchain
 
@@ -91,6 +65,12 @@ they stop reading as actionable to the next session that opens this file.
 ## Recently ratified
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
+
+- **2026-10-12 (v2026.10.12.2)** — **form labels are `role-caption`**, sentence case, above the
+  field: voyager's `input-label` utility recomposes on it. The ribbon's dark ladder mirrors the
+  light one, so dark `--ribbon-completed` takes `--text-nav-active`'s value, and ribbon segments
+  are not held to 3:1. The ribbon's narrow caption is the active step in `role-caption` over its
+  date in `role-metadata`, stacked. `card-placeholder` takes the card-empty pair.
 
 - **2026-10-12 (v2026.10.12)** — **the progress ribbon's narrow form returns, switched on its own
   width**: below 20rem of ribbon, one caption for the active step replaces the five markers.
@@ -108,8 +88,3 @@ Moved out of this file on ratification; listed here for one cycle so the code si
   `role-ui-heading` title over a `role-body` message. The progress ribbon's date is
   `role-metadata`, roman. Specimen frames are held to the role layer and to
   `measure.body`.
-
-- **2026-10-11 (v2026.10.11.2)** — legislator notification at the public-count threshold is
-  planned, so the 3A/3B/3C artboards are spec ahead
-  (`surfaces.commons.known-divergence-legislator-notification`). No shipped caption names the
-  notification until it ships.

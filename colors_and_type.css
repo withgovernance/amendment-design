@@ -397,7 +397,7 @@
   --focus-offset: 4px;
 }
 
-/* Dark mode is applied either by .dark on a parent or by prefers-color-scheme */
+/* Dark mode: .dark on a parent or data-theme="dark" on :root — never the OS preference (see below). */
 .dark, :root[data-theme="dark"] {
   --text-primary:   rgb(255 255 255 / 87%);
   --text-secondary: rgb(255 255 255 / 60%);
@@ -443,9 +443,6 @@
    weight correction had never fired. The literal moves 520 → 650 to stay ~8%
    under the recalibrated --sans-bold (700), which is what 520 was to 565. */
 .dark .role-stat-display, :root[data-theme="dark"] .role-stat-display { font-weight: 650 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .role-stat-display { font-weight: 650 }
-}
 
 /* NO auto dark mode via OS preference — deliberately.
    DESIGN.md: "Dark mode is class-based, not system-preference-based. A .dark

@@ -44,17 +44,18 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 .f.is-invalid { box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05), inset 0 0 0 2px var(--color-danger); }
 .dark .f.is-invalid { box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05), inset 0 0 0 2px var(--color-danger-soft); }
 .f:disabled { color: var(--text-tertiary); box-shadow: inset 0 0 0 1px var(--border-hairline); background: transparent; }
-textarea.f { min-height: 96px; resize: vertical; }
+textarea.f { min-height: 6rem; resize: vertical; }
 
-.hint { display: block; margin-top: 6px; font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 13px; line-height: 1.4; color: var(--text-secondary); }
-.err { display: block; margin-top: 6px; font-family: var(--font-sans); font-variation-settings: var(--sans-body); font-size: 13px; line-height: 1.4; font-weight: var(--sans-semibold); color: var(--color-danger); }
+.hint, .err { display: block; margin-top: 6px; }   /* hint: role-metadata; error: role-caption in the danger pair (components.input) */
+.err { color: var(--color-danger); }
 .dark .err { color: var(--color-danger-soft); }
 
 /* Consent — a checkbox and a sentence. The target is the whole row. */
 .consent { display: flex; gap: 10px; align-items: flex-start; min-height: 44px; padding: 10px 0; cursor: pointer; }
 .consent input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--color-primary); flex: 0 0 auto; }
 .dark .consent input { accent-color: var(--text-primary); }
-.consent span { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 14px; line-height: 1.45; color: var(--text-secondary); max-width: 30rem; }
+.consent span, .hint { line-height: 1.45; }
+.consent span { max-width: 30rem; }   /* role-metadata */
 
 .tbl { width: 100%; max-width: 46rem; border-collapse: collapse; font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); }
 .tbl th { text-align: left; vertical-align: bottom; padding: 0 10px 6px 0; }   /* column heads are sentence case, role-caption (typography.chrome-sites-are-closed) */
@@ -78,12 +79,12 @@ textarea.f { min-height: 96px; resize: vertical; }
         <div class="row"><span class="role-caption">Recipient <span class="state">· rest</span></span><input class="f" placeholder="Sen. Jane Doe"></div>
         <div class="row"><span class="role-caption">Recipient <span class="state">· focus</span></span><input class="f is-focus" value="Sen. Jane Doe"></div>
         <div class="row"><span class="role-caption">Recipient <span class="state">· filled</span></span><input class="f" value="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-caption">Email <span class="state">· invalid</span></span><input class="f is-invalid" value="jane@doe"><span class="err">Enter a full email address.</span></div>
-        <div class="row"><span class="role-caption">Phone number <span class="state">· with a hint</span></span><input class="f" placeholder="(202) 555-0143"><span class="hint">We text you the reply your representative sends. Never anything else.</span></div>
+        <div class="row"><span class="role-caption">Email <span class="state">· invalid</span></span><input class="f is-invalid" value="jane@doe"><span class="err role-caption">Enter a full email address.</span></div>
+        <div class="row"><span class="role-caption">Phone number <span class="state">· with a hint</span></span><input class="f" placeholder="(202) 555-0143"><span class="hint role-metadata">We text you the reply your representative sends. Never anything else.</span></div>
         <div class="row"><span class="role-caption">State <span class="state">· disabled</span></span><input class="f" value="Rhode Island" disabled></div>
         <div class="row"><span class="role-caption">Your message <span class="state">· textarea</span></span><textarea class="f" placeholder="What should they hear from you?"></textarea></div>
         <div class="row"><span class="role-caption"><span class="state">consent row</span></span>
-          <label class="consent"><input type="checkbox" checked><span>Send my letter under my name and address, as the law requires for it to be counted.</span></label>
+          <label class="consent"><input type="checkbox" checked><span class="role-metadata">Send my letter under my name and address, as the law requires for it to be counted.</span></label>
         </div>
       </div>
     </div>
@@ -95,12 +96,12 @@ textarea.f { min-height: 96px; resize: vertical; }
         <div class="row"><span class="role-caption">Recipient <span class="state">· rest</span></span><input class="f" placeholder="Sen. Jane Doe"></div>
         <div class="row"><span class="role-caption">Recipient <span class="state">· focus</span></span><input class="f is-focus" value="Sen. Jane Doe"></div>
         <div class="row"><span class="role-caption">Recipient <span class="state">· filled</span></span><input class="f" value="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-caption">Email <span class="state">· invalid</span></span><input class="f is-invalid" value="jane@doe"><span class="err">Enter a full email address.</span></div>
-        <div class="row"><span class="role-caption">Phone number <span class="state">· with a hint</span></span><input class="f" placeholder="(202) 555-0143"><span class="hint">We text you the reply your representative sends. Never anything else.</span></div>
+        <div class="row"><span class="role-caption">Email <span class="state">· invalid</span></span><input class="f is-invalid" value="jane@doe"><span class="err role-caption">Enter a full email address.</span></div>
+        <div class="row"><span class="role-caption">Phone number <span class="state">· with a hint</span></span><input class="f" placeholder="(202) 555-0143"><span class="hint role-metadata">We text you the reply your representative sends. Never anything else.</span></div>
         <div class="row"><span class="role-caption">State <span class="state">· disabled</span></span><input class="f" value="Rhode Island" disabled></div>
         <div class="row"><span class="role-caption">Your message <span class="state">· textarea</span></span><textarea class="f" placeholder="What should they hear from you?"></textarea></div>
         <div class="row"><span class="role-caption"><span class="state">consent row</span></span>
-          <label class="consent"><input type="checkbox" checked><span>Send my letter under my name and address, as the law requires for it to be counted.</span></label>
+          <label class="consent"><input type="checkbox" checked><span class="role-metadata">Send my letter under my name and address, as the law requires for it to be counted.</span></label>
         </div>
       </div>
     </div>
@@ -144,7 +145,7 @@ textarea.f { min-height: 96px; resize: vertical; }
 </table>
 <p class="note" style="margin-top:12px;">The invalid state takes <b>--color-danger</b> on light and <b>--color-danger-soft</b> under inversion, which is <b>color.ink-switch-is-palette-wide</b> and not a decision this specimen made: the base token measures 2.95:1 as ink on the dark card and 2.59:1 as a ring, so a single red across both schemes fails the state that exists to be noticed.</p>
 
-<p class="caption" style="margin-top:18px;">Rest, focus, filled and disabled follow <b>components.input</b>. Invalid, hint, textarea height and the consent row have no entry in the spec — see <b>RATIFY.md</b>. Nothing here is ratified.</p>
+<p class="caption" style="margin-top:18px;">Rest, focus, filled and disabled follow <b>components.input</b>. Invalid, hint, textarea and the consent row follow its <b>states</b> keys.</p>
 
 </div>
 </body>

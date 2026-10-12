@@ -69,7 +69,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 .dark .b .is-sel { box-shadow: var(--shadow-raised); background: color-mix(in srgb, var(--canvas-live) 41%, transparent); }
 
 .tbl { width: 100%; max-width: 46rem; border-collapse: collapse; font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); }
-.tbl th { text-align: left; font-family: var(--font-sans); font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: var(--track-chrome); font-weight: var(--sans-semibold); color: var(--text-secondary); padding: 0 10px 6px 0; }
+.tbl th { text-align: left; vertical-align: bottom; padding: 0 10px 6px 0; }   /* column heads are sentence case, role-caption (typography.chrome-sites-are-closed) */
 .tbl td { padding: 3px 10px 3px 0; border-top: 1px solid var(--border-hairline); }
 .tbl td.n { color: var(--text-primary); }
 .fail { color: var(--color-danger); } .dark .fail { color: var(--color-danger-soft); }
@@ -168,7 +168,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 <h2>The separation, composited</h2>
 <p class="note">Taken by construction rather than by sampling: base canvas → the brightest aurora lobe at its own stop → <b>components.card</b> at material-regular → the field recess the track is made of → the plate. Position named, per <b>color.ink-ground-is-a-placement</b>. Every tier is listed because the finding is not about one of them.</p>
 <table class="tbl">
-  <tr><th>Plate tier</th><th>Light — plate : track</th><th>Dark — plate : track, black-overlay tiers</th></tr>
+  <tr><th class="role-caption">Plate tier</th><th class="role-caption">Light — plate : track</th><th class="role-caption">Dark — plate : track, black-overlay tiers</th></tr>
   <tr><td>material-ultrathin</td><td class="n">1.01</td><td class="n">1.01</td></tr>
   <tr><td>material-thin</td><td class="n">1.07</td><td class="n">1.08</td></tr>
   <tr><td>material-regular</td><td class="n">1.13</td><td class="n">1.12</td></tr>
@@ -178,7 +178,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 
 <h2>What the labels measure</h2>
 <table class="tbl">
-  <tr><th>Label</th><th>Light</th><th>Dark — at the pre-v2026.09.14.3 55%</th></tr>
+  <tr><th class="role-caption">Label</th><th class="role-caption">Light</th><th class="role-caption">Dark — at the pre-v2026.09.14.3 55%</th></tr>
   <tr><td>selected — --text-primary</td><td class="n pass">14.33</td><td class="n pass">12.87</td></tr>
   <tr><td>unselected — --text-secondary</td><td class="n pass">5.50</td><td class="n pass">5.90</td></tr>
   <tr><td>unselected — --text-tertiary</td><td class="n fail">2.63</td><td class="n fail">3.53</td></tr>

@@ -71,7 +71,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 .consent span { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 13px; line-height: 1.45; color: var(--text-secondary); }
 
 .tbl { width: 100%; max-width: 46rem; border-collapse: collapse; font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); }
-.tbl th { text-align: left; font-family: var(--font-sans); font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: var(--track-chrome); font-weight: var(--sans-semibold); color: var(--text-secondary); padding: 0 10px 6px 0; }
+.tbl th { text-align: left; vertical-align: bottom; padding: 0 10px 6px 0; }   /* column heads are sentence case, role-caption (typography.chrome-sites-are-closed) */
 .tbl td { padding: 3px 10px 3px 0; border-top: 1px solid var(--border-hairline); }
 .tbl td.n { color: var(--text-primary); }
 .tbl-wrap { overflow-x: auto; }
@@ -150,7 +150,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
   </div>
 </div>
 <table class="tbl" style="margin-top:12px;">
-  <tr><th>&nbsp;</th><th>Light</th><th>Dark</th><th>Needs</th></tr>
+  <tr><th class="role-caption">&nbsp;</th><th class="role-caption">Light</th><th class="role-caption">Dark</th><th class="role-caption">Needs</th></tr>
   <tr><td>button-cta label — action-label on --color-action</td><td class="n">6.42</td><td class="n">6.42</td><td>4.5</td></tr>
   <tr><td>--color-action fill against the card</td><td class="n">2.82</td><td class="n">6.58</td><td>3.0 (non-text)</td></tr>
   <tr><td>shipped slab against the card</td><td class="n">14.22</td><td class="n">15.44</td><td>3.0 (non-text)</td></tr>
@@ -183,7 +183,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
   </div>
   <div class="tbl-wrap">
   <table class="tbl" style="margin-top:14px;">
-    <tr><th>material-regular, dark, on the product's band</th><th>Neutral</th><th>Canvas hue</th></tr>
+    <tr><th class="role-caption">material-regular, dark, on the product's band</th><th class="role-caption">Neutral</th><th class="role-caption">Canvas hue</th></tr>
     <tr><td>pane chroma, warm stop</td><td class="n">C 0.005</td><td class="n">C 0.012</td></tr>
     <tr><td>pane chroma, cool lobe</td><td class="n">C 0.056</td><td class="n">C 0.063</td></tr>
     <tr><td>pane : ground, warm stop</td><td class="n">1.130</td><td class="n">1.083</td></tr>

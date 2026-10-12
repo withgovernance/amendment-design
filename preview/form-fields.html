@@ -56,7 +56,7 @@ textarea.f { min-height: 96px; resize: vertical; }
 .consent span { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 14px; line-height: 1.45; color: var(--text-secondary); max-width: 30rem; }
 
 .tbl { width: 100%; max-width: 46rem; border-collapse: collapse; font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); }
-.tbl th { text-align: left; font-family: var(--font-sans); font-variation-settings: var(--sans-chrome); text-transform: uppercase; font-size: 12px; letter-spacing: var(--track-chrome); font-weight: var(--sans-semibold); color: var(--text-secondary); padding: 0 10px 6px 0; }
+.tbl th { text-align: left; vertical-align: bottom; padding: 0 10px 6px 0; }   /* column heads are sentence case, role-caption (typography.chrome-sites-are-closed) */
 .tbl td { padding: 3px 10px 3px 0; border-top: 1px solid var(--border-hairline); }
 .tbl td.n { color: var(--text-primary); }
 .fail { color: var(--color-danger); } .dark .fail { color: var(--color-danger-soft); }
@@ -133,7 +133,7 @@ textarea.f { min-height: 96px; resize: vertical; }
 <h2>What each state measures</h2>
 <p class="note">Composited by construction: base canvas → the brightest aurora lobe → <b>components.card</b> at material-regular → the field recess. Position named, per <b>color.ink-ground-is-a-placement</b>.</p>
 <table class="tbl">
-  <tr><th>&nbsp;</th><th>Light</th><th>Dark</th><th>Needs</th></tr>
+  <tr><th class="role-caption">&nbsp;</th><th class="role-caption">Light</th><th class="role-caption">Dark</th><th class="role-caption">Needs</th></tr>
   <tr><td>label — --text-secondary on the card</td><td class="n pass">5.69</td><td class="n pass">6.21</td><td>4.5</td></tr>
   <tr><td>value — --text-primary in the recess</td><td class="n pass">14.33</td><td class="n pass">12.87</td><td>4.5</td></tr>
   <tr><td>placeholder — --text-tertiary in the recess</td><td class="n fail">2.63</td><td class="n fail">3.53</td><td>— decorative</td></tr>

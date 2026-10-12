@@ -57,6 +57,27 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** dark `--ribbon-completed` takes `--text-nav-active`'s value. Separately decide whether the light active segment, near 2.3:1 on the aurora, needs 3:1. It is a graphic whose status its label and the stamp repeat, the same argument that exempts the track.
 - **blocks:** nothing. Voyager paints the tokens either way.
 
+### Form labels: `components.input-label` and `typography.widthDiscipline` still name chrome caps
+- **kind:** two readings. A ruling recorded and not applied.
+- **found:** `design-reviewer`, 2026-10-12.
+- **evidence:** `components.input-label` names `role-label-caps`, and `widthDiscipline` lists form labels among chrome-caps uses. Both contradict `typography.chrome-sites-are-closed`, which makes form labels sentence case. `preview/forms.html` and `preview/form-fields.html` follow the older entries.
+- **proposes:** delete the caps wording from both entries and name the sentence-case form-label role. The candidate is `role-caption`, the same as breadcrumbs. Render forms.html with both labels at 390 and compare the label row and the form's height.
+- **blocks:** the forms specimens' labels, and voyager's form-label sweep.
+
+### The ribbon's narrow caption mixes two families on one line
+- **kind:** two readings
+- **found:** `design-reviewer` on `preview/progress-ribbon.html`, 2026-10-12.
+- **evidence:** `below-width` asks for "one caption naming the active step, with its date". The specimen sets the step in `role-caption` (sans) and the date in `role-metadata` (serif, the larger size), so the line has two baselines at 390 and 320. `status-redundancy` still says not to caption the ribbon with "{status} on {date}", and the narrow form now does exactly that.
+- **proposes:** set the caption in one role, or set step and date as two adjacent elements, each in its own role. Then exempt the narrow form in `status-redundancy`. Render both.
+- **blocks:** nothing; voyager's narrow branch can switch on width meanwhile.
+
+### `card-placeholder` has no typography rule
+- **kind:** spec silent
+- **found:** `design-reviewer` on `preview/cards.html`, 2026-10-12.
+- **evidence:** the placeholder is one `role-caption` line in a dashed slot, which is the treatment `card-empty.typography` rejected as a blank box with a footnote.
+- **proposes:** the placeholder takes the card-empty pair (a `role-ui-heading` title over a `role-body` message), or it stays a caption and the spec says why.
+- **blocks:** nothing.
+
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by

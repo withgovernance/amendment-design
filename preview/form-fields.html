@@ -15,6 +15,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 .host { border-radius: var(--radius-md); padding: 16px; }
 .rows { display: grid; gap: 14px; }
 .row > .role-caption { display: block; margin-bottom: 6px; }
+.row .state { color: var(--text-tertiary); }   /* the specimen's state annotation, not part of the label */
 
 /* --- components.input, built from its own entry ------------------------- */
 .f {
@@ -74,14 +75,14 @@ textarea.f { min-height: 96px; resize: vertical; }
     <span class="pane-label role-label-caps">Light</span>
     <div class="host material-regular">
       <div class="rows">
-        <div class="row"><span class="role-caption">Rest</span><input class="f" placeholder="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-caption">Focus</span><input class="f is-focus" value="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-caption">Filled</span><input class="f" value="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-caption">Invalid</span><input class="f is-invalid" value="jane@doe"><span class="err">Enter a full email address.</span></div>
-        <div class="row"><span class="role-caption">With a hint</span><input class="f" placeholder="(202) 555-0143"><span class="hint">We text you the reply your representative sends. Never anything else.</span></div>
-        <div class="row"><span class="role-caption">Disabled</span><input class="f" value="Rhode Island" disabled></div>
-        <div class="row"><span class="role-caption">Textarea</span><textarea class="f" placeholder="What should they hear from you?"></textarea></div>
-        <div class="row"><span class="role-caption">Consent</span>
+        <div class="row"><span class="role-caption">Recipient <span class="state">· rest</span></span><input class="f" placeholder="Sen. Jane Doe"></div>
+        <div class="row"><span class="role-caption">Recipient <span class="state">· focus</span></span><input class="f is-focus" value="Sen. Jane Doe"></div>
+        <div class="row"><span class="role-caption">Recipient <span class="state">· filled</span></span><input class="f" value="Sen. Jane Doe"></div>
+        <div class="row"><span class="role-caption">Email <span class="state">· invalid</span></span><input class="f is-invalid" value="jane@doe"><span class="err">Enter a full email address.</span></div>
+        <div class="row"><span class="role-caption">Phone number <span class="state">· with a hint</span></span><input class="f" placeholder="(202) 555-0143"><span class="hint">We text you the reply your representative sends. Never anything else.</span></div>
+        <div class="row"><span class="role-caption">State <span class="state">· disabled</span></span><input class="f" value="Rhode Island" disabled></div>
+        <div class="row"><span class="role-caption">Your message <span class="state">· textarea</span></span><textarea class="f" placeholder="What should they hear from you?"></textarea></div>
+        <div class="row"><span class="role-caption"><span class="state">consent row</span></span>
           <label class="consent"><input type="checkbox" checked><span>Send my letter under my name and address, as the law requires for it to be counted.</span></label>
         </div>
       </div>
@@ -91,14 +92,14 @@ textarea.f { min-height: 96px; resize: vertical; }
     <span class="pane-label role-label-caps">Dark</span>
     <div class="host material-regular">
       <div class="rows">
-        <div class="row"><span class="role-caption">Rest</span><input class="f" placeholder="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-caption">Focus</span><input class="f is-focus" value="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-caption">Filled</span><input class="f" value="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-caption">Invalid</span><input class="f is-invalid" value="jane@doe"><span class="err">Enter a full email address.</span></div>
-        <div class="row"><span class="role-caption">With a hint</span><input class="f" placeholder="(202) 555-0143"><span class="hint">We text you the reply your representative sends. Never anything else.</span></div>
-        <div class="row"><span class="role-caption">Disabled</span><input class="f" value="Rhode Island" disabled></div>
-        <div class="row"><span class="role-caption">Textarea</span><textarea class="f" placeholder="What should they hear from you?"></textarea></div>
-        <div class="row"><span class="role-caption">Consent</span>
+        <div class="row"><span class="role-caption">Recipient <span class="state">· rest</span></span><input class="f" placeholder="Sen. Jane Doe"></div>
+        <div class="row"><span class="role-caption">Recipient <span class="state">· focus</span></span><input class="f is-focus" value="Sen. Jane Doe"></div>
+        <div class="row"><span class="role-caption">Recipient <span class="state">· filled</span></span><input class="f" value="Sen. Jane Doe"></div>
+        <div class="row"><span class="role-caption">Email <span class="state">· invalid</span></span><input class="f is-invalid" value="jane@doe"><span class="err">Enter a full email address.</span></div>
+        <div class="row"><span class="role-caption">Phone number <span class="state">· with a hint</span></span><input class="f" placeholder="(202) 555-0143"><span class="hint">We text you the reply your representative sends. Never anything else.</span></div>
+        <div class="row"><span class="role-caption">State <span class="state">· disabled</span></span><input class="f" value="Rhode Island" disabled></div>
+        <div class="row"><span class="role-caption">Your message <span class="state">· textarea</span></span><textarea class="f" placeholder="What should they hear from you?"></textarea></div>
+        <div class="row"><span class="role-caption"><span class="state">consent row</span></span>
           <label class="consent"><input type="checkbox" checked><span>Send my letter under my name and address, as the law requires for it to be counted.</span></label>
         </div>
       </div>

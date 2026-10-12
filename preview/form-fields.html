@@ -14,7 +14,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 
 .host { border-radius: var(--radius-md); padding: 16px; }
 .rows { display: grid; gap: 14px; }
-.row > .role-label-caps { display: block; margin-bottom: 6px; }
+.row > .role-caption { display: block; margin-bottom: 6px; }
 
 /* --- components.input, built from its own entry ------------------------- */
 .f {
@@ -74,14 +74,14 @@ textarea.f { min-height: 96px; resize: vertical; }
     <span class="pane-label role-label-caps">Light</span>
     <div class="host material-regular">
       <div class="rows">
-        <div class="row"><span class="role-label-caps">Rest</span><input class="f" placeholder="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-label-caps">Focus</span><input class="f is-focus" value="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-label-caps">Filled</span><input class="f" value="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-label-caps">Invalid</span><input class="f is-invalid" value="jane@doe"><span class="err">Enter a full email address.</span></div>
-        <div class="row"><span class="role-label-caps">With a hint</span><input class="f" placeholder="(202) 555-0143"><span class="hint">We text you the reply your representative sends. Never anything else.</span></div>
-        <div class="row"><span class="role-label-caps">Disabled</span><input class="f" value="Rhode Island" disabled></div>
-        <div class="row"><span class="role-label-caps">Textarea</span><textarea class="f" placeholder="What should they hear from you?"></textarea></div>
-        <div class="row"><span class="role-label-caps">Consent</span>
+        <div class="row"><span class="role-caption">Rest</span><input class="f" placeholder="Sen. Jane Doe"></div>
+        <div class="row"><span class="role-caption">Focus</span><input class="f is-focus" value="Sen. Jane Doe"></div>
+        <div class="row"><span class="role-caption">Filled</span><input class="f" value="Sen. Jane Doe"></div>
+        <div class="row"><span class="role-caption">Invalid</span><input class="f is-invalid" value="jane@doe"><span class="err">Enter a full email address.</span></div>
+        <div class="row"><span class="role-caption">With a hint</span><input class="f" placeholder="(202) 555-0143"><span class="hint">We text you the reply your representative sends. Never anything else.</span></div>
+        <div class="row"><span class="role-caption">Disabled</span><input class="f" value="Rhode Island" disabled></div>
+        <div class="row"><span class="role-caption">Textarea</span><textarea class="f" placeholder="What should they hear from you?"></textarea></div>
+        <div class="row"><span class="role-caption">Consent</span>
           <label class="consent"><input type="checkbox" checked><span>Send my letter under my name and address, as the law requires for it to be counted.</span></label>
         </div>
       </div>
@@ -91,14 +91,14 @@ textarea.f { min-height: 96px; resize: vertical; }
     <span class="pane-label role-label-caps">Dark</span>
     <div class="host material-regular">
       <div class="rows">
-        <div class="row"><span class="role-label-caps">Rest</span><input class="f" placeholder="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-label-caps">Focus</span><input class="f is-focus" value="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-label-caps">Filled</span><input class="f" value="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-label-caps">Invalid</span><input class="f is-invalid" value="jane@doe"><span class="err">Enter a full email address.</span></div>
-        <div class="row"><span class="role-label-caps">With a hint</span><input class="f" placeholder="(202) 555-0143"><span class="hint">We text you the reply your representative sends. Never anything else.</span></div>
-        <div class="row"><span class="role-label-caps">Disabled</span><input class="f" value="Rhode Island" disabled></div>
-        <div class="row"><span class="role-label-caps">Textarea</span><textarea class="f" placeholder="What should they hear from you?"></textarea></div>
-        <div class="row"><span class="role-label-caps">Consent</span>
+        <div class="row"><span class="role-caption">Rest</span><input class="f" placeholder="Sen. Jane Doe"></div>
+        <div class="row"><span class="role-caption">Focus</span><input class="f is-focus" value="Sen. Jane Doe"></div>
+        <div class="row"><span class="role-caption">Filled</span><input class="f" value="Sen. Jane Doe"></div>
+        <div class="row"><span class="role-caption">Invalid</span><input class="f is-invalid" value="jane@doe"><span class="err">Enter a full email address.</span></div>
+        <div class="row"><span class="role-caption">With a hint</span><input class="f" placeholder="(202) 555-0143"><span class="hint">We text you the reply your representative sends. Never anything else.</span></div>
+        <div class="row"><span class="role-caption">Disabled</span><input class="f" value="Rhode Island" disabled></div>
+        <div class="row"><span class="role-caption">Textarea</span><textarea class="f" placeholder="What should they hear from you?"></textarea></div>
+        <div class="row"><span class="role-caption">Consent</span>
           <label class="consent"><input type="checkbox" checked><span>Send my letter under my name and address, as the law requires for it to be counted.</span></label>
         </div>
       </div>
@@ -113,8 +113,8 @@ textarea.f { min-height: 96px; resize: vertical; }
     <span class="pane-label"><span class="role-label-caps">Labelled</span> <span class="role-caption">components.input-label</span></span>
     <div class="host material-regular">
       <div class="rows">
-        <div class="row"><span class="role-label-caps">First name</span><input class="f" placeholder="Jane"></div>
-        <div class="row"><span class="role-label-caps">Phone number</span><input class="f" value="(202) 555-0143"></div>
+        <div class="row"><span class="role-caption">First name</span><input class="f" placeholder="Jane"></div>
+        <div class="row"><span class="role-caption">Phone number</span><input class="f" value="(202) 555-0143"></div>
       </div>
     </div>
   </div>

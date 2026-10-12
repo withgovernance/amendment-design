@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- @dsCard group="Components" name="Components — Progress ribbon" subtitle="Bill journey · 8px segmented · sentence-case labels" viewport="700x140" -->
+<!-- @dsCard group="Components" name="Components — Progress ribbon" subtitle="Bill journey · 8px segmented · sentence-case labels · on the aurora" viewport="700x220" -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -7,25 +7,42 @@
 <link rel="stylesheet" href="../colors_and_type.css">
 <link rel="stylesheet" href="_card.css">
 <style>.card { padding: 14px 24px; }
-/* No narrow form (progress-ribbon.below-sm): all five sentence-case markers
-   fit beneath their segments at 390, two of them on two lines. */
+  /* The bill page header sets the ribbon on the aurora (progress-ribbon.when),
+     inside the same 24px gutter as the card. */
+  .ribbon { container: ribbon / inline-size; }
+  .ribbon + .ribbon { margin-top: 20px; }
+  .ribbon.narrow-demo { max-width: 18rem; }
+  .bar, .labels { display: flex; gap: 1px; }
+  .bar { height: 8px; margin-bottom: 8px; }
+  .bar > div { flex: 1; border-radius: 9999px; background: var(--ribbon-track); }
+  .bar > .completed { background: var(--ribbon-completed); }
+  .bar > .active { background: var(--ribbon-active); }
+  .labels > div { flex: 1; text-align: center; color: var(--text-secondary); }
+  .labels > .current { color: var(--text-primary); }
+  .narrow { display: none; text-align: center; }
+  /* progress-ribbon.below-width: below the width at which every segment holds
+     its widest marker, the row gives way to one caption for the active step. */
+  @container ribbon (width < 20rem) {
+    .labels { display: none; }
+    .narrow { display: block; }
+  }
 </style>
 </head>
 <body>
 <div class="card">
-  <div data-paper style="background: var(--paper-cream); border-radius: 4px; padding: 22px 24px; box-shadow: inset 0 0 0 1px var(--border-subtle);">
-    <div style="display:flex; gap: 1px; height: 8px; margin-bottom: 10px;">
-      <div style="flex:1; background: #334155; border-radius: 9999px;"></div>
-      <div style="flex:1; background: #334155; border-radius: 9999px;"></div>
-      <div style="flex:1; background: rgb(100 116 139 / 0.7); border-radius: 9999px;"></div>
-      <div style="flex:1; background: rgb(148 163 184 / 0.2); border-radius: 9999px;"></div>
-      <div style="flex:1; background: rgb(148 163 184 / 0.2); border-radius: 9999px;"></div>
+  <div>
+    <div class="ribbon">
+      <div class="bar"><div class="completed"></div><div class="completed"></div><div class="active"></div><div></div><div></div></div>
+      <div class="labels"><div class="role-caption">Prefiled</div><div class="role-caption">Introduced</div><div class="role-caption current">Engrossed</div><div class="role-caption">Enrolled</div><div class="role-caption">Enacted</div></div>
+      <div class="narrow"><span class="role-caption" style="color: var(--text-primary);">Engrossed</span> <span class="role-metadata">· 14 days ago</span></div>
     </div>
-    <div class="ribbon-labels" style="display:flex; gap:1px;">
-      <div style="flex:1; text-align:center;" class="role-caption">Prefiled</div><div style="flex:1; text-align:center;" class="role-caption">Introduced</div><div style="flex:1; text-align:center;" class="role-caption">Engrossed</div><div style="flex:1; text-align:center;" class="role-caption">Enrolled</div><div style="flex:1; text-align:center;" class="role-caption">Enacted</div>
+    <div class="ribbon narrow-demo">
+      <div class="bar"><div class="completed"></div><div class="completed"></div><div class="active"></div><div></div><div></div></div>
+      <div class="labels"><div class="role-caption">Prefiled</div><div class="role-caption">Introduced</div><div class="role-caption current">Engrossed</div><div class="role-caption">Enrolled</div><div class="role-caption">Enacted</div></div>
+      <div class="narrow"><span class="role-caption" style="color: var(--text-primary);">Engrossed</span> <span class="role-metadata">· 14 days ago</span></div>
     </div>
   </div>
-  <div style="margin-top: 8px; max-width: min(28rem, 100%); font-family: var(--font-serif); font-variation-settings: 'opsz' 16, 'wght' 420; font-size: 12px; color: var(--text-secondary);">8px segmented bar · sentence-case milestone labels (role-caption) at every width · light fills on paper in both schemes: completed, active, track</div>
+  <div class="caption" style="margin-top: 8px;">On the aurora in the bill header · fills from <span style="font-family:var(--font-mono);font-size: 12px">--ribbon-*</span> · five sentence-case markers while each segment holds its widest one; below 20rem of ribbon, one caption for the active step (second ribbon, held to 18rem).</div>
 </div>
 </body>
 </html>

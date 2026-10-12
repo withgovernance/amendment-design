@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.11.3
+# spec-version:   v2026.10.12
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1058,6 +1058,9 @@ typography:
     column heads, form labels, count chips, nav labels in both navs
     (nav-labels-are-not-chrome), breadcrumbs, progress-ribbon milestones and
     the `Sources:` prefix. A third site is a ratification.
+    A DIVIDER MAY CARRY A QUALIFIER (ratified 2026-10-12): the caps word,
+    then a role-caption in sentence case beside it — "Canvas hue" + "same
+    opacity". The caption is its own role, not caps, so it adds no site.
     AND SHORT, NOT REPEATED. Wide tracked caps hold a short label, never a
     phrase, and never lead a row that repeats down a list. Multi-word caps at
     chrome size are hard to read, and repeated they turn a list into a wall
@@ -4119,26 +4122,38 @@ tactileAccents:
         strength of how interesting it was rather than what existed.
       height: "8px"
       rounded: "full per segment, 1px gap between segments"
-      track-light: "slate-400/20"
-      track-dark: "slate-400/15"
-      fill-active: "slate-500/70, static. RATIFIED 2026-10-11: the active segment does not pulse — motion is never an idle loop (motion)."
-      fill-completed: "slate-700 / slate-500 (dark)"
-      fill-success: "emerald-600 / emerald-500 (dark) — entire bar"
-      fill-failure: "--color-danger — only the segment where the bill died"
+      tokens: >-
+        RATIFIED 2026-10-12. The fills are tokens, light and dark:
+        --ribbon-completed, --ribbon-active, --ribbon-track. Success and
+        failure take the semantic tokens. A consumer paints the tokens, never
+        a slate step.
+      fill-track: "--ribbon-track"
+      fill-active: "--ribbon-active, static. RATIFIED 2026-10-11: the active segment does not pulse — motion is never an idle loop (motion)."
+      fill-completed: "--ribbon-completed"
+      fill-success: "--color-success / --color-success-soft (dark) — entire bar"
+      fill-failure: "--color-danger / --color-danger-soft (dark) — only the segment where the bill died"
       on-paper: >-
-        RATIFIED 2026-10-11, decided by Jason. The ribbon sits on
-        paper-cream, which stays light paper in both schemes ([data-paper]),
-        so it TAKES THE LIGHT FILLS IN BOTH; the dark values apply only off
-        paper. The dark fills on light paper put the active segment near
-        2.4:1 against it, the light fills near 4.3:1. THE TRACK IS GROUND,
-        NOT A BOUNDARY: it fails 3:1 in either scheme and is exempt like a
-        material's edge (materials.material-chrome.edge) — the segments and
-        their labels carry the status.
-      below-sm: >-
-        RATIFIED 2026-10-11, decided by Jason. NO NARROW FORM. All five
-        sentence-case markers fit beneath their segments at 390, two of them
-        on two lines. The narrow form, showing only the active step, existed
-        for tracked caps, which no longer set here.
+        RATIFIED 2026-10-11, decided by Jason; scoped 2026-10-12. WHERE a
+        ribbon sits on paper, which stays light paper in both schemes
+        ([data-paper]), it TAKES THE LIGHT FILLS IN BOTH — [data-paper]
+        resets the --ribbon-* tokens. The dark fills on light paper put the
+        active segment near 2.4:1 against it, the light fills near 4.3:1.
+        THE TRACK IS GROUND, NOT A BOUNDARY: it fails 3:1 on every ground
+        and is exempt like a material's edge (materials.material-chrome.edge)
+        — the segments and their labels carry the status.
+      below-width: >-
+        RATIFIED 2026-10-12, decided by Jason; replaces the 2026-10-11 "no
+        narrow form". The markers are single words and cannot wrap, so the
+        row holds only while every segment is as wide as its widest marker.
+        Below that, the row gives way to ONE caption naming the active step,
+        with its date. The switch is the ribbon's own width — a container
+        query at 20rem of ribbon — not a viewport breakpoint. Measured at the
+        bill header's 24px gutters: the row holds at 390 and 375 and misses
+        by about a pixel at 360, which takes the caption.
+      known-divergence-dark-ladder: >-
+        OPEN (RATIFY.md). On the dark aurora the dark fills invert the light
+        ladder: --ribbon-completed sits about 1.2:1 from --ribbon-active and
+        near 2.5:1 against the ground, so completed and active read as one.
       markers: >-
         role-caption, sentence case, centred beneath each segment
         (typography.uppercase-has-two-homes, chrome-sites-are-closed).
@@ -4162,7 +4177,11 @@ tactileAccents:
       variants:
         ribbon: "8px segmented bar + role-caption label per step. Used on bill detail pages."
         compact: "Mini-bar (h-2) without milestone labels. Used in bill list tables."
-      when: "Archive bill detail pages, on the paper-cream canvas."
+      when: >-
+        Archive bill detail pages, in the header ON THE AURORA
+        (BillDetailHeader), above the paper. Production ahead, recorded
+        2026-10-12: the header's chrome rows sit outside paper. The compact
+        variant runs in bill lists and attachments.
       implementation: "app/(data)/oversight/bills/components/bill-status-progress-bar.tsx"
       specimen: "preview/progress-ribbon.html"
 
@@ -4256,7 +4275,7 @@ tactileAccents:
         an act already taken; the letter's rule anticipates one.
       description: "Horizontal dotted rule with 'Your Name' label below."
       stroke: "dotted 1px rgb(0 0 0 / 30%)"
-      label: "sans-chrome uppercase 12px tertiary text, centered under the rule"
+      label: "the printed name, role-metadata, centred under the rule (registers.issued.signature)"
       when: "Writing Desk — end of composed letter, preview mode."
       optional-user-asset: >-
         Users may upload a signature image (PNG with transparency) that
@@ -4523,7 +4542,10 @@ profilesPrint:
     HERE THE DOTTED RULE IS CANONICAL, NOT PROPOSED: on screen it anticipates
     an act, on paper the act happens. 0.4in minimum clear space above the
     printed name, and the printed name is mandatory — a hand-signed name is
-    not always legible and the recipient has to know who wrote.
+    not always legible and the recipient has to know who wrote. THE PRINTED
+    NAME IS role-metadata (ratified 2026-10-12): the letter's own serif
+    voice, roman, in sentence case. Caps would make the one line the
+    recipient must read the hardest to read.
   ledger-number: >-
     Printed, as a single line in the closing — and this is THE ONE PLACE A
     USER MAY SUPPRESS IT, because on a mailed letter it also discloses that
@@ -6362,6 +6384,11 @@ is not exempt from the role layer: its section labels take
 reading surface and stops at `measure.body` at every viewport, so a
 specimen rendered at 1440 is judged as rendered, not at the viewport its
 card declares. Ratified 2026-10-11.
+A specimen that shows both schemes side by side in its own panes is
+rendered in the light page only. Under a dark page its light pane
+inherits dark ink, and the stylesheet keeps no element-level light scope
+outside paper; a specimen showing both schemes needs no second page.
+Ratified 2026-10-12.
 
 **Versioning.** Dated entries in `CHANGELOG.md`, newest first. No
 semantic version — the system is not consumed as a package, and a version

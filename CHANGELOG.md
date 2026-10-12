@@ -8,6 +8,38 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-12 (v2026.10.12) — The ribbon switches on its own width; the ribbon's fills are tokens
+
+Decided by Jason, five entries from the queue.
+
+- **The ribbon's narrow form returns, switched on the ribbon's width** (`progress-ribbon.below-width`).
+  The 2026-10-11 "no narrow form" ruling assumed the markers could wrap. They are single words,
+  so wrapping only breaks a word in half. What decides the fit is segment width: at the bill
+  header's 24px gutters the row holds at 390 and 375 and misses by about a pixel at 360. The
+  specimen had failed at 390 only because its padding was twice production's. So the row shows
+  while every segment holds its widest marker, and below 20rem of ribbon one caption names the
+  active step and its date. A container query, not `sm`, because the ribbon's width is what
+  runs out. Voyager keeps its narrow branch and changes what switches it.
+- **The bill header sets the ribbon on the aurora** (`progress-ribbon.when`), production ahead.
+  The spec had placed it on paper-cream, and the light-fills-on-paper ruling was built on that.
+  The ruling stands but applies only where a ribbon sits on paper, and `[data-paper]` now resets
+  the ribbon tokens to their light values.
+- **The ribbon's fills are tokens**: `--ribbon-completed`, `--ribbon-active` and `--ribbon-track`,
+  light and dark, in the stylesheet. Success and failure take the semantic pairs. The fills had
+  been named in Tailwind slate steps that no stylesheet carried, so every consumer and the
+  specimen painted literals. The dark values are the shipped ones. Measured on the dark aurora,
+  they make completed and active one fill (about 1.2:1 apart), which is queued with a candidate.
+- **The printed name under a signature rule is `role-metadata`** (`registers.issued.signature`).
+  It is the letter's own serif voice. The recipient has to read it, and caps would make it the
+  hardest line on the page to read. The proposed signature line's caps label goes with it.
+- **A caps divider may carry a `role-caption` qualifier** (`typography.chrome-sites-are-closed`).
+  The qualifier is a separate role in sentence case, so the divider stays one of the two caps
+  sites.
+- **Specimens that show both schemes in panes render in the light page only** (Governance →
+  Specimens). Under a dark page the light pane inherited dark ink, measured 1.30:1. An
+  element-level light scope would be a new theme switch that no consumer uses, added only for
+  the preview.
+
 ## 2026-10-11 (v2026.10.11.3) — A card is a surface; one ring; what a material's edge owes
 
 Decided by Jason, thirteen entries from the queue, each from a render or a measurement.

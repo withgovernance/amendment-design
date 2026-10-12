@@ -206,6 +206,11 @@
      dark split is not an optical adjustment, it is two people guessing. */
   --skeleton-block: rgb(0 0 0 / 8%);
   --spinner-ink:    rgb(0 0 0 / 38%);
+  /* Progress-ribbon fills (components.progress-ribbon). Success and failure
+     take --color-success / --color-danger and their -soft dark pairs. */
+  --ribbon-completed: #334155;                 /* slate-700 */
+  --ribbon-active:    rgb(100 116 139 / 70%);  /* slate-500/70 */
+  --ribbon-track:     rgb(148 163 184 / 20%);  /* slate-400/20 */
 
   /* Background canvas */
   /* TWO CANVASES, named separately 2026-08-28. They were one token doing two
@@ -403,6 +408,9 @@
   --border-dashed-empty: rgb(255 255 255 / 30%);
   --skeleton-block: rgb(255 255 255 / 8%);
   --spinner-ink:    rgb(255 255 255 / 38%);
+  --ribbon-completed: #64748b;                 /* slate-500 */
+  --ribbon-active:    rgb(148 163 184 / 70%);  /* slate-400/70 */
+  --ribbon-track:     rgb(148 163 184 / 15%);  /* slate-400/15 */
   --canvas: var(--color-zinc-900);
   --canvas-live: oklch(0.1562 0.0246 267.8);   /* Blue Hour. Was the literal
                                                   #080c17 in the consumer's body
@@ -913,6 +921,9 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   --text-tertiary: rgb(0 0 0 / 38%);
   --border-hairline: rgb(0 0 0 / 5%);
   --border-subtle: rgb(0 0 0 / 10%);
+  --ribbon-completed: #334155;                 /* paper takes the light fills (progress-ribbon.on-paper) */
+  --ribbon-active:    rgb(100 116 139 / 70%);
+  --ribbon-track:     rgb(148 163 184 / 20%);
 }
 [data-paper] { color: var(--text-primary); }
 

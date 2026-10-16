@@ -8,6 +8,13 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-16 (v2026.10.16.1) — A citation corrected
+
+- The v2026.10.16 hint and ribbon-date rules cited `typography.apparatus-ink-is-sans`, a key
+  that does not exist. They now cite the rule where it lives,
+  `typography.notes.a-heading-belongs-to-whoever-it-works-for` ("apparatus ink is sans"). No
+  rule changed.
+
 ## 2026-10-16 (v2026.10.16) — Field labels, sans hints, the ribbon's present step, quiet row actions, an edge without a shadow, docked card feet
 
 Decided by Jason, six entries from the queue, each from a render of the current rule beside the

@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.16
+# spec-version:   v2026.10.16.1
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2882,7 +2882,8 @@ components:
       role-metadata-sans beneath the field, never the field's name
       (input-label.placeholder-is-not-the-name). A field shows its hint or
       its error, not both. RATIFIED 2026-10-16: a form is apparatus, so its
-      ink is sans (typography.apparatus-ink-is-sans). The serif hint sat
+      ink is sans (typography.notes.a-heading-belongs-to-whoever-it-works-for,
+      "apparatus ink is sans"). The serif hint sat
       between a sans label and a sans error.
     textarea: "min-height 6rem, vertical resize only; the 44px target holds."
     consent: >-
@@ -4247,7 +4248,8 @@ tactileAccents:
         narrow form is the exception: its caption IS the marker row
         (below-width). The *date* is real new information; render it in
         role-metadata-sans beneath the active marker, the same voice as the
-        marker it dates (typography.apparatus-ink-is-sans), not as a chrome
+        marker it dates (typography.notes.a-heading-belongs-to-whoever-it-works-for,
+        "apparatus ink is sans"), not as a chrome
         caption.
       failure-honesty: >-
         All failure statuses fuzzy-match to one terminal step, so the stage

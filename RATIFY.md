@@ -78,6 +78,20 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** a named four-step map ramp (tokens per step, both schemes), stating that ramp steps are not held to text contrast but must separate from each neighbour, and that a ramp is not a green "plate". Decide together with "Fill colour for delivery map hexes".
 - **blocks:** the delivery map on /asks/[askId]
 
+### `role-metadata-sans` has no typography entry
+- **kind:** production ahead
+- **found:** design-reviewer on v2026.10.16. `role-field-label` is defined as “the metadata-sans rung”, and `role-metadata-sans` now carries the hint, the consent sentence, the ribbon’s markers and date, the report line under a card’s count and the label’s qualifier. It exists in `colors_and_type.css` but has no entry under `typography.roles`, and it sets no line-height.
+- **evidence:** `DESIGN.md` `typography.roles` lists `metadata` and `caption` but not `metadata-sans`. The stylesheet’s `.role-metadata-sans` declares no `line-height`, so every consumer inherits whatever its parent sets.
+- **proposes:** a `metadata-sans` entry in `typography.roles` matching the stylesheet, with a declared line-height, measured on the hint and the ribbon caption.
+- **blocks:** nothing
+
+### A field’s error is smaller than the hint it replaces
+- **kind:** two readings
+- **found:** design-reviewer on v2026.10.16, `components.input.invalid` and `hint`. The error is `role-caption` at the caption rung; the hint it replaces is now `role-metadata-sans`, a rung larger.
+- **evidence:** `preview/form-fields.html`: the state that has to be noticed is now the smallest text around the field, and the row’s height shifts when an error replaces a hint.
+- **proposes:** render the error in `role-metadata-sans` (danger pair) against the current `role-caption`, in both schemes, and decide.
+- **blocks:** nothing
+
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by

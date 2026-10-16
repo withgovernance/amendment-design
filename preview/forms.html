@@ -68,7 +68,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 .consent { display: flex; gap: 10px; align-items: flex-start; min-height: 44px; padding: 8px 0; }
 .consent input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--color-primary); flex: 0 0 auto; }
 .dark .consent input { accent-color: var(--text-primary); }
-.consent span { font-family: var(--font-serif); font-variation-settings: var(--serif-text); font-size: 13px; line-height: 1.45; color: var(--text-secondary); }
+.consent span { line-height: 1.45; }   /* role-metadata-sans (components.input.consent) */
 
 .tbl { width: 100%; max-width: 46rem; border-collapse: collapse; font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); }
 .tbl th { text-align: left; vertical-align: bottom; padding: 0 10px 6px 0; }   /* column heads are sentence case, role-caption (typography.chrome-sites-are-closed) */
@@ -109,7 +109,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
         </div>
         <div class="row"><span class="role-field-label">Email</span><input class="f" placeholder="jane@example.com"></div>
         <div class="row"><span class="role-field-label">ZIP code</span><input class="f" placeholder="02903"></div>
-        <label class="consent"><input type="checkbox" checked><span>Send under my name and address, as the law requires for it to be counted.</span></label>
+        <label class="consent"><input type="checkbox" checked><span class="role-metadata-sans">Send under my name and address, as the law requires for it to be counted.</span></label>
         <button class="cta">Create my account</button>
       </div>
     </div>
@@ -130,7 +130,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
         </div>
         <div class="row"><span class="role-field-label">Email</span><input class="f" placeholder="jane@example.com"></div>
         <div class="row"><span class="role-field-label">ZIP code</span><input class="f" placeholder="02903"></div>
-        <label class="consent"><input type="checkbox" checked><span>Send under my name and address, as the law requires for it to be counted.</span></label>
+        <label class="consent"><input type="checkbox" checked><span class="role-metadata-sans">Send under my name and address, as the law requires for it to be counted.</span></label>
         <button class="cta">Create my account</button>
       </div>
     </div>

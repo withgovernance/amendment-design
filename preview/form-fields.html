@@ -14,7 +14,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 
 .host { border-radius: var(--radius-md); padding: 16px; }
 .rows { display: grid; gap: 14px; }
-.row > .role-caption { display: block; margin-bottom: 6px; }
+.row > .role-field-label { display: block; margin-bottom: 6px; }
 .row .state { color: var(--text-tertiary); }   /* the specimen's state annotation, not part of the label */
 
 /* --- components.input, built from its own entry ------------------------- */
@@ -46,7 +46,7 @@ p.note b { color: var(--text-primary); font-weight: 600; }
 .f:disabled { color: var(--text-tertiary); box-shadow: inset 0 0 0 1px var(--border-hairline); background: transparent; }
 textarea.f { min-height: 6rem; resize: vertical; }
 
-.hint, .err { display: block; margin-top: 6px; }   /* hint: role-metadata; error: role-caption in the danger pair (components.input) */
+.hint, .err { display: block; margin-top: 6px; }   /* hint: role-metadata-sans; error: role-caption in the danger pair (components.input) */
 .err { color: var(--color-danger); }
 .dark .err { color: var(--color-danger-soft); }
 
@@ -55,7 +55,7 @@ textarea.f { min-height: 6rem; resize: vertical; }
 .consent input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--color-primary); flex: 0 0 auto; }
 .dark .consent input { accent-color: var(--text-primary); }
 .consent span, .hint { line-height: 1.45; }
-.consent span { max-width: 30rem; }   /* role-metadata */
+.consent span { max-width: 30rem; }   /* role-metadata-sans */
 
 .tbl { width: 100%; max-width: 46rem; border-collapse: collapse; font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); }
 .tbl th { text-align: left; vertical-align: bottom; padding: 0 10px 6px 0; }   /* column heads are sentence case, role-caption (typography.chrome-sites-are-closed) */
@@ -76,15 +76,15 @@ textarea.f { min-height: 6rem; resize: vertical; }
     <span class="pane-label role-label-caps">Light</span>
     <div class="host material-regular">
       <div class="rows">
-        <div class="row"><span class="role-caption">Recipient <span class="state">· rest</span></span><input class="f" placeholder="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-caption">Recipient <span class="state">· focus</span></span><input class="f is-focus" value="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-caption">Recipient <span class="state">· filled</span></span><input class="f" value="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-caption">Email <span class="state">· invalid</span></span><input class="f is-invalid" value="jane@doe"><span class="err role-caption">Enter a full email address.</span></div>
-        <div class="row"><span class="role-caption">Phone number <span class="state">· with a hint</span></span><input class="f" placeholder="(202) 555-0143"><span class="hint role-metadata">We text you the reply your representative sends. Never anything else.</span></div>
-        <div class="row"><span class="role-caption">State <span class="state">· disabled</span></span><input class="f" value="Rhode Island" disabled></div>
-        <div class="row"><span class="role-caption">Your message <span class="state">· textarea</span></span><textarea class="f" placeholder="What should they hear from you?"></textarea></div>
-        <div class="row"><span class="role-caption"><span class="state">consent row</span></span>
-          <label class="consent"><input type="checkbox" checked><span class="role-metadata">Send my letter under my name and address, as the law requires for it to be counted.</span></label>
+        <div class="row"><span class="role-field-label">Recipient <span class="state">· rest</span></span><input class="f" placeholder="Sen. Jane Doe"></div>
+        <div class="row"><span class="role-field-label">Recipient <span class="state">· focus</span></span><input class="f is-focus" value="Sen. Jane Doe"></div>
+        <div class="row"><span class="role-field-label">Recipient <span class="state">· filled</span></span><input class="f" value="Sen. Jane Doe"></div>
+        <div class="row"><span class="role-field-label">Email <span class="state">· invalid</span></span><input class="f is-invalid" value="jane@doe"><span class="err role-caption">Enter a full email address.</span></div>
+        <div class="row"><span class="role-field-label">Phone number <span class="state">· with a hint</span></span><input class="f" placeholder="(202) 555-0143"><span class="hint role-metadata-sans">We text you the reply your representative sends. Never anything else.</span></div>
+        <div class="row"><span class="role-field-label">State <span class="state">· disabled</span></span><input class="f" value="Rhode Island" disabled></div>
+        <div class="row"><span class="role-field-label">Your message <span class="state">· textarea</span></span><textarea class="f" placeholder="What should they hear from you?"></textarea></div>
+        <div class="row"><span class="role-field-label"><span class="state">consent row</span></span>
+          <label class="consent"><input type="checkbox" checked><span class="role-metadata-sans">Send my letter under my name and address, as the law requires for it to be counted.</span></label>
         </div>
       </div>
     </div>
@@ -93,15 +93,15 @@ textarea.f { min-height: 6rem; resize: vertical; }
     <span class="pane-label role-label-caps">Dark</span>
     <div class="host material-regular">
       <div class="rows">
-        <div class="row"><span class="role-caption">Recipient <span class="state">· rest</span></span><input class="f" placeholder="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-caption">Recipient <span class="state">· focus</span></span><input class="f is-focus" value="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-caption">Recipient <span class="state">· filled</span></span><input class="f" value="Sen. Jane Doe"></div>
-        <div class="row"><span class="role-caption">Email <span class="state">· invalid</span></span><input class="f is-invalid" value="jane@doe"><span class="err role-caption">Enter a full email address.</span></div>
-        <div class="row"><span class="role-caption">Phone number <span class="state">· with a hint</span></span><input class="f" placeholder="(202) 555-0143"><span class="hint role-metadata">We text you the reply your representative sends. Never anything else.</span></div>
-        <div class="row"><span class="role-caption">State <span class="state">· disabled</span></span><input class="f" value="Rhode Island" disabled></div>
-        <div class="row"><span class="role-caption">Your message <span class="state">· textarea</span></span><textarea class="f" placeholder="What should they hear from you?"></textarea></div>
-        <div class="row"><span class="role-caption"><span class="state">consent row</span></span>
-          <label class="consent"><input type="checkbox" checked><span class="role-metadata">Send my letter under my name and address, as the law requires for it to be counted.</span></label>
+        <div class="row"><span class="role-field-label">Recipient <span class="state">· rest</span></span><input class="f" placeholder="Sen. Jane Doe"></div>
+        <div class="row"><span class="role-field-label">Recipient <span class="state">· focus</span></span><input class="f is-focus" value="Sen. Jane Doe"></div>
+        <div class="row"><span class="role-field-label">Recipient <span class="state">· filled</span></span><input class="f" value="Sen. Jane Doe"></div>
+        <div class="row"><span class="role-field-label">Email <span class="state">· invalid</span></span><input class="f is-invalid" value="jane@doe"><span class="err role-caption">Enter a full email address.</span></div>
+        <div class="row"><span class="role-field-label">Phone number <span class="state">· with a hint</span></span><input class="f" placeholder="(202) 555-0143"><span class="hint role-metadata-sans">We text you the reply your representative sends. Never anything else.</span></div>
+        <div class="row"><span class="role-field-label">State <span class="state">· disabled</span></span><input class="f" value="Rhode Island" disabled></div>
+        <div class="row"><span class="role-field-label">Your message <span class="state">· textarea</span></span><textarea class="f" placeholder="What should they hear from you?"></textarea></div>
+        <div class="row"><span class="role-field-label"><span class="state">consent row</span></span>
+          <label class="consent"><input type="checkbox" checked><span class="role-metadata-sans">Send my letter under my name and address, as the law requires for it to be counted.</span></label>
         </div>
       </div>
     </div>
@@ -115,8 +115,8 @@ textarea.f { min-height: 6rem; resize: vertical; }
     <span class="pane-label"><span class="role-label-caps">Labelled</span> <span class="role-caption">components.input-label</span></span>
     <div class="host material-regular">
       <div class="rows">
-        <div class="row"><span class="role-caption">First name</span><input class="f" placeholder="Jane"></div>
-        <div class="row"><span class="role-caption">Phone number</span><input class="f" value="(202) 555-0143"></div>
+        <div class="row"><span class="role-field-label">First name</span><input class="f" placeholder="Jane"></div>
+        <div class="row"><span class="role-field-label">Phone number</span><input class="f" value="(202) 555-0143"></div>
       </div>
     </div>
   </div>
@@ -136,7 +136,7 @@ textarea.f { min-height: 6rem; resize: vertical; }
 <p class="note">Composited by construction: base canvas → the brightest aurora lobe → <b>components.card</b> at material-regular → the field recess. Position named, per <b>color.ink-ground-is-a-placement</b>.</p>
 <table class="tbl">
   <tr><th class="role-caption">&nbsp;</th><th class="role-caption">Light</th><th class="role-caption">Dark</th><th class="role-caption">Needs</th></tr>
-  <tr><td>label — --text-secondary on the card</td><td class="n pass">5.69</td><td class="n pass">6.21</td><td>4.5</td></tr>
+  <tr><td>label qualifier (“· Required”) — --text-secondary on the card</td><td class="n pass">5.69</td><td class="n pass">6.21</td><td>4.5</td></tr>
   <tr><td>value — --text-primary in the recess</td><td class="n pass">14.33</td><td class="n pass">12.87</td><td>4.5</td></tr>
   <tr><td>placeholder — --text-tertiary in the recess</td><td class="n fail">2.63</td><td class="n fail">3.53</td><td>— decorative</td></tr>
   <tr><td>focus ring — --focus-color on the recess</td><td class="n pass">4.14</td><td class="n pass">6.52</td><td>3.0</td></tr>

@@ -49,6 +49,8 @@ Source of truth: `DESIGN.md`. This file is the short list every visual change is
 19. **A `ch` unit, or a hand-typed value a token already owns?** Widths in rem from the measure and container tokens; `ch` is banned from tokens and from prose (`spacing.measure.rule`). Colours, shadows, materials, weights from tokens. **Cite the token, never the number.**
 20. **A green plate without its edge?** Every `color.action` plate carries a 1px `color.action-active` ring — the fill alone is under 3:1 on a light card (`components.button-cta.ring`).
 21. **An empty state?** Content that did not arrive is `card-empty` (material); a slot someone can fill is `card-placeholder` (dashed). An empty card is a `role-ui-heading` title over a `role-body` message in secondary ink (`components.card-empty.typography`).
+22. **Cards in a row with counts and buttons at different heights?** The foot docks: count, one report line, act, at the bottom of every card in the row (`components.card.foot-docks-in-a-row`).
+23. **A button on every row?** An action repeated down a list is quiet — icon and word, no plate — and a row it can’t apply to shows nothing, never a disabled control (`components.row-action`).
 
 ## The four registers (pick the register, not the room)
 

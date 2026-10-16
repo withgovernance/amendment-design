@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.12.3
+# spec-version:   v2026.10.16
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1435,6 +1435,16 @@ typography:
       weight: 400
       lineHeight: 1.25
       color: "secondary"
+    # RATIFIED 2026-10-16. The name of a form field. It sits at the
+    # metadata-sans rung, one step heavier and in primary ink, because a
+    # label is read before the field and must not sit under the placeholder
+    # it names. A qualifier beside it ("· Required") is role-metadata-sans.
+    field-label:
+      family: sans
+      size: 0.875rem        # 14px — the metadata-sans rung
+      weight: 500           # sans-medium
+      lineHeight: 1.4
+      color: "primary"
     # -------------------------------------------------------------------
     # INLINE EMPHASIS INSIDE SERIF PROSE. Stated 2026-08-27; it was implied
     # by the metadata change and nowhere written, so the correct move looked
@@ -1685,7 +1695,7 @@ elevation:
     use: "material-thick, modal, FAB, dropdowns, secondary-button hover"
   chrome:
     shadow: "0 8px 16px -4px rgb(15 23 42 / 0.12), 0 3px 6px -3px rgb(15 23 42 / 0.12)"
-    use: "material-chrome. Wider spread than raised. Casts away from the bar's anchor: upward on a bottom-anchored bar (materials.material-chrome.edge)."
+    use: "Not on material-chrome: a bottom-anchored bar casts no shadow (materials.material-chrome.edge). Wider spread than raised, for a chrome surface that floats free of an edge."
 
 materials:
   # Five glass tiers. Uniform 50px blur (25px for chrome). Fall back to
@@ -1838,8 +1848,11 @@ materials:
       RATIFIED 2026-10-11. The line sits on the edge that FACES THE CONTENT —
       the top, for a bar anchored to the bottom — at border.subtle in both
       schemes. It had been drawn on the bottom edge, left over from the top
-      navbar, where it lay against the viewport with nothing beneath it. The
-      shadow casts away from the anchor too (elevation.chrome).
+      navbar, where it lay against the viewport with nothing beneath it.
+      THE EDGE IS THE HAIRLINE ONLY; THE BAR CASTS NO SHADOW (RATIFIED
+      2026-10-16, decided by Jason). Cast upward over content, the shadow
+      rendered as a grey band in light and could not be seen in dark, so it
+      was a smudge in one scheme and nothing in the other.
       A MATERIAL'S EDGE IS NOT A BOUNDARY HELD TO THE 3:1 NON-TEXT FLOOR
       (RATIFIED 2026-10-11, decided by Jason). The floor protects a thing a
       person must perceive to operate the interface; the bar is told apart
@@ -2235,6 +2248,16 @@ components:
     background: "material-regular"
     color: "primary text"
     rounded: "0.5rem"
+  row-action:
+    description: >-
+      RATIFIED 2026-10-16, decided by Jason. An action repeated down a list
+      or table — a Close on every row of a positions table — is QUIET: an
+      icon and a sentence-case word in secondary ink at the metadata-sans
+      rung, --sans-medium, on no plate, its 44px target declared. A column of
+      plates out-shouts the page's own primary act; rendered, three
+      button-secondary Closes outweighed "Post a Position". A ROW WHERE THE
+      ACTION CANNOT APPLY SHOWS NOTHING, not a disabled control: a disabled
+      Close on a closed row restates the status the row already shows.
   button-ghost:
     description: Tertiary / chip-style button (sample-question chips)
     background: "material-ultrathin"
@@ -2744,6 +2767,19 @@ components:
     background: "material-regular"
     rounded: "0.5rem"
     padding: "16px"
+    foot-docks-in-a-row: >-
+      RATIFIED 2026-10-16, decided by Jason. When cards share a row, each
+      card is a column and its FOOT docks to the bottom: the count, one line
+      of report beneath it, and the card's act. The content above takes the
+      slack, so counts, report lines and acts line up across the row. EVERY
+      CARD IN THE ROW CARRIES THE REPORT LINE, or the counts sit at two
+      heights: an ask the viewer recruits for reports their link ("Your
+      link · 12 co-signed · 48 opened", an unopened link as "Your link · not
+      opened yet"), and an ask they can co-sign reports its momentum ("38
+      this week · last 2 hours ago"). The report line is role-metadata-sans,
+      its count in green ink (color.action.fill-rule: a report). A
+      single-column feed is unaffected. Rendered as "Amendment · Ask cards —
+      organizing states" (Paper) and in the ratification render.
     material-outranks-the-register: >-
       STATED 2026-09-03, from the forms specimens, because it fell out of
       building one and nobody had written it down. A CARD IN A LIVE ROOM IS
@@ -2843,20 +2879,25 @@ components:
       ink and says what to type, not that something is wrong. One red across
       both schemes fails as a ring on the dark card.
     hint: >-
-      role-metadata beneath the field — the serif voice that explains, never
-      the field's name (input-label.placeholder-is-not-the-name). A field
-      shows its hint or its error, not both.
+      role-metadata-sans beneath the field, never the field's name
+      (input-label.placeholder-is-not-the-name). A field shows its hint or
+      its error, not both. RATIFIED 2026-10-16: a form is apparatus, so its
+      ink is sans (typography.apparatus-ink-is-sans). The serif hint sat
+      between a sans label and a sans error.
     textarea: "min-height 6rem, vertical resize only; the 44px target holds."
     consent: >-
       A checkbox and a sentence, and THE WHOLE ROW IS THE TARGET, at least
-      44px tall. The sentence is role-metadata and says what consenting
-      does.
+      44px tall. The sentence is role-metadata-sans, the same rule as the
+      hint, and says what consenting does.
   input-label:
     typography: >-
-      role-caption, sentence case, secondary ink, above its field.
-      RATIFIED 2026-10-12: form labels are not a chrome-caps site
-      (typography.chrome-sites-are-closed). NAME THE ROLE; DO NOT RESTATE
-      IT — a longhand copy of a role drifts from it one property at a time.
+      role-field-label, sentence case, above its field. A qualifier beside
+      it ("· Required") is role-metadata-sans. RATIFIED 2026-10-16: in
+      role-caption the label was the smallest and faintest text in the form,
+      under the placeholder of the field it names. Form labels are not a
+      chrome-caps site (typography.chrome-sites-are-closed). NAME THE ROLE;
+      DO NOT RESTATE IT — a longhand copy of a role drifts from it one
+      property at a time.
     mandatory: >-
       RATIFIED 2026-09-03 from preview/form-fields.html, which renders both
       readings side by side. A FIELD A USER TYPES IDENTITY INTO CARRIES A
@@ -4144,8 +4185,8 @@ tactileAccents:
         failure take the semantic tokens. A consumer paints the tokens, never
         a slate step.
       fill-track: "--ribbon-track"
-      fill-active: "--ribbon-active, static. RATIFIED 2026-10-11: the active segment does not pulse — motion is never an idle loop (motion)."
-      fill-completed: "--ribbon-completed"
+      fill-active: "--ribbon-active, the strongest fill, static. RATIFIED 2026-10-11: the active segment does not pulse — motion is never an idle loop (motion)."
+      fill-completed: "--ribbon-completed, one step below active"
       fill-success: "--color-success / --color-success-soft (dark) — entire bar"
       fill-failure: "--color-danger / --color-danger-soft (dark) — only the segment where the bill died"
       on-paper: >-
@@ -4153,7 +4194,7 @@ tactileAccents:
         ribbon sits on paper, which stays light paper in both schemes
         ([data-paper]), it TAKES THE LIGHT FILLS IN BOTH — [data-paper]
         resets the --ribbon-* tokens. The dark fills on light paper put the
-        active segment near 2.4:1 against it, the light fills near 4.3:1.
+        middle fill near 2.4:1 against it, the light fills near 4.3:1.
         THE TRACK IS GROUND, NOT A BOUNDARY: it fails 3:1 on every ground
         and is exempt like a material's edge (materials.material-chrome.edge)
         — the segments and their labels carry the status.
@@ -4162,29 +4203,38 @@ tactileAccents:
         narrow form". The markers are single words and cannot wrap, so the
         row holds only while every segment is as wide as its widest marker.
         Below that, the row gives way to ONE caption: the active step in
-        role-caption at primary ink, its date beneath in role-metadata,
-        centred. Stacked rather than run together, because sans and serif on
-        one line sit on two baselines. The switch is the ribbon's own width — a container
-        query at 20rem of ribbon — not a viewport breakpoint. 20rem IS A
-        DELIBERATE MARGIN (ratified 2026-10-12, v2026.10.12.3): at the 1px
-        gap, five widest markers fit in about 19rem, and the extra rem
-        absorbs a wider label or a font fallback rather than letting a marker
-        collide. At the bill header's 24px gutters the row shows at 390 and
-        375, and 360 takes the caption.
+        role-metadata-sans at primary ink and --sans-semibold, its date
+        beneath in role-metadata-sans, centred. The switch is the ribbon's
+        own width — a container query at 25rem of ribbon — not a viewport
+        breakpoint. 25rem IS A DELIBERATE MARGIN (re-measured 2026-10-16,
+        when the markers moved to role-metadata-sans): the widest marker,
+        the active one in semibold, sets five segments and the 1px gaps at
+        about 24rem, and the extra rem absorbs a wider label or a font
+        fallback rather than letting a marker collide. At the bill header's
+        24px gutters the row shows at tablet widths and up, and 390, 375 and
+        360 take the caption.
       dark-ladder: >-
-        RATIFIED 2026-10-12 (v2026.10.12.2). The dark fills mirror the light
-        ladder: completed is the strongest fill, active the middle, the track
-        the faintest. Dark --ribbon-completed takes --text-nav-active's value.
-        Measured on the dark aurora: completed about 8:1 against the ground
-        and about 2.7:1 from active, matching light's about 8:1 and 3.4:1.
+        RATIFIED 2026-10-16, decided by Jason; reorders the 2026-10-12
+        ladder. ACTIVE IS THE STRONGEST FILL, completed the middle, the track
+        the faintest, in both schemes: the ribbon's loudest mark says where
+        the bill is now. Under the 2026-10-12 order the dark completed
+        segment was near-white and the loudest thing in the bill header,
+        and the present step read second. Dark --ribbon-active takes
+        --text-nav-active's value. The two values swapped tokens and did not
+        change, so the measured steps hold: the strongest fill about 8:1
+        against the ground and 2.7:1 (dark) and 3.4:1 (light) from the middle.
       contrast: >-
-        RATIFIED 2026-10-12. THE SEGMENTS ARE NOT HELD TO 3:1. The active
-        segment sits near 2.3:1 on the light aurora and near 3:1 on the dark
-        one; the marker row (or the narrow caption) and the RubberStamp both
-        name the status, so the fill is a redundant cue, like the track.
+        RATIFIED 2026-10-12. THE SEGMENTS ARE NOT HELD TO 3:1. The middle
+        fill (completed, since 2026-10-16) sits near 2.3:1 on the light
+        aurora and near 3:1 on the dark one; the marker row (or the narrow
+        caption) and the RubberStamp both name the status, so the fill is a
+        redundant cue, like the track.
       markers: >-
-        role-caption, sentence case, centred beneath each segment
-        (typography.uppercase-has-two-homes, chrome-sites-are-closed).
+        role-metadata-sans, sentence case, centred beneath each segment
+        (typography.uppercase-has-two-homes, chrome-sites-are-closed). The
+        active marker takes primary ink at --sans-semibold. RATIFIED
+        2026-10-16: at role-caption in secondary ink the markers were too
+        faint to name the steps.
         Earlier versions added a 2px tick mark above each label, but
         segments + labels alone are sufficient to encode the milestone
         positions; the ticks were a third graphic claim on the same
@@ -4195,16 +4245,17 @@ tactileAccents:
         Do not also caption the ribbon with "{status} on {date}" — the
         stamp + active segment + label already encode the status. The
         narrow form is the exception: its caption IS the marker row
-        (below-width). The *date* is real new information; render it as role-metadata
-        (serif roman — it is under the italic floor, typography's
-        serif-italic rule) adjacent to the ribbon, not as a chrome caption.
+        (below-width). The *date* is real new information; render it in
+        role-metadata-sans beneath the active marker, the same voice as the
+        marker it dates (typography.apparatus-ink-is-sans), not as a chrome
+        caption.
       failure-honesty: >-
         All failure statuses fuzzy-match to one terminal step, so the stage
         of death is not known. Production renders a single red pin at the
         first segment and replaces the milestone row with one caption rather
         than implying progress through unverified stages. Keep this.
       variants:
-        ribbon: "8px segmented bar + role-caption label per step. Used on bill detail pages."
+        ribbon: "8px segmented bar + role-metadata-sans marker per step. Used on bill detail pages."
         compact: "Mini-bar (h-2) without milestone labels. Used in bill list tables."
       when: >-
         Archive bill detail pages, in the header ON THE AURORA

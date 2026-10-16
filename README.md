@@ -120,6 +120,7 @@ Not guidance: [`proposed/`](./proposed/) (an unratified draft), `github.md` (a d
 | `role-designation` | Bill slug or code leading a row or card |
 | `role-ceremonial` | Display designation, once per page |
 | `role-metadata` · `role-metadata-sans` | Who, when, how — serif on canvas, sans in containers |
+| `role-field-label` | The name of a form field, above it (`components.input-label`) |
 | `role-caption` · `role-quote` · `role-code` | Captions; quoted voice; mono |
 | `role-stat-display` · `role-signature` | Hero numerals; the user’s affirmed name |
 
@@ -149,7 +150,7 @@ The CTA lives in the Button component’s `cta` variant; `role-action` is for sp
 
 ### Elevation and materials
 
-- **Five shadow tiers**, shadow only, never transform, slate-900 ink (`elevation`): `.shadow-flat` (rest), `-whisper` (thin glass, ghost hover), `-raised` (cards), `-floating` (modals, FAB, dropdowns), `-chrome` (with `material-chrome`). No other shadows.
+- **Five shadow tiers**, shadow only, never transform, slate-900 ink (`elevation`): `.shadow-flat` (rest), `-whisper` (thin glass, ghost hover), `-raised` (cards), `-floating` (modals, FAB, dropdowns), `-chrome` (chrome that floats free of an edge). A bottom-anchored `material-chrome` bar casts none; its edge is the hairline (`materials.material-chrome.edge`). No other shadows.
 - **Five blurred glass tiers:** `.material-ultrathin` (toggles, input backings), `-thin` (Live default), `-regular` (cards, forms), `-thick` (modals, dropdowns), `-chrome` (mobile tab bar). Dark tiers take the canvas’s hue (`materials.dark-glass-takes-the-canvas-hue`).
 - **Desktop chrome takes no material:** navbar and rail ink sits on the aurora (`components.navbar`). Chrome keeps a material where content scrolls beneath it (`components.recession-requires-nothing-scrolls-beneath`).
 - Under `prefers-reduced-transparency` glass turns opaque and layout does not shift.

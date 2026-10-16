@@ -208,8 +208,8 @@
   --spinner-ink:    rgb(0 0 0 / 38%);
   /* Progress-ribbon fills (components.progress-ribbon). Success and failure
      take --color-success / --color-danger and their -soft dark pairs. */
-  --ribbon-completed: #334155;                 /* slate-700 */
-  --ribbon-active:    rgb(100 116 139 / 70%);  /* slate-500/70 */
+  --ribbon-active:    #334155;                 /* slate-700 — the strongest fill (progress-ribbon.dark-ladder) */
+  --ribbon-completed: rgb(100 116 139 / 70%);  /* slate-500/70 */
   --ribbon-track:     rgb(148 163 184 / 20%);  /* slate-400/20 */
 
   /* Background canvas */
@@ -408,8 +408,8 @@
   --border-dashed-empty: rgb(255 255 255 / 30%);
   --skeleton-block: rgb(255 255 255 / 8%);
   --spinner-ink:    rgb(255 255 255 / 38%);
-  --ribbon-completed: #cbd5e1;                 /* slate-300, --text-nav-active's value: the light ladder mirrored */
-  --ribbon-active:    rgb(148 163 184 / 70%);  /* slate-400/70 */
+  --ribbon-active:    #cbd5e1;                 /* slate-300, --text-nav-active's value: the strongest fill */
+  --ribbon-completed: rgb(148 163 184 / 70%);  /* slate-400/70 */
   --ribbon-track:     rgb(148 163 184 / 15%);  /* slate-400/15 */
   --canvas: var(--color-zinc-900);
   --canvas-live: oklch(0.1562 0.0246 267.8);   /* Blue Hour. Was the literal
@@ -674,6 +674,18 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   line-height: 1.25;
   color: var(--text-secondary);
 }
+/* Field label — the name of a form field (components.input-label). The
+   metadata-sans rung, one step heavier and in primary ink: a label is read
+   before its field and must not sit under the placeholder it names.
+   A qualifier beside it ("· Required") is role-metadata-sans. */
+.role-field-label {
+  font-family: var(--font-sans);
+  font-variation-settings: var(--sans-body);
+  font-size: 0.875rem;
+  font-weight: var(--sans-medium);
+  line-height: 1.4;
+  color: var(--text-primary);
+}
 .role-code {
   font-family: var(--font-mono);
   font-size: 0.875rem;
@@ -756,11 +768,9 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   background: rgb(255 255 255 / 35%);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
-  /* Top edge faces the content, and elevation.chrome casts away from the
-     anchor: upward, since every consumer is bottom-anchored
+  /* Top edge faces the content: the hairline only, no cast shadow
      (materials.material-chrome.edge). */
-  box-shadow: inset 0 1px 0 0 var(--border-subtle),
-              0 -8px 16px -4px rgb(15 23 42 / 0.12), 0 -3px 6px -3px rgb(15 23 42 / 0.12);
+  box-shadow: inset 0 1px 0 0 var(--border-subtle);
 }
 .dark .material-chrome, [data-theme="dark"] .material-chrome {
   /* CHANGED 2026-08-28 from rgb(24 24 27 / 90%) — zinc-900, a WARM NEUTRAL, at
@@ -778,8 +788,7 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   /* 45%, set 2026-08-28 — see the light value above. Measured with the same
      green CTA behind it: labels 6.64:1. */
   background: color-mix(in srgb, var(--canvas-live) 45%, transparent);
-  box-shadow: inset 0 1px 0 0 var(--border-subtle),
-              0 -8px 16px -4px rgb(15 23 42 / 0.12), 0 -3px 6px -3px rgb(15 23 42 / 0.12);
+  box-shadow: inset 0 1px 0 0 var(--border-subtle);
 }
 
 /* ---- Paper canvases (opaque) ---- */
@@ -918,8 +927,8 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   --text-tertiary: rgb(0 0 0 / 38%);
   --border-hairline: rgb(0 0 0 / 5%);
   --border-subtle: rgb(0 0 0 / 10%);
-  --ribbon-completed: #334155;                 /* paper takes the light fills (progress-ribbon.on-paper) */
-  --ribbon-active:    rgb(100 116 139 / 70%);
+  --ribbon-active:    #334155;                 /* paper takes the light fills (progress-ribbon.on-paper) */
+  --ribbon-completed: rgb(100 116 139 / 70%);
   --ribbon-track:     rgb(148 163 184 / 20%);
 }
 [data-paper] { color: var(--text-primary); }

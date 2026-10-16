@@ -8,6 +8,45 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-16 (v2026.10.16) — Field labels, sans hints, the ribbon's present step, quiet row actions, an edge without a shadow, docked card feet
+
+Decided by Jason, six entries from the queue, each from a render of the current rule beside the
+proposal in both schemes at 390 and 1440. Five came from voyager PR 934's before/after shots,
+where the code followed the 2026-10-11 and 2026-10-12 rulings and the result read worse.
+
+- **Form labels are `role-field-label`**, a new role: the metadata-sans rung, `--sans-medium`,
+  primary ink (`components.input-label`). In `role-caption` the label was the smallest and
+  faintest text in the form, under the placeholder of the field it names. The "· Required"
+  qualifier is `role-metadata-sans`. No existing role carried a label's size, weight and ink,
+  so the rule is a role rather than a longhand composition. Retires `role-caption` as the form
+  label, swept from `forms.html` and `form-fields.html`.
+- **A field's hint and the consent sentence are `role-metadata-sans`** (`components.input.hint`,
+  `consent`). The serif hint sat between a sans label and a sans error, against
+  `typography.apparatus-ink-is-sans`. The spec contradicted itself; the container rule wins.
+- **The ribbon's active segment is the strongest fill** (`progress-ribbon.dark-ladder`). Under the
+  2026-10-12 order the dark completed segment was near-white and the loudest mark in the bill
+  header, so a bill's past outranked where it is now. The two fill values swap tokens:
+  `--ribbon-active` takes the strong value and `--ribbon-completed` the middle one, in light,
+  dark and on paper. The values did not change, so the measured steps between them hold.
+  Markers move to `role-metadata-sans`, the active one in primary ink at `--sans-semibold`,
+  because at `role-caption` in secondary ink they were too faint to name the steps. The date
+  under the active step is `role-metadata-sans`.
+  **Cost:** the wider markers move the narrow switch from 20rem to 25rem of ribbon (re-measured:
+  the active marker in semibold sets five segments at about 24rem). At the bill header's
+  gutters, 390, 375 and 360 now take the one-line caption; tablet widths and up keep the row.
+- **A row action is quiet** (`components.row-action`, new). An action repeated down a list or
+  table is an icon and a word on no plate, and a row it cannot apply to shows nothing. One plate
+  per surface had moved each row's Close to `button-secondary`, and three white plates
+  outweighed the page's own "Post a Position".
+- **A bottom-anchored bar casts no shadow** (`materials.material-chrome.edge`, `elevation.chrome`).
+  The upward shadow rendered as a grey band over content in light and was invisible in dark.
+  The edge is the `--border-subtle` hairline alone, in both schemes. `--shadow-chrome` stays as a
+  tier for chrome that floats free of an edge. Retires the cast shadow from `.material-chrome`.
+- **In a row of cards the foot docks** (`components.card.foot-docks-in-a-row`, new). The count,
+  one line of report and the act sit at the bottom of every card in the row, so they line up.
+  Every card carries the report line: the viewer's link on an ask they recruit for, momentum on
+  an ask they can co-sign. Without it the counts sit at two heights.
+
 ## 2026-10-12 (v2026.10.12.3) — Field states; the ribbon's margin
 
 Delegated by Jason to the ratifying session, two entries from the queue.

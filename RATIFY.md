@@ -78,6 +78,20 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** a named four-step map ramp (tokens per step, both schemes), stating that ramp steps are not held to text contrast but must separate from each neighbour, and that a ramp is not a green "plate". Decide together with "Fill colour for delivery map hexes".
 - **blocks:** the delivery map on /asks/[askId]
 
+### Two-word ribbon markers just above the 25rem switch
+- **kind:** production ahead
+- **found:** voyager PR 934, `BillDetailHeader`. `progress-ribbon.below-width` assumes single-word markers; production’s are “Chamber passed” and “Final passage”.
+- **evidence:** at exactly 25rem of ribbon both wrap to two lines under their segments with no collision (voyager’s render). Five two-word markers in semibold need about 33rem to hold one line. Rendered at 27rem: wrapping (A) against a 33rem switch (B).
+- **proposes:** either allow a marker to wrap to two lines and keep 25rem, or move the switch to 33rem.
+- **blocks:** nothing
+
+### Where the listing-threshold nudge goes on a recruit card
+- **kind:** spec silent
+- **found:** voyager PR 934, `HomeRecruitCard`. “Needs N more co-signs to be listed on Asks” was dropped, because `card.foot-docks-in-a-row` allows one report line under the count.
+- **evidence:** rendered in a three-card row: dropped (A); a second line in the foot, which lifts that card’s count above its neighbours’ (B); a line in the body under the title, where the docked layout has slack (C).
+- **proposes:** C. The nudge is `role-metadata-sans` under the title, and the foot keeps one report line.
+- **blocks:** nothing
+
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by

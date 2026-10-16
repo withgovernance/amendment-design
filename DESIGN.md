@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.16.3
+# spec-version:   v2026.10.16.4
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -4234,19 +4234,22 @@ tactileAccents:
         — the segments and their labels carry the status.
       below-width: >-
         RATIFIED 2026-10-12, decided by Jason; replaces the 2026-10-11 "no
-        narrow form". The markers are single words and cannot wrap, so the
-        row holds only while every segment is as wide as its widest marker.
+        narrow form". A MARKER NEVER WRAPS (RATIFIED 2026-10-16, decided by
+        Jason): a two-line marker made the row busy, and a bill's status is
+        not something a reader needs in full every time the page opens. The
+        row holds only while every segment is as wide as its widest marker,
+        and a marker may be two words ("Chamber passed").
         Below that, the row gives way to ONE caption: the active step in
         role-metadata-sans at primary ink and --sans-semibold, its date
         beneath in role-metadata-sans, centred. The switch is the ribbon's
-        own width — a container query at 25rem of ribbon — not a viewport
-        breakpoint. 25rem IS A DELIBERATE MARGIN (re-measured 2026-10-16,
-        when the markers moved to role-metadata-sans): the widest marker,
-        the active one in semibold, sets five segments and the 1px gaps at
-        about 24rem, and the extra rem absorbs a wider label or a font
-        fallback rather than letting a marker collide. At the bill header's
-        24px gutters the row shows at tablet widths and up, and 390, 375 and
-        360 take the caption.
+        own width — a container query at 38rem of ribbon — not a viewport
+        breakpoint. 38rem IS A DELIBERATE MARGIN (measured 2026-10-16 on
+        production's markers in role-metadata-sans): the segments are equal,
+        so the widest marker in any state governs, and "Chamber passed" as
+        the active marker in semibold sets five segments and the 1px gaps at
+        about 37rem. The extra rem absorbs a wider label or a font fallback.
+        Phones and small tablets take the caption; the row shows where the
+        ribbon has 38rem.
       dark-ladder: >-
         RATIFIED 2026-10-16, decided by Jason; reorders the 2026-10-12
         ladder. ACTIVE IS THE STRONGEST FILL, completed the middle, the track

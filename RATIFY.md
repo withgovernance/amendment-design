@@ -78,13 +78,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** a named four-step map ramp (tokens per step, both schemes), stating that ramp steps are not held to text contrast but must separate from each neighbour, and that a ramp is not a green "plate". Decide together with "Fill colour for delivery map hexes".
 - **blocks:** the delivery map on /asks/[askId]
 
-### Two-word ribbon markers just above the 25rem switch
-- **kind:** production ahead
-- **found:** voyager PR 934, `BillDetailHeader`. `progress-ribbon.below-width` assumes single-word markers; production’s are “Chamber passed” and “Final passage”.
-- **evidence:** at exactly 25rem of ribbon both wrap to two lines under their segments with no collision (voyager’s render). Five two-word markers in semibold need about 33rem to hold one line. Rendered at 27rem: wrapping (A) against a 33rem switch (B).
-- **proposes:** either allow a marker to wrap to two lines and keep 25rem, or move the switch to 33rem.
-- **blocks:** nothing
-
 ### Where the listing-threshold nudge goes on a recruit card
 - **kind:** spec silent
 - **found:** voyager PR 934, `HomeRecruitCard`. “Needs N more co-signs to be listed on Asks” was dropped, because `card.foot-docks-in-a-row` allows one report line under the count.
@@ -105,6 +98,9 @@ they stop reading as actionable to the next session that opens this file.
 ## Recently ratified
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
+
+- **2026-10-16 (v2026.10.16.3–.4)** — a recruit card's part below the foot hairline is a full-bleed
+  `--wash-yours` band; a ribbon marker never wraps, and the narrow switch is 38rem.
 
 - **2026-10-16 (v2026.10.16.2)** — a field's error stays `role-caption`; `role-metadata-sans` has
   a `typography.roles` entry and declares line-height 1.4.

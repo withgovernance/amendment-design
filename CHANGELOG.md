@@ -8,6 +8,20 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-16 (v2026.10.16.4) — A ribbon marker never wraps; the switch is 38rem
+
+Decided by Jason from a render at 27rem of wrapped two-word markers beside the one-line caption,
+and of step icons at 390.
+
+- **A ribbon marker never wraps, and the narrow switch moves to 38rem** (`progress-ribbon.below-width`).
+  Production's markers include "Chamber passed" and "Final passage". At 25rem they wrapped to two
+  lines, which made the row busy for information a reader doesn't need in full on every visit.
+  The segments are equal, so the widest marker in any state governs: "Chamber passed" active in
+  semibold sets the row at about 37rem, and 38rem keeps the spec's one-rem margin. Phones and
+  small tablets take the caption. Icons under each step were rendered and rejected: a glyph does
+  not name a step, so the caption was still needed under them. Retires the 25rem switch, swept
+  from the specimen.
+
 ## 2026-10-16 (v2026.10.16.3) — Your part of a card is a full-bleed band
 
 Decided by Jason from renders in both schemes.

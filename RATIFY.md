@@ -78,6 +78,34 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** a named four-step map ramp (tokens per step, both schemes), stating that ramp steps are not held to text contrast but must separate from each neighbour, and that a ramp is not a green "plate". Decide together with "Fill colour for delivery map hexes".
 - **blocks:** the delivery map on /asks/[askId]
 
+### The month on a calendar tile in caps
+- **kind:** two readings
+- **found:** design-reviewer on voyager PR 934, `DeadlineTile.tsx:67`. The month (“AUG”) is `role-label-caps`, which would make the calendar tile a third chrome-caps site (`typography.chrome-sites-are-closed`).
+- **evidence:** VotingLedger story, light and dark. Not yet rendered both ways.
+- **proposes:** render the tile with the month in caps and in sentence case; a third site is either ratified or the month leaves caps.
+- **blocks:** nothing
+
+### The count on an ask card has no role
+- **kind:** unowned default
+- **found:** design-reviewer on voyager PR 934, `AskSummaryCard` / `AskMomentum`. The co-sign count is hand-set (`font-bold tracking-tight`, 24px); `role-stat-display` is hero-sized, so nothing in the role layer fits.
+- **evidence:** asksummarycard--default and homeasksrow renders at 390 and 1440.
+- **proposes:** a count role at the card’s rung (or a stat-display step), measured on the card; or name the hand-set value as the system’s.
+- **blocks:** nothing
+
+### A draft painted as a warning
+- **kind:** two readings
+- **found:** design-reviewer on voyager PR 934, `PositionStatusBadge`. DRAFT takes the warning tokens; the spec allows amber only for warning.
+- **evidence:** orgpositionslist--default, light and dark.
+- **proposes:** decide whether a draft is a warning; if not, DRAFT takes neutral ink like CLOSED. Render both.
+- **blocks:** nothing
+
+### Sibling cards’ top rows at two heights
+- **kind:** spec silent
+- **found:** design-reviewer on voyager PR 934, home asks row. A discover card has no status text at the right of its eyebrow, so its designation sits about 3px and its title about 6px higher than on the recruit cards beside it. `card.foot-docks-in-a-row` aligns only the foot.
+- **evidence:** homeasksrow--recruit-and-popular at 1440.
+- **proposes:** the eyebrow row declares its height (it carries `role-designation`, whose line box is 1), so titles align across a row whether or not the status text is present.
+- **blocks:** nothing
+
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by

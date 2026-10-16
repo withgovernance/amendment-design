@@ -640,6 +640,7 @@
   font-variation-settings: var(--sans-body);
   font-size: 0.875rem;
   font-weight: var(--sans-normal);
+  line-height: 1.4;
   font-variant-numeric: tabular-nums;
   color: var(--text-secondary);
 }

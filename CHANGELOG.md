@@ -8,6 +8,18 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-16 (v2026.10.16.2) — The error keeps the caption rung; role-metadata-sans gets an entry
+
+Decided by Jason, two entries from the queue, each from a render of the options in both schemes.
+
+- **A field's error stays `role-caption`** (`components.input.invalid`), a rung below the
+  `role-metadata-sans` hint it replaces. Rendered against an error at the hint's size: the 2px
+  ring and the danger ink mark the field at either size. No rule changed; the question is closed.
+- **`role-metadata-sans` has a `typography.roles` entry and a line height of 1.4**, the field
+  label's. It carried six rules with no entry and no declared line height, so each use inherited
+  its parent's: rendered that way, a two-line hint set tight and the ribbon's step and date ran
+  together. 1.5, body's, was rendered too and added height to every card's report line.
+
 ## 2026-10-16 (v2026.10.16.1) — A citation corrected
 
 - The v2026.10.16 hint and ribbon-date rules cited `typography.apparatus-ink-is-sans`, a key

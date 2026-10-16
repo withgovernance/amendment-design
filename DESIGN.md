@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.16.1
+# spec-version:   v2026.10.16.2
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1435,6 +1435,18 @@ typography:
       weight: 400
       lineHeight: 1.25
       color: "secondary"
+    # RATIFIED 2026-10-16. Metadata on apparatus: the sans voice of who /
+    # when / how inside a container, beside role-ui-heading, and the field
+    # hint, consent sentence, ribbon markers and date, a card's report line
+    # and a label's qualifier. It had a stylesheet rule and no entry here,
+    # and declared no line height, so each use inherited its parent's.
+    metadata-sans:
+      family: sans
+      size: 0.875rem        # 14px
+      weight: 400           # sans-normal
+      lineHeight: 1.4       # the field label's, which it sits beside
+      numerals: tabular
+      color: secondary
     # RATIFIED 2026-10-16. The name of a form field. It sits at the
     # metadata-sans rung, one step heavier and in primary ink, because a
     # label is read before the field and must not sit under the placeholder
@@ -2877,7 +2889,11 @@ components:
       --color-danger on light, --color-danger-soft under inversion
       (color.ink-switch-is-palette-wide). The message is role-caption in that
       ink and says what to type, not that something is wrong. One red across
-      both schemes fails as a ring on the dark card.
+      both schemes fails as a ring on the dark card. THE ERROR STAYS AT THE
+      CAPTION RUNG, a rung below the hint it replaces (RATIFIED 2026-10-16,
+      decided by Jason from a render of role-caption against
+      role-metadata-sans in both schemes). In the render the 2px ring and
+      the danger ink mark the field at either size.
     hint: >-
       role-metadata-sans beneath the field, never the field's name
       (input-label.placeholder-is-not-the-name). A field shows its hint or

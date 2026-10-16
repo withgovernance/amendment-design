@@ -78,13 +78,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** a named four-step map ramp (tokens per step, both schemes), stating that ramp steps are not held to text contrast but must separate from each neighbour, and that a ramp is not a green "plate". Decide together with "Fill colour for delivery map hexes".
 - **blocks:** the delivery map on /asks/[askId]
 
-### Where the listing-threshold nudge goes on a recruit card
-- **kind:** spec silent
-- **found:** voyager PR 934, `HomeRecruitCard`. “Needs N more co-signs to be listed on Asks” was dropped, because `card.foot-docks-in-a-row` allows one report line under the count.
-- **evidence:** rendered in a three-card row: dropped (A); a second line in the foot, which lifts that card’s count above its neighbours’ (B); a line in the body under the title, where the docked layout has slack (C).
-- **proposes:** C. The nudge is `role-metadata-sans` under the title, and the foot keeps one report line.
-- **blocks:** nothing
-
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by
@@ -98,6 +91,9 @@ they stop reading as actionable to the next session that opens this file.
 ## Recently ratified
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
+
+- **2026-10-16 (v2026.10.16.5)** — a recruit card's next goal is a clause on the "Your link" line,
+  never its own line; spec ahead, production adds it later.
 
 - **2026-10-16 (v2026.10.16.3–.4)** — a recruit card's part below the foot hairline is a full-bleed
   `--wash-yours` band; a ribbon marker never wraps, and the narrow switch is 38rem.

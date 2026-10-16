@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.16.4
+# spec-version:   v2026.10.16.5
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2809,6 +2809,19 @@ components:
       rejected. NOT INDIGO: Midnight Indigo as a mark measures near 1.2:1 on
       the dark ground (primary.plate-not-mark), so "yours" is carried by
       position, the band and the "Your link" label, not by hue.
+    next-goal-rides-the-link-line: >-
+      RATIFIED 2026-10-16, decided by Jason. While an ask is short of the
+      listing threshold, its next goal is a clause at the end of the "Your
+      link" line, never a line of its own: "Your link · not opened yet · 13
+      more to list". A second line in the band raised that card's hairline
+      and count above its neighbours'. THE LINE NEVER WRAPS; when it would,
+      the "opened" clause gives way first, then the goal, and the co-signed
+      count never does. Measured in role-metadata-sans at a 390 card's 326px:
+      "Your link · not opened yet · 13 more to list" is 280px; with "12
+      co-signed · 48 opened" it is 352px, so "opened" yields.
+      KNOWN DIVERGENCE, SPEC AHEAD: production ships the link line without
+      the goal clause. Deferred by Jason; voyager adds it when the next-goal
+      work is scheduled.
     material-outranks-the-register: >-
       STATED 2026-09-03, from the forms specimens, because it fell out of
       building one and nobody had written it down. A CARD IN A LIVE ROOM IS

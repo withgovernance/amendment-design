@@ -8,6 +8,16 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-16 (v2026.10.16.5) — The next goal rides the link line
+
+Decided by Jason, the last entry from the PR 934 queue.
+
+- **While an ask is short of the listing threshold, its next goal is a clause on the "Your link"
+  line** (`components.card.next-goal-rides-the-link-line`): "Your link · not opened yet · 13 more
+  to list". A second line in the band, rendered, raised that card's hairline and count above its
+  neighbours'. The line never wraps: the "opened" clause gives way first, then the goal. Recorded
+  as spec ahead; production adds the clause later.
+
 ## 2026-10-16 (v2026.10.16.4) — A ribbon marker never wraps; the switch is 38rem
 
 Decided by Jason from a render at 27rem of wrapped two-word markers beside the one-line caption,

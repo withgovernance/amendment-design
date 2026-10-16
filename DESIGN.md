@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.16.2
+# spec-version:   v2026.10.16.3
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2792,6 +2792,23 @@ components:
       its count in green ink (color.action.fill-rule: a report). A
       single-column feed is unaffected. Rendered as "Amendment · Ask cards —
       organizing states" (Paper) and in the ratification render.
+    your-band: >-
+      RATIFIED 2026-10-16, decided by Jason from a render of three shades
+      against a recessed well, a hairline alone, a heavier material and an
+      indigo edge, in both schemes. THE FOOT SITS UNDER A --border-subtle
+      HAIRLINE THAT RUNS THE CARD'S FULL WIDTH, on every card in a row. On a
+      card the viewer is recruiting for, the part below the hairline — the
+      link line and Share — is a FULL-BLEED BAND in --wash-yours, reaching
+      the card's side and bottom edges; its inner padding is the card's own.
+      The part above the hairline is what every viewer sees, and it is
+      identical to a discover card's. A discover card keeps the hairline and
+      no wash, so lines and acts still align across the row.
+      THE WASH IS NEUTRAL AND IT IS NOT A STATUS TINT: color.action's
+      tint-is-not-a-plate governs coloured tints, and this one carries no
+      hue. NOT A BOX IN A BOX: an inset well inside the card was rendered and
+      rejected. NOT INDIGO: Midnight Indigo as a mark measures near 1.2:1 on
+      the dark ground (primary.plate-not-mark), so "yours" is carried by
+      position, the band and the "Your link" label, not by hue.
     material-outranks-the-register: >-
       STATED 2026-09-03, from the forms specimens, because it fell out of
       building one and nobody had written it down. A CARD IN A LIVE ROOM IS

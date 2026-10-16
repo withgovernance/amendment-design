@@ -199,6 +199,7 @@
   /* Borders */
   --border-hairline: rgb(0 0 0 / 5%);
   --border-subtle:   rgb(0 0 0 / 10%);
+  --wash-yours:      rgb(0 0 0 / 3%);         /* the band on a card the viewer recruits for (components.card.your-band) */
   --border-dashed-empty: rgb(0 0 0 / 30%);
 
   /* Loading. ONE block value, replacing bg-black/5|8|10 invented per component.
@@ -405,6 +406,7 @@
   --text-nav-active: #cbd5e1;   /* slate-300 */
   --border-hairline: rgb(255 255 255 / 20%);
   --border-subtle:   rgb(255 255 255 / 10%);
+  --wash-yours:      rgb(255 255 255 / 4%);
   --border-dashed-empty: rgb(255 255 255 / 30%);
   --skeleton-block: rgb(255 255 255 / 8%);
   --spinner-ink:    rgb(255 255 255 / 38%);

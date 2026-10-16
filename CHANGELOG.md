@@ -8,6 +8,18 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-16 (v2026.10.16.3) — Your part of a card is a full-bleed band
+
+Decided by Jason from renders in both schemes.
+
+- **A card's foot sits under a full-width `--border-subtle` hairline, and on a card the viewer is
+  recruiting for, the part below it is a full-bleed band in the new `--wash-yours`**
+  (`components.card.your-band`): 3% black in light, 4% white in dark. The part above the hairline
+  is identical to a discover card's, so the band marks what is the viewer's own. Rendered against
+  a recessed well (a box in a box, rejected), a hairline alone, a heavier material for the whole
+  card (nearly invisible in dark), an indigo edge (gone in dark), and two stronger or inverted
+  shades. The wash is neutral, so `tint-is-not-a-plate` does not apply.
+
 ## 2026-10-16 (v2026.10.16.2) — The error keeps the caption rung; role-metadata-sans gets an entry
 
 Decided by Jason, two entries from the queue, each from a render of the options in both schemes.

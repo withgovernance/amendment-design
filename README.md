@@ -92,7 +92,7 @@ Not guidance: [`proposed/`](./proposed/) (an unratified draft), `github.md` (a d
 
 - **Midnight Indigo** (`--color-primary*`) is the user’s trail: default button, active nav, selected state, avatar. It is a plate colour; under inversion a primary mark resolves to neutral (`color.primary.plate-not-mark`).
 - **Momentum green** (`--color-action*`; `--color-momentum` aliases it) is every action and the crowd, one colour. Its label is ink, `--color-action-label`; flat, never a gradient; the same in both schemes (`color.action.label-rule`). Every action plate takes a 1px `--color-action-active` ring (`components.button-cta.ring`).
-- **The fill rule.** A green plate is a control; green ink is a report. Meters and ribbons are exempt (`color.action.fill-rule`). A tint is never a plate; status is ink on neutral material (`color.action.tint-is-not-a-plate`).
+- **The fill rule.** A green plate is a control; green ink is a report. Meters, ribbons and map fills are exempt (`color.action.fill-rule`): they climb the ribbon ladder and turn momentum green when the threshold is reached (`color.action.climbing-is-slate-threshold-is-green`). A tint is never a plate; status is ink on neutral material (`color.action.tint-is-not-a-plate`).
 - **Semantic inks are pairs:** the base token on light, its `-soft` counterpart inverted (`color.ink-switch-is-palette-wide`). Green ink is `--ink-success`, one token for both schemes; action green as text is forbidden (`color.action.fill-rule-which-green`, `color.green-ink-is-one-token`). A green tint under green ink caps at 10%.
 - **Coloured ink needs an opaque ground** (`--canvas`), not glass (`color.ink-needs-an-opaque-ground`). A contrast figure names its position (`color.ink-ground-is-a-placement`).
 - **The seal** is a blind emboss, `.seal-emboss`: no colour, issued artifacts only, on paper (`color.seal`).
@@ -183,7 +183,7 @@ Each accent references a real civic artifact **and** carries meaning; ornament i
 ### Loading, cards, forms
 
 - **Loading promises shape, never count** (`loading`): one `.skeleton-row`, settling downward. `.spinner-inline` only for in-place waits. Zero results are `card-empty`’s job.
-- **Cards** are `material-regular`, `--radius-md`, 16px padding (`components.card`). No coloured left borders, no tinted cards: status is a dot, badge or stamp.
+- **Cards** are `material-regular`, `--radius-md`, padded by `--card-pad`, which the docked foot reads too (`components.card.padding-steps-with-the-card`). No coloured left borders, no tinted cards: status is a dot, badge or stamp.
 - `card-empty` is content that did not arrive; `card-placeholder` awaits someone’s input (`components.card-empty.two-components-not-one`).
 - Avatars are Midnight Indigo. Identity fields carry a label; a placeholder is never the name (`components.input-label`).
 

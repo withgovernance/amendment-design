@@ -8,6 +8,16 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-17 (v2026.10.17.5) — The report line's lead and count are semibold
+
+Decided by Jason from the ask row with the lead and count semibold, everything at the role's
+weight, and the lead alone semibold, both schemes.
+
+- **"Your link" and the report's count are `--sans-semibold`**; the rest of the line is
+  `role-metadata-sans` at its own weight (`components.card.foot-docks-in-a-row`). The lead starts
+  the viewer's part of the card and the count is what they came for; at the role's weight a
+  discover card's "38 this week" sank into its line.
+
 ## 2026-10-17 (v2026.10.17.4) — Green ink is one token, a step lighter in dark
 
 Decided by Jason from the ask row at the top of a dark page, where the aurora is strongest:

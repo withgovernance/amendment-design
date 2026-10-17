@@ -78,12 +78,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** a named four-step map ramp (tokens per step, both schemes), stating that ramp steps are not held to text contrast but must separate from each neighbour, and that a ramp is not a green "plate". Decide together with "Fill colour for delivery map hexes".
 - **blocks:** the delivery map on /asks/[askId]
 
-### Is the report line's lead bold?
-- **kind:** spec silent
-- **found:** design-reviewer on `preview/card-row.html`. The specimen sets “Your link” and the report count in `--sans-semibold`; `card.foot-docks-in-a-row` names `role-metadata-sans` with green ink and says nothing about weight.
-- **evidence:** card-row.html `.lead`, `.report-count`.
-- **proposes:** render the band's line with the lead and count semibold and at the role's weight; write the answer into `foot-docks-in-a-row`.
-- **blocks:** nothing
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by
@@ -97,6 +91,9 @@ they stop reading as actionable to the next session that opens this file.
 ## Recently ratified
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
+
+- **2026-10-17 (v2026.10.17.5)** — the report line's lead and its count are `--sans-semibold`; the
+  rest of the line stays at `role-metadata-sans`'s weight.
 
 - **2026-10-17 (v2026.10.17.4)** — green ink is `--ink-success`, one token: `--color-success` on light,
   a step lighter than the action fill in dark; card glass is a sufficient ground for it.

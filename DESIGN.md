@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.17.4
+# spec-version:   v2026.10.17.5
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2859,7 +2859,14 @@ components:
       link · 12 co-signed · 48 opened", an unopened link as "Your link · not
       opened yet"), and an ask they can co-sign reports its momentum ("38
       this week · last 2 hours ago"). The report line is role-metadata-sans,
-      its count in green ink (color.action.fill-rule: a report). A
+      its count in green ink (color.action.fill-rule: a report). ITS LEAD
+      AND ITS COUNT ARE --sans-semibold (ratified 2026-10-17, decided by
+      Jason against the role's weight throughout and a semibold lead
+      alone): "Your link" in primary ink and "12 co-signed" in --ink-success
+      both semibold, the rest of the line at the role's weight. The lead
+      starts the viewer's part of the card and the count is the number they
+      came for; at the role's weight a discover card's "38 this week" sank
+      into its line. A
       single-column feed is unaffected. Rendered as "Amendment · Ask cards —
       organizing states" (Paper) and in the ratification render.
     eyebrow-declares-its-height: >-

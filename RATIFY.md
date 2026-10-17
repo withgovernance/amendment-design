@@ -50,6 +50,34 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
+### A threshold meter's count label: green before the threshold?
+- **kind:** unowned default
+- **found:** design review of `preview/surface-commons.html` after v2026.10.17.13. The label beside the meter ("2,301 / 2,500") is `--ink-success` while the bar is slate, so the label says done and the bar says not yet. `color.action.progress-is-slate-done-is-green` names the bar, not the label.
+- **evidence:** not yet rendered. The tally two lines above already reports the crowd in green.
+- **proposes:** render the label in `role-caption`'s secondary ink and in `--ink-success`, at 92% and 100%, both schemes; state that the label turns green with the fill.
+- **blocks:** nothing
+
+### A green mark on the bare aurora (the "On the record" dot)
+- **kind:** unowned default
+- **found:** same review. The dot is `--color-momentum` as a non-text mark on the aurora: 2.49:1 in light against the 3:1 non-text floor, 5.9:1 dark. No token covers a green mark; `--ink-success` is for text. The Commons `palette-emphasis` lists candidate-answered as green, but a candidate's answer counts no crowd (`registers.live.palette-rule`).
+- **evidence:** contrast sampled from the 1440 renders, both schemes.
+- **proposes:** render the dot in `--ink-success`, in `--text-secondary`, and removed; settle whether candidate-answered is a green site.
+- **blocks:** nothing
+
+### The avatar roll on dark glass
+- **kind:** spec silent
+- **found:** same review. On a dark `material-thin` card the overlapping avatar discs merge with the card and each other; the 20% black inset ring vanishes on dark glass. `plate-not-mark` was measured against the canvas, not glass. Also: indigo means "your trail", and these are other co-signers.
+- **evidence:** `preview/surface-commons.html` at 390 and 1440, dark.
+- **proposes:** measure disc-edge contrast against the card, then render the roll with a `--border-subtle` ring.
+- **blocks:** nothing
+
+### The tally: Plex Mono or role-stat-card
+- **kind:** two readings
+- **found:** same review. Commons `skeuomorphic-accents` makes the tally IBM Plex Mono; `role-stat-card` (v2026.10.17.1) is a count that leads a card, in sans. The specimen hand-builds the mono tally with literal size and weight.
+- **evidence:** not yet rendered.
+- **proposes:** render the ask card's count in each, both schemes, 390 and 1440.
+- **blocks:** nothing
+
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by

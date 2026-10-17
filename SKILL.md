@@ -37,7 +37,7 @@ A card declares `material-regular` in every register (`components.card.material-
 
 Full list and keys in `DESIGN-HARD-RULES.md`.
 
-- **Green:** a filled green plate is a control (one per surface, the primary act; a card is a surface — `color.action.fill-rule-one-per-surface`); green ink is a report — `--color-success` on light, `--color-action` under inversion. Green appears where a crowd is counted; conversation views are green-free.
+- **Green:** a filled green plate is a control (one per surface, the primary act; a card is a surface — `color.action.fill-rule-one-per-surface`); green ink is a report — `--ink-success`, which carries the light/dark switch. Green appears where a crowd is counted; conversation views are green-free.
 - **The CTA** is flat `--color-action` with an ink label (`--color-action-label`) and a 1px `--color-action-active` ring. Every action-colour plate takes the ring.
 - **Ink** is `--text-primary` / `--text-secondary` / `--text-tertiary`, never a literal alpha; tertiary is decorative only. Coloured ink needs an opaque ground.
 - **Serif belongs to the canvas;** inside a container the heading is `role-ui-heading`. Headings are never ALL CAPS — uppercase has four homes: `role-label-caps`, `role-designation`, `role-ceremonial`, `role-calendar-month`.

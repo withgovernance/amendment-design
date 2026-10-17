@@ -17,7 +17,7 @@ Source of truth: `DESIGN.md`. This file is the short list every visual change is
    - **A contrast number without a position is not a measurement.** The canvas is a gradient; quote where you sampled or don't quote the number (`color.ink-ground-is-a-placement`).
 2. **Is the green obeying the fill rule?** Three separate questions (`color.action.fill-rule`):
    - **A filled green plate is a control** (*press me*). One per surface, on that surface's primary act — and a card is a surface, so each ask card carries its own Co-sign plate; an act the page has already plated takes `button-secondary` when it repeats (`color.action.fill-rule-one-per-surface`). A green plate that isn't pressable is a violation.
-   - **Green ink is a report** (*this happened*): `--color-success` on light, `--color-action` under inversion. The action green **as text is forbidden** (`fill-rule-which-green`).
+   - **Green ink is a report** (*this happened*): `--ink-success`, which carries the light/dark switch. The action green **as text is forbidden** (`fill-rule-which-green`, `green-ink-is-one-token`).
    - **Green ink is only as legal as the ground under it.** Measure against the ground the element lands on, not white. A **green tint plate carrying green ink caps at 10%** (`color.action.fill-rule-ink-ground`).
    - **The Momentum accent is scoped to where a crowd is counted** — co-signs, endorsements, tallies, threshold meters. Conversation views are green-free. This scopes the brand accent, not semantic success (enacted, completed, verified) (`registers.live.palette-rule`).
 3. **Any red that isn't semantic danger?** No red CTAs, no red ENACTED. `--color-danger` for danger and "dead" only. No violet, pink or magenta accents; no amber except warning.

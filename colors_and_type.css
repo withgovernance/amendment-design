@@ -200,6 +200,12 @@
   --border-hairline: rgb(0 0 0 / 5%);
   --border-subtle:   rgb(0 0 0 / 10%);
   --wash-yours:      rgb(0 0 0 / 3%);         /* the band on a card the viewer recruits for (components.card.your-band) */
+
+  /* Green ink: a report, never a control (color.green-ink-is-one-token). */
+  --ink-success:     var(--color-success);
+  /* role-metadata-sans's line box, for a row that declares its height
+     (components.card.eyebrow-declares-its-height). */
+  --line-box-metadata-sans: calc(0.875rem * 1.4);
   --border-dashed-empty: rgb(0 0 0 / 30%);
 
   /* Loading. ONE block value, replacing bg-black/5|8|10 invented per component.
@@ -407,6 +413,7 @@
   --border-hairline: rgb(255 255 255 / 20%);
   --border-subtle:   rgb(255 255 255 / 10%);
   --wash-yours:      rgb(255 255 255 / 4%);
+  --ink-success:     oklch(.74 .150 161);   /* a step lighter than the action fill, so a report never reads as a control */
   --border-dashed-empty: rgb(255 255 255 / 30%);
   --skeleton-block: rgb(255 255 255 / 8%);
   --spinner-ink:    rgb(255 255 255 / 38%);
@@ -960,6 +967,7 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   --ribbon-active:    #334155;                 /* paper takes the light fills (progress-ribbon.on-paper) */
   --ribbon-completed: rgb(100 116 139 / 70%);
   --ribbon-track:     rgb(148 163 184 / 20%);
+  --ink-success:     var(--color-success);
 }
 [data-paper] { color: var(--text-primary); }
 

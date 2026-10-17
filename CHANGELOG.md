@@ -8,6 +8,23 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-17 (v2026.10.17.4) — Green ink is one token, a step lighter in dark
+
+Decided by Jason from the ask row at the top of a dark page, where the aurora is strongest:
+the inverted ink at the action fill, one step lighter and two steps lighter, and the aurora
+itself at today's strength and two calmer settings (kept as it is).
+
+- **Green ink is `--ink-success`** (`color.green-ink-is-one-token`): `--color-success` on light and
+  paper, and under inversion a green one step lighter than the action fill. Every consumer wrote
+  the switch by hand. At the action fill the report line on a card's band measured 4.79:1 at the
+  top of the dark aurora; one step lighter it is 6.86:1, and a count no longer reads as part of
+  the button beside it. Two steps lighter outshone the titles and haloed. Replaces "--color-action
+  under inversion" in `fill-rule-which-green`; specimens and entry points swept.
+- **Card glass is a sufficient ground for green ink** on `material-regular` or thicker, measured;
+  `ink-needs-an-opaque-ground` asks no plate under a card's count or report line.
+- **`--line-box-metadata-sans`** names `role-metadata-sans`'s line box, so a row that declares its
+  height (`card.eyebrow-declares-its-height`) cites it instead of copying the role's metrics.
+
 ## 2026-10-17 (v2026.10.17.3) — A button's label owns its type
 
 Decided by Jason from a row of ask cards with their acts at 1rem and 0.875rem, both schemes,

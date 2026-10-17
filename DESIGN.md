@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.17.3
+# spec-version:   v2026.10.17.4
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -75,6 +75,26 @@ color:
       NO CONTRAST TABLE IS RECORDED HERE ON PURPOSE. See
       ink-ground-is-a-placement, which is why any such table would be a
       false constant.
+  green-ink-is-one-token: >-
+    RATIFIED 2026-10-17, decided by Jason from the ask row at the top of a
+    dark page, where the aurora is strongest, with the inverted ink at the
+    action fill, one step lighter and two steps lighter. GREEN INK IS
+    --ink-success, ONE TOKEN THAT CARRIES THE SCHEME SWITCH: --color-success
+    on light and on paper; under inversion a green ONE STEP LIGHTER THAN THE
+    ACTION FILL, about the lightness of its hover. It replaces "--color-action
+    under inversion" in fill-rule-which-green. Two reasons, both rendered:
+    (1) the action fill as ink left the report line on a card's band at
+    4.79:1 in the band, too thin a margin for glass; one step lighter is
+    6.86:1 there. (2) A report and a control were the same green, so a count
+    beside a CTA read as part of the button; a lighter ink separates "this
+    happened" from "press me" by lightness, with the hue still the brand's.
+    Two steps lighter was rejected: near the titles' luminance and saturated,
+    it made counts the loudest thing on a card and haloed on dark.
+    Consumers set green ink with the token and never write the switch.
+    CARD GLASS IS A SUFFICIENT GROUND FOR IT: on material-regular or thicker,
+    --ink-success measures 6.86:1 at worst at the top of the dark aurora, so
+    ink-needs-an-opaque-ground does not require a plate under a card's count
+    or report line. A thinner material re-opens the question.
   ink-ground-is-a-placement: >-
     RATIFIED 2026-08-28. ON THE LIVE CANVAS, CONTRAST IS A FUNCTION OF WHERE
     THE ELEMENT SITS, NOT OF THE TOKEN PAIR. The canvas carries the aurora,
@@ -516,8 +536,9 @@ color:
             in the system; green ink is a report anywhere in the system.
         (2) WHICH green is ink is a CONTRAST fact, not a taste one.
             --color-action is a PLATE colour; as text it measures 2.62:1 and
-            is FORBIDDEN. Green ink is --color-success on light, switching to
-            --color-action under inversion. This was already specified — see
+            is FORBIDDEN. Green ink is --ink-success (color.green-ink-is-one-token):
+            --color-success on light, a step lighter than the action fill
+            under inversion. This was already specified — see
             registers.email.action and .inversion, where the switch is
             spelled out — but it lived only inside a profile, so the general
             case never found it. Stage 2 re-derived it by measurement and
@@ -534,8 +555,7 @@ color:
             semantic family's entire reason to exist.
       SO, AS AN INSTANCE AND NOT A RULE: an ENACTED stamp is legal green
       ink (a bill enacted is success in its conventional sense), which
-      means --color-success on light and --color-action under inversion,
-      per the switch in (2). It is never --color-action on light. AMENDED
+      means --ink-success, the switch in (2). It is never --color-action on light. AMENDED
       2026-08-28: this closing line previously read absolutely -- "it is
       --color-success ink ... NOT the action green" -- which, read alone,
       forbids in dark exactly what (2) requires there and ships the label
@@ -4222,7 +4242,7 @@ tactileAccents:
       ink-break: "Alpha noise 0–15% varying across the mark. Clean geometry."
       when: "Bill detail page, sits adjacent to the title row. One stamp per bill."
       owner: "Jason — head of product & design, The Governance Company"
-      colors: "Green ink for positive status (enacted, signed) — per color.action.fill-rule-which-green that is --color-success on light and --color-action under inversion, NOT action green on light, which is 2.62:1 as text. Success and action are one hue, so a red ENACTED would contradict the palette; slate-700 for procedural (in committee, introduced, engrossed, enrolled); warning amber-700 for vetoed; danger red (--color-danger) only for truly dead/failed. Oxblood left the stamp palette in 2026-08. CORRECTED 2026-08-28: this field said \"action green\" flat, which the 08-28 which-green ratification forbids as ink."
+      colors: "Green ink for positive status (enacted, signed) — per color.action.fill-rule-which-green that is --ink-success (color.green-ink-is-one-token), NOT action green on light, which is 2.62:1 as text. Success and action are one hue, so a red ENACTED would contradict the palette; slate-700 for procedural (in committee, introduced, engrossed, enrolled); warning amber-700 for vetoed; danger red (--color-danger) only for truly dead/failed. Oxblood left the stamp palette in 2026-08. CORRECTED 2026-08-28: this field said \"action green\" flat, which the 08-28 which-green ratification forbids as ink."
       implementation: "app/(data)/oversight/[jurisdiction]/bill/[bill]/components/RubberStamp.tsx"
       divergence-resolved: >-
         CLOSED 2026-08-28. This entry recorded oxblood (`text-red-900`) shipping

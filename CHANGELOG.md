@@ -8,6 +8,16 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-17 (v2026.10.17) — A draft is not a warning
+
+Decided by Jason from voyager's PositionStatusBadge states and the org positions list, both
+schemes, 390 and 1440.
+
+- **DRAFT takes neutral ink, the same as CLOSED** (`color.semantic.a-draft-is-not-a-warning`).
+  It shipped in the warning tokens, and amber's only job is warning. A draft needs nothing until
+  its author returns to it, and on a list where drafts are common the amber made every
+  unfinished row read as an alert. Draft and Closed now differ only by their label.
+
 ## 2026-10-16 (v2026.10.16.6) — A calendar tile's month has its own caps role
 
 Decided by Jason from a render of the tile in both schemes: today's chrome caps, the same at 11px,

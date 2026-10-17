@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.16.6
+# spec-version:   v2026.10.17
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -384,6 +384,13 @@ color:
     danger-soft:  "#ef4444"   # red-500 — error badges. Red is now the ONLY warm
                               # in the system outside the seal, which makes
                               # destructive states clearer than they have been.
+    a-draft-is-not-a-warning: >-
+      RATIFIED 2026-10-17, decided by Jason from PositionStatusBadge's states
+      and the org positions list, both schemes, 390 and 1440. A DRAFT IS A
+      STATE, NOT A WARNING: it takes the same neutral ink as Closed, and the
+      two differ only by their label. Amber means something needs attention;
+      a draft needs nothing until its author returns to it, and on a list
+      where drafts are common, amber turned every unfinished row into an alert.
     danger-moved-to-red-700: >-
       RATIFIED 2026-08-28. MEASURED 4.39:1 as ink on the light opaque ground
       — under AA, on the very ground color.ink-needs-an-opaque-ground now

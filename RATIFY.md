@@ -85,13 +85,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** a count role at the card’s rung (or a stat-display step), measured on the card; or name the hand-set value as the system’s.
 - **blocks:** nothing
 
-### A draft painted as a warning
-- **kind:** two readings
-- **found:** design-reviewer on voyager PR 934, `PositionStatusBadge`. DRAFT takes the warning tokens; the spec allows amber only for warning.
-- **evidence:** orgpositionslist--default, light and dark.
-- **proposes:** decide whether a draft is a warning; if not, DRAFT takes neutral ink like CLOSED. Render both.
-- **blocks:** nothing
-
 ### Sibling cards’ top rows at two heights
 - **kind:** spec silent
 - **found:** design-reviewer on voyager PR 934, home asks row. A discover card has no status text at the right of its eyebrow, so its designation sits about 3px and its title about 6px higher than on the recruit cards beside it. `card.foot-docks-in-a-row` aligns only the foot.
@@ -112,6 +105,9 @@ they stop reading as actionable to the next session that opens this file.
 ## Recently ratified
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
+
+- **2026-10-17 (v2026.10.17)** — a draft is not a warning: DRAFT takes the same neutral ink as
+  CLOSED (`color.semantic.a-draft-is-not-a-warning`).
 
 - **2026-10-16 (v2026.10.16.6)** — a calendar tile's month is `role-calendar-month`: caps at the
   caption size, body width, nearly untracked. `DeadlineTile` moves off `role-label-caps`.

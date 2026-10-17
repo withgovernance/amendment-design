@@ -8,6 +8,17 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-17 (v2026.10.17.16) — A card's padding is one token that steps with the card
+
+Decided by Jason from the home asks row at 390, 640 and 1440, both schemes, stepped, at
+`--space-4` and at `--space-5`.
+
+- **`--card-pad` is the card's padding, read by the card and its docked foot**
+  (`components.card.padding-steps-with-the-card`). It is `--space-4`, and `--space-5` once the
+  card is at least 24rem wide. Production stepped at the framework's small breakpoint, which gave
+  a two-up row's narrow cards the larger value, and the foot's negative margins hand-copied both
+  numbers. Production ahead: the step was right, its trigger was not.
+
 ## 2026-10-17 (v2026.10.17.15) — A designation is one wherever it sits; initials are a picture
 
 Decided by Jason from a jurisdiction chip trailing a sample question in `role-designation`,

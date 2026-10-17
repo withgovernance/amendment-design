@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.17.15
+# spec-version:   v2026.10.17.16
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2977,7 +2977,18 @@ components:
     description: Standard content card surface
     background: "material-regular"
     rounded: "0.5rem"
-    padding: "16px"
+    padding: "--card-pad — see padding-steps-with-the-card"
+    padding-steps-with-the-card: >-
+      RATIFIED 2026-10-17, decided by Jason from the home asks row at 390,
+      640 and 1440, both schemes, with padding stepped, at --space-4
+      throughout and at --space-5 throughout. A CARD'S PADDING IS ONE TOKEN,
+      --card-pad, which the card and its docked foot (your-band) both read —
+      the foot's negative margins hand-copied both values before. It is
+      --space-4, and --space-5 once THE CARD ITSELF is at least 24rem wide: a
+      container measurement on the card, not a viewport breakpoint, because
+      at a viewport step a two-up row at 640 gave its narrowest cards the
+      widest padding. A phone's card keeps the title width; a wide card gets
+      the room that matches the gap between cards.
     foot-docks-in-a-row: >-
       RATIFIED 2026-10-16, decided by Jason. When cards share a row, each
       card is a column and its FOOT docks to the bottom: the count, one line

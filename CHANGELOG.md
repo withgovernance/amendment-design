@@ -8,6 +8,16 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-17 (v2026.10.17.2) — A card's eyebrow row declares its height
+
+Decided by Jason from the home asks row (a discover card beside recruit cards), both schemes,
+390 and 1440.
+
+- **The eyebrow row is as tall as its status text's line box, present or not**
+  (`components.card.eyebrow-declares-its-height`). A discover card carries no status, so its row
+  collapsed to the designation's line box and its title sat about 6px higher than its
+  neighbours'. Declared, the tops of the cards align the way the foot already does.
+
 ## 2026-10-17 (v2026.10.17.1) — A card's count has a role
 
 Decided by Jason from renders on the ask card, both schemes, 390 and 1440: the shipped hand-set

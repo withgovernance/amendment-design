@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.17.1
+# spec-version:   v2026.10.17.2
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2830,6 +2830,16 @@ components:
       its count in green ink (color.action.fill-rule: a report). A
       single-column feed is unaffected. Rendered as "Amendment · Ask cards —
       organizing states" (Paper) and in the ratification render.
+    eyebrow-declares-its-height: >-
+      RATIFIED 2026-10-17, decided by Jason from the home asks row, both
+      schemes, 390 and 1440. A card's eyebrow row (the designation, and the
+      viewer's status at its right: "You co-signed", "You started this")
+      DECLARES ITS HEIGHT as the line box of its role-metadata-sans status,
+      whether or not the status is present. A discover card has no status,
+      so its row was only role-designation's line box, and its designation
+      and title sat higher than the recruit cards' beside it. With the
+      height declared, designations and titles align across a row, as
+      foot-docks-in-a-row aligns the foot.
     your-band: >-
       RATIFIED 2026-10-16, decided by Jason from a render of three shades
       against a recessed well, a hairline alone, a heavier material and an

@@ -25,10 +25,14 @@
 .dark .report-count { color: var(--color-action); }
 .lead { color: var(--text-primary); font-weight: var(--sans-semibold); }
 /* the foot under a full-width hairline; your-band washes it on a card you recruit for */
-.foot { display: flex; flex-direction: column; gap: 12px; padding: 14px 16px 16px; border-top: 1px solid var(--border-subtle); }
+.foot { display: flex; flex-direction: column; gap: 12px; padding: 16px; border-top: 1px solid var(--border-subtle); container-type: inline-size; }
 .yours .foot { background: var(--wash-yours); }
-.foot .role-metadata-sans { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.foot .role-action { align-self: flex-start; min-height: 48px; padding: 0 20px; font-size: 0.875rem; }
+/* next-goal-rides-the-link-line: the line never wraps; when it would, the
+   "opened" clause gives way first, then the goal. The co-signed count never does. */
+.foot .role-metadata-sans { white-space: nowrap; }
+@container (max-width: 17rem) { .opened { display: none; } }
+@container (max-width: 13rem) { .goal { display: none; } }
+.foot .role-action { align-self: flex-start; min-height: 48px; font-size: 0.875rem; }   /* size: RATIFY “.role-action owns no font size” */
 .key { display: block; margin: 14px 0 0; max-width: min(46rem, 100%); }
 </style>
 </head>
@@ -45,7 +49,7 @@
             <div class="count"><span class="role-stat-card momentum">1,377</span><span class="role-metadata-sans">co-signs</span></div>
           </div>
           <div class="foot">
-            <div class="role-metadata-sans"><span class="lead">Your link</span> · <span class="report-count">12 co-signed</span> · 48 opened</div>
+            <div class="role-metadata-sans"><span class="lead">Your link</span> · <span class="report-count">12 co-signed</span><span class="opened"> · 48 opened</span></div>
             <button class="role-action">Share your link</button>
           </div>
         </div>
@@ -56,7 +60,7 @@
             <div class="count"><span class="role-stat-card momentum">12</span><span class="role-metadata-sans">co-signs</span></div>
           </div>
           <div class="foot">
-            <div class="role-metadata-sans"><span class="lead">Your link</span> · not opened yet · 13 more to list</div>
+            <div class="role-metadata-sans"><span class="lead">Your link</span><span class="opened"> · not opened yet</span><span class="goal"> · 13 more to list</span></div>
             <button class="role-action">Share your link</button>
           </div>
         </div>
@@ -84,7 +88,7 @@
             <div class="count"><span class="role-stat-card momentum">1,377</span><span class="role-metadata-sans">co-signs</span></div>
           </div>
           <div class="foot">
-            <div class="role-metadata-sans"><span class="lead">Your link</span> · <span class="report-count">12 co-signed</span> · 48 opened</div>
+            <div class="role-metadata-sans"><span class="lead">Your link</span> · <span class="report-count">12 co-signed</span><span class="opened"> · 48 opened</span></div>
             <button class="role-action">Share your link</button>
           </div>
         </div>
@@ -95,7 +99,7 @@
             <div class="count"><span class="role-stat-card momentum">12</span><span class="role-metadata-sans">co-signs</span></div>
           </div>
           <div class="foot">
-            <div class="role-metadata-sans"><span class="lead">Your link</span> · not opened yet · 13 more to list</div>
+            <div class="role-metadata-sans"><span class="lead">Your link</span><span class="opened"> · not opened yet</span><span class="goal"> · 13 more to list</span></div>
             <button class="role-action">Share your link</button>
           </div>
         </div>

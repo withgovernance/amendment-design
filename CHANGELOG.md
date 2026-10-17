@@ -8,6 +8,20 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-17 (v2026.10.17.15) — A designation is one wherever it sits; initials are a picture
+
+Decided by Jason from a jurisdiction chip trailing a sample question in `role-designation`,
+`role-caption` and chrome caps at 390 and 1440, and the avatar and campaign monograms, both
+schemes.
+
+- **A jurisdiction code is `role-designation` leading a row or trailing a line**
+  (`typography.uppercase-has-two-homes`). The role was defined by position, so a trailing chip fell
+  to chrome caps, a third chrome site. In `role-designation` the chip declares its box by the
+  caps-box rule; it did not clip or change any line break. Retires the trailing chip in chrome caps.
+- **An avatar's initials are not a designation** (`components.avatar.initials`). They are a
+  picture of a person; as shipped they are centred in the disc, and `role-designation`'s line box
+  set them high.
+
 ## 2026-10-17 (v2026.10.17.14) — A row's height is a floor; a row stacks where its columns stop fitting
 
 Decided by Jason from the org positions table at 1440 and 640, with the declared height as a floor

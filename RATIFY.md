@@ -50,13 +50,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
-### A jurisdiction code that trails, and initials monograms
-- **kind:** two readings
-- **found:** PR 934 review. `SampleQuestions.tsx` sets a jurisdiction chip after a question in chrome caps, secondary ink — a third chrome site. `role-designation` is defined as leading a row or card, but `typography.chrome-sites-are-closed` makes a jurisdiction code a designation. `UserAvatar.tsx` and the claim page's "YC" monogram raise the same question for initials.
-- **evidence:** `role-designation` is larger than the chip's declared box, so the box must grow. Not yet rendered: no story shows `SampleQuestions`.
-- **proposes:** render (A) `role-designation` in the chip with its box re-declared under the caps-box rule, (B) `role-caption`, (C) current chrome caps; measure the chip's fit at 390, both schemes. Then state whether a monogram is a designation.
-- **blocks:** nothing
-
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by
@@ -70,6 +63,9 @@ they stop reading as actionable to the next session that opens this file.
 ## Recently ratified
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
+
+- **2026-10-17 (v2026.10.17.15)** — a trailing jurisdiction chip is `role-designation` in a
+  declared caps box; an avatar's initials are not a designation (`components.avatar.initials`).
 
 - **2026-10-17 (v2026.10.17.14)** — a table row's declared height is a minimum, never a clamp;
   a row stacks where its columns stop fitting, not at `sm`.

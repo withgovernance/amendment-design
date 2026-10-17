@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.17.14
+# spec-version:   v2026.10.17.15
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1086,8 +1086,14 @@ typography:
                   secondary ink. Its sites are a closed list (below).
       DESIGNATION role-designation — 0.875rem, sans-chrome, track-chrome,
                   semibold, PRIMARY ink. A designation REPEATED at text
-                  size, leading a table row or card: bill slugs,
-                  jurisdiction codes ahead of a title. Added 2026-08-31:
+                  size, wherever it sits — leading a table row or card,
+                  or trailing a line as a chip: bill slugs, jurisdiction
+                  codes. Ratified 2026-10-17 from a jurisdiction chip
+                  after a sample question in role-designation,
+                  role-caption and chrome caps: position does not change
+                  what the text is. A chip around it declares its box by
+                  the caps-box rule
+                  (typography.line-height-1-has-two-consequences). Added 2026-08-31:
                   the taxonomy below already distinguished designation
                   from sentence but gave a repeated designation nowhere
                   to live — ceremonial is once per page at display size,
@@ -2489,6 +2495,14 @@ components:
     color: "white"
     rounded: "full"
     typography: "sans semibold"
+    initials: >-
+      AN AVATAR'S INITIALS ARE A PICTURE OF A PERSON, NOT A DESIGNATION
+      (ratified 2026-10-17, decided by Jason from the conversation avatar and
+      the claim page's campaign monogram in their shipped type and in
+      role-designation). They take none of the uppercase roles; they are
+      centred optically in the disc, which role-designation's line box did
+      not do. A seal monogram on an issued artifact is ceremonial and is a
+      different thing.
   navbar:
     description: >-
       NOT STICKY, as of 2026-08-28 — DECIDED BY JASON, and it is how this

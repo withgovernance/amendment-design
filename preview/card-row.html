@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Components — A row of cards" subtitle="eyebrow declares its height · foot docks · your band · role-stat-card" viewport="1120x900" -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amendment specimen — a row of cards</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+.card { padding: 18px 24px; }
+.panes { grid-template-columns: 1fr; }   /* a row needs the width; light above dark */
+.row { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 12px; }
+
+/* components.card — a column whose foot docks (foot-docks-in-a-row) */
+.ask { display: flex; flex-direction: column; border-radius: var(--radius-md); overflow: hidden; }
+.top { display: flex; flex-direction: column; gap: 12px; padding: 16px; flex: 1; }
+/* eyebrow-declares-its-height: the line box of its role-metadata-sans status
+   (0.875rem × 1.4), present or not */
+.eyebrow { display: flex; justify-content: space-between; align-items: center; min-height: calc(0.875rem * 1.4); }
+.count { display: flex; align-items: baseline; gap: 8px; margin-top: auto; }
+.momentum { color: var(--color-success); }
+.dark .momentum { color: var(--color-action); }
+.report-count { color: var(--color-success); font-weight: var(--sans-semibold); }
+.dark .report-count { color: var(--color-action); }
+.lead { color: var(--text-primary); font-weight: var(--sans-semibold); }
+/* the foot under a full-width hairline; your-band washes it on a card you recruit for */
+.foot { display: flex; flex-direction: column; gap: 12px; padding: 14px 16px 16px; border-top: 1px solid var(--border-subtle); }
+.yours .foot { background: var(--wash-yours); }
+.foot .role-metadata-sans { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.foot .role-action { align-self: flex-start; min-height: 48px; padding: 0 20px; font-size: 0.875rem; }
+.key { display: block; margin: 14px 0 0; max-width: min(46rem, 100%); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="panes">
+    <div class="pane live">
+      <span class="pane-label role-label-caps">Light</span>
+      <div class="row">
+        <div class="ask material-regular yours">
+          <div class="top">
+            <div class="eyebrow"><span class="role-designation">US</span><span class="role-metadata-sans">You co-signed</span></div>
+            <div class="role-ui-heading">Stop Warrantless Surveillance and Reform Section 702 and FISA</div>
+            <div class="count"><span class="role-stat-card momentum">1,377</span><span class="role-metadata-sans">co-signs</span></div>
+          </div>
+          <div class="foot">
+            <div class="role-metadata-sans"><span class="lead">Your link</span> · <span class="report-count">12 co-signed</span> · 48 opened</div>
+            <button class="role-action">Share your link</button>
+          </div>
+        </div>
+        <div class="ask material-regular yours">
+          <div class="top">
+            <div class="eyebrow"><span class="role-designation">FL</span><span class="role-metadata-sans">You started this</span></div>
+            <div class="role-ui-heading">Fund Lead Pipe Replacement in Every Florida School</div>
+            <div class="count"><span class="role-stat-card momentum">12</span><span class="role-metadata-sans">co-signs</span></div>
+          </div>
+          <div class="foot">
+            <div class="role-metadata-sans"><span class="lead">Your link</span> · not opened yet · 13 more to list</div>
+            <button class="role-action">Share your link</button>
+          </div>
+        </div>
+        <div class="ask material-regular">
+          <div class="top">
+            <div class="eyebrow"><span class="role-designation">US</span></div>
+            <div class="role-ui-heading">Release the Epstein Files in Full</div>
+            <div class="count"><span class="role-stat-card momentum">2,310</span><span class="role-metadata-sans">co-signs</span></div>
+          </div>
+          <div class="foot">
+            <div class="role-metadata-sans"><span class="report-count">38 this week</span> · last signed today</div>
+            <button class="role-action">Co-sign</button>
+          </div>
+        </div>
+      </div>
+      <span class="key role-caption">The first two cards are asks you recruit for: their foot is the --wash-yours band. The third is a discover card: the same hairline, no wash, and no status text, yet its designation and title sit level with its neighbours’ because the eyebrow row declares its height.</span>
+    </div>
+    <div class="pane dark live">
+      <span class="pane-label role-label-caps">Dark</span>
+      <div class="row">
+        <div class="ask material-regular yours">
+          <div class="top">
+            <div class="eyebrow"><span class="role-designation">US</span><span class="role-metadata-sans">You co-signed</span></div>
+            <div class="role-ui-heading">Stop Warrantless Surveillance and Reform Section 702 and FISA</div>
+            <div class="count"><span class="role-stat-card momentum">1,377</span><span class="role-metadata-sans">co-signs</span></div>
+          </div>
+          <div class="foot">
+            <div class="role-metadata-sans"><span class="lead">Your link</span> · <span class="report-count">12 co-signed</span> · 48 opened</div>
+            <button class="role-action">Share your link</button>
+          </div>
+        </div>
+        <div class="ask material-regular yours">
+          <div class="top">
+            <div class="eyebrow"><span class="role-designation">FL</span><span class="role-metadata-sans">You started this</span></div>
+            <div class="role-ui-heading">Fund Lead Pipe Replacement in Every Florida School</div>
+            <div class="count"><span class="role-stat-card momentum">12</span><span class="role-metadata-sans">co-signs</span></div>
+          </div>
+          <div class="foot">
+            <div class="role-metadata-sans"><span class="lead">Your link</span> · not opened yet · 13 more to list</div>
+            <button class="role-action">Share your link</button>
+          </div>
+        </div>
+        <div class="ask material-regular">
+          <div class="top">
+            <div class="eyebrow"><span class="role-designation">US</span></div>
+            <div class="role-ui-heading">Release the Epstein Files in Full</div>
+            <div class="count"><span class="role-stat-card momentum">2,310</span><span class="role-metadata-sans">co-signs</span></div>
+          </div>
+          <div class="foot">
+            <div class="role-metadata-sans"><span class="report-count">38 this week</span> · last signed today</div>
+            <button class="role-action">Co-sign</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

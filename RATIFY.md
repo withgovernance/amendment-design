@@ -50,13 +50,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
-### Table row height: a floor or a fixed height
-- **kind:** two readings
-- **found:** PR 934 review. `components/positions/PositionsTable.tsx` declares a row height on `<tr>`, which a table row treats as a minimum; wrapped titles and the "In response to" line grow it.
-- **evidence:** at 1440, `RecentPositionsSection` rows measure about 73, 93 and 72px; `OrgPositionsList` about 97, 136 and 72px. The row action no longer changes a row's height, which is what `components.table` targeted.
-- **proposes:** say whether "one declared row height" is a floor content may exceed, or fixed with the title clamped. Render (A) the floor, (B) fixed with the title clamped to two lines and the response line to one; 1440 and the `sm` boundary, both schemes.
-- **blocks:** nothing
-
 ### A jurisdiction code that trails, and initials monograms
 - **kind:** two readings
 - **found:** PR 934 review. `SampleQuestions.tsx` sets a jurisdiction chip after a question in chrome caps, secondary ink — a third chrome site. `role-designation` is defined as leading a row or card, but `typography.chrome-sites-are-closed` makes a jurisdiction code a designation. `UserAvatar.tsx` and the claim page's "YC" monogram raise the same question for initials.
@@ -77,6 +70,9 @@ they stop reading as actionable to the next session that opens this file.
 ## Recently ratified
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
+
+- **2026-10-17 (v2026.10.17.14)** — a table row's declared height is a minimum, never a clamp;
+  a row stacks where its columns stop fitting, not at `sm`.
 
 - **2026-10-17 (v2026.10.17.13)** — delivery map hexes and the threshold meter climb the ribbon
   ladder and turn `--color-momentum-soft` only when delivered or at threshold

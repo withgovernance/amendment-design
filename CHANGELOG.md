@@ -8,6 +8,18 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-17 (v2026.10.17.14) — A row's height is a floor; a row stacks where its columns stop fitting
+
+Decided by Jason from the org positions table at 1440 and 640, with the declared height as a floor
+and as a fixed height with clamped lines, both schemes.
+
+- **The declared row height is a minimum** (`components.table.row-height`). A two-line title and
+  its sub-line already run past it, so a fixed height never bound at 1440; clamping only cut the
+  "In response to" line and the co-sign count on it. Titles and sub-lines wrap.
+- **A row stacks where the columns stop fitting, not at a framework breakpoint**
+  (`components.table.below-width`). At the small breakpoint the table still set columns and cut
+  off Posted and the row action.
+
 ## 2026-10-17 (v2026.10.17.13) — Progress is slate; done is green
 
 Decided by Jason from the delivery hex tilegram and the district threshold meter, three readings

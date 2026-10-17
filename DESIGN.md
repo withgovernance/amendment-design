@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.17.13
+# spec-version:   v2026.10.17.14
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2409,9 +2409,19 @@ components:
       --space-3 vertical and --space-5 horizontal.
     row-height: >-
       EVERY ROW DECLARES ONE HEIGHT, whether or not it carries a row-action;
-      the action's 44px target otherwise made only those rows taller.
+      the action's 44px target otherwise made only those rows taller. THE
+      DECLARED HEIGHT IS A MINIMUM, NOT A CLAMP (ratified 2026-10-17, decided
+      by Jason from the org positions table at 1440 with the height as a
+      floor and as a fixed height with clamped lines): content may make a row
+      taller. A two-line title over its sub-line already exceeds the floor,
+      so a fixed height never bound at 1440 and its only effect was cutting
+      the "In response to" line and the count it carries. Titles and
+      sub-lines wrap; they are not clamped.
     below-width: >-
-      UNDER A PHONE'S WIDTH A ROW STACKS, and the head row is not shown: the
+      WHERE THE COLUMNS STOP FITTING, A ROW STACKS — a container measurement,
+      not a framework breakpoint: at the framework's small breakpoint the
+      org positions table still set columns and cut off its last two
+      (ratified 2026-10-17). The stacked form shows no head row: the
       title on its own line, then the secondary cells with the status at the
       end, then the row-action. In columns at 390 a title broke every two or
       three words and the row overran its card. Each cell keeps its column's

@@ -78,6 +78,27 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** a named four-step map ramp (tokens per step, both schemes), stating that ramp steps are not held to text contrast but must separate from each neighbour, and that a ramp is not a green "plate". Decide together with "Fill colour for delivery map hexes".
 - **blocks:** the delivery map on /asks/[askId]
 
+### `.role-action` owns no font size
+- **kind:** unowned default
+- **found:** design-reviewer on `preview/card-row.html`. `.role-action` declares family and weight only, so a bare `<button>` takes the browser's default size at `font-variation-settings: normal`; each specimen picks its own. `components.button-cta` says “sans body semibold”, which reads as 1rem or as the metadata rung.
+- **evidence:** card-row.html sets 0.875rem by hand on its acts.
+- **proposes:** render a row's acts at 1rem and 0.875rem, at 390 and 1440, with “Share your link” as the widest; write the size, line height and `--sans-body` into `.role-action`.
+- **blocks:** nothing
+
+### Green counts on card glass against `color.ink-needs-an-opaque-ground`
+- **kind:** two readings
+- **found:** design-reviewer on `preview/card-row.html`. The opaque-ground rule says semantic ink needs an opaque ground; `card.foot-docks-in-a-row` and `typography.roles.stat-card` put green counts on `material-regular` over the aurora.
+- **evidence:** painted-ground contrast in the specimen at 1440: 5.02–6.43, all passing; `ink-ground-is-a-placement` records a threefold swing across the band.
+- **proposes:** render the row at the worst aurora position (the top of the band, dark) and sample there; then exempt `material-regular` as a sufficient ground for these inks, or require an opaque card in the band.
+- **blocks:** nothing
+
+### The green-ink switch and the eyebrow height are written by hand
+- **kind:** spec ahead
+- **found:** design-reviewer on `preview/card-row.html`. Every consumer re-derives `--color-success` in light → `--color-action` in dark for momentum and report ink, and the eyebrow height as a copy of `role-metadata-sans`'s metrics.
+- **evidence:** card-row.html's `.momentum`, `.report-count` and `.eyebrow` rules.
+- **proposes:** a scheme-switched momentum ink token, and a line-box variable on `role-metadata-sans` the eyebrow can reference. Also decide whether the report line's semibold count and “Your link” are part of `foot-docks-in-a-row` or a builder's addition.
+- **blocks:** nothing
+
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by

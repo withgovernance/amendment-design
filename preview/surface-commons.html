@@ -7,9 +7,8 @@
 <link rel="stylesheet" href="../colors_and_type.css">
 <link rel="stylesheet" href="_card.css">
 <style>.card { padding: 16px 20px; min-height: 270px; }
-  .meta { font-family: var(--font-serif); font-variation-settings: 'opsz' 16, 'wght' 420; font-size: 12px; color: var(--text-secondary); }
   .tally { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-weight: 600; letter-spacing: -0.01em; }
-  .roll-avatar { width: 30px; height: 30px; flex: 0 0 auto; border-radius: 9999px; background: var(--color-primary); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-sans); font-variation-settings: 'wdth' 100; font-weight: var(--sans-semibold); font-size: 12px; box-shadow: inset 0 0 0 1px rgb(0 0 0 / 20%); margin-left: -6px; }.caption { font-variation-settings: 'opsz' 16, 'wght' 420; }
+  .roll-avatar { width: 30px; height: 30px; flex: 0 0 auto; border-radius: 9999px; background: linear-gradient(var(--color-primary-light), var(--color-primary)); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-sans); font-variation-settings: 'wdth' 100; font-weight: var(--sans-semibold); font-size: 12px; box-shadow: inset 0 0 0 1px rgb(0 0 0 / 20%); margin-left: -6px; }.caption { font-variation-settings: 'opsz' 16, 'wght' 420; }
   /* Green ink is a report (color.green-ink-is-one-token). */
   .ink-green { color: var(--ink-success); }
 </style>
@@ -23,7 +22,7 @@
     <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">
       <div style="flex: 1;">
         <div class="role-ui-heading">Repair the Eldorado Springs trailhead</div>
-        <div class="meta" style="margin-top: 3px;">started by Brad Feld · representing District&nbsp;2</div>
+        <div class="role-metadata" style="margin-top: 3px;">started by Brad Feld · representing District&nbsp;2</div>
       </div>
       <div style="text-align: right; flex: 0 0 auto;">
         <div class="tally ink-green" style="font-size: 22px;">2,301</div>
@@ -49,7 +48,7 @@
         <span class="roll-avatar">JM</span>
         <span class="roll-avatar">RC</span>
         <span class="roll-avatar">AO</span>
-        <span class="meta" style="margin-left: 10px;">and 2,297 neighbors</span>
+        <span class="role-metadata" style="margin-left: 10px;">and 2,297 neighbors</span>
       </div>
       <button style="font-family: var(--font-sans); font-variation-settings: var(--sans-body); font-weight: var(--sans-semibold); font-size: 14px; color: var(--color-action-label); background: var(--color-action); border: none; border-radius: var(--radius-md); min-height: 48px; padding: 0 16px; white-space: nowrap; flex: 0 0 auto; box-shadow: inset 0 0 0 1px var(--color-action-active); cursor: pointer;">Add your name</button>
     </div>
@@ -59,8 +58,8 @@
   <div style="margin-top: 10px; display: flex; align-items: center; gap: 10px; padding: 0 2px;">
     <span style="width: 8px; height: 8px; border-radius: 9999px; background: var(--color-momentum); flex: 0 0 auto;"></span>
     <span class="lbl role-caption">On the record</span>
-    <span class="meta" style="flex: 1;">Sen. Hooper answered <strong style="font-weight:700; font-style: normal;">For</strong></span>
-    <span class="tally" style="font-size: 12px; color: var(--text-tertiary);">2026·05·22</span>
+    <span class="role-metadata" style="flex: 1;">Sen. Hooper answered <strong style="font-weight:600; font-style: normal;">For</strong></span>
+    <span class="tally" style="font-size: 12px; color: var(--text-secondary);">2026·05·22</span>
   </div>
 
   <div class="caption" style="margin-top: 12px;">The Commons is live and public — it stays on the aurora, never an artifact. One green carries both the crowd and the name you sign — co-signing <em>is</em> joining. Motion <em>accrues</em> here as real counts climb — distinct from the Receipt's one-shot bloom.</div>

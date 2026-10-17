@@ -8,6 +8,19 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-17 (v2026.10.17.17) — The threshold is a beginning; the meter's label moves with its fill
+
+Decided by Jason from a threshold meter's count label in secondary ink and in green, at 92% and
+100%, both schemes.
+
+- **The count beside a threshold meter is `role-caption`'s secondary ink while it climbs and
+  `--ink-success` from the threshold on** (`color.action.climbing-is-slate-threshold-is-green`).
+  Green throughout said "reached" while the bar said "not yet", and the tally already reports
+  the crowd in green.
+- **The threshold opens the push; it does not end it.** Delivery can begin and momentum
+  commences there. v2026.10.17.13 called it "done" and "the crowd is in"; the rule is renamed
+  from `progress-is-slate-done-is-green` and its prose rewritten. The fills are unchanged.
+
 ## 2026-10-17 (v2026.10.17.16) — A card's padding is one token that steps with the card
 
 Decided by Jason from the home asks row at 390, 640 and 1440, both schemes, stepped, at
@@ -47,11 +60,13 @@ and as a fixed height with clamped lines, both schemes.
 
 ## 2026-10-17 (v2026.10.17.13) — Progress is slate; done is green
 
+~~Done is green~~ — corrected in v2026.10.17.17: the threshold opens the push; it does not end it.
+
 Decided by Jason from the delivery hex tilegram and the district threshold meter, three readings
 each, 390 and 1440, both schemes.
 
 - **A data fill counting toward a crowd climbs the ribbon ladder and turns momentum green only
-  when the crowd is in** (`color.action.progress-is-slate-done-is-green`). The delivery map's
+  when the crowd is in** (now `color.action.climbing-is-slate-threshold-is-green`). The delivery map's
   hexes run `--ribbon-track`, `--ribbon-completed`, `--ribbon-active`, then
   `--color-momentum-soft` for delivered; the viewer's hex is a dashed `--text-primary` ring. A
   ramp built on a fixed zinc step inverted in dark and lit the empty hexes brightest, and its

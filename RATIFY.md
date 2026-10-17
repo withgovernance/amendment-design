@@ -50,13 +50,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
-### A threshold meter's count label: green before the threshold?
-- **kind:** unowned default
-- **found:** design review of `preview/surface-commons.html` after v2026.10.17.13. The label beside the meter ("2,301 / 2,500") is `--ink-success` while the bar is slate, so the label says done and the bar says not yet. `color.action.progress-is-slate-done-is-green` names the bar, not the label.
-- **evidence:** not yet rendered. The tally two lines above already reports the crowd in green.
-- **proposes:** render the label in `role-caption`'s secondary ink and in `--ink-success`, at 92% and 100%, both schemes; state that the label turns green with the fill.
-- **blocks:** nothing
-
 ### A green mark on the bare aurora (the "On the record" dot)
 - **kind:** unowned default
 - **found:** same review. The dot is `--color-momentum` as a non-text mark on the aurora: 2.49:1 in light against the 3:1 non-text floor, 5.9:1 dark. No token covers a green mark; `--ink-success` is for text. The Commons `palette-emphasis` lists candidate-answered as green, but a candidate's answer counts no crowd (`registers.live.palette-rule`).
@@ -92,6 +85,10 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-10-17 (v2026.10.17.17)** — a meter's count label is secondary ink until the threshold,
+  `--ink-success` from it; the threshold opens the push, never "done". The rule is renamed
+  `color.action.climbing-is-slate-threshold-is-green`.
+
 - **2026-10-17 (v2026.10.17.16)** — `--card-pad`: `--space-4`, `--space-5` once the card is
   24rem wide; the card and its docked foot both read it.
 
@@ -103,7 +100,7 @@ Moved out of this file on ratification; listed here for one cycle so the code si
 
 - **2026-10-17 (v2026.10.17.13)** — delivery map hexes and the threshold meter climb the ribbon
   ladder and turn `--color-momentum-soft` only when delivered or at threshold
-  (`color.action.progress-is-slate-done-is-green`).
+  (`color.action.climbing-is-slate-threshold-is-green`).
 
 - **2026-10-17 (v2026.10.17.12)** — the wordmark set as type is `role-label-caps`' size and
   `--track-chrome` at every site; drop the sidebar and StaticTitle size override.

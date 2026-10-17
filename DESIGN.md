@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.17.16
+# spec-version:   v2026.10.17.17
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -652,12 +652,15 @@ color:
       for the count by a wide margin in both schemes; green failed 3:1 for
       the dot in light, and --color-functional failed for the count in dark,
       where it does not switch.
-    progress-is-slate-done-is-green: >-
+    climbing-is-slate-threshold-is-green: >-
       RATIFIED 2026-10-17, decided by Jason from the delivery hex tilegram and
       the district threshold meter, each in three readings at 390 and 1440,
       both schemes. A DATA FILL THAT ENCODES PROGRESS TOWARD A COUNTED CROWD
-      CLIMBS THE RIBBON LADDER AND TURNS MOMENTUM GREEN ONLY WHEN THE CROWD
-      IS DONE. Meters, bars, ribbons and map fills are not plates
+      CLIMBS THE RIBBON LADDER AND TURNS MOMENTUM GREEN WHEN THE THRESHOLD IS
+      REACHED. THE THRESHOLD IS A BEGINNING, NOT AN END: delivery can begin
+      and momentum commences there; the push continues past it. Copy and
+      rules never call it done, finished or complete (corrected 2026-10-17
+      by Jason). Meters, bars, ribbons and map fills are not plates
       (fill-rule's exemption covers them: they encode quantity, not
       affordance), and they are not held to text contrast; adjacent steps
       must separate from each other in both schemes.
@@ -677,7 +680,11 @@ color:
       toward emerald by degrees: every emerald fill failed 3:1 against the
       light track, and a slate fill clears it in both schemes. The count is
       always printed beside the meter as text, which is what carries the
-      number; the finished bar's green is the report that the crowd is in.
+      number. THE COUNT LABEL MOVES WITH THE FILL: role-caption's secondary
+      ink while the meter climbs, --ink-success from the threshold on, so
+      label and bar never disagree (decided by Jason from the label in both
+      inks at 92% and 100%, both schemes). The green says the threshold is
+      reached and the next stage has opened.
   # -----------------------------------------------------------------------
   # NEUTRAL — the paper. Zinc scale, chosen for a warm-gray undertone that
   # complements slate-blue better than pure gray.
@@ -4332,7 +4339,7 @@ surfaces:
       - "signature roll — co-signers accumulate as a roll of names/avatars (the petition-sheet artifact)"
       - "on-the-record entry — a candidate response as a dated ledger line (position · bill · date)"
       - "tally — live count in IBM Plex Mono tabular-nums; the one number meant to be watched, not read"
-      - "district threshold meter — an accruing slate bar that turns emerald when a district reaches its threshold (color.action.progress-is-slate-done-is-green)"
+      - "district threshold meter — an accruing slate bar that turns emerald when a district reaches its threshold (color.action.climbing-is-slate-threshold-is-green)"
     motion-discipline: >-
       Momentum motion must reflect REAL aggregate state — a count that
       actually rose, a co-sign that actually landed, a threshold actually

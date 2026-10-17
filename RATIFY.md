@@ -50,6 +50,13 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
+### Does --card-pad cover the featured card
+- **kind:** spec silent
+- **found:** voyager, after v2026.10.17.16. The featured `AskSummaryCard` pads one step larger than the standard card at both sizes (`p-5 sm:p-6`). `components.card.padding-steps-with-the-card` names one card padding and says nothing about a featured variant.
+- **evidence:** not yet rendered. Render the featured card in `--card-pad` against its current padding, 390 and 1440, both schemes.
+- **proposes:** either the featured card reads `--card-pad` like every card, or a second step (`--card-pad-featured`) with its reason.
+- **blocks:** nothing; the featured card keeps its padding until decided
+
 ### A green mark on the bare aurora (the "On the record" dot)
 - **kind:** unowned default
 - **found:** same review. The dot is `--color-momentum` as a non-text mark on the aurora: 2.49:1 in light against the 3:1 non-text floor, 5.9:1 dark. No token covers a green mark; `--ink-success` is for text. The Commons `palette-emphasis` lists candidate-answered as green, but a candidate's answer counts no crowd (`registers.live.palette-rule`).

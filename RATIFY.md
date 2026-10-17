@@ -78,13 +78,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** a named four-step map ramp (tokens per step, both schemes), stating that ramp steps are not held to text contrast but must separate from each neighbour, and that a ramp is not a green "plate". Decide together with "Fill colour for delivery map hexes".
 - **blocks:** the delivery map on /asks/[askId]
 
-### Wordmark size and tracking: chrome or ceremonial
-- **kind:** two readings (left open by v2026.10.17.9)
-- **found:** PR 934 review. `HomeLink` and `Footer` set the wordmark in `role-label-caps` at the role's size; `Sidebar/index.tsx` and `Navbar/StaticTitle.tsx` add a literal size override "to match the sidebar lockup", so one name ships at two sizes.
-- **evidence:** voyager stories `navbar--logged-in` (HomeLink beside StaticTitle at 1440), `sidebar--bare`, `footer--signed-out`, both schemes.
-- **proposes:** a wordmark entry naming its role. Render (A) `role-label-caps` size and `--track-chrome` in primary ink everywhere, (B) the sidebar's larger size as a named token, (C) `role-ceremonial`'s tracking at chrome size; navbar, sidebar and footer at 390 and 1440, both schemes.
-- **blocks:** removing the literal size in voyager's sidebar and StaticTitle
-
 ### Table row height: a floor or a fixed height
 - **kind:** two readings
 - **found:** PR 934 review. `components/positions/PositionsTable.tsx` declares a row height on `<tr>`, which a table row treats as a minimum; wrapped titles and the "In response to" line grow it.
@@ -112,6 +105,9 @@ they stop reading as actionable to the next session that opens this file.
 ## Recently ratified
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
+
+- **2026-10-17 (v2026.10.17.12)** — the wordmark set as type is `role-label-caps`' size and
+  `--track-chrome` at every site; drop the sidebar and StaticTitle size override.
 
 - **2026-10-17 (v2026.10.17.11)** — marketing and sales surfaces sit outside the register table,
   palette included; the fill rule still binds them (`registers.marketing-is-outside-the-table`).

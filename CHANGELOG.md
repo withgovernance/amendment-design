@@ -8,6 +8,17 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-17 (v2026.10.17.12) — The wordmark is chrome-sized everywhere
+
+Decided by Jason from the navbar, sidebar and footer at 390 and 1440, both schemes, at
+`role-label-caps`' size, at the sidebar's one-step-larger literal, and at `--track-ceremonial`.
+
+- **The wordmark set as type takes `role-label-caps`' size and `--track-chrome` at every site**
+  (`typography.chrome-sites-are-closed`). The larger literal in the sidebar and the navbar title
+  added barely a pixel and shipped one name at two sizes; ceremonial tracking at chrome size is a
+  chrome label made wide, not a ceremonial one. Retires the sidebar's and StaticTitle's size
+  override.
+
 ## 2026-10-17 (v2026.10.17.11) — No register binds a sales page
 
 Decided by Jason from the politician claim page as shipped and with neutral eyebrows, numerals and

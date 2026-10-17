@@ -54,7 +54,7 @@ Full list in `DESIGN-HARD-RULES.md`.
 - **Green fill rule** — a filled green plate is a control (*press me*); green ink is a report (*this happened*). Green appears where a crowd is counted or on the primary act. Conversation views are green-free. Meters and ribbons are exempt.
 - **The CTA carries an INK label, not white**, on a flat fill ringed in `color.action-active`.
 - **No red except semantic danger** (`--color-danger`). No violet/pink/magenta accents. No amber except warning.
-- **12px type floor**, no chrome exception. Headings never ALL CAPS — uppercase has three homes: `role-label-caps`, `role-designation`, `role-ceremonial`.
+- **12px type floor**, no chrome exception. Headings never ALL CAPS — uppercase has four homes: `role-label-caps`, `role-designation`, `role-ceremonial`, `role-calendar-month`.
 - **Targets ≥44px, CTA 48px** — by `min-height` or an expanded hit area, never padding.
 - **No transform transitions, no `scale()`, no `brightness()`** on hover. Motion lives on exactly two surfaces: Receipt bloom, Commons accrual. Streaming is not motion.
 - **Text may sit on the aurora; coloured ink may not.** The band is bounded so `--text-secondary` clears 4.5:1 everywhere; coloured ink needs an opaque ground.

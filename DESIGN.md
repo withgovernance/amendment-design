@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.16.5
+# spec-version:   v2026.10.16.6
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1031,6 +1031,13 @@ typography:
                   a field label. Both were the same gap.
       CEREMONIAL  role-ceremonial — display size, sans-ceremonial,
                   track-ceremonial, semibold, ONCE PER PAGE.
+      CALENDAR    role-calendar-month — the month over a calendar tile's
+                  day numeral, and nowhere else. The caption size, BODY
+                  width, a trace of tracking, semibold, secondary ink.
+                  Added 2026-10-16: a printed calendar's month is caps,
+                  and at chrome width it was the loudest thing on a tile
+                  whose job is the numeral. At body width it reads smaller
+                  without going under the floor. It is not a chrome site.
     Chrome and ceremonial share a width preset, so what separates them is
     TRACKING AND SIZE — this file already says so under widthPresets. A
     ceremonial element that is not tracked to 0.20em is not ceremonial; it
@@ -1058,7 +1065,8 @@ typography:
     Everything else that took chrome caps is sentence case: table and footer
     column heads, form labels, count chips, nav labels in both navs
     (nav-labels-are-not-chrome), breadcrumbs, progress-ribbon milestones and
-    the `Sources:` prefix. A third site is a ratification.
+    the `Sources:` prefix. A third site is a ratification. The month on a
+    calendar tile is not chrome; it has its own role (role-calendar-month).
     A DIVIDER MAY CARRY A QUALIFIER (ratified 2026-10-12): the caps word,
     then a role-caption in sentence case beside it — "Canvas hue" + "same
     opacity". The caption is its own role, not caps, so it adds no site.
@@ -1410,6 +1418,17 @@ typography:
       tracking: "0.12em"          # track-chrome
       textTransform: uppercase
       fontVariationSettings: '"wdth" 125'
+    # RATIFIED 2026-10-16. The month on a calendar tile: caps at the caption
+    # rung but body width, so it sits under the day numeral instead of
+    # competing with it. Secondary ink; the tile's urgent state recolours it.
+    calendar-month:
+      family: sans
+      size: 0.75rem         # 12px, the floor
+      weight: 600           # semibold
+      lineHeight: 1.25      # the caption rung
+      tracking: "0.02em"
+      textTransform: uppercase
+      fontVariationSettings: '"wdth" 104'   # sans-body
     # Metadata is serif ROMAN, not italic. Newsreader's italic is a true
     # calligraphic italic - single-storey a, real entry strokes - lovely at
     # 20px and genuinely hard at 14. That is not a fault in the face; it is

@@ -8,6 +8,19 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-16 (v2026.10.16.6) — A calendar tile's month has its own caps role
+
+Decided by Jason from a render of the tile in both schemes: today's chrome caps, the same at 11px,
+and caps at 12px on the body width.
+
+- **The month over a calendar tile's day numeral is `role-calendar-month`**, uppercase's fourth home
+  (`typography.uppercase-has-two-homes`). In `role-label-caps` it made the tile a third chrome site,
+  and at chrome width with chrome tracking it was the loudest thing on a tile whose job is the
+  numeral. Sentence case was rendered and set aside: a printed calendar's month is caps. Dropping
+  to 11px barely changed it, because width and tracking were what made it loud, and it broke the
+  12px floor. Body width with a trace of tracking reads smaller at the floor and was the easier
+  of the three to read. Chrome's sites stay two (`typography.chrome-sites-are-closed`).
+
 ## 2026-10-16 (v2026.10.16.5) — The next goal rides the link line
 
 Decided by Jason, the last entry from the PR 934 queue.

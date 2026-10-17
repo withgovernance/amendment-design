@@ -72,7 +72,7 @@ Not guidance: [`proposed/`](./proposed/) (an unratified draft), `github.md` (a d
 
 - **Voice.** Calm, deliberate, modern. Never bureaucratic, never combative. Civic is not partisan.
 - **Person.** Second person for the user (“you tracked this bill”), third-person institutional for the legislature. Never “we”.
-- **Casing.** Sentence case for headings, navigation and UI text; title case only in proper nouns. Uppercase lives only in `role-label-caps`, `role-designation` and `role-ceremonial` (`typography.uppercase-has-two-homes`).
+- **Casing.** Sentence case for headings, navigation and UI text; title case only in proper nouns. Uppercase lives only in `role-label-caps`, `role-designation`, `role-ceremonial` and `role-calendar-month` (`typography.uppercase-has-two-homes`).
 - **Reading Room** — precise, no apologetic hedging. Citations are numeric superscripts in primary ink.
 - **Archive** — clerical; status stated, dates exact. Provenance in `role-metadata`: “started by Brad Feld”.
 - **Writing Desk** — composed. Letterhead address blocks; “Dear Senators & Representatives,” — never “Hey!”.
@@ -118,6 +118,7 @@ Not guidance: [`proposed/`](./proposed/) (an unratified draft), `github.md` (a d
 | `role-body` · `role-body-serif` · `role-body-lead` · `role-lede` | Body text; the newcomer’s lede |
 | `role-label-caps` | Chrome label: the section divider and the status stamp only (`typography.chrome-sites-are-closed`) |
 | `role-designation` | Bill slug or code leading a row or card |
+| `role-calendar-month` | The month over a calendar tile’s day numeral |
 | `role-ceremonial` | Display designation, once per page |
 | `role-metadata` · `role-metadata-sans` | Who, when, how — serif on canvas, sans in containers |
 | `role-field-label` | The name of a form field, above it (`components.input-label`) |

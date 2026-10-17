@@ -617,6 +617,20 @@
   font-variation-settings: var(--sans-chrome);
   color: var(--text-primary);
 }
+/* Calendar month — uppercase's fourth home (typography.uppercase-has-two-homes,
+   amended 2026-10-16): the month over a calendar tile's day numeral, and no
+   other site. Caps at the caption rung, but at body width and nearly untracked,
+   so it reads smaller than chrome without going under the 12px floor. */
+.role-calendar-month {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: var(--sans-semibold);
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-variation-settings: var(--sans-body);
+  color: var(--text-secondary);
+}
 /* Metadata is serif ROMAN, not italic. Newsreader's italic is a true
    calligraphic italic — single-storey a, real entry strokes — which is lovely
    at 20px and genuinely hard at 14. That is not a fault in the face; it is the

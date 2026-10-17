@@ -78,13 +78,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** a named four-step map ramp (tokens per step, both schemes), stating that ramp steps are not held to text contrast but must separate from each neighbour, and that a ramp is not a green "plate". Decide together with "Fill colour for delivery map hexes".
 - **blocks:** the delivery map on /asks/[askId]
 
-### The month on a calendar tile in caps
-- **kind:** two readings
-- **found:** design-reviewer on voyager PR 934, `DeadlineTile.tsx:67`. The month (“AUG”) is `role-label-caps`, which would make the calendar tile a third chrome-caps site (`typography.chrome-sites-are-closed`).
-- **evidence:** VotingLedger story, light and dark. Not yet rendered both ways.
-- **proposes:** render the tile with the month in caps and in sentence case; a third site is either ratified or the month leaves caps.
-- **blocks:** nothing
-
 ### The count on an ask card has no role
 - **kind:** unowned default
 - **found:** design-reviewer on voyager PR 934, `AskSummaryCard` / `AskMomentum`. The co-sign count is hand-set (`font-bold tracking-tight`, 24px); `role-stat-display` is hero-sized, so nothing in the role layer fits.
@@ -119,6 +112,9 @@ they stop reading as actionable to the next session that opens this file.
 ## Recently ratified
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
+
+- **2026-10-16 (v2026.10.16.6)** — a calendar tile's month is `role-calendar-month`: caps at the
+  caption size, body width, nearly untracked. `DeadlineTile` moves off `role-label-caps`.
 
 - **2026-10-16 (v2026.10.16.5)** — a recruit card's next goal is a clause on the "Your link" line,
   never its own line; spec ahead, production adds it later.

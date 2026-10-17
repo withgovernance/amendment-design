@@ -92,6 +92,9 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-10-17 (v2026.10.17.9)** — the wordmark set as type takes primary ink; it is a designation,
+  not a third chrome site.
+
 - **2026-10-17 (v2026.10.17.8)** — `--track-chrome` is 0.08em: section dividers, status stamps and
   designations read as words.
 

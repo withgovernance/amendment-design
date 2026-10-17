@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.17.8
+# spec-version:   v2026.10.17.9
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1102,7 +1102,14 @@ typography:
     Everything else that took chrome caps is sentence case: table and footer
     column heads, form labels, count chips, nav labels in both navs
     (nav-labels-are-not-chrome), breadcrumbs, progress-ribbon milestones and
-    the `Sources:` prefix. A third site is a ratification. The month on a
+    the `Sources:` prefix. A third site is a ratification. THE WORDMARK SET
+    AS TYPE IS NOT A THIRD SITE: it takes chrome's register as a
+    designation, and like role-designation it takes PRIMARY ink, never the
+    label's secondary (ratified 2026-10-17, decided by Jason from the navbar,
+    sidebar and footer in both schemes: in secondary the product's name sat
+    fainter than the nav item under it and faded into the footer's grey
+    prose). Whether its size and tracking are chrome or ceremonial stays
+    open. The month on a
     calendar tile is not chrome; it has its own role (role-calendar-month).
     A DIVIDER MAY CARRY A QUALIFIER (ratified 2026-10-12): the caps word,
     then a role-caption in sentence case beside it — "Canvas hue" + "same

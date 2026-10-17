@@ -8,6 +8,16 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-17 (v2026.10.17.9) — The wordmark takes primary ink
+
+Decided by Jason from voyager's navbar (1440 and 390), sidebar and footer, light and dark, the
+wordmark in primary against secondary ink.
+
+- **The wordmark set as type takes primary ink** (`typography.chrome-sites-are-closed`). It is the
+  product's name, a designation, not a label: in the chrome label's secondary ink it sat fainter
+  than the "Dashboard" nav item under it and faded into the footer's grey paragraph. It is not a
+  third chrome site. Whether its size and tracking are chrome or ceremonial is still open.
+
 ## 2026-10-17 (v2026.10.17.8) — Chrome tracking is 0.08em
 
 Decided by Jason from the section divider and status stamps at 0.12em, 0.08em and 0.05em, both

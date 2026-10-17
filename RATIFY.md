@@ -78,13 +78,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** a named four-step map ramp (tokens per step, both schemes), stating that ramp steps are not held to text contrast but must separate from each neighbour, and that a ramp is not a green "plate". Decide together with "Fill colour for delivery map hexes".
 - **blocks:** the delivery map on /asks/[askId]
 
-### The count on an ask card has no role
-- **kind:** unowned default
-- **found:** design-reviewer on voyager PR 934, `AskSummaryCard` / `AskMomentum`. The co-sign count is hand-set (`font-bold tracking-tight`, 24px); `role-stat-display` is hero-sized, so nothing in the role layer fits.
-- **evidence:** asksummarycard--default and homeasksrow renders at 390 and 1440.
-- **proposes:** a count role at the card’s rung (or a stat-display step), measured on the card; or name the hand-set value as the system’s.
-- **blocks:** nothing
-
 ### Sibling cards’ top rows at two heights
 - **kind:** spec silent
 - **found:** design-reviewer on voyager PR 934, home asks row. A discover card has no status text at the right of its eyebrow, so its designation sits about 3px and its title about 6px higher than on the recruit cards beside it. `card.foot-docks-in-a-row` aligns only the foot.
@@ -105,6 +98,9 @@ they stop reading as actionable to the next session that opens this file.
 ## Recently ratified
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
+
+- **2026-10-17 (v2026.10.17.1)** — `role-stat-card`, stat-display's card step, replaces the
+  hand-set card count (voyager's `Stat` size md and `AskCosignsTile`).
 
 - **2026-10-17 (v2026.10.17)** — a draft is not a warning: DRAFT takes the same neutral ink as
   CLOSED (`color.semantic.a-draft-is-not-a-warning`).

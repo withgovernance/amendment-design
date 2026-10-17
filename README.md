@@ -124,6 +124,7 @@ Not guidance: [`proposed/`](./proposed/) (an unratified draft), `github.md` (a d
 | `role-field-label` | The name of a form field, above it (`components.input-label`) |
 | `role-caption` · `role-quote` · `role-code` | Captions; quoted voice; mono |
 | `role-stat-display` · `role-signature` | Hero numerals; the user’s affirmed name |
+| `role-stat-card` | A count that leads a card |
 
 The CTA lives in the Button component’s `cta` variant; `role-action` is for specimens (`components.button-cta.implementation-home`).
 

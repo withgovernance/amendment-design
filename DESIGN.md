@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.17
+# spec-version:   v2026.10.17.1
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1425,6 +1425,18 @@ typography:
       tracking: "0.12em"          # track-chrome
       textTransform: uppercase
       fontVariationSettings: '"wdth" 125'
+    # RATIFIED 2026-10-17. role-stat-display's card step: a count that leads
+    # a card (an ask's co-signs, a twin-stat grid). The hero role's width,
+    # weight and tracking at a size a card can hold. Ink is the component's:
+    # momentum green where a crowd is counted, primary otherwise.
+    stat-card:
+      family: sans
+      size: 1.5rem          # 24px
+      weight: 700           # sans-bold
+      lineHeight: 1
+      tracking: "-0.01em"
+      fontVariationSettings: '"wdth" 120'   # sans-display
+      numerals: tabular
     # RATIFIED 2026-10-16. The month on a calendar tile: caps at the caption
     # rung but body width, so it sits under the day numeral instead of
     # competing with it. Secondary ink; the tile's urgent state recolours it.

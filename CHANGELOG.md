@@ -8,6 +8,18 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-17 (v2026.10.17.1) — A card's count has a role
+
+Decided by Jason from renders on the ask card, both schemes, 390 and 1440: the shipped hand-set
+value, the same size at display width, and a larger size.
+
+- **`role-stat-card` is `role-stat-display`'s card step** (`typography.roles.stat-card`): display
+  width, bold, tabular, tight leading and the hero role's tracking, at 1.5rem. The card count was
+  hand-set at body width, so it read as heavy body text rather than a figure, and the same value
+  was copied at about 34 call sites plus a 26px variant. The larger size outweighed the card's
+  title and made every card taller. Ink stays the component's: momentum green where a crowd is
+  counted.
+
 ## 2026-10-17 (v2026.10.17) — A draft is not a warning
 
 Decided by Jason from voyager's PositionStatusBadge states and the org positions list, both

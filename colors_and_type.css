@@ -719,6 +719,19 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   letter-spacing: -0.01em;
   color: var(--text-primary);
 }
+/* Stat-display's card step (typography.roles.stat-card, 2026-10-17): a count
+   that leads a card. The hero role's width, weight and tracking at 1.5rem. No
+   dark weight correction: the bloom only shows at display sizes. */
+.role-stat-card {
+  font-family: var(--font-sans);
+  font-variation-settings: var(--sans-display);
+  font-weight: var(--sans-bold);
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+}
 .role-ceremonial {
   /* Receipt place-of-issue caption, wax-seal monogram */
   font-family: var(--font-sans);

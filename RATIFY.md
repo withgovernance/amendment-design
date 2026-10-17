@@ -50,6 +50,13 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
+### Card padding: one value or a step at sm
+- **kind:** two readings (production ahead or unowned default — the render decides which)
+- **found:** PR 934 review. `components/asks/AskSummaryCard.tsx` pads `p-4 sm:p-5`, a step at 640, and its docked foot reaches the card edge with `-mx-4 -mb-4 sm:-mx-5 sm:-mb-5`, hand-copying both values. `components.card.padding` names one value with no step.
+- **evidence:** not yet rendered. Render the home asks row (HomeAsksRow stories) at 390 and the 640 boundary, both schemes, with the step and without it.
+- **proposes:** a `--card-pad` token in the token layer that the card and `components.card.your-band`'s foot both read, with the spec deciding whether it steps. voyager carries a local `--card-pad` until then.
+- **blocks:** nothing
+
 ### A threshold meter's count label: green before the threshold?
 - **kind:** unowned default
 - **found:** design review of `preview/surface-commons.html` after v2026.10.17.13. The label beside the meter ("2,301 / 2,500") is `--ink-success` while the bar is slate, so the label says done and the bar says not yet. `color.action.progress-is-slate-done-is-green` names the bar, not the label.

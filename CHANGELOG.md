@@ -8,6 +8,21 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-17 (v2026.10.17.13) — Progress is slate; done is green
+
+Decided by Jason from the delivery hex tilegram and the district threshold meter, three readings
+each, 390 and 1440, both schemes.
+
+- **A data fill counting toward a crowd climbs the ribbon ladder and turns momentum green only
+  when the crowd is in** (`color.action.progress-is-slate-done-is-green`). The delivery map's
+  hexes run `--ribbon-track`, `--ribbon-completed`, `--ribbon-active`, then
+  `--color-momentum-soft` for delivered; the viewer's hex is a dashed `--text-primary` ring. A
+  ramp built on a fixed zinc step inverted in dark and lit the empty hexes brightest, and its
+  light steps barely separated. The threshold meter fills in `--ribbon-active` and turns
+  `--color-momentum-soft` at the threshold: every emerald fill failed 3:1 against the light
+  track, and slate clears it in both schemes. Retires the meter that "warms toward emerald";
+  swept from the Commons prose, the README and the Commons specimen.
+
 ## 2026-10-17 (v2026.10.17.12) — The wordmark is chrome-sized everywhere
 
 Decided by Jason from the navbar, sidebar and footer at 390 and 1440, both schemes, at

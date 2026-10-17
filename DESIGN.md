@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.17.12
+# spec-version:   v2026.10.17.13
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -652,6 +652,32 @@ color:
       for the count by a wide margin in both schemes; green failed 3:1 for
       the dot in light, and --color-functional failed for the count in dark,
       where it does not switch.
+    progress-is-slate-done-is-green: >-
+      RATIFIED 2026-10-17, decided by Jason from the delivery hex tilegram and
+      the district threshold meter, each in three readings at 390 and 1440,
+      both schemes. A DATA FILL THAT ENCODES PROGRESS TOWARD A COUNTED CROWD
+      CLIMBS THE RIBBON LADDER AND TURNS MOMENTUM GREEN ONLY WHEN THE CROWD
+      IS DONE. Meters, bars, ribbons and map fills are not plates
+      (fill-rule's exemption covers them: they encode quantity, not
+      affordance), and they are not held to text contrast; adjacent steps
+      must separate from each other in both schemes.
+      HEX TILEGRAM STATUS (delivery map, one hex per state or district):
+      none --ribbon-track, under threshold --ribbon-completed, at threshold
+      and waiting --ribbon-active, delivered --color-momentum-soft. The
+      viewer's own hex is a dashed --text-primary ring outside the hex. The
+      ladder mirrors under dark (progress-ribbon.dark-ladder), so it never
+      inverts; a fixed neutral step (a zinc value) does, and lit the empty
+      hexes brightest in dark. In dark, delivered against waiting separates
+      by hue more than luminance; that is accepted, since delivered is the
+      one step that carries colour. HexStateMap's in-session emerald is live
+      status, a different meaning, and stays its own.
+      THRESHOLD METER (a district counting toward its co-signer threshold):
+      --ribbon-active fill on a --ribbon-track track while it climbs; at the
+      threshold the fill becomes --color-momentum-soft. It does not warm
+      toward emerald by degrees: every emerald fill failed 3:1 against the
+      light track, and a slate fill clears it in both schemes. The count is
+      always printed beside the meter as text, which is what carries the
+      number; the finished bar's green is the report that the crowd is in.
   # -----------------------------------------------------------------------
   # NEUTRAL — the paper. Zinc scale, chosen for a warm-gray undertone that
   # complements slate-blue better than pure gray.
@@ -4271,7 +4297,7 @@ surfaces:
       - "signature roll — co-signers accumulate as a roll of names/avatars (the petition-sheet artifact)"
       - "on-the-record entry — a candidate response as a dated ledger line (position · bill · date)"
       - "tally — live count in IBM Plex Mono tabular-nums; the one number meant to be watched, not read"
-      - "district threshold meter — an accruing bar that warms toward emerald as a district nears critical mass"
+      - "district threshold meter — an accruing slate bar that turns emerald when a district reaches its threshold (color.action.progress-is-slate-done-is-green)"
     motion-discipline: >-
       Momentum motion must reflect REAL aggregate state — a count that
       actually rose, a co-sign that actually landed, a threshold actually
@@ -6305,8 +6331,8 @@ impulse, made plural and made public.
   entry** (a candidate's reply as a dated ledger line: position · bill ·
   date), the **tally** (live count in IBM Plex Mono tabular figures — the
   one place a number is meant to be *watched*), and the **threshold
-  meter** (a bar that warms toward emerald as a district nears critical
-  mass).
+  meter** (a slate bar that climbs toward the district's threshold and
+  turns emerald when it is reached).
 - **Motion — momentum, not ceremony.** This is the second and last
   surface where the system is allowed to move (the Receipt is the first).
   But the two are different in kind. The Receipt's motion is a *one-shot

@@ -50,34 +50,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
-### Threshold meter fill: flat emerald or a ramp toward it
-- **kind:** two readings
-- **found:** wireframer, Paper "Amendment UX/Wireframes" › Delivery, board 1 (ask sign card, Stage 1 district goal) — the meter that counts a district toward 25 co-signers. The Commons accents name a "district threshold meter — an accruing bar that warms toward emerald as a district nears critical mass" but no token or component entry.
-- **evidence:** board 1 state B, and the same meter on boards 2–4, render the fill as `--color-momentum-soft` on a `--ribbon-track` track. The other reading, a fill that starts at `--ribbon-completed` and moves toward emerald as the count nears the threshold, has not been rendered.
-- **proposes:** a `threshold-meter` component entry naming track and fill tokens and saying whether the fill is flat or ramps. Also say whether a meter fill counts as a green "plate" under `color.action.fill-rule` (it reports, it is not pressable).
-- **blocks:** the Stage 1 delivery module on /asks/[askId] and the receipt dialog line
-
-### Fill colour for a filled map region
-- **kind:** spec silent
-- **found:** wireframer, Delivery board 2 — the "Where this was delivered" card fills delivered congressional districts in a map built from `lib/maps/region-shapes`. No rule covers a filled data region.
-- **evidence:** board 2 uses `--ribbon-completed` for delivered, `--color-zinc-200` for the rest, and a dashed `--text-primary` outline for the viewer's district. Green was avoided because a large green area reads as a control under the fill rule. Dark scheme not yet rendered.
-- **proposes:** a rule for map region fills (done / not yet / you), by token, in both schemes, and whether the Momentum accent may fill a region where a crowd is counted.
-- **blocks:** the delivery map on /asks/[askId]
-
-### Fill colour for delivery map hexes (replaces “Fill colour for a filled map region”)
-- **kind:** spec silent
-- **found:** wireframer, Delivery board 2 — the delivery map moved from real district shapes to a hex tilegram: `HexStateMap`'s one-hex-per-state grid, then one hex per district inside a state. The earlier entry's shape question no longer applies; the fill question does. `HexStateMap` already fills in-session states with the emerald pair, so green hexes have a shipped precedent, but a delivery hex reports a count, not live status.
-- **evidence:** board 2 renders delivered as `--ribbon-completed`, not yet as `--color-zinc-200`, and the viewer's district or state as a dashed `--text-primary` ring outside the hex. Dark scheme not yet rendered.
-- **proposes:** one rule for status fills on hex tilegrams (done / not yet / you), by token, in both schemes, and whether a delivery map may reuse `HexStateMap`'s emerald. Drop the earlier region-fill entry when this one is decided.
-- **blocks:** the delivery map on /asks/[askId]
-
-### Sequential ramp for a hex choropleth
-- **kind:** spec silent
-- **found:** wireframer, Delivery board 2 — the delivery map carries no text inside hexes; shade encodes an ordered value instead. District: no co-signers yet, under 25, 25+ waiting for a packet, delivered. State: 0, 1, 2–4, 5+ districts delivered. The spec has no slate ramp, only `--ribbon-completed` and `--ribbon-track`.
-- **evidence:** board 2 renders four steps: `--color-zinc-200`, then `--ribbon-completed` flattened over white at 35%, 65% and 100%. In light scheme each step is distinguishable from its neighbour at 14px swatch size; dark scheme not yet rendered, and dark `--ribbon-completed` is slate-300, so the ramp would invert.
-- **proposes:** a named four-step map ramp (tokens per step, both schemes), stating that ramp steps are not held to text contrast but must separate from each neighbour, and that a ramp is not a green "plate". Decide together with "Fill colour for delivery map hexes".
-- **blocks:** the delivery map on /asks/[askId]
-
 ### Table row height: a floor or a fixed height
 - **kind:** two readings
 - **found:** PR 934 review. `components/positions/PositionsTable.tsx` declares a row height on `<tr>`, which a table row treats as a minimum; wrapped titles and the "In response to" line grow it.
@@ -105,6 +77,10 @@ they stop reading as actionable to the next session that opens this file.
 ## Recently ratified
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
+
+- **2026-10-17 (v2026.10.17.13)** — delivery map hexes and the threshold meter climb the ribbon
+  ladder and turn `--color-momentum-soft` only when delivered or at threshold
+  (`color.action.progress-is-slate-done-is-green`).
 
 - **2026-10-17 (v2026.10.17.12)** — the wordmark set as type is `role-label-caps`' size and
   `--track-chrome` at every site; drop the sidebar and StaticTitle size override.

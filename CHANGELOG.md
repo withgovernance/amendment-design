@@ -8,6 +8,17 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-17 (v2026.10.17.10) — Unread is primary ink
+
+Decided by Jason from NotificationRow at 390 and the sidebar, expanded and collapsed, at 1440, in
+green, primary and functional slate, both schemes.
+
+- **Unread takes `--text-primary`, never a colour** (`color.action.unread-is-ink`). Unread is
+  not a counted crowd or a success, so green had no home; the green dot also failed 3:1 in light
+  and the count's white text on its green plate failed 4.5:1. `--color-functional` read quieter
+  but failed for the count in dark, where it does not switch. The count sits in a hairline chip
+  with no fill: a filled count plate is a plate that cannot be pressed.
+
 ## 2026-10-17 (v2026.10.17.9) — The wordmark takes primary ink
 
 Decided by Jason from voyager's navbar (1440 and 390), sidebar and footer, light and dark, the

@@ -99,13 +99,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** render (A) `role-designation` in the chip with its box re-declared under the caps-box rule, (B) `role-caption`, (C) current chrome caps; measure the chip's fit at 390, both schemes. Then state whether a monogram is a designation.
 - **blocks:** nothing
 
-### Unread state colour
-- **kind:** spec silent
-- **found:** PR 934 review. `NotificationRow` (green-tinted icon and a `bg-action` dot) and `SidebarNavItem` (a green count plate). Unread is neither a counted crowd nor semantic success, so `registers.live.palette-rule` gives green no home here; no unread token exists.
-- **evidence:** voyager stories `notificationrow--unread`, `sidebar--with-unread-badge`, both schemes.
-- **proposes:** an unread treatment by token — neutral ink with a dot in `--text-primary` or `--color-functional` — and a statement that it is not a plate.
-- **blocks:** the colour half of the NotificationRow tint and sidebar badge fixes
-
 ### Does the palette rule bind the claim (sales) page
 - **kind:** two readings
 - **found:** PR 934 review. `ClaimSections.tsx` uses green eyebrows, green step numerals, a green-bordered "Claimed" box and a monogram on a non-pressable `bg-success` circle. The hard rules exempt marketing from the motion budget only.
@@ -126,6 +119,9 @@ they stop reading as actionable to the next session that opens this file.
 ## Recently ratified
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
+
+- **2026-10-17 (v2026.10.17.10)** — unread is `--text-primary`: the dot, and the count in a hairline chip
+  with no fill (`color.action.unread-is-ink`).
 
 - **2026-10-17 (v2026.10.17.9)** — the wordmark set as type takes primary ink; it is a designation,
   not a third chrome site.

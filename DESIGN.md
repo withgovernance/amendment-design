@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.17.9
+# spec-version:   v2026.10.17.10
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -638,6 +638,20 @@ color:
       disagreement does not change the outcome — no alpha reaches the
       control in either scheme — but it is exactly why the render is
       reviewed by someone who did not build it.
+    unread-is-ink: >-
+      RATIFIED 2026-10-17, decided by Jason from NotificationRow and the
+      sidebar (expanded and collapsed) in green, --text-primary and
+      --color-functional, both schemes. UNREAD IS PRIMARY INK, NEVER A
+      COLOUR. Unread is neither a counted crowd nor semantic success, so
+      green has no home here (registers.live.palette-rule). The unread dot is
+      --text-primary; an unread count is --text-primary ink at
+      role-label-caps' size, semibold, in a --border-subtle hairline chip with
+      no fill — tint-is-not-a-plate, and a filled count plate is a plate that
+      cannot be pressed. The row's icon takes neutral ink; an unread row's
+      title is --sans-semibold. Primary ink clears 3:1 for the dot and 4.5:1
+      for the count by a wide margin in both schemes; green failed 3:1 for
+      the dot in light, and --color-functional failed for the count in dark,
+      where it does not switch.
   # -----------------------------------------------------------------------
   # NEUTRAL — the paper. Zinc scale, chosen for a warm-gray undertone that
   # complements slate-blue better than pure gray.

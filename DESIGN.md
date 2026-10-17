@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.17.6
+# spec-version:   v2026.10.17.7
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2561,6 +2561,18 @@ components:
     INK, not the box — or a line-height that restores the descender space it
     is centring on. Optical centring is a measurement of where the glyphs
     land, and `items-center` does not perform it.
+    A SINGLE-LINE CAPS BOX GIVES ITS LINE BOX ONE PIXEL MORE THAN THE BOX
+    (ratified 2026-10-17, decided by Jason, who saw the status stamp's
+    letters sit high). MEASURED on the 20px stamp: the capitals are about 9px
+    in an 18px interior, and the browser snaps text to whole pixels, so one
+    side always gets the odd pixel. Centring the box gave it to the bottom —
+    4/5 at 1x, 4.5/5 at 2x — which reads high. Half-pixel padding and
+    fractional line-heights snap back to the same split. A line-height of the
+    box's height plus 1px moves the odd half-pixel to the top: 5/4.5 at 2x,
+    5/4.67 at 3x, which reads centred; 1x keeps a one-pixel split either way.
+    AND TRIM THE TRAILING TRACK: letter-spacing adds space after the last
+    letter too, so a tracked label in a padded box sits left of centre by one
+    track. The box's end padding gives that track back.
     THIS IS THE SAME ROOT AS a-register-change-is-a-width-change. Adopting
     role-label-caps changed FOUR properties at once — family, width, tracking
     and LINE-HEIGHT — and each has produced its own regression. A role is a

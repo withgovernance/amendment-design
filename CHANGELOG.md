@@ -8,6 +8,18 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-17 (v2026.10.17.7) — A caps box centres its capitals, not its line box
+
+Decided by Jason, who saw the status stamp's letters sit high, from measurements at 1x, 2x and 3x.
+
+- **A single-line caps box sets its line-height 1px taller than its height**
+  (`typography.line-height-1-has-two-consequences`, hard rule 8). Browsers snap text to whole
+  pixels, so 9px capitals in the stamp's 18px interior always leave one odd pixel; centring the
+  box gave it to the bottom (4/5 at 1x, 4.5/5 at 2x) and the letters read high. Half-pixel padding
+  and fractional line-heights snapped back to the same split; one extra pixel of line-height moves
+  it to the top (5/4.5 at 2x), which reads centred. The box also gives the trailing letter-spacing
+  back from its end padding, which left tracked labels sitting left of centre.
+
 ## 2026-10-17 (v2026.10.17.6) — The product has tables
 
 Decided by Jason from the org positions table with its header on a tinted band and with none,

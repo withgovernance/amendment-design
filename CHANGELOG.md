@@ -8,6 +8,17 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-17 (v2026.10.17.8) — Chrome tracking is 0.08em
+
+Decided by Jason from the section divider and status stamps at 0.12em, 0.08em and 0.05em, both
+schemes.
+
+- **`--track-chrome` is 0.08em** (`typography.chrome-tracking-is-for-reading`). At 0.12em on the
+  wide face at 12px, longer stamps ("IN COMMITTEE") read as separate letters; at 0.05em the caps
+  looked like bold body text. 0.08em keeps the register and reads as words. Every chrome label
+  and designation narrows, so fits only improve. Retires 0.12em; swept from the spec's current-rule
+  prose, the lint comment and two specimens.
+
 ## 2026-10-17 (v2026.10.17.7) — A caps box centres its capitals, not its line box
 
 Decided by Jason, who saw the status stamp's letters sit high, from measurements at 1x, 2x and 3x.

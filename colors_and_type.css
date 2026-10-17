@@ -306,7 +306,7 @@
   --sans-ceremonial: "wdth" 125;   /* @kind font */  /* ceremonial, once per page */
 
   /* Tracking that carries the registers width no longer can. */
-  --track-chrome:     0.12em;      /* @kind other */
+  --track-chrome:     0.08em;      /* @kind other */  /* typography.chrome-tracking-is-for-reading */
   --track-ceremonial: 0.20em;      /* @kind other */
 
   /* The --hexp-* aliases were DELETED 2026-08-28. They existed only to keep

@@ -101,7 +101,7 @@ const RULES = [
     // 46 sites had rebuilt the chrome register by hand out of `sans-chrome` +
     // `uppercase` + a Tailwind tracking step, and every one got the tracking
     // wrong: `wide` is 0.025em, `wider` 0.05em, `widest` 0.1em, against
-    // --track-chrome's 0.12em — 1.2x to 5x under. Seven carried no tracking at
+    // --track-chrome — well under it. Seven carried no tracking at
     // all. `role-label-caps` composes family, width, weight, case, tracking and
     // the 12px floor together; ratified for the breadcrumb on 2026-08-27 as
     // "chrome's width without chrome's tracking is a different register", then

@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.17.7
+# spec-version:   v2026.10.17.8
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -720,7 +720,7 @@ typography:
       so word silhouettes flatten at paragraph length — and it had no italic at
       all, which is the real reason every italic in the system had to be serif.
       Body copy sits at wdth 100; institutional chrome (the section divider,
-      the status stamp) moves to wdth 125 with 0.12em uppercase letterspacing —
+      the status stamp) moves to wdth 125 with --track-chrome uppercase letterspacing —
       a register that reads clerical without shouting.
       Two costs, stated. The chrome register is ~4% NARROWER than before:
       Readex at HEXP 60 measured 334px for "ARCHIVE COMMONS WRITING DESK" at
@@ -950,7 +950,7 @@ typography:
     sans-display:     '"wdth" 120'   # hero stat numerals
     sans-ceremonial:  '"wdth" 125'   # once per page; tracking carries it, not width
   tracking:
-    track-chrome:     "0.12em"
+    track-chrome:     "0.08em"   # 0.12em until 2026-10-17 (chrome-tracking-is-for-reading)
     track-ceremonial: "0.20em"
   axis-must-be-declared-and-measured: >-
     RATIFIED 2026-08-28, replacing a rule whose stated reason was false.
@@ -1084,6 +1084,16 @@ typography:
     is read. AND A TABLE OF BILLS is correct with each slug in
     role-designation leading its row — the same designation, at the size
     of a thing that repeats.
+  chrome-tracking-is-for-reading: >-
+    RATIFIED 2026-10-17, decided by Jason from the section divider and the
+    status stamps at 0.12em, 0.08em and 0.05em, both schemes. --track-chrome
+    IS 0.08em. At 0.12em on the wdth-125 face at 12px, a longer label ("IN
+    COMMITTEE") read as separate letters rather than a word; at 0.05em the
+    caps stopped reading as a register and looked like bold body text.
+    0.08em holds the words together and keeps the clerical register. It
+    narrows every chrome label and designation, so it can only make a fit
+    that passed pass by more; measurements in this file taken at 0.12em are
+    dated and remain conservative.
   chrome-sites-are-closed: >-
     RATIFIED 2026-10-11, landing Jason's 2026-09-10 ruling, which only its
     form-labels part had reached. role-label-caps has exactly TWO sites: the
@@ -1348,7 +1358,7 @@ typography:
     tracking is what recovers Archivo's narrower ceiling. That was fixed at
     one site and never swept, and it is now found at five more — every one
     reaching for the Tailwind `tracking-wide` step (0.025em) where
-    track-chrome (0.12em) or track-ceremonial (0.20em) belongs. Five to
+    track-chrome or track-ceremonial belongs. Five to
     eight times under.
     THE FAILURE IS SPECIFIC AND WORTH NAMING: each site hand-assembled a
     register out of a width preset plus uppercase plus an arbitrary tracking
@@ -1429,7 +1439,7 @@ typography:
       size: 0.75rem         # 12px
       weight: 600           # semibold
       lineHeight: 1.25      # the caption rung — a chrome label may wrap (2026-09-14)
-      tracking: "0.12em"          # track-chrome — recovers Archivo's narrower ceiling
+      tracking: "0.08em"          # track-chrome
       textTransform: uppercase
       fontVariationSettings: '"wdth" 125'
     # RATIFIED 2026-08-31. Uppercase's third home: a designation repeated
@@ -1442,7 +1452,7 @@ typography:
       size: 0.875rem        # 14px
       weight: 600           # semibold
       lineHeight: 1         # the row declares its own height
-      tracking: "0.12em"          # track-chrome
+      tracking: "0.08em"          # track-chrome
       textTransform: uppercase
       fontVariationSettings: '"wdth" 125'
     # RATIFIED 2026-10-17. role-stat-display's card step: a count that leads
@@ -2662,7 +2672,7 @@ components:
     pass, all from the same migration and all with one cause: A ROLE WAS
     ADOPTED AND ITS CONTAINER WAS NOT RE-MEASURED.
     role-label-caps IS WIDER THAN ALMOST ANYTHING IT REPLACES — wdth 125 at
-    the axis ceiling, plus 0.12em tracking, plus semibold. MEASURED on the
+    the axis ceiling, plus --track-chrome, plus semibold. MEASURED on the
     shipped state-code token, a fixed w-6 box giving 22px of content:
       MN 27.81px   WA 27.38px   WY 27.28px   KY 23.39px   IL 15.63px
     against 19.88 / 20.33 / 20.16 / 16.41 / 10.64 for the untracked wdth-104

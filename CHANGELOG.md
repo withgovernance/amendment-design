@@ -8,6 +8,21 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-17 (v2026.10.17.6) — The product has tables
+
+Decided by Jason from the org positions table with its header on a tinted band and with none,
+both schemes, 390 and 1440.
+
+- **`components.table` replaces `outOfScope.tables`.** The entry said the product had no table;
+  it ships about ten in four treatments (a tinted band with tracked caps heads, staff tables at
+  12px, zinc heads on a hairline, a bordered serif grid in markdown). One product table: no
+  header band — a band inside a card is a box in a box, and it left the heads off-centre in their
+  strip — sentence-case `role-metadata-sans` semibold heads over a `--border-subtle` hairline,
+  the same hairline between rows, one declared row height so a row-action does not make its row
+  taller, and below a phone's width each row stacks (title, then cells and status, then the
+  action), because in columns at 390 the titles broke every two or three words. Staff tables may
+  be denser at the same weights; markdown tables keep the prose's register.
+
 ## 2026-10-17 (v2026.10.17.5) — The report line's lead and count are semibold
 
 Decided by Jason from the ask row with the lead and count semibold, everything at the role's

@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.17.5
+# spec-version:   v2026.10.17.6
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2330,6 +2330,37 @@ components:
     background: "material-regular"
     color: "primary text"
     rounded: "0.5rem"
+  table:
+    description: >-
+      RATIFIED 2026-10-17, decided by Jason from the org positions table with
+      its header on a tinted band and with no band, both schemes, 390 and
+      1440. Replaces outOfScope.tables, which said the product had no table:
+      it has about ten, in four treatments. ONE PRODUCT TABLE:
+      sits on its card's material with NO HEADER BAND — a band inside a card
+      is a box in a box (card.your-band rejected the same thing), and it set
+      the heads off-centre in their strip. Column heads are sentence case
+      (typography.chrome-sites-are-closed), role-metadata-sans at
+      --sans-semibold in secondary ink, with a --border-subtle hairline under
+      them; rows are divided by the same hairline. A row's title is
+      role-ui-heading, its other cells role-metadata-sans, its status the
+      status stamp, its repeated action a row-action. Cells inset
+      --space-3 vertical and --space-5 horizontal.
+    row-height: >-
+      EVERY ROW DECLARES ONE HEIGHT, whether or not it carries a row-action;
+      the action's 44px target otherwise made only those rows taller.
+    below-width: >-
+      UNDER A PHONE'S WIDTH A ROW STACKS, and the head row is not shown: the
+      title on its own line, then the secondary cells with the status at the
+      end, then the row-action. In columns at 390 a title broke every two or
+      three words and the row overran its card. Each cell keeps its column's
+      name for assistive technology.
+    staff-density: >-
+      Staff surfaces may take a denser table — tighter insets, role-caption
+      cells — at the same weights, inks and hairlines, never under 12px.
+    quoted-tables: >-
+      A table inside rendered markdown (a conversation's reply) is quoted
+      content, not product layout; it keeps the reading register of the
+      prose around it.
   row-action:
     description: >-
       RATIFIED 2026-10-16, decided by Jason. An action repeated down a list
@@ -4846,24 +4877,6 @@ loading:
 # A gap and a decision look identical in a list of missing things.
 # --------------------------------------------------------------------------
 outOfScope:
-  tables:
-    closed: "2026-08-02, audit §3.8"
-    finding: >-
-      There is no table element, thead, tbody or role="table" anywhere in
-      `app/` or `components/`, and no table primitive in `components/ui/`.
-      Bills — the most tabular data the product owns — render as
-      `bill-list-item.tsx`: a card with a title, a rubber stamp and a compact
-      progress ribbon.
-    why-not: >-
-      The audit inherited "tables" from a generic list of eleven pattern gaps
-      and never asked whether this product has any. Designing one now would
-      be inventing a transport in order to furnish it — the inverse of the
-      rule the email work produced. A row of cells is also the register of a
-      spreadsheet, and the thesis is that legislative data is a document.
-    if-it-ever-lands: >-
-      Two things are already decided and should be reused rather than
-      re-argued: metadata grids may run wider than `measure.body`, and
-      the progress ribbon's `compact` variant exists for dense rows.
   spanish:
     closed: "2026-08-02"
     finding: "There is no Spanish anywhere in the product."

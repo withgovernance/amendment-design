@@ -92,6 +92,9 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-10-17 (v2026.10.17.6)** — one product table (`components.table`): no header band,
+  sentence-case heads over a hairline, one row height, rows stack on a phone.
+
 - **2026-10-17 (v2026.10.17.5)** — the report line's lead and its count are `--sans-semibold`; the
   rest of the line stays at `role-metadata-sans`'s weight.
 

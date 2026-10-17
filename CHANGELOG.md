@@ -8,6 +8,18 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-17 (v2026.10.17.3) — A button's label owns its type
+
+Decided by Jason from a row of ask cards with their acts at 1rem and 0.875rem, both schemes,
+390 and 1440.
+
+- **A button's label is 1rem, body width, semibold, line-height 1, set on the button**
+  (`components.button-default.label`). The spec said "sans body semibold" and production's button
+  set no size or weight at all, so a label inherited from whatever it sat in and changed size from
+  page to page. At 1rem the act is the clearest thing on a card after its title; at 0.875rem it
+  read as part of the report line above it. `.role-action` now carries the size, width and leading.
+  The `sm` size keeps its own label.
+
 ## 2026-10-17 (v2026.10.17.2) — A card's eyebrow row declares its height
 
 Decided by Jason from the home asks row (a discover card beside recruit cards), both schemes,

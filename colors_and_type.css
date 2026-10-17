@@ -970,7 +970,10 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   background: var(--color-action);
   color: var(--color-action-label);
   font-family: var(--font-sans);
+  font-variation-settings: var(--sans-body);
   font-weight: var(--sans-semibold);
+  font-size: 1rem;      /* the label owns its type (components.button-default.label) */
+  line-height: 1;
   border: 0;
   border-radius: var(--radius-md);
   padding: 13px 22px;

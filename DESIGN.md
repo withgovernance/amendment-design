@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.17.2
+# spec-version:   v2026.10.17.3
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2210,6 +2210,18 @@ components:
     rounded: "0.5rem"
     padding: "0.5rem 1rem"
     typography: "sans body semibold"
+    label: >-
+      RATIFIED 2026-10-17, decided by Jason from a row of ask cards with
+      their acts at 1rem and 0.875rem, both schemes, 390 and 1440. A
+      BUTTON'S LABEL OWNS ITS TYPE: role-body's size (1rem), --sans-body
+      width, --sans-semibold, line-height 1 (the declared min-height sets the
+      plate). It never inherits from where it sits — production's button set
+      no size or weight, so a label changed size from page to page with
+      nobody choosing. At 1rem the act is the clearest thing on a card after
+      its title, a step above the 0.875rem report line over it; at 0.875rem it
+      read as part of that line. Applies to button-cta, button-secondary and
+      button-ghost, which inherit this geometry. The `sm` size keeps its own
+      smaller label and its expanded hit area (touchTarget).
     shadow: "flat → raised on hover"
     ring: "1px solid rgb(0 0 0 / 5%)"
     transition: "background, box-shadow, color, ring 200ms standard"
@@ -2283,7 +2295,7 @@ components:
       specimens; that is a specimen affordance, not the production home.
     rounded: "0.5rem"
     padding: "0.5rem 1rem"
-    typography: "sans body semibold"
+    typography: "sans body semibold — the label owns its type (button-default.label)"
     hover: "color.action-hover (oklch(.72 .150 161)) — flat fill one step lighter, no gradient. Pressed is color.action-active (darker); ~6 points of lightness headroom before the ink label fails, so pressed never comes from more fill. (Corrected 2026-08-25: this line read 'red-700 → red-800 gradient', an oxblood leftover contradicting the description two lines above.)"
     touchTarget:
       rule: "min-height: 48px, declared — NOT 44. See a11y.targetSize.not-the-floor."

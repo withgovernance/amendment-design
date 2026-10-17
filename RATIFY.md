@@ -78,13 +78,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** a named four-step map ramp (tokens per step, both schemes), stating that ramp steps are not held to text contrast but must separate from each neighbour, and that a ramp is not a green "plate". Decide together with "Fill colour for delivery map hexes".
 - **blocks:** the delivery map on /asks/[askId]
 
-### `.role-action` owns no font size
-- **kind:** unowned default
-- **found:** design-reviewer on `preview/card-row.html`. `.role-action` declares family and weight only, so a bare `<button>` takes the browser's default size at `font-variation-settings: normal`; each specimen picks its own. `components.button-cta` says “sans body semibold”, which reads as 1rem or as the metadata rung.
-- **evidence:** card-row.html sets 0.875rem by hand on its acts.
-- **proposes:** render a row's acts at 1rem and 0.875rem, at 390 and 1440, with “Share your link” as the widest; write the size, line height and `--sans-body` into `.role-action`.
-- **blocks:** nothing
-
 ### Green counts on card glass against `color.ink-needs-an-opaque-ground`
 - **kind:** two readings
 - **found:** design-reviewer on `preview/card-row.html`. The opaque-ground rule says semantic ink needs an opaque ground; `card.foot-docks-in-a-row` and `typography.roles.stat-card` put green counts on `material-regular` over the aurora.
@@ -112,6 +105,9 @@ they stop reading as actionable to the next session that opens this file.
 ## Recently ratified
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
+
+- **2026-10-17 (v2026.10.17.3)** — a button's label owns its type: 1rem, `--sans-body`, semibold,
+  line-height 1 (`components.button-default.label`); never inherited.
 
 - **2026-10-17 (v2026.10.17.2)** — a card's eyebrow row declares its height (its status text's line
   box) whether or not the status is present, so titles align across a row.

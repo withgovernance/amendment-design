@@ -78,6 +78,41 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** a named four-step map ramp (tokens per step, both schemes), stating that ramp steps are not held to text contrast but must separate from each neighbour, and that a ramp is not a green "plate". Decide together with "Fill colour for delivery map hexes".
 - **blocks:** the delivery map on /asks/[askId]
 
+### Wordmark size and tracking: chrome or ceremonial
+- **kind:** two readings (left open by v2026.10.17.9)
+- **found:** PR 934 review. `HomeLink` and `Footer` set the wordmark in `role-label-caps` at the role's size; `Sidebar/index.tsx` and `Navbar/StaticTitle.tsx` add a literal size override "to match the sidebar lockup", so one name ships at two sizes.
+- **evidence:** voyager stories `navbar--logged-in` (HomeLink beside StaticTitle at 1440), `sidebar--bare`, `footer--signed-out`, both schemes.
+- **proposes:** a wordmark entry naming its role. Render (A) `role-label-caps` size and `--track-chrome` in primary ink everywhere, (B) the sidebar's larger size as a named token, (C) `role-ceremonial`'s tracking at chrome size; navbar, sidebar and footer at 390 and 1440, both schemes.
+- **blocks:** removing the literal size in voyager's sidebar and StaticTitle
+
+### Table row height: a floor or a fixed height
+- **kind:** two readings
+- **found:** PR 934 review. `components/positions/PositionsTable.tsx` declares a row height on `<tr>`, which a table row treats as a minimum; wrapped titles and the "In response to" line grow it.
+- **evidence:** at 1440, `RecentPositionsSection` rows measure about 73, 93 and 72px; `OrgPositionsList` about 97, 136 and 72px. The row action no longer changes a row's height, which is what `components.table` targeted.
+- **proposes:** say whether "one declared row height" is a floor content may exceed, or fixed with the title clamped. Render (A) the floor, (B) fixed with the title clamped to two lines and the response line to one; 1440 and the `sm` boundary, both schemes.
+- **blocks:** nothing
+
+### A jurisdiction code that trails, and initials monograms
+- **kind:** two readings
+- **found:** PR 934 review. `SampleQuestions.tsx` sets a jurisdiction chip after a question in chrome caps, secondary ink — a third chrome site. `role-designation` is defined as leading a row or card, but `typography.chrome-sites-are-closed` makes a jurisdiction code a designation. `UserAvatar.tsx` and the claim page's "YC" monogram raise the same question for initials.
+- **evidence:** `role-designation` is larger than the chip's declared box, so the box must grow. Not yet rendered: no story shows `SampleQuestions`.
+- **proposes:** render (A) `role-designation` in the chip with its box re-declared under the caps-box rule, (B) `role-caption`, (C) current chrome caps; measure the chip's fit at 390, both schemes. Then state whether a monogram is a designation.
+- **blocks:** nothing
+
+### Unread state colour
+- **kind:** spec silent
+- **found:** PR 934 review. `NotificationRow` (green-tinted icon and a `bg-action` dot) and `SidebarNavItem` (a green count plate). Unread is neither a counted crowd nor semantic success, so `registers.live.palette-rule` gives green no home here; no unread token exists.
+- **evidence:** voyager stories `notificationrow--unread`, `sidebar--with-unread-badge`, both schemes.
+- **proposes:** an unread treatment by token — neutral ink with a dot in `--text-primary` or `--color-functional` — and a statement that it is not a plate.
+- **blocks:** the colour half of the NotificationRow tint and sidebar badge fixes
+
+### Does the palette rule bind the claim (sales) page
+- **kind:** two readings
+- **found:** PR 934 review. `ClaimSections.tsx` uses green eyebrows, green step numerals, a green-bordered "Claimed" box and a monogram on a non-pressable `bg-success` circle. The hard rules exempt marketing from the motion budget only.
+- **evidence:** voyager story `claimsections--statewide`, 390 and 1440, both schemes. Green text clears contrast in both schemes; the question is accent scope, not legibility.
+- **proposes:** state whether marketing and sales surfaces sit outside `registers.live.palette-rule`. Render the claim page with neutral eyebrows and numerals against the current version.
+- **blocks:** the claim-page green fixes
+
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by

@@ -8,6 +8,18 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-17 (v2026.10.17.11) — No register binds a sales page
+
+Decided by Jason from the politician claim page as shipped and with neutral eyebrows, numerals and
+Claimed ring, 1440 and 390, both schemes.
+
+- **Marketing and sales surfaces are outside the register table, palette included**
+  (`registers.marketing-is-outside-the-table`). Ratified 2026-08-28 but stated only under
+  motion, so the claim page's green eyebrows read as a palette-rule breach. Hoisted to the
+  register section it governs. Neutral cost the page its one distinction between Claimed and
+  Unclaimed. The fill rule, the accent bans, legibility, the type floor and targets still bind:
+  the claim page's monogram on an unpressable green disc is a plate that cannot be pressed.
+
 ## 2026-10-17 (v2026.10.17.10) — Unread is primary ink
 
 Decided by Jason from NotificationRow at 390 and the sidebar, expanded and collapsed, at 1440, in

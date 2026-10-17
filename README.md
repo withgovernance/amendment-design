@@ -28,7 +28,7 @@ The Commons stays on the aurora and never becomes an artifact. The Receipt is is
 | **Issued** | `paper-cream` | `paper-cream` | 34rem portrait | bloom once |
 
 - A component that declares its own material outranks the register: a card is `material-regular` everywhere (`components.card.material-outranks-the-register`).
-- **Green appears where a crowd is counted.** Conversation views are green-free (`registers.live.palette-rule`).
+- **Green appears where a crowd is counted.** Conversation views are green-free (`registers.live.palette-rule`). Marketing and sales surfaces are outside the register table; the fill rule still binds them (`registers.marketing-is-outside-the-table`).
 - **Glass for chrome, cards, modals. Paper for statutory text, letters, long analysis** (`canvases`). In the Archive only the verbatim bill text sits on paper.
 - **Every issued artifact states its ledger number as text**, in every medium. The number is the proof (`registers.issued.proof-rule`).
 

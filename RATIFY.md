@@ -99,13 +99,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** render (A) `role-designation` in the chip with its box re-declared under the caps-box rule, (B) `role-caption`, (C) current chrome caps; measure the chip's fit at 390, both schemes. Then state whether a monogram is a designation.
 - **blocks:** nothing
 
-### Does the palette rule bind the claim (sales) page
-- **kind:** two readings
-- **found:** PR 934 review. `ClaimSections.tsx` uses green eyebrows, green step numerals, a green-bordered "Claimed" box and a monogram on a non-pressable `bg-success` circle. The hard rules exempt marketing from the motion budget only.
-- **evidence:** voyager story `claimsections--statewide`, 390 and 1440, both schemes. Green text clears contrast in both schemes; the question is accent scope, not legibility.
-- **proposes:** state whether marketing and sales surfaces sit outside `registers.live.palette-rule`. Render the claim page with neutral eyebrows and numerals against the current version.
-- **blocks:** the claim-page green fixes
-
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by
@@ -119,6 +112,9 @@ they stop reading as actionable to the next session that opens this file.
 ## Recently ratified
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
+
+- **2026-10-17 (v2026.10.17.11)** — marketing and sales surfaces sit outside the register table,
+  palette included; the fill rule still binds them (`registers.marketing-is-outside-the-table`).
 
 - **2026-10-17 (v2026.10.17.10)** — unread is `--text-primary`: the dot, and the count in a hairline chip
   with no fill (`color.action.unread-is-ink`).

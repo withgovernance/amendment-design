@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.17.10
+# spec-version:   v2026.10.17.11
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2204,7 +2204,7 @@ motion:
     - "Transition only background, box-shadow, color, opacity, and ring. Never transition transform — EXCEPT a control drawing a state the user just committed. See committed-state-is-not-motion."
     - "committed-state-is-not-motion (RATIFIED 2026-08-28). A CONTROL DRAWING THE STATE THE USER JUST CHANGED IS NOT MOTION, and it is not on the two-surface budget. A toggle thumb crossing its track, a disclosure caret turning — these draw the change the person just made, at the moment they made it, on the control they touched. That is what 'no motion without meaning' says motion is FOR; refusing it spends the rule against its own purpose. THE PROHIBITION IS ABOUT HOVER AND DECORATION: scale() and brightness() on hover, sub-pixel wobble, compositing jank on an element nobody touched. Stage 5 read 'never transition transform' as unconditional and made four controls snap — including the toggle, whose OWN ENTRY specifies `transition-transform duration-200` and has since it was written. The general rule read absolute because its exception lived in a component. TEST: did the user just act on this element, and is the animation drawing the result of that act? Then it is feedback and it is permitted. Does it animate on its own, on hover, or on an element nobody touched? Then it is motion and needs a sanctioned surface."
     - "THE AURORA IS A LAYER, NOT A SURFACE, and its breathing is not on the budget (RATIFIED 2026-08-28). This document's own thesis says so twice — 'the aurora layer is alive… never static' and 'It breathes; it is the reason the page does not feel printed.' The budget governs what SURFACES do; the aurora is the light the surfaces sit on. The ink layer is still, surfaces get the two sanctioned motions, and the aurora breathes: that is the three-layer statement the prose always made and motion.rules never encoded, which is why stage 5 found a thesis and a rule pointing opposite ways."
-    - "MARKETING IS OUTSIDE THE REGISTER TABLE, and so is its motion (RATIFIED 2026-08-28). The two-surface budget governs the FIVE PRODUCT ROOMS. Marketing surfaces are not rooms — they persuade rather than keep a record, which is why the restraint that makes the product trustworthy is not the right rule for them. Marketing motion is AMBIENT AND BOUNDED, and the bounds are the point, not a formality: it must be pausable on hover, gated to viewports where it is not competing for a small screen, motion-safe, and NEVER on a surface carrying record state — a bill, a count, a receipt, a signature. The 240s marquee at 6% opacity behind the campaigns card and the MarketingHome shimmer both already satisfy this; the rule ratifies what shipped rather than inventing a licence. motion.durations.marquee is theirs and stays declared."
+    - "MARKETING IS OUTSIDE THE REGISTER TABLE (registers.marketing-is-outside-the-table), and so is its motion (RATIFIED 2026-08-28). The two-surface budget governs the FIVE PRODUCT ROOMS. Marketing surfaces are not rooms — they persuade rather than keep a record, which is why the restraint that makes the product trustworthy is not the right rule for them. Marketing motion is AMBIENT AND BOUNDED, and the bounds are the point, not a formality: it must be pausable on hover, gated to viewports where it is not competing for a small screen, motion-safe, and NEVER on a surface carrying record state — a bill, a count, a receipt, a signature. The 240s marquee at 6% opacity behind the campaigns card and the MarketingHome shimmer both already satisfy this; the rule ratifies what shipped rather than inventing a licence. motion.durations.marquee is theirs and stays declared."
     - "Never use scale() or filter:brightness() on hover — they cause compositing jank and sub-pixel icon wobble."
     - "Respect prefers-reduced-motion — all animations clamp to 0.01ms."
     - "Motion is permitted on exactly two surfaces: the Receipt (one-shot bloom at issuance) and the Commons (accruing momentum under real collective action). Both obey 'no motion without meaning' — motion reflects real state a person changed, never decoration. Hover states never move, on any surface."
@@ -3381,6 +3381,21 @@ components:
 #           a real geometry difference.
 # --------------------------------------------------------------------------
 registers:
+  marketing-is-outside-the-table: >-
+    RATIFIED 2026-08-28 for motion; hoisted here 2026-10-17, decided by Jason
+    from the politician claim page as shipped and with neutral eyebrows and
+    numerals, both schemes. MARKETING AND SALES SURFACES ARE NOT ROOMS: they
+    persuade rather than keep a record, so no register below binds them —
+    not its motion and not its palette-rule. A sales page may set its
+    eyebrows, step numerals and selection rings in green ink. WHAT STILL
+    BINDS, because it is not a register rule: the fill rule
+    (color.action.fill-rule — a filled green plate is a control, so an
+    unpressable green disc behind a monogram is illegal on any surface), the
+    accent bans (no red outside danger, no amber outside warning, no
+    violet), ink legibility, the type floor and targets. A marketing surface
+    carrying record state — a bill, a count, a receipt, a signature — takes
+    that record's register for the record. motion.rules carries the bounds
+    on marketing motion.
   live:
     rooms: [reading-room, commons]
     material: material-thin

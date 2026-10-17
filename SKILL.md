@@ -31,7 +31,7 @@ The thesis: the rule of law is a living document. Every screen is two layers.
 | **Writing** | Writing Desk | `paper-parchment` | `material-regular` | `measure.body`, portrait | minimal |
 | **Issued** | Receipt | `paper-cream` | paper | 34rem portrait | bloom once at issuance, then static |
 
-A card declares `material-regular` in every register (`components.card.material-outranks-the-register`). Glass is for cards, modals and chrome that can't claim a calm ground; paper is for prolonged reading or writing. Streaming is content arriving, not motion. Marketing sits outside the table (`motion.rules`).
+A card declares `material-regular` in every register (`components.card.material-outranks-the-register`). Glass is for cards, modals and chrome that can't claim a calm ground; paper is for prolonged reading or writing. Streaming is content arriving, not motion. Marketing and sales surfaces sit outside the table — no register's motion or palette binds them; the fill rule and accent bans still do (`registers.marketing-is-outside-the-table`).
 
 ## The rules most often broken
 

@@ -162,7 +162,7 @@ The CTA lives in the Button component’s `cta` variant; `role-action` is for sp
 - **Hover:** one background step, one shadow tier. No `scale()`, no `brightness()`, no `transition-all`.
 - **Press:** a toggle’s track dims (`active:opacity-80`); a default button steps its gradient darker; an action plate steps to `--color-action-active`, never more fill.
 - **Focus:** always slate and visible — `--focus-color`, `--focus-width`, `--focus-offset` — suppressed only for mouse focus. Controls in a recess or track ring inset (`a11y.focusRing`).
-- **Targets** at least 44px, 48px for the CTA — by `min-height` or an expanded hit area, never padding. Links inside a sentence are exempt (`a11y.targetSize`).
+- **Targets** clear 24px by size or by spacing. A target is a hit area, not open space; a text link's target is its line box. Each control's size is stated in its own entry, never reached by padding (`a11y.targetSize`).
 
 ### Motion
 

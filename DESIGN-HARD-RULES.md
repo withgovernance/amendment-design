@@ -38,8 +38,9 @@ Source of truth: `DESIGN.md`. This file is the short list every visual change is
     - **A register change is a width change — measure the container.** `role-label-caps` is wider than almost anything it replaces. A fixed width, slot, plate or `truncate` near a role change is a measurement, not a look (`a-register-change-is-a-width-change`).
     - **Take the role, don't rebuild it.** Chrome and ceremonial share a width preset and are separated by tracking and size; a width preset without its tracking is a different register.
 11. **Type below 12px?** Hard floor, no chrome exception. **If a label no longer fits at 12px, the layout is the problem** (`measure-before-you-shrink`).
-12. **Touch target under 44px?** Interactive ≥44px; primary CTA 48px — by `min-height` or an expanded transparent hit area, never by inflating padding. Appearance and target are two geometries (`a11y.targetSize`).
-    - **Except a link inside a sentence**, which takes no minimum. A link with its own line box is not inline and takes the floor.
+12. **Touch target under 24px?** The floor is 24×24, by size or by spacing (`a11y.targetSize`). A target is a hit area, not open space: it never sets a row's height or a list's leading.
+    - **A text link's target is its line box** — in a sentence, on a data line, or one per line in a list. `role-body`'s line box meets the floor; never pad a list of links apart with `min-height` (`a11y.targetSize.text-links`).
+    - **A control's size is chosen in its own entry** (`a11y.targetSize.component-sizes`) — set by `min-height` on its plate or an expanded transparent hit area, never by inflating padding.
 13. **Serif italic doing decoration?** Italic serif is quoted human voice only, ≥1.125rem (`role-quote`). Below that it's roman 600 (`emphasis-serif-inline`). Metadata is roman. Sans emphasis uses Archivo's real italic.
 14. **Script face on anything but the user's own affirmed name, on their own artifact?** Never other names, never decoration. No name → serif "A constituent".
 15. **Emboss without paper under it, or below 44px?** The emboss needs a paper canvas. It can't print or survive email — the ledger number, always present as text, is the proof.

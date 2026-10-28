@@ -8,6 +8,27 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-10-28 (v2026.10.28) — The target floor is 24; a target is a hit area, not open space
+
+Decided by Jason from the delivered ledger's ask titles padded to 44px rows, and the floor chosen
+from three readings (24 with control sizes kept, text links exempt only, no floor).
+
+- **The floor is 24×24 CSS px, met by size or by spacing** — WCAG 2.2's 2.5.8 (AA), the criterion
+  this system answers to (`a11y.targetSize`). 44 was Apple's HIG recommendation for controls,
+  adopted as a minimum for every target, and read that way it padded lists of links into 44px rows
+  across the product. A touch target is where a tap lands, not a demand for empty layout around it.
+- **A text link's target is its line box** — in a sentence, on a data line, or one per line in a
+  list (`a11y.targetSize.text-links`). `role-body`'s line box meets the floor; a tighter line meets
+  it by spacing or by a hit area that overlaps no neighbour. Never a `min-height` that spaces text.
+- **Control sizes are component decisions**, stated in each entry and unchanged: buttons, inputs,
+  row actions, icon buttons and tab-bar tabs at 44; the CTA and FAB at 48
+  (`a11y.targetSize.component-sizes`). The breadcrumb's hit area expands to the floor, not to 44.
+- Retires: the 44px floor, `inline-exception` (the sentence exemption now sits inside
+  `text-links`), and `do-not-downgrade`, which forbade the floor this entry adopts. The hard rule,
+  `README.md`, `SKILL.md` and `preview/touch-targets.html` state the new rule.
+
+---
+
 ## 2026-10-17 (v2026.10.17.17) — The threshold is a beginning; the meter's label moves with its fill
 
 Decided by Jason from a threshold meter's count label in secondary ink and in green, at 92% and

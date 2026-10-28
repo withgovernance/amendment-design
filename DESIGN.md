@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.17.17
+# spec-version:   v2026.10.28
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2393,12 +2393,12 @@ components:
     typography: "sans body semibold — the label owns its type (button-default.label)"
     hover: "color.action-hover (oklch(.72 .150 161)) — flat fill one step lighter, no gradient. Pressed is color.action-active (darker); ~6 points of lightness headroom before the ink label fails, so pressed never comes from more fill. (Corrected 2026-08-25: this line read 'red-700 → red-800 gradient', an oxblood leftover contradicting the description two lines above.)"
     touchTarget:
-      rule: "min-height: 48px, declared — NOT 44. See a11y.targetSize.not-the-floor."
+      rule: "min-height: 48px, declared. See a11y.targetSize.component-sizes."
       why: >-
         This is the Send / Co-sign button: consequential, thumb-reached, and
         frequently the last control before something irreversible reaches a
-        legislator. `targetSize` names exactly this case as the one that goes
-        to Android's 48, and the CTA is the clearest instance of it in the
+        legislator. A thumb-reached, consequential act takes the larger size
+        (Material's 48), and the CTA is the clearest instance of it in the
         system.
   button-secondary:
     description: Neutral action on a material-regular plate
@@ -2472,7 +2472,7 @@ components:
     position: "fixed bottom: 20px; right: 20px; z-index: 10"
     shadow: "floating, intensified"
     touchTarget:
-      rule: "Satisfied by `size` — 48px, above the 44 floor. See a11y.targetSize."
+      rule: "Satisfied by `size` — 48px. See a11y.targetSize."
       why: >-
         One of only two controls that already complied, and it complies
         because it states a size rather than accumulating one. 48 is also the
@@ -2489,7 +2489,7 @@ components:
       rule: "Satisfied by `size` — exactly 44px. See a11y.targetSize."
       why: >-
         The other control that already complied. Its 44 predates the
-        provenance and is where the floor was in fact being honoured; the
+        provenance; the
         glyph inside is 16–20px, so the target is the button, not the icon.
         Do not let a smaller icon shrink it.
   avatar:
@@ -2773,7 +2773,7 @@ components:
     width, a slot, a plate, a truncate — any of these near a role change is a
     measurement, not a look.
     THE OTHER HALF: A RULE WITH TWO BRANCHES HAS A DEFAULT, AND THE DEFAULT
-    IS NOT ALWAYS RIGHT. a11y.targetSize says 44px "by min-height OR AN
+    IS NOT ALWAYS RIGHT. a11y.targetSize then said 44px "by min-height OR AN
     EXPANDED TRANSPARENT HIT AREA, never by inflating padding — appearance
     and target are two geometries". The migration took min-height
     everywhere, and header buttons came out visibly too tall. The second
@@ -2963,8 +2963,7 @@ components:
         target is whatever the content happens to measure. Measured at
         role-body: Home 45.3, Asks 36.6, Races 47.4, Bills 31.1, Chat 35.7 —
         three of five under 44px wide, which is why the minimum has to be
-        declared rather than inherited from type size. See `a11y.targetSize`,
-        which has said 44×44 since before any of this and was never applied.
+        declared rather than inherited from type size. See `a11y.targetSize`.
     hidden-on:
       routes: ["/conversation/*", "/action/*"]
       rule: >-
@@ -3312,10 +3311,9 @@ components:
         control keeps its 44×24 appearance and carries a transparent
         44×44 hit area centred on it. See a11y.targetSize.
       why: >-
-        The 44 in `size` is the track's WIDTH, and it reads at a glance like
-        compliance with a rule about a square — which is how this one hid.
-        Vertically the target is 24px, the worst shortfall in the system after
-        the breadcrumb. A 24px-tall control is 55% of the floor.
+        The toggle is a control and takes a control's size; its track alone
+        is 24px tall. The 44 in `size` is the track's WIDTH, not its target.
+        The hit area grows into the row's own space, never the row.
       do-not: >-
         Do not grow the track to 44px tall. A toggle that tall stops reading
         as a switch and starts reading as a plate, and the thumb geometry
@@ -3355,12 +3353,13 @@ components:
     activeColor: "primary text semibold"
     touchTarget:
       rule: >-
-        Each crumb is a link with a 44px minimum target, expanded around the
-        12px type rather than inflating it. Vertical padding may be as little
-        as the layout needs; the hit area is declared. See a11y.targetSize.
+        Each crumb is a text link whose hit area is expanded to the 24px
+        floor around the caption rather than inflating it. Vertical padding
+        may be as little as the layout needs; the hit area is declared. See
+        a11y.targetSize.text-links.
       why: >-
         At 12px with line-height 1 and no declared padding the target is
-        ~12px tall — 27% of the floor, the worst in the system, and on a
+        ~12px tall — half the floor, the worst in the system, and on a
         surface where the crumb is often the only way back up a bill's
         hierarchy. This is the case the enforcement clause was written for:
         the type size is correct and the target is not, and they are not the
@@ -4638,7 +4637,7 @@ tactileAccents:
         glyph, tracking is pure trailing space, so the 0.06em it used to carry
         shoved the letter left of the die's centre.
       ink-break: "None. There is no ink."
-      minimum-size: "44px. Below that the highlight and shadow stop resolving as one pressed form and the seal reads as a smudge — which is also the minimum touch target, a useful coincidence. On portrait the emboss sits INLINE WITH THE SIGNATURE RULE rather than in a far corner: a notary presses over the signature, not beside it."
+      minimum-size: "44px. Below that the highlight and shadow stop resolving as one pressed form and the seal reads as a smudge. On portrait the emboss sits INLINE WITH THE SIGNATURE RULE rather than in a far corner: a notary presses over the signature, not beside it."
       when: "Post-Send confirmation on Writing Desk; the Receipt."
     signature-line:
       blocked-on: IMPLEMENTATION
@@ -5105,84 +5104,67 @@ a11y:
   reducedMotion:
     description: "All animations and transitions clamp to 0.01ms."
   targetSize:
-    rule: "Interactive targets are at least 44×44 px, EXCEPT inline targets in prose — see inline-exception."
-    inline-exception: >-
-      RATIFIED 2026-08-28. A LINK INSIDE A SENTENCE IS EXEMPT, and this is
-      not a concession — it is in both authorities the 44 came from. WCAG
-      2.5.5 (AAA) and 2.5.8 (AA, 24×24) each carve out a target that "is in
-      a sentence" or whose size "is otherwise constrained by the
-      line-height of non-target text." The rule above inherited the number
-      from those criteria without their exceptions, so it read
-      unconditional and no component could satisfy it.
-      THE GEOMETRY IS THE ARGUMENT, and it was measured before it was
-      looked up: role-body is 1rem on a 1.5 line box — 24px — so a 44px
-      target centred on an inline link OVERHANGS 10px ABOVE AND 10px BELOW,
-      into the line boxes of the sentences around it. The enlarged target
-      does not just fail to help; it starts catching taps meant for the
-      lines above and below. Making the target compliant makes the page
-      less usable, which is the signal that the rule was being applied
-      outside its scope.
-      SO: an inline link in prose takes no minimum. It stays legible by
-      being underlined and by the paragraph's own line-height. This exempts
-      the LINK IN A SENTENCE only — a link that is its own block, a list
-      row, a card, or anything with its own line box is a target and takes
-      the floor. If you are unsure which you have, ask whether removing the
-      link would leave a gap in a sentence.
-    # PROVENANCE — added 2026-08-02. The number was inherited, not derived, and
-    # a rule whose source is unstated gets argued with by whoever wants 40.
-    provenance:
-      primary: >-
-        Apple's Human Interface Guidelines: "maintain a minimum tappable area
-        of 44pt × 44pt for all controls." Verified still current 2026-08-02;
-        it has been Apple's guidance since the original iPhone HIG, which is
-        why it reads as self-evident.
-      corroborating: >-
-        WCAG 2.5.5 Target Size (Enhanced), level AAA, independently arrives at
-        44×44 CSS px. Two different authorities, two different unit systems,
-        the same number — that agreement is the reason to hold the line here.
-      units: >-
-        Apple's 44 is POINTS; ours is CSS PIXELS. On a mobile viewport with a
-        correct meta viewport these coincide (1pt = 1 CSS px), which is why
-        the tab bar measured at 390pt and specified in px is not a unit error.
-        Off a mobile viewport they diverge and the CSS pixel is what governs.
-      not-the-floor: >-
-        Material/Android specifies 48×48 dp — larger. So 44 is a MINIMUM
-        arrived at by the most permissive of the three authorities, not a
-        target. Where a control is dense, consequential, or thumb-reached
-        (Send, Co-sign, the tab bar), go to 48.
-      do-not-downgrade: >-
-        WCAG 2.2 added 2.5.8 Target Size (Minimum) at 24×24 px, level AA. It
-        is the newer criterion and the smaller number, which makes it the one
-        someone will cite to justify shrinking a control. This system's floor
-        is 44, and 24 is recorded here only so that it is recognised when it
-        appears in an argument rather than mistaken for an update.
+    rule: >-
+      THE FLOOR IS 24×24 CSS px — WCAG 2.2's 2.5.8 Target Size (Minimum),
+      level AA — MET BY SIZE OR BY SPACING: a target smaller than 24 passes
+      when a 24px circle centred on it overlaps no other target. A TARGET IS
+      A HIT AREA, NOT OPEN SPACE: it never sets a row's height or a list's
+      leading. Each control's own size is a component decision stated in its
+      entry (component-sizes), not a floor every target is padded up to.
+    floor-is-24: >-
+      RATIFIED 2026-10-28, decided by Jason, retiring the 44px floor. The 44
+      was Apple's HIG RECOMMENDATION for controls, adopted here as a minimum
+      for every target, and the mistake was in where it reached: applied to
+      links with their own line box it turned a list of 24px lines into 44px
+      rows (the delivered ledger's ask titles at min-h-11, rendered and
+      rejected as too much space), and the same reading padded data-line and
+      list links throughout. A touch target is the area a tap lands in; it
+      is not a demand for 44px of empty layout around the thing tapped.
+      2.5.8 is the criterion this system is accountable to, and it measures
+      the target or the spacing between targets, never the layout.
+    text-links: >-
+      A TEXT LINK'S TARGET IS ITS LINE BOX — inside a sentence, on a data
+      line, or on its own line in a list. role-body's line box is 24px and
+      meets the floor by size, so stacked links set at their role's own
+      leading pass with no min-height, no padding and no expanded hit area.
+      A link on a tighter line box (role-caption, role-metadata-sans) meets
+      it by spacing — the gap to the next target — or by a hit area expanded
+      to 24 that overlaps no neighbouring target. Never by a min-height that
+      spaces the text out. WCAG exempts a target "in a sentence" or
+      "constrained by the line-height of non-target text" outright, and that
+      exemption stands.
+    component-sizes: >-
+      Controls keep the sizes their entries declare — buttons, inputs,
+      row-action, button-icon and the tab bar at 44, button-cta and
+      button-fab at 48 — because those are the right sizes for those controls
+      (a thumb-reached, consequential act goes larger), not because a floor
+      makes them. A control's entry is the only place its size is stated.
+      A NEW CONTROL CHOOSES ITS SIZE IN ITS OWN ENTRY and clears the floor;
+      44 is not inherited by anything that did not choose it.
+    units: >-
+      Target sizes are CSS pixels. On a mobile viewport with a correct meta
+      viewport, 1pt = 1 CSS px, so a size measured at 390pt and specified in
+      px is not a unit error.
     enforcement: >-
-      Stated since the beginning and applied nowhere. As of 2026-08-02 the
-      tab bar shipped targets as narrow as 40px because a bare link inherits
-      whatever its content measures, and the only other place in this
-      document that mentions the number is the emboss's minimum size, which
-      cites it as "a useful coincidence" rather than as this rule.
-      **A COMPONENT WITH A TOUCH TARGET DECLARES ITS OWN MINIMUM.** Do not
-      rely on type size, icon size, or padding to arrive at 44 by accident —
-      measure it, and if the number is not in the component's spec entry, it
-      is not enforced.
+      **A COMPONENT WITH A TOUCH TARGET DECLARES ITS OWN SIZE.** Do not rely
+      on type size, icon size, or padding to arrive at it by accident — the
+      tab bar once shipped 40px because a bare link inherits whatever its
+      content measures. Measure it; if the number is not in the component's
+      spec entry, it is not enforced.
     how: >-
-      DECLARE `min-height`, DO NOT ADD PADDING. Padding changes a plate's
-      proportions and the optical centring of its label; a declared minimum
-      leaves an already-compliant control untouched and grows only the ones
-      that fall short. Where the control's visible size must stay smaller than
-      the floor — the breadcrumb's 12px caption, a toggle track that has to read
-      as a switch — EXPAND THE TARGET AROUND IT: a transparent hit area at the
-      minimum, centred on the control, rather than inflating the box. The
-      appearance and the target are two different geometries and this rule
-      only governs the second.
+      DECLARE `min-height` ON A CONTROL'S PLATE, DO NOT ADD PADDING. Padding
+      changes a plate's proportions and the optical centring of its label; a
+      declared minimum leaves an already-compliant control untouched. Where a
+      control's visible size must stay smaller than its target — the
+      breadcrumb's caption, a toggle track that has to read as a switch, a
+      chrome-scale button — EXPAND THE TARGET AROUND IT: a transparent hit
+      area, centred, that overlaps no neighbouring target. Appearance and
+      target are two geometries; this rule governs only the second, and the
+      second never moves the first.
     cited-by: >-
-      Added 2026-08-11. button-default (and secondary/ghost by inheritance),
-      button-cta at 48, button-fab, button-icon, input, toggle, breadcrumb,
-      card-select, tabbar. Specimen: preview/touch-targets.html. Before that
-      date the rule was cited by one component and violated by five — four of
-      them arriving under the floor by `padding + line-height`, which is the
-      same way the tab bar shipped 40.
+      button-default (and secondary/ghost by inheritance), button-cta,
+      button-fab, button-icon, input, toggle, breadcrumb, card-select,
+      tabbar, row-action. Specimen: preview/touch-targets.html.
   focusRing:
     rule: >-
       2px --color-functional. A RECESSED CONTROL TAKES THE RING INSET; A
@@ -5992,13 +5974,12 @@ Focus is always slate, always visible, always at 2 px with a 4 px offset
 it is suppressed only when focus arrives from a mouse click
 (`:focus:not(:focus-visible)`).
 
-Interactive targets are never smaller than 44 × 44 px — Apple's HIG minimum
-tappable area (44pt, current as of 2026-08), corroborated at 44 CSS px by WCAG
-2.5.5 (AAA). Android asks for 48dp, so 44 is the floor of the three, not a
-target: go to 48 where a control is dense, consequential, or thumb-reached.
-WCAG 2.2's newer 2.5.8 says 24px at AA; it is not an update to this number.
-**A component with a touch target declares its own minimum** — arriving at 44
-by way of padding and icon size is how the tab bar shipped 40. See
+Interactive targets clear 24 × 24 px — WCAG 2.2's 2.5.8 (AA) — by size or by
+spacing. A target is a hit area, not open space: it never sets a row's height
+or a list's leading, and a text link's target is its line box. Each control's
+size is chosen in its own entry; a thumb-reached, consequential act goes to 48.
+**A component with a touch target declares its own size** — arriving at one by
+way of padding and icon size is how the tab bar shipped 40. See
 `a11y.targetSize`.
 
 ## Dark Mode: Paper Islands

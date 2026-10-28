@@ -41,7 +41,7 @@ Full list and keys in `DESIGN-HARD-RULES.md`.
 - **The CTA** is flat `--color-action` with an ink label (`--color-action-label`) and a 1px `--color-action-active` ring. Every action-colour plate takes the ring.
 - **Ink** is `--text-primary` / `--text-secondary` / `--text-tertiary`, never a literal alpha; tertiary is decorative only. Coloured ink needs an opaque ground.
 - **Serif belongs to the canvas;** inside a container the heading is `role-ui-heading`. Headings are never ALL CAPS — uppercase has four homes: `role-label-caps`, `role-designation`, `role-ceremonial`, `role-calendar-month`.
-- **12px floor**, no exception. **Targets ≥44px, CTA 48px**, by `min-height` or a hit area, never padding.
+- **12px floor**, no exception. **Targets clear 24px by size or spacing**; a text link's target is its line box; each control's size is in its own entry, never reached by padding.
 - **Hover** is one background step plus one shadow tier; nothing moves. Motion lives on the Receipt bloom and the Commons accrual only.
 - **Empty states:** `card-empty` for content that did not arrive, `card-placeholder` for a slot someone can fill.
 - **`ch` is banned** from tokens and prose; widths come from `measure.*` and `container.*`.

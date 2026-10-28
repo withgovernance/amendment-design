@@ -55,7 +55,7 @@ Full list in `DESIGN-HARD-RULES.md`.
 - **The CTA carries an INK label, not white**, on a flat fill ringed in `color.action-active`.
 - **No red except semantic danger** (`--color-danger`). No violet/pink/magenta accents. No amber except warning.
 - **12px type floor**, no chrome exception. Headings never ALL CAPS — uppercase has four homes: `role-label-caps`, `role-designation`, `role-ceremonial`, `role-calendar-month`.
-- **Targets ≥44px, CTA 48px** — by `min-height` or an expanded hit area, never padding.
+- **Targets clear 24px by size or spacing**; a target is a hit area, never open space that pads a list apart. Control sizes live in their entries, never reached by padding.
 - **No transform transitions, no `scale()`, no `brightness()`** on hover. Motion lives on exactly two surfaces: Receipt bloom, Commons accrual. Streaming is not motion.
 - **Text may sit on the aurora; coloured ink may not.** The band is bounded so `--text-secondary` clears 4.5:1 everywhere; coloured ink needs an opaque ground.
 - **Serif italic is quoted human voice ≥1.125rem.** Below that, roman 600 (`emphasis-serif-inline`).

@@ -8,6 +8,27 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-04 (v2026.11.04.3) — The sidebar leads with the tab bar's five
+
+Decided by Jason 2026-10-22 from `preview/nav-spine.html`: the shipped nine rows, the tab bar's five
+plus the rest, and an activity-clustered four, each collapsed and expanded, both schemes, 1440 and
+390. Voyager shipped it in #956.
+
+- **The sidebar's first group is the tab bar's five in the tab bar's order** (Home, Asks, Races,
+  Bills, Conversations); **the second is what the tab bar leaves out** (Notifications, Following,
+  Officeholders, Letters), which mobile keeps in the account menu (`components.sidebar.groups`).
+  The activity-clustered four lost because it needs a Research landing that doesn't exist.
+- **One name per destination** (`components.sidebar.labels`): Dashboard becomes Home, Elections
+  becomes Races, Tracked becomes Following, and Actions becomes Letters, because "Actions" was
+  ambiguous beside "Asks" and delivery is wired to that page. Routes and form headings keep their names.
+- **An inactive glyph is `--text-secondary`**, since in the collapsed rail it is the row's only label;
+  **no rail edge**, under recession.
+- `components.tabbar.items` is rewritten: it had the sidebar at seven and the tab bar's old labels.
+- Still open: the sm–md width where neither nav renders, the inset of rules in the rail, and whether
+  the group divider is chrome.
+
+---
+
 ## 2026-11-04 (v2026.11.04.2) — A field is a control: fields and buttons share one radius
 
 Decided by Jason 2026-10-21 from the home hero at 390, dark, where the address field and the CTA sit

@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.04.2
+# spec-version:   v2026.11.04.3
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2952,10 +2952,10 @@ components:
       widest short label ("Races") measures 47.4px — 63% of its slot. What
       makes the row fit is `shortLabel` (below), not the type size.
     items: >-
-      A CURATED FIVE, not the whole nav. The sidebar carries seven
-      destinations; the tab bar carries Dashboard · Asks · Elections · Bills ·
-      Conversations. Actions and Tracked live in the account menu on mobile.
-      Both navs compose from ONE list (`Sidebar/nav-items.ts`) so they cannot
+      A CURATED FIVE, not the whole nav: Home · Asks · Races · Bills ·
+      Conversations, in that order. The rest of the sidebar (its second group,
+      components.sidebar.groups) lives in the account menu on mobile. Both
+      navs compose from ONE list (`Sidebar/nav-items.ts`) so they cannot
       drift — keep that.
     shortLabel-required: >-
       Every tab bar item MUST define `shortLabel` (Home, Asks, Races, Bills,
@@ -2987,6 +2987,37 @@ components:
         screen they also need the chrome out of the way. Production decided
         this; the spec is adopting it.
     signed-out: "No tab bar. It renders nothing until Clerk resolves; the spacer prevents the late arrival from shifting layout."
+  sidebar:
+    description: Desktop navigation rail, signed-in, from the md breakpoint up
+    groups: >-
+      RATIFIED 2026-11-04, decided by Jason 2026-10-22 from preview/nav-spine.html
+      (the shipped nine rows; the tab bar's five plus the rest; an
+      activity-clustered four), each collapsed and expanded beside a home
+      column, both schemes, 1440 and 390. THE SIDEBAR'S FIRST GROUP IS THE TAB
+      BAR'S ITEMS IN THE TAB BAR'S ORDER — Home, Asks, Races, Bills,
+      Conversations — so a person who learned one nav has learned the other.
+      THE SECOND GROUP IS WHAT THE TAB BAR LEAVES OUT: Notifications,
+      Following, Officeholders, Letters. On mobile the second group is the
+      account menu's. The activity-clustered four lost because it needs a
+      Research landing that does not exist and would have changed the tab bar
+      to match.
+    labels: >-
+      One name per destination, in both navs: Home (not Dashboard), Races
+      (not Elections), Following (not Tracked), Letters (not Actions —
+      "Actions" was ambiguous and sat too near "Asks", and delivery is wired
+      to that page). A rename covers the nav label, its shortLabel and the
+      page's title; a route and a form's own heading keep their names.
+    glyphs: >-
+      An inactive row's glyph takes --text-secondary. In the collapsed rail
+      the glyph is the row's only visible label, so it is not decorative ink
+      and the tertiary rung cannot hold it (color.aurora.tertiary-rung). The active
+      row takes --text-nav-active, as the tab bar does.
+    edge: "No rail edge — components.navbar's recession binds the rail's boundary with the page."
+    known-gaps: >-
+      Between the sm and md breakpoints neither the tab bar nor the rail
+      renders, so destinations sit behind the account menu at that width.
+      Open: which nav owns it. The inset of rules inside the rail, and
+      whether its group divider is chrome, are open in RATIFY.md.
     known-divergence: >-
       Production ships `text-[10px]` labels and no safe-area inset. Spec
       ahead on both — the code migrates. 10px was never a constraint anyone

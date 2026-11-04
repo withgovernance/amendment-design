@@ -671,13 +671,6 @@ Moved out of this file on ratification; listed here for one cycle so the code si
 - **proposes:** render the card faithful and to spec in the pane, both schemes, 390 and 1440. Then either (A) a depiction is a screenshot and stays faithful, with the widget's divergences recorded against deepspace, or (B) marketing draws to the spec and the widget conforms.
 - **blocks:** shipping the chat demo
 
-### Is a scripted, replayed arrival “arrival” or marketing motion
-- **kind:** two readings
-- **found:** the chat demo storyboard fades a bill card that carries record state into view, plays once on first view, and drops to the final frame under reduced motion. One reading: `motion.rules` “streaming is not motion” covers it, since content appears for the first time. The other: replaying a past exchange is choreography, so the marketing motion bounds apply (pausable, viewport-gated, never on a surface carrying record state), and the card is record state.
-- **evidence:** Paper “MCP Sales”, “Chat demo storyboard — 1440” and “— 1440 dark”.
-- **proposes:** render frames 3 and 4 with an instant swap and with the fade, then rule
-- **blocks:** building the animation
-
 ### Green ink on a marketing section divider
 - **kind:** two readings
 - **found:** every section eyebrow on the MCP sales page except “Where the data comes from” is set in `--ink-success`, while `role-label-caps` is defined in `--text-secondary`. One reading: `registers.marketing-is-outside-the-table` licenses green ink. The other: the fill rule still binds marketing, and green ink is a report, which an eyebrow isn't.
@@ -745,13 +738,6 @@ Moved out of this file on ratification; listed here for one cycle so the code si
 - **evidence:** Paper “MCP Sales”, both dark boards, “Two ways in”; voyager `McpSalesSections.tsx` (`codeSurface`)
 - **proposes:** rule it together with the existing entry
 - **blocks:** nothing
-
-### Ruled by Jason: a replayed chat demo is arrival, and it animates
-- **kind:** owner ruling, closes “Is a scripted, replayed arrival ‘arrival’ or marketing motion”
-- **found:** Jason, 2026-10-28: the `/mcp` chat demo simulates chat sessions and must animate; any rule preventing it should be removed. Voyager now plays the storyboard once, on first view, in both panes: question, tool line, streamed reply, card header with skeleton, card body, verdict. Every piece keeps its slot, so nothing above a new piece moves. The server render and reduced motion both show frame 4.
-- **evidence:** voyager `components/mcp/sales/ChatReplay.tsx`; Paper “MCP Sales”, both storyboard boards
-- **proposes:** in `motion.rules`, let a replayed product demo on a marketing surface play once on first view, including on a depicted card that carries record state, with the final frame under reduced motion. Strike any bound that forbids it.
-- **blocks:** nothing; it shipped on Jason's ruling
 
 ### Does every paid plan card in a comparison row carry its own plate
 - **kind:** unowned default
@@ -968,13 +954,6 @@ Moved out of this file on ratification; listed here for one cycle so the code si
 - **proposes:** render the four clients as a select and as `components.tabbar` at inline scale, at 390 in both schemes, and rule. A select hides three of four clients, and showing every client is the point of the comparables (Stripe, Linear and the finance data MCPs). This extends “A segmented control outside a form”.
 - **blocks:** the voyager build of the `/data` hero install block
 - **decided (Jason, 2026-11-03):** keep the segmented control at four options. Apple’s HIG allows about five on iPhone and five to seven wide. /ratify writes the cap exception into `components.segmented-control`; further clients go to a setup-guide link, not a fifth segment, because 390 has no room.
-
-### A scripted chat replay on the Data & MCP page
-- **kind:** spec silent
-- **found:** the page's chat demo plays back the real `show_*` cards from saved results, in four beats: the question lands, the step line appears, the card arrives, the cited answer holds. It plays once on first view, and a scene button replays it. The motion rule names two surfaces, Receipt bloom and Commons accrual, and says streaming is not motion. A replay is neither of those surfaces, and arguably not streaming either.
-- **evidence:** Paper “MCP Sales”, “Chat demo storyboard — real cards — 1440” and its dark variant. The source recordings are the qwen-flash and deepvest demo videos (Remotion, `deepspace-law-children/demo`).
-- **proposes:** classify the replay as streaming, so it needs no third motion surface. Each beat fades in whole, with no typing, pan, zoom, scale or transform. It plays once per view, and under `prefers-reduced-motion` the page shows beat 4 at once. Render beat 1 to beat 4 against the static final frame and rule from that render.
-- **blocks:** the voyager build of the `/data` chat demo
 
 ### Vote bars draw nays in red
 - **kind:** spec silent (the yea colour); conformance (the red and amber)

@@ -168,7 +168,7 @@ The CTA lives in the Button component’s `cta` variant; `role-action` is for sp
 
 - Transition only background, box-shadow, color, opacity and ring, on `--duration-*` and `--ease-*`.
 - **Two surfaces move** (`motion.rules`). The **Receipt blooms** once at issuance — aurora deepens, emboss presses, guilloche draws on, ledger counts up — then is static (`celebration`). The **Commons accrues** under real collective action — counts climb, the threshold meter climbs in slate and turns emerald at the threshold — then holds (`surfaces.commons.motion-discipline`). Neither mechanic appears elsewhere.
-- **Not motion:** a control drawing a state the user just set, content arriving, the aurora breathing. Marketing motion stays pausable and off record state.
+- **Not motion:** a control drawing a state the user just set, content arriving, the aurora breathing. Marketing motion stays pausable and off record state; a replayed product demo is arrival, plays once on first view, and shows its final frame under reduced motion.
 - **Chrome is still.** Nothing moves on hover. `prefers-reduced-motion` clamps everything.
 
 ### Tactile accents

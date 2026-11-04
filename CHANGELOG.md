@@ -8,6 +8,22 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-04 (v2026.11.04.5) — A replayed product demo is arrival
+
+Decided by Jason 2026-10-28 on the `/mcp` (now `/data`) chat demo: it simulates chat sessions and must
+animate, and any rule preventing it should be removed.
+
+- **A replayed product demo is arrival** (`motion.rules`). Played back from saved results, the
+  question, tool line, streamed reply, card and cited answer each put content on screen for the
+  first time, so streaming-is-not-motion covers it and it spends nothing from the two-surface budget.
+- **The marketing bar on record state does not reach it**: the depicted card is part of the replay.
+- **Its bounds:** it plays once on first view, and a replay control may play it again. Every piece
+  keeps its slot from the start, so nothing above a new piece moves. The server render and reduced
+  motion show the final frame, and transform, scale, pan and zoom stay banned.
+- Closes the two-readings entry on scripted arrival and the `/data` replay entry.
+
+---
+
 ## 2026-11-04 (v2026.11.04.4) — A delivered row leads with its race
 
 Decided by Jason 2026-10-28 from the delivered ledger and the `/asks` rail, each rendered with the

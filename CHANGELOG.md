@@ -8,6 +8,18 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-04 (v2026.11.04.14) — A placeholder recedes, and drops its title when the container names the state
+
+Decided by Jason, from renders of the home record band at 390 and 1440 in both schemes.
+
+- **An unreached stage shows its slot** (`card-placeholder.unreached-stages-show-the-slot`). The band shows the dashed "waiting on" slot (A) rather than stopping the ribbon at Delivered (B). Hiding it leaves delivery as the end of the journey, on a page whose claim is that an ask keeps going.
+- **A placeholder is recessed** (`card-placeholder.recessed`). Its title takes `--text-secondary`, like its message. In primary ink the title drew more attention than the candidates above it. `card-empty` keeps its primary title (2026-10-11), because it usually stands alone.
+- **The container can name the state** (`card-placeholder.the-container-names-the-state`). When the container already says what the slot waits on, the title goes. On the ask card the ribbon reads "Answered · Waiting on 2", so the title repeated it three rows lower. This narrows the 2026-10-12 ruling; it does not retire it. A placeholder with nothing around it naming what is missing still takes a title.
+
+Retires: a primary-ink title on `card-placeholder`.
+
+---
+
 ## 2026-11-04 (v2026.11.04.13) — Metadata is roman, beneath the ribbon too
 
 Conformance inside the spec: two passages still prescribed italic serif for metadata, against the

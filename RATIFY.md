@@ -227,13 +227,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **blocks:** nothing
 - **more evidence (voyager `/data`, 2026-11-03):** the `lead` helper renders 18px at both widths, where `body-lead` steps to 1.25rem at sm.
 
-### Home record band: show the unanswered slot, or hide it
-- **kind:** spec silent
-- **found:** `preview/home-record-band.html`, a proposed home section that features one real race (WA-3), its top delivered ask and its candidates. No candidate has answered any ask (`POSITION_ENDORSEMENT` 0, prod 2026-10-20).
-- **evidence:** `?v=a` shows a `card-placeholder` ("No answer yet") and the ribbon's active step on Answered ("Waiting on 2"). `?v=b` drops the slot and leaves the ribbon active on Delivered (Oct 19). Rendered at 390 and 1440, both schemes.
-- **proposes:** rule whether an unanswered stage renders as a fillable slot on marketing surfaces (`card-placeholder` names this case: a slot someone can fill), or only as an unreached ribbon segment
-- **blocks:** the home record band
-
 ### The progress ribbon on an ask's journey
 - **kind:** spec silent
 - **found:** the same specimen sets `progress-ribbon` on an ask (Co-signed · Delivered · Answered · Backed · In office). `components.progress-ribbon.description` names bill journeys only.

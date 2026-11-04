@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.04.13
+# spec-version:   v2026.11.04.14
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3197,6 +3197,26 @@ components:
       naming the empty slot over a role-body message in secondary ink saying
       who fills it and how. A lone caption in a dashed box reads as a blank
       box with a footnote.
+    recessed: >-
+      RATIFIED 2026-11-04, decided by Jason. A placeholder is the outline of
+      what is not there yet, so it sits behind the content around it: its
+      title is in --text-secondary, like its message. card-empty keeps its
+      title in --text-primary; it usually stands alone, with nothing to
+      recede behind.
+    the-container-names-the-state: >-
+      RATIFIED 2026-11-04, decided by Jason. When the container already
+      names the state the slot waits on, the placeholder drops its title and
+      keeps only the role-body message saying who fills it. On an ask's card
+      the progress-ribbon reads "Answered · Waiting on 2", so a "No answer
+      yet" title says the same thing a second time, three rows lower.
+      Otherwise the title stays: a lone line with nothing around it naming
+      what is missing still reads as a blank box with a footnote.
+    unreached-stages-show-the-slot: >-
+      RATIFIED 2026-11-04, decided by Jason. An unreached stage that someone
+      can fill renders as a card-placeholder on marketing surfaces too, not
+      only as an unreached ribbon segment. Hiding it leaves the last reached
+      stage as the end of the journey; delivery opens the push, it does not
+      finish it. Evidence: preview/home-record-band.html, ?v=a.
   modal:
     description: Popover and dropdown surface
     background: "linear-gradient from rgb(255 255 255 / 25%) to rgb(255 255 255 / 40%)"

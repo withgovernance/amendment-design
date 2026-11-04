@@ -8,6 +8,23 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-04 (v2026.11.04.9) — In dark, the selected segment is glass
+
+Decided by Jason 2026-10-29 on `/pricing` in dark, after three rounds on the rendered control: the
+canvas-hue plate read as a recess, an opaque lift read as a grey slab on the aurora, and the dark
+drop shadow made a centred plate look low in its track. From `preview/segmented-dark-plate.html`,
+four plates on the dark aurora: "glass is the one."
+
+- **In dark, the selected segment is white-wash glass** (`components.segmented-control.selected-dark`):
+  `material-ultrathin`'s light construction, one `--border-subtle` ring, no drop shadow. Light keeps
+  the raised plate.
+- **It is the control's plate, not a new material tier.** Dark materials still take the canvas hue.
+- Selection stays ink plus weight (`components.selection-is-ink`).
+- `preview/forms.html` and `preview/segmented.html` are corrected. They had painted the recess
+  voyager copied.
+
+---
+
 ## 2026-11-04 (v2026.11.04.8) — A price that leads a card takes role-stat-price
 
 Decided by Jason 2026-10-29 on `/pricing`, which he called dull ("all the text just blends

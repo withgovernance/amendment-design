@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.04.8
+# spec-version:   v2026.11.04.9
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3340,6 +3340,26 @@ components:
       Ink plus a non-colour channel, per components.selection-is-ink:
       --text-primary at semibold against --text-secondary at normal weight,
       confirmed by the raised plate. NO BORDER.
+    selected-dark: >-
+      RATIFIED 2026-11-04, decided by Jason 2026-10-29 on /pricing in dark
+      ("what is happening here with this switch, it looks wrong") from
+      preview/segmented-dark-plate.html, four plates on the dark aurora:
+      "glass is the one." IN DARK THE SELECTED PLATE IS WHITE-WASH GLASS —
+      material-ultrathin's light construction (a 10% white wash under its
+      blur), one --border-subtle ring (materials.one-ring), and NO DROP
+      SHADOW. Light keeps the raised plate and --shadow-raised.
+      WHY EACH ALTERNATIVE LOST: the canvas-hue mix the specimen shipped was
+      darker than the 6% white track, so the selection read as a recess. An
+      opaque lift toward white read as a grey slab on the aurora ("muddy"),
+      because an opaque fill cannot take the hue behind it. The dark
+      canvas-hue material tiers darken the plate and bring the recess back.
+      And dark --shadow-raised darkens the gutter under the plate and lights
+      the one above, so a plate measured 4px from top and bottom looked
+      lower in its track.
+      SCOPE: this is the segmented control's selected plate, not a sixth dark
+      material tier; dark materials still take the canvas hue
+      (materials.dark-glass-takes-the-canvas-hue). Selection stays ink plus
+      weight, which meets components.selection-is-ink.
     no-border-amended: >-
       AMENDED 2026-09-03 at v2026.09.03.6, same day it was ratified. THE
       SELECTED SEGMENT TAKES NO BORDER. v2026.09.03.4 specified

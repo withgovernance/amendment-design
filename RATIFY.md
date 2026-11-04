@@ -825,6 +825,55 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **blocks:** nothing; voyager builds it now at Jason’s ask
 - **divergences in the build (voyager-de, 2026-11-03):** (1) at 390 the column heads are `role-field-label`, because caps at `--sans-chrome` overflow the 57px columns; rule this together with “Column, pane and verdict labels”, since `role-field-label` is a form field’s name, not a column head. (2) The 20% and 5% rules and the 4% tint are literal alphas. No token holds them: `--border-hairline` is 5% in light and 20% in dark. Name a token for each, or sanction the literals.
 
+### A disabled field has no rule
+- **kind:** unowned default
+- **found:** design-reviewer on the field specimens (2026-11-04). `preview/form-fields.html:46` invents a disabled state: transparent fill and a `--border-hairline` ring. Under inversion the hairline (20% white) is heavier than the rest ring (`--border-subtle`), so in dark the disabled field is outlined more strongly than a live one. `components.input` has no disabled key.
+- **evidence:** painted edge pixels: dark disabled rgb(57,61,69) against rest rgb(45,49,57); light disabled 240 against rest 210. Renders in `/private/tmp/claude-501/-Users-jason-git-amendment-design/8d349b2b-3c23-4bbb-b3a3-aae25503bf8a/scratchpad/renders/`
+- **proposes:** render disabled at `--border-subtle` with reduced ink against the current treatment, both schemes, and write `components.input.disabled`
+- **blocks:** nothing
+
+### The segmented control's plates have no class
+- **kind:** spec ahead (light plate: unowned default)
+- **found:** same review. `selected-dark` (v2026.11.04.9) is hand-built in three files (10% white, blur, `--border-subtle`); it can't reuse `.material-ultrathin`, whose dark rule takes the canvas hue. The light plate hand-copies `material-regular`'s 85% white without its blur or ring (`segmented.html:58,67`, `forms.html:50`); `selected` says only "the raised plate".
+- **evidence:** the three specimens' selected-segment rules
+- **proposes:** say whether the light plate is `material-regular` or a named plate, and emit one class per scheme for the selected plate in `colors_and_type.css`
+- **blocks:** nothing
+
+### The dark glass plate was ruled on the bare aurora, and ships on a card
+- **kind:** missing measurement (now measured)
+- **found:** same review. The ruling's specimen sets plates straight on the aurora, at different positions, so its comparison is confounded by position (`color.ink-ground-is-a-placement`). In product the control sits on a `material-regular` card.
+- **evidence:** plate : track, painted at 1440. On a card: 1.41 (`forms.html`), 1.45–1.53 (`segmented.html`), the plate lighter than the track. On the evidence page: B 1.49 and darker than its track; C 1.59; D 1.46; E 1.54. Renders in `/private/tmp/claude-501/-Users-jason-git-amendment-design/8d349b2b-3c23-4bbb-b3a3-aae25503bf8a/scratchpad/renders/`
+- **proposes:** record the scope: the rule holds on the card. No change unless a voyager render disagrees.
+- **blocks:** nothing
+
+### Input focus ring: 80% or full
+- **kind:** two readings
+- **found:** same review. `components.input.focusRing` says `--color-functional` at 80%; `a11y.focusRing.rule` gives no alpha, and every specimen draws the full `--focus-color` (`form-fields.html:43`, `inputs.html:32`).
+- **evidence:** not yet rendered
+- **proposes:** render 80% against full on the recess, both schemes; the 3:1 non-text figure decides
+- **blocks:** nothing
+
+### Input padding and ring are literals that disagree with the specimens
+- **kind:** two readings
+- **found:** same review. `components.input.padding` is "8px", but all three field specimens ship 8px by 12px (`forms.html:27`, `form-fields.html:28`, `inputs.html:20`). `components.input.ring` is a literal black 10% with no dark value; the specimens use `--border-subtle`.
+- **evidence:** the specimens' field rules
+- **proposes:** state the padding in tokens on both axes, and cite `--border-subtle` for the ring
+- **blocks:** nothing
+
+### The four-segment width at 390 assumes the /data hero's container
+- **kind:** missing measurement
+- **found:** same review. `four-is-the-cap` cites 84.5px segments at 390, measured in the `/data` hero. Inside a card at 390 the track is 262–270px, about 63–65px a segment at four.
+- **evidence:** track widths measured in `forms.html` and `segmented.html` at 390
+- **proposes:** render four segments with the picker's labels inside a card at 390, both schemes; if a label clips, the cap needs a container clause
+- **blocks:** nothing
+
+### A form card's lede: serif or sans
+- **kind:** spec silent
+- **found:** same review. The auth card's lede (`forms.html:19`) is serif; a form is apparatus and its hint is sans (`components.input.hint`), but nothing names a card lede's family.
+- **evidence:** `forms-1440-light.png`, `forms-390-light.png` in `/private/tmp/claude-501/-Users-jason-git-amendment-design/8d349b2b-3c23-4bbb-b3a3-aae25503bf8a/scratchpad/renders/`
+- **proposes:** render the lede in serif and in `role-body` secondary, both schemes, and rule
+- **blocks:** nothing
+
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by

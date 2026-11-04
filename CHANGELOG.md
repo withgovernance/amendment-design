@@ -8,6 +8,20 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-04 (v2026.11.04.13) — Metadata is roman, beneath the ribbon too
+
+Conformance inside the spec: two passages still prescribed italic serif for metadata, against the
+ratified italic policy, under which serif italic is quoted human voice at `role-quote`'s size and
+metadata is roman. A design review found the first.
+
+- **The temporal caption beneath the progress ribbon is `role-metadata-sans`**, roman, like the
+  ribbon's markers, because the caption is apparatus.
+- **The Archive's provenance line is roman metadata.** Its accent list had kept "italic serif
+  metadata".
+- Retires: the italic-serif metadata register in both places.
+
+---
+
 ## 2026-11-04 (v2026.11.04.12) — A long statute folds at its subsections and opens where it's cited
 
 Decided by Jason 2026-10-30 from `preview/law-long.html` (26 U.S.C. § 501, 12,079 words), with three

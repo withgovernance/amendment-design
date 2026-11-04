@@ -903,13 +903,6 @@ Moved out of this file on ratification; listed here for one cycle so the code si
 - **proposes:** extend `row-action` to a list of different acts: same secondary ink, `role-metadata-sans` size and `--sans-medium` weight, and a fixed trailing slot
 - **blocks:** nothing
 
-### Stale italic caption under the progress ribbon
-- **kind:** spec silent (internal contradiction)
-- **found:** the “Temporal caption beneath the ribbon” passage in `DESIGN.md` still prescribes the “italic-serif metadata register”. That contradicts the italic policy (serif italic is quoted human voice at 1.125rem or more).
-- **evidence:** `DESIGN.md`, the `progress-ribbon` temporal caption (design-reviewer)
-- **proposes:** delete the italic prescription; the caption is `role-metadata-sans`
-- **blocks:** nothing
-
 ### Vote bars draw nays in red
 - **kind:** spec silent (the yea colour); conformance (the red and amber)
 - **found:** the `show_bill` card fills nays red and not-voting amber; neither is danger or warning. The red and amber are a conformance fix, filed as resistbot/deepspace#3304, along with the stage ribbon (green, and red on vetoed) as #3305. Still open: what fills the yea. The spec says nothing on vote bars, and green on a yea is neither a crowd counted nor the primary act.

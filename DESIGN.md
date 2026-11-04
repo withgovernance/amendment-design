@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.04.12
+# spec-version:   v2026.11.04.13
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -4320,7 +4320,7 @@ surfaces:
       - "amendment redlines: strike-through for deletions, underline for insertions"
       - "progress-ribbon for bill journey"
       - "[proposed] lapel-pin avatars for sponsors (alternative to wax-seal monogram)"
-      - "italic serif metadata for provenance ('started by X', 'representing Y')"
+      - "roman metadata for provenance ('started by X', 'representing Y') — metadata is never italic"
     newcomer-lede:                # audit §3.1, resolved 2026-08-01
       required: true              # every bill page has one; not optional chrome
       role: role-lede             # serif, --serif-text, 1.25rem/1.55, measure-lede
@@ -6338,7 +6338,9 @@ surface that deliberately echoes the physical legislative record.
   surface forward-looking signal when available — `Next: hearing on
   X` if there's an upcoming `calendarEvent` — or humanized recency —
   `Introduced 12 days ago` — with the exact date in the `title`
-  attribute. Italic-serif metadata register per spec line 200.
+  attribute. Set in `role-metadata-sans`, roman, like the ribbon's own
+  markers: the caption is apparatus, and serif italic is quoted human
+  voice only.
 
 ### The Writing Desk — Take Action
 

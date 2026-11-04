@@ -65,6 +65,7 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **evidence:** contrast sampled from the 1440 renders, both schemes.
 - **proposes:** render the dot in `--ink-success`, in `--text-secondary`, and removed; settle whether candidate-answered is a green site.
 - **blocks:** nothing
+- **related measurement:** see the figures under “Green ink on a marketing section divider”.
 
 ### The avatar roll on dark glass
 - **kind:** spec silent
@@ -78,22 +79,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **found:** same review. Commons `skeuomorphic-accents` makes the tally IBM Plex Mono; `role-stat-card` (v2026.10.17.1) is a count that leads a card, in sans. The specimen hand-builds the mono tally with literal size and weight.
 - **evidence:** not yet rendered.
 - **proposes:** render the ask card's count in each, both schemes, 390 and 1440.
-- **blocks:** nothing
-
-### Which text role a sentence-case category chip takes
-- **Superseded 2026-10-18:** Jason ruled pills are for filter controls only; kind and access render as text.
-- **kind:** spec silent
-- **found:** voyager `candidate-appearances` branch, `components/candidates/AppearanceRow.tsx`. Each appearance row carries its event kind ("Rally", "Town hall", "Canvass launch") as a chip trailing the time on a `role-ui-heading` line. The kind is a closed enum the system assigns, so it is a category, not free text. The spec's only chip text is `role-designation`, which is for repeated uppercase codes (bill slugs, jurisdiction codes); no role covers a sentence-case category label in a chip. The code uses `role-metadata-sans` in `--text-secondary` until this is decided.
-- **evidence:** retaken at 390 after the lockup fix (voyager 87596393: the time and chip join the row's wrapping line; the chip is `whitespace-nowrap`). Nothing crosses `--card-pad` in any story (content edge 334, was overrun to 343 by "Canvass launch"). In the page's own column (`InPageColumn`, 8px gutter) every chip stays on the time's line; inside the stories' 24px decorator "Canvass launch" and "Meet and greet" drop under the time (`SeveralOnOneDay`, 390, both schemes). Precedent: `components.table` (ratified 2026-10-17) sets a row's non-title cells in `role-metadata-sans`. Second review (voyager ca14315f, ecabec37): in the page's real column at 390 (a 270px line) the widest time and chip unit fits with 3px to spare and overflows below about a 375px viewport, worst case. Measured unit widths: a time is 74–76px (121px with a zone), the widest chip ("Parade or festival") 120px, gap 8px.
-- **proposes:** name the role for a category chip: `role-metadata-sans` (as shipped, after `components.table`), `role-caption`, or a new chip role; state its ink; say whether a chip may wrap under the time on a narrow card.
-- **blocks:** nothing; the chip ships on `role-metadata-sans`
-
-### A category chip: hairline on the card's material, or a material fill
-- **Superseded 2026-10-18:** Jason ruled pills are for filter controls only; kind and access render as text.
-- **kind:** two readings
-- **found:** same row. `color.action.tint-is-not-a-plate` says status is "ink on neutral material" and a chip is `rounded-full`. The chip inside a `material-regular` card can read that as (a) no fill, a `--border-subtle` hairline, ink on the card's own material, or (b) its own neutral material fill (`material-thin`) under the ink. The code ships (a).
-- **evidence:** computed `background-color` of every `.rounded-full` chip in the stories is `rgba(0, 0, 0, 0)`; not yet rendered against (b). Precedent for (a): `color.unread-is-ink` (ratified 2026-10-17) sets the unread count in "a --border-subtle hairline chip with no fill".
-- **proposes:** render both readings in the appearance card, both schemes, and write which one a chip inside a card takes; (a) has the unread-count precedent.
 - **blocks:** nothing
 
 ### A list of rows inside one card
@@ -111,14 +96,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **evidence:** not yet rendered.
 - **proposes:** render the numeral on `role-stat-card` against the current 30/400, with and without the weekday line, 390 and 1440, both schemes; name a token for the band fill.
 - **blocks:** nothing; `DeadlineTile` is shared and keeps its classes until decided
-
-### The access chip: a second chip, or text leading the place line
-- **Superseded 2026-10-18:** Jason ruled pills are for filter controls only; kind and access render as text.
-- **kind:** two readings
-- **found:** same review. On an appearance row, Ticketed and Invite only render as a second chip styled exactly like the kind chip, so access reads as another category.
-- **evidence:** `Components/Candidates/CandidateAppearances` TicketedFundraiser, 390 and 1440, both schemes.
-- **proposes:** render both: a second chip (as shipped), or `role-metadata-sans` text leading line 2 ("Ticketed · Gainesville"); pick one.
-- **blocks:** nothing
 
 ### The candidate and ballot pages have no register, so the card's material is unsettled
 - **kind:** spec silent
@@ -140,24 +117,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **evidence:** CancelledVariant, both schemes, neutral register as shipped. Not yet rendered in procedural slate.
 - **proposes:** render "Cancelled" in the neutral register and in procedural slate; add the chosen register to `rubber-stamp-status`.
 - **blocks:** nothing
-
-### Appearance card stack threshold: fixed worst-case (31.5rem) or measured per card
-- **kind:** two readings
-- **found:** voyager `candidate-appearances` (ecabec37). Below 31.5rem of card, every appearance row moves RSVP (or the cancelled stamp) under its place line, so rows in one card share one shape. 31.5rem is the widest line 1 any document could produce (a zoned time, "Parade or festival", the stamp: 391px) plus the tile, its gap and both card-pads. So a card whose own rows would all fit inline still stacks.
-- **evidence:** third design review: 8 of the 15 stories have rows that would all fit inline at the real column's 270px line at 390, and stack anyway. Shapes per story at 390 and 1440 are in the second review's report.
-- **readings:** (a) the fixed worst-case container query, as shipped: CSS only, no layout read, every card at a width shares one shape. (b) measured per card: a ResizeObserver compares each card's widest line 1 against its width and sets `data-stacked`; that costs a client layout read and a possible hydration shift when the server-rendered shape changes after mount.
-- **update (10a331c8):** with RSVP icon-only (44px), a card without a cancelled row stacks only below 22.5rem (widest real line 1, 204px, plus 8px and the icon); a card holding a cancelled row keeps the stamp's 29rem. At 390 in the real column every icon row now stays inline; only cards with a cancelled row stack. The threshold is picked from data (a cancelled row present or not), not measured.
-- **update (363523b8):** the row has no trailing item now (the whole row is the RSVP link), so line 1 is one shape at every width and this question is moot. The cancelled stamp cannot share line 1 at 390 (368px against a 270px line), so it leads the place line at every width and forces no wrap of its own.
-- **proposes:** pick (a) or (b); if (b), say whether the shape may change after first paint.
-- **blocks:** nothing; (a) ships
-
-### An icon-only row-action
-- **Superseded 2026-10-18** by "A whole-row link in a public list (card-link pattern on rows)".
-- **kind:** production ahead
-- **found:** voyager `candidate-appearances` (10a331c8). Jason decided the repeated "RSVP" word down the appearance list is too noisy to scan, so each row's RSVP is now the Phosphor external-link icon alone: voyager's `Button variant="row" size="icon"`, a 44×44 target, accessible name "RSVP: <listing title>, <city>". `components.row-action` says a row action is "an icon and a sentence-case word"; "When icons earn their place" allows an icon-only button when "the icon *is* the label" (close X, search magnifier), and the hard rules say nothing about icon-only row actions. An external-link glyph does not say "RSVP" on its own, so the visible label now lives only in the accessible name.
-- **evidence:** `Components/Candidates/CandidateAppearances` and `Components/Elections/BallotAppearancesView` stories, all 15 at 390 and 1440, both schemes (target measured 44×44, secondary ink). With the word gone the row's line 1 keeps the icon inline at 390 in 14 of the 15 stories (the exception holds a cancelled row; see the stack-threshold entry).
-- **proposes:** amend `components.row-action`: a row action may be icon-only when the list makes the act unambiguous, with the act named in its accessible name; or keep the word and record this surface as a divergence.
-- **blocks:** nothing; the icon ships by Jason's decision
 
 ### A whole-row link in a public list (card-link pattern on rows)
 - **kind:** production ahead
@@ -223,6 +182,7 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **evidence:** `scratchpad/shots/home-390-dark-matched.png` (amendment-design session accf800e). Both plates carry the ring and an ink label.
 - **proposes:** render the matched state at 390 and 1440 three ways: "Sign up to save" plated, "Sign up to save" as `button-secondary`, and plated with the navbar Sign up demoted while logged out. Then write which surface owns the act.
 - **blocks:** the size fix on "Sign up to save" ships at CTA height meanwhile
+- **second call site (voyager `/mcp`, 390, both schemes):** the navbar's Sign up plate and the hero's Book a pilot plate share one screen, and they are two different acts. Rule both here.
 
 ### A disabled-until-valid CTA at rest
 - **kind:** unowned default
@@ -493,106 +453,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** render the list in `role-body` and in `role-metadata-sans` with primary ink at 390, then pick one or name a role.
 - **blocks:** nothing
 
-## Needs a person — cannot close from inside the toolchain
-
-Not a ratification queue. These do not resolve by deciding; they resolve by
-someone doing something an agent should not do unprompted. Listed separately so
-they stop reading as actionable to the next session that opens this file.
-
-*(the Chromatic review item closed 2026-08-28 — the account is retired and no baselines were ever accepted; see the Open queue)*
-
----
-
-## Recently ratified
-
-Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
-
-- **2026-10-17 (v2026.10.17.17)** — a meter's count label is secondary ink until the threshold,
-  `--ink-success` from it; the threshold opens the push, never "done". The rule is renamed
-  `color.action.climbing-is-slate-threshold-is-green`.
-
-- **2026-10-17 (v2026.10.17.16)** — `--card-pad`: `--space-4`, `--space-5` once the card is
-  24rem wide; the card and its docked foot both read it.
-
-- **2026-10-17 (v2026.10.17.15)** — a trailing jurisdiction chip is `role-designation` in a
-  declared caps box; an avatar's initials are not a designation (`components.avatar.initials`).
-
-- **2026-10-17 (v2026.10.17.14)** — a table row's declared height is a minimum, never a clamp;
-  a row stacks where its columns stop fitting, not at `sm`.
-
-- **2026-10-17 (v2026.10.17.13)** — delivery map hexes and the threshold meter climb the ribbon
-  ladder and turn `--color-momentum-soft` only when delivered or at threshold
-  (`color.action.climbing-is-slate-threshold-is-green`).
-
-- **2026-10-17 (v2026.10.17.12)** — the wordmark set as type is `role-label-caps`' size and
-  `--track-chrome` at every site; drop the sidebar and StaticTitle size override.
-
-- **2026-10-17 (v2026.10.17.11)** — marketing and sales surfaces sit outside the register table,
-  palette included; the fill rule still binds them (`registers.marketing-is-outside-the-table`).
-
-- **2026-10-17 (v2026.10.17.10)** — unread is `--text-primary`: the dot, and the count in a hairline chip
-  with no fill (`color.action.unread-is-ink`).
-
-- **2026-10-17 (v2026.10.17.9)** — the wordmark set as type takes primary ink; it is a designation,
-  not a third chrome site.
-
-- **2026-10-17 (v2026.10.17.8)** — `--track-chrome` is 0.08em: section dividers, status stamps and
-  designations read as words.
-
-- **2026-10-17 (v2026.10.17.7)** — a single-line caps box (the status stamp) sets its line-height
-  1px taller than its height and gives the trailing track back from its end padding.
-
-- **2026-10-17 (v2026.10.17.6)** — one product table (`components.table`): no header band,
-  sentence-case heads over a hairline, one row height, rows stack on a phone.
-
-- **2026-10-17 (v2026.10.17.5)** — the report line's lead and its count are `--sans-semibold`; the
-  rest of the line stays at `role-metadata-sans`'s weight.
-
-- **2026-10-17 (v2026.10.17.4)** — green ink is `--ink-success`, one token: `--color-success` on light,
-  a step lighter than the action fill in dark; card glass is a sufficient ground for it.
-  `--line-box-metadata-sans` gives the eyebrow its declared height.
-
-- **2026-10-17 (v2026.10.17.3)** — a button's label owns its type: 1rem, `--sans-body`, semibold,
-  line-height 1 (`components.button-default.label`); never inherited.
-
-- **2026-10-17 (v2026.10.17.2)** — a card's eyebrow row declares its height (its status text's line
-  box) whether or not the status is present, so titles align across a row.
-
-- **2026-10-17 (v2026.10.17.1)** — `role-stat-card`, stat-display's card step, replaces the
-  hand-set card count (voyager's `Stat` size md and `AskCosignsTile`).
-
-- **2026-10-17 (v2026.10.17)** — a draft is not a warning: DRAFT takes the same neutral ink as
-  CLOSED (`color.semantic.a-draft-is-not-a-warning`).
-
-- **2026-10-16 (v2026.10.16.6)** — a calendar tile's month is `role-calendar-month`: caps at the
-  caption size, body width, nearly untracked. `DeadlineTile` moves off `role-label-caps`.
-
-- **2026-10-16 (v2026.10.16.5)** — a recruit card's next goal is a clause on the "Your link" line,
-  never its own line; spec ahead, production adds it later.
-
-- **2026-10-16 (v2026.10.16.3–.4)** — a recruit card's part below the foot hairline is a full-bleed
-  `--wash-yours` band; a ribbon marker never wraps, and the narrow switch is 38rem.
-
-- **2026-10-16 (v2026.10.16.2)** — a field's error stays `role-caption`; `role-metadata-sans` has
-  a `typography.roles` entry and declares line-height 1.4.
-
-- **2026-10-16 (v2026.10.16)** — form labels are the new `role-field-label`; a field's hint and
-  consent sentence are `role-metadata-sans`; the ribbon's active segment is the strongest fill
-  (tokens swapped), its markers `role-metadata-sans`, and its narrow switch is 25rem; a row action
-  is quiet and absent where it can't apply; a bottom-anchored `material-chrome` bar casts no
-  shadow; in a row of cards the foot docks and every card carries a report line.
-
-- **2026-10-12 (v2026.10.12.3)** — the ribbon's 20rem switch is a deliberate margin. Field
-  states are spec: **invalid** is a 2px ring plus a `role-caption` message in the danger pair,
-  **hint** is `role-metadata`, a **textarea** is at least 6rem tall, and the **consent** row is
-  one target of at least 44px with a `role-metadata` sentence.
-
-- **2026-10-12 (v2026.10.12.2)** — **form labels are `role-caption`**, sentence case, above the
-  field: voyager's `input-label` utility recomposes on it. The ribbon's dark ladder mirrors the
-  light one, so dark `--ribbon-completed` takes `--text-nav-active`'s value, and ribbon segments
-  are not held to 3:1. The ribbon's narrow caption is the active step in `role-caption` over its
-  date in `role-metadata`, stacked. `card-placeholder` takes the card-empty pair.
-
 ### One inset for every rule inside the sidebar rail
 - **kind:** spec silent
 - **found:** voyager branch `sidebar-nav-spine` (nav B, uncommitted). The group divider is inset 20px (`mx-3` expanded, `mx-2.5` collapsed). The user-menu foot's rule runs full-bleed across the 240px rail. The rail now has two rules with two insets, and nothing says which is right.
@@ -627,6 +487,7 @@ Moved out of this file on ratification; listed here for one cycle so the code si
 - **evidence:** Paper “MCP Sales” (`app.paper.design/file/01M61ZPHHVGQ26KXYFQ3FAFBJZ`), four boards: light and dark, 390 and 1440, “Two ways in”.
 - **proposes:** a `--surface-code` fill and ink pair per scheme (or a ruling that code sits on `material-regular` in primary ink like any card content)
 - **blocks:** nothing
+- **in dark:** the Paper dark boards keep the tool list on an opaque dark slab with an inset hairline; voyager drops the fill in dark and keeps only the inset `--border-subtle` ring, because no dark slab token exists (`McpSalesSections.tsx` `codeSurface`). Rule both schemes together.
 
 ### A serif statute citation in a sans apparatus row
 - **kind:** two readings
@@ -670,6 +531,7 @@ Moved out of this file on ratification; listed here for one cycle so the code si
 - **evidence:** Paper “MCP Sales”, four boards, every section head.
 - **proposes:** render a section head in both inks, both schemes, then rule
 - **blocks:** nothing
+- **measured (design-reviewer, element-paint contrast, voyager `/mcp` 2026-10-28 and `/data` 2026-11-03, 1440):** band eyebrows in `--ink-success` on `material-thin` 5.09–5.11:1 light, 8.35–8.54:1 dark. On the bare aurora, the hero eyebrow measured 4.30:1 light on `/mcp` (ships in `--text-secondary`) and 4.72–4.93:1 light, 7.86–8.75:1 dark on `/data`; the “4/4” score 4.83:1 light.
 
 ### A sentence-case qualifier opposite a card heading
 - **kind:** spec silent
@@ -700,36 +562,11 @@ Moved out of this file on ratification; listed here for one cycle so the code si
 - **proposes:** render sans and serif replies in the pane, both schemes, then rule
 - **blocks:** nothing
 
-### Green ink on glass and aurora, measured on `/mcp`
-- **kind:** missing measurement (now measured)
-- **found:** contrast painted from browser renders of voyager `/mcp` at 1440, for open entries “Green ink on a marketing section divider” and “A green mark on the bare aurora”:
-  - band eyebrows in `--ink-success` on `material-thin` measure 5.09 to 5.11:1 in light and 8.35 to 8.54:1 in dark. They pass, but it is coloured ink on glass;
-  - the hero eyebrow in `--ink-success` on the bare aurora measures 4.30:1 in light, below 4.5:1. It ships in `--text-secondary` until a ruling;
-  - the “4/4” score in `--ink-success` on the bare aurora measures 4.83:1 in light.
-- **evidence:** design-reviewer renders and element-paint contrast script, 2026-10-28
-- **proposes:** fold these figures into both entries before ruling
-- **blocks:** nothing
-- **re-measured on voyager `/data`, 2026-11-03:** the green eyebrow and “4/4” in `--ink-success` on the bare aurora measure 4.72 to 4.93:1 in light (clearing 4.5:1 by about 0.2) and 7.86 to 8.75:1 in dark, sampled in the viewport.
-
-### The Sign up plate beside a pilot CTA at 390
-- **kind:** new call site for “Does the navbar's Sign up plate count as the page plating that act”
-- **found:** at 390, the navbar's green Sign up plate and the `/mcp` hero's Book a pilot plate fit on one screen, and they are two different acts. That sharpens the one-plate-per-surface reading beyond the original entry.
-- **evidence:** browser render of voyager `/mcp`, 390, both schemes
-- **proposes:** rule in the existing entry; add this as its second call site
-- **blocks:** nothing
-
 ### A tinted foot well on a card
 - **kind:** spec silent
 - **found:** the `/mcp` hero answer card's foot row (“Claude alone: …” and `show_bill`) is drawn on the boards as a faint filled well, rounded at the bottom. No token owns a subtle fill inside a card. Voyager ships the hairline only.
 - **evidence:** Paper “MCP Sales”, four boards, hero answer card; voyager `components/mcp/sales/McpSalesSections.tsx` (`AnswerCard` figcaption)
 - **proposes:** name a fill for an inset well inside a material card, or rule that the hairline is the whole separation
-- **blocks:** nothing
-
-### The code surface in dark: slab or outline
-- **kind:** call site for “A code surface has no token”
-- **found:** the dark `/mcp` boards keep the tool list on an opaque dark slab with an inset hairline. Voyager drops the fill in dark and keeps only the inset `--border-subtle` ring, because no dark slab token exists.
-- **evidence:** Paper “MCP Sales”, both dark boards, “Two ways in”; voyager `McpSalesSections.tsx` (`codeSurface`)
-- **proposes:** rule it together with the existing entry
 - **blocks:** nothing
 
 ### Must mid-card content align across a row
@@ -987,3 +824,32 @@ Moved out of this file on ratification; listed here for one cycle so the code si
 - **proposes:** a table column head is `role-label-caps`, with the featured column in primary ink and a 20% rule under the header row. A table group head is `role-display-minor`, separated by space rather than a rule. Rows are `role-body` with 5% rules. A featured column carries a neutral 4% tint, never green. Render the light scheme and 390, and rule.
 - **blocks:** nothing; voyager builds it now at Jason’s ask
 - **divergences in the build (voyager-de, 2026-11-03):** (1) at 390 the column heads are `role-field-label`, because caps at `--sans-chrome` overflow the 57px columns; rule this together with “Column, pane and verdict labels”, since `role-field-label` is a form field’s name, not a column head. (2) The 20% and 5% rules and the 4% tint are literal alphas. No token holds them: `--border-hairline` is 5% in light and 20% in dark. Name a token for each, or sanction the literals.
+
+## Needs a person — cannot close from inside the toolchain
+
+Not a ratification queue. These do not resolve by deciding; they resolve by
+someone doing something an agent should not do unprompted. Listed separately so
+they stop reading as actionable to the next session that opens this file.
+
+*(the Chromatic review item closed 2026-08-28 — the account is retired and no baselines were ever accepted; see the Open queue)*
+
+---
+
+## Recently ratified
+
+Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
+
+- **2026-11-04 (v2026.11.04.13)** — the ribbon's temporal caption and the Archive's provenance line are roman metadata.
+- **2026-11-04 (v2026.11.04.12)** — a long statute folds at its subsections, opens at (a) and the cited unit, shows only the statute's headings, and below 64rem opens the first module (`surfaces.archive.long-statute`).
+- **2026-11-04 (v2026.11.04.11)** — the bill page's h1 is its `role-ceremonial` identifier.
+- **2026-11-04 (v2026.11.04.10)** — a segmented control holds two to four options (`components.segmented-control.four-is-the-cap`).
+- **2026-11-04 (v2026.11.04.9)** — in dark the selected segment is white-wash glass, one ring, no drop shadow (`components.segmented-control.selected-dark`).
+- **2026-11-04 (v2026.11.04.8)** — `role-stat-price`, a fixed 2.25rem rung for a price that leads a card; voyager drops its override.
+- **2026-11-04 (v2026.11.04.7)** — a comparison row plates only its recommended card (`color.action.fill-rule-one-per-surface`).
+- **2026-11-04 (v2026.11.04.6)** — the map locator is the third motion surface (`motion.rules`).
+- **2026-11-04 (v2026.11.04.5)** — a replayed product demo is arrival: once on first view, final frame under reduced motion.
+- **2026-11-04 (v2026.11.04.4)** — a delivered row leads with its race; the heading names the office, the designation the place (`components.table.delivered-row`).
+- **2026-11-04 (v2026.11.04.3)** — the sidebar's first group is the tab bar's five, its second the rest; Actions is Letters (`components.sidebar`).
+- **2026-11-04 (v2026.11.04.2)** — a field is a control and takes `radii.md` (`radii.a-field-is-a-control`).
+- **2026-11-04 (v2026.11.04)** — a jurisdiction's flag or seal at badge scale is reproduced as issued.
+- **2026-10-28 (v2026.10.28)** — the target floor is 24 by size or spacing; a text link's target is its line box.

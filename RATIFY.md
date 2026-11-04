@@ -882,14 +882,6 @@ Moved out of this file on ratification; listed here for one cycle so the code si
 - **rendered:** Paper “Hero fork · A2 — door labels in sentence case” (1440) and “— 390 · door labels in sentence case”, beside the caps originals. Neither clips or wraps at 390 or 1440, so width doesn’t settle it. The sentence-case labels read as headings over a body and a button, which is what a door is; caps reads as an eyebrow.
 - **blocks:** the homepage hero build
 
-### A bill number as the page H1
-- **kind:** spec silent
-- **found:** the bill page sets “H.R. 7008” as its H1 with hand-typed tracking. `role-designation` is set at text size. `role-ceremonial` is display size, used once per page, with ceremonial tracking. Neither entry names this use.
-- **evidence:** Paper “Bill page · Support / Oppose” boards; voyager `BillDetailHeader` (`role-ceremonial` identifier)
-- **proposes:** the bill page H1 is `role-ceremonial`; render it against a serif short-title heading with the designation above it
-- **decided (Jason, Nov 3, 2026):** yes, the bill page H1 is `role-ceremonial`. The bill-page boards now render it. The spec entry is still to be written.
-- **blocks:** nothing; voyager already ships `role-ceremonial` here
-
 ### Support / Oppose: a district position control on bill pages
 - **parked (Jason, Nov 3, 2026):** scope cut. Bill pages ship no position control. Take action offers co-sign the bill’s existing ask, write your senators, or start an ask. Nothing to rule until a position control returns.
 - **kind:** spec ahead

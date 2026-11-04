@@ -8,6 +8,20 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-04 (v2026.11.04.11) — The bill page's h1 is its ceremonial identifier
+
+Decided by Jason 2026-11-03 from the bill-page boards, which showed the identifier as the h1 against
+a serif short title as the h1 with the designation above it. Voyager's `BillDetailHeader` already
+ships it.
+
+- **The bill page's h1 is its identifier in `role-ceremonial`**
+  (`typography.uppercase-has-two-homes`, under "the test"). The designation names the page, and the
+  title in serif under it is the page's first sentence, not a second heading.
+- The role comes whole: tracking typed by hand beside it, as the Paper boards had, is a chrome label
+  made big.
+
+---
+
 ## 2026-11-04 (v2026.11.04.10) — A segmented control holds up to four options
 
 Decided by Jason 2026-11-03 on the `/data` hero's install picker (Claude, ChatGPT, Cursor, VS Code),

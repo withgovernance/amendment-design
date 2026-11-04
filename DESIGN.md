@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.04.10
+# spec-version:   v2026.11.04.11
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1143,7 +1143,13 @@ typography:
     make it grand.
     SO a bill detail page is correct with the identifier ceremonial and the
     title in serif beneath it — the designation is set, the human sentence
-    is read. AND A TABLE OF BILLS is correct with each slug in
+    is read. THE CEREMONIAL IDENTIFIER IS THE BILL PAGE'S h1 (ratified
+    2026-11-04, decided by Jason 2026-11-03 from the bill-page boards, the
+    identifier as h1 against a serif short title as h1 with the designation
+    above it): "H.R. 7008" names the page, and the title beneath it is the
+    page's first sentence, not a second heading competing for the outline.
+    It takes the role whole; tracking typed by hand beside the role is a
+    chrome label made big. AND A TABLE OF BILLS is correct with each slug in
     role-designation leading its row — the same designation, at the size
     of a thing that repeats.
   chrome-tracking-is-for-reading: >-

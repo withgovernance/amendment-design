@@ -732,14 +732,6 @@ Moved out of this file on ratification; listed here for one cycle so the code si
 - **proposes:** rule it together with the existing entry
 - **blocks:** nothing
 
-### Does every paid plan card in a comparison row carry its own plate
-- **kind:** unowned default
-- **found:** on voyager `/pricing`, each row plates one card: Advocate (cheapest paid) among Free, Advocate and Professional, and Data in the data-access row. Professional's subscribe is secondary. `color.action.fill-rule-one-per-surface` makes each card a surface, so a plate on every paid card would also be legal. Neither reading is chosen.
-- **evidence:** design-reviewer render of voyager `/pricing` (branch mcp-sales-page, uncommitted), 1440 and 390, both schemes, 2026-10-29; `components/pricing/PlanCards.tsx`
-- **proposes:** render the row both ways at 1440, then rule whether a comparison row plates only its recommended plan
-- **blocks:** nothing; the current one-per-row reading is conformant
-- **ruled (Jason, 2026-10-29):** one plate per row, on the middle card: the recommended plan. Advocate in the plans row, Data in the data-access row. Every other card’s subscribe is secondary. Proposes: write this into `color.action.fill-rule-one-per-surface` as the comparison-row case.
-
 ### Must mid-card content align across a row
 - **kind:** unowned default
 - **found:** `/pricing` plan cards align their tops (`components.card.eyebrow-declares-its-height`) and feet (`components.card.foot-docks-in-a-row`), but the price floats with the description's wrap. Free's price sits 24px above its neighbours' at 1440.

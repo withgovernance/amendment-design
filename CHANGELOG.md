@@ -8,6 +8,19 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-04 (v2026.11.04.7) — A comparison row plates its recommended card
+
+Decided by Jason 2026-10-29 on voyager `/pricing`, after a design review found both readings legal
+under the card-is-a-surface rule: one plate per row, on the middle card.
+
+- **A comparison row plates one card** (`color.action.fill-rule-one-per-surface`). Where a row's cards
+  are alternatives, such as plans to choose between, the row is the surface and its act is the
+  choice. It carries one plate, on the recommended plan, and the other cards' acts take
+  `button-secondary`.
+- A feed of ask cards is unchanged: its cards aren't alternatives, and each keeps its own Co-sign plate.
+
+---
+
 ## 2026-11-04 (v2026.11.04.6) — The map locator is the third motion surface
 
 Decided by Jason 2026-10-21 on the home "This is already happening" tilegram: a soft pulse on the

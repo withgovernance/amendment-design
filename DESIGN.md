@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.04.6
+# spec-version:   v2026.11.04.7
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -525,6 +525,13 @@ color:
       the feed exists, reads as a caption. THE COST, named: at 1440 the
       first screen of a feed can carry four identical plates, the hero's
       among them; at 390 it carries one.
+      A COMPARISON ROW PLATES ONE CARD (RATIFIED 2026-11-04, decided by Jason
+      2026-10-29 on /pricing). Where cards in a row are alternatives to one
+      another — plans to choose between — the row is the surface and its
+      act is choosing, so it carries ONE plate, on the recommended card (the
+      middle plan), and every other card's act takes button-secondary. A feed
+      is different: its cards are not alternatives, and each keeps its own
+      plate.
     fill-rule-which-green: >-
       SCOPE NARROWED 2026-08-28: this is ONE INSTANCE of
       color.ink-switch-is-palette-wide, which governs every semantic family.

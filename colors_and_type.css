@@ -859,8 +859,8 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
    content up under a reader's eyes and a thumb already moving.
 
    The pulse is sanctioned by motion.rules: a skeleton resolving is CONTENT
-   ARRIVING, not the interface moving, and costs nothing from the two-surface
-   motion budget. */
+   ARRIVING, not the interface moving, and costs nothing from the motion
+   budget. */
 .skeleton-block {
   background: var(--skeleton-block);
   border-radius: 3px;

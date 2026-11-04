@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.04.5
+# spec-version:   v2026.11.04.6
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2259,14 +2259,15 @@ motion:
     linear:     "linear"
   rules:
     - "Transition only background, box-shadow, color, opacity, and ring. Never transition transform — EXCEPT a control drawing a state the user just committed. See committed-state-is-not-motion."
-    - "committed-state-is-not-motion (RATIFIED 2026-08-28). A CONTROL DRAWING THE STATE THE USER JUST CHANGED IS NOT MOTION, and it is not on the two-surface budget. A toggle thumb crossing its track, a disclosure caret turning — these draw the change the person just made, at the moment they made it, on the control they touched. That is what 'no motion without meaning' says motion is FOR; refusing it spends the rule against its own purpose. THE PROHIBITION IS ABOUT HOVER AND DECORATION: scale() and brightness() on hover, sub-pixel wobble, compositing jank on an element nobody touched. Stage 5 read 'never transition transform' as unconditional and made four controls snap — including the toggle, whose OWN ENTRY specifies `transition-transform duration-200` and has since it was written. The general rule read absolute because its exception lived in a component. TEST: did the user just act on this element, and is the animation drawing the result of that act? Then it is feedback and it is permitted. Does it animate on its own, on hover, or on an element nobody touched? Then it is motion and needs a sanctioned surface."
+    - "committed-state-is-not-motion (RATIFIED 2026-08-28). A CONTROL DRAWING THE STATE THE USER JUST CHANGED IS NOT MOTION, and it is not on the motion budget. A toggle thumb crossing its track, a disclosure caret turning — these draw the change the person just made, at the moment they made it, on the control they touched. That is what 'no motion without meaning' says motion is FOR; refusing it spends the rule against its own purpose. THE PROHIBITION IS ABOUT HOVER AND DECORATION: scale() and brightness() on hover, sub-pixel wobble, compositing jank on an element nobody touched. Stage 5 read 'never transition transform' as unconditional and made four controls snap — including the toggle, whose OWN ENTRY specifies `transition-transform duration-200` and has since it was written. The general rule read absolute because its exception lived in a component. TEST: did the user just act on this element, and is the animation drawing the result of that act? Then it is feedback and it is permitted. Does it animate on its own, on hover, or on an element nobody touched? Then it is motion and needs a sanctioned surface."
     - "THE AURORA IS A LAYER, NOT A SURFACE, and its breathing is not on the budget (RATIFIED 2026-08-28). This document's own thesis says so twice — 'the aurora layer is alive… never static' and 'It breathes; it is the reason the page does not feel printed.' The budget governs what SURFACES do; the aurora is the light the surfaces sit on. The ink layer is still, surfaces get the two sanctioned motions, and the aurora breathes: that is the three-layer statement the prose always made and motion.rules never encoded, which is why stage 5 found a thesis and a rule pointing opposite ways."
-    - "MARKETING IS OUTSIDE THE REGISTER TABLE (registers.marketing-is-outside-the-table), and so is its motion (RATIFIED 2026-08-28). The two-surface budget governs the FIVE PRODUCT ROOMS. Marketing surfaces are not rooms — they persuade rather than keep a record, which is why the restraint that makes the product trustworthy is not the right rule for them. Marketing motion is AMBIENT AND BOUNDED, and the bounds are the point, not a formality: it must be pausable on hover, gated to viewports where it is not competing for a small screen, motion-safe, and NEVER on a surface carrying record state — a bill, a count, a receipt, a signature. The 240s marquee at 6% opacity behind the campaigns card and the MarketingHome shimmer both already satisfy this; the rule ratifies what shipped rather than inventing a licence. motion.durations.marquee is theirs and stays declared."
+    - "MARKETING IS OUTSIDE THE REGISTER TABLE (registers.marketing-is-outside-the-table), and so is its motion (RATIFIED 2026-08-28). The motion budget governs the FIVE PRODUCT ROOMS. Marketing surfaces are not rooms — they persuade rather than keep a record, which is why the restraint that makes the product trustworthy is not the right rule for them. Marketing motion is AMBIENT AND BOUNDED, and the bounds are the point, not a formality: it must be pausable on hover, gated to viewports where it is not competing for a small screen, motion-safe, and NEVER on a surface carrying record state — a bill, a count, a receipt, a signature. The 240s marquee at 6% opacity behind the campaigns card and the MarketingHome shimmer both already satisfy this; the rule ratifies what shipped rather than inventing a licence. motion.durations.marquee is theirs and stays declared."
     - "A REPLAYED PRODUCT DEMO IS ARRIVAL (RATIFIED 2026-11-04, decided by Jason 2026-10-28: the sales page's chat demo simulates chat sessions and must animate, and any rule preventing it goes). A marketing surface that plays back a real product exchange from saved results — the question, the tool line, the streamed reply, the card arriving, the cited answer — puts content on screen for the first time, so it is arrival under STREAMING IS NOT MOTION, not ambient marketing motion. The bar on record state does not reach it: the depicted card is part of what is replayed. ITS BOUNDS: it plays once, on first view; a replay control may play it again; every piece keeps its slot from the start, so nothing above a new piece moves; the server render and prefers-reduced-motion show the final frame; and no transform, scale, pan or zoom, under the general rule."
     - "Never use scale() or filter:brightness() on hover — they cause compositing jank and sub-pixel icon wobble."
     - "Respect prefers-reduced-motion — all animations clamp to 0.01ms."
-    - "Motion is permitted on exactly two surfaces: the Receipt (one-shot bloom at issuance) and the Commons (accruing momentum under real collective action). Both obey 'no motion without meaning' — motion reflects real state a person changed, never decoration. Hover states never move, on any surface."
-    - "STREAMING IS NOT MOTION (stated 2026-08-02, audit §3.5). Text arriving token by token, a typing indicator, a skeleton resolving into content — these are CONTENT ARRIVING, not the interface moving, and they are permitted anywhere without spending the two-surface budget. The test: does it animate an element that is already on screen and already correct? Then it is motion and needs a sanctioned surface. Does it put content on screen for the first time? Then it is arrival. This carve-out is why the Reading Room's old 'generous' posture was a contradiction and not a third sanctioned surface."
+    - "Motion is permitted on exactly three surfaces: the Receipt (one-shot bloom at issuance), the Commons (accruing momentum under real collective action), and the map locator (below). All three obey 'no motion without meaning' — motion reflects real state, never decoration. Hover states never move, on any surface."
+    - "THE MAP LOCATOR (RATIFIED 2026-11-04, decided by Jason 2026-10-21 on the home's delivery tilegram, so the block beside the map points at its place on it). ONE TILE PER MAP — the latest delivery — carries a halo in --color-momentum-soft that animates opacity and box-shadow (or stroke), NEVER transform. It plays three cycles of about 2.4s when the map first enters the viewport, then holds a static --text-primary ring. Under prefers-reduced-motion it is the static ring from the start. It is not an idle loop: it runs a fixed count, once, and only to say where something the page names sits on the map."
+    - "STREAMING IS NOT MOTION (stated 2026-08-02, audit §3.5). Text arriving token by token, a typing indicator, a skeleton resolving into content — these are CONTENT ARRIVING, not the interface moving, and they are permitted anywhere without spending the motion budget. The test: does it animate an element that is already on screen and already correct? Then it is motion and needs a sanctioned surface. Does it put content on screen for the first time? Then it is arrival. This carve-out is why the Reading Room's old 'generous' posture was a contradiction and not a third sanctioned surface."
     - "Chrome is still. RECESSION IS A STATIC STATE, NEVER A SCROLL TRANSITION (2026-08-28) — desktop chrome takes no material at any scroll position, which is less to animate rather than more. The earlier reading here, that a surface without a material cannot be still because it shows what moves under it, was an argument against recession and did not survive the decision; what survives is that chrome never animates. The navbar does not animate on scroll — the earlier scroll-timeline fade-in was removed because it broke on app routes whose content scrolls inside an inner container rather than the document root."
 
 focus:
@@ -3356,7 +3357,7 @@ components:
       A BACKGROUND CROSS-FADE AND NOTHING ELSE. A plate that translates is
       components.toggle's signal, and the two controls must not read alike.
       This is the user's own committed state being drawn, so it is permitted
-      and it is NOT on the two-surface motion budget — see
+      and it is NOT on the motion budget — see
       motion.rules.committed-state-is-not-motion.
   toggle:
     track-off: "rgb(0 0 0 / 5%) / rgb(255 255 255 / 5%)"
@@ -4228,8 +4229,8 @@ surfaces:
                                     # it obeys none of the bloom/accrual
                                     # mechanics. "generous" here was a
                                     # contradiction with motion.rules, which
-                                    # has always sanctioned exactly two
-                                    # surfaces. See motion.rules.
+                                    # sanctions named surfaces only.
+                                    # See motion.rules.
     rhythm: loose-vertical
     column-width: "max-width 48rem (3xl)"
     palette-emphasis: "Primary (Midnight Indigo) for user contributions and for inline citations — a citation is a trail into a source. Secondary-text heavy."
@@ -5987,11 +5988,13 @@ The system is still *at rest* — but not inert. **Streaming is not
 motion**: text arriving token by token, a typing indicator, a skeleton
 resolving — that is content arriving, not the interface moving, and it
 costs nothing from the budget below. The test is whether the thing being
-animated is already on screen and already correct. Two surfaces are
-permitted to move, and only two: the **Receipt** blooms once at
-issuance, and the **Commons** accrues under collective action (a count
+animated is already on screen and already correct. Three surfaces are
+permitted to move, and only three: the **Receipt** blooms once at
+issuance, the **Commons** accrues under collective action (a count
 climbing, a co-signer roll growing, the aurora warming as a district
-nears a threshold). Both are governed by the same discipline — *no
+nears a threshold), and the **map locator** pulses three times around
+the latest delivery's tile when the map enters view, then holds. All are
+governed by the same discipline — *no
 motion without meaning*: motion reflects something a person actually
 did, never decoration. Everywhere else, and on every hover anywhere, the
 system holds. The navbar is always chrome (`material-chrome`)

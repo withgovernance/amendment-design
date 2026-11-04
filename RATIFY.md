@@ -479,13 +479,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** name the pair, e.g. `--ink-on-primary`: `--color-white` in light, `--color-primary` on the light plate in dark. Settle 100% against 94% white from a side-by-side render; both clear 4.5:1.
 - **blocks:** nothing. The token would replace three literal sites.
 
-### A pulse on the home tilegram's latest delivery
-- **kind:** spec conflict, decided by Jason 2026-10-21 (needs recording)
-- **found:** Jason asked for a soft pulse on the latest delivery's tile on the home “This is already happening” tilegram, so the block beside it points at its place on the map. The spec allows motion on two surfaces only (Receipt bloom, Commons accrual) and ratified on 2026-10-11 that motion is never an idle loop.
-- **evidence:** Paper “Homepage”, Home · the push boards, section “Already happening”; voyager home build on resistbot/voyager#948.
-- **proposes:** record a third sanctioned motion surface, the map locator. A halo in `--color-momentum-soft` animating opacity and box-shadow (never transform). It plays three cycles of about 2.4s when the map enters view, then holds a static `--text-primary` ring. Under reduced motion it is static. One tile only.
-- **blocks:** nothing. Voyager is building it as specced.
-
 ### Two rings on one tilegram: the latest delivery and the viewer's own district
 - **kind:** spec silent
 - **found:** the spec gives the viewer's own tile a dashed `--text-primary` ring outside the hex. The home's latest-delivery ring is solid `--text-primary`, 1.5px, centred on the tile edge, so half its width sits over the green. They don't appear together today, but they collide once a signed-in home shows both.

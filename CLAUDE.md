@@ -56,7 +56,7 @@ Full list in `DESIGN-HARD-RULES.md`.
 - **No red except semantic danger** (`--color-danger`). No violet/pink/magenta accents. No amber except warning.
 - **12px type floor**, no chrome exception. Headings never ALL CAPS — uppercase has four homes: `role-label-caps`, `role-designation`, `role-ceremonial`, `role-calendar-month`.
 - **Targets clear 24px by size or spacing**; a target is a hit area, never open space that pads a list apart. Control sizes live in their entries, never reached by padding.
-- **No transform transitions, no `scale()`, no `brightness()`** on hover. Motion lives on exactly two surfaces: Receipt bloom, Commons accrual. Streaming is not motion.
+- **No transform transitions, no `scale()`, no `brightness()`** on hover. Motion lives on exactly three surfaces: Receipt bloom, Commons accrual, the map locator. Streaming is not motion.
 - **Text may sit on the aurora; coloured ink may not.** The band is bounded so `--text-secondary` clears 4.5:1 everywhere; coloured ink needs an opaque ground.
 - **Serif italic is quoted human voice ≥1.125rem.** Below that, roman 600 (`emphasis-serif-inline`).
 - **`ch` is banned from length tokens and from spec prose.** Intent as a counted line, value in rem.

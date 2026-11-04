@@ -8,6 +8,23 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-04 (v2026.11.04.6) — The map locator is the third motion surface
+
+Decided by Jason 2026-10-21 on the home "This is already happening" tilegram: a soft pulse on the
+latest delivery's tile, so the block beside the map points at its place on it. Voyager ships it as
+`TilePulse`.
+
+- **The map locator is the third sanctioned motion surface** (`motion.rules`). One tile per map, the
+  latest delivery, carries a `--color-momentum-soft` halo that animates opacity and box-shadow or
+  stroke, never transform. It plays three cycles of about 2.4s when the map enters view, then holds
+  a static `--text-primary` ring. Under reduced motion it is the static ring from the start.
+- **It is not an idle loop**, which motion still forbids everywhere: it runs a fixed count, once,
+  to locate something the page names.
+- `DESIGN-HARD-RULES.md`, `README.md`, `SKILL.md` and `CLAUDE.md` move from two motion surfaces to three.
+  Still open: how its ring and the viewer's own-district ring combine on one map.
+
+---
+
 ## 2026-11-04 (v2026.11.04.5) — A replayed product demo is arrival
 
 Decided by Jason 2026-10-28 on the `/mcp` (now `/data`) chat demo: it simulates chat sessions and must

@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.04.9
+# spec-version:   v2026.11.04.10
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -3288,10 +3288,21 @@ components:
   # actual argument. Assembled in context: preview/forms.html.
   segmented-control:
     description: >-
-      Two or three mutually exclusive options, inline in a form. Past three
+      Two to four mutually exclusive options, inline in a form. Past four
       it is a select. IT IS components.tabbar AT INLINE SCALE — not
       components.toggle, which is unlabelled and reads its state from
       position rather than from a label.
+    four-is-the-cap: >-
+      RATIFIED 2026-11-04, decided by Jason 2026-11-03 on the /data hero's
+      install picker (Claude, ChatGPT, Cursor, VS Code), which swaps the
+      config and steps below it: keep the segmented control at four. A
+      select would hide three of the four, and showing every client at once
+      is the point of the block. Four is the most that fits at 390: each
+      segment there is 84.5px and the longest label clears it by about 9px
+      a side. A fifth option goes elsewhere (for the picker, a setup-guide
+      link), never into a fifth segment. The picker is a sanctioned site;
+      whether a page-level view switch in general takes the recessed track
+      is open.
     track: >-
       components.input's recess, one control wide: the same background,
       inset shadow and 1px inset ring. The control then reads as PART OF THE

@@ -8,6 +8,22 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-04 (v2026.11.04.10) — A segmented control holds up to four options
+
+Decided by Jason 2026-11-03 on the `/data` hero's install picker (Claude, ChatGPT, Cursor, VS Code),
+after a review flagged the three-option cap. He cited Apple's HIG, which allows about five segments
+on iPhone and five to seven wide.
+
+- **A segmented control holds two to four options; past four it's a select**
+  (`components.segmented-control.four-is-the-cap`). A select would hide three of the four clients,
+  and showing all of them is the point of the block.
+- **Four is the 390 limit**: each segment is 84.5px and "VS Code" clears its segment by about 9px
+  a side. A fifth client goes to a setup-guide link, never a fifth segment.
+- Still open: whether a page-level view switch in general takes the recessed track, and the brand
+  marks in the picker's segments.
+
+---
+
 ## 2026-11-04 (v2026.11.04.9) — In dark, the selected segment is glass
 
 Decided by Jason 2026-10-29 on `/pricing` in dark, after three rounds on the rendered control: the

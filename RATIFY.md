@@ -920,14 +920,6 @@ Moved out of this file on ratification; listed here for one cycle so the code si
 - **proposes:** delete the italic prescription; the caption is `role-metadata-sans`
 - **blocks:** nothing
 
-### A four-client install picker
-- **kind:** two readings
-- **found:** the Data & MCP hero leads with install: a client picker (Claude, ChatGPT, Cursor, VS Code) that swaps the URL or config and the one-line steps below it. `components.segmented-control` caps the control at three options (“past three it is a select”) and scopes it to a form. This picker has four options and swaps content, like a view switch.
-- **evidence:** Paper “MCP Sales”, “Data & MCP — 1440 / 390” and dark, hero Install block. “Data & MCP — install picker, the other three clients — 1440” has the other three states. At 390 each segment is 84.5px and “VS Code” clears its segment by about 9px a side (design-reviewer, 2026-11-03).
-- **proposes:** render the four clients as a select and as `components.tabbar` at inline scale, at 390 in both schemes, and rule. A select hides three of four clients, and showing every client is the point of the comparables (Stripe, Linear and the finance data MCPs). This extends “A segmented control outside a form”.
-- **blocks:** the voyager build of the `/data` hero install block
-- **decided (Jason, 2026-11-03):** keep the segmented control at four options. Apple’s HIG allows about five on iPhone and five to seven wide. /ratify writes the cap exception into `components.segmented-control`; further clients go to a setup-guide link, not a fifth segment, because 390 has no room.
-
 ### Vote bars draw nays in red
 - **kind:** spec silent (the yea colour); conformance (the red and amber)
 - **found:** the `show_bill` card fills nays red and not-voting amber; neither is danger or warning. The red and amber are a conformance fix, filed as resistbot/deepspace#3304, along with the stage ribbon (green, and red on vetoed) as #3305. Still open: what fills the yea. The spec says nothing on vote bars, and green on a yea is neither a crowd counted nor the primary act.

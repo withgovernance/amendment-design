@@ -740,15 +740,12 @@ Moved out of this file on ratification; listed here for one cycle so the code si
 - **update (2026-10-29, rebuilt `/pricing`):** still open after the rebuild. At 1440, “$0” sits at 248px and “$200” at 272px in the plans row, because the descriptions wrap to different lengths.
 - **blocks:** nothing
 
-### Words in `role-stat-card`
-- **kind:** production ahead
-- **found:** `/pricing` data-access cards put “Custom” and a placeholder price in `role-stat-card`, and the plan cards put prices there too. The spec scopes the role to “a count that leads a card”.
-- **evidence:** voyager `components/pricing/DataAccessPlans.tsx`, `components/pricing/PlanCards.tsx`
-- **proposes:** rule whether a price or a word may lead a card in `role-stat-card`, or name a role for it
-- **update (2026-10-29, `/pricing` redesign):** Jason called the page “dull” and said “all the text just blends together”. The 1.5rem price sits one step above a 1.125rem title. Six of seven comparable pricing pages make the price the largest type, at 46–64px. The redesign sets prices in `role-stat-display` (clamp 2.5–4rem) inside the card. Render it against `role-stat-card` at 390 and 1440 and rule whether a price is a hero stat, or whether it needs a card rung between the two.
-- **update (2026-10-29, design-reviewer):** measured in `role-stat-display` at 1440: “Custom” is 286px wide against “$900” at 181px, so the word outweighs the figure in its row. At 1024, “Custom” fills its 275px content box with no slack. A figure next to its 14px unit reads as a normal pricing pair, so the size problem is with words, not numbers.
-- **ruled (Jason, 2026-10-29):** a price takes a card rung between the two: `role-stat-display` at 64px is too big and `role-stat-card` at 24px too small. voyager ships 36px as a one-site override (`role-stat-card text-4xl/none`, `components/pricing/PlanCardParts.tsx`), with a comment pointing at this gap. **proposes:** a card-price role (or a large step of `role-stat-card`) at 2.25rem, line-height 1, fixed rather than `vw`-keyed, scoped to “a price or a word that leads a card”. Once it exists, voyager swaps the override for the role. Still open inside it: “Custom” sets in the same size as “$900” (render `v5/pricing-1440-light.png`). Rule whether a word takes the rung or steps down to `role-stat-card`.
-- **blocks:** nothing
+### A word in a price slot: `role-stat-price` or a step down
+- **kind:** spec silent
+- **found:** `role-stat-price` (v2026.11.04.8) holds a price that leads a card. On `/pricing` the data-access cards also put a word (“Custom”) in that slot. In `role-stat-display` at 1440, “Custom” measured 286px wide against “$900” at 181px, so the word outweighed the figure beside it.
+- **evidence:** voyager render `v5/pricing-1440-light.png` (mcp-sales-page session); re-render on `role-stat-price` at 390 and 1440, both schemes
+- **proposes:** rule whether a word takes `role-stat-price` or steps down to `role-stat-card`
+- **blocks:** nothing; voyager swaps its 36px one-site override for `role-stat-price`
 
 ### A segmented control outside a form
 - **kind:** spec silent

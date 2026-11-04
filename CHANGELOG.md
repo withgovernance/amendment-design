@@ -8,6 +8,22 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-04 (v2026.11.04.8) — A price that leads a card takes role-stat-price
+
+Decided by Jason 2026-10-29 on `/pricing`, which he called dull ("all the text just blends
+together"). A 1.5rem price sat one step above a 1.125rem title, while six of seven comparable pricing
+pages make the price the largest type. `role-stat-display` at its 64px top was too big inside a card,
+and `role-stat-card` too small.
+
+- **`role-stat-price`**, a new role, is a price that leads a card: the hero numeral's width, weight
+  and tracking at 2.25rem, line-height 1, primary ink.
+- **Fixed, not vw-keyed**, because a card's width isn't the viewport's.
+- Added to `colors_and_type.css`, the `README.md` role table and `SKILL.md`. Voyager replaces its
+  one-site override (`role-stat-card text-4xl/none` in `PlanCardParts.tsx`) with the role.
+- Still open: whether a word such as "Custom" takes this rung or steps down to `role-stat-card`.
+
+---
+
 ## 2026-11-04 (v2026.11.04.7) — A comparison row plates its recommended card
 
 Decided by Jason 2026-10-29 on voyager `/pricing`, after a design review found both readings legal

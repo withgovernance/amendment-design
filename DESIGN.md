@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.04.7
+# spec-version:   v2026.11.04.8
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1536,6 +1536,21 @@ typography:
     stat-card:
       family: sans
       size: 1.5rem          # 24px
+      weight: 700           # sans-bold
+      lineHeight: 1
+      tracking: "-0.01em"
+      fontVariationSettings: '"wdth" 120'   # sans-display
+      numerals: tabular
+    # RATIFIED 2026-11-04, decided by Jason 2026-10-29 on /pricing ("all the
+    # text just blends together"): a price that leads a card takes a rung
+    # between stat-card and stat-display. stat-display's vw-keyed clamp was
+    # too big inside a card and stat-card too small beside a card title. A
+    # fixed size, not vw-keyed, because a card's width is not the viewport's.
+    # The hero role's width, weight and tracking; ink is primary. Its unit
+    # ("/month") sits beside it in role-metadata-sans.
+    stat-price:
+      family: sans
+      size: 2.25rem         # 36px
       weight: 700           # sans-bold
       lineHeight: 1
       tracking: "-0.01em"

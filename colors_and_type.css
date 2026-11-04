@@ -739,6 +739,18 @@ em, i { font-style: italic; }  /* real Archivo italic in sans, real Newsreader i
   font-variant-numeric: tabular-nums;
   color: var(--text-primary);
 }
+.role-stat-price {
+  /* A price that leads a card: between stat-card and stat-display, fixed
+     size because a card's width is not the viewport's. */
+  font-family: var(--font-sans);
+  font-variation-settings: var(--sans-display);
+  font-weight: var(--sans-bold);
+  font-size: 2.25rem;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+}
 .role-ceremonial {
   /* Receipt place-of-issue caption, wax-seal monogram */
   font-family: var(--font-sans);

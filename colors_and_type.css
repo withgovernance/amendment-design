@@ -372,8 +372,8 @@
   --container-wide:   80rem;   /* navbar, footer */
 
   /* --------------------------- RADII -------------------------------- */
-  --radius-sm:   0.25rem;   /* inputs, status pills */
-  --radius-md:   0.5rem;    /* buttons, cards */
+  --radius-sm:   0.25rem;   /* status pills, chrome fragments, segments in a track */
+  --radius-md:   0.5rem;    /* controls (buttons and fields), cards */
   --radius-lg:   0.75rem;   /* modals, FAB, floating overlays */
   --radius-full: 9999px;
 

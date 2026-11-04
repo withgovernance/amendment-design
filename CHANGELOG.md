@@ -8,6 +8,23 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-04 (v2026.11.04.2) — A field is a control: fields and buttons share one radius
+
+Decided by Jason 2026-10-21 from the home hero at 390, dark, where the address field and the CTA sit
+flush and their corners disagree: "we should not have different radii for buttons/form fields."
+Chosen over rounding only the hero's field.
+
+- **A field is a control and takes `radii.md`** (`radii.a-field-is-a-control`): `components.input`,
+  the textarea and a select. A field and a button joined into one unit share that radius.
+- `color.action.tint-is-not-a-plate` already said "a control is rounded-md"; the radius scale had kept
+  inputs at `sm`, so the two readings disagreed. The scale now agrees with the control rule.
+- `radii.sm` keeps chrome fragments, status pills and the segments inside a segmented control's track.
+- Retires: inputs on `radii.sm`. The token comments in `colors_and_type.css`, `README.md`, and the
+  field specimens (`preview/forms.html`, `form-fields.html`, `inputs.html`) are updated. Voyager's
+  `input-text` and textarea utilities conform.
+
+---
+
 ## 2026-11-04 (v2026.11.04) — A jurisdiction's flag or seal is reproduced as issued
 
 Decided by Jason 2026-10-21 from the Voted record card with a full-colour seal, a greyscale seal and

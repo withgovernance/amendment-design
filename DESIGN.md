@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.04
+# spec-version:   v2026.11.04.2
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -1774,10 +1774,10 @@ breakpoints:
   desktop-boundary: ">= sm (i.e. >= 640px)"
 
 radii:
-  # Simplified from the prior system. Logic: sharper for chrome / inputs,
-  # softer for content cards, softer still for floating surfaces.
-  sm:   "0.25rem"   # 4px — inputs, chrome fragments, status pills
-  md:   "0.5rem"    # 8px — buttons, cards, most content surfaces
+  # Simplified from the prior system. Logic: sharper for chrome fragments,
+  # softer for controls and content cards, softer still for floating surfaces.
+  sm:   "0.25rem"   # 4px — chrome fragments, status pills, segments inside a track
+  md:   "0.5rem"    # 8px — controls (buttons and fields), cards, most content surfaces
   lg:   "0.75rem"   # 12px — modals, FAB, floating overlays
   full: "9999px"    # pills, toggles, avatars
   full-is-for-unlabelled: >-
@@ -1793,6 +1793,17 @@ radii:
     THE PHYSICAL REASON, so this is not re-argued from taste: text inside a
     full-round track loses its end padding to the corner arc. That is why
     labelled segments do not ship round anywhere, in any system.
+  a-field-is-a-control: >-
+    RATIFIED 2026-11-04, decided by Jason 2026-10-21 from the home hero, where
+    the address field (then radii.sm) sits flush beside the CTA (radii.md) and
+    the two corners visibly disagree at 390: "we should not have different
+    radii for buttons/form fields." A TEXT FIELD IS A CONTROL AND TAKES
+    radii.md, the same corner as a button — components.input, the textarea,
+    and a select. A field and a button joined into one unit share that radius.
+    radii.sm keeps chrome fragments, status pills and the segments inside a
+    segmented control's track. This is the reading
+    color.action.tint-is-not-a-plate already gave the corner ("a control is
+    rounded-md"); the scale comment had kept inputs at sm.
 
 borders:
   hairline:
@@ -3130,7 +3141,7 @@ components:
       input read as a dark slab on light card surfaces.
     background: "rgb(0 0 0 / 5%)"
     backgroundDark: "rgb(255 255 255 / 6%)"
-    rounded: "0.25rem"
+    rounded: "radii.md — a field is a control (radii.a-field-is-a-control)"
     padding: "8px"
     shadow: "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)"
     ring: "inset 1px solid rgb(0 0 0 / 10%)"
@@ -5963,13 +5974,14 @@ inversion.
 
 Radii collapse to a short, meaningful scale:
 
-- `0.25rem` (4 px) — inputs, status pills, chrome fragments. Sharper
-  because they belong in a form, not on a dashboard.
-- `0.5rem` (8 px) — buttons, cards, most content surfaces. Friendly but
-  not novelty-cute.
-- `0.75rem` (12 px) — modals, FABs, floating overlays. Softer to
-  signal their temporary, floating status.
-- `9999px` (full) — pills, toggles, avatars.
+- `radii.sm` — status pills, chrome fragments, the segments inside a
+  track. Sharper, because they are pieces of something larger.
+- `radii.md` — controls (buttons and fields alike), cards, most content
+  surfaces. Friendly but not novelty-cute. A field beside its button
+  shares the button's corner.
+- `radii.lg` — modals, FABs, floating overlays. Softer to signal their
+  temporary, floating status.
+- `radii.full` — pills, toggles, avatars.
 
 No 2xl, no 3xl. If a surface is bigger than a modal, it is a page, and
 pages don't have corners.

@@ -607,14 +607,6 @@ Moved out of this file on ratification; listed here for one cycle so the code si
   are not held to 3:1. The ribbon's narrow caption is the active step in `role-caption` over its
   date in `role-metadata`, stacked. `card-placeholder` takes the card-empty pair.
 
-### Fields and buttons share one corner radius
-- **kind:** two readings
-- **found:** voyager `home-district-view`, `components/home/HomeAddressSwitch.tsx`. The hero's address field (`input-text`, `--radius-sm`) sits flush beside the CTA (`--radius-md`), and the two corners visibly disagree at 390. `colors_and_type.css` assigns `--radius-sm` to "inputs, status pills" and `--radius-md` to "buttons, cards", while `color.action.tint-is-not-a-plate` says "a control is rounded-md" without saying whether a field is a control.
-- **evidence:** Jason's 390 dark capture of the home hero, field and CTA side by side; voyager `input-text` and `textarea` apply `rounded-sm` (`app/globals.css`).
-- **proposes:** a field is a control and takes `--radius-md`; `--radius-sm` keeps status pills. Update the token comment and the input specimen styles in `colors_and_type.css`; voyager's `input-text` and textarea utilities conform after the pass. A field and button joined into one unit would share the same radius.
-- **blocks:** nothing; the hero ships with the mismatch until voyager conforms
-- **ruling (Jason, 2026-10-21):** “we should not have different radii for buttons/form fields.” Chosen over rounding only the hero's field. Lands at the next `/ratify` pass.
-
 ### Which rows the desktop sidebar carries, in what order
 - **kind:** spec silent
 - **found:** voyager 39553f46, `components/global/Sidebar/nav-items.ts`. `components` has a `tabbar` entry and no sidebar entry. The sidebar carries nine rows in `NAV_ITEMS` order (Dashboard, Notifications, Actions, Tracked, Asks, Browse Bills, Officeholders, Elections, Conversations). The tab bar carries five in another order under other names (Home, Asks, Races, Bills, Chat). Since the home rebuild (voyager e67fd042, d520919b), asks lead the product, but Asks is the sidebar's fifth row. `components.tabbar.items` is also stale: it says the sidebar carries seven and names the tab bar's items by their old labels.

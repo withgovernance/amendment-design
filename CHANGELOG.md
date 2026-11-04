@@ -8,6 +8,23 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-04 (v2026.11.04.12) — A long statute folds at its subsections and opens where it's cited
+
+Decided by Jason 2026-10-30 from `preview/law-long.html` (26 U.S.C. § 501, 12,079 words), with three
+choices each rendered as a pair, both schemes, 390 and 1440. He chose 1A, 2A and 3B, and
+`preview/law-section.html` renders them.
+
+- **A long section folds on the paper at each subsection** (`surfaces.archive.long-statute`). The
+  marker, heading and length always show, and a paragraph with no heading folds to its first line.
+- **It opens at (a) and at the cited unit**, with the rest folded. All-folded lost.
+- **Only the statute's own headings**, with no summaries of ours in v1. An "In brief" card lost,
+  because at 390 it pushed the cited unit down by about 1,600px.
+- **Below 64rem, the first module after the text opens** and the rest form one card of links.
+- Still open: the disclosure control's entry, which pieces of fold apparatus sit on the paper, and
+  whether Expand all counts as committed-state feedback.
+
+---
+
 ## 2026-11-04 (v2026.11.04.11) — The bill page's h1 is its ceremonial identifier
 
 Decided by Jason 2026-11-03 from the bill-page boards, which showed the identifier as the h1 against

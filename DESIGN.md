@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.04.11
+# spec-version:   v2026.11.04.12
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -4331,6 +4331,22 @@ surfaces:
         typographic voice; a sans 'plain' role was designed and rejected
         (see CHANGELOG 2026-08-01). Hierarchy does the work the family was
         being asked to do.
+    long-statute: >-
+      RATIFIED 2026-11-04, decided by Jason 2026-10-30 from preview/law-long.html
+      (26 U.S.C. § 501: 12,079 words in 18 subsections), three choices each
+      rendered as a pair, both schemes, 390 and 1440. A SECTION TOO LONG TO
+      READ IN ONE PASS FOLDS ON THE PAPER AT EACH SUBSECTION: marker, heading
+      and length always shown; a paragraph with no heading folds to its first
+      line. (1) IT OPENS AT (a) AND AT THE CITED UNIT, the rest folded — a
+      reader arriving from a citation lands on it, and a reader arriving cold
+      starts where the statute does; all-folded lost. (2) THE STATUTE'S OWN
+      HEADINGS ONLY: no summary line we write beside them in v1. An "In brief"
+      card of one-line summaries lost; at 390 it pushed the cited unit down
+      by about 1,600px. (3) BELOW 64rem THE FIRST MODULE AFTER THE TEXT
+      OPENS AND THE REST ARE ONE CARD OF LINKS, rather than every module as
+      a fold. Open in RATIFY.md: the disclosure control's own entry, which
+      fold apparatus sits on the paper and which on the aurora, and whether
+      Expand all is committed-state feedback.
     examples:
       - bill detail (/oversight/:jurisdiction/bill/:bill)
       - bill text viewer

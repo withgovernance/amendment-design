@@ -855,16 +855,14 @@ Moved out of this file on ratification; listed here for one cycle so the code si
 - **proposes:** emit `--material-*-bg` and `--measure-body` custom properties from `colors_and_type.css`, and name `button-secondary`’s hover
 - **blocks:** nothing; the specimen annotates each copy
 
-### Long law text: folds, In brief, and modules under 64rem
+### Long law text: the disclosure control and where fold apparatus sits
 - **kind:** spec silent
-- **found:** 26 U.S.C. § 501 is 12,079 words in 18 subsections; (c) alone is 5,985. The specimen folds the text on the paper at each subsection (marker, heading and length always shown; headless paragraphs fold to their first line), with Expand all on the paper and an ink rule in the gutter marking the cited unit. Three choices are rendered as pairs: open at (a) plus the cited paragraph, or all folded; statute headings only, or an “In brief” glass card of one-line summaries we write; modules under 64rem as folds, or the first module open and the rest as one card of links. At 390, In brief above the paper pushes the cited (c)(3) down by 1,578px.
-- **evidence:** `preview/law-long.html` (`?v=land|shut|brief|modfold|modlink`, `&dark`), Paper “Law Pages” rows “Long §”
-- **decided (Jason, Oct 30, 2026):** 1A, open at (a) and the cited unit; 2A, statute headings only, no In brief in v1; 3B, first module open and the rest as links under 64rem. `law-section.html` now renders these. The spec entry is still to be written.
+- **found:** `surfaces.archive.long-statute` (v2026.11.04.12) rules how a long section folds. Not ruled: the control that does the folding, and which pieces of fold apparatus sit on the paper.
+- **evidence:** `preview/law-long.html` (`?v=land|shut|modfold|modlink`, `&dark`), `preview/law-section.html`; Paper “Law Pages” rows “Long §”
 - **proposes:**
   - A `components.disclosure` entry: hit area, Phosphor caret-down turned 180° when open, the lane grid (marker, title, length, caret), and that an open paragraph’s text sits in the body, never inside the control.
   - A ruling on which fold apparatus belongs on the paper (Expand all, word counts, “Opened at…”) and which belongs on the aurora above it.
   - A ruling on whether Expand all turning every caret counts as committed-state feedback.
-  - A ruling on where In brief goes under 64rem.
 - **blocks:** voyager’s section body for long sections
 
 ### Serif roman 600 has no class

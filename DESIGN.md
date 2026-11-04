@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.10.28
+# spec-version:   v2026.11.04
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -369,7 +369,9 @@ color:
   # seal too, because a seal that only appears once, on an artifact already
   # earned, has no business being the heaviest object on the page.
   #
-  # There is no red in this system now except semantic danger.
+  # There is no red in this system now except semantic danger. A jurisdiction's
+  # own flag or seal at badge scale is reproduced as issued and sits outside
+  # this rule (Icons → Jurisdiction identity marks).
   # -----------------------------------------------------------------------
   seal:
     treatment:  "blind emboss — see the .seal-emboss role"
@@ -5858,6 +5860,19 @@ Scope, stated tightly so the next sweep doesn't re-remove them:
   form, and is not a verdict on badge-scale identity use — the two were
   conflated in the 2026-08-31 morning removal, which is what this
   ratification untangles.
+
+**An identity mark is reproduced as issued.** RATIFIED 2026-11-04, decided
+by Jason from the Voted record card rendered three ways in both schemes:
+full-colour seal, greyscale seal, no seal. *"Flags should be exempt from
+color rules, same as photos are."* A sanctioned identity mark keeps the
+jurisdiction's own colours — the red in the US flag and in most state seals
+included — and the accent rules (no red outside `--color-danger`, no amber
+outside warning, no violet, pink or magenta) do not reach it, because the
+system did not choose those colours: the jurisdiction did. This is the
+reasoning `color.rules-bind-the-system-not-the-user` already applies to what a
+person writes, extended to a third party's emblem. **It never sets a colour for
+anything around it:** no ring, wash, tint or ink is taken from the mark, and
+outside its own bounds the colour rules bind as before.
 
 #### When icons earn their place
 

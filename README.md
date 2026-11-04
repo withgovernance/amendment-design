@@ -200,7 +200,7 @@ Each accent references a real civic artifact **and** carries meaning; ornament i
 - **Weights:** `regular` by default; `fill` for active states — *the user is here*; `light` for the empty-state glyph; `bold` for 12–14px inline icons.
 - **An icon earns its place** by replacing or disambiguating text, signalling state, aiding wayfinding, or being content. Beside a label naming the same thing, it is noise.
 - **Marks** come from [`assets/`](./assets/); never redraw them. Ink variants for light grounds, cutouts for dark only; 3:1 non-text floor (`components.a-cutout-mark-is-for-dark-grounds-only`).
-- **A jurisdiction’s own flag or chamber seal at badge scale** identifies its records and is sanctioned. Flags as decoration are not.
+- **A jurisdiction’s own flag or chamber seal at badge scale** identifies its records and is sanctioned, reproduced in its own colours: the accent rules don’t reach it, and it lends its colours to nothing around it. Flags as decoration are not.
 
 ---
 

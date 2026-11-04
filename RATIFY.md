@@ -607,14 +607,6 @@ Moved out of this file on ratification; listed here for one cycle so the code si
   are not held to 3:1. The ribbon's narrow caption is the active step in `role-caption` over its
   date in `role-metadata`, stacked. `card-placeholder` takes the card-empty pair.
 
-### Full-colour jurisdiction flags and seals beside a bill designation
-- **kind:** production ahead
-- **found:** voyager `BillCard` (`app/(marketing)/components/recent-bill-cards.tsx`) leads every card with `JurisdictionFlag`, a full-colour state seal or flag (US flag for federal) at 24px, then the jurisdiction code in `role-designation`. The homepage "A promise has a bill number." proposal boards (Paper "Homepage", "Record cards · proposal · 1440 / 390") reuse it on the record cards. The spec says no red except `--color-danger` and doesn't mention third-party civic imagery. The US flag and most seals carry red, and nothing says whether a jurisdiction's own mark is exempt the way meters and ribbons are exempt from the green fill rule.
-- **evidence:** live on amendment.app's recent-bills marquee; rendered on the proposal boards in light mode at 1440 and 390.
-- **proposes:** a rule under the colour section: a jurisdiction's flag or seal, at icon size and beside its `role-designation`, is reproduced as issued and is exempt from the accent rules, the way a photograph is. It never sets a colour for anything around it.
-- **blocks:** the homepage record cards' seal row
-- **ruling (Jason, 2026-10-21):** “flags should be exempt from color rules, same as photos are.” Chosen over a greyscale seal and no seal, rendered side by side in both schemes on the Voted card. Lands at the next `/ratify` pass.
-
 ### Fields and buttons share one corner radius
 - **kind:** two readings
 - **found:** voyager `home-district-view`, `components/home/HomeAddressSwitch.tsx`. The hero's address field (`input-text`, `--radius-sm`) sits flush beside the CTA (`--radius-md`), and the two corners visibly disagree at 390. `colors_and_type.css` assigns `--radius-sm` to "inputs, status pills" and `--radius-md` to "buttons, cards", while `color.action.tint-is-not-a-plate` says "a control is rounded-md" without saying whether a field is a control.

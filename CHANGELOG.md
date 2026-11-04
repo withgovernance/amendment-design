@@ -8,6 +8,21 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-04 (v2026.11.04) — A jurisdiction's flag or seal is reproduced as issued
+
+Decided by Jason 2026-10-21 from the Voted record card with a full-colour seal, a greyscale seal and
+no seal, side by side in both schemes: "flags should be exempt from color rules, same as photos are."
+
+- **A sanctioned identity mark is reproduced as issued.** A jurisdiction's flag or chamber seal at
+  badge scale, beside its `role-designation`, keeps its own colours, red included. The accent rules
+  bind what the system chooses, and the jurisdiction chose these, the same reasoning
+  `color.rules-bind-the-system-not-the-user` applies to user-authored text.
+- **It lends its colours to nothing around it.** No ring, wash, tint or ink comes from the mark.
+- Unchanged: decoration with flags or nationalist imagery stays banned, and so does the seal watermark.
+  `DESIGN-HARD-RULES.md` rule 3 and `README.md` state the exemption.
+
+---
+
 ## 2026-10-28 (v2026.10.28) — The target floor is 24; a target is a hit area, not open space
 
 Decided by Jason from the delivered ledger's ask titles padded to 44px rows, and the floor chosen

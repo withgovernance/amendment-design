@@ -8,6 +8,22 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-04 (v2026.11.04.4) — A delivered row leads with its race
+
+Decided by Jason 2026-10-28 from the delivered ledger and the `/asks` rail, each rendered with the
+race lead and the recipients lead on the same fixtures, both schemes, 390 and 1440: "race should lead
+because that's how delivery happens."
+
+- **The race is a delivered row's title** (`components.table.delivered-row`): a packet goes to every
+  campaign in a race, so the race is the unit and the recipients follow it.
+- **The heading names the office, the designation names the place** ("U.S. House" beside its
+  district code), so a House row no longer says its designation twice. This also closes the queued
+  question about the designation repeating in a ledger row.
+- "To <names>" sits under the title in `role-metadata-sans`, names linked; the asks follow in
+  secondary ink, underlined, at `role-body`'s leading. The ledger and the rail share the row.
+
+---
+
 ## 2026-11-04 (v2026.11.04.3) — The sidebar leads with the tab bar's five
 
 Decided by Jason 2026-10-22 from `preview/nav-spine.html`: the shipped nine rows, the tab bar's five

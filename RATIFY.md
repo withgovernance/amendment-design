@@ -464,13 +464,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** give a covered race with zero asks its own H1 and lede, or define it as a B sub-state with conditional copy
 - **blocks:** the post-address district page
 
-### The designation repeated in a ledger row
-- **kind:** spec silent
-- **found:** each packet row shows the `role-designation` “WA-03” directly above “U.S. House WA-03. To …”
-- **evidence:** resistbot/voyager#948, DeliveredPageBody Feed at 390, dark
-- **proposes:** say whether the designation eyebrow replaces the code in the race title
-- **blocks:** nothing
-
 ### The user's bubble in a depicted text thread on the aurora
 - **kind:** spec silent
 - **found:** the home “Campaigns text you every day” thread sits directly on the aurora. Its outgoing bubble is an opaque `--color-primary` fill with near-white ink (slate-300 with dark ink in dark mode). The Reading Room spec gives the user's bubble only a faint tint, which disappears on the aurora, and coloured ink may not sit on the band.
@@ -620,14 +613,6 @@ Moved out of this file on ratification; listed here for one cycle so the code si
 - **evidence:** same renders. The rail's edge is gone, and the divider and foot rule are the only hairlines left.
 - **proposes:** `components.sidebar` states that recession's “no hairline” governs the rail's boundary with the page, not rules that group its rows. It is also in the voyager PR's For-ratification block.
 - **blocks:** nothing
-
-### What leads a delivered-ledger row: recipients or race
-- **kind:** spec silent
-- **found:** voyager branch `asks-delivery-rail`, `components/asks/delivery/DeliveredFeed.tsx` `PacketRow`, and the new `/asks` lg+ rail. A packet row on `/asks/delivered` used to lead with the race (“U.S. House VA-01.”) in `role-body` strong, with each ask title in full-ink `role-body` link-text under it. Five underlined titles outweighed the race and recipient line, and on House rows the race repeated the `role-designation` beside it. The branch now leads with the recipients in `role-ui-heading` (“To Ana Reyes and Joe Brandt”, names linked). Under that, the office appears in `role-metadata-sans` only when it adds to the designation (“U.S. Senate Ohio”; House rows drop it). Ask titles take `--text-secondary` and keep the link underline. The rail's compact rows use the same lead. `components.table` says “a row's title is role-ui-heading”, but nothing says which fact in a delivery is the title.
-- **evidence:** voyager-6e renders of the recipients-lead reading, both schemes, 390 and 1440: `deliveredpagebody-*`, `deliveredrail-*`, `page-delivered-*`, `page-asks-*` in `/private/tmp/claude-501/-Users-jason-git-voyager/de21042d-e7e6-4509-a94f-cec8582cb783/scratchpad/shots/`. The two readings side by side on the same fixtures, both schemes, 390 and 1440, are in `…/scratchpad/ratify/` in the same voyager session. `raceleadcompare-*` is the race lead: the race (“U.S. House WA-03”) in `role-ui-heading` with “To <names>” in `role-metadata-sans` under it, and everything else the same. `deliveredpagebody-*` is the recipients lead. In the race lead, every House row says its designation twice (“WA-03” beside “U.S. House WA-03”), and the recipient links shrink to the metadata rung. These renders sit in a session scratchpad; regenerate them if they're gone by the pass.
-- **proposes:** the recipients lead, because a packet is correspondence and its addressee is its title. The office follows in `role-metadata-sans` only where the designation doesn't already say it, and the asks are secondary and underlined, at `role-body`'s own leading (v2026.10.28: a text link's target is its line box). Add a `components.delivered-ledger` entry (or a line under `components.table`) naming the lead, so the ledger and the rail can't diverge.
-- **blocks:** nothing; the branch ships the recipients lead until a ruling
-- **ruling (Jason, 2026-10-28):** “race should lead because that's how delivery happens.” Chosen over the recipients lead, from both readings rendered side by side. A packet goes to every campaign in a race, so the race is the unit and the recipients follow it. The race is the row's `role-ui-heading`, with “To <names>” in `role-metadata-sans` under it. The ledger and the `/asks` rail both take this lead. To keep the race lead from repeating the designation beside it (“WA-03” next to “U.S. House WA-03”), the heading names the office and the designation names the place: “U.S. House” beside WA-03, “U.S. Senate” beside OH, “Governor” beside FL. Lands at the next `/ratify` pass.
 
 ### No sans intro role or counted sans measure
 - **kind:** spec silent

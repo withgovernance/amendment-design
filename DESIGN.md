@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.04.3
+# spec-version:   v2026.11.04.4
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -2452,6 +2452,20 @@ components:
       end, then the row-action. In columns at 390 a title broke every two or
       three words and the row overran its card. Each cell keeps its column's
       name for assistive technology.
+    delivered-row: >-
+      RATIFIED 2026-11-04, decided by Jason 2026-10-28 from the delivered
+      ledger and the /asks rail rendered with each lead, both schemes, 390 and
+      1440: "race should lead because that's how delivery happens." A PACKET
+      GOES TO EVERY CAMPAIGN IN A RACE, SO THE RACE IS THE ROW'S TITLE. The
+      title is role-ui-heading and names the office ("U.S. House", "U.S.
+      Senate", "Governor"); the role-designation beside it names the place,
+      so the row never says its designation twice. Under the title, "To
+      <names>" in role-metadata-sans, each name linked. The asks it carried
+      follow in role-body, --text-secondary, underlined, at the role's own
+      leading (a11y.targetSize.text-links). The ledger page and the /asks
+      rail take the same row, so the two cannot diverge. The recipients lead
+      lost: it read the packet as correspondence, but the unit of delivery is
+      the race.
     staff-density: >-
       Staff surfaces may take a denser table — tighter insets, role-caption
       cells — at the same weights, inks and hairlines, never under 12px.

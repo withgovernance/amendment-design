@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.05
+# spec-version:   v2026.11.05.2
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -660,9 +660,9 @@ color:
       COLOUR. Unread is neither a counted crowd nor semantic success, so
       green has no home here (registers.live.palette-rule). The unread dot is
       --text-primary; an unread count is --text-primary ink at
-      role-label-caps' size, semibold, bare beside its label — no chip, no
-      fill (components.chip.filter-controls-only, 2026-11-05; a filled count
-      plate is a plate that cannot be pressed). The row's icon takes neutral ink; an unread row's
+      role-label-caps' size, semibold, IN A FILLED --text-primary DISC
+      (components.badge-unread, 2026-11-05) — the conventional unread badge,
+      in ink rather than colour. The disc is a badge, not a chip. The row's icon takes neutral ink; an unread row's
       title is --sans-semibold. Primary ink clears 3:1 for the dot and 4.5:1
       for the count by a wide margin in both schemes; green failed 3:1 for
       the dot in light, and --color-functional failed for the count in dark,
@@ -3579,6 +3579,23 @@ components:
     PAIR. Step the weight, keep the role. Rebuilding the role in longhand to
     get a second weight is how components.input-label acquired the wrong
     tracking.
+  badge-unread:
+    rule: >-
+      RATIFIED 2026-11-05 (v2026.11.05.2), decided by Jason from a render of
+      the sidebar expanded and collapsed, both schemes, 390 and 1440. AN
+      UNREAD COUNT IS A FILLED DISC, as Apple and every OS draw it: a bare
+      numeral floating at the end of a row reads as stray text. Fill
+      --text-primary, numeral --canvas, so it flips with the scheme; never
+      red (danger only) and never green (unread is not a counted crowd,
+      color.unread-is-ink). Numeral at role-label-caps' size, --sans-semibold,
+      tabular figures. Height --space-5; one digit is a circle, two or more
+      stretch to a stadium with --space-1 inline padding; past 99 it
+      reads "99+". Over an icon (collapsed rail, tab
+      bar) it sits at the icon's top-right with a 2px ring in the ground's
+      colour so it separates from the glyph. ONLY UNREAD COUNTS TAKE IT: a
+      count in content — co-signs, results, a count beside a heading — stays
+      ink (hard rule 7). This narrows color.unread-is-ink's 2026-10-17
+      hairline chip and replaces v2026.11.05's bare numeral, which floated.
   chip:
     filter-controls-only: >-
       RATIFIED 2026-11-05, landing Jason's 2026-10-18 ruling. A PILL OR CHIP
@@ -3588,9 +3605,10 @@ components:
       stamp), never a chip: an appearance row's kind and access read
       "2:00 PM · Rally", not two chips. A chip shape says *press me to
       narrow this list*; on content it promises a control that isn't there.
-      It narrows two 2026-10-17 rulings with no exceptions kept: the unread
-      count is bare primary ink (color.unread-is-ink), and a trailing
-      role-designation is bare text.
+      It narrows a 2026-10-17 ruling: a trailing role-designation is bare
+      text. AN UNREAD COUNT IS NOT A CHIP: it is a badge
+      (components.badge-unread), a different object — it marks a
+      destination as holding unread items, the convention every OS uses.
   card-select:
     description: Icon + label radio tile group (e.g. jurisdiction picker)
     border: "2px solid rgb(0 0 0 / 8%)"

@@ -906,7 +906,8 @@ they stop reading as actionable to the next session that opens this file.
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
 - **2026-11-05 (v2026.11.05)** — the logo is the voting button then the wordmark; the button may stand alone, the wordmark never; the caret lockup is a concept (`the-logo-is-the-button-and-the-wordmark`).
-- **2026-11-05 (v2026.11.05)** — a pill or chip is a filter control only; the unread count and a trailing designation are bare text (`components.chip.filter-controls-only`).
+- **2026-11-05 (v2026.11.05.2)** — an unread count is a filled `--text-primary` disc with a `--canvas` numeral (`components.badge-unread`).
+- **2026-11-05 (v2026.11.05)** — a pill or chip is a filter control only; a trailing designation is bare text (`components.chip.filter-controls-only`).
 - **2026-11-05 (v2026.11.05)** — beside per-card Co-sign plates, a Share or recruit act is `button-secondary` (`color.action.fill-rule-one-per-surface`).
 - **2026-11-05 (v2026.11.05)** — the dark selected segment holds on a card (`components.segmented-control.selected-dark`).
 - **2026-11-05 (v2026.11.05)** — `MESSAGING.md` is ratified; it shares `spec-version` and `/ratify` is its one writer.

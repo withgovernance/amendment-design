@@ -8,6 +8,17 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-05 (v2026.11.05.2) — An unread count is a filled disc
+
+Decided by Jason from a render of the sidebar, expanded and collapsed, both schemes, 390 and 1440.
+
+- **An unread count is a badge, not a chip** (`components.badge-unread`). It is a filled `--text-primary` disc with a `--canvas` numeral at `role-label-caps`' size, semibold and tabular. One digit makes a circle, two or more a stadium, and past 99 it reads “99+”. Over an icon it takes a ring in the ground's colour. v2026.11.05 left the numeral bare, and a bare numeral at the end of a row floats; the disc is the convention every OS uses. It is ink, not colour: never red, never green.
+- Only unread counts take the disc. A count in content stays ink (hard rule 7), and the chip rule still makes a pill a filter control.
+
+Retires: v2026.11.05's bare unread numeral, and the 2026-10-17 hairline count chip.
+
+---
+
 ## 2026-11-05 (v2026.11.05) — The logo is the button and the wordmark; a chip is a filter; MESSAGING.md joins the spec
 
 Decided by Jason.

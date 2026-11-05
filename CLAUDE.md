@@ -10,6 +10,7 @@ This repo is the **canonical Amendment design system** (`withgovernance/amendmen
 2. **`DESIGN-HARD-RULES.md`** is the short lookable checklist. Read it before any visual change.
 3. **`SKILL.md`** / **`README.md`** are entry points — the most read and least rendered files here, so the first to go stale.
 4. **`CHANGELOG.md`** carries the rationale. Read it before re-litigating a rule; most "obvious improvements" were already tried.
+5. **`MESSAGING.md`** is Amendment’s message architecture: audiences, positioning and public copy. Briefs and code cite its `messaging.*` entries, never retyped copy. It versions with `spec-version`, and `/ratify` is its one writer, like `DESIGN.md`.
 
 `spec-version` in `DESIGN.md`'s header names the spec; every version has a tag of the same name. A consumer's generated token file stamps the version it was built from, and that tag answers "which spec did this build against."
 
@@ -33,7 +34,7 @@ Implementation proposes, spec ratifies, implementation conforms. Ship a change w
 
 ## One writer
 
-**`DESIGN.md` and `CHANGELOG.md` have exactly one writer: a session in this repo running `/ratify`**, one at a time, with `git status` clean before the pass. Everything else — any other session here, a session in voyager — **appends to `RATIFY.md`** and does not touch the spec. Concurrent edits to one file lose writes silently.
+**`DESIGN.md`, `MESSAGING.md` and `CHANGELOG.md` have exactly one writer: a session in this repo running `/ratify`**, one at a time, with `git status` clean before the pass. Everything else — any other session here, a session in voyager — **appends to `RATIFY.md`** and does not touch the spec. Concurrent edits to one file lose writes silently.
 
 **Empty `RATIFY.md` at the end of each migration stage or around five entries.** Longer means code builds on undecided rules. After a pass, tell the code session the version moved so it re-reads the rules instead of citing what is in its context.
 

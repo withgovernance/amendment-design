@@ -8,6 +8,20 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-05 (v2026.11.05) — The logo is the button and the wordmark; a chip is a filter; MESSAGING.md joins the spec
+
+Decided by Jason.
+
+- **The logo is the voting button beside the wordmark, button first** (`the-logo-is-the-button-and-the-wordmark`). Production ahead: voyager's navbar and OG cards have always shipped this lockup, but nothing here named it, and `assets/README.md` called the caret lockup the “display lockup”, so the audiogram picked a mark that has never been used. The button may stand alone where space is tight. The wordmark may not stand alone, because without the button it reads as a different brand's type. The caret lockup stays in `assets/` as a concept that has never shipped.
+- **A pill or chip is a filter control and nothing else** (`components.chip.filter-controls-only`), landing Jason's 2026-10-18 ruling on appearance rows. A chip shape promises a control; on content it promises one that isn't there. No exceptions are kept. The unread count and a trailing `role-designation` (both 2026-10-17) are now bare text.
+- **A Share or recruit act beside per-card Co-sign plates is `button-secondary`** (`color.action.fill-rule-one-per-surface`), from the “Your district · nothing close” boards. Co-sign stays the page's only green control, even where bringing a neighbor is the page's main move.
+- **The dark selected segment holds on a card** (`components.segmented-control.selected-dark`). The ruling was made on the bare aurora. Painted on a `material-regular` card, the plate is still lighter than its track, so the scope is recorded and nothing changes.
+- **`MESSAGING.md` is ratified**: audiences, value propositions, positioning (“a nonpartisan, permissioned civic network”, with legal data as the record inside it), vision, mission, tagline, homepage headline, benefits and Come for / Stay for, as Jason decided them on 2026-11-05. Lines marked as drafts to test stay drafts until buyer evidence confirms or replaces them. It shares `spec-version`, and `/ratify` is its one writer, so positioning gets one canonical home that briefs and code cite as `messaging.*` instead of retyping whichever version they last read. Still open there: whether Brigade and Crowdpac belong in the public story.
+
+Retires: the caret lockup as a sanctioned display lockup; the bare wordmark as a lockup; the unread count's hairline chip; the trailing designation chip; the retired weight rung and the Oxblood note in `assets/README.md` and the Wordmark specimen.
+
+---
+
 ## 2026-11-04 (v2026.11.04.14) — A placeholder recedes, and drops its title when the container names the state
 
 Decided by Jason, from renders of the home record band at 390 and 1440 in both schemes.

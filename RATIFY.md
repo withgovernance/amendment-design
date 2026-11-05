@@ -50,6 +50,13 @@ Anything still open after a pass stays here with a note on what it's waiting for
 
 ## Open
 
+### Social video (9:16 audiogram) has no profile: the type floor, the safe area, and word-by-word captions
+- **kind:** spec silent
+- **found:** the social agent's floor-audio audiogram (CA AB 1813), 1080×1920. The Receipt's `export` block is the only raster profile, and it says “authored at its 1× pixel size … never scales below the 12px floor” without saying what 1× is. A 1080-wide frame plays at about 390pt, so k = 2.77 and 12px becomes 33px. The clip set its eyebrow and outcome at 30px, which is 10.8pt on a phone. No rule covers platform UI safe areas (TikTok/Reels: top 160, a right rail of about 140 from y≈1000, bottom 420), or captions where words change state as they're spoken.
+- **evidence:** a 1080×1920 mock rendered from `colors_and_type.css`, a mid-quote frame and the end card, both with and without a safe-area overlay: `/private/tmp/claude-501/-Users-jason-git-amendment-design/fa35b33b-623b-4d4b-92e4-e9259f346d82/scratchpad/mock.png`, `…/mock-safe.png`. Dark only: the clip ships dark.
+- **proposes:** a `surfaces.social-video` profile. Role sizes scale by frame width ÷ 390, so the floor is 33px at 1080. Content stays inside the safe area. A quote page is laid out whole from its first frame and holds at most 4 lines, broken at a sentence. Spoken words take `--text-primary` and unspoken words `--text-secondary`, never dimmer, because unspoken words are still text. The attribution follows the quote. The waveform is a static amplitude profile whose fill advances, read as a progress meter. **Jason preferred the highlight (2026-11-04) over words appearing as spoken.** The ratification has to say whether a word changing ink in step with time-based media is a fourth motion surface or falls outside `motion.rules`, which were written for UI.
+- **blocks:** nothing. The social agent is coding to the proposal.
+
 ### Does --card-pad cover the featured card
 - **kind:** spec silent
 - **found:** voyager, after v2026.10.17.16. The featured `AskSummaryCard` pads one step larger than the standard card at both sizes (`p-5 sm:p-6`). `components.card.padding-steps-with-the-card` names one card padding and says nothing about a featured variant.
@@ -124,13 +131,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **evidence:** `Components/Candidates/CandidateAppearances` SeveralOnOneDay: hover at 1440 (row background `oklab(0 0 0 / 0.03)`), keyboard focus at 390 in dark (2px outline, -2px offset); a click at a row's blank right edge hits the row link and a click on the address hits the directions link, on every row. Accessible name: "<time>, <kind>, <place>: RSVP for <listing title> (opens Mobilize)".
 - **proposes:** ratify the card-link pattern for cards and for rows in a public list (target, hover step, focus ring, which children sit above the overlay), or name the row's act some other way.
 - **blocks:** nothing; it ships by Jason's decision
-
-### Pills and chips are for filter controls only
-- **kind:** spec silent
-- **found:** Jason ruled on 2026-10-18 that a pill or chip is valid only as a filter control; an appearance row's kind and access, first built as chips, now render as text. The spec has chip rules (`color.unread-is-ink`'s hairline count chip, `role-designation` in a chip, `tint-is-not-a-plate`'s rounded-full chip) but no rule saying where a chip may appear.
-- **evidence:** canonical use: the bill-status filter row on the jurisdiction bills page, `app/(data)/oversight/[jurisdiction]/bills/components/bill-status-filter-chips.tsx` (with `filter-chip.tsx`). Voyager's appearance rows after 2fe4b917 show the text treatment ("2:00 PM · Rally", "Ticketed · Gainesville").
-- **proposes:** write the rule: a pill/chip is a filter control; a category, status or count in content is text (or the status stamp), never a chip; reconcile the existing chip mentions with it.
-- **blocks:** nothing
 
 ### Third-party record text that arrives in caps
 - **kind:** spec silent
@@ -283,13 +283,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** define a meter as progress toward a bound, and give comparison bars a neutral fill (`--ribbon-completed`), or extend the exemption to counted-crowd bars
 - **blocks:** the home doors
 
-### Share on a page whose plates are Co-signs
-- **kind:** spec silent
-- **found:** the Paper "Your district · nothing close" boards make bringing a neighbor the page's move, but every ask card already carries a Co-sign plate. The fill rule allows one plate per card and doesn't say whether a closing Share outside the cards may also be green. Jason chose to keep Share neutral, so Co-sign stays the only green control.
-- **evidence:** Homepage boards "Your district · nothing close" (1440 and 390, light and dark): three Co-sign plates and Share as a neutral button with a hairline ring
-- **proposes:** under the green fill rule, say that once a surface's plates are per-card Co-signs, a share or recruit act is a neutral button, even when it is the page's main move
-- **blocks:** the post-address district page
-
 ### The floor tick on an ask delivered below the floor
 - **kind:** spec silent
 - **found:** a packet carries a district's top asks, and some of those asks have fewer co-signers than the floor. Jason ruled that the label says "Delivered Oct 19 to both campaigns" for every delivered ask. The meter still draws a short fill that stops before the floor tick, so the bar says "not yet" while the label says "delivered".
@@ -424,6 +417,7 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** a bubble *depicted* in marketing (an SMS thread shown as an illustration, not a live conversation) takes an opaque primary fill on the aurora, and incoming bubbles take `material-regular`. Alternatively, extend the conversation rule to cover it.
 - **blocks:** the outgoing-bubble fill on the voyager home build
 - **also:** Paper “MCP Sales” (`app.paper.design/file/01M61ZPHHVGQ26KXYFQ3FAFBJZ`) uses the same opaque outgoing bubble on material panes: the chat demo on all four boards, and both chat storyboard boards.
+- **update (2026-11-04, `/organizations` hero):** a third depicted thread, and the first where the other side is an organization's own number. The supporter's share code goes out as the primary bubble; the org's confirmation comes back in `material-regular` bubbles, on the bare aurora, above the org card. Three surfaces now draw the same bubble from one voyager file (`components/home/text-bubble.ts`: `role-body`, the 1rem radius with one 0.25rem tail corner, 12/16 padding), and nothing in `DESIGN.md` names it. The ruling should name the depicted bubble as a component entry (radius, tail corner, padding, max width, the two fills and their inks), not only the outgoing fill, so wireframer and voyager cite one key. Evidence: `preview/orgs-hero-thread.html` (`?dark`), 390 and 1440.
 
 ### Ink on a `--color-primary` plate
 - **kind:** unowned default
@@ -525,6 +519,7 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** render a section head in both inks, both schemes, then rule
 - **blocks:** nothing
 - **measured (design-reviewer, element-paint contrast, voyager `/mcp` 2026-10-28 and `/data` 2026-11-03, 1440):** band eyebrows in `--ink-success` on `material-thin` 5.09–5.11:1 light, 8.35–8.54:1 dark. On the bare aurora, the hero eyebrow measured 4.30:1 light on `/mcp` (ships in `--text-secondary`) and 4.72–4.93:1 light, 7.86–8.75:1 dark on `/data`; the “4/4” score 4.83:1 light.
+- **also (2026-11-04, `/organizations`):** the org page's spec follows `/data`: band eyebrows take voyager's `EYEBROW_IN_SUCCESS_INK` switch (`components/mcp/sales/McpSalesSections.tsx`, currently on), the hero eyebrow stays in `--text-secondary`. One ruling covers both pages; the switch is the only edit either needs.
 
 ### A sentence-case qualifier opposite a card heading
 - **kind:** spec silent
@@ -832,13 +827,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** say whether the light plate is `material-regular` or a named plate, and emit one class per scheme for the selected plate in `colors_and_type.css`
 - **blocks:** nothing
 
-### The dark glass plate was ruled on the bare aurora, and ships on a card
-- **kind:** missing measurement (now measured)
-- **found:** same review. The ruling's specimen sets plates straight on the aurora, at different positions, so its comparison is confounded by position (`color.ink-ground-is-a-placement`). In product the control sits on a `material-regular` card.
-- **evidence:** plate : track, painted at 1440. On a card: 1.41 (`forms.html`), 1.45–1.53 (`segmented.html`), the plate lighter than the track. On the evidence page: B 1.49 and darker than its track; C 1.59; D 1.46; E 1.54. Renders in `/private/tmp/claude-501/-Users-jason-git-amendment-design/8d349b2b-3c23-4bbb-b3a3-aae25503bf8a/scratchpad/renders/`
-- **proposes:** record the scope: the rule holds on the card. No change unless a voyager render disagrees.
-- **blocks:** nothing
-
 ### Input focus ring: 80% or full
 - **kind:** two readings
 - **found:** same review. `components.input.focusRing` says `--color-functional` at 80%; `a11y.focusRing.rule` gives no alpha, and every specimen draws the full `--focus-color` (`form-fields.html:43`, `inputs.html:32`).
@@ -867,6 +855,42 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** render the lede in serif and in `role-body` secondary, both schemes, and rule
 - **blocks:** nothing
 
+### Green ink on an earning line
+- **kind:** two readings
+- **found:** the “For organizations” one-pager (Paper “Flywheel”, page “One-pager”) sets its two earn lines in `--ink-success` semibold: “10% of every credit a campaign spends reaching a member you brought” and “30% of what supporters spend promoting the asks you publish.” `/organizations` copies them as the page's one colour moment. One reading: `registers.marketing-is-outside-the-table` lets marketing use green ink, and the fill rule only governs plates. The other: green ink is a report (*this happened*) scoped to where a crowd is counted (`color.action.fill-rule-which-green`, `registers.live.palette-rule`). An earn line is a rate on money nobody has earned yet, and paying it in dollars still awaits counsel, so the ink would report something that hasn't happened.
+- **evidence:** `preview/orgs-pay-earn.html`, `?v=a` (success ink) and `?v=b` (`--text-primary`), both schemes, 390 and 1440. Painted contrast on the full-bleed `material-thin` band, sampled beside the first earn line: A 4.98:1 light, 8.05:1 dark at 1440; 5.13:1 light, 8.54:1 dark at 390. B 14.81–15.24:1 light, 13.35–14.04:1 dark. Both clear 4.5:1, so contrast doesn't settle it.
+- **proposes:** rule whether green ink may mark a promised rate on a marketing surface. If not, earn lines take `--text-primary` semibold, the same weight as the pay terms, and the page has no colour moment outside the CTA.
+- **blocks:** the `/organizations` pay/earn band's earn ink; the one-pager follows whichever way it lands
+- **related:** the ground half of this is “Green ink on a glass card over the aurora”, since a full-bleed `material-thin` band is that case at page width.
+
+### Is a full-bleed material band a container
+- **kind:** two readings
+- **found:** `/organizations` spec §4.5 sets the pay/earn column heads in `role-ui-heading`, which reads the full-bleed `material-thin` band as a container (hard rule 6). `/data` reads it as canvas: its bands carry serif `role-display-section` heads (`McpSalesSections.tsx`, `Section band`). By the second-card test, a sibling entry could join under “What you pay for”, so the heads are the page's outline. The design-reviewer's read: an edge-to-edge band with no frame is canvas.
+- **evidence:** `preview/orgs-pay-earn.html` default (serif `role-display-section`) against `?h=sans` (`role-ui-heading`), both schemes, 390 and 1440.
+- **proposes:** state that a full-bleed band with no inset ring is canvas for heading placement, so its heads are serif at the rung of their outline depth.
+- **blocks:** nothing; the specimen draws serif
+
+### Section spacing on desktop marketing pages
+- **kind:** production ahead
+- **found:** `/data` pads its sections 96px top and 112px bottom in the hero, and 112px on each band (`lg:py-28`); `--space-32`, named section-y desktop, is 128px. The `/organizations` specimens use `--space-32`, so they sit taller than the page they copy.
+- **evidence:** `McpSalesSections.tsx` `Section`, `McpHero`; `preview/orgs-pay-earn.html` and `preview/orgs-hero-thread.html` at 1440
+- **proposes:** either the marketing register gets its own section-y step that `/data` already ships, or `/data` conforms to `--space-32`
+- **blocks:** nothing
+
+### Monogram initials have no role or token
+- **kind:** unowned default
+- **found:** the org card's monogram (initials in a square tile on `--wash-yours`, with a `--border-subtle` ring) has hand-picked size, ink and fill. `components.avatar.initials` rules that initials take no uppercase role and centre optically, but names no size, type or ground for an organization's square tile, as opposed to a person's disc. The invite board in Paper “MCP Sales” draws the same tile by hand.
+- **evidence:** `preview/orgs-hero-thread.html`, both schemes, 390 and 1440; Paper “MCP Sales”, “Ask · the group’s side — invited, then backing it”
+- **proposes:** extend `components.avatar` with an organization variant (square, `--radius-md`), its size steps and its type, or rule that an org with no logo shows its name alone
+- **blocks:** nothing
+
+### Sample-question “chips” under the filter-only rule
+- **kind:** two readings
+- **found:** the v2026.11.05 pass. `components.chip.filter-controls-only` makes a chip a filter control. `button-ghost` is described as a “chip-style button (sample-question chips)”, and the follow-up passage says home sample questions “stay `button-ghost`”. A sample question is an act (it asks), not a filter. Also `preview/nav-spine-prototype.html` (untracked) draws topic links as rounded-full pills.
+- **evidence:** not yet rendered. Render the home sample questions as `button-ghost` at `rounded-lg` (as specified) against a rounded-full pill, both schemes, 390 and 1440.
+- **proposes:** a sample question is a `button-ghost` button, never a pill; drop “chip” from its description. Topic links are links.
+- **blocks:** nothing
+
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by
@@ -881,17 +905,8 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
-- **2026-11-04 (v2026.11.04.13)** — the ribbon's temporal caption and the Archive's provenance line are roman metadata.
-- **2026-11-04 (v2026.11.04.12)** — a long statute folds at its subsections, opens at (a) and the cited unit, shows only the statute's headings, and below 64rem opens the first module (`surfaces.archive.long-statute`).
-- **2026-11-04 (v2026.11.04.11)** — the bill page's h1 is its `role-ceremonial` identifier.
-- **2026-11-04 (v2026.11.04.10)** — a segmented control holds two to four options (`components.segmented-control.four-is-the-cap`).
-- **2026-11-04 (v2026.11.04.9)** — in dark the selected segment is white-wash glass, one ring, no drop shadow (`components.segmented-control.selected-dark`).
-- **2026-11-04 (v2026.11.04.8)** — `role-stat-price`, a fixed 2.25rem rung for a price that leads a card; voyager drops its override.
-- **2026-11-04 (v2026.11.04.7)** — a comparison row plates only its recommended card (`color.action.fill-rule-one-per-surface`).
-- **2026-11-04 (v2026.11.04.6)** — the map locator is the third motion surface (`motion.rules`).
-- **2026-11-04 (v2026.11.04.5)** — a replayed product demo is arrival: once on first view, final frame under reduced motion.
-- **2026-11-04 (v2026.11.04.4)** — a delivered row leads with its race; the heading names the office, the designation the place (`components.table.delivered-row`).
-- **2026-11-04 (v2026.11.04.3)** — the sidebar's first group is the tab bar's five, its second the rest; Actions is Letters (`components.sidebar`).
-- **2026-11-04 (v2026.11.04.2)** — a field is a control and takes `radii.md` (`radii.a-field-is-a-control`).
-- **2026-11-04 (v2026.11.04)** — a jurisdiction's flag or seal at badge scale is reproduced as issued.
-- **2026-10-28 (v2026.10.28)** — the target floor is 24 by size or spacing; a text link's target is its line box.
+- **2026-11-05 (v2026.11.05)** — the logo is the voting button then the wordmark; the button may stand alone, the wordmark never; the caret lockup is a concept (`the-logo-is-the-button-and-the-wordmark`).
+- **2026-11-05 (v2026.11.05)** — a pill or chip is a filter control only; the unread count and a trailing designation are bare text (`components.chip.filter-controls-only`).
+- **2026-11-05 (v2026.11.05)** — beside per-card Co-sign plates, a Share or recruit act is `button-secondary` (`color.action.fill-rule-one-per-surface`).
+- **2026-11-05 (v2026.11.05)** — the dark selected segment holds on a card (`components.segmented-control.selected-dark`).
+- **2026-11-05 (v2026.11.05)** — `MESSAGING.md` is ratified; it shares `spec-version` and `/ratify` is its one writer.

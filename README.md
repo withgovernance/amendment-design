@@ -53,6 +53,7 @@ A profile is a register plus a substitution table: same tokens, poorer machinery
 - [`SKILL.md`](./SKILL.md) — agent skill manifest.
 - [`CLAUDE.md`](./CLAUDE.md) — repo instructions: precedence, how a change lands, CI.
 - [`CHANGELOG.md`](./CHANGELOG.md) — rationale. Read it before re-arguing a rule.
+- [`MESSAGING.md`](./MESSAGING.md) — audiences, positioning and public copy. Cite its `messaging.*` entries; never retype copy.
 - [`RATIFY.md`](./RATIFY.md) — the queue for proposed spec changes.
 - [`colors_and_type.css`](./colors_and_type.css) — tokens and classes. [`styles.css`](./styles.css) imports it.
 - [`fonts/`](./fonts/) — Archivo (self-hosted, `wdth` and `wght` axes, roman and italic) and Amerika Signature. Newsreader and IBM Plex Mono load from Google Fonts.

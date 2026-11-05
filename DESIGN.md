@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.04.14
+# spec-version:   v2026.11.05
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -498,7 +498,7 @@ color:
                                        # signing and the counter moving are one
                                        # event seen twice. Giving them one colour
                                        # states the thesis instead of hedging it.
-    emerald-soft:   "= semantic.success-soft"   # #10b981 — small count chips
+    emerald-soft:   "= semantic.success-soft"   # #10b981
     emerald-onDark: "= color.action"   # retired as a distinct value 2026-08;
                                        # a bright accent needs no dark variant.
     fill-rule: >-
@@ -532,6 +532,12 @@ color:
       middle plan), and every other card's act takes button-secondary. A feed
       is different: its cards are not alternatives, and each keeps its own
       plate.
+      A SHARE OR RECRUIT ACT BESIDE PER-CARD PLATES IS NEUTRAL (RATIFIED
+      2026-11-05, decided by Jason on the "Your district · nothing close"
+      boards). Once a surface's plates are its cards' Co-signs, a closing
+      Share or "bring a neighbor" outside the cards takes button-secondary,
+      even when it is the page's main move. Co-sign stays the only green
+      control, so green keeps meaning the act that counts.
     fill-rule-which-green: >-
       SCOPE NARROWED 2026-08-28: this is ONE INSTANCE of
       color.ink-switch-is-palette-wide, which governs every semantic family.
@@ -654,9 +660,9 @@ color:
       COLOUR. Unread is neither a counted crowd nor semantic success, so
       green has no home here (registers.live.palette-rule). The unread dot is
       --text-primary; an unread count is --text-primary ink at
-      role-label-caps' size, semibold, in a --border-subtle hairline chip with
-      no fill — tint-is-not-a-plate, and a filled count plate is a plate that
-      cannot be pressed. The row's icon takes neutral ink; an unread row's
+      role-label-caps' size, semibold, bare beside its label — no chip, no
+      fill (components.chip.filter-controls-only, 2026-11-05; a filled count
+      plate is a plate that cannot be pressed). The row's icon takes neutral ink; an unread row's
       title is --sans-semibold. Primary ink clears 3:1 for the dot and 4.5:1
       for the count by a wide margin in both schemes; green failed 3:1 for
       the dot in light, and --color-functional failed for the count in dark,
@@ -1103,13 +1109,12 @@ typography:
       DESIGNATION role-designation — 0.875rem, sans-chrome, track-chrome,
                   semibold, PRIMARY ink. A designation REPEATED at text
                   size, wherever it sits — leading a table row or card,
-                  or trailing a line as a chip: bill slugs, jurisdiction
-                  codes. Ratified 2026-10-17 from a jurisdiction chip
-                  after a sample question in role-designation,
-                  role-caption and chrome caps: position does not change
-                  what the text is. A chip around it declares its box by
-                  the caps-box rule
-                  (typography.line-height-1-has-two-consequences). Added 2026-08-31:
+                  or trailing a line as bare text, never in a chip
+                  (components.chip.filter-controls-only): bill slugs,
+                  jurisdiction codes. Ratified 2026-10-17 from a
+                  jurisdiction code after a sample question in
+                  role-designation, role-caption and chrome caps:
+                  position does not change what the text is. Added 2026-08-31:
                   the taxonomy below already distinguished designation
                   from sentence but gave a repeated designation nowhere
                   to live — ceremonial is once per page at display size,
@@ -1168,7 +1173,7 @@ typography:
     section divider (the eyebrow over a section) and the status stamp. A
     designation — a bill slug, a jurisdiction code — is role-designation.
     Everything else that took chrome caps is sentence case: table and footer
-    column heads, form labels, count chips, nav labels in both navs
+    column heads, form labels, counts, nav labels in both navs
     (nav-labels-are-not-chrome), breadcrumbs, progress-ribbon milestones and
     the `Sources:` prefix. A third site is a ratification. THE WORDMARK SET
     AS TYPE IS NOT A THIRD SITE: it takes chrome's register as a
@@ -2842,6 +2847,21 @@ components:
     regression. Faithfulness is not correctness, and the check for the
     difference is a render at the call site — which is what found all three,
     by a person, after every automated pass had reported clean.
+  the-logo-is-the-button-and-the-wordmark: >-
+    RATIFIED 2026-11-05, decided by Jason; production ahead. THE LOGO IS THE
+    VOTING BUTTON (assets/mark.svg, mark-cutout.svg on dark grounds) BESIDE
+    THE WORDMARK, and the button always leads. That is the lockup voyager
+    ships in the navbar and on the OG cards, and the only one.
+    PROPORTIONS: the wordmark is set as type in role-label-caps,
+    --text-primary, beside the button at the chrome size; the gap is a
+    sixth of the button's diameter (--space-1 beside the navbar's 24px
+    button) and scales with it.
+    WHERE SPACE IS TIGHT THE BUTTON STANDS ALONE (favicon, app icon, avatar,
+    a navbar below md). THE WORDMARK NEVER STANDS ALONE: wordmark.svg and
+    wordmark-cutout.svg are the lockup's second half, not a lockup.
+    THE CARET LOCKUP (wordmark-caret.svg and its cutout) IS A CONCEPT THAT
+    HAS NEVER SHIPPED. The files stay in assets/ as a concept, outside the
+    shipped set; no surface uses them.
   a-cutout-mark-is-for-dark-grounds-only: >-
     RATIFIED 2026-08-29, from a mark that is nearly invisible on the
     signed-out home in LIGHT mode — spotted by the owner, missed by this
@@ -3397,6 +3417,12 @@ components:
       material tier; dark materials still take the canvas hue
       (materials.dark-glass-takes-the-canvas-hue). Selection stays ink plus
       weight, which meets components.selection-is-ink.
+      IT HOLDS ON A CARD (measured 2026-11-04). The ruling was made on the
+      bare aurora, where position confounds the comparison
+      (color.ink-ground-is-a-placement); in product the control sits on a
+      material-regular card. Painted at 1440 on a card, the plate reads
+      1.41–1.53 against its track and lighter than it, so it does not
+      recess there either.
     no-border-amended: >-
       AMENDED 2026-09-03 at v2026.09.03.6, same day it was ratified. THE
       SELECTED SEGMENT TAKES NO BORDER. v2026.09.03.4 specified
@@ -3553,6 +3579,18 @@ components:
     PAIR. Step the weight, keep the role. Rebuilding the role in longhand to
     get a second weight is how components.input-label acquired the wrong
     tracking.
+  chip:
+    filter-controls-only: >-
+      RATIFIED 2026-11-05, landing Jason's 2026-10-18 ruling. A PILL OR CHIP
+      IS A FILTER CONTROL AND NOTHING ELSE — the canonical use is the
+      bill-status filter row on a jurisdiction's bills page. A category, a
+      status, a count or a designation in content is TEXT (or the status
+      stamp), never a chip: an appearance row's kind and access read
+      "2:00 PM · Rally", not two chips. A chip shape says *press me to
+      narrow this list*; on content it promises a control that isn't there.
+      It narrows two 2026-10-17 rulings with no exceptions kept: the unread
+      count is bare primary ink (color.unread-is-ink), and a trailing
+      role-designation is bare text.
   card-select:
     description: Icon + label radio tile group (e.g. jurisdiction picker)
     border: "2px solid rgb(0 0 0 / 8%)"
@@ -5942,7 +5980,7 @@ because typography was not the problem:
   columns, breadcrumbs, badges, status stamps).
 
   **Conventional exceptions**: animating numeric counters and small
-  count-badge chips next to headings can use `font-mono tabular-nums`
+  counts next to headings can use `font-mono tabular-nums`
   even though the value isn't being copied — the typewriter contrast
   against typeset prose reads as a deliberate counter badge, and
   tabular figures keep the digits from jittering as the count

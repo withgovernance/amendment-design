@@ -11,7 +11,7 @@ The thesis: the rule of law is a living document. Every screen is two layers.
 - **Ink layer (permanent).** Newsreader (`--font-serif`) for headings and the record, at an optical stop (`--serif-display`, `--serif-text`, `--serif-quote`). Archivo (`--font-sans`) for body and chrome through its width presets (`--sans-body`, `--sans-chrome`, `--sans-display`, `--sans-ceremonial`). IBM Plex Mono (`--font-mono`) for literal strings a person reads or copies. Midnight Indigo (`--color-primary*`) is the user's own trail; Momentum green (`--color-action`) is every action and the crowd's assent.
 - **Aurora layer (alive).** `--aurora` over `--canvas-live`, painted by `.amendment-app`.
 
-**Precedence:** [`DESIGN.md`](./DESIGN.md) > [`DESIGN-HARD-RULES.md`](./DESIGN-HARD-RULES.md) > this file. Check DESIGN.md's `spec-version` header before citing it. The reason behind any rule is in [`CHANGELOG.md`](./CHANGELOG.md) — read it before re-arguing one.
+**Precedence:** [`DESIGN.md`](./DESIGN.md) > [`DESIGN-HARD-RULES.md`](./DESIGN-HARD-RULES.md) > this file. Check DESIGN.md's `spec-version` header before citing it. The reason behind any rule is in [`CHANGELOG.md`](./CHANGELOG.md) — read it before re-arguing one. Copy and positioning live in [`MESSAGING.md`](./MESSAGING.md); a brief cites its `messaging.*` entries, never the words.
 
 ## Workflow
 

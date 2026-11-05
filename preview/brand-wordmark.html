@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- @dsCard group="Brand" name="Brand — Wordmark" subtitle="AMENDMENT — no terminal mark in chrome; caret lockup where there is room" viewport="760x449" -->
+<!-- @dsCard group="Brand" name="Brand — Wordmark" subtitle="The logo: the voting button, then the wordmark; the caret is a concept" viewport="760x449" -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -26,17 +26,21 @@
 .pane.light .lab b{color:var(--color-primary-dark)}
 .pane.dark .lab b{color:#f7f3e8}
 .foot{grid-column:1 / -1;font-family:var(--font-serif);font-variation-settings:'opsz' 16,'wght' 420;font-size:13px;line-height:1.5;color:var(--text-secondary);margin-top:2px}
+.lockup{display:flex;align-items:center;gap:var(--space-1)}
+.lockup img{height:24px;width:24px}
+.pane.light .lockup .role-label-caps{color:#0f172a}
+.pane.dark .lockup .role-label-caps{color:#f7f3e8}
+.concept{opacity:.55}
 .foot b{font-style:normal;font-weight:var(--sans-semibold);color:var(--text-primary)}
 </style>
 </head>
 <body>
 <div class="card">
-  <div class="pane light"><img src="../assets/wordmark.svg" alt="Amendment"><div class="lab"><b>wordmark.svg</b>Chrome · wdth 125 · 430 · tracked 0.05em · no terminal mark</div></div>
-  <div class="pane dark"><img src="../assets/wordmark-cutout.svg" alt="Amendment"><div class="lab"><b>wordmark-cutout.svg</b>Knockout · dark chrome, photography</div></div>
-  <div class="pane light"><img class="big" src="../assets/wordmark-caret.svg" alt="Amendment"><div class="lab"><b>wordmark-caret.svg</b>Display lockup · the caret means <i>insert here</i></div></div>
-  <div class="pane dark"><img class="big" src="../assets/wordmark-caret-cutout.svg" alt="Amendment"><div class="lab"><b>wordmark-caret-cutout.svg</b>Display lockup, knockout</div></div>
-  <!-- retired-ok: records the retirement -->
-  <div class="foot"><b>Chrome gets the clean mark.</b> The caret closes the wordmark only where there is room and nothing competes with it — marketing lockups, launch marks, the Receipt's issuing device. Beside dropdowns and sort headers it reads as an affordance before it reads as punctuation. The Oxblood full stop was dropped in August 2026: a full stop says the sentence is finished, and the document is not.</div>
+  <div class="pane light"><div class="lockup"><img src="../assets/mark.svg" alt=""><span class="role-label-caps">Amendment</span></div><div class="lab"><b>The logo</b>mark.svg · then the wordmark in role-label-caps · gap space-1</div></div>
+  <div class="pane dark"><div class="lockup"><img src="../assets/mark-cutout.svg" alt=""><span class="role-label-caps">Amendment</span></div><div class="lab"><b>The logo, dark</b>mark-cutout.svg · the same lockup</div></div>
+  <div class="pane light"><img class="big concept" src="../assets/wordmark-caret.svg" alt="Amendment"><div class="lab"><b>wordmark-caret.svg</b>Concept · never shipped · not for use</div></div>
+  <div class="pane dark"><img class="big concept" src="../assets/wordmark-caret-cutout.svg" alt="Amendment"><div class="lab"><b>wordmark-caret-cutout.svg</b>Concept, knockout · not for use</div></div>
+  <div class="foot"><b>The button always leads</b> (<code>the-logo-is-the-button-and-the-wordmark</code>). Where space is tight the button stands alone; the wordmark never does. The gap is a sixth of the button's diameter.</div>
 </div>
 </body>
 </html>

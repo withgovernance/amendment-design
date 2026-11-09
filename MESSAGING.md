@@ -160,6 +160,14 @@ One paragraph. Company name, verb, what it does, why it matters.
 - **Draft:** “Amendment is a nonpartisan, permissioned civic network. Voters co-sign asks to the candidates on their ballot, organizations bring their members and are counted in the districts where they live, and campaigns reach only the people who said yes. Every ask, answer and roll call lands on one public record, built on current law and bills from every U.S. legislature. Its name is the right it builds on: the First Amendment’s “right of the people peaceably to assemble, and to petition the Government for a redress of grievances.” Amendment never sells its members’ data. It is built by The Governance Company.”
 - **The name:** the boilerplate and backgrounder carry the First Amendment hook; quote its text from the record (`/us/const/amend/I`), never from memory.
 
+## Meta description
+
+The site's description when it stands alone: the search snippet for any page without its own, the web app manifest, and the Organization and WebSite structured data. A searcher reads it with no other context, so it says what a visitor does here.
+
+- **In use:** the boilerplate's first sentence, which names the category but not what the site does or why to visit.
+- **Decided (Jason, 2026-11-09):** `messaging.meta-description`: “Ask for what you want with your neighbors, see what candidates promise and how they vote, and search current U.S. law and bills. One nonpartisan record.”
+- Search engines show about 150–160 characters. A revision is recounted against that limit before it ships.
+
 ## Press backgrounder
 
 The company story. Public-safe facts only.

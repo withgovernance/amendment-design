@@ -1038,6 +1038,7 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-11-09 (v2026.11.09.2)** — the site’s standalone description is `messaging.meta-description`; the boilerplate is unchanged.
 - **2026-11-09 (v2026.11.09)** — the spec binds every surface that renders Amendment, the deepspace MCP App widgets included; a depiction draws to the spec (Governance, “Scope”).
 - **2026-11-09 (v2026.11.09)** — a stamp's word and register come from one map per record kind (`rubber-stamp-status.vocabulary`); ribbon markers are the shipped step labels (`progress-ribbon.steps`).
 - **2026-11-05 (v2026.11.05)** — the logo is the voting button then the wordmark; the button may stand alone, the wordmark never; the caret lockup is a concept (`the-logo-is-the-button-and-the-wordmark`).

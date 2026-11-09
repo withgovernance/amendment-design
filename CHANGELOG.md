@@ -8,6 +8,17 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-09 (v2026.11.09.2) — The site gets a meta description of its own
+
+Decided by Jason, from four drafts counted against the search snippet.
+
+- **`messaging.meta-description` is the site's standalone description**: the search snippet for any page without its own, the web app manifest, and the Organization and WebSite structured data. voyager used the boilerplate's first sentence, which names the category but read alone tells a searcher neither what the site does nor why to visit. The chosen line names three things a visitor does (ask with neighbors, follow promises and votes, search law and bills), so it reaches `legal-data` searchers as well as voters. A constituent-only cut was shorter but left them out.
+- The boilerplate is unchanged; the category sentence still opens it.
+
+Retires: the boilerplate's first sentence as the site description.
+
+---
+
 ## 2026-11-09 (v2026.11.09) — The spec binds the MCP App widgets; status words come from one map
 
 Decided by Jason, from the revised MCP card boards (Paper “MCP App”, R1–R5) next to live captures of the shipped `show_*` widgets.

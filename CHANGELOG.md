@@ -8,6 +8,20 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-09 (v2026.11.09) — The spec binds the MCP App widgets; status words come from one map
+
+Decided by Jason, from the revised MCP card boards (Paper “MCP App”, R1–R5) next to live captures of the shipped `show_*` widgets.
+
+- **The spec binds every surface that renders Amendment, the deepspace MCP App widgets included** (Governance, “Scope”). The widgets shipped green follow-up plates in a conversation view, status as tinted chips, and bill numbers in mono, because nothing said the spec reached them. A marketing depiction of a product surface draws to the spec, and the shipped surface conforms. That closes “A depicted product surface” as (B).
+- **A stamp's word and register come from one map per record kind** (`rubber-stamp-status.vocabulary`): bills from the shipped RubberStamp map, law units from the law pages' map, a sitting member as “Incumbent”. The revised cards had coined “Law · No. 119-27”, “Re-elected” and a secondary-ink “In force”, so each new surface was inventing its own status words. One map means a bill reads the same on the bill page, in a card, and inside Claude.
+- **Ribbon markers are the shipped step labels** (`progress-ribbon.steps`): Prefiled, Introduced, Chamber passed, Final passage, Complete. A source's milestone label is data mapped onto a step, never a marker. “Passed both chambers” as a marker breaks the two-word cap and names a different event at each width.
+
+Still open: the stamp's geometry off the bill page; whether a federal ribbon starts at Prefiled; chart-fill tokens; short lists on cards; the record-title face; the ask-next follow-up pattern.
+
+Retires: data milestone labels as ribbon markers; status words coined per surface.
+
+---
+
 ## 2026-11-05 (v2026.11.05.2) — An unread count is a filled disc
 
 Decided by Jason from a render of the sidebar, expanded and collapsed, both schemes, 390 and 1440.

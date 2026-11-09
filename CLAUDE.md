@@ -94,6 +94,7 @@ Every dark-scoped rule in the stylesheet that touches a type metric is lighter-o
 ## Consumers
 
 - **`resistbot/voyager`** — the product. It reads this repo through a machine-local, gitignored `design/` symlink and commits a generated `app/design-tokens.css`, written by `node tools/build-tokens.mjs --target ~/git/voyager` and stamped with the `spec-version` it was built from. Extraction, not import: `colors_and_type.css` is a standalone drop-in that loads its own fonts and ships `role-*`/`material-*` as plain classes, which the consumer implements as framework utilities. Roles are not in the generated file; a role change is a hand edit in the consumer.
+- **`resistbot/deepspace` MCP App widgets** (`apps/mcp/src/deepspace_mcp/widgets/`) — the `show_*` cards drawn inside a host's conversation. Bound by the spec (`DESIGN.md` Governance, “Scope”). They map voyager's tokens through `shared.css` by hand; there is no build-tokens target, so drift is unchecked — spec ahead.
 - **wireframer** (low-fi, Paper) — upstream. Its briefs (`~/agents/wireframer/`) name roles from this repo, never values. If a brief specifies a hex, weight or size, distrust it and read the role from the system.
 
 Stack: wireframer (low-fi) → high-fidelity design → voyager (code). Handoff is forward; only structural discoveries return upstream.

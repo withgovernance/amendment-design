@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.05.2
+# spec-version:   v2026.11.09
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -4620,6 +4620,19 @@ tactileAccents:
       typography: "role-label-caps — the status stamp is one of its two sites (typography.chrome-sites-are-closed)."
       ink-break: "Alpha noise 0–15% varying across the mark. Clean geometry."
       when: "Bill detail page, sits adjacent to the title row. One stamp per bill."
+      vocabulary: >-
+        RATIFIED 2026-11-09, decided by Jason. A stamp's word and register
+        come from ONE MAP PER RECORD KIND, wherever that record's status is
+        stamped (bill page, law page, a card, an MCP App widget), never from
+        a source's free-text label. Bills: the shipped RubberStamp map
+        (enacted, vetoed, procedural, dead; e.g. "Enacted" in the enacted
+        register). Law units: active "In force" (enacted register), repealed
+        and expired (dead), reserved, pending "Not yet in force",
+        transferred and omitted (procedural), as `preview/law-pages.js`
+        renders them. A sitting member: "Incumbent", neutral register
+        (--text-secondary), as voyager's politician page. A word that is
+        not in a map is a missing entry in the map, not a coinage for
+        one surface. The stamp's geometry off the bill page is still open.
       owner: "Jason — head of product & design, The Governance Company"
       colors: "Green ink for positive status (enacted, signed) — per color.action.fill-rule-which-green that is --ink-success (color.green-ink-is-one-token), NOT action green on light, which is 2.62:1 as text. Success and action are one hue, so a red ENACTED would contradict the palette; slate-700 for procedural (in committee, introduced, engrossed, enrolled); warning amber-700 for vetoed; danger red (--color-danger) only for truly dead/failed. Oxblood left the stamp palette in 2026-08. CORRECTED 2026-08-28: this field said \"action green\" flat, which the 08-28 which-green ratification forbids as ink."
       implementation: "app/(data)/oversight/[jurisdiction]/bill/[bill]/components/RubberStamp.tsx"
@@ -4683,6 +4696,14 @@ tactileAccents:
         a specimen, and had been labelled `proposed` the whole time. Nobody
         had ever nominated it; the spec nominated guilloche instead, on the
         strength of how interesting it was rather than what existed.
+      steps: >-
+        RATIFIED 2026-11-09, decided by Jason. The markers are the shipped
+        step labels (voyager `bill-status.config.ts`): Prefiled, Introduced,
+        Chamber passed, Final passage, Complete. A source's milestone label
+        ("Passed both chambers", "Became law") is data mapped onto a step,
+        never a marker. Every width draws the same steps; only the marker
+        row collapses (below-width). Whether a federal ribbon starts at
+        Prefiled is still open.
       height: "8px"
       rounded: "full per segment, 1px gap between segments"
       tokens: >-
@@ -6961,6 +6982,14 @@ rendered in the light page only. Under a dark page its light pane
 inherits dark ink, and the stylesheet keeps no element-level light scope
 outside paper; a specimen showing both schemes needs no second page.
 Ratified 2026-10-12.
+
+**Scope.** This spec binds every surface that renders Amendment, whoever
+builds it and whatever frame it renders in. That includes the MCP App
+widgets (`resistbot/deepspace`, `apps/mcp/.../widgets/`), which draw
+inside a host's conversation. A depiction of a product surface on a
+marketing page is drawn to the spec, not to what ships, and the shipped
+surface conforms. A divergence in such a surface is conformance owed by
+its owning repo, never a reason to bend the spec. Ratified 2026-11-09.
 
 **Versioning.** Dated entries in `CHANGELOG.md`, newest first. No
 semantic version — the system is not consumed as a package, and a version

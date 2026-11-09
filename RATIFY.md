@@ -56,6 +56,7 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **evidence:** a 1080×1920 mock rendered from `colors_and_type.css`, a mid-quote frame and the end card, both with and without a safe-area overlay: `/private/tmp/claude-501/-Users-jason-git-amendment-design/fa35b33b-623b-4d4b-92e4-e9259f346d82/scratchpad/mock.png`, `…/mock-safe.png`. Dark only: the clip ships dark.
 - **proposes:** a `surfaces.social-video` profile. Role sizes scale by frame width ÷ 390, so the floor is 33px at 1080. Content stays inside the safe area. A quote page is laid out whole from its first frame and holds at most 4 lines, broken at a sentence. Spoken words take `--text-primary` and unspoken words `--text-secondary`, never dimmer, because unspoken words are still text. The attribution follows the quote. The waveform is a static amplitude profile whose fill advances, read as a progress meter. **Jason preferred the highlight (2026-11-04) over words appearing as spoken.** The ratification has to say whether a word changing ink in step with time-based media is a fourth motion surface or falls outside `motion.rules`, which were written for UI.
 - **blocks:** nothing. The social agent is coding to the proposal.
+- **update (2026-11-05, Instagram live):** the AB 1813 clip as published, with Jason's iPhone screenshots of the Reels tab and the home feed mapped onto the 1080×1920 frame. The assumed chrome was wrong in three places. (1) The top is unsafe to about y 260, not 160: the Reels tab's header (back arrow, Reels/Friends) ends at about y 260. The feed crops the frame's top about 100px and lays the account row (avatar, handle, “Original audio”) over it to about y 225. The lockup at y 184–250 sits under both. (2) The Reels right rail starts at about x 925, from about y 1240 to 1890, so quote lines set to x 940 run under the like button. (3) On a tall phone the Reels tab crops about 46px off each side, which leaves the x 72 margin about 26px visible. The bottom is clear: the caption band starts at about y 1730, and the feed's mute button sits at about y 1710–1780. Fix rendered two ways, both with the quote column narrowed to x 880 (the plate keeps x 940, because the rail starts below it). **A:** the plate lockup is dropped, since both placements already show the account avatar beside the handle and the end card keeps the lockup. **B:** the lockup and everything under it move down 120px, so the attribution lands at about y 1550. Both clear all measured chrome. **Jason chose A (2026-11-05).** The profile's safe area becomes y 280–1500, with the quote column at x 72–880 and the plate at x 72–940. There is no lockup on the playing frame; the end card carries it. Handed to social: `~/agents/manager/inbox/social-audiogram-instagram-safe-area-2026-11-05.md`. Evidence: `/private/tmp/claude-501/-Users-jason-git-amendment-design/09d063bd-fcdd-488d-8e56-8d73d7ee7e2d/scratchpad/sheet2.png` (A then B, two quote pages each, Reels chrome in red and feed chrome in blue) and `…/sheet.png` (the published layout under the same overlay). Recommend A.
 
 ### Does --card-pad cover the featured card
 - **kind:** spec silent
@@ -505,12 +506,24 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **blocks:** nothing
 
 
-### A depicted product surface: draw what ships, or what the spec says
-- **kind:** spec ahead
-- **found:** the MCP sales page's chat demo shows the `show_bill` card. The real widget (deepspace `widgets/shared.css`) sets the bill number in mono on a tint chip, and its status as a 12% `--good-soft` tint plate at full radius. Both break the spec (`role-designation`; `color.action.tint-is-not-a-plate`). The boards now draw the card to the spec: designation in `role-designation` (“H.R. 5334”), status as a `role-label-caps` stamp in `--ink-success` with no plate, `--radius-md`, padded by `--card-pad`. That makes the page show a card the product doesn't ship. Also open: does `DESIGN.md` bind the deepspace MCP widgets at all?
-- **evidence:** Paper “MCP Sales” (`app.paper.design/file/01M61ZPHHVGQ26KXYFQ3FAFBJZ`), four boards and both storyboard boards, “Why not web search”. Related: “Pills and chips are for filter controls only”.
-- **proposes:** render the card faithful and to spec in the pane, both schemes, 390 and 1440. Then either (A) a depiction is a screenshot and stays faithful, with the widget's divergences recorded against deepspace, or (B) marketing draws to the spec and the widget conforms.
-- **blocks:** shipping the chat demo
+### The follow-up prompt on an MCP App card
+- **kind:** spec silent
+- **found:** every deepspace `show_*` card ends in a green `.btn.primary` follow-up prompt (“Ask about Meta”) beside “View on Amendment” and “Fullscreen” buttons. A green plate in a conversation host breaks `color.action.fill-rule-one-per-surface` and conversation-is-green-free, but the spec names no follow-up pattern for a widget inside someone else's chat.
+- **evidence:** Paper “MCP App” (`app.paper.design/file/01M6YHTD6H2RMFGAQFDXCBFAAG/p-1-0`): live captures beside boards R1–R5 “revised”. The revision uses one ask-next line (Phosphor `ChatCircleText`, underlined question, no fill) and a footer of source link, `role-caption` freshness line, and a fullscreen icon button. Spec handed to deepspace: `~/agents/manager/inbox/deepspace-mcp-cards-redesign-spec-2026-11-09.md`.
+- **proposes:** ratify the ask-next line as the follow-up act on any card rendered in a conversation host. This rides on the answer to “A depicted product surface” above: if `DESIGN.md` binds the MCP widgets, this is conformance; if not, it is a recommendation.
+- **blocks:** nothing (deepspace can build to the boards meanwhile)
+
+### MCP App cards: open items from the design review
+- **kind:** spec silent (each item)
+- **found:** independent review of the revised MCP card boards, Paper “MCP App” (`app.paper.design/file/01M6YHTD6H2RMFGAQFDXCBFAAG/p-1-0`), boards R1–R5 “revised”.
+  1. **The stamp's shape off the bill page.** `rubber-stamp-status` gives a 2px ring and a 2–4° rotation, and its `when` is “Bill detail page”. The cards draw bare `role-label-caps` ink. Which shape does a card take?
+  2. **The register of a card inside a host's frame.** The ground is Claude's, not ours. Paint-sample `--ink-success`, `--text-secondary` and the ribbon fills on Claude's light and dark card grounds.
+  3. **Chart fills.** The nay bar is a hand-typed zinc with no token. Bar charts (company spend by year, ranked spend) borrow the `--ribbon-*` ladder, which flips under dark so the strongest bar goes near-white. Name chart tokens, or ratify the borrowing, and measure 3:1 for yea, nay and track in both schemes.
+  4. **Row dividers and the card's hairline count.** A three-row list on a card (sponsored bills, lobbied bills): is it a `components.table`, with a status-stamp stage and `role-ui-heading` titles, or a light list with dividers? Render R3 both ways at 390.
+  5. **“Prefiled” on a federal bill.** Congress has no prefiling, yet the ribbon paints that step success with no date. Should a federal ribbon start at Introduced (compare `failure-honesty`)? This touches voyager's `bill-status.config.ts` too.
+- **evidence:** the boards above; the handoff spec at `~/agents/manager/inbox/deepspace-mcp-cards-redesign-spec-2026-11-09.md`.
+- **proposes:** rule each item from renders. Item 5 also changes voyager.
+- **blocks:** nothing (deepspace builds to the boards meanwhile)
 
 ### Green ink on a marketing section divider
 - **kind:** two readings
@@ -891,6 +904,126 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** a sample question is a `button-ghost` button, never a pill; drop “chip” from its description. Topic links are links.
 - **blocks:** nothing
 
+### The organizations page hero and proof points as messaging entries
+
+- **found:** the `/organizations` concept (Paper “MCP Sales”, “Organizations — 1440 (concept)”) ships copy that `MESSAGING.md` doesn’t hold yet: hero “Every other organizing tool sends you a bill. This one sends you a share.” (Jason, 2026-11-05), its lede (30% “as promotion credit for now, set up with you”), the flywheel headline “Every organization that joins makes the network worth more.”, and the case study’s three proof points (56,752,357 letters since 2017; 57% of 2026 letters from Apple Messages; $0 for a co-sign from someone not on your list, against about $2 an email signer and $5 a textable number, from growth’s `paid-acquisition-promote-demand-2026-09-27.md`). Resistbot is named, attributed as Resistbot’s, as `MESSAGING.md`’s proof-point rule allows. The voyager build is retyping this copy until it has keys.
+- **evidence:** the 1440 light board; the claims are sourced as listed. The 57% comes from withgovernance.com, not a live pull.
+- **proposes:** `messaging.headline.organizations`, `messaging.lede.organizations`, `messaging.flywheel.organizations` and `messaging.proof.organizations.*` with this copy. `messaging.benefit.organizations` stands.
+- **blocks:** voyager citing keys rather than retyped copy on `/organizations`
+
+### Interface versus explanation: where the motion budget stops
+
+- **found:** `registers.marketing-is-outside-the-table` exempts marketing surfaces, and the replayed product demo is arrival. Neither names explainers (the fundraiser’s network explainer, the `/organizations` flywheel), marketing and product videos, or decks. An agent applying the checklist read the product’s idle-loop ban as covering a marketing flywheel. Jason, 2026-11-05: “we’ve got to differentiate between user interface and things like explainers, marketing videos, etc.”
+- **evidence:** the `/organizations` flywheel (Paper “MCP Sales”, “Organizations — 1440 (concept)”, “Why it grows”), held static for a day by that misreading. `DESIGN-HARD-RULES.md` item 4 now scopes the idle-loop ban to the product, matching `motion.rules`.
+- **proposes:** two kinds of surface. **Interface**: anything a person operates or reads the record in, the five rooms and their chrome; the motion budget binds. **Explanation**: marketing pages, explainers, diagrams, videos, decks; they show how the system works rather than being it. Motion there is free in kind, including loops, and bounded only by: pausable (hover on a page, controls in a video), motion-safe (reduced motion gets the final frame), and never animating record state (a real count, bill or receipt shown live). Name it `registers.explanation-is-outside-the-table`, subsuming the marketing entry.
+- **blocks:** nothing; the flywheel already ships under the marketing rule
+
+### The home boards' headline predates the 2026-11-05 decision
+
+- **kind:** production ahead
+- **found:** all four Home boards in Paper “MCP Sales” (“Home — 1440”, “Home — 1440 dark (hero + close)”, “Home — 390 (hero + close)”, “Home — 390 dark (hero + close)”) set the hero to “Put your members on the record, counted by district.” `MESSAGING.md` decided `messaging.headline` the same day. The voyager build (`components/home/record/RecordHomeSections.tsx`, `RecordHomeHero`) renders `messaging.headline`.
+- **evidence:** the build at `/`, both schemes, 390 and 1440, where the decided headline wraps to four lines at `role-display-hero`; the four boards.
+- **proposes:** update the four boards to `messaging.headline`, or record the board line as a candidate for a later headline test. The decision stands until `/ratify` changes it.
+- **conformed 2026-11-05:** the four boards now carry `messaging.headline`, the category line (“A nonpartisan, permissioned civic network”) as the hero eyebrow, `messaging.value.constituents` over the hero’s ask row, and `messaging.tagline` as the close head. “Home — 1440” cards carry `messaging.benefit.organizations` and `messaging.benefit.legal-data`. The old headline is the candidate for a later test. Close on the next pass.
+- **blocks:** nothing
+
+### Home: the network layer draws House districts, not states
+
+- **kind:** production ahead
+- **found:** the “What each district wants” panel on “Home — 1440” draws a 51-hex state map (green = reached) with the legend “Co-signs reached campaigns in 33 states this fall”. Production has no state hex component keyed to deliveries; it has `DistrictTilegram`, fed live by the delivered-districts reader. The build uses the tilegram and derives the state count from the delivered district keys. The panel heading names districts, so the tilegram matches the heading at a finer grain.
+- **evidence:** `/` at 1440, both schemes; `components/home/DistrictTilegram.tsx`; the board's hex SVG (51 polygons).
+- **proposes:** the board adopts the district tilegram for this panel, or the spec names a state-grain delivery map as a component of its own.
+- **blocks:** nothing
+
+### The home's lede and section heads as messaging entries
+
+- **found:** besides the headline, the Home board ships copy `MESSAGING.md` doesn't hold: the hero lede, “The record only a network can build.”, “Organizations bring the members. Legal and AI teams bring the questions.” and “The campaign ended. Where they stood is still on the record.” The build retypes them with a TODO at each site, as `/organizations` does. On 2026-11-05 the boards’ lede became a record-led candidate, derived from the positioning statement: “Neighbors ask together, campaigns answer in public, and every roll call lands beside what was promised. Organizations bring their members. Legal and AI teams build on the same law and bills, from Congress, all 50 states and D.C.” The org-led lede it replaced (“Amendment links every bill to the code it rewrites…”) and the old close head (“Bring your members onto the record.”, now `messaging.tagline`) are what the build still retypes.
+- **evidence:** “Home — 1440”; `components/home/record/RecordHomeSections.tsx`
+- **proposes:** `messaging.lede.home` and `messaging.section.home.*` with this copy, or a ruling that section heads under a ratified headline are page copy, not messaging.
+- **blocks:** voyager citing keys rather than retyped copy on `/`
+
+### The flywheel's travelling dash: length and period
+
+- **kind:** unowned default
+- **found:** the `/organizations` flywheel animates under the marketing motion rule: a dash runs along each of the three arcs while the wheel is on screen at `lg` and up, pauses on hover, and is still under reduced motion. The dash (5% of the arc, `--text-primary`, 3px over the 1.5px arc) and its period (7s, the three arcs a third of a period apart) were picked by the builder. No token owns either.
+- **evidence:** `/organizations` at 1440, both schemes; `components/organizations/Flywheel.tsx`; `--animate-flywheel-flow` in voyager `app/globals.css`
+- **proposes:** a motion token for explainer loops (period and easing), or a ruling that explainer motion is per-artifact
+- **blocks:** nothing
+
+### The Data & MCP hero: the legal-data benefit, or a page headline of its own
+
+- **kind:** spec silent
+- **found:** on 2026-11-05 all four “Data & MCP” boards in Paper “MCP Sales” changed hero from “The law, the bills and the money behind them, already linked.” to `messaging.benefit.legal-data`. The lede now opens “Give your AI the record the Amendment network runs on”, which puts `legal-data` inside the category as `MESSAGING.md`’s Positioning decides. `/organizations` keeps a hero of its own beside `messaging.benefit.organizations`, so the two audience pages now work differently.
+- **evidence:** “Data & MCP — 1440” and “— 390”: the benefit runs four lines at `role-display-hero` at both widths and doesn’t clip.
+- **proposes:** either `messaging.headline.legal-data` holds the old line, matching the organizations entry, and the benefit moves under it, or each audience page leads with its benefit and the organizations hero becomes a section line.
+- **blocks:** nothing
+
+### A short boilerplate for the site footer
+
+- **kind:** spec silent
+- **found:** the voyager footer (`components/global/Footer/index.tsx`) carried the old constituent-only copy, with the retired audience names “advocates” and “public affairs teams” and a hard-coded “52 legislatures”. `MESSAGING.md` holds a Boilerplate draft but no footer-length cut, so the build retypes one with a TODO.
+- **evidence:** the footer on every page, both schemes, 390 and 1440.
+- **proposes:** `messaging.boilerplate.short`: “Amendment is a nonpartisan, permissioned civic network. Voters co-sign asks to the candidates on their ballot, organizations bring their members, and campaigns reach only the people who said yes. Every ask, answer and roll call lands on one public record. Amendment never sells its members’ data.”
+- **blocks:** voyager citing a key rather than retyped copy in the footer
+
+### A bill marquee on the home page carries record state
+
+- **kind:** two readings
+- **found:** Jason asked (2026-11-05) for the home's “Moving now” row to be the full-bleed bill marquee `/homepage` already ships: live bill cards drifting left at `motion.durations.marquee`, pausing on hover or focus, at `lg` and up, motion-safe. `registers.marketing-is-outside-the-table` bars marketing motion “on a surface carrying record state — a bill, a count, a receipt, a signature”, and names the 240s marquee only as the 6%-opacity one behind the campaigns card.
+- **evidence:** `/` at 1440, both schemes (`BillMarquee` in voyager `app/(marketing)/components/recent-bill-cards.tsx`); `/homepage`, which has shipped the same moving bill row.
+- **proposes:** either the rule admits a pausable, motion-safe marquee of live records on marketing surfaces (the row moves, no record in it changes), or the row holds still and Jason's request is declined.
+- **blocks:** nothing; the build follows Jason's ask
+
+### Home after the election: no district or election layer
+
+- **kind:** production ahead
+- **found:** Jason, 2026-11-05: the election is over and constituents are not the home page's focus. `/` drops the “What each district wants” panel, the per-district bars and campaign counts in the organizations card, the “After November 3” timeline with the said/voted card, and the co-sign row under the hero. The organizations card now lists the ways in from `/organizations`. This supersedes “Home: the network layer draws House districts, not states”.
+- **evidence:** `/` at 390 and 1440, both schemes; `components/home/record/RecordHomeSections.tsx`.
+- **proposes:** the Home boards drop the same sections. `messaging.headline` (“What you asked for, what they promised, how they voted”) and the `messaging.value.constituents` line both speak to voters and campaigns; the home needs a headline for organizations and legal and AI teams.
+- **blocks:** nothing
+
+### The home hero: two sides, change the law and track the law
+
+- **kind:** spec silent
+- **found:** Jason, 2026-11-05: the record-led hero tells no audience what it gets. The page sells to organizations and legal teams, and constituents mostly arrive through ask pages. Removing the ballot lookup does not remove the story: what officials said beside how they voted stays, and so do the district map and per-district counts. This narrows “Home after the election: no district or election layer” to the ballot lookup and the constituent co-sign row. Two sides go at the top: changing the law (advocacy groups) and understanding or tracking it (lawyers, legaltech, public affairs). He approved the boards “Home — 1440 · PROPOSAL proof-first order” and “Home — 390 · PROPOSAL two sides” in Paper “MCP Sales”.
+- **evidence:** the two proposal boards, rendered without clipping. The copy is new:
+  - headline “Change the law, or keep track of it. One record for both.”
+  - lede “Every bill, statute and vote in Congress, all 50 states and D.C., joined to who lobbied on it, what people asked for and what officials promised. Use it to move the people who write the law, or to know exactly where it stands.”
+  - change side (advocacy groups), “Bring your members, and be counted where they vote.”, with “Publish an ask for your members. Each count goes to the people who write the law, and their answers and votes land on the record.”
+  - track side (lawyers, legaltech and public affairs), “Know where the law stands, and who’s behind it.”, with “Current statutes, regulations and bills from every U.S. legislature, cited to the source and joined to who lobbies on them. On the web, in Claude, or through the API.”
+  - proof is the H.R. 6644 bill card. Order: hero → “The campaign ended. Where they stood is still on the record.” (timeline and the said/voted card) → the record only a network can build (with the district map) → who builds on the record → close.
+- **proposes:** `messaging.headline` takes the new line. The decided “What you asked for, what they promised, how they voted. One record.” stays as the story the said-and-voted section tells, as its own key or that section's head. Add `messaging.lede.home`, `messaging.side.change` and `messaging.side.track`. Widen `messaging.benefit.legal-data` from agents to lawyers, legaltech and public affairs, matching the track side. `messaging.value.constituents` leaves the home and stays for ask pages. Revise Headline’s decision to read: the homepage leads with the two sides, and the record joins them.
+- **blocks:** voyager citing keys rather than retyped copy in the home hero
+
+### Home: one story, every audience on it
+
+- **kind:** spec silent; supersedes “The home hero: two sides” above
+- **found:** Jason, 2026-11-07: the live home is too many ideas (two sides, the network-built record, who builds on it, after November, the close), and at 390 the first screen is all text. Candidates have no door, and constituents have only one line at the bottom. He asked for one story in which every audience (candidate, advocacy group, constituent, lawyer, legaltech, public affairs) sees where it fits and how to use the network.
+- **evidence:** `preview/home-one-story.html`, rendered at 390 and 1440 in both schemes, with no overflow, no type under 12px and no target under 24px. Three rounds of four blind persona readers (a 2028 state house candidate, a state advocacy group's digital director, a swing-district voter, a legaltech head of product) compared it with live amendment.app. Round 1 split 2–2 (the hero spoke only to voters). Rounds 2 and 3: all four ranked this version first. The story is one record in three beats, each with a real example: an ask (the live home ask, by district), the campaigns' answer (Gluesenkamp Perez: asked, said, voted), and the law (H.R. 6644). The hero gives each audience one row, verb first, in story order. The phone lede hides so all four rows clear the fold.
+- **proposes:**
+  - `messaging.headline`: “Ask together. See who answers. Track what becomes law.” It replaces the two-sides line and extends the tagline. The eyebrow is “Nonpartisan · Congress and all 50 states”. “Permissioned” confused all four readers, so it leaves the hero.
+  - Hero rows, as `messaging.door.*`:
+    - voters: “Ask with your neighbors / Co-sign what you want from your ballot. Free.”
+    - organizations: “Bring your members / Credited to you. New supporters can join your list.”
+    - campaigns: “Answer your district / Claim your page, free, and reply.”
+    - legal-data: “Track the law / Cited and current, on the web or by API.”
+  - Beats “It starts with an ask”, “Then the campaigns answer” and “And the law it becomes”, each closing with a one-audience “If you …” line and its act. The close is “One record. Everyone on it.”
+  - The candidates band and the A/B phone fold from `preview/home-candidates.html` are dropped; this replaces both.
+- **blocks:** voyager’s home rewrite. The two pricing lines (“free” to claim, “join your list”) wait on the fundraiser and counsel (see `/campaigns` below). Data gaps the readers still named, which copy can’t close:
+  - every example is federal (no state race or statehouse district)
+  - no freshness figure for the law
+  - no real campaign answer to show, and no count of how many answered
+  - no word on CRM sync (EveryAction) for groups
+  - the home ask (on ICE) read as partisan to one reader
+
+### /campaigns: the claim page for a candidate we haven’t named
+
+- **kind:** spec silent
+- **found:** Jason, 2026-11-07: candidates need a page of their own, built from the live claim page (`oversight/politicians/[id]/claim`) and made generic. Live, 2026-11-07: 18 upcoming elections have candidates (Louisiana’s Dec 12 runoffs, and 2027 races in Kentucky, Mississippi and Wisconsin). No 2028 race exists, so a next-cycle candidate who searches today mostly finds nothing to claim.
+- **evidence:** `preview/campaigns.html` (`?state=results` shows the result rows), rendered at 390 and 1440 in both schemes. The hero swaps the candidate’s name for a find-your-page search, which is the page’s one green plate; a hit routes to `DATA_ROUTES.politicianClaim(id)`. The benefit sections are the claim page’s copy. A “Not on a ballot we cover yet?” card collects the office and district. The donation example’s “Give $50” drops from CTA to secondary under the one-plate rule.
+- **proposes:** the route `/campaigns`, matching the `campaigns` audience key and the claim page’s “For campaigns” eyebrow. Pricing follows the fundraiser’s economics one-pager (rev. 2026-11-03): free to claim, $10 once per new donor met through an ask, and that donor’s later gifts free. The claim tiers, the fee waiver and the texting card’s “claiming is included” all go. `messaging.value.campaigns` gains the results line.
+- **blocks:** voyager’s `/campaigns` route. Production checkout still charges the $200–$1,000 tiers (a $1,000 quote on a Kentucky governor page, 2026-11-07), and counsel has not reviewed the donor fee. The page can’t say “free” until deepspace stops charging, and can’t print $10 until counsel clears it. Pricing is the fundraiser’s call; this entry renders it.
+
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by
@@ -905,6 +1038,8 @@ they stop reading as actionable to the next session that opens this file.
 
 Moved out of this file on ratification; listed here for one cycle so the code side can see what landed.
 
+- **2026-11-09 (v2026.11.09)** — the spec binds every surface that renders Amendment, the deepspace MCP App widgets included; a depiction draws to the spec (Governance, “Scope”).
+- **2026-11-09 (v2026.11.09)** — a stamp's word and register come from one map per record kind (`rubber-stamp-status.vocabulary`); ribbon markers are the shipped step labels (`progress-ribbon.steps`).
 - **2026-11-05 (v2026.11.05)** — the logo is the voting button then the wordmark; the button may stand alone, the wordmark never; the caret lockup is a concept (`the-logo-is-the-button-and-the-wordmark`).
 - **2026-11-05 (v2026.11.05.2)** — an unread count is a filled `--text-primary` disc with a `--canvas` numeral (`components.badge-unread`).
 - **2026-11-05 (v2026.11.05)** — a pill or chip is a filter control only; a trailing designation is bare text (`components.chip.filter-controls-only`).

@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.09.6
+# spec-version:   v2026.11.09.7
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -7046,8 +7046,21 @@ not. The highlight is also named in emphasized type, since the two
 fills are close in dark. The status stamp on a card is bare caps in its
 ink, with no ring and no rotation. A short list on a card (three bills)
 is rows separated by spacing alone: no header, no divider; the stage is
-caption, emphasized once the bill is past introduction. Ratified
-2026-11-09.
+caption, emphasized once the bill is past introduction. Secondary text
+(an eyebrow's context, the ribbon's step names and dates, the source
+line) is set at the host's caption size; the record's content (byline,
+vote rows, lists, the ask-next line) at body. A line that runs out of
+room drops whole clauses from its end, never characters. The five data
+points count each stat or labelled value as one and a short list as
+one. To stay within the host's inline height at narrow widths, a list
+may show fewer rows, never fewer than two, and keeps its “All N” link
+to the full list. A long excerpt (a law's lead text) clamps at six
+lines inline; the rest is the fullscreen view's. The link out appears
+only when the card's subject has a page of its own; a card without one
+keeps the ask-next line and the source, and never links a near
+substitute. A card drawn on Amendment's own site, outside a depicted
+conversation, is not hosted: it takes the system's own roles and
+grounds. Ratified 2026-11-09.
 
 **Versioning.** Dated entries in `CHANGELOG.md`, newest first. No
 semantic version — the system is not consumed as a package, and a version

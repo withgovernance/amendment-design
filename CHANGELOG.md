@@ -8,6 +8,22 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-09 (v2026.11.09.7) — A hosted card's sizes, row counts, clamps and links
+
+Decided by Jason, one question at a time, from the five cards deepspace built against v2026.11.09.6 and the design-reviewer's findings on them (Governance, “A hosted card's shape”).
+
+- **Secondary text is caption; content is body.** The eyebrow's context, the ribbon's step names and dates and the source line take the host's caption size. Byline, votes, lists and the ask-next line take body. Three levels read as three, and the card is shorter at 390.
+- **A line out of room drops whole clauses, never characters.** An ellipsis left fragments like “Public L…” that say nothing; the dropped clause stays in fullscreen and on the page.
+- **The five data points count a list as one.** Each stat or labelled value is one. The politician card's three stats and recent bills are four.
+- **A list may shed rows at narrow widths, never below two, and keeps “All N”.** Five rank rows measured 540px at 390, past the host's inline height, which would clip the foot.
+- **A long excerpt clamps at six lines.** A law's lead runs to 6,000 characters; a whole first subsection swings from one line to forty.
+- **The link out needs a page of its own.** The lobbying rank has none, so its foot keeps the ask-next line and the source. A near substitute would open something the card doesn't show.
+- **A card on Amendment's own site is not hosted.** It takes the system's roles and grounds; the host exception binds only inside a host.
+
+Retires: nothing in the spec. The handoff's 3px year-column radius was already superseded by “every bar on a card takes that radius and that track”.
+
+---
+
 ## 2026-11-09 (v2026.11.09.6) — ChatGPT's grounds measured; a lighter red on dark hosts
 
 Decided by Jason from contrast measured on ChatGPT's surface tokens, from OpenAI's `@openai/apps-sdk-ui` package: three light surfaces and four dark ones, the raised surface included. Claude's six were re-measured beside them.

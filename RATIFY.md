@@ -998,6 +998,27 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** the route `/campaigns`, matching the `campaigns` audience key and the claim page’s “For campaigns” eyebrow. Pricing follows the fundraiser’s economics one-pager (rev. 2026-11-03): free to claim, $10 once per new donor met through an ask, and that donor’s later gifts free. The claim tiers, the fee waiver and the texting card’s “claiming is included” all go. `messaging.value.campaigns` gains the results line.
 - **blocks:** voyager’s `/campaigns` route. Production checkout still charges the $200–$1,000 tiers (a $1,000 quote on a Kentucky governor page, 2026-11-07), and counsel has not reviewed the donor fee. The page can’t say “free” until deepspace stops charging, and can’t print $10 until counsel clears it. Pricing is the fundraiser’s call; this entry renders it.
 
+### Is the /data hero card stage a depicted conversation
+- **kind:** two readings
+- **found:** Paper “MCP Sales”, the four “Data & MCP · PROPOSAL live cards” boards (1440 and 390, both schemes). The hero shows a question bubble above a `show_bill` card, with record tabs (Bill, Law, Member, Company, Lobbying) above both. Read as a conversation view, the stage must be green-free, and the card’s ribbon and Enacted stamp break that rule. Read as a record specimen with its question as a caption, the green stays.
+- **evidence:** the green ribbon and stamp in both schemes on the hero frame. The card paints its own opaque ground, which `color.ink-needs-an-opaque-ground` needs for the stamp off the aurora.
+- **proposes:** the stage is a record specimen, not a conversation view. The bubble captions the card, and the card keeps its ground and its status colours. The other reading would make the card transparent on an opaque frame and drop the green. Recommend the first.
+- **blocks:** the /data hero.
+
+### The /data card carousel: user-driven or auto-advancing
+- **kind:** spec silent
+- **found:** Paper “MCP Sales”, the four “Data & MCP · PROPOSAL live cards” boards (1440 and 390, both schemes). The hero’s record tabs (“1 / 5”) step through five cards. The boards don’t say whether the carousel advances on its own.
+- **evidence:** `motion.rules` allows motion on exactly three surfaces, and a marketing carousel is not one of them.
+- **proposes:** user-driven only: the tabs switch cards, nothing advances on a timer, and the switch is a cut, not a transition. Recommend (the design-reviewer agrees).
+- **blocks:** nothing. The boards are static.
+
+### A partial-year bar in the company card’s spend chart
+- **kind:** spec silent
+- **found:** Paper “MCP Sales”, the four “Data & MCP · PROPOSAL live cards” boards (1440 and 390, both schemes), the `show_companies` card. The 2026 bar covers Q1–Q3 only. It is drawn as an outlined bar (track fill, functional ring) labelled “2026 · Q1–Q3”, beside solid full-year bars, with the latest full year highlighted.
+- **evidence:** the outline keeps a partial year from reading as a decline. No rule covers an incomplete period in a bar chart.
+- **proposes:** an incomplete period draws as an outlined bar on the track fill, and its label names the period it covers. The other option is a solid bar with a caption. Recommend the outline.
+- **blocks:** nothing.
+
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by

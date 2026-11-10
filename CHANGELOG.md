@@ -8,6 +8,17 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-09 (v2026.11.09.10) — Column width; an adopted resolution
+
+Decided by Jason from deepspace's wide and review renders.
+
+- **A vertical column is as wide as the ribbon is tall, at its true height** (Governance, “A hosted card's shape”). Fully rounded columns twice that width drew the company card's partial 2026, at 16% of the top year, as a ring at the foot of the track. A floor height would overstate every small value; the narrower column keeps short values as pills and matches the tally and the ribbon.
+- **An adopted resolution stamps “Adopted” in the enacted register** (`rubber-stamp-status.vocabulary`). Cards stamped these “Enacted”, which a resolution never is. Neutral ink would contradict its complete green ribbon. Voyager's RubberStamp map gains the entry.
+
+Retires: nothing.
+
+---
+
 ## 2026-11-09 (v2026.11.09.9) — A narrow card's chart, the link out, and an overstated line
 
 Decided by Jason from deepspace's final card renders (Governance, “A hosted card's shape”).

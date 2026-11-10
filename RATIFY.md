@@ -1012,13 +1012,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **proposes:** user-driven only: the tabs switch cards, nothing advances on a timer, and the switch is a cut, not a transition. Recommend (the design-reviewer agrees).
 - **blocks:** nothing. The boards are static.
 
-### A partial-year bar in the company card’s spend chart
-- **kind:** spec silent
-- **found:** Paper “MCP Sales”, the four “Data & MCP · PROPOSAL live cards” boards (1440 and 390, both schemes), the `show_companies` card. The 2026 bar covers Q1–Q3 only. It is drawn as an outlined bar (track fill, functional ring) labelled “2026 · Q1–Q3”, beside solid full-year bars, with the latest full year highlighted.
-- **evidence:** the outline keeps a partial year from reading as a decline. No rule covers an incomplete period in a bar chart.
-- **proposes:** an incomplete period draws as an outlined bar on the track fill, and its label names the period it covers. The other option is a solid bar with a caption. Recommend the outline.
-- **blocks:** nothing.
-
 ## Needs a person — cannot close from inside the toolchain
 
 Not a ratification queue. These do not resolve by deciding; they resolve by

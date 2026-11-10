@@ -8,6 +8,16 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-09 (v2026.11.09.8) — An incomplete period draws as an outline
+
+Decided by Jason from the company card's spend-by-year chart, drawn both ways (Governance, “A hosted card's shape”).
+
+- **An incomplete period is an outlined bar on the track, labelled with the period it covers.** A partial 2026 drawn solid beside full years reads as a fall in spending before any caption is read. The ring takes the rest bars' fill; the latest full year keeps the highlight. It binds every bar chart that shows periods, hosted or not.
+
+Retires: nothing.
+
+---
+
 ## 2026-11-09 (v2026.11.09.7) — A hosted card's sizes, row counts, clamps and links
 
 Decided by Jason, one question at a time, from the five cards deepspace built against v2026.11.09.6 and the design-reviewer's findings on them (Governance, “A hosted card's shape”).

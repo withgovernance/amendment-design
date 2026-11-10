@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.09.7
+# spec-version:   v2026.11.09.8
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -7043,7 +7043,11 @@ year, the first rank) in `--ribbon-active`, the rest solid in
 `--color-functional`, `--color-functional-light` under dark, which clears
 3:1 against the hosted track where the ribbon's translucent fill does
 not. The highlight is also named in emphasized type, since the two
-fills are close in dark. The status stamp on a card is bare caps in its
+fills are close in dark. Wherever a bar chart shows periods, on a card
+or off it, an incomplete period (a year to date) draws as an outlined
+bar on the track, ringed in the rest bars' fill, and its label names the
+period it covers (“2026 · Q1–Q3”); a solid short bar would read as a
+decline. The status stamp on a card is bare caps in its
 ink, with no ring and no rotation. A short list on a card (three bills)
 is rows separated by spacing alone: no header, no divider; the stage is
 caption, emphasized once the bill is past introduction. Secondary text

@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.09.12
+# spec-version:   v2026.11.09.13
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -7088,7 +7088,17 @@ source, and never links a near substitute. An official source page
 (sec.gov, congress.gov) is linked in the fullscreen view beside the
 record's identifier, not at the foot. A card drawn on Amendment's own site, outside a depicted
 conversation, is not hosted: it takes the system's own roles and
-grounds. Ratified 2026-11-09.
+grounds. The source line keeps its source at every width; at narrow
+widths it drops only “via Amendment” (“Congress.gov · as of Oct 20,
+2026”) and wraps before it loses the source. When several bars tie for
+first, every tied bar takes the highlight, and the ranks show the tie.
+Wherever a law unit's history is listed, on a card or a page, enacted
+changes read in the past tense (“Amended by P.L. 119-21”) and pending
+ones in the conditional (“Would amend”), so the verb tells law from
+proposal. A bill's text versions take plain names inline (“As passed by
+the House”, “Final text sent to the President”); the official version
+name (“enrolled bill”) appears in caption in the fullscreen version
+list, where researchers cite it. Ratified 2026-11-09.
 
 **Versioning.** Dated entries in `CHANGELOG.md`, newest first. No
 semantic version — the system is not consumed as a package, and a version

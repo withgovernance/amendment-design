@@ -8,6 +8,19 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-10 (v2026.11.09.13) — Source at every width, ties, tense, version names
+
+Decided by Jason from the design-reviewer's pass over deepspace's v12 card renders (Governance, “A hosted card's shape”). The version scheme keeps the 2026-11-09 stem for this run of card rulings.
+
+- **The source line keeps its source on phones**, dropping only “via Amendment”. The cards hid the source below 30rem, as the bill specimen did; nothing sanctioned it, and a card that doesn't say where its data comes from is the claim it shouldn't make.
+- **Every bar tied for first takes the highlight.** Highlighting the first listed implied a winner the data doesn't have.
+- **A law's history reads past tense for enacted changes, “would” for pending.** Mixed “Amends” and “Amended” left law and proposal reading alike.
+- **Text versions take plain names inline; the official name sits in fullscreen caption.** v2026.11.09.11 kept clerk's terms off stages; version names reader-facing follow it, and researchers still find the term they cite.
+
+Retires: hiding the source below 30rem.
+
+---
+
 ## 2026-11-09 (v2026.11.09.12) — Passed Congress
 
 Decided by Jason (`rubber-stamp-status.vocabulary`).

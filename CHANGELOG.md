@@ -8,6 +8,16 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-09 (v2026.11.09.12) — Passed Congress
+
+Decided by Jason (`rubber-stamp-status.vocabulary`).
+
+- **A bill both chambers have passed, not yet signed, stamps “Passed Congress”**, or “Passed legislature” for a state bill, in the procedural register. It pairs with “Passed House”. The cards' “Passed both chambers” was long for a stamp and wrong for a one-chamber legislature.
+
+Retires: “Passed both chambers” as a stage name.
+
+---
+
 ## 2026-11-09 (v2026.11.09.11) — Stage names, where a bill died, superseded law
 
 Decided by Jason from the design-reviewer's pass over deepspace's v.10 card renders.

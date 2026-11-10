@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.09.11
+# spec-version:   v2026.11.09.12
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -4632,7 +4632,9 @@ tactileAccents:
         "Passed House", "Passed Senate" (a state's own chamber names), in
         the procedural register, and list rows and counts use the same
         words; the ribbon's marker stays "Chamber passed", which fits
-        either. Clerk's terms ("Engrossed", "Enrolled") are never shown.
+        either. A bill both chambers have passed, not yet signed, stamps
+        "Passed Congress" (a state bill: "Passed legislature"), procedural.
+        Clerk's terms ("Engrossed", "Enrolled") are never shown.
         A resolution that is adopted stamps "Adopted" in the
         enacted register, never "Enacted": it is the resolution's
         successful end, and its ribbon is complete. Law units: active "In force" (enacted register), repealed

@@ -506,14 +506,6 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **blocks:** nothing
 
 
-### MCP App cards: open items from the design review
-- **kind:** spec silent
-- **found:** independent review of the revised MCP card boards, Paper “MCP App” (`app.paper.design/file/01M6YHTD6H2RMFGAQFDXCBFAAG/p-1-0`), boards R1–R5 “revised”.
-  - **The register of a card on ChatGPT's grounds.** Claude's grounds are measured (CHANGELOG v2026.11.09.3). Paint-sample `--ink-success` and the ribbon fills on ChatGPT's light and dark card grounds.
-- **evidence:** the boards above; the handoff spec at `~/agents/manager/inbox/deepspace-mcp-cards-redesign-spec-2026-11-09.md`.
-- **proposes:** measure, then rule from the numbers.
-- **blocks:** nothing (deepspace builds to the boards meanwhile)
-
 ### Green ink on a marketing section divider
 - **kind:** two readings
 - **found:** every section eyebrow on the MCP sales page except “Where the data comes from” is set in `--ink-success`, while `role-label-caps` is defined in `--text-secondary`. One reading: `registers.marketing-is-outside-the-table` licenses green ink. The other: the fill rule still binds marketing, and green ink is a report, which an eyebrow isn't.

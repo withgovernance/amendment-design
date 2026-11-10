@@ -160,6 +160,7 @@
                                             under AA, and the only semantic base
                                             not at -700. See semantic.danger. */
   --color-danger-soft:   #ef4444;        /* red-500 */
+  --color-danger-light:  #f87171;        /* red-400 — danger ink on a dark conversation host only (DESIGN.md Governance, “A hosted card's shape”) */
 
   /* Neutral — warm-gray zinc. THE FRAMEWORK OWNS THESE VALUES (DESIGN.md
      color.neutral, corrected 2026-08-28): Tailwind authors its palette in

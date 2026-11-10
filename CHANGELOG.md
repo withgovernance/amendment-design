@@ -8,6 +8,18 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-09 (v2026.11.09.6) — ChatGPT's grounds measured; a lighter red on dark hosts
+
+Decided by Jason from contrast measured on ChatGPT's surface tokens, from OpenAI's `@openai/apps-sdk-ui` package: three light surfaces and four dark ones, the raised surface included. Claude's six were re-measured beside them.
+
+- **ChatGPT's grounds hold the card register.** Every bar fill clears 3:1 against the 10% track: `--ink-success` 4.94–8.57:1, the ribbon fill 4.94–7.32:1, warning 6.39–8.65:1, danger in light 5.83–6.47:1. This closes the card register for both hosts.
+- **Under dark, a hosted card's danger ink is `--color-danger-light`** (new token, red-400; Governance, “A hosted card's shape”). `--color-danger-soft` measured 3.51:1 on ChatGPT's raised surface and on Claude's main dark ground, and 4.03–4.28:1 on two others, under the 4.5:1 text minimum. A dead bill's stamp and a repealed law's stamp land there. The new red measures 4.77:1 at worst. Our own pages keep `--color-danger-soft`, which was measured on our grounds.
+- **v2026.11.09.3 overstated one line.** It said the card register on Claude's grounds was measured. Only the success ink and the ribbon were. Danger was not, and it failed.
+
+Retires: `--color-danger-soft` as a hosted card's dark danger ink; the open entry on ChatGPT's grounds.
+
+---
+
 ## 2026-11-09 (v2026.11.09.5) — The ribbon starts at Introduced; a card's stamp, charts and lists
 
 Decided by Jason, one question at a time, from mocks; chart contrast measured on Claude's six documented grounds.

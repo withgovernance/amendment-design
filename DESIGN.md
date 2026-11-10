@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.09.5
+# spec-version:   v2026.11.09.6
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -406,6 +406,8 @@ color:
     danger-soft:  "#ef4444"   # red-500 — error badges. Red is now the ONLY warm
                               # in the system outside the seal, which makes
                               # destructive states clearer than they have been.
+    danger-light: "#f87171"   # red-400 — danger ink on a dark conversation host
+                              # only (Governance, “A hosted card's shape”).
     a-draft-is-not-a-warning: >-
       RATIFIED 2026-10-17, decided by Jason from PositionStatusBadge's states
       and the org positions list, both schemes, 390 and 1440. A DRAFT IS A
@@ -7031,6 +7033,9 @@ track is a structural colour: the host's primary text at 10% opacity,
 a dark wash on a light ground and a light wash on a dark one. A tally
 bar spans votes cast, yea filled in `--ink-success` and nay drawn as the
 track, in the progress ribbon's anatomy: full-round segments, 1px apart.
+Under dark, a hosted card's danger ink is `--color-danger-light`, because
+`--color-danger-soft` fails text contrast on the hosts' raised dark
+grounds; our own pages keep `--color-danger-soft`.
 Every bar on a card takes that radius and that track. Off-host, tracks
 stay `--ribbon-track`. A card's other bar charts (spend by year, a
 ranking) take two neutral steps: the one highlighted bar (the last full

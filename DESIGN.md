@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.09.4
+# spec-version:   v2026.11.09.5
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -4632,7 +4632,9 @@ tactileAccents:
         renders them. A sitting member: "Incumbent", neutral register
         (--text-secondary), as voyager's politician page. A word that is
         not in a map is a missing entry in the map, not a coinage for
-        one surface. The stamp's geometry off the bill page is still open.
+        one surface. On a card the stamp is bare `role-label-caps` in its
+        status ink, with no ring and no rotation; the geometry above is the
+        bill and law pages' (Governance, “A hosted card's shape”).
       owner: "Jason — head of product & design, The Governance Company"
       colors: "Green ink for positive status (enacted, signed) — per color.action.fill-rule-which-green that is --ink-success (color.green-ink-is-one-token), NOT action green on light, which is 2.62:1 as text. Success and action are one hue, so a red ENACTED would contradict the palette; slate-700 for procedural (in committee, introduced, engrossed, enrolled); warning amber-700 for vetoed; danger red (--color-danger) only for truly dead/failed. Oxblood left the stamp palette in 2026-08. CORRECTED 2026-08-28: this field said \"action green\" flat, which the 08-28 which-green ratification forbids as ink."
       implementation: "app/(data)/oversight/[jurisdiction]/bill/[bill]/components/RubberStamp.tsx"
@@ -4688,7 +4690,7 @@ tactileAccents:
       owner: "Jason — head of product & design, The Governance Company"
       description: >-
         Horizontal ribbon progress indicator for bill journeys
-        (prefiled → introduced → engrossed → enrolled → complete). Thicker
+        (introduced → chamber passed → final passage → complete). Thicker
         and more physical than a standard UI progress bar — evokes a
         filing strip or stamp-progression sheet.
       promoted: >-
@@ -4697,13 +4699,15 @@ tactileAccents:
         had ever nominated it; the spec nominated guilloche instead, on the
         strength of how interesting it was rather than what existed.
       steps: >-
-        RATIFIED 2026-11-09, decided by Jason. The markers are the shipped
-        step labels (voyager `bill-status.config.ts`): Prefiled, Introduced,
-        Chamber passed, Final passage, Complete. A source's milestone label
-        ("Passed both chambers", "Became law") is data mapped onto a step,
-        never a marker. Every width draws the same steps; only the marker
-        row collapses (below-width). Whether a federal ribbon starts at
-        Prefiled is still open.
+        RATIFIED 2026-11-09, decided by Jason. Four steps for every bill in
+        every jurisdiction: Introduced, Chamber passed, Final passage,
+        Complete. The ribbon claims only steps that happened, and most
+        legislatures, Congress among them, have no prefiling, so a reached
+        Prefiled step was untrue on nearly every bill. A bill not yet
+        introduced draws an empty ribbon and its stamp says “Prefiled”. A
+        source's milestone label ("Passed both chambers", "Became law") is
+        data mapped onto a step, never a marker. Every width draws the same
+        steps; only the marker row collapses (below-width).
       height: "8px"
       rounded: "full per segment, 1px gap between segments"
       tokens: >-
@@ -7028,7 +7032,17 @@ a dark wash on a light ground and a light wash on a dark one. A tally
 bar spans votes cast, yea filled in `--ink-success` and nay drawn as the
 track, in the progress ribbon's anatomy: full-round segments, 1px apart.
 Every bar on a card takes that radius and that track. Off-host, tracks
-stay `--ribbon-track`. Ratified 2026-11-09.
+stay `--ribbon-track`. A card's other bar charts (spend by year, a
+ranking) take two neutral steps: the one highlighted bar (the last full
+year, the first rank) in `--ribbon-active`, the rest solid in
+`--color-functional`, `--color-functional-light` under dark, which clears
+3:1 against the hosted track where the ribbon's translucent fill does
+not. The highlight is also named in emphasized type, since the two
+fills are close in dark. The status stamp on a card is bare caps in its
+ink, with no ring and no rotation. A short list on a card (three bills)
+is rows separated by spacing alone: no header, no divider; the stage is
+caption, emphasized once the bill is past introduction. Ratified
+2026-11-09.
 
 **Versioning.** Dated entries in `CHANGELOG.md`, newest first. No
 semantic version — the system is not consumed as a package, and a version

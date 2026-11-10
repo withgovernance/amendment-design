@@ -8,6 +8,19 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-09 (v2026.11.09.5) — The ribbon starts at Introduced; a card's stamp, charts and lists
+
+Decided by Jason, one question at a time, from mocks; chart contrast measured on Claude's six documented grounds.
+
+- **The progress ribbon has four steps everywhere, starting at Introduced** (`progress-ribbon.steps`). Every introduced bill painted a reached “Prefiled” step, which is untrue for Congress and for most legislatures. A bill not yet introduced draws an empty ribbon under a “Prefiled” stamp. Voyager's `BILL_STEPS` changes with it.
+- **A card's stamp is bare caps in its status ink** (`rubber-stamp-status.vocabulary`). The ring and the tilt are the bill and law pages'. On a card the ring would add a border weight Claude doesn't use, and the caps already make the stamp the card's one Amendment mark.
+- **A card's bar charts take two neutral steps:** `--ribbon-active` for the one highlighted bar, solid `--color-functional` (dark: `--color-functional-light`) for the rest. The ribbon's 70% fill measured 2.11–2.72:1 against the hosted track on five of six grounds; the solid fill measures 3.52–5.53:1.
+- **A short list on a card is spaced rows: no header, no dividers.** A table's caps headers and per-row stamps would crowd the card's one mark.
+
+Retires: the Prefiled ribbon step; an open question on the stamp's geometry off the bill page; translucent chart fills on a hosted card.
+
+---
+
 ## 2026-11-09 (v2026.11.09.4) — A hosted card's scheme, scale, actions and bars
 
 Decided by Jason, one question at a time, from mocks read against Claude's MCP Apps design guidelines and the tally-bar render in `preview/mcp-card-host-theming.html`.

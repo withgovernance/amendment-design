@@ -8,6 +8,23 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-09 (v2026.11.09.4) — A hosted card's scheme, scale, actions and bars
+
+Decided by Jason, one question at a time, from mocks read against Claude's MCP Apps design guidelines and the tally-bar render in `preview/mcp-card-host-theming.html`.
+
+- **The host's theme sets the card's scheme** (Governance, “A hosted card's shape”). The card followed the operating system. With Claude dark on a light Mac, the light-scheme green landed on Claude's dark ground.
+- **The host's type scale, not only its font.** Claude asks for three sizes and two weights. The status stamp stays in caps as the card's one Amendment mark, because it carries a status colour and the guidelines leave accents to the brand.
+- **Five data points inline, the rest in fullscreen.** The bill card drops each vote's party split from the inline view. It keeps the U.S. Code sections it amends.
+- **Fullscreen is the expansion affordance, not an action.** Claude asks the app to provide one and lists it apart from the two-action cap. The foot carries the ask-next line and the link out.
+- **Hosted tracks are 10% host ink; the tally bar spans votes cast.** The old bar drew nay in a solid mid-gray and ended in a stub for members not voting. Off-host tracks keep `--ribbon-track`.
+- **Coloured ink clears contrast on every documented host background,** since a borderless card can sit on any of them.
+
+Still open: the card register on ChatGPT's grounds; the remaining items in “MCP App cards: open items”.
+
+Retires: the operating system's scheme on a hosted card; Amendment's type sizes inside a host; the tracked-caps designation inside a host; the party split on an inline card; the nay fill and the not-voting segment on a hosted tally bar; fullscreen as a footer action.
+
+---
+
 ## 2026-11-09 (v2026.11.09.3) — A card in a conversation host takes the host's type and ground
 
 Decided by Jason from `preview/mcp-card-host-theming.html` (one bill card drawn five ways, both schemes, 390 and 1440), read against both hosts' published design guidelines.

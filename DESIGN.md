@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.09.3
+# spec-version:   v2026.11.09.4
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -7009,6 +7009,26 @@ host's own design guidelines are stricter (Claude's inline card holds at
 most two actions), the host's guideline binds. On our own pages a
 depicted conversation is the host, and a card inside it takes the
 frame's ground. Ratified 2026-11-09.
+
+**A hosted card's shape.** The card takes its colour scheme from the
+theme the host reports, on load and on change, never from the operating
+system; the operating system's setting applies only outside a host. Its
+coloured inks clear their contrast on every background colour the host
+documents, worst case. Type takes the host's scale: its heading, body
+and caption sizes and its two weights (regular and emphasized). The
+status stamp keeps `role-label-caps` and its status ink as the card's
+one Amendment mark; the designation is set at caption size, emphasized,
+untracked. The inline card is a summary of at most five data points,
+and detail (a vote's party split, a full list) belongs to the fullscreen
+view. Fullscreen is the card's expansion affordance, an icon at the top
+right, and does not count toward the host's action cap; the two actions
+at the foot are the ask-next line and the link out. A meter or chart
+track is a structural colour: the host's primary text at 10% opacity,
+a dark wash on a light ground and a light wash on a dark one. A tally
+bar spans votes cast, yea filled in `--ink-success` and nay drawn as the
+track, in the progress ribbon's anatomy: full-round segments, 1px apart.
+Every bar on a card takes that radius and that track. Off-host, tracks
+stay `--ribbon-track`. Ratified 2026-11-09.
 
 **Versioning.** Dated entries in `CHANGELOG.md`, newest first. No
 semantic version — the system is not consumed as a package, and a version

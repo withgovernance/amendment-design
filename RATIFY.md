@@ -511,10 +511,9 @@ Anything still open after a pass stays here with a note on what it's waiting for
 - **found:** independent review of the revised MCP card boards, Paper “MCP App” (`app.paper.design/file/01M6YHTD6H2RMFGAQFDXCBFAAG/p-1-0`), boards R1–R5 “revised”.
   1. **The stamp's shape off the bill page.** `rubber-stamp-status` gives a 2px ring and a 2–4° rotation, and its `when` is “Bill detail page”. The cards draw bare `role-label-caps` ink. Which shape does a card take?
   2. **The register of a card on ChatGPT's grounds.** Claude's grounds are measured (CHANGELOG v2026.11.09.3). Paint-sample `--ink-success` and the ribbon fills on ChatGPT's light and dark card grounds.
-  3. **Chart fills.** The nay bar is a hand-typed zinc with no token. Bar charts (company spend by year, ranked spend) borrow the `--ribbon-*` ladder, which flips under dark so the strongest bar goes near-white. Name chart tokens, or ratify the borrowing, and measure 3:1 for yea, nay and track in both schemes.
+  3. **Chart fills off the tally bar.** On a hosted card, tracks and the tally bar are ruled (v2026.11.09.4). Bar charts (company spend by year, ranked spend) borrow the `--ribbon-*` ladder, which flips under dark so the strongest bar goes near-white. Name chart tokens, or ratify the borrowing, and measure 3:1 for each fill against its track in both schemes.
   4. **Row dividers and the card's hairline count.** A three-row list on a card (sponsored bills, lobbied bills): is it a `components.table`, with a status-stamp stage and `role-ui-heading` titles, or a light list with dividers? Render R3 both ways at 390.
   5. **“Prefiled” on a federal bill.** Congress has no prefiling, yet the ribbon paints that step success with no date. Should a federal ribbon start at Introduced (compare `failure-honesty`)? This touches voyager's `bill-status.config.ts` too.
-  6. **Data points against Claude's inline cap.** Claude's guidelines cap an inline card at “4–5 data points”; the revised bill card carries more. Say what an inline card drops and what moves to fullscreen.
 - **evidence:** the boards above; the handoff spec at `~/agents/manager/inbox/deepspace-mcp-cards-redesign-spec-2026-11-09.md`.
 - **proposes:** rule each item from renders. Item 5 also changes voyager.
 - **blocks:** nothing (deepspace builds to the boards meanwhile)

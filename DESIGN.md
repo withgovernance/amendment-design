@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.09.10
+# spec-version:   v2026.11.09.11
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -4628,12 +4628,19 @@ tactileAccents:
         stamped (bill page, law page, a card, an MCP App widget), never from
         a source's free-text label. Bills: the shipped RubberStamp map
         (enacted, vetoed, procedural, dead; e.g. "Enacted" in the enacted
-        register). A resolution that is adopted stamps "Adopted" in the
+        register). A bill that has passed one chamber stamps that chamber,
+        "Passed House", "Passed Senate" (a state's own chamber names), in
+        the procedural register, and list rows and counts use the same
+        words; the ribbon's marker stays "Chamber passed", which fits
+        either. Clerk's terms ("Engrossed", "Enrolled") are never shown.
+        A resolution that is adopted stamps "Adopted" in the
         enacted register, never "Enacted": it is the resolution's
         successful end, and its ribbon is complete. Law units: active "In force" (enacted register), repealed
         and expired (dead), reserved, pending "Not yet in force",
         transferred and omitted (procedural), as `preview/law-pages.js`
-        renders them. A sitting member: "Incumbent", neutral register
+        renders them; a renumbered or transferred unit the data marks
+        superseded stamps "Superseded" (procedural) and names its new
+        location beside the stamp. A sitting member: "Incumbent", neutral register
         (--text-secondary), as voyager's politician page. A word that is
         not in a map is a missing entry in the map, not a coinage for
         one surface. On a card the stamp is bare `role-label-caps` in its
@@ -4747,8 +4754,9 @@ tactileAccents:
         breakpoint. 38rem IS A DELIBERATE MARGIN (measured 2026-10-16 on
         production's markers in role-metadata-sans): the segments are equal,
         so the widest marker in any state governs, and "Chamber passed" as
-        the active marker in semibold sets five segments and the 1px gaps at
-        about 37rem. The extra rem absorbs a wider label or a font fallback.
+        the active marker in semibold set the segments and the 1px gaps at
+        about 37rem, measured on the former five-step ribbon; four steps
+        set narrower. The extra rem absorbs a wider label or a font fallback.
         Phones and small tablets take the caption; the row shows where the
         ribbon has 38rem.
       dark-ladder: >-
@@ -4792,7 +4800,11 @@ tactileAccents:
         All failure statuses fuzzy-match to one terminal step, so the stage
         of death is not known. Production renders a single red pin at the
         first segment and replaces the milestone row with one caption rather
-        than implying progress through unverified stages. Keep this.
+        than implying progress through unverified stages. Keep this when the
+        stage is unknown. When the record names the step a bill reached
+        (RATIFIED 2026-11-09, decided by Jason), the reached steps keep
+        their fill and the red takes the step where it stopped
+        (fill-failure).
       variants:
         ribbon: "8px segmented bar + role-metadata-sans marker per step. Used on bill detail pages."
         compact: "Mini-bar (h-2) without milestone labels. Used in bill list tables."
@@ -7054,7 +7066,8 @@ period it covers (“2026 · Q1–Q3”); a solid short bar would read as a
 decline. The status stamp on a card is bare caps in its
 ink, with no ring and no rotation. A short list on a card (three bills)
 is rows separated by spacing alone: no header, no divider; the stage is
-caption, emphasized once the bill is past introduction. Secondary text
+caption, emphasized once a chamber has passed the bill; introduced and
+in committee stay regular, since referral comes with introduction. Secondary text
 (an eyebrow's context, the ribbon's step names and dates, the source
 line) is set at the host's caption size; the record's content (byline,
 vote rows, lists, the ask-next line) at body. An eyebrow that runs out

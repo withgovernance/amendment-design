@@ -8,6 +8,20 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-09 (v2026.11.09.11) — Stage names, where a bill died, superseded law
+
+Decided by Jason from the design-reviewer's pass over deepspace's v.10 card renders.
+
+- **A bill past one chamber is named by the chamber** (`rubber-stamp-status.vocabulary`). One stage read “Chamber passed”, “Passed one chamber” and “Engrossed”, and the cards coined a “PASSED HOUSE” stamp from an unmapped word. Stamps, rows and counts now say “Passed House” or “Passed Senate” in the procedural register; the ribbon's marker keeps “Chamber passed”; clerk's terms never show.
+- **A dead bill's red goes where it died, when the record says** (`progress-ribbon.failure-honesty`). The first-segment pin was right while the stage of death was unknown, and stays the fallback.
+- **A short list's stage is emphasized once a chamber has passed the bill.** Referral comes with introduction, so “In committee” would have bolded nearly every row.
+- **A superseded law unit stamps “Superseded”** (procedural) and names its new location. “Transferred” is wrong for a unit renumbered in place.
+- **`progress-ribbon.below-width` no longer says “five segments”**, a line v2026.11.09.5's sweep missed. The 38rem margin was measured on five; four set narrower.
+
+Retires: “Passed one chamber” and clerk's terms as displayed stage names; the first-segment pin where the stage of death is known.
+
+---
+
 ## 2026-11-09 (v2026.11.09.10) — Column width; an adopted resolution
 
 Decided by Jason from deepspace's wide and review renders.

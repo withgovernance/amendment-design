@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.09.8
+# spec-version:   v2026.11.09.9
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -7053,16 +7053,21 @@ is rows separated by spacing alone: no header, no divider; the stage is
 caption, emphasized once the bill is past introduction. Secondary text
 (an eyebrow's context, the ribbon's step names and dates, the source
 line) is set at the host's caption size; the record's content (byline,
-vote rows, lists, the ask-next line) at body. A line that runs out of
-room drops whole clauses from its end, never characters. The five data
+vote rows, lists, the ask-next line) at body. An eyebrow that runs out
+of room drops whole clauses from its end, never characters. At narrow
+widths (a card under 30rem) a period chart gives way to its headline
+and a one-line change from the previous full period; the chart stays in
+the fullscreen view. The five data
 points count each stat or labelled value as one and a short list as
 one. To stay within the host's inline height at narrow widths, a list
 may show fewer rows, never fewer than two, and keeps its “All N” link
 to the full list. A long excerpt (a law's lead text) clamps at six
-lines inline; the rest is the fullscreen view's. The link out appears
-only when the card's subject has a page of its own; a card without one
-keeps the ask-next line and the source, and never links a near
-substitute. A card drawn on Amendment's own site, outside a depicted
+lines inline; the rest is the fullscreen view's. The link out is “Open on
+Amendment” and appears only when the card's subject has a page of its
+own on Amendment; a card without one keeps the ask-next line and the
+source, and never links a near substitute. An official source page
+(sec.gov, congress.gov) is linked in the fullscreen view beside the
+record's identifier, not at the foot. A card drawn on Amendment's own site, outside a depicted
 conversation, is not hosted: it takes the system's own roles and
 grounds. Ratified 2026-11-09.
 

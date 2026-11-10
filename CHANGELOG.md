@@ -8,6 +8,18 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-09 (v2026.11.09.9) — A narrow card's chart, the link out, and an overstated line
+
+Decided by Jason from deepspace's final card renders (Governance, “A hosted card's shape”).
+
+- **At narrow widths a period chart gives way to its headline and a one-line change.** Squeezed to fit the inline height, the company card's fully rounded year columns drew any bar under their own width as a disc: two years read alike and a partial year as a hairline. The chart stays in fullscreen; the headline gains “up from” the previous full period.
+- **The link out is “Open on Amendment”, or nothing.** The company card linked sec.gov at its foot. An official source page now sits in fullscreen beside the record's identifier, so every card's foot link means the same place.
+- **v2026.11.09.7 overstated one line.** It said any line out of room drops whole clauses, never characters. Jason ruled on the eyebrow only. The sentence now names the eyebrow; a title in a list row may still end in an ellipsis.
+
+Retires: an official source page as a card's foot link; the general form of the clause-drop sentence.
+
+---
+
 ## 2026-11-09 (v2026.11.09.8) — An incomplete period draws as an outline
 
 Decided by Jason from the company card's spend-by-year chart, drawn both ways (Governance, “A hosted card's shape”).

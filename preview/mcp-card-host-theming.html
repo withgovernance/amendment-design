@@ -1,35 +1,30 @@
 <!DOCTYPE html>
-<!-- @dsCard group="Components" name="MCP App card — whose type, whose ground" subtitle="one bill card four ways inside a conversation host · for ratification" viewport="1440x1800" -->
+<!-- @dsCard group="Components" name="MCP App card in a conversation host" subtitle="the ruled bill card in Claude and ChatGPT, light and dark" viewport="1440x1800" -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Amendment specimen — MCP card host theming</title>
+<title>Amendment specimen — MCP card in a host</title>
 <link rel="stylesheet" href="../colors_and_type.css">
 <link rel="stylesheet" href="_card.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 <style>
-/* ---- The host frame. These stand in for the MCP Apps style variables a
-   conversation host sets on :root. They are APPROXIMATIONS of Claude's chat,
-   not sampled values, and system-ui stands in for Claude's own sans. They are
-   specimen chrome, not tokens. ---- */
+/* ---- The host frames. Each stands in for the style variables a host sets:
+   Claude's from the style-variable table on its MCP Apps design-guidelines
+   page, ChatGPT's from @openai/apps-sdk-ui (variables-semantic.css surface
+   and text roles, resolved per data-theme in variables-primitive.css). The
+   ground is the conversation surface a borderless card sits on. system-ui
+   stands in for both hosts' sans. Specimen chrome, not tokens. ---- */
 .host {
   --host-font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --host-page: #faf9f5;
-  --host-card: #ffffff;
-  --host-text-1: #141413;
-  --host-text-2: #5e5d59;
-  --host-text-3: #87867f;
-  --host-line: rgb(31 30 29 / 15%);
+  --host-heading: 1rem; --host-body: 0.875rem; --host-caption: 0.75rem;
+  --host-regular: 400; --host-emph: 600;
 }
-.host.dark {
-  --host-page: #262624;
-  --host-card: #30302e;
-  --host-text-1: #faf9f5;
-  --host-text-2: #c2c0b6;
-  --host-text-3: #9c9a92;
-  --host-line: rgb(222 220 209 / 15%);
-}
+.claude       { --host-page: #faf9f5; --host-text-1: #141413; --host-text-2: #3d3d3a; --host-text-3: #73726c; }
+.claude.dark  { --host-page: #262624; --host-text-1: #faf9f5; --host-text-2: #c2c0b6; --host-text-3: #9c9a92; }
+.chatgpt      { --host-page: #ffffff; --host-text-1: #0d0d0d; --host-text-2: #5d5d5d; --host-text-3: #8f8f8f; }
+.chatgpt.dark { --host-page: #212121; --host-text-1: #ffffff; --host-text-2: #afafaf; --host-text-3: #8f8f8f; }
+
 body::before { display: none; }
 body { background: var(--canvas); }
 .card { padding: 24px; max-width: 1440px; margin: 0 auto; }
@@ -39,103 +34,79 @@ h1.role-display-section { margin: 0 0 8px; }
 .scheme > .role-label-caps { display: block; margin: 0 0 10px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 40rem), 1fr)); gap: 16px; }
 
-.host { background: var(--host-page); border-radius: 12px; padding: 20px; font-family: var(--host-font); color: var(--host-text-1); }
-.host .tag { font: 600 0.75rem/1.25 var(--host-font); letter-spacing: 0.04em; text-transform: uppercase; color: var(--host-text-2); margin: 0 0 4px; }
-.host .what { font: 400 0.875rem/1.4 var(--host-font); color: var(--host-text-2); margin: 0 0 14px; }
-.host .chat { font: 400 1rem/1.55 var(--host-font); color: var(--host-text-1); margin: 0 0 12px; }
+.host { min-width: 0; background: var(--host-page); color: var(--host-text-1); font-family: var(--host-font); border-radius: 12px; padding: 20px; }
+.host .tag { font: var(--host-emph) var(--host-caption)/1.4 var(--host-font); color: var(--host-text-2); margin: 0 0 12px; }
+.host .chat { font: var(--host-regular) 1rem/1.55 var(--host-font); margin: 0 0 12px; }
 
-/* ---- The two axes ---- */
-/* Type from the host: both faces fall to the host's sans; the record title has
-   no serif to draw. */
-.type-host .mcp {
-  --font-sans: var(--host-font);
-  --font-serif: var(--host-font);
-  --sans-body: normal;
-  --sans-chrome: normal;
-  --serif-text: normal;
-}
-.type-host .mcp .role-display-minor { font-variation-settings: normal; font-weight: 600; }
-/* Ground and ink: Amendment's opaque canvas and alpha inks, or the host's. */
-.ground-amend .mcp { background: var(--canvas); }
-.ground-none .mcp { background: transparent !important; box-shadow: none; }
-.ground-none .mcp-in, .ground-none .foot { padding-left: 0; padding-right: 0; }
-.ground-host .mcp {
-  background: var(--host-card);
+/* ---- The card (DESIGN.md Governance, “Conversation hosts” and “A hosted
+   card's shape”). Host type scale and structural colours; no ground of its
+   own; Amendment's status, action and chart inks. ---- */
+.mcp {
   --text-primary: var(--host-text-1);
   --text-secondary: var(--host-text-2);
   --text-tertiary: var(--host-text-3);
-  --border-subtle: var(--host-line);
+  --line: color-mix(in srgb, var(--host-text-1) 15%, transparent);
+  --chart-track: color-mix(in srgb, var(--host-text-1) 10%, transparent);
+  container-type: inline-size;
+  background: transparent;
+  color: var(--text-primary);
+  font: var(--host-regular) var(--host-body)/1.4 var(--host-font);
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; min-width: 0;
 }
-
-/* ---- The card, per the redesign anatomy (eyebrow, title, byline, ribbon,
-   passage votes, amends, ask-next, footer). ---- */
-.mcp { container-type: inline-size; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--border-subtle); color: var(--text-primary); --pad: 16px; }
-@container (min-width: 24rem) { .mcp-in { --pad: 20px; } }
-.mcp-in { padding: var(--pad) var(--pad) 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
-.eyebrow .role-designation, .foot .open { white-space: nowrap; }
-.eyebrow { display: flex; align-items: center; gap: 8px; min-height: var(--line-box-metadata-sans); }
+.mcp p, .mcp h2 { margin: 0; }
+.cap { font-size: var(--host-caption); color: var(--text-secondary); }
+.emph { font-weight: var(--host-emph); }
+.eyebrow { display: flex; align-items: center; gap: 8px; min-height: 24px; }
+.eyebrow .des { font-size: var(--host-caption); font-weight: var(--host-emph); white-space: nowrap; }
 .eyebrow .ctx { flex: 1 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.eyebrow .stamp { color: var(--ink-success); flex: 0 0 auto; }
-.mcp h2 { margin: 0; }
-.mcp p { margin: 0; }
+.stamp { flex: 0 0 auto; }
+.stamp.enacted { color: var(--ink-success); }
+.stamp.dead { color: var(--color-danger); }
+.dark .stamp.dead { color: var(--color-danger-light); }
+.fs { width: 32px; height: 32px; margin: -4px -6px -4px 0; display: inline-grid; place-items: center; border: 0; border-radius: 8px; background: none; color: var(--text-secondary); font-size: 18px; cursor: pointer; flex: 0 0 auto; }
+.mcp h2 { font-size: var(--host-heading); font-weight: var(--host-emph); line-height: 1.4; }
 
 .ribbon { display: grid; gap: 8px; padding: 4px 0; }
 .segs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; }
 .segs span { height: 8px; border-radius: 999px; background: var(--color-success); }
 .dark .segs span { background: var(--color-success-soft); }
-.marks { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; white-space: nowrap; }
-.marks .on { color: var(--text-primary); font-weight: var(--sans-semibold); }
-.marks .on small { display: block; font-size: inherit; font-weight: var(--sans-normal); color: var(--text-secondary); }
-.marks-one { display: none; text-align: center; }
-.marks-one b { color: var(--text-primary); font-weight: var(--sans-semibold); display: block; }
+.marks { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; white-space: nowrap; font-size: var(--host-caption); color: var(--text-secondary); }
+.marks .on { color: var(--text-primary); font-weight: var(--host-emph); }
+.marks .on small { display: block; font-size: inherit; font-weight: var(--host-regular); color: var(--text-secondary); }
+.marks-one { display: none; text-align: center; font-size: var(--host-caption); color: var(--text-secondary); }
+.marks-one b { display: block; color: var(--text-primary); font-weight: var(--host-emph); }
 @container (max-width: 38rem) { .marks { display: none; } .marks-one { display: block; } }
 
-.sec { border-top: 1px solid var(--border-subtle); padding-top: 12px; display: grid; gap: 10px; }
-.vote { display: grid; grid-template-columns: 64px 52px minmax(0, 1fr) 64px 120px; gap: 8px; align-items: center; }
-.vote .t { text-align: right; font-weight: var(--sans-semibold); color: var(--text-primary); }
-.vote .split { min-width: 0; }
-/* The tally bar is the ribbon's anatomy: segments with a 1px gap, every
-   segment full-round, no clipping. Yea fills; nay is the unfilled share,
-   drawn as the track. The track is the card's ink at 10%, so it is a dark
-   wash on a light ground and a light wash on a dark one. The bar spans
-   votes cast; not-voting members are in the label, not a stub. */
-.mcp { --chart-track: color-mix(in srgb, var(--text-primary) 10%, transparent); }
+.sec { border-top: 1px solid var(--line); padding-top: 12px; display: grid; gap: 8px; }
+.vote { display: grid; grid-template-columns: 56px 52px 64px minmax(0, 120px); gap: 8px; align-items: center; }
+.vote .t { text-align: right; font-weight: var(--host-emph); font-variant-numeric: tabular-nums; }
+.vote .d { color: var(--text-secondary); }
+/* Tally bar: votes cast only; yea filled, nay as the track; full-round
+   segments 1px apart, the ribbon's anatomy. */
 .bar { display: flex; gap: 1px; height: 8px; }
 .bar span { border-radius: 999px; }
 .bar .y { background: var(--ink-success); }
 .bar .n { background: var(--chart-track); }
-@container (max-width: 30rem) {
-  .vote { grid-template-columns: 56px 48px minmax(0, 1fr) 72px; grid-template-areas: "ch d t bar" ". split split split"; row-gap: 2px; }
-  .vote .ch { grid-area: ch; } .vote .d { grid-area: d; } .vote .t { grid-area: t; } .vote .bar { grid-area: bar; } .vote .split { grid-area: split; }
-}
 .amends a, .ask a, .foot a { color: var(--text-primary); text-decoration: underline; text-decoration-color: var(--text-tertiary); text-underline-offset: 4px; }
-.ask { display: flex; align-items: center; gap: 8px; min-height: 32px; }
+.amends a { white-space: nowrap; }
+.foot { border-top: 1px solid var(--line); padding-top: 4px; display: grid; }
+.ask, .open { display: flex; align-items: center; gap: 8px; min-height: 44px; }
 .ask i { font-size: 18px; color: var(--text-secondary); }
-.foot { margin-top: 12px; padding: 4px var(--pad); border-top: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 8px; min-height: 44px; }
-.foot .open { display: inline-flex; align-items: center; gap: 4px; }
-.foot .cap { margin-left: auto; text-align: right; }
-.foot .cap .long { }
-@container (max-width: 30rem) { .foot .cap .long { display: none; } }
-.fs { width: 32px; height: 32px; display: inline-grid; place-items: center; border: 0; border-radius: var(--radius-md); background: none; color: var(--text-secondary); font-size: 18px; cursor: pointer; flex: 0 0 auto; }
+.row2 { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.row2 .cap { margin-left: auto; }
+@container (max-width: 30rem) { .row2 .long { display: none; } }
 
-.key { max-width: 46rem; margin: 8px 0 0; }
-.verdict { max-width: 46rem; margin: 0 0 24px; }
-.verdict li { margin: 0 0 6px; }
+.stamps { margin: 16px 0 0; display: flex; gap: 16px; flex-wrap: wrap; }
+.stamps .proc { color: var(--host-text-2); }
+.stamps .veto { color: var(--color-warning); }
+.dark .stamps .veto { color: var(--color-warning-soft); }
 @media (max-width: 40rem) { .card { padding: 16px; } .host { padding: 16px 12px; } }
 </style>
 </head>
 <body>
 <div class="card">
-  <h1 class="role-display-section">Whose type, whose ground</h1>
-  <p class="role-body intro">One bill card (S. 1582, the GENIUS Act, live data) drawn four ways inside a conversation host. There are two separate choices. Type: Amendment’s Newsreader and Archivo, or the host’s sans. Ground: Amendment’s opaque canvas and inks, or the host’s background, text and border colours. Status, action and vote colours stay Amendment’s in every version; hosts publish none.</p>
-  <ol class="role-body verdict">
-    <li><b>A · Scope holds.</b> Amendment type, Amendment ground.</li>
-    <li><b>B · Recommended split.</b> Amendment type, host ground.</li>
-    <li><b>C · RATIFY option (c).</b> Host type, Amendment ground.</li>
-    <li><b>D · Today’s theming (#3518).</b> Host type, host ground. Drawn on the redesign anatomy, not the live card’s.</li>
-    <li><b>E · Ruled 2026-11-09.</b> D with no ground of its own: the card is transparent and the conversation shows through, as Claude’s MCP Apps guidance asks. See RATIFY.md, “MCP App cards take the host’s fonts and colours”.</li>
-  </ol>
-  <p class="role-caption intro">The host frame uses approximate Claude chat colours, not sampled values, and system-ui stands in for Claude’s sans. Judge the relationships, not the exact hexes. The tally bar draws yea filled and nay as the track, the card’s ink at 10%.</p>
+  <h1 class="role-display-section">An MCP card in a conversation host</h1>
+  <p class="role-body intro">The ruled bill card (S. 1582, the GENIUS Act, live data) in Claude and in ChatGPT, light and dark. It takes the host’s type scale and structural colours and paints no ground of its own; the stamp, ribbon and tally bar keep Amendment’s inks (Governance, “Conversation hosts” and “A hosted card’s shape”). Each vote’s party split lives in the fullscreen view. Under each card, the four stamp registers on that ground; under dark, danger takes <code>--color-danger-light</code>.</p>
 
   <section class="scheme" data-scheme="light"><span class="role-label-caps">Light</span><div class="grid"></div></section>
   <section class="scheme" data-scheme="dark"><span class="role-label-caps">Dark</span><div class="grid"></div></section>
@@ -143,51 +114,46 @@ h1.role-display-section { margin: 0 0 8px; }
 
 <template id="bill">
   <div class="mcp">
-    <div class="mcp-in">
-      <div class="eyebrow">
-        <span class="role-designation">S. 1582</span>
-        <span class="role-metadata-sans ctx">119th Congress · Public Law 119-27</span>
-        <span class="role-label-caps stamp">Enacted</span>
-      </div>
-      <h2 class="role-display-minor">GENIUS Act</h2>
-      <p class="role-metadata-sans">Sen. Bill Hagerty (R) and 5 cosponsors</p>
-      <div class="ribbon" role="img" aria-label="Complete, Jul 18, 2025">
-        <div class="segs"><span></span><span></span><span></span><span></span></div>
-        <div class="marks role-metadata-sans"><span>Introduced</span><span>Chamber passed</span><span>Final passage</span><span class="on">Complete<small>Jul 18, 2025</small></span></div>
-        <div class="marks-one role-metadata-sans"><b>Complete</b>Jul 18, 2025</div>
-      </div>
-      <div class="sec">
-        <div class="vote role-metadata-sans"><span class="ch">Senate</span><span class="d">Jun 17</span><span class="split">R 50–2 · D 18–26 · I 0–2</span><span class="t">68–30</span><span class="bar" role="img" aria-label="68 yea, 30 nay, 2 not voting"><span class="y" style="flex:68"></span><span class="n" style="flex:30"></span></span></div>
-        <div class="vote role-metadata-sans"><span class="ch">House</span><span class="d">Jul 17</span><span class="split">R 205–12 · D 102–110 · I 1–0</span><span class="t">308–122</span><span class="bar" role="img" aria-label="308 yea, 122 nay"><span class="y" style="flex:308"></span><span class="n" style="flex:122"></span></span></div>
-        <p class="role-metadata-sans amends">Amends 12 sections of the U.S. Code: <a href="#">11 U.S.C. § 101</a>, <a href="#">12 U.S.C. § 1</a>, <a href="#">15 U.S.C. § 78c</a> and 9 more</p>
-        <div class="ask role-body"><i class="ph ph-chat-circle-text" aria-hidden="true"></i><a href="#">Who is affected by this bill?</a></div>
-      </div>
+    <div class="eyebrow">
+      <span class="des">S. 1582</span>
+      <span class="cap ctx">119th Congress · Public Law 119-27</span>
+      <span class="role-label-caps stamp enacted">Enacted</span>
+      <button class="fs" aria-label="Fullscreen"><i class="ph ph-arrows-out-simple" aria-hidden="true"></i></button>
     </div>
-    <div class="foot role-metadata-sans">
-      <a class="open" href="#">Open on Amendment <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
-      <span class="role-caption cap"><span class="long">Congress.gov via Amendment · </span>as of Nov 9, 2026</span>
-      <button class="fs" aria-label="Fullscreen"><i class="ph ph-arrows-out-simple"></i></button>
+    <h2>GENIUS Act</h2>
+    <p>Sen. Bill Hagerty (R) and 5 cosponsors</p>
+    <div class="ribbon" role="img" aria-label="Complete, Jul 18, 2025">
+      <div class="segs"><span></span><span></span><span></span><span></span></div>
+      <div class="marks"><span>Introduced</span><span>Chamber passed</span><span>Final passage</span><span class="on">Complete<small>Jul 18, 2025</small></span></div>
+      <div class="marks-one"><b>Complete</b>Jul 18, 2025</div>
+    </div>
+    <div class="sec">
+      <div class="vote"><span>Senate</span><span class="d">Jun 17</span><span class="t">68–30</span><span class="bar" role="img" aria-label="68 yea, 30 nay, 2 not voting"><span class="y" style="flex:68"></span><span class="n" style="flex:30"></span></span></div>
+      <div class="vote"><span>House</span><span class="d">Jul 17</span><span class="t">308–122</span><span class="bar" role="img" aria-label="308 yea, 122 nay"><span class="y" style="flex:308"></span><span class="n" style="flex:122"></span></span></div>
+      <p class="amends">Amends 12 sections of the U.S. Code: <a href="#">11 U.S.C. § 101</a>, <a href="#">12 U.S.C. § 1</a>, <a href="#">15 U.S.C. § 78c</a> and 9 more</p>
+    </div>
+    <div class="foot">
+      <div class="ask"><i class="ph ph-chat-circle-text" aria-hidden="true"></i><a href="#">Who is affected by this bill?</a></div>
+      <div class="row2">
+        <a class="open" href="#">Open on Amendment <i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
+        <span class="cap"><span class="long">Congress.gov via Amendment · </span>as of Nov 9, 2026</span>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-const VARIANTS = [
-  ["A", "Scope holds", "Amendment type · Amendment ground", "type-amend ground-amend"],
-  ["B", "Recommended split", "Amendment type · host ground", "type-amend ground-host"],
-  ["C", "RATIFY option (c)", "Host type · Amendment ground", "type-host ground-amend"],
-  ["D", "Today’s theming (#3518)", "Host type · host ground", "type-host ground-host"],
-  ["E", "Ruled", "Host type · no ground of its own", "type-host ground-host ground-none"],
-];
+const HOSTS = [["claude", "Claude"], ["chatgpt", "ChatGPT"]];
 const tpl = document.getElementById("bill");
 for (const sec of document.querySelectorAll(".scheme")) {
   const dark = sec.dataset.scheme === "dark";
   const grid = sec.querySelector(".grid");
-  for (const [letter, name, axes, cls] of VARIANTS) {
+  for (const [cls, name] of HOSTS) {
     const host = document.createElement("div");
     host.className = `host ${cls}${dark ? " dark" : ""}`;
-    host.innerHTML = `<p class="tag">${letter} · ${name}</p><p class="what">${axes}</p><p class="chat">The GENIUS Act became law in July 2025. Here’s the record:</p>`;
+    host.innerHTML = `<p class="tag">${name} · ${dark ? "dark" : "light"}</p><p class="chat">The GENIUS Act became law in July 2025. Here’s the record:</p>`;
     host.appendChild(tpl.content.cloneNode(true));
+    host.insertAdjacentHTML("beforeend", `<div class="stamps"><span class="role-label-caps stamp enacted">Enacted</span><span class="role-label-caps stamp proc">In committee</span><span class="role-label-caps stamp veto">Vetoed</span><span class="role-label-caps stamp dead">Dead</span></div>`);
     grid.appendChild(host);
   }
 }

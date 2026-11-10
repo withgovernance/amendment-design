@@ -3,7 +3,7 @@
 # PROVENANCE — check this before citing anything below.
 #
 # canonical-repo: withgovernance/amendment-design
-# spec-version:   v2026.11.09.2
+# spec-version:   v2026.11.09.3
 # authored-in:    Claude Design project 151c8ef0-0bee-488c-a286-bb4aeda9470b
 #
 # This file has TWO homes, which is the condition that produced every drift in
@@ -6990,6 +6990,25 @@ inside a host's conversation. A depiction of a product surface on a
 marketing page is drawn to the spec, not to what ships, and the shipped
 surface conforms. A divergence in such a surface is conformance owed by
 its owning repo, never a reason to bend the spec. Ratified 2026-11-09.
+One exception is scoped below: a card inside a host's conversation.
+
+**Conversation hosts.** A card drawn inside a host's conversation
+(Claude, ChatGPT, any MCP Apps host) takes the host's type and its
+structural colours (ground, text, borders, icons) from the host's style
+variables, and keeps Amendment's status, action and chart colours and
+its content: the words, the stamps, the record. It paints no ground of
+its own. The page is transparent, declares both colour schemes, and asks
+the host for no border, so the host's surface is the card's ground in
+either scheme. A record title in a host is set in the host's sans; the
+serif record title (`typography.serif-belongs-to-the-canvas`) applies
+off-host. The follow-up act is one ask-next line: Phosphor
+`ChatCircleText` and the question, underlined in host ink, sent to the
+host's chat input. It takes no plate and no green, because a
+conversation stays green-free (`registers.live.palette-rule`). Where the
+host's own design guidelines are stricter (Claude's inline card holds at
+most two actions), the host's guideline binds. On our own pages a
+depicted conversation is the host, and a card inside it takes the
+frame's ground. Ratified 2026-11-09.
 
 **Versioning.** Dated entries in `CHANGELOG.md`, newest first. No
 semantic version — the system is not consumed as a package, and a version

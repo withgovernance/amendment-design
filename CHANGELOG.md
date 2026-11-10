@@ -8,6 +8,21 @@ keeping. See `DESIGN.md` → **Governance**.
 
 ---
 
+## 2026-11-09 (v2026.11.09.3) — A card in a conversation host takes the host's type and ground
+
+Decided by Jason from `preview/mcp-card-host-theming.html` (one bill card drawn five ways, both schemes, 390 and 1440), read against both hosts' published design guidelines.
+
+- **A card inside a host's conversation takes the host's type and structural colours, and keeps Amendment's status, action and chart colours** (Governance, “Conversation hosts”). This is a scoped exception to v2026.11.09's Scope rule. Claude's MCP Apps guidelines ask for host tokens on “all structural elements: backgrounds, text, borders, and icons”, and OpenAI's Apps SDK guidelines forbid custom fonts. Amendment faces inside Claude would read as an embedded web page, not as part of the reply, and would cost about 250 KB of fonts per card. The host has no colours for a law's status, a vote or a ribbon, so ours carry the meaning.
+- **The card paints no ground of its own.** The page is transparent and declares both schemes, so the host's surface is the ground in light and dark. That closes “Dark ground of a card embedded in a host”, and a depicted conversation on our own pages is the host for its cards. `--ink-success` measured on Claude's documented card grounds: 4.97–5.48:1 light, 6.12–8.53:1 dark. The dark ribbon fill measured 5.21–7.27:1 dark. ChatGPT is unmeasured.
+- **The follow-up on a hosted card is an ask-next line, not a plate**: `ChatCircleText` and an underlined question, sent to the host's chat input. The shipped cards ended in a filled green button, a control-green plate in a conversation view.
+- **The host's guidelines bind where they are stricter.** Claude's inline card holds at most two actions.
+
+Still open: card content against Claude's “4–5 data points” inline cap; the card register on ChatGPT's grounds.
+
+Retires: the serif record title inside a host; the green follow-up plate on a hosted card; a card-owned ground inside a host.
+
+---
+
 ## 2026-11-09 (v2026.11.09.2) — The site gets a meta description of its own
 
 Decided by Jason, from four drafts counted against the search snippet.

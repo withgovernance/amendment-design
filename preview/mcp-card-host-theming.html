@@ -94,9 +94,16 @@ h1.role-display-section { margin: 0 0 8px; }
 .vote { display: grid; grid-template-columns: 64px 52px minmax(0, 1fr) 64px 120px; gap: 8px; align-items: center; }
 .vote .t { text-align: right; font-weight: var(--sans-semibold); color: var(--text-primary); }
 .vote .split { min-width: 0; }
-.bar { display: flex; height: 8px; border-radius: 999px; overflow: hidden; background: var(--ribbon-track); }
+/* The tally bar is the ribbon's anatomy: segments with a 1px gap, every
+   segment full-round, no clipping. Yea fills; nay is the unfilled share,
+   drawn as the track. The track is the card's ink at 10%, so it is a dark
+   wash on a light ground and a light wash on a dark one. The bar spans
+   votes cast; not-voting members are in the label, not a stub. */
+.mcp { --chart-track: color-mix(in srgb, var(--text-primary) 10%, transparent); }
+.bar { display: flex; gap: 1px; height: 8px; }
+.bar span { border-radius: 999px; }
 .bar .y { background: var(--ink-success); }
-.bar .n { background: var(--text-tertiary); }
+.bar .n { background: var(--chart-track); }
 @container (max-width: 30rem) {
   .vote { grid-template-columns: 56px 48px minmax(0, 1fr) 72px; grid-template-areas: "ch d t bar" ". split split split"; row-gap: 2px; }
   .vote .ch { grid-area: ch; } .vote .d { grid-area: d; } .vote .t { grid-area: t; } .vote .bar { grid-area: bar; } .vote .split { grid-area: split; }
@@ -128,7 +135,7 @@ h1.role-display-section { margin: 0 0 8px; }
     <li><b>D · Today’s theming (#3518).</b> Host type, host ground. Drawn on the redesign anatomy, not the live card’s.</li>
     <li><b>E · Ruled 2026-11-09.</b> D with no ground of its own: the card is transparent and the conversation shows through, as Claude’s MCP Apps guidance asks. See RATIFY.md, “MCP App cards take the host’s fonts and colours”.</li>
   </ol>
-  <p class="role-caption intro">The host frame uses approximate Claude chat colours, not sampled values, and system-ui stands in for Claude’s sans. Judge the relationships, not the exact hexes. The nay fill is a placeholder (<code>--text-tertiary</code>); its token is open in RATIFY.md.</p>
+  <p class="role-caption intro">The host frame uses approximate Claude chat colours, not sampled values, and system-ui stands in for Claude’s sans. Judge the relationships, not the exact hexes. The tally bar draws yea filled and nay as the track, the card’s ink at 10%.</p>
 
   <section class="scheme" data-scheme="light"><span class="role-label-caps">Light</span><div class="grid"></div></section>
   <section class="scheme" data-scheme="dark"><span class="role-label-caps">Dark</span><div class="grid"></div></section>
@@ -150,8 +157,8 @@ h1.role-display-section { margin: 0 0 8px; }
         <div class="marks-one role-metadata-sans"><b>Complete</b>Jul 18, 2025</div>
       </div>
       <div class="sec">
-        <div class="vote role-metadata-sans"><span class="ch">Senate</span><span class="d">Jun 17</span><span class="split">R 50–2 · D 18–26 · I 0–2</span><span class="t">68–30</span><span class="bar"><span class="y" style="flex:68"></span><span class="n" style="flex:30"></span><span style="flex:2"></span></span></div>
-        <div class="vote role-metadata-sans"><span class="ch">House</span><span class="d">Jul 17</span><span class="split">R 205–12 · D 102–110 · I 1–0</span><span class="t">308–122</span><span class="bar"><span class="y" style="flex:308"></span><span class="n" style="flex:122"></span><span style="flex:2"></span></span></div>
+        <div class="vote role-metadata-sans"><span class="ch">Senate</span><span class="d">Jun 17</span><span class="split">R 50–2 · D 18–26 · I 0–2</span><span class="t">68–30</span><span class="bar" role="img" aria-label="68 yea, 30 nay, 2 not voting"><span class="y" style="flex:68"></span><span class="n" style="flex:30"></span></span></div>
+        <div class="vote role-metadata-sans"><span class="ch">House</span><span class="d">Jul 17</span><span class="split">R 205–12 · D 102–110 · I 1–0</span><span class="t">308–122</span><span class="bar" role="img" aria-label="308 yea, 122 nay"><span class="y" style="flex:308"></span><span class="n" style="flex:122"></span></span></div>
         <p class="role-metadata-sans amends">Amends 12 sections of the U.S. Code: <a href="#">11 U.S.C. § 101</a>, <a href="#">12 U.S.C. § 1</a>, <a href="#">15 U.S.C. § 78c</a> and 9 more</p>
         <div class="ask role-body"><i class="ph ph-chat-circle-text" aria-hidden="true"></i><a href="#">Who is affected by this bill?</a></div>
       </div>
